@@ -1,0 +1,61 @@
+%! Tex Program = lualatex
+\documentclass[14pt]{beamer} 
+\usetheme{metropolis} 
+\everymath{\displaystyle} 
+\setbeamersize{text margin left=.5cm} 
+\setbeamersize{text margin right=.5cm} 
+\beamertemplatenavigationsymbolsempty{}
+\usepackage[normalem]{ulem}
+
+\input{./colours.tex.preamble}
+\input{./tikz.tex.preamble}
+\setbeamertemplate{background}{
+  \begin{tikzpicture}[overlay, remember picture]
+    \node[teal!10, anchor=south] at (current page.south) {\resizebox{\textwidth}{!}{iClicker}};
+  \end{tikzpicture}    
+}
+
+\begin{document} 
+
+% \begin{frame}
+%   Question
+%
+%   \medskip
+%   \begin{itemize} \setlength\itemsep{2ex}
+%     \item[(a)] 
+%     \item[(b)] 
+%     \item[(c)] 
+%     \item[(d)] There is not enough information.
+%     \item[(e)] I am not sure.
+%   \end{itemize} 
+% \end{frame}
+
+\begin{frame}[c]
+  \thispagestyle{empty}
+
+  \begin{itemize} \setlength\itemsep{3ex}
+    \item[(a)] \underline{\hspace{4in}}
+    \item[(b)] \underline{\hspace{4in}}
+    \item[(c)] \underline{\hspace{4in}}
+    \item[(d)] \underline{\hspace{4in}}
+    \item[(e)] \underline{\hspace{4in}}
+  \end{itemize} 
+\end{frame}
+
+\section{Icebreaker}
+
+\begin{frame}
+  Is a hot dog a sandwich?
+  
+  \medskip
+  \begin{itemize} \setlength\itemsep{2ex}
+    \item[(a)] Yes!
+    \item[(b)] Yes?
+    \item[(c)] No!
+    \item[(d)] No?
+    \item[(e)] I no longer know what a sandwich is.
+  \end{itemize} 
+\end{frame}
+
+\end{document}
+
