@@ -16,6 +16,7 @@ standalones:
 main: standalones
 	mkdir -p publish
 	${LATEXMK} main.tex
+	cp build/main.pdf ${COURSE}_main.pdf
 
 publish: main
 	${LATEXMK} -jobname="${COURSE}_%A" publish/*.tex

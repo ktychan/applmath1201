@@ -103,6 +103,7 @@
 \usepackage[inline]{enumitem}
 
 % figures
+\usepackage{wrapfig}
 \usepackage{float}
 
 % plots
@@ -233,6 +234,12 @@
   \smallbreak
 }
 
+% ------------------------------------------------------------
+%
+%         Custom commands
+%
+% ------------------------------------------------------------
+\newcommand{\todo}[1]{\textcolor{magenta}{#1}}
 
 % ------------------------------------------------------------
 %
@@ -327,7 +334,9 @@
   \mainmatter{}
 
   \begin{week}{January 6 to 10}
-    placeholder
+    \subfile{./lessons/introduction.tex} \clearpage
+    \subfile{./lessons/intro-models-and-units.tex} \clearpage
+    \subfile{./lessons/intro-recursion.tex} \clearpage
   \end{week}
 
   \begin{week}{January 13 to 17}

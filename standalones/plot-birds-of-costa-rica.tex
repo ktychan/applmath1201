@@ -1,0 +1,17 @@
+\documentclass{standalone}
+
+\input{../colours.tex.preamble}
+\input{../tikz.tex.preamble}
+
+\begin{document}
+\begin{tikzpicture}
+  \begin{axis}[
+    xlabel={Length \(\ell\)}, 
+    ylabel={Weight \(w\)},
+    title ={Original Data},
+    ytick = {0, 1000, 2000, 3000},
+    ]
+    \addplot+ [only marks] table[col sep=comma] {./data-birds-of-costa-rica.csv};
+  \end{axis}
+\end{tikzpicture}
+\end{document}

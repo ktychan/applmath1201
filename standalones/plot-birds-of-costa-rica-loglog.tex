@@ -1,0 +1,17 @@
+\documentclass{standalone}
+
+\input{../colours.tex.preamble}
+\input{../tikz.tex.preamble}
+
+\begin{document}
+\begin{tikzpicture}
+  \begin{loglogaxis}[
+    axis equal image,
+    xlabel={\(\ln(\ell)\)}, 
+    ylabel={\(\ln(w)\)},
+    title ={Log-Log transformation },
+    ]
+    \addplot+ [only marks] table[col sep=comma] {./data-birds-of-costa-rica.csv};
+  \end{loglogaxis}
+\end{tikzpicture}
+\end{document}
