@@ -1,0 +1,65 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+\begin{document} \section{Introduction to differential equations}
+
+We now introduce a central class of mathematical objects of the course. A major part of the course is to understand certain classes of differential equations (called first-order linear differential equations and linear systems of differential equation) and their applications to mathematical modelling.
+
+\begin{mdframed}[style=simple-compact]
+  A \hlmain{differentiation equation} is an equation involving 
+  \begin{enumerate}
+    \item an independent variable, 
+    \item a dependent variable, and
+    \item derivatives of the dependent variable.
+  \end{enumerate}
+
+  The \hlmain{solution to a differential equation} is a \hlinfo{function} \(y\) whose independent variable is \(x\) such that plugging \(y\) into the differential equation makes the equation true.
+\end{mdframed}
+
+\begin{example}
+  Let \(P\) be the population of arctic foxes in northern Canada with respect to time \(t\). It is known that \(2t\) is the rate of population change. Can we express the relation of the given quantities as a differential equation in \(P\) and \(t\)?
+
+  If so, write down the differential equation. What does it mean to solve it?
+  \blanklines{15}
+\end{example}
+
+% \faComment{} What is the takeaway from the definition of differential equations?
+
+The very first thing we need to understand is how to verify a proposed solution to a differential equation.  Here is the procedure.
+
+\begin{mdframed}[style=simple-compact]
+  Suppose \(y = f(x)\) is a proposed solution for a differential equation in which \(y\) is the dependent variable and \(x\) is the independent variable. 
+
+  \textbf{Calculate}.
+  \begin{enumerate}
+    \item Reorganize the differential equation to the form \hlmain{\((\cdots \text{stuff} \cdots) = 0\)}.
+    \item Discard the ``\hlmain{\(=0\)}'' on the right-hand side. 
+    \item Substitute \(f(x)\) \hlattn{for every} occurrence of \(y\) in the differential equation leaving all \(x\)'s, if any, unchanged.
+    \item Perform all necessary differentiation. 
+  \end{enumerate} 
+
+  \textbf{Decide}. If the resulting expression simplifies to \(0\), then \(y = f(x)\) is indeed a solution of the differential equation; otherwise, \(y = f(x)\) is not a solution.
+\end{mdframed}
+\clearpage
+
+\begin{example}
+  Which of the following functions is a solution to the differential equation \(y' = y\)?
+  \[
+    y = x^{2}, \qquad y = e^{x} + 5, \qquad y = 3e^{x}.
+  \]
+
+  \blanklines{20}
+\end{example}
+
+\begin{example}
+  Consider the differential equation \(y' + g(x) y = x\). Define \(u(x) = \int g(x) \;dx\). Is \(y = g(x)u(x)\) a solution to the differential equation?
+
+  \blanklines{25}
+\end{example}
+\clearpage
+
+Our ability to verify a proposed solution allows us to solve differential equations by simply guess and check. Such an exercise gives us a little bit of intuition on how our prior knowledge (differentiation and integration) leads to a general solution some simple differential equations.
+\begin{example}
+  Solve the differential equation \(xy' - y = x\) by guess and check.
+\end{example}
+
+\end{document}
