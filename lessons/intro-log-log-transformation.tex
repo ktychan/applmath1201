@@ -2,6 +2,57 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Log-log transformation}
 
+Visualization is often a helpful method to \emph{make sense} of data collected from empirical studies. However, how can we discern qualitative features from data clump together?
+
+\begin{example}
+  Consider the following data sets. 
+
+  \begin{luacode}
+    function generate_noisy_data(f, x_min, x_max, num_samples, noise_level)
+      local data = {}
+
+      -- Generate evenly spaced x values between x_min and x_max
+      local step = (x_max - x_min) / (num_samples - 1)
+
+      for i = 0, num_samples - 1 do
+        local x = x_min + i * step
+        local y = f(x)
+
+        -- Add random noise to y (perturbation)
+        local noise = math.random() * 2 * noise_level - noise_level  -- noise between -noise_level and noise_level
+        y = y + noise
+
+        table.insert(data, {x = x, y = y})
+      end
+
+      return data
+    end
+
+    function print_data(data)
+      for _, point in ipairs(data) do
+        tex.print(string.format("%.2f , %.2f\\\\", point.x, point.y))
+      end
+    end
+  \end{luacode}
+
+  \begin{tabular}{c}
+    \(x\) , \(y\) \\\midrule
+    \directlua{print_data(generate_noisy_data(function(x) return x + 1 end, 1, 2, 10, 0.1))}
+  \end{tabular}
+
+
+  \begin{tabular}{c}
+    \(x\) , \(y\) \\\midrule
+    \directlua{print_data(generate_noisy_data(function(x) return 0.5*x*x end, 1, 2, 10, 0.1))}
+  \end{tabular}
+
+
+  \begin{tabular}{c}
+    \(x\) , \(y\) \\\midrule
+    \directlua{print_data(generate_noisy_data(function(x) return 0.1*x*x*x*x end, 1, 2, 10, 0.1))}
+  \end{tabular}
+\end{example}
+
 \begin{mdframed}[style=simple]
   \textbf{Idea 2}. Suppose we have a data set with a best-fit model \(y = c x^{\alpha}\). 
   The log-log transformation of such a data set, a plot \(\ln(x)\) against \(\ln(y)\), is a straight line whose slope is \(\alpha\) and \(y\)-intercept is \(\ln(c)\).
