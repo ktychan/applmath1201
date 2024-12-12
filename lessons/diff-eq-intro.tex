@@ -62,4 +62,57 @@ Our ability to verify a proposed solution allows us to solve differential equati
   Solve the differential equation \(xy' - y = x\) by guess and check.
 \end{example}
 
+\clearpage
+
+What is the context of this exercise?
+
+\begin{example}
+  Consider the differential equation \( u'(t) + p(t) u(t) = 1 \) where \(p(t)\) is a continuous function. Is
+  \[
+    u(t) = \frac{1}{v(t)} \left( \int v(t) \;dt + C \right), \quad\text{where}\quad v(t) = e^{\int p(t)\;dt}
+  \]
+  a solution to the given differential equation?
+  \clearpage
+\end{example}
+
+\begin{example}
+  Consider the differential equation \( u'(t) + p(t) u(t) = 0\) where \(p(t)\) is a continuous function. Define
+  \[
+    u(t) = C e^{-\int p(t) \;dt},
+  \]
+  where \(C\) is a constant. Is \(u(t)\) a solution to the given differential equation?
+\end{example}
+
+\begin{example}
+  Find a solution to the differential equation \(u'(t) = t^{2} u(t)\).
+\end{example}
+
+\begin{example}
+  Find a solution to the differential equation \(u(t) - \sqrt{t+1} u'(t) = 0\).
+\end{example}
+
+\begin{example}
+  Consider the differential equation \( u'(t) + p(t) u(t) = 1 \) where \(p(t)\) is a continuous function. Is
+  \[
+    u(t) = \frac{1}{v(t)} \left( \int v(t) \;dt + C \right), \quad\text{where}\quad v(t) = e^{\int p(t)\;dt}
+  \]
+  a solution to the given differential equation?
+\end{example}
+
+\clearpage
+
+Example~\ref{ex:general-solution-of-linear-first-order-diff-eq} develops our skills to work with abstract statements. 
+
+\begin{example} \label{ex:general-solution-of-linear-first-order-diff-eq}
+  Let \(p(t), q(t)\) be continuous functions.  Define another function \(v(t) = e^{\int p(t) \;dt}\). 
+
+  Verify that \(u(t) = \frac{1}{v(t)} \left( \int v(t) q(t) \;dt + C \right)\) is a solution to the differential equation
+  \[
+    u'(t) + p(t) u(t) = q(t).
+  \]
+
+  \clearpage
+\end{example}
+
+
 \end{document}
