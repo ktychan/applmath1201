@@ -1,0 +1,32 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+\begin{document} \section{Classifying differential equation}
+
+Differential equations are classified by paying attention to the dependent variable. 
+
+\begin{mdframed}[style=simple-compact]
+  \textbf{Definition} (order) The \hlmain{order of a differential equation} is the order of the highest derivative of the dependent variable in the equation.
+\end{mdframed}
+
+\begin{mdframed}[style=simple-compact]
+  \textbf{Definition} (linear vs. non-linear) If a differential equation has no product of the dependent variable with itself or any of its derivatives, then the equation is called \hlmain{linear}; otherwise, it is called \hlmain{non-linear}. 
+
+  In symbols, a differential equation is linear if it has the form
+  \[
+    p_{n}(t) u^{(n)} + p_{n-1}(t) u^{(n-1)} + \cdots + p_{1}(t) u' + p_{0}(t) u = q(t),
+  \]
+  where \(p_{1}, \ldots, p_{n}\) are functions of \(t\) and \(p_{0} \ne u\).
+\end{mdframed}
+
+\begin{mdframed}[style=simple-compact]
+  \textbf{Definition} (linear, first-order). Assume \(u\) is a function of \(t\). A \hlmain{linear, first-order} differential equations is a differential equation of the form
+  \[
+    u' + p(t) u = q(t)
+  \]
+  where \(p(t)\) and \(q(t)\) are functions of \(t\).
+\end{mdframed}
+
+\faPencil*{} The definition and notation of linear, first-order differential equation says that the dependent variable \(u\) do not appear in \(p(t)\) and \(q(t)\).
+
+We single out linear, first-order differential equations because they have relatively simple (after some practice) and elegant exact solutions. 
+\end{document}
