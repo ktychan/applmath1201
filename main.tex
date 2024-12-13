@@ -43,6 +43,11 @@
 
 % header and footers
 \usepackage{fancyhdr} % must be loaded after geometry
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyhead[OR, EL]{\small Page~\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
 
 % base style for all pages
 \fancypagestyle{base}{
@@ -241,6 +246,11 @@
 % ------------------------------------------------------------
 \newcommand{\todo}[1]{\textcolor{magenta}{#1}}
 
+\newenvironment{objective}{
+  \faStar{} \textbf{Learning objectives}.
+}{
+}
+
 % ------------------------------------------------------------
 %
 %           Make a week environment
@@ -325,7 +335,10 @@
   \clearpage
 
   \clearpage{\thispagestyle{empty}\cleardoublepage}
+  \restoregeometry{}
   \directlua{frontmatter = \the\value{page} - 1}
+
+
   %--------------------
   % 
   % MAIN MATTER
@@ -335,52 +348,64 @@
 
   \begin{week}{January 6 to 10}
     \subfile{./lessons/introduction.tex} \clearpage
-    \subfile{./lessons/intro-models-and-units.tex} \clearpage
-    \subfile{./lessons/intro-recursion.tex} \clearpage
+    \subfile{./lessons/intro-dimension-homogeneity.tex} \clearpage
+    \subfile{./lessons/intro-log-log-transformation.tex} \clearpage
+    \subfile{./lessons/intro-toucan.tex} \clearpage
+    \subfile{./lessons/intro-allometry.tex} \clearpage
   \end{week}
 
   \begin{week}{January 13 to 17}
-    placeholder
+    \subfile{./lessons/intro-recursion.tex} \clearpage
   \end{week}
 
   \begin{week}{January 20 to 24}
-    placeholder
+    \subfile{./lessons/diff-eq-intro.tex} \clearpage
+    \subfile{./lessons/diff-eq-solutions.tex} \clearpage
+    \subfile{./lessons/diff-eq-classification.tex} \clearpage
+    \subfile{./lessons/diff-eq-linear.tex} \clearpage
   \end{week}
 
   \begin{week}{January 27 to 31}
-    placeholder
+    \section{Section 2.3, applications of linear differential equations}
   \end{week}
 
   \begin{week}{February 3 to 7}
-    placeholder
+    \section{Section 3.1, Phase-line plots.}
   \end{week}
 
   \begin{week}{February 10 to 14}
-    placeholder
+    \section{Sections 4.1 and 4.2, introduction to probability.}
   \end{week}
 
   \begin{week}{February 17 to 21}
-    Reading week.
+    \section{Reading week.}
   \end{week}
 
   \begin{week}{February 24 to 28}
-    placeholder
+    \section{Sections 5.1 and 5.2, random variables}
+    \section{Sections 5.3, pseudorandom variables and simulation}
   \end{week}
 
   \begin{week}{March 3 to 7}
-    placeholder
+    \section{Section 5.4, expectation and variance.}
+    \section{Section 5.5, working with data.}
   \end{week}
 
   \begin{week}{March 10 to 14}
-    placeholder
+    \section{Section 6.3, Functions of vectors}
+  \end{week}
+
+  \begin{week}{March 17 to 21}
+    \section{Sections 7.1 and 7.2, eigenvalues and eigenvectors}
   \end{week}
 
   \begin{week}{March 24 to 28}
-    placeholder
+    \section{Section 7.3, applications to age-structured populations}
+    \section{Section 8.1, Systems of differential equations}
   \end{week}
 
   \begin{week}{March 31 to April 4}
-    placeholder
+    \section{Section 8.2, Systems of differential equations}
   \end{week}
 
   %--------------------

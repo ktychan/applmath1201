@@ -2,117 +2,97 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Introduction to differential equations}
 
-We now introduce a central class of mathematical objects of the course. A major part of the course is to understand certain classes of differential equations (called first-order linear differential equations and linear systems of differential equation) and their applications to mathematical modelling.
+So far, we can apply elementary algebraic operations \(+, -, \times, \div, \circ\) to elementary functions to develop models. Are these tools all we need to capture sufficient details of nature? Let's find out.
 
-\begin{mdframed}[style=simple-compact]
-  A \hlmain{differentiation equation} is an equation involving 
-  \begin{enumerate}
-    \item an independent variable, 
-    \item a dependent variable, and
-    \item derivatives of the dependent variable.
-  \end{enumerate}
+\begin{example}[The good ol' population model]
+  In prerequisite courses, we learned that the relation between a population \(P\) and time \(t\) can be modelled by
+  \begin{equation} \label{eq:exponential-growth}
+    P(t) = P_{0} \, e^{rt}.
+  \end{equation}
+  \blanklines{5}
 
-  The \hlmain{solution to a differential equation} is a \hlinfo{function} \(y\) whose independent variable is \(x\) such that plugging \(y\) into the differential equation makes the equation true.
-\end{mdframed}
-
-\begin{example}
-  Let \(P\) be the population of arctic foxes in northern Canada with respect to time \(t\). It is known that \(2t\) is the rate of population change. Can we express the relation of the given quantities as a differential equation in \(P\) and \(t\)?
-
-  If so, write down the differential equation. What does it mean to solve it?
+  \faComment{} What details related to population growth and decline are ignored by this model?
   \blanklines{15}
 \end{example}
 
-% \faComment{} What is the takeaway from the definition of differential equations?
+\clearpage
+Let's develop a more realistic population model.
 
-The very first thing we need to understand is how to verify a proposed solution to a differential equation.  Here is the procedure.
-
-\begin{mdframed}[style=simple-compact]
-  Suppose \(y = f(x)\) is a proposed solution for a differential equation in which \(y\) is the dependent variable and \(x\) is the independent variable. 
-
-  \textbf{Calculate}.
-  \begin{enumerate}
-    \item Reorganize the differential equation to the form \hlmain{\((\cdots \text{stuff} \cdots) = 0\)}.
-    \item Discard the ``\hlmain{\(=0\)}'' on the right-hand side. 
-    \item Substitute \(f(x)\) \hlattn{for every} occurrence of \(y\) in the differential equation leaving all \(x\)'s, if any, unchanged.
-    \item Perform all necessary differentiation. 
-  \end{enumerate} 
-
-  \textbf{Decide}. If the resulting expression simplifies to \(0\), then \(y = f(x)\) is indeed a solution of the differential equation; otherwise, \(y = f(x)\) is not a solution.
+\begin{mdframed}[style=simple-compact] \label{def:carrying-capacity}
+  \textbf{Definition} (carrying capacity). The environment in which a population \(P\) lives imposes a \hlmain{carrying capacity} \(K\) to the population. The carrying capacity is a constant with respect to the population \(P\) and time \(t\).  
 \end{mdframed}
+
+Empirical studies suggest that \(K\) interacts with \(P\) as follows.
+\begin{enumerate}[label=(L\arabic*)]
+  \item If \(P > K\), then the population shrinks due to a lack of resource.
+  \item If \(P = K\), then the population does not change.
+  \item If \(P < K\), then the population grows due to the availability of resources.  There are two subcases.
+    \begin{enumerate}
+      \item If \(P\) is much smaller than \(K\), then \hlmain{the population growth at time \(t\)} is \hlattn{proportional} to \hlmain{the size of the population at time \(t\)} by a positive factor \(r\).
+      \item If \(P\) is very close to \(K\), then \hlmain{the population growth at time \(t\)} is \hlattn{proportional} to \hlmain{the size of the population at time \(t\)} by a positive factor very close to \(0\).
+    \end{enumerate}
+\end{enumerate}
+
+Describe (L1), (L2), (L3a) and (L3b) individually using calculus. Recall that the derivative is the mathematical way to describe a rate of change. 
+\blanklines{30}
+
+\begin{mdframed}[style=simple-compact] \label{def:logistic-eq}
+  \textbf{Definition} (logistic equation)
+  Suppose \(K\) and \(r\) are positive constants. The \hlmain{logistic equation} is
+  \begin{equation} \label{eq:logistic}
+    P' = r P \cdot \left( 1 - \frac{P}{K} \right).
+  \end{equation}
+\end{mdframed}
+\blanklines{2}
+
+\begin{example}
+  Verify that the logistic equation describes the interaction between \(K\) and \(P\). 
+
+  \begin{enumerate}[wide, label=(L\arabic*)]
+    \item Show that if \(P > K\), then \(P' < 0\).
+      \blanklines{5}
+    \item Show that if \(P = K\), then \(P' = 0\).
+      \blanklines{5}
+    \item For the two sub-cases, use words to explain your reasoning whenever convenient. 
+
+      Hint: In each case, is \(1 - P/K\) closer to \(0\) or \(1\)?
+      \begin{enumerate}[wide]
+        \item Argue that if \(P < K\) and \(P\) is much smaller than \(K\), then \(P'(t)\) is proportional to \(P(t)\) by a positive factor of \(r\). 
+          \blanklines{8}
+        \item Argue that if \(P < K\) and \(P\) is very close to \(K\), then \(P'(t)\) is proportional to \(P(t)\) by a positive factor close to \(0\).
+          \blanklines{8}
+      \end{enumerate}
+  \end{enumerate}
+\end{example}
 \clearpage
 
-\begin{example}
-  Which of the following functions is a solution to the differential equation \(y' = y\)?
-  \[
-    y = x^{2}, \qquad y = e^{x} + 5, \qquad y = 3e^{x}.
-  \]
+The logistic equation is just the tip of a iceberg called differential equations.
 
-  \blanklines{20}
-\end{example}
+\begin{mdframed}[style=simple-compact] \label{def:diff-eq}
+  \textbf{Definition} (differential equations). Let \(u\) be a function of \(t\). An equation involving \(t,u, u', u^{(2)}, u^{(3)}, u^{(4)}, \ldots\) is called a differential equation.
+\end{mdframed}
 
-\begin{example}
-  Consider the differential equation \(y' + g(x) y = x\). Define \(u(x) = \int g(x) \;dx\). Is \(y = g(x)u(x)\) a solution to the differential equation?
+Differential equations are very useful modelling tools in biology (and science in general) because they provide a convenient language to describe natural phenomena.  The above exercise with the logistic equations demonstrates a typical modelling workflow. Differential equations are used to describe observations from empirical studies. One then tries to use the differential equation (find a solution, approximate, argue qualitatively, etc.) to support their scientific hypothesis.
 
-  \blanklines{25}
-\end{example}
-\clearpage
+\faExclamationTriangle{} In a differential equation, the \hlmain{dependent} variable \(u\) is the \hlmain{unknown}. The goal is to understand the dependent variable \(u\). 
 
-Our ability to verify a proposed solution allows us to solve differential equations by simply guess and check. Such an exercise gives us a little bit of intuition on how our prior knowledge (differentiation and integration) leads to a general solution some simple differential equations.
-\begin{example}
-  Solve the differential equation \(xy' - y = x\) by guess and check.
-\end{example}
-
-\clearpage
-
-What is the context of this exercise?
+\faStar{} \textbf{Learning objectives}. By the end of this week, we will be able to
+\begin{enumerate}
+  \item verify whether a function is a solution to a differential equation, 
+  \item classify differential equations by order and how dependent variables appear (linear vs non-liner),
+  \item determine whether a differential equation is autonomous or not, 
+  \item find general solutions to linear, first-order differential equations, and
+  \item find solutions to initial value problems.
+\end{enumerate}
 
 \begin{example}
-  Consider the differential equation \( u'(t) + p(t) u(t) = 1 \) where \(p(t)\) is a continuous function. Is
-  \[
-    u(t) = \frac{1}{v(t)} \left( \int v(t) \;dt + C \right), \quad\text{where}\quad v(t) = e^{\int p(t)\;dt}
-  \]
-  a solution to the given differential equation?
-  \clearpage
+  Consider the following equations. Are they differential equations?
+
+  \begin{enumerate}
+    \item \(P' = r (1 - P/K) P\) where \(K, r\) are positive constants and \(P\) is a function of \(t\).
+    \item \(u' - u/t - 1 = 0\) where \(u\) is a function of \(t\).
+    \item \(y y'' - u' = \sin(t)\) where \(y\) is a function of \(x\).
+    \item \(g(y'') = xy^{2}\) where \(y\) is a function of \(x\) and \(g\) is some function.
+  \end{enumerate}
 \end{example}
-
-\begin{example}
-  Consider the differential equation \( u'(t) + p(t) u(t) = 0\) where \(p(t)\) is a continuous function. Define
-  \[
-    u(t) = C e^{-\int p(t) \;dt},
-  \]
-  where \(C\) is a constant. Is \(u(t)\) a solution to the given differential equation?
-\end{example}
-
-\begin{example}
-  Find a solution to the differential equation \(u'(t) = t^{2} u(t)\).
-\end{example}
-
-\begin{example}
-  Find a solution to the differential equation \(u(t) - \sqrt{t+1} u'(t) = 0\).
-\end{example}
-
-\begin{example}
-  Consider the differential equation \( u'(t) + p(t) u(t) = 1 \) where \(p(t)\) is a continuous function. Is
-  \[
-    u(t) = \frac{1}{v(t)} \left( \int v(t) \;dt + C \right), \quad\text{where}\quad v(t) = e^{\int p(t)\;dt}
-  \]
-  a solution to the given differential equation?
-\end{example}
-
-\clearpage
-
-Example~\ref{ex:general-solution-of-linear-first-order-diff-eq} develops our skills to work with abstract statements. 
-
-\begin{example} \label{ex:general-solution-of-linear-first-order-diff-eq}
-  Let \(p(t), q(t)\) be continuous functions.  Define another function \(v(t) = e^{\int p(t) \;dt}\). 
-
-  Verify that \(u(t) = \frac{1}{v(t)} \left( \int v(t) q(t) \;dt + C \right)\) is a solution to the differential equation
-  \[
-    u'(t) + p(t) u(t) = q(t).
-  \]
-
-  \clearpage
-\end{example}
-
-
 \end{document}
