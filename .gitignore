@@ -1,6 +1,7 @@
 # directories
 build
 confidential
+publish
 
 # system files
 .DS_Store

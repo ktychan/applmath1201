@@ -1,0 +1,43 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+\begin{document} \section{The Bernoulli substation}
+
+A substitution, also known as a change of variable, can often \hlmain{transform} an unfamiliar problem into a familiar one to which existing tools apply. 
+
+\begin{mdframed}[style=simple-compact]
+  \textbf{Theorem} (Bernoulli substitution). The Bernoulli substitution \(u = y^{1-n}\) applies to \hlsupp{non-linear}, first-order differential equation of the form
+  \begin{equation} \label{eq:bernoulli}
+    y'(t) + P(t) y(t) = Q(t) y(t)^{n}.
+  \end{equation}
+\end{mdframed}
+
+\begin{objective}
+  At the end of this lesson, we will be able to 
+  \begin{enumerate}
+    \item use Bernoulli substitution to transform certain classes of non-linear, first-order differential equations to linear, first-order differential equations,
+    \item combine Bernoulli substitution and other techniques to solve certain classes of non-linear, first-order differential equations, and
+    \item choose an appropriate change of variable to solve the logistic equation.
+  \end{enumerate}
+\end{objective}
+
+Bernoulli substitution \emph{transforms} certain non-linear, first-order differential equation to a linear one.  When applying the Bernoulli substitution, make sure we correctly the functions \(P(t)\) and \(Q(t)\).
+
+\begin{example} \label{ex:bernoulli-part1}
+  Apply the Bernoulli substitution to transform the differential equation 
+  \begin{equation} \label{eq:bernoulli-example-intro}
+    y'(t) = \frac{y(t)}{t}  - t y(t)^{4}
+  \end{equation}
+  to a non-linear, first-order differential equation. 
+  \blanklines{25}
+\end{example}
+
+\begin{example} \label{ex:bernoulli-part2}
+  Solve the differential equation in Example~\ref{ex:bernoulli-part1}.
+  \blanklines{50}
+\end{example}
+
+Study prompts.
+\begin{enumerate}
+  \item Do we apply the Bernoulli substitution to change the \emph{independent} variable or the \emph{dependent} variable of a given differential equation?
+\end{enumerate}
+\end{document}
