@@ -2,6 +2,7 @@
 build
 confidential
 publish
+_minted-*
 
 # system files
 .DS_Store

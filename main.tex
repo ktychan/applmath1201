@@ -96,6 +96,7 @@
 
 % embedded markups
 \usepackage{markdown}
+\usepackage[outputdir=./build/aux]{minted}
 
 % subfiles
 \usepackage{refcount, xr, subfiles}
@@ -195,6 +196,9 @@
   roundcorner=3pt,
 }
 
+\surroundwithmdframed[style=simple-compact]{thm}
+\surroundwithmdframed[style=simple-compact]{definition}
+
 % fonts
 \usepackage[mathcal]{euscript}
 \usepackage{fontawesome5}
@@ -214,8 +218,10 @@
 % ------------------------------------------------------------
 \numberwithin{equation}{chapter}
 \theoremstyle{definition}
-\newtheorem{thm}{Theorem}
-\newtheorem{example}[thm]{Example}
+\newtheorem{stmt}{Statement}
+\newtheorem{thm}[stmt]{Theorem}
+\newtheorem{example}[stmt]{Example}
+\newtheorem{definition}[stmt]{Definition}
 
 \newcommand{\textbook}[1]{\noindent{} {\footnotesize \faBookReader{} #1 \hfill}}
 
@@ -265,7 +271,7 @@
   % chapter and section numbering
   \setcounter{chapter}{\theweek}
   \setcounter{section}{0}
-  \setcounter{thm}{0}
+  \setcounter{stmt}{0}
 
   % add to TOC
   \phantomsection{}\label{week\theweek}
@@ -355,11 +361,12 @@
   \end{week}
 
   \begin{week}{January 13 to 17}
-    \subfile{./lessons/intro-recursion.tex} \clearpage
+    \subfile{./lessons/recursion-intro.tex} \clearpage
+    \subfile{./lessons/recursion-examples.tex} \clearpage
+    \subfile{./lessons/recursion-models.tex} \clearpage
   \end{week}
 
   \begin{week}{January 20 to 24}
-    \subfile{./lessons/diff-eq-prereqs.tex} \clearpage
     \subfile{./lessons/diff-eq-intro.tex} \clearpage
     \subfile{./lessons/diff-eq-solutions.tex} \clearpage
     \subfile{./lessons/diff-eq-classification.tex} \clearpage
@@ -376,7 +383,8 @@
   \end{week}
 
   \begin{week}{February 10 to 14}
-    \section{Sections 4.1 and 4.2, introduction to probability.}
+    \subfile{./lessons/probability-intro.tex}
+    \subfile{./lessons/probability-conditional.tex}
   \end{week}
 
   \begin{week}{February 17 to 21}
@@ -384,11 +392,11 @@
   \end{week}
 
   \begin{week}{February 24 to 28}
-    \section{Sections 5.1 and 5.2, random variables}
-    \section{Sections 5.3, pseudorandom variables and simulation}
+    \subfile{./lessons/probability-monte-carlo.tex} \clearpage
   \end{week}
 
   \begin{week}{March 3 to 7}
+    \subfile{./lessons/probability-expectation-and-variance.tex} \clearpage
     \section{Section 5.4, expectation and variance.}
     \section{Section 5.5, working with data.}
   \end{week}

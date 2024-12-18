@@ -1,0 +1,23 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+\begin{document} \section{Conditional Probability}
+
+\begin{objective}
+  \begin{enumerate}
+    \item calculate the probability of an event \(E\) given that another event \(F\) has already occurred,
+    \item apply the \hlmain{weak law of large numbers},
+    \item understand \hlmain{mutually exclusive and exhaustive} events,
+    \item apply \hlmain{the law of total probability}
+    \item understand \hlmain{conditional independence} 
+  \end{enumerate}
+\end{objective}
+
+Let \(E,F\) be two events in a sample space \(\Omega\). The probability of \hlmain{\(F\) occurring given \(E\)} has already occurred is defined to be
+\[
+  \mathbb{P}(F \mid E) = \frac{\mathbb{P}(F \cap E)}{\mathbb{P}(E)}.
+\]
+
+\begin{example}
+  Let \(E,F\) be two events in a sample space \(\Omega\). If \(E,F\) are independent events, does that mean \(E\) and \(F\) are mutually exclusive?
+\end{example}
+\end{document}

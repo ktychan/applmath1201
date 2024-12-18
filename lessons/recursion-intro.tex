@@ -49,31 +49,25 @@ Example~\ref{ex:intro-population} suggests that some natural phenomena can be de
 \end{mdframed}
 
 \begin{example}
-  Let \(w_{t}\) denote the weight (grams) of a radioactive material at time \(t\) (years). Such material loses half of its weight every \(10\) years. 
+  Let \(w_{t}\) denote the weight (grams) of a radioactive material at time \(t\) (years). Therefore, \(w_{0}\) is its current weight. 
+
+  Such material loses half of its weight every years. 
   \begin{enumerate}[wide]
-    \item Suppose \(w_{0} = 100\). What is its weight in \(30\) years?
+    \item Suppose \(w_{0} = 200\). What is its weight in \(3\) years?
       \blanklines{10}
-    \item Write down a mathematical expression for \(w_{t}\) using the provided description.
-      \blanklines{20}
-    \item Is this a recursive model?
-      \blanklines{5}
+    \item Let \(t \ge 1\) be a variable. Write down a mathematical expression for \(w_{t}\) in terms of \(w_{t-1}\).
+      \blanklines{10}
+    \item Let \(t \ge 1\) be a variable. Write down a mathematical expression for \(w_{t}\) as a function of \(t\) and \(w_{0}\).
+      \blanklines{10}
   \end{enumerate}
+
+  What did we just do? 
+  \begin{itemize}[itemsep=2ex]
+    \item In part 2, we gave a \underline{\hspace{2in}} description of \(w_{1}, w_{2}, w_{3}, \ldots\). 
+    \item In part 3, we gave a \underline{\hspace{2in}} description of \(w_{1}, w_{2}, w_{3}, \ldots\). 
+  \end{itemize}
 \end{example}
 
 \clearpage
-\begin{example}
-  % This is an example from Geoff's notes.  Is it a version of the Hardy–Weinberg principle?
-  Let \(p_{t}\) denote the probability (a number in the interval \([0,1]\)) that an allele currently carried by a male descended from another allele carried by a male \(t\) generations ago.  Such probabilities satisfy
-  \[
-     p_{0} = 1 \quad \text{and}\quad p_{t} = 0 \cdot p_{t - 1}  + \frac{1}{2} \cdot (1 - p_{t-1}) \text{ for } t \ge 1.
-  \]
-  \blanklines{8}
-  \begin{enumerate}[wide]
-    \item What is the probability of an allele currently carried by a male descended from a male two generations ago?
-      \blanklines{10}
-    \item Find a non-recursive mathematical description of \(p_{t}\), i.e., attempt to write \(p\) as a function of \(t\).
-      \blanklines{25}
-  \end{enumerate}
-\end{example}
 
 \end{document}
