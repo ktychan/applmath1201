@@ -1,0 +1,20 @@
+\documentclass{standalone}
+
+\input{../colours.tex.preamble}
+\input{../tikz.tex.preamble}
+
+\begin{document}
+\begin{tikzpicture}
+  \begin{loglogaxis}[
+    axis equal image,
+    axis lines=middle,
+    enlargelimits=true,
+    grid=both,
+    xmin=1, xmax=10^5,
+    ymin=1, ymax=10^5,
+    xlabel={\(x\)}, xlabel style={anchor=west},
+    ylabel={\(y\)}, ylabel style={anchor=south},
+    ]
+  \end{loglogaxis}
+\end{tikzpicture}
+\end{document}

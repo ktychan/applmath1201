@@ -2,73 +2,60 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Log-log transformation}
 
-Visualization is often a helpful method to \emph{make sense} of data collected from empirical studies. However, how can we discern qualitative features from data clump together?
+Visualization is often a helpful method to \emph{make sense} of data collected from empirical studies. If we suspect a phenomenon to follow a power rule model \(y = c x^{\alpha}\), we can use the log-log transformation to determine the required exponent \(\alpha\) and coefficient \(c\).
+
+\begin{definition}[log-log transformation]
+  The (natural) log-log transformation of an equation \(y = c x^{\alpha}\) is
+  \[
+    \ln(y) = \ln(c) + \alpha \ln(x)
+  \]
+  obtained by applying \(\ln(\cdots)\) to both sides of \(y = c x^{\alpha}\).
+\end{definition}
+
+\blanklines{5}
+
+
+\begin{definition}[log-log space]
+  A point \((x,y)\) in the Euclidean space corresponds to \((\ln(x), \ln(y))\) in the log-log space, and a point \((\alpha,\beta)\) in the log-log space corresponds to \((e^{\alpha}, e^{\beta})\) in the Euclidean space.
+\end{definition}
+
+\begin{figure}[H] % [h] for here, [ht] for here top, [hb] for here bottom
+  \centering
+  
+  \hfill{}
+  \includegraphics{../standalones/build/plot-blank-5x5.pdf}
+  \hfill{}
+  \includegraphics{../standalones/build/plot-log-log-5x5-plain.pdf}
+  \hfill{}
+
+  \caption{Euclidean space vs log-log space}
+  \label{fig:figure}
+\end{figure}
 
 \begin{example}
-  Consider the following data sets. 
+  Sketch the points \((20,400), (50, 2500), (100,10000) \) in the above spaces. Use a calculator to approximate \(\ln(\cdots)\) values.
 
-  \begin{luacode}
-    function generate_noisy_data(f, x_min, x_max, num_samples, noise_level)
-      local data = {}
-
-      -- Generate evenly spaced x values between x_min and x_max
-      local step = (x_max - x_min) / (num_samples - 1)
-
-      for i = 0, num_samples - 1 do
-        local x = x_min + i * step
-        local y = f(x)
-
-        -- Add random noise to y (perturbation)
-        local noise = math.random() * 2 * noise_level - noise_level  -- noise between -noise_level and noise_level
-        y = y + noise
-
-        table.insert(data, {x = x, y = y})
-      end
-
-      return data
-    end
-
-    function print_data(data)
-      for _, point in ipairs(data) do
-        tex.print(string.format("%.2f , %.2f\\\\", point.x, point.y))
-      end
-    end
-  \end{luacode}
-
-  \begin{tabular}{c}
-    \(x\) , \(y\) \\\midrule
-    \directlua{print_data(generate_noisy_data(function(x) return x + 1 end, 1, 2, 10, 0.1))}
-  \end{tabular}
-
-
-  \begin{tabular}{c}
-    \(x\) , \(y\) \\\midrule
-    \directlua{print_data(generate_noisy_data(function(x) return 0.5*x*x end, 1, 2, 10, 0.1))}
-  \end{tabular}
-
-
-  \begin{tabular}{c}
-    \(x\) , \(y\) \\\midrule
-    \directlua{print_data(generate_noisy_data(function(x) return 0.1*x*x*x*x end, 1, 2, 10, 0.1))}
-  \end{tabular}
+  \blanklines{3}
 \end{example}
 
-\begin{mdframed}[style=simple]
-  \textbf{Idea 2}. Suppose we have a data set with a best-fit model \(y = c x^{\alpha}\). 
-  The log-log transformation of such a data set, a plot \(\ln(x)\) against \(\ln(y)\), is a straight line whose slope is \(\alpha\) and \(y\)-intercept is \(\ln(c)\).
+\faCalculator{} Be aware that most online calculators perform \emph{base \(10\)} log-log transformations instead of natural log-log transformations.  In particular, Desmos' log-log transformation has base 10. 
 
-  Conversely, in the log-log space, if a straight line \(\ln(y) = y_{0} + \alpha \ln(x)\) is the best fit of a log-log transformed data set, then the model \(y = e^{y_{0}} x^{\alpha}\) fits the original data best.
-\end{mdframed}
+See \url{https://upload.wikimedia.org/wikipedia/commons/2/29/Solarmap.gif} for a cool application of the base 10 log-log transformation.
+
+
+\begin{example}
+  Sketch the model \(y = 0.0135 (\sqrt{x})^{3}\) in the log-log space.  Extend the grid if necessary.
+
+  \begin{center}
+    \includegraphics{../standalones/build/plot-log-log-5x5-plain.pdf}
+  \end{center}
+
+  \blanklines{10}
+\end{example}
 
 \begin{example}
   Find the best-fit model for the following data in log-log space.
 
   \todo{TODO: make a plot}.
-\end{example}
-
-\begin{example}
-  Sketch the model \(y = 2 \sqrt{x}\) in the log-log space.
-
-  \todo{TODO: make a blank log-log plot}.
 \end{example}
 \end{document}

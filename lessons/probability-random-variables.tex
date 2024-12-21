@@ -1,0 +1,38 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+\begin{document} \section{Random variables}
+
+We can introduce random variables as data collection devices.
+
+Consider a certain population. Let \(X_{1}\) record heights and \(X_{2}\) weights. More precisely, if \(i\) is someone in the population, then \(X_{1}(i)\) is the height of \(i\), and \(X_{2}(i)\) is the weight of \(i\).
+
+Mathematically, think of them as piecewise functions.
+
+\begin{definition}[probability mass function]
+  The probability density function \(f(x)\) for a discrete random variable \(X\) is defined by
+  \[
+    f(x) = \mathbb{P}(X = x),
+  \]
+  where \(x\) is any outcome of \(X\).
+\end{definition}
+
+\begin{definition}[probability density function]
+  The probability density function \(f(x)\) for a continuous random variable \(X\) is a function \(f(x)\) so that
+  \[
+    \mathbb{P}(a \le X \le b) = \int_{a}^{b} f(x) \;dx.
+  \]
+\end{definition}
+
+\begin{definition}[cumulative distribution function]
+  A function \(f(x)\) defined on all real numbers is called a probability density function if \(f\) is non-negative and 
+  \[
+    \int_{-\infty}^{\infty} f(x) \;dx = 1.
+  \]
+
+  Given a continuous random variable \(X\), we can define a continuous random variable \(X\) by imposing that
+  \[
+    
+  \]
+\end{definition}
+
+\end{document}

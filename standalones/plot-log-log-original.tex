@@ -1,0 +1,15 @@
+\documentclass{standalone}
+
+\input{../colours.tex.preamble}
+\input{../tikz.tex.preamble}
+
+\begin{document}
+\begin{tikzpicture}
+  \begin{axis}[
+    axis equal image,
+    grid=both,
+    ]
+    \addplot[domain=1:1000] {10*x^2};
+  \end{axis}
+\end{tikzpicture}
+\end{document}
