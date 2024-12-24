@@ -1,6 +1,6 @@
 # directories
 build
-confidential
+.confidential
 publish
 _minted-*
 
