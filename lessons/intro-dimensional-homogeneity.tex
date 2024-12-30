@@ -2,19 +2,18 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Dimensional homogeneity}
 
-Mathematical models of physical phenomena are often presented as mathematical equations. We learn a quick sanity-check to make sure our model is comparing apples to apples.
+A model should make sense physically --- that we compare apples to apples.
 
-A model should make sense physically. We do so by checking that the units on both sides of the equation match.
-
-\begin{mdframed}[style=simple-compact]
-  A model, expressed as a mathematical equation, is \hlmain{dimensionally homogeneous} if the units associated with each of its (additive) \emph{terms} match.
-\end{mdframed}
+\begin{definition}[dimensional homogeneity] \label{def:dimensional-homogeneity}
+  A model, expressed as a mathematical equation, is called \hlmain{dimensionally homogeneous} if the units associated with each of its (additive) \emph{terms} match.
+\end{definition}
 
 A \emph{term} is a summand in the equation.
 
 \faPencil*{} ``Dimensionally homogeneous'' is also known as ``dimensionally consistent'' (often in physics).
 
-\blanklines{5}
+% think about units of equations.
+\blanklines{8}
 
 \begin{example}
   Benjamin Franklin has been credited with first proposing the model, ``time is money.'' Is Franklin's model dimensionally homogeneous?
@@ -22,7 +21,7 @@ A \emph{term} is a summand in the equation.
   \blanklines{10}
 \end{example}
 
-A dimensionally homogeneous model provides useful information. 
+The following example demonstrates how to extract useful information from a dimensionally homogeneous model.
 \begin{example}
   Einstein's model \(E = mc^{2}\) is dimensionally homogeneous. The symbol \(E\) represents energy whose unit is \(\text{kg} \cdot \text{m}^{2} \cdot \text{s}^{-2}\). The symbol \(m\) represents mass whose unit is kg. 
 

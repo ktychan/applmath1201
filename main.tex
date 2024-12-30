@@ -1,4 +1,4 @@
-\documentclass[12pt, letterpaper, draft]{book}
+\documentclass[12pt, letterpaper]{book}
 
 
 % ----------------------------------------
@@ -224,7 +224,7 @@
 % ------------------------------------------------------------
 \numberwithin{equation}{chapter}
 \theoremstyle{definition}
-\newtheorem{stmt}{Statement}
+\newtheorem{stmt}{Statement}[chapter]
 \newtheorem{thm}[stmt]{Theorem}
 \newtheorem{example}[stmt]{Example}
 \newtheorem{definition}[stmt]{Definition}
@@ -361,7 +361,7 @@
 
   \begin{week}{January 6 to 10}
     \subfile{./lessons/introduction.tex} \clearpage
-    \subfile{./lessons/intro-dimension-homogeneity.tex} \clearpage
+    \subfile{./lessons/intro-dimensional-homogeneity.tex} \clearpage
     \subfile{./lessons/intro-log-log-transformation.tex} \clearpage
     \subfile{./lessons/intro-toucan.tex} \clearpage
     \subfile{./lessons/intro-allometry.tex} \clearpage
