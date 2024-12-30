@@ -1,0 +1,16 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+\begin{document} \section{Vector Fields}\label{sec:linalg-vector-fields}
+
+A vector field is a function that takes \(n\)-dimensional vector as inputs and outputs \(n\)-dimensional vectors. For the rest of the course, we are going to use a particular class of vector fields called a linear vector field. 
+
+\begin{definition}[linear vector field]
+  A \hlmain{linear vector field} is defined square matrix.  In other words, given a square matrix \(A\), we can define a linear vector field \(\vec{F}\) by
+  \[
+    \vec{F}(\vec{x}) = A \vec{x}.
+  \]
+
+  Conversely, if we know \(\vec{F}\) is a linear vector field, then there must be a square matrix \(A\) so that \(\vec{F}(\vec{x}) = A \vec{x}\).
+\end{definition}
+
+\end{document}

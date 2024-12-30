@@ -1,0 +1,19 @@
+\documentclass{standalone}
+
+\input{../colours.tex.preamble}
+\input{../tikz.tex.preamble}
+
+\begin{document}
+\begin{tikzpicture}
+  \begin{axis}[
+    xlabel={Length \(\ell\)}, 
+    ylabel={Weight \(w\)},
+    title ={Intern B},
+    ytick = {0, 1000, 2000, 3000},
+    restrict y to domain = {0:3000},
+    ]
+    \addplot+ [only marks] table[col sep=comma] {./data-birds-of-costa-rica.csv};
+    \addplot[smooth, samples=100, domain=0:150] {x^2*0.25};
+\end{axis}
+\end{tikzpicture}
+\end{document}

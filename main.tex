@@ -1,5 +1,6 @@
 \documentclass[12pt, letterpaper]{book}
 
+
 % ----------------------------------------
 % 
 % Course information
@@ -42,20 +43,27 @@
 \usepackage[margin=0.75in, top=0.25in, bottom=0.25in, nofoot, nomarginpar, includehead, includefoot, headheight=15pt, footskip=5pt]{geometry}
 
 % header and footers
+\usepackage{ifdraft}
 \usepackage{fancyhdr} % must be loaded after geometry
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyhead[OR, EL]{\small Page~\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \ifdraft{
+      \fancyhead[OL,ER]{\textcolor{red}{DRAFT MODE ON}}
+    }
+}
 
 % base style for all pages
 \fancypagestyle{base}{
   \fancyhf{}
   \fancyhead[OR, EL]{\small Page~\thepage}
   \renewcommand{\headrulewidth}{0pt}
+  \ifdraft{
+      \fancyhead[OL,ER]{\textcolor{red}{DRAFT MODE ON}}
+    }
 }
 \pagestyle{base}
-
-\fancypagestyle{draft}[base]{
-  \fancyhead[OL, ER]{\small \hlwarn{Draft}}
-  \renewcommand{\headrulewidth}{.4pt}
-}
 
 % base style for the first page of a chapter
 \newcommand{\firstpageheader}{}
@@ -63,6 +71,9 @@
   \fancyhead[OL, ER]{\small \thecoursesubj{}~\thecoursenumb~(\thecourseterm~\thecourseyear)}
   \fancyhead[C]{\small\firstpageheader{}}
   \renewcommand{\headrulewidth}{.4pt}
+  \ifdraft{
+      \fancyhead[OL,ER]{\small\textcolor{red}{\textbf{DRAFT MODE ON}}}
+    }
 }
 
 % for syllabus
@@ -84,13 +95,14 @@
 \everymath{\displaystyle}
 
 % typography
-\usepackage{fontspec}
+\usepackage{fontspec, unicode-math}
 \usepackage{microtype} 
 \usepackage{parskip}
 \usepackage{ragged2e}
 
 % embedded markups
 \usepackage{markdown}
+\usepackage[outputdir=./build/aux]{minted}
 
 % subfiles
 \usepackage{refcount, xr, subfiles}
@@ -103,6 +115,7 @@
 \usepackage[inline]{enumitem}
 
 % figures
+\usepackage{wrapfig}
 \usepackage{float}
 
 % plots
@@ -189,6 +202,9 @@
   roundcorner=3pt,
 }
 
+\surroundwithmdframed[style=simple-compact]{thm}
+\surroundwithmdframed[style=simple-compact]{definition}
+
 % fonts
 \usepackage[mathcal]{euscript}
 \usepackage{fontawesome5}
@@ -208,8 +224,10 @@
 % ------------------------------------------------------------
 \numberwithin{equation}{chapter}
 \theoremstyle{definition}
-\newtheorem{thm}{Theorem}
-\newtheorem{example}[thm]{Example}
+\newtheorem{stmt}{Statement}[chapter]
+\newtheorem{thm}[stmt]{Theorem}
+\newtheorem{example}[stmt]{Example}
+\newtheorem{definition}[stmt]{Definition}
 
 \newcommand{\textbook}[1]{\noindent{} {\footnotesize \faBookReader{} #1 \hfill}}
 
@@ -229,10 +247,22 @@
 \usepackage{suffix}
 \newcommand{\blanklines}[1]{
   \par
-  \includegraphics{./standalones/build/grid_#1_by_40.pdf}
+  % scale ever so slightly to avoid LaTeX warnings
+  \includegraphics[scale=0.995]{./standalones/build/grid_#1_by_40.pdf}
   \smallbreak
 }
 
+% ------------------------------------------------------------
+%
+%         Custom commands
+%
+% ------------------------------------------------------------
+\newcommand{\todo}[1]{\textcolor{magenta}{#1}}
+
+\newenvironment{objective}{
+  \faStar{} \textbf{Learning objectives}.
+}{
+}
 
 % ------------------------------------------------------------
 %
@@ -248,7 +278,7 @@
   % chapter and section numbering
   \setcounter{chapter}{\theweek}
   \setcounter{section}{0}
-  \setcounter{thm}{0}
+  \setcounter{stmt}{0}
 
   % add to TOC
   \phantomsection{}\label{week\theweek}
@@ -318,7 +348,10 @@
   \clearpage
 
   \clearpage{\thispagestyle{empty}\cleardoublepage}
+  \restoregeometry{}
   \directlua{frontmatter = \the\value{page} - 1}
+
+
   %--------------------
   % 
   % MAIN MATTER
@@ -327,51 +360,70 @@
   \mainmatter{}
 
   \begin{week}{January 6 to 10}
-    placeholder
+    \subfile{./lessons/introduction.tex} \clearpage
+    \subfile{./lessons/intro-dimensional-homogeneity.tex} \clearpage
+    \subfile{./lessons/intro-log-log-transformation.tex} \clearpage
+    \subfile{./lessons/intro-toucan.tex} \clearpage
+    \subfile{./lessons/intro-allometry.tex} \clearpage
   \end{week}
 
   \begin{week}{January 13 to 17}
-    placeholder
+    \subfile{./lessons/recursion-intro.tex} \clearpage
+    \subfile{./lessons/recursion-examples.tex} \clearpage
+    \subfile{./lessons/recursion-models.tex} \clearpage
   \end{week}
 
   \begin{week}{January 20 to 24}
-    placeholder
+    \subfile{./lessons/diff-eq-intro.tex} \clearpage
+    \subfile{./lessons/diff-eq-solutions.tex} \clearpage
+    \subfile{./lessons/diff-eq-classification.tex} \clearpage
+    \subfile{./lessons/diff-eq-linear-first-order.tex} \clearpage
   \end{week}
 
   \begin{week}{January 27 to 31}
-    placeholder
+    \subfile{./lessons/diff-eq-technique-change-of-variables.tex} \clearpage
+    \subfile{./lessons/diff-eq-applications.tex} \clearpage
   \end{week}
 
   \begin{week}{February 3 to 7}
-    placeholder
+    \subfile{./lessons/diff-eq-phase-line-plots.tex} \clearpage
   \end{week}
 
   \begin{week}{February 10 to 14}
-    placeholder
+    \subfile{./lessons/probability-intro.tex} \clearpage
+    \subfile{./lessons/probability-conditional.tex} \clearpage
   \end{week}
 
   \begin{week}{February 17 to 21}
-    Reading week.
+    \section{Reading week.}
   \end{week}
 
   \begin{week}{February 24 to 28}
-    placeholder
+    \subfile{./lessons/probability-monte-carlo.tex} \clearpage
   \end{week}
 
   \begin{week}{March 3 to 7}
-    placeholder
+    \subfile{./lessons/probability-expectation-and-variance.tex} \clearpage
+    \subfile{./lessons/probability-working-with-data.tex} \clearpage
   \end{week}
 
   \begin{week}{March 10 to 14}
-    placeholder
+    \subfile{./lessons/linalg-vectors.tex}
+    \subfile{./lessons/linalg-functions-of-vectors.tex}
+    \subfile{./lessons/linalg-vector-fields.tex}
+  \end{week}
+
+  \begin{week}{March 17 to 21}
+    \section{Sections 7.1 and 7.2, eigenvalues and eigenvectors}
   \end{week}
 
   \begin{week}{March 24 to 28}
-    placeholder
+    \section{Section 7.3, applications to age-structured populations}
+    \section{Section 8.1, Systems of differential equations}
   \end{week}
 
   \begin{week}{March 31 to April 4}
-    placeholder
+    \section{Section 8.2, Systems of differential equations}
   \end{week}
 
   %--------------------

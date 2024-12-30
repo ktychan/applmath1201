@@ -1,0 +1,68 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+\begin{document} \section{More examples of recursion}
+
+We now look at several recursions that will be useful later in the course.
+\begin{example}[pseudorandom number generator] \label{ex:pseudorandom-number-generator}
+  Choosing \emph{integers} \(m,a,b,c\) such that \(m,a\) are positive and \(b,c\) are non-negative. Defined a recursion by \(u_{0} = c\) and \(u_{t}\) is the remainder of \(a u_{t-1} + b\) divided by \(m\). In symbols, we write this recursion as
+  \[
+    \quad u_{0} = c \qquad\text{and}\qquad u_{t} = \mathtt{mod}(a u_{t-1} + b, m) \text{ for each integer } t \ge 1.
+  \]
+  Such sequence exhibit pseudorandomness when \(m,a,b\) are appropriately chosen. We will need them a few weeks later to perform random sampling of data.
+
+  For now, we focus on basic calculations. The symbol \(\texttt{mod}(x,m)\) denotes the (integer) remainder of \(x/m\). One way to calculate \(r = \mathtt{mod}(x,m)\) is to find the smallest non-negative integer \(r\) so that \(x - r\) is an integer multiple of \(m\). For example, \(\texttt{mod}(25, 3) = 1\) because \(25 - 1\) is divisible by \(3\).
+
+  Choose \(m = 5, a = 3, b = 4, c = 0\).
+  \begin{enumerate}
+    \item Hand calculate \(u_{1}, u_{2}, u_{3}\). 
+      \begin{table}[H] % [h] for here, [ht] for here top, [hb] for here bottom
+        \centering
+
+        % \usepackage{booktabs}
+        \begin{tabular}{l|p{2in}|p{1in}}  % left, centre, right, 
+          \(t\) & \(a u_{t-1} + b\) & \(u_{t}\) \\ % header
+          \midrule
+          \(1\) & & \\[1ex]\midrule
+          \(2\) & & \\[1ex]\midrule
+          \(3\) & & \\[1ex]
+          \bottomrule
+        \end{tabular}
+        \caption{Hand calculate \(u_{1}, u_{2}, u_{3}\)}
+        \label{table:table}
+      \end{table}
+    \item Use Microsoft Excel, Google Sheets or Python to calculate \(u_{4}, u_{5}, \ldots, u_{10}\).  
+
+      Hint: Build the above table in Excel or Google Sheets.
+
+      \begin{table}[H] % [h] for here, [ht] for here top, [hb] for here bottom
+        \centering
+
+        % \usepackage{booktabs}
+        \begin{tabular}{l|c|l}  % left, centre, right, 
+          % \toprule
+          Software & Syntax & Note \\ % header
+          \midrule
+          Microsoft Excel & \mintinline{python}{= mod(x, m)} & Include the equal sign \\
+          Google Sheets & \mintinline{python}{= mod(x, m)} & Include the equal sign \\
+          Python & \mintinline{python}{x % m} & Put parentheses around \(x\) if it is a long expression\\
+          % \bottomrule
+        \end{tabular}
+        \caption{Syntax for calculating \(\mathtt{mod(x,m)}\)}
+        \label{table:syntax-modulo}
+      \end{table}
+  \end{enumerate}
+
+  Write down all 10 numbers here.
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{l|l|l|l|l|l|l|l|l|l}  % left, centre, right, 
+      % \toprule
+      \(u_{1}\) & \(u_{2}\) & \(u_{3}\) & \(u_{4}\) & \(u_{5}\) & \(u_{6}\) & \(u_{7}\) & \(u_{8}\) & \(u_{9}\) & \(u_{10}\) \\\midrule
+                & & & & & & & & & \\[1ex]
+      % \bottomrule
+    \end{tabular}
+  \end{table}
+\end{example}
+\clearpage
+
+\end{document}

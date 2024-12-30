@@ -1,0 +1,23 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+\begin{document} \section{Expectation and variance}
+
+Probability gives a big picture view of data. Pictorially, probability mass/density functions let us visualize the data. Other common ways of thinking about data involves computing their \hlmain{expectation} and \hlmain{variance}. 
+
+\begin{definition}[expectation]
+  The expectation of a random variable depends on its type.
+
+  \begin{enumerate}
+    \item Let \(X\) be a discrete random variable whose outcomes are \(x_{1}, \ldots, x_{n}\). The \hlmain{expectation of \(X\)} is defined to be
+      \[
+        \mathbb{E}(X) = \sum_{i = 1}^{n} x_{i} \cdot \mathbb{P}(X = x_{i}).
+      \]
+
+    \item Let \(X\) be a continuous random variable defined by a probability density function \(f(x)\). The \hlmain{expectation of \(X\)} is defined to be
+      \[
+        \mathbb{E}(X) = \int_{-\infty}^{\infty} x f(x) \;dx.
+      \]
+  \end{enumerate}
+\end{definition}
+
+\end{document}

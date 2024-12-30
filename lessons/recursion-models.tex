@@ -1,0 +1,24 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+\begin{document} \section{Recursive models}
+
+\begin{example}
+  % This is an example from Geoff's notes.  Is it a version of the Hardy–Weinberg principle?
+  Let \(p_{1}, p_{2}, p_{3}, \ldots\) be unknown numbers in the interval \([0,1]\).
+
+  For every \(t \ge 1\), the chance that an allele currently carried by a male descended from another allele carried by a male \(t\) generations ago is \(p_{t}\).  
+
+  The numbers \(p_{1}, p_{2}, p_{3}, \ldots\) satisfy the recursion
+  \[
+     p_{0} = 1 \quad \text{and}\quad p_{t} = 0 \cdot p_{t - 1}  + \frac{1}{2} \cdot (1 - p_{t-1}) \text{ for } t \ge 1.
+  \]
+  \blanklines{8}
+  \begin{enumerate}[wide]
+    \item What is the probability of an allele currently carried by a male descended from a male two generations ago?
+      \blanklines{10}
+    \item Find a non-recursive description of \(p_{t}\), i.e., attempt to write \(p\) as a function of \(t\).
+      \blanklines{25}
+  \end{enumerate}
+\end{example}
+
+\end{document}

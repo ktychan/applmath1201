@@ -1,0 +1,25 @@
+\documentclass{standalone}
+
+\input{../colours.tex.preamble}
+\input{../tikz.tex.preamble}
+
+\begin{document}
+\begin{tikzpicture}
+  \begin{axis}[
+    axis equal image,
+    axis lines=middle,
+    enlargelimits=true,
+    grid=both,
+    minor tick num=1,
+    scaled ticks=false,
+    xtick={0,...,3},
+    ytick={-1,...,4},
+    xmin=0, xmax=3,
+    ymin={-1}, ymax=4,
+    xlabel={\(\ln(x)\)}, xlabel style={anchor=west},
+    ylabel={\(\ln(y)\)}, ylabel style={anchor=south},
+    ]
+    \addplot[domain=0:3, main, thick] {3*x - 0.5};
+  \end{axis}
+\end{tikzpicture}
+\end{document}

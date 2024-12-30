@@ -1,0 +1,78 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+\begin{document} \section{Sanity checks for models}
+Example~\ref{ex:toucan} teaches us two important ideas in modelling.
+\begin{enumerate}
+  \item A model should make sense physically. We do so by checking that the units on both sides of the equation match.
+
+  \item Visual inspection is often an inaccurate method of evaluation for accuracy. We often need to transform our data to discover an accurate model.
+\end{enumerate}
+
+We now study both of the above ideas in more details.
+
+\begin{mdframed}[style=simple]
+  \textbf{Idea 1}. A model, expressed as a mathematical equation, is \hlmain{dimensionally homogeneous} if the units associated with each of its terms match.
+\end{mdframed}
+\faPencil*{} ``Dimensionally homogeneous'' is also known as ``dimensionally consistent'' (often in physics).
+
+\begin{example}
+  It is often said that ``time is money.'' Expressed as a mathematical model, we have 
+  \[
+    t = M
+  \]
+  where \(t\) is time (minutes) and \(M\) is money (dollars).
+
+  Is this model dimensionally homogeneous?
+  \blanklines{8}
+\end{example}
+
+\begin{example}
+  Einstein's model \(E = mc^{2}\) is dimensionally homogeneous. The symbol \(E\) represents energy whose unit is \(\text{kg} \cdot \text{m}^{-2} \cdot \text{s}^{-2}\). The symbol \(m\) represents mass whose unit is kg. 
+
+  What is the unit of \(c\)?
+  \blanklines{10}
+\end{example}
+\clearpage
+
+\todo{Depending on how much we need students to understand log-log space, we might want to add a page on log-log space here.}
+
+\begin{mdframed}[style=simple]
+  \textbf{Idea 2}. Suppose we have a data set with a best-fit model \(y = c x^{\alpha}\). 
+  The log-log transformation of such a data set, a plot \(\ln(x)\) against \(\ln(y)\), is a straight line whose slope is \(\alpha\) and \(y\)-intercept is \(\ln(c)\).
+
+  Conversely, in the log-log space, if a straight line \(\ln(y) = y_{0} + \alpha \ln(x)\) is the best fit of a log-log transformed data set, then the model \(y = e^{y_{0}} x^{\alpha}\) fits the original data best.
+\end{mdframed}
+
+\begin{example}
+  Find the best-fit model for the following data in log-log space.
+
+  \todo{TODO: make a plot}.
+\end{example}
+
+\begin{example}
+  Sketch the model \(y = 2 \sqrt{x}\) in the log-log space.
+  
+  \todo{TODO: make a blank log-log plot}.
+\end{example}
+
+\clearpage
+In Example~\ref{ex:toucan}, we used the relation \[\text{weight} = \text{density} \times \text{volume} \] to guide our choice of a model. 
+
+\begin{mdframed}[style=simple]
+  If two quantities \(x,y\) are related by a \hlattn{linear} relation \(y = c x\) for some constant \(c > 0\), then we say \hlmain{\(x\) and \(y\) exhibit isometry}.
+
+  If two quantities \(x,y\) are related by a \hlattn{non-linear} relation, i.e., \(y = c x^{\alpha}\) where \(\alpha \ne 1\), then we say \hlmain{\(x\) and \(y\) exhibit allometry}.
+\end{mdframed}
+
+\begin{example}
+  Consider the length, volume and weight of birds as discussed in Example~\ref{ex:toucan}.
+
+  \begin{enumerate}[wide]
+    \item Do length and weight exhibit isometry or allometry? Explain your reasoning.
+      \blanklines{10}
+
+    \item Do volume and weight exhibit isometry or allometry? Explain your reasoning.
+      \blanklines{10}
+  \end{enumerate}
+\end{example}
+\end{document}

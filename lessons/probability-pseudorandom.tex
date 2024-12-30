@@ -1,0 +1,20 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+\begin{document} \section{Pseudorandom number generator}
+
+To demonstrate a useful application of probability, called the Monte Carlo Simulation (see page \pageref{sec:monte-carlo}), we need to be able to \emph{randomly} pick numbers from an interval \([0,1]\).
+
+Start by choosing \emph{integers} \(m,a,b,c\) such that \(m,a\) are positive and \(b,c\) are non-negative. Generate a list of numbers defined by the recursion
+\[
+  \quad u_{0} = c \qquad\text{and}\qquad u_{t} = (a u_{t-1} + b) \mod m \quad\text{for every \(t \ge 1\)}.
+\]
+\blanklines{5}
+
+Under appropriate choices of \(m,a,b\), such as \(m = 2^{32}, a = 1664525, b = 1013904223\), 
+\begin{enumerate}
+  \item the resulting integers are roughly evenly spread out in \([0,m]\), and
+  \item if we have already generated \(u_{1},\ldots,u_{n}\) and try to predict the next one in the sequence, our prediction amounts to a random guess.
+\end{enumerate}
+
+
+\end{document}

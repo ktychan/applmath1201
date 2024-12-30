@@ -1,0 +1,25 @@
+\documentclass{standalone}
+\usepackage{amsmath}
+\input{../colours.tex.preamble}
+\input{../tikz.tex.preamble}
+
+\begin{document}
+\begin{tikzpicture}
+  \begin{loglogaxis}[
+    axis equal image,
+    xlabel={\(\ln(\ell)\)}, 
+    ylabel={\(\ln(w)\)},
+    ymin={10^(-5)}, ymax={10^4},
+    xmin={10^0}, xmax={10^3},
+    title style={align=center},
+    title={Log-log transformation\\ (big picture)},
+    grid=major,
+    ytickten={-5,-4,...,4},
+    xtickten={0,1,2,3},
+    log base 10 number format code/.code={\pgfmathprintnumber[fixed]{#1}},
+    minor tick length={0},
+    ]
+    \addplot+ [only marks] table[col sep=comma] {./data-birds-of-costa-rica.csv};
+  \end{loglogaxis}
+\end{tikzpicture}
+\end{document}

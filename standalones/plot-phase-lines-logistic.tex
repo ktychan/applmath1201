@@ -1,0 +1,46 @@
+\documentclass[tikz]{standalone}
+\input{../tikz.tex.preamble}
+\input{../colours.tex.preamble}
+
+\begin{document}
+\begin{tikzpicture}
+  \begin{axis}[
+  axis lines = middle, % boxed, middle
+  axis on top,
+  axis equal image,
+  %
+  % domain and range
+  %
+  % xmin={}, xmax={},
+  % ymin={}, ymax={},
+  enlargelimits=true,
+  %
+  % axis labels
+  %
+  xlabel={\(N\)}, xlabel style={anchor=west},
+  ylabel={\(N'\)}, ylabel style={anchor=south},
+  label style={at={(ticklabel* cs:1)}},
+  %
+  % ticks
+  %
+  % xtick={}, xticklabels={},
+  % ytick={}, yticklabels={},
+  ticklabel style={font=\footnotesize},
+  %
+  % grid
+  % none, major, minor, both
+  grid=none, grid style={gray!20},
+  % minor tick num=1, 
+  % minor grid style={gray!20},
+  % 
+  % plot parameters
+  %
+  smooth, samples=100, no markers,
+  ]
+  % \usepackage{pgfplots}
+  % \pgfplotsset{compat=newest, trig format=rad} 
+  % \pgfplotsset{label style={font=\footnotesize}}
+  \addplot[thick, domain=0:12] {2*(1-x/10)*x};
+  \end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,60 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+\begin{document} \section{Monte Carlo Simulation}\label{sec:probability-monte-carlo}
+
+\faYoutube{} The 10-minute video \emph{Monte Carlo Simulation} (\url{https://www.youtube.com/watch?v=7ESK5SaP-bc}) by MarbleScience explains the \hlmain{idea} of the Monte Carlo simulation in plain English.
+
+We use the pseudorandom number generator from Example~\ref{ex:pseudorandom-number-generator} on page~\pageref{ex:pseudorandom-number-generator}. Recall the relevant recursion 
+\[
+  \quad u_{0} = c \qquad\text{and}\qquad u_{t} = \mathtt{mod}(a u_{t-1} + b, m) \text{ for each integer } t \ge 1.
+\]
+
+For the homework assignment, we apply the recursion with
+\[
+  m = 2^{32}, \qquad a = 1664525, \qquad b = 1013904223, \qquad c = 674832.
+\]
+
+\begin{example}
+  Use Monte Carlo simulation to approximate \(\int_{-1}^{1} \sin^{2}(x) \;dx\).
+\end{example}
+
+The following Python code generates \(10^{6}\) pseudorandom numbers stored in lists called \texttt{xs} and \texttt{ys}.
+
+\begin{figure}[H]
+  \begin{minted}[linenos, fontsize=\footnotesize]{python}
+  # choose m, a, b, c as shown above.
+  m = 2**32       
+  a = 1664525     
+  b = 1013904223  
+  c = 674832
+
+  # choose the number of random numbers you want to generate
+  n = 10**6
+
+  # use a loop to generate pseudorandom numbers based on m,a,b,c
+  u = [c]         
+  for i in range(n*2):
+    new_random_number = (a * u[-1] + b) % m
+    us.append(new_random_number)
+
+  # define the integrand
+  f = lambda x: float(exp(-x**2))
+
+  # >>>>>>>> YOUR HOMEWORK ASSIGNMENT BEGINS HERE
+  # randomly sample points in [-1,1] x [0,1]
+  points = [ 
+    (-1 + float(u[i]/m)*2, -1 + float(u[-i]/m)*2) 
+    for i in range(n) 
+  ]
+  
+  count = 0
+  for (x,y) in points:
+    # write code to check if (x,y) is under the curve of e^(-x^2)
+    # if it is, then increment count by 1; otherwise, do nothing.
+
+  # finally, estimate the integral of e^(-x^2) on the interval [-1, 1].
+
+  \end{minted}
+  \caption{The setup for performing a Monte Carlo simulation to approximate \(\int_{-1}^{1} e^{-x^{2}}\;dx\).}
+\end{figure}
+\end{document}
