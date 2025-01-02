@@ -1,73 +1,89 @@
 %! TeX program = lualatex
 \documentclass[../main.tex]{subfiles}
-\begin{document} \section{Recursive models}
+\begin{document} \section{Introduction to discrete-time models and recursion}
 
-Does geometric intuition always lead to the right choice of model?
+\hlmain{Discrete-time models} are models in which the time variable takes on (typically non-negative) integer values. In discrete-time models, time progresses in discrete steps instead of flowing continuously. 
 
-\begin{example} \label{ex:intro-population}
-  Our intern found some bacteria living in a petri dish and checked in every hour to find the following data. They created a log-log plot and suggested the model \(P = 100 t^{2}\). 
+\hlmain{Recursions} are equations for describing changes over discrete time steps and are often used to describe discrete-time models.
 
-  \begin{minipage}{0.65\textwidth}
+We introduce these two ideas together through Example~\ref{ex:origami}.  
+
+\begin{example} \label{ex:origami}
+  Repeatedly fold a triangular paper by identifying the two corners on the long edge. 
+  \begin{figure}[H]
     \centering
-    \begin{tabular}{r|r|l}
-      time \(t\)  & observed population \(P\) & intern's model \(P = 100 t^{2}\) \\ \midrule
-      1 & 100     & \\ \midrule
-      2 & 200     & \\ \midrule
-      3 & 400     & \\ \midrule
-      4 & 800     & \\ \midrule
-      5 & 1600    & \\ \midrule
-      6 & 3200    & \\ \midrule
-      7 & unknown &  
-    \end{tabular}
-  \end{minipage}
-  \begin{minipage}{0.3\textwidth}
-    \centering
-    \begin{tikzpicture}
-      \begin{loglogaxis}[height=2in, axis equal image, xlabel={\(\ln(t)\)}, ylabel={\(\ln(P)\)}]
-        \addplot[only marks] coordinates {
-            (1, 100) (2, 200) (3, 400) (4, 800) (5, 1600) (6, 3200)
-          };
-      \end{loglogaxis}
-    \end{tikzpicture}
-  \end{minipage}
+    \includegraphics{../standalones/build/demo-origami}
+  \end{figure}
 
-  \faComment{} What is the population at \(t = 7\) predicted by our intern's model? Does this prediction make sense biologically?
-  \blanklines{5}
+  We wish to count the number of triangles on the (unfolded) paper after \(t\) folds. 
 
-  The above data exhibits certain pattern consistent with biological theory. Propose a description for \hlmain{such a pattern} in plain English.
+  \faStar{} Below are the typical steps for developing discrete-time models using recurrence.  Later this week, we will learn some mathematical methods to get information from recurrence.
 
-  \includegraphics[page=1]{../build/polls.pdf}
-
-  \todo{Collect some public opinion and do an iClicker poll using student provided opinions. We hope that some student shouts ``\(P\) doubles every hour!''}
-\end{example}
-\clearpage
-
-Example~\ref{ex:intro-population} suggests that some natural phenomena can be described by an earlier version of itself. 
-
-\begin{mdframed}[style=simple-compact]
- A \hlmain{recursive model} describes data in terms of one or more earlier versions of itself.
-\end{mdframed}
-
-\begin{example}
-  Let \(w_{t}\) denote the weight (grams) of a radioactive material at time \(t\) (years). Therefore, \(w_{0}\) is its current weight. 
-
-  Such material loses half of its weight every years. 
   \begin{enumerate}[wide]
-    \item Suppose \(w_{0} = 200\). What is its weight in \(3\) years?
-      \blanklines{10}
-    \item Let \(t \ge 1\) be a variable. Write down a mathematical expression for \(w_{t}\) in terms of \(w_{t-1}\).
-      \blanklines{10}
-    \item Let \(t \ge 1\) be a variable. Write down a mathematical expression for \(w_{t}\) as a function of \(t\) and \(w_{0}\).
-      \blanklines{10}
+    \item \hlsupp{Set up notations}. Use a \emph{complete sentence} such as ``let \ldots{} be \ldots'' to attach meaning to symbols.
+      \blanklines{5}
+    \item \hlsupp{Describe the initial condition}. Describe the number of triangles after \(0\) fold.
+      \blanklines{5}
+    \item \hlsupp{Describe change}. Describe the \hlmain{change} in triangles from \(t-1\) fold to \(t\) fold \emph{using an equation}.
+      \blanklines{15}
+  \end{enumerate}
+\end{example}
+
+Let's sharpen the concept of recurrence by writing down a precise definition. 
+
+\begin{definition}[recurrence]
+  Let \(u_{t}\) be discrete-time variables, i.e., time \(t\) are non-negative integers.  We call \(u_{t}\) the \hlmain{state at time \(t\)}. 
+
+  A \hlmain{recurrence} has two parts:
+  \begin{enumerate}
+    \item An \hlmain{initial condition} (or initial state) \(u_{0}\).
+    \item A \hlmain{recurrence equation} that relate \(u_{t}\) to one or more \emph{previous} states.
   \end{enumerate}
 
-  What did we just do? 
-  \begin{itemize}[itemsep=2ex]
-    \item In part 2, we gave a \underline{\hspace{2in}} description of \(w_{1}, w_{2}, w_{3}, \ldots\). 
-    \item In part 3, we gave a \underline{\hspace{2in}} description of \(w_{1}, w_{2}, w_{3}, \ldots\). 
-  \end{itemize}
+  \faExclamationTriangle{} Recurrences are used to describe discrete-time models.
+\end{definition}
+
+\begin{example}
+  Here are some examples of recurrences. For each recurrence below, identify its initial condition and its recurrence equation.
+
+  \begin{enumerate}[wide, itemsep={2ex}]
+    \item 
+      A recurrence is commonly written in a single line.
+      \begin{equation} \label{eq:recurrence-intro-oneline}
+        p_{0} = 1 \quad\text{and}\quad p_{t} = \frac{1}{2} p_{t-1} - \frac{1}{2}, \text{ for integers } t \ge 1.
+      \end{equation}
+
+    \item 
+      A recurrence can be written like a piecewise function. The left brace emphasizes that the initial condition and the recurrence equation should be thought of together. 
+      \begin{equation} \label{eq:recurrence-intro-left-brace}
+        \left\{
+          \begin{aligned}
+            a_{0} &= 3,  \\
+            a_{t} &= a_{t-1} + 2,  \text{ for integers } t \ge 1.
+          \end{aligned}
+        \right.
+      \end{equation}
+
+    \item 
+      A recurrence can involve any algebraic operations.
+      \begin{equation} \label{eq:recurrence-intro-sqrt}
+        b_{0} = 4 \quad\text{and}\quad b_{t} = t \sqrt{b_{t-1}}, \text{ for integers } t \ge 1.
+      \end{equation}
+
+    \item 
+      The initial state of a recurrence can be hard to measure, deliberately left as unknown, or simply unimportant. In any case, an initial condition \emph{always exists} but can be unspecified.  
+
+      \begin{equation} \label{eq:recurrence-intro-unspecified-initial-condition}
+        f_{t} = \frac{1}{f_{t-1}} + 1.
+      \end{equation}
+
+      A recurrence equation \hlsupp{without an initial state} represents \underline{\hfill{} \phantom{Xy infinitely many recurrences Xy Xy}}, one for every possible initial condition. Equation~\eqref{eq:recurrence-intro-unspecified-initial-condition} is such an example.
+
+    \item 
+      A recurrence can involve one or more previous states.
+      \begin{equation} \label{eq:recurrence-intro-fib}
+        F_{t} = F_{t-1} + F_{t-2}.
+      \end{equation}
+  \end{enumerate}
 \end{example}
-
-\clearpage
-
 \end{document}
