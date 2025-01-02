@@ -1,5 +1,5 @@
 LATEXMK=latexmk -lualatex -halt-on-error -interaction=nonstopmode
-COURSE=ApplMath_1201B_W24
+COURSE=ApplMath_1201B_W25
 
 .PHONY: all clean standalones main publish 
 

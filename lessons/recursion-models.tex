@@ -1,24 +1,48 @@
 %! TeX program = lualatex
 \documentclass[../main.tex]{subfiles}
-\begin{document} \section{Recursive models}
+\begin{document} \section{Developing discrete-time models using recurrences}
 
-\begin{example}
-  % This is an example from Geoff's notes.  Is it a version of the Hardy–Weinberg principle?
-  Let \(p_{1}, p_{2}, p_{3}, \ldots\) be unknown numbers in the interval \([0,1]\).
+Before we investigate mathematical properties of recurrence, let's see why we should care about their properties at all by doing some real-world modelling. 
 
-  For every \(t \ge 1\), the chance that an allele currently carried by a male descended from another allele carried by a male \(t\) generations ago is \(p_{t}\).  
+\begin{method}
+  Use recurrence equations to describe how a physical system changes from one state to the next.  Be sure to specify its initial state.
+\end{method}
 
-  The numbers \(p_{1}, p_{2}, p_{3}, \ldots\) satisfy the recursion
-  \[
-     p_{0} = 1 \quad \text{and}\quad p_{t} = 0 \cdot p_{t - 1}  + \frac{1}{2} \cdot (1 - p_{t-1}) \text{ for } t \ge 1.
-  \]
-  \blanklines{8}
-  \begin{enumerate}[wide]
-    \item What is the probability of an allele currently carried by a male descended from a male two generations ago?
-      \blanklines{10}
-    \item Find a non-recursive description of \(p_{t}\), i.e., attempt to write \(p\) as a function of \(t\).
-      \blanklines{25}
-  \end{enumerate}
+
+% use the word balance instead of value of the investment
+Let's start with an everyday example of discrete-time models.
+\begin{example} \label{ex:recurrsion-investment-model}
+  We deposit \(1000\) dollars into a savings account. At the end of every year since the initial deposit, interest of \(2\%\) of the current balance is paid. We would like to withdraw \(50\) dollars \emph{after} each interest payment.
+
+  Develop a discrete-time model for the relation between the balance of the saving and time.
+
+  \blanklines{25}
 \end{example}
 
+\faComment{} What questions do you have about the investment?
+\blanklines{10}
+
+\begin{example} \label{ex:recurrsion-half-life}
+  Carbon-14 is a radioactive element that can be used to determine the age of archaeological artifacts of biological origin.  The amount of carbon-14 in a sample decreases by \(50\%\) after roughly \(5730\) years. In other words, the half-life of carbon-14 is \(5730\) years. 
+
+  Develop a discrete-time model for the relation between the amount of carbon-14 in a sample and time.
+  \blanklines{30}
+
+  \faComment{} Let's say you detect \(100\) mg of carbon-14 in a sample of dinosaur bones and you wish to determine when the dinosaur lived. \emph{Formulate} this question using the above model. We will fully answer this question later this week.
+  \blanklines{15}
+\end{example}
+
+Given a recursive discrete-time model, we can find explanation for the recurrence.
+\begin{example}
+  A house has a cat and some mouse.  The cat chases away a fixed portion of mouse everyday during the day. Voluntary move-ins/outs happen before midnight. 
+  A census of the mouse population is taken every midnight.
+
+  An intern proposes the following model for the number of mouse \(m_{t}\) at night \(t\).  
+  \[
+    m_{0} \text{ is unknown } \quad\text{and}\quad m_{t} = 0.2 m_{t-1} + 5, \text{ for integers } t \ge 1.
+  \]
+
+  What percentage of the mouse population is chased away by the cat everyday?
+  \blanklines{10}
+\end{example}
 \end{document}

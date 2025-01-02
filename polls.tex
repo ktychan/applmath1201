@@ -86,5 +86,28 @@
   \end{itemize} 
 \end{frame}
 
+\section{Recurrence techniques}
+
+\begin{frame}
+  Why does \(\hat{b} = 2500\) make sense in the context of Example~2.5?
+\end{frame}
+
+
+\begin{frame}[t]
+  The following is a recurrence equation
+  \[
+    v_{0} = 1 \quad\text{ and }\quad v_{t} = 2 v_{t-1} - \frac{3}{4} \text{ for integers } t \ge 1.
+  \]
+
+  Which of the followings are solution(s) of the given recursion equation? Choose all that apply.
+
+  \begin{enumerate*}[label=\textbf{(\alph*)}, before=\hfill, after={\hfill}, itemjoin={\hspace{2em}}]
+    \item \(v_{t} = 2^{t}\)
+    \item \(v_{t} = 2^{t} - \frac{3}{4}\)
+    \item \(v_{t} = 2^{t-2} - \frac{3}{4}\)
+    \item \(v_{t} = \frac{3}{4}\) if we change \(v_{0} = 3/4\)
+  \end{enumerate*}
+\end{frame}
+
 \end{document}
 
