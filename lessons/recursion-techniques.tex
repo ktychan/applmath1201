@@ -34,7 +34,7 @@ In some cases, we can use mathematical techniques to ``get rid'' of the recursio
 First, let's understand what it means for a function to be a solution of a recursion. 
 
 \begin{definition}[solutions of recursions]
-  Suppose \(u_{t}\) satisfies a recursion with some initial condition \(u_{0}\). A function \(u = f(t)\) is a solution of the recursion if 
+  Suppose \(u_{t}\) satisfies a recursion with some initial condition \(u_{0}\). A function \(f(t)\) is a solution of the recursion if 
   \begin{enumerate}
     \item \(f(t)\) satisfies the defining recursion equation for \(u_{t}\), \emph{and}
     \item \(u_{0} = f(0)\).
@@ -49,9 +49,9 @@ First, let's understand what it means for a function to be a solution of a recur
 \end{example}
 \clearpage
 
-To denote a solution, we can skip the function notation and simply drop subscripts.
+To denote a solution, we can skip the function notation.
 \begin{example}
-  Verify that \(b = -1500 (1.02)^{t} + 2500\) is a solution of the recurrence in Example~\ref{ex:recurrsion-investment-model}.
+  Verify that \(b_{t} = -1500 (1.02)^{t} + 2500\) is a solution of the recurrence in Example~\ref{ex:recurrsion-investment-model}.
   \blanklines{50}
 \end{example}
 \clearpage
@@ -132,7 +132,7 @@ Change-of-variable is the general technique we use in this course.
 
   \blanklines{50}
 
-  {\footnotesize The solution is \(p = \frac{2}{3} \left( -\frac{1}{2} \right)^{t} + \frac{1}{3}\) for all integers \(t \ge 0\).}
+  {\footnotesize The solution is \(p_{t} = \frac{2}{3} \left( -\frac{1}{2} \right)^{t} + \frac{1}{3}\) for all integers \(t \ge 0\).}
 \end{example}
 
 \clearpage
