@@ -3,6 +3,7 @@ build
 .confidential
 publish
 _minted-*
+misc
 
 # system files
 .DS_Store
