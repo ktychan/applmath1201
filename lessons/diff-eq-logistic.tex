@@ -1,0 +1,69 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+\begin{document} \section{The Logistic Model}
+
+We develop and analyze a more realistic population model called the \hlmain{logistic equation}.  It is
+\begin{itemize}
+  \item sophisticated enough to account for \emph{crowding}, 
+  \item simple enough that it can be modified to account for additional factors, and
+  \item one of two fundamental models in biology. The other one is called the Lotka-Volterra model.
+\end{itemize}
+
+{\footnotesize \faYoutube{} Not too excited about population? A solution to the logistic equation, called the Sigmoid curve, is used in \emph{early theory} of machine learning as an activation function for neural networks. Fun 20-minute video by Grant Sanderson (3Blue1Brown): \url{https://youtu.be/aircAruvnKk}}
+
+Everyday scientific developments are results of attempting to extend an existing idea just a tiny bit further.  Thinking back to the very first lecture of the term, we discussed how \emph{assumptions and simplifications} affect the validity and utility of models.  To advance science, we attempt to tweak assumptions to capture factors simplified away by existing ideas. 
+% when assumptions break, our model is no longer valid. can't put diesel into a gas car.
+% when there are too many simplifications, our model is no longer useful. 
+
+In Example~\ref{ex:diff-eq-intro}, we discussed the exponential population growth model \(N'(t) = (B - D) N(t)\). Mathematically, we assumed that \emph{per capita birth and death rates} were \underline{\hspace{2in}} which came from the simplification that growth was \underline{\hspace{1.5in}}. 
+% unrestricted
+% opera meme
+
+We attempt to improve by incorporating additional factors. 
+\blanklines{30}
+
+\begin{definition}[logistic model]
+  The population model \(N(t)\) with a growth factor \(r > 0\) and a carrying capacity \(K\) satisfies the differential equation
+  \begin{equation} \label{eq:diff-eq-logistic}
+    \phantom{N'(t) = r N(t) \left( 1 - \frac{K}{N(t)} \right).}
+  \end{equation}
+\end{definition}
+
+We now \emph{analyze} the logistic model using calculus and basic algebra.  The examples below are routine scientific reasoning processes.
+
+\begin{example}[equilibrium]
+  Find all equilibria of the logistic equation.
+  \blanklines{10}
+\end{example}
+
+\begin{example}[interpretation]
+  Does the population grow or shrink when \(N(t)\) is a number \emph{strictly} between \(0\) and \(K\)?
+  \blanklines{10}
+\end{example}
+
+\begin{example}[problem-solving]
+  We now use the logistic equation as a \emph{problem-solving device}.  Information relevant to the model can be used to \emph{deduce} information.
+
+  Suppose a population \(N(t)\) is modelled by the logistic equation with a carrying capacity \(K\).  It is known that at \(t = 10\) years, the population is decreasing.  Use the logistic equation to deduce an inequality or equality between the initial population and the carrying capacity.  Justify your answer.
+  \blanklines{10}
+\end{example}
+\clearpage
+
+We advertised that the logistic model accounts for the \emph{crowding} effect. Is it really true?
+\begin{example}[fact-check]
+  Pick out the crowding effect \emph{from} the logistic model.  In answer the parts below, remember that \(r > 0\).
+  \begin{enumerate}
+    \item If there is no crowding at time \(t\), should \(N(t)\) be close to or far away from \(K\)?  In such a case, how does the population grow \emph{according} to the model?
+      \blanklines{5}
+
+    \item If there is crowding at time \(t\), should \(N(t)\) be close to \(K\) or far away from \(K\)?  In such a case, how does the population grow \emph{according} to the model?
+      \blanklines{10}
+
+    \item If there is overcrowding at time \(t\), should \(N(t)\) be larger or smaller than \(K\)?  In such a case, how does the population grow \emph{according} to the model?
+      \blanklines{10}
+
+    \item What mathematical (sub)expression of the logistic equation accounts for crowding? There are more than one correct answers.
+      \blanklines{10}
+  \end{enumerate}
+\end{example}
+\end{document}
