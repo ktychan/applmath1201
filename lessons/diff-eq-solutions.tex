@@ -49,11 +49,11 @@ In general, differential equations have infinitely many solutions. For example, 
 \end{definition}
 \blanklines{5}
 
-\faPencil*{} In scientific applications of differential equations, the initial condition often corresponds to a known measurement. There is flexibility in \emph{when} a known measurement is taken. For example, an initial condition could be \(u(-2566)\) representing the quantity of \(u\) at time \(t = -2566\) (in whatever unit that makes sense).  We tend to think of \(t = 0\) as the (relatively) beginning of time and \emph{choose}, purely by convention and for convenience, to call the measurement at \(t = 0\) the initial condition.
+\faPencil*{} In scientific applications of differential equations, the initial condition often corresponds to a known measurement. There is flexibility in \emph{when} a known measurement is taken. For example, an initial condition could be \(u(-2566)\) representing the quantity \(u\) at time \(t = -2566\) (in whatever unit that makes sense).  We tend to think of \(t = 0\) as the (relatively) beginning of time and \emph{choose}, purely by convention and for convenience, to call the measurement at \(t = 0\) the initial condition.
 
 \bigskip
 Verifying a proposed solution to an initial-value problem is typically the last step in solving differential equations. It could also be the first step if we can somehow make an educated guess.
-\begin{example}[routine sanity checks]
+\begin{example}[routine checks]
   Which of the following functions solves the initial-value problem \(u'(t) = t u(t)\) with initial condition \(u(0) = 2\).
   \[
     f_{1}(t) = e^{t^{2}}, \qquad f_{2}(t) = 2e^{t^{2}/2}, \qquad f_{3}(t) = 3e^{t^{2}/2}.
@@ -86,49 +86,22 @@ Initial-value problems are not brand new ideas. We ran into some versions of the
 \end{example}
 \clearpage
 
-Here are some extra exercises on verifying solutions of differential equations.
+Like recurrences, certain initial conditions of differential equations lead to particularly simple solutions. 
+
+\begin{definition}[equilibrium solution]
+  An \hlmain{equilibrium solution} (or equilibrium) of a differential equation is a constant function.  
+\end{definition}
+
+Notations for equilibrium solutions of differential solution varies. A common notation is to add an bar to the notation of the dependent variable. For example, if \(u\) is the dependent variable of a differential equation, then it is quite common to write \(\bar{u}\) to denote an equilibrium. 
+
+\faStar{} Equilibrium solutions are very easy to find because they are constants. Simply replace all \emph{dependent} variables (together with its argument) by \(\bar{u}\) and solve for \(\bar{u}\) using basic algebra. It is possible to find none, or more than one equilibrium solutions.
 
 \begin{example}
-  Consider the differential equation \(y'(x) + g(x) y(x) = x\) where \(g(x)\) is some unknown (in the sense of \emph{don't care}) continuous function. Define \(u(x) = \int g(x) \;dx\). 
+  Find all equilibria of \(N'(t) = r N(t) (1 - \frac{N(t)}{K}\) where \(r,K\) are constants.
 
-  Is \(y = g(x)u(x)\) a solution to the differential equation? 
-
-  The wording of this question suggests that \(g(x) u(x)\) is the proposed solution. 
-  \blanklines{25}
+  \blanklines{10}
 \end{example}
 \clearpage
-
-
-\begin{example}
-  Consider the differential equation \( u'(t) + p(t) u(t) = 0\) where \(p(t)\) is a continuous function. Define
-  \[
-    u(t) = C e^{-\int p(t) \;dt},
-  \]
-  where \(C\) is a constant. Is \(u(t)\) a solution to the given differential equation?
-  \blanklines{50}
-\end{example}
-
-% \begin{example}
-%   Consider the differential equation \( u'(t) + p(t) u(t) = 1 \) where \(p(t)\) is a continuous function. Is
-%   \[
-%     u(t) = \frac{1}{v(t)} \left( \int v(t) \;dt + C \right), \quad\text{where}\quad v(t) = e^{\int p(t)\;dt}
-%   \]
-%   a solution to the given differential equation?
-%   \clearpage
-% \end{example}
-%
-% Example~\ref{ex:general-solution-of-linear-first-order-diff-eq} develops our skills to work with abstract statements. 
-%
-% \begin{example} \label{ex:general-solution-of-linear-first-order-diff-eq}
-%   Let \(p(t), q(t)\) be continuous functions.  Define another function \(v(t) = e^{\int p(t) \;dt}\). 
-%
-%   Verify that \(u(t) = \frac{1}{v(t)} \left( \int v(t) q(t) \;dt + C \right)\) is a solution to the differential equation
-%   \[
-%     u'(t) + p(t) u(t) = q(t).
-%   \]
-%
-%   \clearpage
-% \end{example}
 
 The ability to verify a proposed solution allows us to solve differential equations by simply guess and check. The exercise below gives us a little bit of intuition on how our prior knowledge (differentiation and integration) leads to solutions to simple differential equations.
 \begin{example}
@@ -140,4 +113,25 @@ The ability to verify a proposed solution allows us to solve differential equati
 
   \blanklines{40}
 \end{example}
+\clearpage
+
+Here is a rather abstract exercise on verifying solutions of differential equations.
+
+\begin{example}
+  Consider the differential equation \(y'(x) + g(x) y(x) = x\) where \(g(x)\) is some unknown (in the sense of \emph{don't care}) continuous function. Define \(u(x) = \int g(x) \;dx\). 
+
+  Is \(y = g(x)u(x)\) a solution to the differential equation? 
+
+  \blanklines{40}
+\end{example}
+\clearpage
+
+% \begin{example}
+%   Consider the differential equation \( u'(t) + p(t) u(t) = 0\) where \(p(t)\) is a continuous function. Define
+%   \[
+%     u(t) = C e^{-\int p(t) \;dt},
+%   \]
+%   where \(C\) is a constant. Is \(u(t)\) a solution to the given differential equation?
+%   \blanklines{50}
+% \end{example}
 \end{document}
