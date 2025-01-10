@@ -1,82 +1,137 @@
 %! TeX program = lualatex
 \documentclass[../main.tex]{subfiles}
-\begin{document} \section{Verifying solutions to differential equations}
+\begin{document} \section{Solutions (plural!) of differential equations and initial-value problems}
 
-To verify a proposed solution for a differential equation, we focus on the dependent variable. Here is the general procedure. 
+In a differential equation, the \hlmain{dependent} variable, say \(u\), is the \hlmain{unknown}. \emph{One} way to make sense of a differential equation is to try to \emph{solve it} --- express the unknown as down to earth functions (plural!) of the independent variable.
 
-\begin{mdframed}[style=simple-compact]
-  Suppose \(y = f(x)\) is a proposed solution for a differential equation in which \(y\) is the dependent variable and \(x\) is the independent variable. 
+\begin{definition}[solutions of differential equations]
+  Suppose we have a differential equation whose dependent variable is \(u\) and independent variable \(t\). 
 
-  \textbf{Preparation}.
-  \begin{enumerate}
+  A function \(f(t)\) is \hlmain{a (singular!) solution of the differential equation} if we can produce an equality \emph{after} replacing \(u(t)\) in the differential equation by \(f(t)\).
+\end{definition}
+
+To verify a proposed solution for a differential equation, we focus on the dependent variable. 
+
+\begin{method}
+  Suppose \(u = f(t)\) is a proposed solution for a differential equation in which \(u\) is the dependent variable and \(t\) is the independent variable. 
+
+  \textbf{Prepare}.
+  \begin{enumerate}[itemsep={0ex}]
     \item Reorganize the differential equation to the form \hlmain{\((\cdots \text{stuff} \cdots) = 0\)}.
     \item Discard the ``\hlmain{\(=0\)}'' on the right-hand side. 
   \end{enumerate}
 
   \textbf{Calculate}.
-  \begin{enumerate}
-    \item Substitute every \(y\) with \(f(x)\) in \hlmain{\((\cdots \text{stuff} \cdots)\)}. Leave all \(x\)'s unchanged.
+  \begin{enumerate}[itemsep={0ex}]
+    \item Substitute every \(u(t)\) with \(f(t)\) in \hlmain{\((\cdots \text{stuff} \cdots)\)}. 
     \item Perform all necessary differentiation. 
     \item Simplify.
   \end{enumerate} 
 
-  \textbf{Decide}. If the resulting expression simplifies to \(0\), then \(y = f(x)\) is a solution of the differential equation; otherwise, \(y = f(x)\) is not a solution.
-\end{mdframed}
+  \textbf{Decide}. If the resulting expression simplifies to \(0\), then \(u = f(t)\) is a solution of the differential equation; otherwise, \(u = f(t)\) is not a solution.
+\end{method}
 
 \begin{example}
-  Which of the following functions is a solution to the differential equation \(y' = y\)?
+  Which of the following functions are solutions to the \(u'(t) = t u(t)\)?
   \[
-    y = x^{2}, \qquad y = e^{x} + 5, \qquad y = 3e^{x}.
+    f_{1}(t) = e^{t^{2}}, \qquad f_{2}(t) = 2e^{t^{2}/2}, \qquad f_{3}(t) = 3e^{t^{2}/2}.
   \]
+  \blanklines{15}
+\end{example}
+\clearpage
 
+In general, differential equations have infinitely many solutions. For example, we can verify that \(f(t) = c e^{t^{2}/2}\) is a solution for \(u'(t) = t u(t)\) regardless of the value of the \emph{constant} \(c\). In fact, \(c\) can even be \(0\).  However, we can pin down exactly one solution by adding an extra requirement, called the initial condition.
+
+\begin{definition}[initial-value problem]
+  Suppose we have a differential equation whose dependent variable is \(u\) and independent variable \(t\). 
+
+  The number \(u(0)\) is called an \hlmain{initial condition}.  The problem of finding a function that is a solution to the differential equation and satisfies some \emph{given} initial condition is called an \hlmain{initial-value problem}. Every initial-value problem has \hlattn{exactly} one solution. 
+\end{definition}
+\blanklines{5}
+
+\faPencil*{} In scientific applications of differential equations, the initial condition often corresponds to a known measurement. There is flexibility in \emph{when} a known measurement is taken. For example, an initial condition could be \(u(-2566)\) representing the quantity \(u\) at time \(t = -2566\) (in whatever unit that makes sense).  We tend to think of \(t = 0\) as the (relatively) beginning of time and \emph{choose}, purely by convention and for convenience, to call the measurement at \(t = 0\) the initial condition.
+
+\bigskip
+Verifying a proposed solution to an initial-value problem is typically the last step in solving differential equations. It could also be the first step if we can somehow make an educated guess.
+\begin{example}[routine checks]
+  Which of the following functions solves the initial-value problem \(u'(t) = t u(t)\) with initial condition \(u(0) = 2\).
+  \[
+    f_{1}(t) = e^{t^{2}}, \qquad f_{2}(t) = 2e^{t^{2}/2}, \qquad f_{3}(t) = 3e^{t^{2}/2}.
+  \]
+  \blanklines{15}
+\end{example}
+\clearpage
+
+We don't always have to name functions when proposing solutions.
+\begin{example}
+  Which of the following functions is the solution to the initial-value problem \(y(x)y'(x) = x\) with initial condition \(y(0) = -1\).
+  \[
+    e^{-x}, \quad -x, \quad x, \quad -x^{2}.
+  \]
+  \blanklines{10}
+\end{example}
+
+Initial-value problems are not brand new ideas. We ran into some versions of them in Calculus~1000.
+\begin{example}
+  Consider the initial-value problem \(y' = x^{2}\) with \(y(0) = 4\).  Which \emph{one} of the following problems from Calculus~1000 asks us to solve the initial-value problem?
+
+  \begin{enumerate}[label=(\alph*)]
+    \item Find antiderivatives of \(x^{2}\).
+    \item Integrate \(x^{2}\).
+    \item Find the antiderivative \(F\) of \(f(x) = x^{2}\) that satisfies \(F(0) = 4\).
+    \item Find the tangent line of \(y = x^{2}\) passing through the point \((0,4)\).
+    \item None of the above.
+  \end{enumerate}
   \blanklines{20}
 \end{example}
-
-\faComment{} Do differential equations have unique solutions?
 \clearpage
 
-\begin{example}
-  Consider the differential equation \(y' + g(x) y = x\). Define \(u(x) = \int g(x) \;dx\). Is \(y = g(x)u(x)\) a solution to the differential equation?
+Like recurrences, certain initial conditions of differential equations lead to particularly simple solutions. 
 
-  \blanklines{25}
+\begin{definition}[equilibrium solution]
+  An \hlmain{equilibrium solution} (or equilibrium) of a differential equation is a constant function.  
+\end{definition}
+
+Notations for equilibrium solutions of differential solution varies. A common notation is to add an bar to the notation of the dependent variable. For example, if \(u\) is the dependent variable of a differential equation, then it is quite common to write \(\bar{u}\) to denote an equilibrium. 
+
+\faStar{} Equilibrium solutions are very easy to find because they are constants. Simply replace all \emph{dependent} variables (together with its argument) by \(\bar{u}\) and solve for \(\bar{u}\) using basic algebra. It is possible to find none, or more than one equilibrium solutions.
+
+\begin{example}
+  Find all equilibria of \(N'(t) = r N(t) (1 - \frac{N(t)}{K}\) where \(r,K\) are constants.
+
+  \blanklines{10}
 \end{example}
 \clearpage
 
+The ability to verify a proposed solution allows us to solve differential equations by simply guess and check. The exercise below gives us a little bit of intuition on how our prior knowledge (differentiation and integration) leads to solutions to simple differential equations.
 \begin{example}
-  Consider the differential equation \( u'(t) + p(t) u(t) = 0\) where \(p(t)\) is a continuous function. Define
-  \[
-    u(t) = C e^{-\int p(t) \;dt},
-  \]
-  where \(C\) is a constant. Is \(u(t)\) a solution to the given differential equation?
-\end{example}
+  Assume \(y\) is a function of \(x\). Solve \(xy' + y = x\) by using the following observation.
 
+  The left-hand side is the derivative of \(xy\) using implicit differentiation with respect to \(x\). Therefore, the differential equation can be rewritten as \(\frac{d}{dx} \left( xy \right) = x\). What happens if we integrate both sides with respect to \(x\)?  Leave the integration constant as-is (don't try to find ``\(C\)'').
+
+  Follow the above idea to propose a solution, then verify that your solution is correct. 
+
+  \blanklines{40}
+\end{example}
+\clearpage
+
+Here is a rather abstract exercise on verifying solutions of differential equations.
 
 \begin{example}
-  Consider the differential equation \( u'(t) + p(t) u(t) = 1 \) where \(p(t)\) is a continuous function. Is
-  \[
-    u(t) = \frac{1}{v(t)} \left( \int v(t) \;dt + C \right), \quad\text{where}\quad v(t) = e^{\int p(t)\;dt}
-  \]
-  a solution to the given differential equation?
-  \clearpage
+  Consider the differential equation \(y'(x) + g(x) y(x) = x\) where \(g(x)\) is some unknown (in the sense of \emph{don't care}) continuous function. Define \(u(x) = \int g(x) \;dx\). 
+
+  Is \(y = g(x)u(x)\) a solution to the differential equation? 
+
+  \blanklines{40}
 \end{example}
+\clearpage
 
-Example~\ref{ex:general-solution-of-linear-first-order-diff-eq} develops our skills to work with abstract statements. 
-
-\begin{example} \label{ex:general-solution-of-linear-first-order-diff-eq}
-  Let \(p(t), q(t)\) be continuous functions.  Define another function \(v(t) = e^{\int p(t) \;dt}\). 
-
-  Verify that \(u(t) = \frac{1}{v(t)} \left( \int v(t) q(t) \;dt + C \right)\) is a solution to the differential equation
-  \[
-    u'(t) + p(t) u(t) = q(t).
-  \]
-
-  \clearpage
-\end{example}
-
-Our ability to verify a proposed solution allows us to solve differential equations by simply guess and check. Such an exercise gives us a little bit of intuition on how our prior knowledge (differentiation and integration) leads to a general solution some simple differential equations.
-\begin{example}
-  Assume \(y\) is a function of \(x\). Solve \(xy' + y = x\) by guess and check.
-
-  Hint: The left-hand side is the derivative of \(xy\) using implicit differentiation. Therefore, the differential equation can be rewritten as \(\frac{d}{dx} \left( xy \right) = x\). What happens if we integrate both sides?
-\end{example}
+% \begin{example}
+%   Consider the differential equation \( u'(t) + p(t) u(t) = 0\) where \(p(t)\) is a continuous function. Define
+%   \[
+%     u(t) = C e^{-\int p(t) \;dt},
+%   \]
+%   where \(C\) is a constant. Is \(u(t)\) a solution to the given differential equation?
+%   \blanklines{50}
+% \end{example}
 \end{document}

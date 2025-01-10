@@ -1,10 +1,17 @@
 %! TeX program = lualatex
 \documentclass[../main.tex]{subfiles}
-\begin{document} \section{Solving linear first-order differential equations}
+\begin{document} \section{Solving differential equations}
 
-Example~\ref{ex:general-solution-of-linear-first-order-diff-eq} shows that a certain family of functions are solutions to linear, first-order differential equations. However, it does not say whether there are solutions of other forms. It turns out that there aren't any other forms of solutions. 
+We now wish to solve some sufficiently tractable differential equations.
 
-\begin{mdframed}[style=simple-compact]
+\begin{example}
+  Let \(k\) be a constant. Find the general solution of \(N'(t) = kN(t)\) using the substitution rule.
+  \blanklines{10}
+\end{example}
+
+We introduce a method to find \emph{all} exact solutions of linear, first-order differential equations.
+
+\begin{thm} \label{thm:diff-eq-linear-first-order}
   Suppose \(p(t), q(t)\) are continuous functions. Consider a linear, first-order differential equation
   \begin{equation} \label{eq:linear-first-order-diff-eq}
     u'(t) + p(t) u(t) = q(t).
@@ -12,20 +19,21 @@ Example~\ref{ex:general-solution-of-linear-first-order-diff-eq} shows that a cer
   
   Define \(v(t) = e^{\int p(t) \;dt}\). All solutions to Equation~\eqref{eq:linear-first-order-diff-eq} have the form
   \[
-    u(t) = \frac{1}{v(t)} \left( \int v(t) q(t) \;dt + C \right), \quad\text{where \(C\) is a general constant}.
+    u(t) = \frac{1}{v(t)} \left( \int v(t) q(t) \;dt + C \right), \quad\text{where \(C_{1}\) is a general constant}.
   \]
   or, equivalently,
   \[
     u(t) = \frac{1}{v(t)} \left( u(a)v(a) + \int_{a}^{t} v(x) q(x) \;dx \right), \quad\text{where \(u(a)\) is a general constant}.
   \]
-\end{mdframed}
+\end{thm}
 
-Here are the steps to find a \emph{general solution} to a linear, first-order differential equation.
-\begin{enumerate}
-  \item Manipulate your differential equation to the form in Equation~\eqref{eq:linear-first-order-diff-eq}. 
-  \item Identify \(p(t)\) and \(q(t)\).
-  \item Calculate \(v(t)\).
-  \item 
-\end{enumerate}
+Theorem~\ref{thm:diff-eq-linear-first-order} describes the procedure for solving a linear, first-order differential equation. 
+\begin{example}
+  Find solutions of \(u'(t) + t u(t) = 1\).
+  \blanklines{30}
+\end{example}
 
+\begin{example}
+  Find solutions of \(2u'(t) + t^{2} u(t) + t = 0\).
+\end{example}
 \end{document}

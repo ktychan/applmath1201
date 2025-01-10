@@ -1,0 +1,73 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+\begin{document} \section{Developing continuous-time models using differential equations}
+
+Before we investigate mathematical properties of differential equations, let's see why we should care about their properties at all by doing some real-world modelling. 
+
+\begin{method}
+  Use differential equations to describe the rates of change of physical \hlmain{systems}.  The simplest idea is
+  \begin{center}
+    (rate of change) = (rate of internal change) + (rate of external change).
+  \end{center}
+\end{method}
+\blanklines{5}
+
+The phrase ``\emph{rate of change is \hlattn{proportional} to}'' is a good starting point to discuss rate of \hlmain{internal} change for many biological systems.  That \hlmain{the rate of change (with respect to time \(t\)) of some quantity \(P\)} is \hlattn{proportional} to \hlsupp{\(P\)} translates to a differential equation 
+\[
+  {\color{main}P'(t)} = {\color{attn} k} {\color{supp} P(t)},\quad \text{ for some constant } k.
+\]
+
+Assume \(P \ge 0\).  The sign of \(k\) reveals qualitative information.  Use our calculus knowledge to complete the table.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{r|p{1.5in}|p{1.5in}|p{1.5in}}
+  & \(k < 0\) & \(k = 0\) & \(k > 0\) \\ \midrule
+    how \(P\) changes as \(t\) increases & & & \\[2ex]
+  \end{tabular}
+\end{table}
+
+For the next four examples, we consider the interaction between a made-up anaesthesia drug ABC and the human bloodstream. Eventually, we would like to answer the question ``how much ABC will keep a patient under for \emph{blah} minutes?''
+
+Assume that the human body does not naturally produce ABC, and ABC is not present in the human body unless it is administered externally. 
+
+Assume the amount of ABC is measured in \emph{mg} and time in \emph{minutes}.
+
+\begin{example}[modelling with only rate of internal change] \label{ex:diff-eq-ABCv1}
+  Experimental data suggests that the \hlmain{rate of change of ABC} is \hlattn{proportional} to \hlmain{the amount of ABC present}, decaying by a factor of \(1\%\) per minute.
+
+  Write down a \emph{continuous-time model} of ABC present in the bloodstream.
+  \blanklines{10}
+\end{example}
+
+\begin{example}[modelling with rates of internal and external change] \label{ex:diff-eq-ABCv2}
+  Continue from Example~\ref{ex:diff-eq-ABCv2}.  Suppose further \(ABC\) is \emph{continuously} administered at a rate of \(r\) mg per minute. 
+
+  Write down a \emph{continuous-time model} of ABC in the bloodstream.
+  \blanklines{15}
+\end{example}
+
+\begin{example} \label{ex:diff-eq-ABCv3}
+  Continue from Example~\ref{ex:diff-eq-ABCv2}.  Suppose further that \(ABC\) exits the bloodstream through blood loss at a rate of \(s\) mg (of ABC) per minutes. 
+
+  Write down a \emph{continuous-time model} of ABC in the bloodstream.
+  \blanklines{15}
+\end{example}
+
+\begin{example}[sanity check]
+  Verify that the model we developed in Example~\ref{ex:diff-eq-ABCv3} is dimensionally homogeneous.
+  \blanklines{10}
+\end{example}
+
+We will revisit (a new and improved) ABC to solve problems using differential equations.
+\clearpage
+
+\begin{example}
+  A bathtub is filled with \(V\) litres of hot water. The rate of water \emph{evaporation} is proportional to the volume of water by a factor of \(0.1\) per minute.  Water (of the same temperature) enters the tub at a rate of \(1\) litre per minute. The tub leaks \(0.1\) litre per minute. 
+
+  Model the volume of water in the tub with respect to time \(t\) using a differential equation.
+
+  Hint: What information is given? Rate of growth or rate of decay?
+  \blanklines{15}
+\end{example}
+\end{document}

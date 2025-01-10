@@ -1,33 +1,34 @@
 %! TeX program = lualatex
 \documentclass[../main.tex]{subfiles}
-\begin{document} \section{Phase-line plots}
+\begin{document} \section{Equilibria and their stability}
 
-Getting an exact solution to a differential equation could be more challenging than worth our investment.  For autonomous equations, phase-line plots allow us to \hlattn{visualize} \hlmain{inexact solutions} of autonomous differential equations and their \hlmain{qualitative features}. 
+Recall (from the very first lecture of the semester) that models are \emph{imperfect} representations of natural phenomena. Exact solutions to differential equations may or may not be what we \emph{need}.  
 
-It's important to remember (from the very first lecture of the semester) that models are \emph{imperfect} representations of natural phenomenons. Therefore, exact solution to differential 
+{\footnotesize Fun read: \url{https://www.jpl.nasa.gov/edu/news/how-many-decimals-of-pi-do-we-really-need/}}
 
-\begin{definition}[phase-line plots]
-  Suppose \(u' = g(u)\) is a (autonomous) differential equation where \(g\) is continuous. The unknown function is \(u(t)\). 
+We are about to introduce phase-line plots. Feel free to preview Definition~\ref{def:phase-line-plots} before working through the next example.
 
-  The graph of \(u' = g(u)\) where we treat \(u\) as the independent variable and \(u'\) as the dependent variable is the phase-line plot of the differential equation.
-\end{definition}
-
-\faStar{} Equilibrium and their stability properties can be read off from phase-line plots. 
-
-\begin{example}
-  Let's reconsider the logistic equation \(N' = 2\left(1 - \frac{N}{10}\right)N\) with \(N(0) > 0\). Pretend for a moment that we don't know how to solve it, and try to use phase-line plots to understand it qualitatively.
-
+\begin{example}[equilibria of logistic equations]
+  Solutions of logistic equations exhibit \emph{informative} patterns.
   \begin{figure}[H] % [h] for here, [ht] for here top, [hb] for here bottom
     \centering
-    \includegraphics{../standalones/build/plot-phase-lines-logistic.pdf}
-    \caption{Phase-line plot of \(N' = 2\left(1-\frac{N}{10}\right)N\).}
-    \label{fig:phase-lines-logistic}
+    \includegraphics{../standalones/build/plot-logistic-solutions}
+    \label{fig:logistic-solutions}
   \end{figure}
-
-  \begin{enumerate}
-    \item Recall that \(N\) is a function of \(t\). Pick a number on the horizontal axis, say \(N = 2\). 
-
-      Note that \(N = 2\) represents all solutions (plural!) to the given logistic equation that intersect the horizontal line \(N = 2\) in the \(t\) vs \(N\) plot.
-  \end{enumerate}
+  
+  \blanklines{10}
 \end{example}
+
+\faStar{} We \hlsupp{do not need to solve} \emph{autonomous} differential equations to understand \hlmain{how their equilibria affect solutions}.  The idea we need is a slight change of mindset: Treat the dependent variable \(u\) in a differential equation as the independent variable for \(u'\). 
+
+\begin{definition}[phase-line plots] \label{def:phase-line-plots}
+  Suppose \(u' = g(u)\) is an autonomous differential equation where \(g\) is continuous. The (unknown) dependent variable is \(u\).
+
+  The \hlmain{phase-line plot} of a differential equation is the graph of \(u' = g(u)\) where the vertical axis is \(u'\) and horizontal axis is \(u\).  
+
+  We \hlsupp{do not need to solve} the differential equation at all.
+\end{definition}
+
+Equilibria and their stability properties (later) can be read off from phase-line plots. 
+
 \end{document}
