@@ -303,157 +303,157 @@
 \directlua{weeks = {}}
 
 \begin{document}
-  % --------------------
-  % 
-  % TITLE PAGE
-  % 
-  % --------------------
-  \begin{titlepage}
-    \thispagestyle{empty}
-    \huge
-    
-    \begin{center}
-      % title
-      \phantom{top}
-      \vspace{1in}
+% --------------------
+% 
+% TITLE PAGE
+% 
+% --------------------
+\begin{titlepage}
+  \thispagestyle{empty}
+  \huge
 
-      {\Huge\bfseries \thecoursetitle}
+  \begin{center}
+    % title
+    \phantom{top}
+    \vspace{1in}
 
-      \vspace{1cm}
-      \theauthor
+    {\Huge\bfseries \thecoursetitle}
 
-      \theinstitute
-      \vfill{}
+    \vspace{1cm}
+    \theauthor
 
-      \thecourseterm~\thecourseyear
+    \theinstitute
+    \vfill{}
 
-      \vspace{2in}
-    \end{center}
+    \thecourseterm~\thecourseyear
 
-    % creaate a blank page
-    \clearpage{\thispagestyle{empty}\cleardoublepage}
-  \end{titlepage}
-  \directlua{titlepage = \the\value{page} - 1}
+    \vspace{2in}
+  \end{center}
 
-  % --------------------
-  % 
-  % FRONT MATTER
-  % 
-  % --------------------
-  \frontmatter{}
-  \pagenumbering{roman}
-  
-  \renewcommand{\contentsname}{Table of Contents}
-  \phantomsection{} \label{toc}
-  \addcontentsline{toc}{chapter}{\contentsname}
-  \tableofcontents{}
-  \clearpage
-
+  % creaate a blank page
   \clearpage{\thispagestyle{empty}\cleardoublepage}
-  \restoregeometry{}
-  \directlua{frontmatter = \the\value{page} - 1}
+\end{titlepage}
+\directlua{titlepage = \the\value{page} - 1}
+
+% --------------------
+% 
+% FRONT MATTER
+% 
+% --------------------
+\frontmatter{}
+\pagenumbering{roman}
+
+\renewcommand{\contentsname}{Table of Contents}
+\phantomsection{} \label{toc}
+\addcontentsline{toc}{chapter}{\contentsname}
+\tableofcontents{}
+\clearpage
+
+\clearpage{\thispagestyle{empty}\cleardoublepage}
+\restoregeometry{}
+\directlua{frontmatter = \the\value{page} - 1}
 
 
-  %--------------------
-  % 
-  % MAIN MATTER
-  % 
-  % --------------------
-  \mainmatter{}
+%--------------------
+% 
+% MAIN MATTER
+% 
+% --------------------
+\mainmatter{}
 
-  \begin{week}{January 6 to 10}
-    \subfile{./lessons/introduction.tex} \clearpage
-    \subfile{./lessons/intro-dimensional-homogeneity.tex} \clearpage
-    \subfile{./lessons/intro-log-log-transformation.tex} \clearpage
-    \subfile{./lessons/intro-toucan.tex} \clearpage
-    \subfile{./lessons/intro-allometry.tex} \clearpage
-  \end{week}
+\begin{week}{January 6 to 10}
+  \subfile{./lessons/introduction.tex} \clearpage
+  \subfile{./lessons/intro-dimensional-homogeneity.tex} \clearpage
+  \subfile{./lessons/intro-log-log-transformation.tex} \clearpage
+  \subfile{./lessons/intro-toucan.tex} \clearpage
+  \subfile{./lessons/intro-allometry.tex} \clearpage
+\end{week}
 
-  \begin{week}{January 13 to 17}
-    \subfile{./lessons/recursion-intro.tex} \clearpage
-    \subfile{./lessons/recursion-models.tex} \clearpage
-    \subfile{./lessons/recursion-techniques.tex} \clearpage
-  \end{week}
+\begin{week}{January 13 to 17}
+  \subfile{./lessons/recursion-intro.tex} \clearpage
+  \subfile{./lessons/recursion-models.tex} \clearpage
+  \subfile{./lessons/recursion-techniques.tex} \clearpage
+\end{week}
 
-  \begin{week}{January 20 to 24}
-    \subfile{./lessons/diff-eq-intro.tex} \clearpage
-    \subfile{./lessons/diff-eq-models.tex} \clearpage
-    \subfile{./lessons/diff-eq-techniques-overview.tex} \clearpage
-    \subfile{./lessons/diff-eq-classification.tex} \clearpage
-    \subfile{./lessons/diff-eq-solutions.tex} \clearpage
-    \subfile{./lessons/diff-eq-logistic.tex} \clearpage
-  \end{week}
+\begin{week}{January 20 to 24}
+  \subfile{./lessons/diff-eq-intro.tex} \clearpage
+  \subfile{./lessons/diff-eq-models.tex} \clearpage
+  \subfile{./lessons/diff-eq-techniques-overview.tex} \clearpage
+  \subfile{./lessons/diff-eq-classification.tex} \clearpage
+  \subfile{./lessons/diff-eq-solutions.tex} \clearpage
+  \subfile{./lessons/diff-eq-logistic.tex} \clearpage
+\end{week}
 
-  \begin{week}{January 27 to 31}
-    \subfile{./lessons/diff-eq-linear-first-order.tex} \clearpage
-    \subfile{./lessons/diff-eq-technique-change-of-variables.tex} \clearpage
-    \subfile{./lessons/diff-eq-applications.tex} \clearpage
-  \end{week}
+\begin{week}{January 27 to 31}
+  \subfile{./lessons/diff-eq-linear-first-order.tex} \clearpage
+  \subfile{./lessons/diff-eq-technique-change-of-variables.tex} \clearpage
+  \subfile{./lessons/diff-eq-applications.tex} \clearpage
+\end{week}
 
-  \begin{week}{February 3 to 7}
-    \subfile{./lessons/diff-eq-phase-line-plots.tex} \clearpage
-  \end{week}
+\begin{week}{February 3 to 7}
+  \subfile{./lessons/diff-eq-phase-line-plots.tex} \clearpage
+\end{week}
 
-  \begin{week}{February 10 to 14}
-    \subfile{./lessons/probability-intro.tex} \clearpage
-    \subfile{./lessons/probability-conditional.tex} \clearpage
-  \end{week}
+\begin{week}{February 10 to 14}
+  \subfile{./lessons/probability-intro.tex} \clearpage
+  \subfile{./lessons/probability-conditional.tex} \clearpage
+\end{week}
 
-  \begin{week}{February 17 to 21}
-    \section{Reading week.}
-  \end{week}
+\begin{week}{February 17 to 21}
+  \section{Reading week.}
+\end{week}
 
-  \begin{week}{February 24 to 28}
-    \subfile{./lessons/probability-monte-carlo.tex} \clearpage
-  \end{week}
+\begin{week}{February 24 to 28}
+  \subfile{./lessons/probability-monte-carlo.tex} \clearpage
+\end{week}
 
-  \begin{week}{March 3 to 7}
-    \subfile{./lessons/probability-expectation-and-variance.tex} \clearpage
-    \subfile{./lessons/probability-working-with-data.tex} \clearpage
-  \end{week}
+\begin{week}{March 3 to 7}
+  \subfile{./lessons/probability-expectation-and-variance.tex} \clearpage
+  \subfile{./lessons/probability-working-with-data.tex} \clearpage
+\end{week}
 
-  \begin{week}{March 10 to 14}
-    \subfile{./lessons/linalg-vectors.tex}
-    \subfile{./lessons/linalg-functions-of-vectors.tex}
-    \subfile{./lessons/linalg-vector-fields.tex}
-  \end{week}
+\begin{week}{March 10 to 14}
+  \subfile{./lessons/linalg-vectors.tex}
+  \subfile{./lessons/linalg-functions-of-vectors.tex}
+  \subfile{./lessons/linalg-vector-fields.tex}
+\end{week}
 
-  \begin{week}{March 17 to 21}
-    \section{Sections 7.1 and 7.2, eigenvalues and eigenvectors}
-  \end{week}
+\begin{week}{March 17 to 21}
+  \section{Sections 7.1 and 7.2, eigenvalues and eigenvectors}
+\end{week}
 
-  \begin{week}{March 24 to 28}
-    \section{Section 7.3, applications to age-structured populations}
-    \section{Section 8.1, Systems of differential equations}
-  \end{week}
+\begin{week}{March 24 to 28}
+  \section{Section 7.3, applications to age-structured populations}
+  \section{Section 8.1, Systems of differential equations}
+\end{week}
 
-  \begin{week}{March 31 to April 4}
-    \section{Section 8.2, Systems of differential equations}
-  \end{week}
+\begin{week}{March 31 to April 4}
+  \section{Section 8.2, Systems of differential equations}
+\end{week}
 
-  %--------------------
-  % 
-  % BACK MATTER
-  % 
-  % --------------------
-  \backmatter{}
-  \begin{luacode}
-    local offset = titlepage + frontmatter
-    local prev = offset + 1
-    for i, pagenum in pairs(weeks) do
-    local f = io.open(string.format("./publish/week%d.tex", i), "w")
-    local a = prev
-    local b = pagenum + offset - 1
-    local s = string.format("\\includepdf[pages=%d-%d]{../build/main.pdf}", a, b)
+%--------------------
+% 
+% BACK MATTER
+% 
+% --------------------
+\backmatter{}
+\begin{luacode}
+  local offset = titlepage + frontmatter
+  local prev = offset + 1
+  for i, pagenum in pairs(weeks) do
+  local f = io.open(string.format("./publish/week%d.tex", i), "w")
+  local a = prev
+  local b = pagenum + offset - 1
+  local s = string.format("\\includepdf[pages=%d-%d]{../build/main.pdf}", a, b)
 
-    f:write("\\documentclass{article}")
-    f:write("\\usepackage{pdfpages}")
-    f:write("\\begin{document}")
-    f:write(s)
-    f:write("\\end{document}")
-    f:close()
+  f:write("\\documentclass{article}")
+  f:write("\\usepackage{pdfpages}")
+  f:write("\\begin{document}")
+  f:write(s)
+  f:write("\\end{document}")
+  f:close()
 
-    prev = b + 1
-    end
-  \end{luacode}
+  prev = b + 1
+  end
+\end{luacode}
 \end{document}
