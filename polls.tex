@@ -6,6 +6,7 @@
 \setbeamersize{text margin right=.5cm} 
 \beamertemplatenavigationsymbolsempty{}
 \usepackage[normalem]{ulem}
+\usepackage{fontawesome5}
 
 \input{./colours.tex.preamble}
 \input{./tikz.tex.preamble}
@@ -42,6 +43,115 @@
   \end{itemize} 
 \end{frame}
 
+\section{Introduction week}
+
+\begin{frame}[t]
+  Office hours are Wednesdays and Fridays 2 pm to 3 pm in Math Help Centre.  I would like to set up one more office hour on Thursday. Which of the following is most convenient for you on \emph{Thursdays}?
+
+  \begin{itemize} \setlength\itemsep{1ex}
+    \item[(a)] 1 pm to 2:30 pm.
+    \item[(b)] 2 pm to 3:30 pm.
+    \item[(c)] 3 pm to 4:30 pm.
+    \item[(d)] 
+    \item[(e)] 
+  \end{itemize} 
+\end{frame}
+
+
+\begin{frame}[t]
+  Suppose the log-log transformation of two quantities \(P\) versus \(Q\) is a straight line with slope \(0.5\).  Assume they exhibit either isometry or allometry. We must have that \(P\) and \(Q\) exhibit \underline{\hspace{1in}}.  
+
+  \begin{itemize} \setlength\itemsep{1ex}
+    \item[(a)] isometry (but I am not certain).
+    \item[(b)] allometry (but I am not certain).
+    \item[(c)] isometry (I know for sure).
+    \item[(d)] allometry (I know for sure).
+    \item[(e)] I am not sure.
+  \end{itemize} 
+\end{frame}
+
+\section{Icebreaker}
+
+\begin{frame}
+  Is a hot dog a sandwich?
+  
+  \medskip
+  \begin{itemize} \setlength\itemsep{2ex}
+    \item[(a)] Yes!
+    \item[(b)] Yes?
+    \item[(c)] No!
+    \item[(d)] No?
+    \item[(e)] I no longer know what a sandwich is.
+  \end{itemize} 
+\end{frame}
+
+
+\section{Recurrence techniques}
+
+\begin{frame}
+  Formulate the question in the \faComment{} part of the Example~2.6.
+\end{frame}
+
+\begin{frame}
+  Which of the following are (seemingly) suitable models for Example~2.6.
+
+  \begin{itemize} \setlength\itemsep{1ex}
+    \item[(a)] \(u_{t} = \frac{1}{2} u_{t-1}\) for integer \(t \ge 1\) where the unit of \(t\) is years.
+    \item[(b)] \(u_{t} = \frac{1}{2} u_{t - 5730}\) for integer \(t \ge 1\) where the unit of \(t\) is years.
+    \item[(c)] \(u_{n} = \frac{1}{2} u_{n}\) for integer \(n \ge 1\) where the unit of \(n\) is multiples of \(5730\) years.
+    \item[(d)] 
+    \item[(e)] I am not sure. 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+  The following is a recurrence equation
+  \[
+    v_{0} = 1 \quad\text{ and }\quad v_{t} = 2 v_{t-1} - \frac{3}{4} \text{ for integers } t \ge 1.
+  \]
+
+  Which of the followings are solution(s) of the given recursion equation? Choose all that apply.
+
+  \begin{enumerate}
+    \item \(v_{t} = 2^{t}\)
+    \item \(v_{t} = 2^{t} - \frac{3}{4}\)
+    \item \(v_{t} = 2^{t-2} - \frac{3}{4}\)
+    \item \(v_{t} = \frac{3}{4}\) if we change \(v_{0} = 3/4\)
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  Why does \(\hat{b} = 2500\) make sense in the context of Example~2.5?
+\end{frame}
+
+\begin{frame}[t]
+  The following is a recurrence equation
+  \[
+    v_{0} = 1 \quad\text{ and }\quad v_{t} = 2 v_{t-1} - \frac{3}{4} \text{ for integers } t \ge 1.
+  \]
+
+  Which of the followings are solution(s) of the given recursion equation? Choose all that apply.
+
+  \begin{enumerate}
+    \item \(v_{t} = 2^{t}\)
+    \item \(v_{t} = 2^{t} - \frac{3}{4}\)
+    \item \(v_{t} = 2^{t-2} - \frac{3}{4}\)
+    \item \(v_{t} = \frac{3}{4}\) if we change \(v_{0} = 3/4\)
+  \end{enumerate}
+\end{frame}
+
+\section{The logistic model}
+
+\begin{frame}
+  \small
+
+  \begin{quote}
+    ... the model of rabbit population \(x' = bx\) is pretty dumb if you take it too seriously at large values of \(x\) ... in the long run, this model predicts that the existence of a ball of fifteen quitillion (\(15 \times 10^{18})\) rabbits expanding outward at half the speed of light \ldots{}
+  \end{quote}
+
+  An excerpt from \emph{Modelling Life: The Mathematics of Biological Systems} (Garfinkel et al., 2017, p. 30).
+\end{frame}
+
 \section{Bernoulli substitution}
 
 \begin{frame}[t]
@@ -71,74 +181,4 @@
   \end{itemize} 
 \end{frame}
 
-\section{Icebreaker}
-
-\begin{frame}
-  Is a hot dog a sandwich?
-  
-  \medskip
-  \begin{itemize} \setlength\itemsep{2ex}
-    \item[(a)] Yes!
-    \item[(b)] Yes?
-    \item[(c)] No!
-    \item[(d)] No?
-    \item[(e)] I no longer know what a sandwich is.
-  \end{itemize} 
-\end{frame}
-
-\section{Recurrence techniques}
-
-\begin{frame}
-  Why does \(\hat{b} = 2500\) make sense in the context of Example~2.5?
-\end{frame}
-
-
-\begin{frame}[t]
-  The following is a recurrence equation
-  \[
-    v_{0} = 1 \quad\text{ and }\quad v_{t} = 2 v_{t-1} - \frac{3}{4} \text{ for integers } t \ge 1.
-  \]
-
-  Which of the followings are solution(s) of the given recursion equation? Choose all that apply.
-
-  \begin{enumerate}
-    \item \(v_{t} = 2^{t}\)
-    \item \(v_{t} = 2^{t} - \frac{3}{4}\)
-    \item \(v_{t} = 2^{t-2} - \frac{3}{4}\)
-    \item \(v_{t} = \frac{3}{4}\) if we change \(v_{0} = 3/4\)
-  \end{enumerate}
-\end{frame}
-
-\end{document}
-
-\begin{frame}
-  Why does \(\hat{b} = 2500\) make sense in the context of Example~2.5?
-\end{frame}
-
-
-\begin{frame}[t]
-  The following is a recurrence equation
-  \[
-    v_{0} = 1 \quad\text{ and }\quad v_{t} = 2 v_{t-1} - \frac{3}{4} \text{ for integers } t \ge 1.
-  \]
-
-  Which of the followings are solution(s) of the given recursion equation? Choose all that apply.
-
-  \begin{enumerate}
-    \item \(v_{t} = 2^{t}\)
-    \item \(v_{t} = 2^{t} - \frac{3}{4}\)
-    \item \(v_{t} = 2^{t-2} - \frac{3}{4}\)
-    \item \(v_{t} = \frac{3}{4}\) if we change \(v_{0} = 3/4\)
-  \end{enumerate}
-\end{frame}
-
-\begin{frame}
-  \small
-
-  \begin{quote}
-    ... the model of rabbit population \(x' = bx\) is pretty dumb if you take it too seriously at large values of \(x\) ... in the long run, this model predicts that the existence of a ball of fifteen quitillion (\(15 \times 10^{18})\) rabbits expanding outward at half the speed of light \ldots{}
-  \end{quote}
-
-  An excerpt from \emph{Modelling Life: The Mathematics of Biological Systems} (Garfinkel et al., 2017, p. 30).
-\end{frame}
 \end{document}

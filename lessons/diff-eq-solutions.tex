@@ -7,7 +7,7 @@ In a differential equation, the \hlmain{dependent} variable, say \(u\), is the \
 \begin{definition}[solutions of differential equations]
   Suppose we have a differential equation whose dependent variable is \(u\) and independent variable \(t\). 
 
-  A function \(f(t)\) is \hlmain{a (singular!) solution of the differential equation} if we can produce an equality \emph{after} replacing \(u(t)\) in the differential equation by \(f(t)\).
+  A function \(f(t)\) is \hlmain{a solution of the differential equation} if we can produce an equality \emph{after} replacing \(u(t)\) in the differential equation by \(f(t)\).
 \end{definition}
 
 To verify a proposed solution for a differential equation, we focus on the dependent variable. 
@@ -40,7 +40,7 @@ To verify a proposed solution for a differential equation, we focus on the depen
 \end{example}
 \clearpage
 
-In general, differential equations have infinitely many solutions. For example, we can verify that \(f(t) = c e^{t^{2}/2}\) is a solution for \(u'(t) = t u(t)\) regardless of the value of the \emph{constant} \(c\). In fact, \(c\) can even be \(0\).  However, we can pin down exactly one solution by adding an extra requirement, called the initial condition.
+In general, differential equations (without an initial condition, see below) have infinitely many solutions. For example, we can verify that \(f(t) = c e^{t^{2}/2}\) is a solution for \(u'(t) = t u(t)\) regardless of the value of the \emph{constant} \(c\). In fact, \(c\) can even be \(0\).  However, we can pin down exactly one solution by adding an extra requirement, called the initial condition.
 
 \begin{definition}[initial-value problem]
   Suppose we have a differential equation whose dependent variable is \(u\) and independent variable \(t\). 
@@ -97,7 +97,7 @@ Notations for equilibrium solutions of differential solution varies. A common no
 \faStar{} Equilibrium solutions are very easy to find because they are constants. Simply replace all \emph{dependent} variables (together with its argument) by \(\bar{u}\) and solve for \(\bar{u}\) using basic algebra. It is possible to find none, or more than one equilibrium solutions.
 
 \begin{example}
-  Find all equilibria of \(N'(t) = r N(t) (1 - \frac{N(t)}{K}\) where \(r,K\) are constants.
+  Find all equilibria of \(N'(t) = r N(t) \left(1 - \frac{N(t)}{K}\right)\) where \(r,K\) are constants.
 
   \blanklines{10}
 \end{example}
@@ -121,6 +121,8 @@ Here is a rather abstract exercise on verifying solutions of differential equati
   Consider the differential equation \(y'(x) + g(x) y(x) = x\) where \(g(x)\) is some unknown (in the sense of \emph{don't care}) continuous function. Define \(u(x) = \int g(x) \;dx\). 
 
   Is \(y = g(x)u(x)\) a solution to the differential equation? 
+
+  Hint: Use the Fundamental Theorem of Calculus to find \(u'(x)\).
 
   \blanklines{40}
 \end{example}
