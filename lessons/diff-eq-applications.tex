@@ -1,4 +1,60 @@
 %! TeX program = lualatex
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Applications of Differential Equations}
+We apply the idea in Method~\ref{method:diff-eq-model} and to model more complex behaviour. 
+
+The problems in this section differ from Examples~\ref{ex:diff-eq-ABCv1}, \ref{ex:diff-eq-ABCv2} and \ref{ex:diff-eq-ABCv3} in that the quantity entering or exiting the system is no longer a constant. However, the idea stays the same. We use given information to describe internal and external rates of change \hlmain{of the desired quantity}.
+
+\faStar{} Remember, ensure all units match (dimensional homogeneity) often keeps us on the right track.
+
+\begin{example}
+  A tube contains \(1\) litre of clear liquid. Starting at time \(t = 0\), a green liquid with concentration \(10\) grams per litre of green particles flows into the one side of the tube continuously at a rate of \(0.1\) litres per minute.  The mixture exits the other end of the tube at a rate of \(0.1\) litres per minute.
+
+  Assume the liquid inside the tube is well-mixed at all times, so that the concentration of green particles is constant everywhere. 
+
+  Let \(G(t)\) be the mass of green particles inside the tube at time \(t\). Develop an initial-value problem to which \(G(t)\) is the solution.
+  
+  \blanklines{35}
+\end{example}
+\clearpage
+
+\begin{example} \label{ex:diff-eq-model-mixing-1}
+  A saline solution is a mixture of sodium chloride and water. 
+
+  A tank contains \(10\) L of water with no sodium chloride. At time \(t = 0\), a saline solution with concentration \(\tfrac{1}{4}\) mg of per mL flows continuously into the tank at a rate of \(10\) mL per second. The tank leaks at a rate of \(10\) mL per second. Assume there is no loss of water due to evaporation.
+
+  Assume the tank is \emph{well-mixed} at all times, so that the concentration of sodium chloride and water is constant everywhere. 
+
+  Let \(u(t)\) be the mass of sodium chloride in the tank at time \(t\).  Develop an initial-value problem to which \(u(t)\) is the solution. 
+
+  \blanklines{45}
+\end{example}
+\clearpage
+
+\begin{example}[modelling with loss] \label{ex:diff-eq-model-mixing-2}
+  Continue from Example~\ref{ex:diff-eq-model-mixing-1}. Now assume further the saline solution is hot and \emph{pure} water evaporates at a rate of \(0.01\) mL per second.  Assume everything else stays the same.
+
+  Evaporation means \emph{pure} water leaves the tank and \emph{does not} change in the mass of sodium chloride in the tank.
+
+  Propose a model for the mass of sodium chloride in the tank at time \(t\). 
+  \blanklines{45}
+\end{example}
+\clearpage
+
+\begin{example}[modelling with feedback] \label{ex:diff-eq-model-mixing-2}
+  Continue from Example~\ref{ex:diff-eq-model-mixing-1}. Assume further that \(1/3\) of saline solution exiting the tank is fed back into the tank. 
+
+  Assume there is no evaporation.
+
+  Propose a model for the amount of sodium chloride in the tank at time \(t\). 
+  \blanklines{45}
+\end{example}
+\clearpage
+
+\begin{example}
+  Continue from Example~\ref{ex:diff-eq-model-mixing-1}. Assume instead that initially, the tank contains \(10\) litres of saline solution at \(0.1\%\) concentration.
+
+  Propose a model for the amount of sodium chloride in the tank at time \(t\). 
+  \blanklines{50}
+\end{example}
 \end{document}

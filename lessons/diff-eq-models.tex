@@ -4,7 +4,7 @@
 
 Before we investigate mathematical properties of differential equations, let's see why we should care about their properties at all by doing some real-world modelling. 
 
-\begin{method}
+\begin{method} \label{method:diff-eq-model}
   Use differential equations to describe the rates of change of physical \hlmain{systems}.  The simplest idea is
   \begin{center}
     (rate of change) = (rate of internal change) + (rate of external change).
@@ -17,7 +17,7 @@ The phrase ``\emph{rate of change is \hlattn{proportional} to}'' is a good start
   {\color{main}P'(t)} = {\color{attn} k} {\color{supp} P(t)},\quad \text{ for some constant } k.
 \]
 
-Assume \(P \ge 0\).  The number \(k\) is called the \hlmain{proportional constant}, and its sign reveals qualitative information.  Use our calculus knowledge to complete the table.
+Assume \(P \ge 0\).  The number \(k\) is called the \hlmain{proportionality constant}, and its sign reveals qualitative information.  Use our calculus knowledge to complete the table.
 
 \begin{table}[H]
   \centering
@@ -34,7 +34,7 @@ Assume that the human body does not naturally produce ABC, and ABC is not presen
 Assume the amount of ABC is measured in \emph{mg} and time in \emph{minutes}.
 
 \begin{example}[modelling with only rate of internal change] \label{ex:diff-eq-ABCv1}
-  Experimental data suggests that the \hlmain{rate of change of ABC} is \hlattn{proportional} to \hlmain{the amount of ABC present} with a proportional constant of \(-1\%\) per minute.
+  Experimental data suggests that the \hlmain{rate of change of ABC} is \hlattn{proportional} to \hlmain{the amount of ABC present} with a proportionality constant of \(-1\%\) per minute.
 
   Write down a \emph{continuous-time model} of ABC present in the bloodstream.
   \blanklines{10}
@@ -62,7 +62,7 @@ Assume the amount of ABC is measured in \emph{mg} and time in \emph{minutes}.
 \clearpage
 
 \begin{example}
-  A bathtub is filled with \(V\) litres of hot water. The rate of change of volume is proportional to the volume with a proportional constant \(-0.1\) per minute.  Water (of the same temperature) enters the tub at a rate of \(1\) litre per minute. The tub leaks \(0.1\) litre per minute. 
+  A bathtub is filled with \(V\) litres of hot water. The rate of change of volume is proportional to the volume with a proportionality constant \(-0.1\) per minute.  Water (of the same temperature) enters the tub at a rate of \(1\) litre per minute. The tub leaks \(0.1\) litre per minute. 
 
   Model the volume of water in the tub with respect to time \(t\) using a differential equation.
 

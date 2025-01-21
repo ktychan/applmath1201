@@ -1,39 +1,145 @@
 %! TeX program = lualatex
 \documentclass[../main.tex]{subfiles}
-\begin{document} \section{Solving differential equations}
+\begin{document} \section{Solving linear, first-order differential equations}
 
-We now wish to solve some sufficiently tractable differential equations.
-
-\begin{example}
-  Let \(k\) be a constant. Find the general solution of \(N'(t) = kN(t)\) using the substitution rule.
-  \blanklines{10}
-\end{example}
-
-We introduce a method to find \emph{all} exact solutions of linear, first-order differential equations.
+Linear, first-order differential equations are (relatively) easy to solve.
 
 \begin{thm} \label{thm:diff-eq-linear-first-order}
-  Suppose \(p(t), q(t)\) are continuous functions. Consider a linear, first-order differential equation
-  \begin{equation} \label{eq:linear-first-order-diff-eq}
+  We wish to solve for the unknown function \(u(t)\) in
+  \begin{equation} \label{eq:diff-eq-linear-first-order}
     u'(t) + p(t) u(t) = q(t).
   \end{equation}
   
-  Define \(v(t) = e^{\int p(t) \;dt}\). All solutions to Equation~\eqref{eq:linear-first-order-diff-eq} have the form
-  \[
-    u(t) = \frac{1}{v(t)} \left( \int v(t) q(t) \;dt + C \right), \quad\text{where \(C_{1}\) is a general constant}.
-  \]
-  or, equivalently,
-  \[
-    u(t) = \frac{1}{v(t)} \left( u(a)v(a) + \int_{a}^{t} v(x) q(x) \;dx \right), \quad\text{where \(u(a)\) is a general constant}.
-  \]
+  Define
+  \begin{equation} \label{eq:diff-eq-integrating-factor}
+    v(t) = e^{\int p(t) \;dt} \text{ and choose \(C = 0\) for convenience}.
+  \end{equation} 
+
+  The general solution to Equation~\eqref{eq:diff-eq-linear-first-order} is
+  \begin{equation} \label{eq:diff-eq-linear-first-order-solution1}
+    u(t) = \frac{1}{v(t)} \left( \int v(t) q(t) \;dt + C \right).
+  \end{equation}
 \end{thm}
 
-Theorem~\ref{thm:diff-eq-linear-first-order} describes the procedure for solving a linear, first-order differential equation. 
+\faExclamationTriangle{} Make \hlattn{exactly one} of the choices below to interpret Equation~\eqref{eq:diff-eq-linear-first-order-solution1} to avoid confusion.  \hlmain{Both choices are valid.} Pick whichever resonates with you.
+
+\begin{enumerate}
+  \item You expect yourself to forget to add a ``\(+C\)'' after evaluating an indefinite integral.
+
+    In such a case, remember Equation~\eqref{eq:diff-eq-linear-first-order-solution1} as stated above and omit the integration constant after evaluating \(\textstyle \int v(t) q(t) \;dt\).  Leaving the ``\(+C\)'' in the equation serves as a reminder that an integration constant should be there.
+
+  \item You expect yourself to always include a ``\(+C\)'' after evaluating an indefinite integral.
+
+    In such a case, remember Equation~\eqref{eq:diff-eq-linear-first-order-solution1} as \(u(t) = \frac{1}{v(t)}\left( \int v(t) q(t) \;dt \right)\) because you don't need an extra reminder that an indefinite integral represents infinitely many antiderivatives (of the integrand).
+
+    You should also remember that \(\textstyle \int 0 \;dt = C\).
+\end{enumerate}
+
+\begin{example}[make your choice]
+  Use Theorem~\ref{thm:diff-eq-linear-first-order} to find the general solution for \(u'(t) + u(t) = 1\).
+  {\footnotesize The answer is \(u(t) = 1 + C e^{-t}\) where \(C\) is a general constant.}
+  \blanklines{12}
+\end{example}
+
+\faStar{} Equations~\eqref{eq:diff-eq-integrating-factor} and \eqref{eq:diff-eq-linear-first-order-solution1} both come out of nowhere, and Equation~\eqref{eq:diff-eq-linear-first-order-solution1} looks rather complicated. The good news is that Theorem~\ref{thm:diff-eq-linear-first-order} is the (overly?) compact form of Method~\ref{method:integrating-factor} on page~\pageref{method:integrating-factor}.
+
+\clearpage
+
+\begin{method}[the integrating factor] \label{method:integrating-factor}
+  \hlmain{An integrating factor} for a linear, first-order differential equation \(u'(t) + p(t) u(t) = q(t)\) is
+  \begin{equation} 
+    \color{main}
+    v(t) = e^{\int p(t) \;dt} \text{ and choose \(C = 0\) for convenience}. \tag{\ref{eq:diff-eq-integrating-factor}}
+  \end{equation}
+  To find the general solution for the differential equation, multiply through by the integrating factor \(v(t)\) and reorganize the \hlattn{left-hand side as the result of the product rule}. The general solution of the differential equation, Equation~\eqref{eq:diff-eq-linear-first-order-solution1}, is the result of \hlattn{integrating both sides} then \hlattn{solving for \(u(t)\)}.
+\end{method}
+
+\faExclamationTriangle{} If a linear, first-order differential equation is not written in the form \(u'(t) + p(t) u(t) = q(t)\), then you must manipulate it to this form before applying the integrating factor method or Theorem~\ref{thm:diff-eq-linear-first-order}.
+
+\begin{example} \label{ex:diff-eq-linear-first-order-1}
+  Use Method~\ref{method:integrating-factor} to find the general solution for \( u'(t) + \tfrac{2}{t} u(t) = t^{2}\).
+  
+  \begin{enumerate}[wide, label=(Step~\arabic*)]
+    \item Multiply through by an integrating factor \(v(t)\).
+      \blanklines{10}
+
+    \item Rewrite the left-hand side as \(\frac{d}{dt} \bigg( u(t) v(t) \bigg)\).  This is the clever idea.
+      \blanklines{5}
+      
+    \item Integrate both sides and solve for \(u(t)\). \faExclamationTriangle{} To minimize mistakes, evaluate both integrals at the same time and keep only the integration constant on the right-hand side for convenience. 
+      \blanklines{15}
+  \end{enumerate}
+\end{example}
+\clearpage
+
+Solving initial-value problems requires us to combine the general solution and the initial condition to solve for \(C\).  As demonstrated in Example~\ref{ex:diff-eq-IVP-calc-1000} on page~\pageref{ex:diff-eq-IVP-calc-1000}, we have worked with simpler versions of initial-value problems in Calculus~1000.
+
 \begin{example}
-  Find solutions of \(u'(t) + t u(t) = 1\).
-  \blanklines{30}
+  Continue from Example~\ref{ex:diff-eq-linear-first-order-1}. Solve the initial-value problem 
+  \[
+    u'(t) + \frac{2}{t} u(t) = t^{2} \quad\text{and}\quad u(1) = 2.
+  \]
+  \blanklines{10}
+\end{example}
+
+Here are two more exercises using the same idea.
+\begin{example}
+  Continue from Example~\ref{ex:diff-eq-linear-first-order-1}. Solve the initial-value problem 
+  \[
+    u'(t) + \frac{2}{t} u(t) = t^{2} \quad\text{and}\quad u(10) = \sqrt{2}.
+  \]
+  \blanklines{10}
 \end{example}
 
 \begin{example}
-  Find solutions of \(2u'(t) + t^{2} u(t) + t = 0\).
+  Continue from Example~\ref{ex:diff-eq-linear-first-order-1}. Solve the initial-value problem 
+  \[
+    u'(t) + \frac{2}{t} u(t) = t^{2} \quad\text{and}\quad u(3) = 0.
+  \]
+  \blanklines{10}
 \end{example}
+\clearpage
+
+Here is a comprehensive initial-value problem.
+\begin{example}
+  Solve the initial-value problem
+  \[
+    u'(t) - \frac{2}{t+1} u(t) = t \quad\text{and}\quad u(0) = \pi.
+  \]
+  \blanklines{50}
+\end{example}
+
+In real-life applications (and exams), we often wish to understand the long-term behaviour of a differential equation.
+\begin{example}
+  The mass of a radioactive\footnote{Fairy dust is probably radioactive because they seem to lose their magic exponentially quickly.}fairy dust \(u(t)\) satisfies 
+  \[
+    e^{t}u'(t) - u(t) - 1 = 0 \text{ with an unknown mass at \(t = 0\)}.
+  \]
+  Predict the mass of the fairy dust as time approaches \(\infty\). Assume mass is measured in grams.
+  
+  \blanklines{47}
+\end{example}
+
+Here is one more example that combines differential equations and calculus. 
+\begin{example}
+  Find \(\lim_{x \to \infty} y(x)\) given that \(y(x)\) satisfies the differential equation
+  \[
+    \frac{dy}{dx} + y = e^{x} \text{ and \(y(0) = \frac{3}{2}\)}.
+  \]
+  \blanklines{45}
+\end{example}
+\clearpage
+
+Here are some generic practice problems.
+\begin{example}
+  Find the general solution for \(\frac{du}{dt} + u(t) = x^{2}e^{-t}\).
+  \blanklines{50}
+\end{example}
+\clearpage
+
+\begin{example}
+  Solve the initial-value problem \(u'(t) + tu(t) = 3t\) with \(u(0) = 1\).  Does the solution function increase, do not change, or decrease at time \(t = 1\)? How about at \(t = 0\)? Is there a really quick way to answer the last question without solving for \(u\)?
+  \blanklines{50}
+\end{example}
+\clearpage
 \end{document}
