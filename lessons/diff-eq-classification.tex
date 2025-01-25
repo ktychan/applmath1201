@@ -12,7 +12,7 @@ The \hlmain{order} of a differential equation is the order of the highest deriva
   \[
     \frac{du}{dt} + u^{2} = t^{3}, 
     \qquad
-    \left(u(t)''\right)^{3} + \sin(t) = 0.
+    \left(u''(t)\right)^{3} + \sin(t) = 0.
   \]
   \blanklines{5}
 \end{example}
@@ -35,12 +35,13 @@ The \hlmain{order} of a differential equation is the order of the highest deriva
 \begin{definition}[linear, first-order]
   Assume \(u\) is a function of \(t\). A \hlmain{linear, first-order} differential equations is a differential equation of the form
   \[
-    u'(t) + p(t) u = q(t), \quad\text{where \(p(t)\) and \(q(t)\) can be any functions of \(t\)}.
+    u'(t) + p(t) u(t) = q(t), \quad\text{where \(p(t)\) and \(q(t)\) can be any functions of \(t\)}.
   \]
 \end{definition}
 
 \faExclamationTriangle{} The definition and notation of linear, first-order differential equation says that the dependent variable \(u\) does not appear in \(p(t)\) and \(q(t)\).
 
+\label{def:autonomous}
 Lastly, an \hlmain{autonomous equation} is a differential equation in which its independent variable does not appear at all. 
 \blanklines{5}
 \end{document}

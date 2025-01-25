@@ -1,6 +1,7 @@
 %! Tex Program = lualatex
-\documentclass[14pt]{beamer} 
+\documentclass[t, 14pt]{beamer} 
 \usetheme{metropolis} 
+
 \everymath{\displaystyle} 
 \setbeamersize{text margin left=.5cm} 
 \setbeamersize{text margin right=.5cm} 
@@ -16,58 +17,48 @@
   \end{tikzpicture}    
 }
 
-\begin{document} 
+\usepackage{enumitem}
+\setlist[enumerate]{label={\color{supp}(\alph*)}, itemsep={2ex}, topsep={1ex}}
 
-% \begin{frame}
-%   Question
-%
-%   \medskip
-%   \begin{itemize} \setlength\itemsep{2ex}
-%     \item[(a)] 
-%     \item[(b)] 
-%     \item[(c)] 
-%     \item[(d)] There is not enough information.
-%     \item[(e)] I am not sure.
-%   \end{itemize} 
-% \end{frame}
+\begin{document} 
 
 \begin{frame}[c]
   \thispagestyle{empty}
 
-  \begin{itemize} \setlength\itemsep{3ex}
-    \item[(a)] \underline{\hspace{4in}}
-    \item[(b)] \underline{\hspace{4in}}
-    \item[(c)] \underline{\hspace{4in}}
-    \item[(d)] \underline{\hspace{4in}}
-    \item[(e)] \underline{\hspace{4in}}
-  \end{itemize} 
+  \begin{enumerate} 
+    \item \underline{\hspace{4in}}
+    \item \underline{\hspace{4in}}
+    \item \underline{\hspace{4in}}
+    \item \underline{\hspace{4in}}
+    \item \underline{\hspace{4in}}
+  \end{enumerate} 
 \end{frame}
 
 \section{Introduction week}
 
 \begin{frame}[t]
-  Office hours are Wednesdays and Fridays 2 pm to 3 pm in Math Help Centre.  I would like to set up one more office hour on Thursday. Which of the following is most convenient for you on \emph{Thursdays}?
+  Office hours are Wednesdays and Fridays 2 pm to 3 pm in Math Help Centre.  I would like to set up one more office hour on Thursdays. Which of the following is most convenient for you on \emph{Thursdays}?
 
-  \begin{itemize} \setlength\itemsep{1ex}
-    \item[(a)] 1 pm to 2:30 pm.
-    \item[(b)] 2 pm to 3:30 pm.
-    \item[(c)] 3 pm to 4:30 pm.
-    \item[(d)] 
-    \item[(e)] 
-  \end{itemize} 
+  \begin{enumerate} 
+    \item 1 pm to 2:30 pm.
+    \item 2 pm to 3:30 pm.
+    \item 3 pm to 4:30 pm.
+    \item 
+    \item 
+  \end{enumerate} 
 \end{frame}
 
 
 \begin{frame}[t]
   Suppose the log-log transformation of two quantities \(P\) versus \(Q\) is a straight line with slope \(0.5\).  Assume they exhibit either isometry or allometry. We must have that \(P\) and \(Q\) exhibit \underline{\hspace{1in}}.  
 
-  \begin{itemize} \setlength\itemsep{1ex}
-    \item[(a)] isometry (but I am not certain).
-    \item[(b)] allometry (but I am not certain).
-    \item[(c)] isometry (I know for sure).
-    \item[(d)] allometry (I know for sure).
-    \item[(e)] I am not sure.
-  \end{itemize} 
+  \begin{enumerate} 
+    \item isometry (but I am not certain).
+    \item allometry (but I am not certain).
+    \item isometry (I know for sure).
+    \item allometry (I know for sure).
+    \item I am not sure.
+  \end{enumerate} 
 \end{frame}
 
 \section{Icebreaker}
@@ -76,32 +67,43 @@
   Is a hot dog a sandwich?
   
   \medskip
-  \begin{itemize} \setlength\itemsep{2ex}
-    \item[(a)] Yes!
-    \item[(b)] Yes?
-    \item[(c)] No!
-    \item[(d)] No?
-    \item[(e)] I no longer know what a sandwich is.
-  \end{itemize} 
+  \begin{enumerate} 
+    \item Yes!
+    \item Yes?
+    \item No!
+    \item No?
+    \item I no longer know what a sandwich is.
+  \end{enumerate} 
 \end{frame}
 
 
-\section{Recurrence techniques}
+\section{Recurrence}
 
 \begin{frame}
   Formulate the question in the \faComment{} part of the Example~2.6.
 \end{frame}
 
 \begin{frame}
+  What is a solution for the recurrence \(u_{t} = \frac{3}{2} u_{t}\)?
+  \begin{enumerate}
+    \item \(u_{t} = \left( \tfrac{3}{2} \right)^{t} u_{0}\).
+    \item \(u_{t} = \left( \tfrac{3}{2} \right)t u_{0}\).
+    \item \(u_{t} = \left( \tfrac{3}{2} \right)u_{0} + t\).
+    \item \(u_{t} = \left( \tfrac{3}{2} \right) + t u_{0}\).
+    \item I am not sure.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
   Which of the following are (seemingly) suitable models for Example~2.6.
 
-  \begin{itemize} \setlength\itemsep{1ex}
-    \item[(a)] \(u_{t} = \frac{1}{2} u_{t-1}\) for integer \(t \ge 1\) where the unit of \(t\) is years.
-    \item[(b)] \(u_{t} = \frac{1}{2} u_{t - 5730}\) for integer \(t \ge 1\) where the unit of \(t\) is years.
-    \item[(c)] \(u_{n} = \frac{1}{2} u_{n}\) for integer \(n \ge 1\) where the unit of \(n\) is multiples of \(5730\) years.
-    \item[(d)] 
-    \item[(e)] I am not sure. 
-  \end{itemize}
+  \begin{enumerate}
+    \item \(u_{t} = \frac{1}{2} u_{t-1}\) for integer \(t \ge 1\) where the unit of \(t\) is years.
+    \item \(u_{t} = \frac{1}{2} u_{t - 5730}\) for integer \(t \ge 1\) where the unit of \(t\) is years.
+    \item \(u_{n} = \frac{1}{2} u_{n}\) for integer \(n \ge 1\) where the unit of \(n\) is multiples of \(5730\) years.
+    \item 
+    \item I am not sure. 
+  \end{enumerate}
 \end{frame}
 
 
@@ -111,31 +113,67 @@
 
 
 \begin{frame}
-  What is a suitable substitution for the recurrence \(p_{0} = 1\) and \(p_{t} = \frac{1}{2} p_{t-1} - \frac{1}{2}\) for integers \(t \ge 1\).
+  What is a suitable substitution for the recurrence \(p_{0} = 1\) and \(p_{t} = \tfrac{1}{2} p_{t-1} - \tfrac{1}{2}\) for integers \(t \ge 1\).
 
-  \begin{itemize} \setlength\itemsep{1ex}
-    \item[(a)] \(p_{t} = u_{t} - 1\) and \(u_{0} = 2\).
-    \item[(b)] \(p_{t} = u_{t} + 1\) and \(u_{0} = 1\).
-    \item[(c)] \(p_{t} = u_{t} + \frac{1}{2}\) and \(u_{0} = 1/2\).
-    \item[(d)] \(p_{t} = u_{t} - \frac{1}{2}\) and \(u_{0} = 3/2\).
-    \item[(e)] I am not sure. 
-  \end{itemize}
+  \begin{enumerate} 
+    \item \(p_{t} = u_{t} - 1\) and \(u_{0} = 2\).
+    \item \(p_{t} = u_{t} + 1\) and \(u_{0} = 1\).
+    \item \(p_{t} = u_{t} + \frac{1}{2}\) and \(u_{0} = 1/2\).
+    \item \(p_{t} = u_{t} - \frac{1}{2}\) and \(u_{0} = 3/2\).
+    \item I am not sure. 
+  \end{enumerate}
 \end{frame}
 
 \section{Differential Equations}
 
 \begin{frame}
-  In Example~3.23, what should \(N'(t)\) be when solving for equilibria?
+  If \(k < 0\), then 
 
-  \begin{itemize} \setlength\itemsep{1ex}
-    \item[(a)] \(N'(t)\) is some unknown constant.
-    \item[(b)] \(N'(t)\) should be \(0\), because we are looking for equilibria.
-    \item[(c)] There is not enough information to determine \(N'(t)\).
-    \item[(d)] 
-    \item[(e)] I am not sure. 
-  \end{itemize}
+  \begin{enumerate} 
+    \item \(P\) should increase or not change as \(t\) increases.
+    \item \(P\) should not change as \(t\) increases.
+    \item \(P\) should decrease or not change as \(t\) increases.
+    \item 
+    \item I am not sure. 
+  \end{enumerate}
 \end{frame}
 
+\begin{frame}
+  Which of the following functions are solutions to \(u'(t) = tu(t)\)?
+
+  \begin{enumerate} 
+    \item \(f_{1}(t) = e^{t^{2}}\).
+    \item \(f_{2}(t) = 2 e^{t^{2}/2}\).
+    \item \(f_{3}(t) = 3 t^{t^{2}/2}\).
+    \item 
+    \item I am not sure. 
+  \end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+  What is your answer to Example~3.21?
+  \begin{enumerate} 
+    \item Find antiderivatives of \(x^{2}\).
+    \item Integrate \(x^{2}\).
+    \item Find antiderivative \(F\) of \(f(x) = x^{2}\) that satisfies \(F(0) = 4\).
+    \item Find the tangent line of \(y = x^{2}\) passing through \((0,4)\).
+    \item I am not sure. 
+  \end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+  In Example~3.23, what should \(N'(t)\) be when solving for equilibria?
+
+  \begin{enumerate} 
+    \item \(N'(t)\) is some unknown constant.
+    \item \(N'(t)\) should be \(0\), because an equilibrium is a constant function.
+    \item There is not enough information to determine \(N'(t)\).
+    \item 
+    \item I am not sure. 
+  \end{enumerate}
+\end{frame}
 
 \section{The logistic model}
 
@@ -143,10 +181,10 @@
   \small
 
   \begin{quote}
-    ... the model of rabbit population \(x' = bx\) is pretty dumb if you take it too seriously at large values of \(x\) ... in the long run, this model predicts that the existence of a ball of fifteen quitillion (\(15 \times 10^{18})\) rabbits expanding outward at half the speed of light \ldots{}
+    ... the model of rabbit population \(N'(t) = (B-D) N(t)\) is pretty dumb if you take it too seriously at large values of \(N\) ... in the long run, this model predicts the existence of a ball of fifteen quitillion (\(15 \times 10^{18})\) rabbits expanding outward at half the speed of light \ldots{}
   \end{quote}
 
-  An excerpt from \emph{Modelling Life: The Mathematics of Biological Systems} (Garfinkel et al., 2017, p. 30).
+  An (slightly modified) excerpt from \emph{Modelling Life: The Mathematics of Biological Systems} (Garfinkel et al., 2017, p. 30).
 \end{frame}
 
 \section{Bernoulli substitution}
@@ -154,13 +192,13 @@
 \begin{frame}[t]
   Do we apply the Bernoulli substitution to the independent or the dependent variable of the differential equation?
 
-  \begin{itemize} \setlength\itemsep{1ex}
-    \item[(a)] The dependent variable.
-    \item[(b)] The independent variable.
-    \item[(c)] 
-    \item[(d)] 
-    \item[(e)] I am not sure.
-  \end{itemize} 
+  \begin{enumerate} 
+    \item The dependent variable.
+    \item The independent variable.
+    \item 
+    \item 
+    \item I am not sure.
+  \end{enumerate} 
 \end{frame}
 
 \begin{frame}[t]
@@ -169,13 +207,13 @@
     s'(t) + (t-1)s(t)^{9} = s(t) t^{10}.
   \]
 
-  \begin{itemize} \setlength\itemsep{1ex}
-    \item[(a)] Substitute \(u = t^{1-n}\).
-    \item[(b)] Substitute \(u = t^{n-1}\).
-    \item[(c)] Substitute \(u = s^{1-n}\).
-    \item[(d)] Substitute \(u = s^{n-1}\).
-    \item[(e)] I am not sure.
-  \end{itemize} 
+  \begin{enumerate} 
+    \item Substitute \(u = t^{1-n}\).
+    \item Substitute \(u = t^{n-1}\).
+    \item Substitute \(u = s^{1-n}\).
+    \item Substitute \(u = s^{n-1}\).
+    \item I am not sure.
+  \end{enumerate} 
 \end{frame}
 
 \end{document}

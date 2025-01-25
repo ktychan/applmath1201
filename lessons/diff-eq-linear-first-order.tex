@@ -74,7 +74,7 @@ Linear, first-order differential equations are (relatively) easy to solve.
 
 Solving initial-value problems requires us to combine the general solution and the initial condition to solve for \(C\).  As demonstrated in Example~\ref{ex:diff-eq-IVP-calc-1000} on page~\pageref{ex:diff-eq-IVP-calc-1000}, we have worked with simpler versions of initial-value problems in Calculus~1000.
 
-\begin{example}
+\begin{example} \label{ex:diff-eq-linear-first-first-order-1-ivp}
   Continue from Example~\ref{ex:diff-eq-linear-first-order-1}. Solve the initial-value problem 
   \[
     u'(t) + \frac{2}{t} u(t) = t^{2} \quad\text{and}\quad u(1) = 2.
@@ -106,8 +106,29 @@ Here is a comprehensive initial-value problem.
   \[
     u'(t) - \frac{2}{t+1} u(t) = t \quad\text{and}\quad u(0) = \pi.
   \]
-  \blanklines{50}
+  The solution is longer than that of Calculus~1000 problems and is typical of such a type of problems. 
+  \blanklines{49}
 \end{example}
+\clearpage
+
+On this page, we look at a subclass of linear, first-order differential equations. A linear, first-order differential equation \(u'(t) + p(t) u(t) = q(t)\) is called \hlmain{homogeneous} if \(q(t) = 0\); otherwise, it is called \hlmain{inhomogeneous}.  
+
+Homogeneous differential equations \(u'(t) + p(t) u(t) = 0\) can be solved using Method~\ref{method:integrating-factor} or just the good'ol substitution rule.  In other words, if you run into a homogeneous equation, feel free to think ``\emph{ah! I can use the substitution rule if I wanted to}.''  The only question is ``\emph{how?}''.
+
+\begin{example}
+  Find the general solution for \(u'(t) - u(t) = 0\).
+
+  Notice this is a \emph{homogeneous} equation. Trying using the substitution rule. If you carefully deal with absolute values and analyze the values of constants, then you should get \(u(t) = A e^{t}\) where \(A\) can be \emph{any} constant.
+
+  \blanklines{15}
+\end{example}
+
+\begin{example}
+  Solve the initial-value problem \(y'(x) + \frac{y(x)}{x^{2} + 1} = 0\) and \(y(0) = 1\).  Why not try both methods and compare the pros and cons? The solution is \(y(x) = e^{-\arctan(x)}\).
+
+  \blanklines{20}
+\end{example}
+\clearpage
 
 In real-life applications (and exams), we often wish to understand the long-term behaviour of a differential equation.
 \begin{example}
@@ -122,7 +143,7 @@ In real-life applications (and exams), we often wish to understand the long-term
 
 Here is one more example that combines differential equations and calculus. 
 \begin{example}
-  Find \(\lim_{x \to \infty} y(x)\) given that \(y(x)\) satisfies the differential equation
+  Find \(\lim_{x \to \infty} y(x)\) given that \(y(x)\) satisfies
   \[
     \frac{dy}{dx} + y = e^{x} \text{ and \(y(0) = \frac{3}{2}\)}.
   \]
@@ -132,13 +153,17 @@ Here is one more example that combines differential equations and calculus.
 
 Here are some generic practice problems.
 \begin{example}
-  Find the general solution for \(\frac{du}{dt} + u(t) = x^{2}e^{-t}\).
+  Find the general solution for \(\frac{du}{dt} + u(t) = t^{2}e^{-t}\).
   \blanklines{50}
 \end{example}
 \clearpage
 
 \begin{example}
-  Solve the initial-value problem \(u'(t) + tu(t) = 3t\) with \(u(0) = 1\).  Does the solution function increase, do not change, or decrease at time \(t = 1\)? How about at \(t = 0\)? Is there a really quick way to answer the last question without solving for \(u\)?
+  Solve the initial-value problem \(u'(t) + tu(t) = 3t\) with \(u(0) = 1\).  
+
+  What is the qualitative behaviour (increase, no change or decrease) of the solution function at \(t = 1\)?  
+
+  How about at \(t = 0\)? Is there a really quick way to answer this question without solving for \(u(t)\)?
   \blanklines{50}
 \end{example}
 \clearpage

@@ -4,31 +4,73 @@
 
 Recall (from the very first lecture of the semester) that models are \emph{imperfect} representations of natural phenomena. Exact solutions to differential equations may or may not be what we \emph{need}.  
 
-{\footnotesize Fun read: \url{https://www.jpl.nasa.gov/edu/news/how-many-decimals-of-pi-do-we-really-need/}}
-
-We are about to introduce phase-line plots. Feel free to preview Definition~\ref{def:phase-line-plots} before working through the next example.
+We introduce the idea of phase-line plots using the logistic equation. 
 
 \begin{example}[equilibria of logistic equations]
-  Solutions of logistic equations exhibit \emph{informative} patterns.
+  Consider \(N'(t) = N(t) \left( 1 - \frac{N'(t)}{K} \right)\).
+
+  Notice \(t\) does not appear in the right-hand side of the logistic equation at all. Recall from page~\pageref{def:autonomous} that such an equation is called \hlmain{autonomous}. This is rather special because it allows us to plot \(N\) versus \(N'\) by using \(N\) as an input to produce a value for \(N'\).
+
+  \begin{figure}[H] % [h] for here, [ht] for here top, [hb] for here bottom
+    \centering
+    \includegraphics{../standalones/build/plot-logistic-solutions-phase-lines}
+    \caption{\(N\) versus \(N'\) plot.}
+    \label{fig:logistic-solutions-phase-lines}
+  \end{figure}
+
+  \faStar{} The above graph \hlmain{predicts} that if a solution curve 
+  \begin{itemize}
+    \item \underline{\hspace{2in}}, then the solution \underline{\hspace{3in}}.
+    \item \underline{\hspace{2in}}, then the solution \underline{\hspace{3in}}.
+  \end{itemize}
+
+  This prediction is easily obtained, because we do not need to solve the differential equation.
+
+  Does the above prediction match reality? Here are several solution curves for the logistic equation.
   \begin{figure}[H] % [h] for here, [ht] for here top, [hb] for here bottom
     \centering
     \includegraphics{../standalones/build/plot-logistic-solutions}
     \label{fig:logistic-solutions}
   \end{figure}
-  
-  \blanklines{10}
+
 \end{example}
 
-\faStar{} We \hlsupp{do not need to solve} \emph{autonomous} differential equations to understand \hlmain{how their equilibria affect solutions}.  The idea we need is a slight change of mindset: Treat the dependent variable \(u\) in a differential equation as the independent variable for \(u'\). 
+The punchline of this example is that such predictions can be made reliably for all autonomous equations.  Plots like Figure~\ref{fig:logistic-solutions-phase-lines} are called phase-line plots.
 
-\begin{definition}[phase-line plots] \label{def:phase-line-plots}
-  Suppose \(u' = g(u)\) is an autonomous differential equation where \(g\) is continuous. The (unknown) dependent variable is \(u\).
+\clearpage
 
-  The \hlmain{phase-line plot} of a differential equation is the graph of \(u' = g(u)\) where the vertical axis is \(u'\) and horizontal axis is \(u\).  
+Creating a phase-line plot is really a job for the computer. We will do more of that when discussing scientific computing.
 
-  We \hlsupp{do not need to solve} the differential equation at all.
+For the rest of the section, we learn to concept of stability of equilibria.
+
+\begin{definition}[stability of equilibria]
+  Suppose we have an \emph{autonomous} differential equation in which \(u\) is the unknown function. 
+  \begin{itemize}
+    \item If the phase-line plot is \hlmain{above} the horizontal axis (the \(u\)-axis) to the left of \(\bar{u}\) and \hlsupp{below} the horizontal axis to the right of \(\bar{u}\), then \(\bar{u}\) is called a locally asymptotically \hlmain{stable} equilibrium.
+    \item If the phase-line plot is \hlsupp{below} the horizontal axis (the \(u\)-axis) to the left of \(\bar{u}\) and \hlmain{above} the horizontal axis to the right of \(\bar{u}\), then \(\bar{u}\) is called a locally asymptotically \hlmain{unstable} equilibrium.
+  \end{itemize}
 \end{definition}
 
-Equilibria and their stability properties (later) can be read off from phase-line plots. 
+% \faStar{} We \hlsupp{do not need to solve} \emph{autonomous} differential equations to understand \hlmain{how their equilibria affect solutions}.  The idea we need is a slight change of mindset: Treat the dependent variable \(u\) in a differential equation as the independent variable for \(u'\). 
+
+% \begin{definition}[phase-line plots] \label{def:phase-line-plots}
+%   Suppose \(u' = g(u)\) is an autonomous differential equation where \(g\) is continuous. The (unknown) dependent variable is \(u\).
+%
+%   The \hlmain{phase-line plot} of a differential equation is the graph of \(u' = g(u)\) where the vertical axis is \(u'\) and horizontal axis is \(u\).  
+%
+%   We \hlsupp{do not need to solve} the differential equation at all.
+% \end{definition}
+
+\begin{example}
+  Given a phase line plot, describe the asymptotic behaviour of their solutions.
+\end{example}
+
+
+\begin{example}
+  Given a phase line plot, describe the asymptotic behaviour of their solutions.
+\end{example}
+
+
+TODO define stability of equilibria.
 
 \end{document}

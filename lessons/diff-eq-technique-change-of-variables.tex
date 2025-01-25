@@ -1,43 +1,69 @@
 %! TeX program = lualatex
 \documentclass[../main.tex]{subfiles}
-\begin{document} \section{The Bernoulli substation}
+\begin{document} \section{The Bernoulli substitution}
 
 A substitution, also known as a change of variable, can often \hlmain{transform} an unfamiliar problem into a familiar one to which existing tools apply. 
 
-\begin{mdframed}[style=simple-compact]
-  \textbf{Theorem} (Bernoulli substitution). The Bernoulli substitution \(u = y^{1-n}\) applies to \hlsupp{non-linear}, first-order differential equation of the form
+\begin{method}[Bernoulli substitution] \label{method:bernoulli-sub}
+  The \hlmain{Bernoulli substitution} \(u = y^{1-n}\) applies to \hlsupp{non-linear}, first-order differential equation of the form
   \begin{equation} \label{eq:bernoulli}
     y'(t) + P(t) y(t) = Q(t) y(t)^{n}.
   \end{equation}
-\end{mdframed}
+\end{method}
 
-\begin{objective}
-  At the end of this lesson, we will be able to 
-  \begin{enumerate}
-    \item use Bernoulli substitution to transform certain classes of non-linear, first-order differential equations to linear, first-order differential equations,
-    \item combine Bernoulli substitution and other techniques to solve certain classes of non-linear, first-order differential equations, and
-    \item choose an appropriate change of variable to solve the logistic equation.
+\begin{example}
+  When should we use the Bernoulli substitution?
+
+  Study the \emph{forms} of the following differential equations and determine the applicability of the Bernoulli substitution in each case. 
+  
+  \begin{enumerate}[label=(\alph*)]
+    \item \(v'(t) + 3v(t) = 1\).
+    \item \(v'(t) + t v(t) = v^{2}(t)\).
+    \item \(v'(t) + \sqrt{v(t)} = 1\).
+    \item \(v(t) v'(t) + v(t) = e^{t}\).
   \end{enumerate}
-\end{objective}
-
-Bernoulli substitution \emph{transforms} certain non-linear, first-order differential equation to a linear one.  When applying the Bernoulli substitution, make sure we correctly the functions \(P(t)\) and \(Q(t)\).
-
-\begin{example} \label{ex:bernoulli-part1}
-  Apply the Bernoulli substitution to transform the differential equation 
-  \begin{equation} \label{eq:bernoulli-example-intro}
-    y'(t) = \frac{y(t)}{t}  - t y(t)^{4}
-  \end{equation}
-  to a non-linear, first-order differential equation. 
-  \blanklines{25}
+  \blanklines{15}
 \end{example}
 
-\begin{example} \label{ex:bernoulli-part2}
-  Solve the differential equation in Example~\ref{ex:bernoulli-part1}.
+\faStar{} The substitution \(u = y^{1-n}\) requires us to substitute \(y'(t)\) in terms of \(u'(t)\). Use \emph{implicit differentiation} to get a relation between \(y'\) and \(u'\).
+\blanklines{10}
+\clearpage
+
+Bernoulli substitution \emph{transforms} a non-linear, first-order differential equation to a linear one. It works, \emph{in spirit}, like Method~\ref{method:recurrence-sub} in the sense that we solve a simpler problem first and recover the solution later.
+\begin{example} 
+  Solve the initial-value problem \(y'(t) - \frac{2 y(t)}{t}  = -\big( ty(t) \big)^{2}\) with \(y(1) = 2\)
+
+  \begin{enumerate}[wide, label=Step~(\arabic*).]
+    \item Identify the substitution \underline{\hspace{2in}}.
+    \item Perform the substitution to get a (new) differential equation.
+      \blanklines{15}
+    \item Find the new initial condition \underline{\hspace{3in}}.
+    \item Solve the the (new) initial-value problem \underline{\hspace{3in}}.
+      \blanklines{5}
+    \item Recover the solution of the original initial-value problem.
+      \blanklines{15}
+  \end{enumerate}
+\end{example}
+\clearpage
+
+\begin{example}
+  Find the general solution for the logistic equation
+  \[
+    N'(t) = rN(t) \left( 1 - \frac{N(t)}{K} \right), \text{ where \(r,K\) are constants}.
+  \]
   \blanklines{50}
 \end{example}
 
-Study prompts.
-\begin{enumerate}
-  \item Do we apply the Bernoulli substitution to change the \emph{independent} variable or the \emph{dependent} variable of a given differential equation?
-\end{enumerate}
+
+\begin{example}
+  Solve the initial-value problem \(y'(t) + \frac{1}{1 - t} y(t)  = \sqrt[5]{y(t)}\) with \(y(2) = 0\).
+  \blanklines{50}
+\end{example}
+\clearpage
+
+Whenever the substitution is \(u = y^{1-\text{(odd number)}}\), we need to remember to recover two distinct solutions at the very last step because \(u = y^{\text{(even power)}}\) has two solutions for \(y\), one positive and one negative.
+\begin{example}
+  Solve the initial-value problem \(y'(t) + y(t) = y(t)^{3}\) given \(y(0) = 1\).
+  \blanklines{50}
+\end{example}
 \end{document}
