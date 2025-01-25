@@ -2,33 +2,109 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Probability}
 
-\begin{objective}
-  \begin{enumerate}
-    \item the \hlmain{sample} space of an experiment,
-    \item an \hlmain{event} in the sample space,
-    \item set complement, union and intersection,
-    \item apply the definition of probability to calculate the probability of an event occurring in an en experiment,
-  \end{enumerate}
-\end{objective}
-
 % Introduce random variables as data recording devices.
 
-Consider a certain population. Let \(X_{1}\) record heights and \(X_{2}\) weights. More precisely, if \(i\) is someone in the population, then \(X_{1}(i)\) is the height of \(i\), and \(X_{2}(i)\) is the weight of \(i\).
+Probability gives us a computable language to describe anything with natural uncertainty, such as the effectiveness of a treatment.
 
-\begin{definition}[sample space]
-  A \hlmain{sample space} is a set, typically denoted as \(\Omega\).
+\begin{definition}[sample spaces and outcomes]
+  A \hlmain{sample space} is a set, typically denoted as \(\Omega\).  An element of \(\Omega\) is called an \hlmain{outcome}.  
+
+  In other words, the sample space consists of all possible outcomes (of an experiment).
 \end{definition}
 
-An \hlmain{event} is a subset of the event space, typically denoted by \(E \subseteq \Omega\).
-
-The probability of an event \(E\) in a sample space \(\Omega\) is defined to be
-\[
-  \mathbb{P}(E) = \frac{\text{number of outcomes in \(E\)}}{\text{total number of outcomes in \(\Omega\)}}
-\]
-
-\begin{example}
-  Let \(\Omega\) be the sample space of everyone in our lecture hall.  
+\begin{example} \label{ex:probability-die-1}
+  Suppose we perform an experiment by rolling a six-sided die \emph{once}.  The outcomes (plural!) of this experiment are \underline{\hspace{2in}}.  The sample space (singular!) of this experiment is \underline{\hspace{2in}}.
 \end{example}
 
-Venn diagrams.
+Sometimes, we don't care about a particular outcome but a bunch outcomes together. Instead of saying a bunch of outcomes, we use the fancy term \emph{events}.
+
+\begin{definition}[events]
+  An \hlmain{event} in a sample space \(\Omega\) is a subset of \(\Omega\).  Intuitive, an event is a bunch of outcomes, and an event contains outcomes.
+
+  \faExclamationTriangle{} It \emph{does not make sense} to think about an event without its enclosing sample space.
+\end{definition}
+In probability, the word \emph{event} should be understood in the same sense as ``\emph{in the event of...}.'' Saying that \(E\) is an event \emph{does not} mean such an event has already happened.
+
+\begin{example} \label{ex:probability-die-2}
+  Continue from Example~\ref{ex:probability-die-1}.  Describe the event that a die-roll is even.
+  \blanklines{5}
+\end{example}
+
+Events and their sample space \emph{together} give us the language of probability.
+\begin{definition}[probability]
+  The \hlmain{probability of an event} \(E\) in a sample space \(\Omega\) is defined to be
+  \begin{equation} \label{eq:probability}
+    \mathbb{P}(E) = \frac{\text{number of outcomes in \(E\)}}{\text{total number of outcomes in \(\Omega\)}}.
+  \end{equation}
+\end{definition}
+A probability is a number \underline{\hspace{3in}}. To calculate a probability from the first principle is to identify the sample space, the event and \emph{then} use Equation~\eqref{eq:probability}.
+\begin{example}
+  Find the probability of getting an even number after rolling a six-sided die \emph{once}.
+  \blanklines{6}
+\end{example}
+\clearpage
+
+\begin{example}
+  We roll two four-sided dice \emph{once}.  Assuming the faces are labelled \(1,2,3,4\), what is the probability that the sum is \(6\)?
+
+  \blanklines{15}
+\end{example}
+
+
+\faStar{} Equation~\eqref{eq:probability} tells us that calculating a probability from the first principle is essentially a counting problem. Less obvious is that counting can get rather challenging. In \thecoursesubject~\thecoursenumb, we will try to avoid the first principle approach to probability whenever possible and use relations among events to calculate probabilities of events by relating them to probabilities of known events.
+
+We recall set operations. Given two events \(E,F\) in a sample space \(\Omega\), define
+\[
+  E \cap F = \{\text{ outcomes in \(E\) and in \(F\) } \} \quad\text{and}\quad
+  E \cup F = \{\text{ outcomes in \(E\) or in \(F\) } \}.
+\]
+\begin{center}
+  \includegraphics{../standalones/build/diagram-venn-2sets}
+  \hspace{3em}
+  \includegraphics{../standalones/build/diagram-venn-2sets}
+\end{center}
+{\footnotesize A little memory trick: The \(\cap\) symbol looks sort of like the \(A\) in AND.}
+
+\faStar{} We have a relation
+\begin{align} \label{eq:probability-cup-cap}
+  \mathbb{P}( E \cup F ) = \hspace{4in}
+\end{align}
+
+Denote \(E^{c} = \{ \text{ outcomes in \(\Omega\) but not in \(E\) } \}\). Equation~\eqref{eq:probability-cup-cap} becomes
+\begin{align} \label{eq:probability-comp}
+  \mathbb{P}( E^{c} ) = \hspace{4in}
+\end{align}
+\blanklines{5}
+\clearpage
+
+It is often natural to assign every outcome in a sample space to exactly one event. The probability lingo is \emph{mutually exclusive} and \emph{mutually exclusive and exhaustive}.
+
+\begin{definition}[mutually exclusive and exhaustive]
+  Two events \(E, F\) in a sample space \(\Omega\) are \hlmain{mutually exclusive} if \(E \cap F\) is empty. 
+
+  A bunch events \(E_{1}, \ldots, E_{n}\) in a sample space \(\Omega\) are \hlmain{mutually exclusive and exhaustive} if \hlattn{every} outcome in \(\Omega\) belongs to \hlattn{exactly one} of these events, and no outcome is left behind. The precise relations are
+  \[
+    \Omega = E_{1} \cup \cdots \cup E_{n} \quad\text{ and }\quad E_{i} \cap E_{j} = \emptyset \text{ for all } i \ne j. 
+  \]
+\end{definition}
+\blanklines{8}
+
+\begin{example}
+  Assume \(E_{1}, E_{2}\) are events in a sample space \(\Omega\).  Which of the followings \emph{together} confirms that \(E_{1}, E_{2}\) are mutually exclusive and exhaustive. 
+  \begin{enumerate}[label=(\alph*)]
+    \item \(\mathbb{P}(E_{1} \cap E_{2}) = 0\).
+    \item \(\mathbb{P}(E_{1} \cap E_{2}) = \mathbb{P}(E_{1}) + \mathbb{P}(E_{2})\).
+    \item \(\mathbb{P}(E_{1} \cup E_{2}) = \mathbb{P}(E_{1}) + \mathbb{P}(E_{2})\).
+    \item \(\mathbb{P}(E_{1} \cup E_{2}) = 0\).
+    \item \(\mathbb{P}(E_{1} \cup E_{2}) = 1\).
+  \end{enumerate}
+\end{example}
+\blanklines{5}
+
+\faExclamationTriangle{} When there are three or more events, checking
+\[
+  \mathbb{P}(E_{1} \cup \cdots \cup E_{n}) = 1 \quad\text{and}\quad \mathbb{P}(E_{1} \cap \cdots \cap E_{n}) = 0
+\]
+is NOT ENOUGH to guarantee \(E_{1}, \ldots, E_{n}\) are mutually exclusive and exhaustive.
+
 \end{document}

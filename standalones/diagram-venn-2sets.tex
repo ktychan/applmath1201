@@ -1,0 +1,18 @@
+\documentclass{standalone}
+
+\input{../colours.tex.preamble}
+\input{../tikz.tex.preamble}
+
+\begin{document}
+\begin{tikzpicture}
+  % Draw the two circles
+  \draw[very thick, main] (0,0) circle (1.5);
+  \draw[very thick, supp] (1,0) circle (1.5);
+  \draw (-2,-2) rectangle (3,2);
+
+  % Add labels
+  \node[below right] at (-2,2) {\(\Omega\)};
+  \node[main] at (-0.8, 1) {\(E\)};
+  \node[supp] at ( 1.8, 1) {\(F\)};
+\end{tikzpicture}
+\end{document}
