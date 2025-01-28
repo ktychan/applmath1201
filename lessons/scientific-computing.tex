@@ -44,7 +44,7 @@ numpy.power(a, 5)  # calculate the fifth power of a.
 
     \faComment{} What python code calculates the third root of \(2\)? \underline{\hspace{2in}}.
 
-  \item To define a function, we use the \pythoninline{def} and \pythoninline{def} syntax.
+  \item To define a function, we use the \pythoninline{def} and \pythoninline{return}.
 
     \begin{minted}{python}
 def f(x):
@@ -59,7 +59,7 @@ def g(x):
 
     \faExclamationTriangle{} Notice there are four spaces within each line of the function definition. These spaces are \emph{required} to tell Python that we are \emph{inside} the definition of a function. 
 
-  \item To evaluate a function at a number, we simply write it like mathematical.
+  \item To evaluate a function at a number, we simply write it like a math expression.
     \begin{minted}{python}
     f(3)
     \end{minted}
@@ -67,7 +67,7 @@ def g(x):
 
 \end{enumerate}
 
-\textbf{Use python as to calculate lists of number}.
+\textbf{Use python to calculate lists of numbers}.
 \begin{enumerate}
   \item Suppose we wish to store the following values in the computer. 
     \[
@@ -82,8 +82,6 @@ def g(x):
 
   \item We often want to access elements in an array.  
     \begin{minted}{python}
-a = [1, 2, 4, 8, 16, 32, 64]
-
 a[0]    # the first element in the array.
 a[1]    # the second element in the array.
 a[2]    # the third element in the array.
@@ -94,12 +92,12 @@ a[-1]   # the last element in the array.
     
     \faComment{} What code access the number \(8\) in the array \pythoninline{a}? \underline{\hspace{1in}}.
 
-  \item The list of numbers \(a_{0}, \ldots, a_{6}\) above follows a clear pattern, namely, 
+  \item The list of numbers \(a_{0}, \ldots, a_{6}\) above follow a clear pattern, namely, 
     \[
       a_{k} = 2^{k} \text{ for each } k = 0, 1, \ldots, 6.
     \]
     
-    We use a for-loop and the \pythoninline{range} to perform this calculation.
+    We use a for-loop and the \pythoninline{range} command to perform this calculation.
 
     \begin{minted}{python}
 a = []        # tell python that the symbol a should be an empty array
@@ -145,14 +143,15 @@ print(a)                # should output [1, 2, 4, 8, 16, 32, 64]
 \textbf{Use python for graphing}.  
 
 \begin{enumerate}
-  \item However, functions defined using numpy commands are capable calculating a bunch values very quickly.  For example, we wish to calculate
+  \item Functions defined using numpy commands are capable calculating a bunch values very quickly.  For example, we wish to calculate
     \[
       L_{0} = g(2), \quad L_{1} = g(4), \quad L_{2} = g(6), \quad L_{3} = g(8).
     \]
 
     Instead of write \pythoninline{L = [ g(2), g(4), g(6), g(8) ]} (which works), we can write this:
     \begin{minted}{python}
-L = g( [2, 4, 6, 8] )
+L = g( numpy.array([2, 4, 6, 8]))
+print(L)
     \end{minted}
     Python automatically translates it to the desired code \pythoninline{L = [ g(2), g(4), g(6), g(8) ]}.
 
@@ -163,11 +162,13 @@ L = g( [2, 4, 6, 8] )
     For example, the list of number \(-1, 0, 1\) is evenly space that starts at \(-1\), ends at \(1\), and has \(3\) numbers in total.  Instead of writing a for-loop, we simply write the following.
     \begin{minted}{python}
 x = numpy.linspace(-1, 1, 3)   # the output should be [-1, 0, 1]
+print(x)
     \end{minted}
     
     If we feel like \(3\) numbers are not enough, then we just change the \(3\) to a larger number.
     \begin{minted}{python}
 x = numpy.linspace(-1, 1, 32436721)
+print(x)
     \end{minted}
 
   \item Finally, we can plot functions.   We need to use \pythoninline{matplotlib.pyplot} to enable plotting. 
@@ -201,6 +202,9 @@ plt.show()
 
 \end{enumerate}
 
+\begin{example}
+  Plot the function \(y = \sqrt{1 + x}\) on the domain \([-1,3]\). Label the axes.
+\end{example}
 
 \begin{example}
   Plot the log-log transformation of \(w = 0.006 \ell^{3}\) on the domain \([e^{0}, e^{3}]\). This is an interval not a Python array.
