@@ -6,7 +6,7 @@
 %
 \pgfplotsset{
   compat=1.18,
-  % trig format=rad,
+  trig format=rad,
 }
 
 %
