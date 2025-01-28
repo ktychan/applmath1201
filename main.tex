@@ -102,7 +102,8 @@
 
 % embedded markups
 \usepackage{markdown}
-\usepackage[outputdir=./build/aux]{minted}
+\usepackage[outputdir=./build/aux, draft]{minted}
+\newmintinline{python}{python3, bgcolor=gray!10}
 
 % subfiles
 \usepackage{refcount, xr, subfiles}
@@ -392,6 +393,7 @@
 \begin{week}{February 3 to 7}
   \subfile{./lessons/diff-eq-technique-change-of-variables.tex} \clearpage
   \subfile{./lessons/diff-eq-phase-line-plots.tex} \clearpage
+  \subfile{./lessons/scientific-computing.tex}
 \end{week}
 
 \begin{week}{February 10 to 14}
@@ -401,7 +403,7 @@
 \end{week}
 
 \begin{week}{February 17 to 21}
-  \section{Reading week.}
+  \subfile{./lessons/diff-eq-summary.tex}
 \end{week}
 
 \begin{week}{February 24 to 28}
