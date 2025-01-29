@@ -11,202 +11,206 @@ We only use Python
   \item to plot graphs.
 \end{enumerate}
 
-Here is a very quick introduction to what we need out of Python.  We use the following typography convention. Python code is shown in monospace fonts with a light gray background. For example \pythoninline{a = 10} is a Python code that says ``assign the number \(10\) to the symbol \pythoninline{a}.''
+A link to a Google Colab tutorial is posted to OWL. You can save a copy to your Google Drive and follow along in class.
 
-\textbf{Use Python as a scientific calculator}.
-\begin{enumerate}
-  \item To assign a value to a symbol, we write it as we would in mathematics. 
-    \begin{minted}{python}
-a = 10     # assign 10 to the symbol a.
-b = 20     # assign 20 to the symbol b.
-c = b / a  # perform the calculation b / a and store the result in c.
-print(c)   # show me the value of c.
-    \end{minted}
-    \faComment{} The above outputs \underline{\hspace{3in}}.
+Here are some exercises for scientific computing.
 
-    Moreover, anything after a \pythoninline{#} symbol is called a \emph{comment} and is ignored by the computer.  We often put comments in code to remind ourselves what the code does.
+% Here is a very quick introduction to what we need out of Python.  We use the following typography convention. Python code is shown in monospace fonts with a light gray background. For example \pythoninline{a = 10} is a Python code that says ``assign the number \(10\) to the symbol \pythoninline{a}.''
+%
+% \textbf{Use Python as a scientific calculator}.
+% \begin{enumerate}
+%   \item To assign a value to a symbol, we write it as we would in mathematics. 
+%     \begin{minted}{python}
+% a = 10     # assign 10 to the symbol a.
+% b = 20     # assign 20 to the symbol b.
+% c = b / a  # perform the calculation b / a and store the result in c.
+% print(c)   # show me the value of c.
+%     \end{minted}
+%     \faComment{} The above outputs \underline{\hspace{3in}}.
+%
+%     Moreover, anything after a \pythoninline{#} symbol is called a \emph{comment} and is ignored by the computer.  We often put comments in code to remind ourselves what the code does.
+%
+%   \item Numpy (\url{https://numpy.org}) provides Python with commands for scientific computing and is capable of full-scale scientific experiments such as simulating COVID infections.
+%
+%     We only need a tiny fraction of numpy's capabilities. We introduce everything we need to know.
+%
+%     \begin{minted}{python}
+% import numpy     # make numpy commands available to us.
+%
+% numpy.exp(2)     # calculate the natural exponential function evaluated at 2.
+% numpy.log(2)     # calculate the natural logarithm evaluated at 2.
+% numpy.power(2, 3)  # calculate the third power of 2.
+% numpy.power(2, 4)  # calculate the fourth power of 2.
+%
+% a = 3
+% numpy.power(a, 5)  # calculate the fifth power of a.
+%     \end{minted}
+%
+%     \faComment{} What python code calculates the third root of \(2\)? \underline{\hspace{2in}}.
+%
+%   \item To define a function, we use the \pythoninline{def} and \pythoninline{return}.
+%
+%     \begin{minted}{python}
+% def f(x):
+%     return numpy.power(x, 2)
+%
+% def g(x):
+%     m = 3
+%     b = 2
+%     return m*x + b   # the * symbol is necessary to denote multiplication
+%     \end{minted}
+%     The above code defines two function \(f(x) = x^{2}\) and \(g(x) = 3x + 2\).
+%
+%     \faExclamationTriangle{} Notice there are four spaces within each line of the function definition. These spaces are \emph{required} to tell Python that we are \emph{inside} the definition of a function. 
+%
+%   \item To evaluate a function at a number, we simply write it like a math expression.
+%     \begin{minted}{python}
+%     f(3)
+%     \end{minted}
+%     The above perform the calculation \(f(3)\). We expect the output to be \(3^{2} = 9\).
+%
+% \end{enumerate}
+%
+% \textbf{Use python to calculate lists of numbers}.
+% \begin{enumerate}
+%   \item Suppose we wish to store the following values in the computer. 
+%     \[
+%       a_{0} = 1, \quad a_{1} = 2, \quad a_{2} = 4, \quad  a_{3} = 8, \quad a_{4} = 16, \quad a_{5} = 32, \quad a_{6} = 64.
+%     \]
+%
+%     In python, we write \pythoninline{a = [1, 2, 4, 8, 16, 32, 64]}.  The period is not part of the code.
+%
+%     To use the value of \(a_{4}\), we write \pythoninline{a[4]}.  Notice that the number in the square bracket is the subscript of our mathematical expression.
+%
+%     \faComment{} What is the output of \pythoninline{a[5] / a[2]}? \underline{\hspace{2in}}.
+%
+%   \item We often want to access elements in an array.  
+%     \begin{minted}{python}
+% a[0]    # the first element in the array.
+% a[1]    # the second element in the array.
+% a[2]    # the third element in the array.
+% a[-3]   # the third last element in the array. 
+% a[-2]   # the second last element in the array. 
+% a[-1]   # the last element in the array.
+%     \end{minted}
+%
+%     \faComment{} What code access the number \(8\) in the array \pythoninline{a}? \underline{\hspace{1in}}.
+%
+%   \item The list of numbers \(a_{0}, \ldots, a_{6}\) above follow a clear pattern, namely, 
+%     \[
+%       a_{k} = 2^{k} \text{ for each } k = 0, 1, \ldots, 6.
+%     \]
+%
+%     We use a for-loop and the \pythoninline{range} command to perform this calculation.
+%
+%     \begin{minted}{python}
+% a = []        # tell python that the symbol a should be an empty array
+%
+% for k in range(0, 6 + 1):  
+%     ak = numpy.power(2, k)
+%     a.append( ak )
+%
+% print(a)
+%     \end{minted}
+%     \faExclamationTriangle{} Notice there are four spaces within each line of the for-loop. These spaces are \emph{required} by Python.
+%
+%     The command \pythoninline{for k in range(0, 6 + 1):} initiates a for-loop. In plain English, it says ``\emph{for each \(k = 0, 1, \ldots, 6\), perform the following:}.''  The colon indicates that it should listen more commands from you.   The \pythoninline{range(start, stop)} command steps through the value \pythoninline{k} by assigning it \emph{integers} starting at \pythoninline{start} and ending at \pythoninline{stop - 1}.  Therefore, the mathematical expression ``for each \(k = 0, 1, \ldots, 6\)'' translates to \pythoninline{range(0, 6 + 1)}.
+%
+%     The command \pythoninline{ak = numpy.power(2, k)} perform the required computation. As far as python is concerned, \pythoninline{ak} is a single symbol whose value is \(2^{k}\), whatever the value of \(k\) maybe.  If \(k = 3\), then \pythoninline{ak} is \(2^{3}\). 
+%
+%     The command \pythoninline{a.append( ak )} says ``\emph{store the value of \pythoninline{ak} at end of the array \pythoninline{a}}''
+%
+%     The for-loop above does exactly the same thing as the code below.
+%     \begin{minted}{python}
+% a = []                  # a is an empty array
+%
+% ak = numpy.power(2, 0)  # k = 0
+% a.append(ak)            # a is [1]
+% ak = numpy.power(2, 1)  # k = 1
+% a.append(ak)            # a is [1, 2]
+% ak = numpy.power(2, 2)  # k = 2
+% a.append(ak)            # a is [1, 2, 4]
+% ak = numpy.power(2, 3)  # k = 3
+% a.append(ak)            # a is [1, 2, 4, 8]
+% ak = numpy.power(2, 4)  # k = 4
+% a.append(ak)            # a is [1, 2, 4, 8, 16]
+% ak = numpy.power(2, 5)  # k = 5
+% a.append(ak)            # a is [1, 2, 4, 8, 16, 32]
+% ak = numpy.power(2, 6)  # k = 6
+% a.append(ak)            # a is [1, 2, 4, 8, 16, 32, 64]
+%
+% print(a)                # should output [1, 2, 4, 8, 16, 32, 64]
+%     \end{minted}
+%
+% \end{enumerate}
+%
+% \textbf{Use python for graphing}.  
+%
+% \begin{enumerate}
+%   \item Functions defined using numpy commands are capable calculating a bunch values very quickly.  For example, we wish to calculate
+%     \[
+%       L_{0} = g(2), \quad L_{1} = g(4), \quad L_{2} = g(6), \quad L_{3} = g(8).
+%     \]
+%
+%     Instead of write \pythoninline{L = [ g(2), g(4), g(6), g(8) ]} (which works), we can write this:
+%     \begin{minted}{python}
+% L = g( numpy.array([2, 4, 6, 8]))
+% print(L)
+%     \end{minted}
+%     Python automatically translates it to the desired code \pythoninline{L = [ g(2), g(4), g(6), g(8) ]}.
+%
+%   \item Computer plot graphs by literally plotting point by point and connect the dots by straight lines.  Therefore, plotting graphs requires sampling a function at a bunch \(x\)-values. 
+%
+%     The command \pythoninline{numpy.linspace(start, stop, num)} quickly generate a list of evenly spaced \(x\)-values for plotting.
+%
+%     For example, the list of number \(-1, 0, 1\) is evenly space that starts at \(-1\), ends at \(1\), and has \(3\) numbers in total.  Instead of writing a for-loop, we simply write the following.
+%     \begin{minted}{python}
+% x = numpy.linspace(-1, 1, 3)   # the output should be [-1, 0, 1]
+% print(x)
+%     \end{minted}
+%
+%     If we feel like \(3\) numbers are not enough, then we just change the \(3\) to a larger number.
+%     \begin{minted}{python}
+% x = numpy.linspace(-1, 1, 32436721)
+% print(x)
+%     \end{minted}
+%
+%   \item Finally, we can plot functions.   We need to use \pythoninline{matplotlib.pyplot} to enable plotting. 
+%
+%     \begin{minted}{python}
+% import numpy
+% import matplotlib.pyplot as plt
+%
+% # define the function we want to plot.
+% def h(x):
+%     return numpy.exp(x)
+%
+% # the next two lines calculate the points we want to plot
+% x = numpy.linspace(-1, 1, 3)    # calculate the list of x-values
+% y = h(x)                        # calculate the y values at the chosen x-values
+%
+% # plot the graph inside the computer, but don't show it yet.
+% plt.plot(x, y)
+%
+% # make the graph look pretty
+% plt.xlabel('x')
+% plt.ylabel('this is the y-axis label')
+% plt.axis('equal')    # make sure the axes are in 1-to-1 scale
+% plt.grid()           # draw a grid
+%
+% # now show me the graph
+% plt.show()
+%     \end{minted}
+%
+%     You are probably not satisfied with the plot because it simply does not look like an exponential function.  We can easily improve it by changing the \(3\) in \pythoninline{x = numpy.linspace(-1, 1, 3)} to a larger number. Try \(100\). 
+%
+% \end{enumerate}
 
-  \item Numpy (\url{https://numpy.org}) provides Python with commands for scientific computing and is capable of full-scale scientific experiments such as simulating COVID infections.
-
-    We only need a tiny fraction of numpy's capabilities. We introduce everything we need to know.
-
-    \begin{minted}{python}
-import numpy     # make numpy commands available to us.
-
-numpy.exp(2)     # calculate the natural exponential function evaluated at 2.
-numpy.log(2)     # calculate the natural logarithm evaluated at 2.
-numpy.power(2, 3)  # calculate the third power of 2.
-numpy.power(2, 4)  # calculate the fourth power of 2.
-
-a = 3
-numpy.power(a, 5)  # calculate the fifth power of a.
-    \end{minted}
-
-    \faComment{} What python code calculates the third root of \(2\)? \underline{\hspace{2in}}.
-
-  \item To define a function, we use the \pythoninline{def} and \pythoninline{return}.
-
-    \begin{minted}{python}
-def f(x):
-    return numpy.power(x, 2)
-
-def g(x):
-    m = 3
-    b = 2
-    return m*x + b   # the * symbol is necessary to denote multiplication
-    \end{minted}
-    The above code defines two function \(f(x) = x^{2}\) and \(g(x) = 3x + 2\).
-
-    \faExclamationTriangle{} Notice there are four spaces within each line of the function definition. These spaces are \emph{required} to tell Python that we are \emph{inside} the definition of a function. 
-
-  \item To evaluate a function at a number, we simply write it like a math expression.
-    \begin{minted}{python}
-    f(3)
-    \end{minted}
-    The above perform the calculation \(f(3)\). We expect the output to be \(3^{2} = 9\).
-
-\end{enumerate}
-
-\textbf{Use python to calculate lists of numbers}.
-\begin{enumerate}
-  \item Suppose we wish to store the following values in the computer. 
-    \[
-      a_{0} = 1, \quad a_{1} = 2, \quad a_{2} = 4, \quad  a_{3} = 8, \quad a_{4} = 16, \quad a_{5} = 32, \quad a_{6} = 64.
-    \]
-
-    In python, we write \pythoninline{a = [1, 2, 4, 8, 16, 32, 64]}.  The period is not part of the code.
-
-    To use the value of \(a_{4}\), we write \pythoninline{a[4]}.  Notice that the number in the square bracket is the subscript of our mathematical expression.
-
-    \faComment{} What is the output of \pythoninline{a[5] / a[2]}? \underline{\hspace{2in}}.
-
-  \item We often want to access elements in an array.  
-    \begin{minted}{python}
-a[0]    # the first element in the array.
-a[1]    # the second element in the array.
-a[2]    # the third element in the array.
-a[-3]   # the third last element in the array. 
-a[-2]   # the second last element in the array. 
-a[-1]   # the last element in the array.
-    \end{minted}
-    
-    \faComment{} What code access the number \(8\) in the array \pythoninline{a}? \underline{\hspace{1in}}.
-
-  \item The list of numbers \(a_{0}, \ldots, a_{6}\) above follow a clear pattern, namely, 
-    \[
-      a_{k} = 2^{k} \text{ for each } k = 0, 1, \ldots, 6.
-    \]
-    
-    We use a for-loop and the \pythoninline{range} command to perform this calculation.
-
-    \begin{minted}{python}
-a = []        # tell python that the symbol a should be an empty array
-
-for k in range(0, 6 + 1):  
-    ak = numpy.power(2, k)
-    a.append( ak )
-
-print(a)
-    \end{minted}
-    \faExclamationTriangle{} Notice there are four spaces within each line of the for-loop. These spaces are \emph{required} by Python.
-
-    The command \pythoninline{for k in range(0, 6 + 1):} initiates a for-loop. In plain English, it says ``\emph{for each \(k = 0, 1, \ldots, 6\), perform the following:}.''  The colon indicates that it should listen more commands from you.   The \pythoninline{range(start, stop)} command steps through the value \pythoninline{k} by assigning it \emph{integers} starting at \pythoninline{start} and ending at \pythoninline{stop - 1}.  Therefore, the mathematical expression ``for each \(k = 0, 1, \ldots, 6\)'' translates to \pythoninline{range(0, 6 + 1)}.
-
-    The command \pythoninline{ak = numpy.power(2, k)} perform the required computation. As far as python is concerned, \pythoninline{ak} is a single symbol whose value is \(2^{k}\), whatever the value of \(k\) maybe.  If \(k = 3\), then \pythoninline{ak} is \(2^{3}\). 
-
-    The command \pythoninline{a.append( ak )} says ``\emph{store the value of \pythoninline{ak} at end of the array \pythoninline{a}}''
-
-    The for-loop above does exactly the same thing as the code below.
-    \begin{minted}{python}
-a = []                  # a is an empty array
-
-ak = numpy.power(2, 0)  # k = 0
-a.append(ak)            # a is [1]
-ak = numpy.power(2, 1)  # k = 1
-a.append(ak)            # a is [1, 2]
-ak = numpy.power(2, 2)  # k = 2
-a.append(ak)            # a is [1, 2, 4]
-ak = numpy.power(2, 3)  # k = 3
-a.append(ak)            # a is [1, 2, 4, 8]
-ak = numpy.power(2, 4)  # k = 4
-a.append(ak)            # a is [1, 2, 4, 8, 16]
-ak = numpy.power(2, 5)  # k = 5
-a.append(ak)            # a is [1, 2, 4, 8, 16, 32]
-ak = numpy.power(2, 6)  # k = 6
-a.append(ak)            # a is [1, 2, 4, 8, 16, 32, 64]
-
-print(a)                # should output [1, 2, 4, 8, 16, 32, 64]
-    \end{minted}
-
-\end{enumerate}
-
-\textbf{Use python for graphing}.  
-
-\begin{enumerate}
-  \item Functions defined using numpy commands are capable calculating a bunch values very quickly.  For example, we wish to calculate
-    \[
-      L_{0} = g(2), \quad L_{1} = g(4), \quad L_{2} = g(6), \quad L_{3} = g(8).
-    \]
-
-    Instead of write \pythoninline{L = [ g(2), g(4), g(6), g(8) ]} (which works), we can write this:
-    \begin{minted}{python}
-L = g( numpy.array([2, 4, 6, 8]))
-print(L)
-    \end{minted}
-    Python automatically translates it to the desired code \pythoninline{L = [ g(2), g(4), g(6), g(8) ]}.
-
-  \item Computer plot graphs by literally plotting point by point and connect the dots by straight lines.  Therefore, plotting graphs requires sampling a function at a bunch \(x\)-values. 
-
-    The command \pythoninline{numpy.linspace(start, stop, num)} quickly generate a list of evenly spaced \(x\)-values for plotting.
-
-    For example, the list of number \(-1, 0, 1\) is evenly space that starts at \(-1\), ends at \(1\), and has \(3\) numbers in total.  Instead of writing a for-loop, we simply write the following.
-    \begin{minted}{python}
-x = numpy.linspace(-1, 1, 3)   # the output should be [-1, 0, 1]
-print(x)
-    \end{minted}
-    
-    If we feel like \(3\) numbers are not enough, then we just change the \(3\) to a larger number.
-    \begin{minted}{python}
-x = numpy.linspace(-1, 1, 32436721)
-print(x)
-    \end{minted}
-
-  \item Finally, we can plot functions.   We need to use \pythoninline{matplotlib.pyplot} to enable plotting. 
-
-    \begin{minted}{python}
-import numpy
-import matplotlib.pyplot as plt
-
-# define the function we want to plot.
-def h(x):
-    return numpy.exp(x)
-
-# the next two lines calculate the points we want to plot
-x = numpy.linspace(-1, 1, 3)    # calculate the list of x-values
-y = h(x)                        # calculate the y values at the chosen x-values
-
-# plot the graph inside the computer, but don't show it yet.
-plt.plot(x, y)
-
-# make the graph look pretty
-plt.xlabel('x')
-plt.ylabel('this is the y-axis label')
-plt.axis('equal')    # make sure the axes are in 1-to-1 scale
-plt.grid()           # draw a grid
-
-# now show me the graph
-plt.show()
-    \end{minted}
-
-    You are probably not satisfied with the plot because it simply does not look like an exponential function.  We can easily improve it by changing the \(3\) in \pythoninline{x = numpy.linspace(-1, 1, 3)} to a larger number. Try \(100\). 
-
-\end{enumerate}
-
-\begin{example}
+\begin{computing}
   Plot the function \(y = \sqrt{1 + x}\) on the domain \([-1,3]\). Label the axes.
-\end{example}
+\end{computing}
 
-\begin{example}
+\begin{computing}
   Plot the log-log transformation of \(w = 0.006 \ell^{3}\) on the domain \([e^{0}, e^{3}]\). This is an interval not a Python array.
 
   Hint: Hand calculate the log-log transformation and plot the result.  Think the following question through: Are you coding up and plotting a function \(\log(\ell)\) versus \(\log(w)\) or code up the transformed function and labelling the axes \(\log(\ell)\) and \(\log(w)\)?
@@ -224,29 +228,29 @@ plt.show()
   % plt.grid()
   % plt.axis('equal')
   % \end{minted}
-\end{example}
+\end{computing}
 
-\begin{example}
+\begin{computing}
   Create the phase-line plot of the differential equation 
   \[
     u'(t) = u(t) (2 - u(t))^{2}(3 - u(t)/2)
   \]
   on the domain \([0, 7]\).
-\end{example}
+\end{computing}
 
 
-\begin{example}
+\begin{computing}
   Consider the following recursion
   \[
     b_{0} = 2 \times 10^{9} \quad\text{and}\quad b_{t} = 1.0001 b_{t-1} - 54321 \text{ for each } t \ge 1.
   \]
 
   Use a for-loop to calculate \(b_{123456}\).  The answer is \(b_{123456} = 334810427856468.4\).
-\end{example}
+\end{computing}
 \clearpage
 
 The following example is for your interest only and is not an examinable part of the course. 
-\begin{example}
+\begin{computing}
   We can use scientific computing to solve a question from Quiz 1.
 
   \begin{quote}
@@ -286,7 +290,7 @@ b(15)
   \end{minted}
   The output is \(24411.184887487−47.5804108610822x\). Now we just solve for \(x\) in \[0 = 24411.184887487−47.5804108610822x\]
   to get \(x \approx 513.051\). 
-\end{example}
+\end{computing}
 
 This ``dumb'' approach works for a human if the number of years is small, say \(3\). Compare it to to the ``human'' approach below.  
 
