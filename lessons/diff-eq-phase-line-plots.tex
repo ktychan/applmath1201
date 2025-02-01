@@ -1,32 +1,30 @@
 %! TeX program = lualatex
 \documentclass[../main.tex]{subfiles}
-\begin{document} \section{Equilibria and their stability}
+\begin{document} \section{Long-term behaviour of solutions of autonomous equations}
 
-Recall (from the very first lecture of the semester) that models are \emph{imperfect} representations of natural phenomena. Exact solutions to differential equations may or may not be what we \emph{need}.  
+Recall (from the very first lecture of the semester) that models are \emph{imperfect} representations of natural phenomena. Exact solutions to differential equations may or may not be what we \emph{need}. Sometimes, it is good enough to understand the long-term behaviour of solutions.
 
-We introduce the idea of phase-line plots using the logistic equation. 
+We introduce the main idea of this section (see \faStar{}) by studying how logistic equations' equilibria interact with their solutions (plural!). Observe how we build a new idea from existing knowledge. Example~\ref{ex:diff-eq-logistic-fact-check} extends the qualitative analysis of differential equations on pages~\pageref{method:diff-eq-model}~and~\pageref{ex:diff-eq-logistic-fact-check}.
 
 \begin{example}[equilibria of logistic equations] \label{eq:diff-eq-logistic-equation-equilibria}
-  Consider \(N'(t) = N(t) \left( 1 - \frac{N'(t)}{K} \right)\).
+  Consider \(N'(t) = rN(t) \left( 1 - \frac{N(t)}{K} \right)\).
 
-  Notice \(t\) does not appear in the right-hand side of the logistic equation at all. Recall from page~\pageref{def:autonomous} that such an equation is called \hlmain{autonomous}. This is rather special because it allows us to plot \(N\) versus \(N'\) by using \(N\) as an input to produce a value for \(N'\).
+  Notice \hlsupp{\(t\) does not appear in the right-hand side} of the logistic equation at all. By the terminology introduced at the bottom of page~\pageref{def:autonomous}, we see that the logistic equations are examples of autonomous equations. We can create a graph by using \(N\) as an input to produce a value for \(N'\).
 
   \begin{figure}[H] % [h] for here, [ht] for here top, [hb] for here bottom
     \centering
     \includegraphics{../standalones/build/plot-logistic-solutions-phase-lines}
-    \caption{\(N\) versus \(N'\) plot.}
+    \caption{The phase-line plot of \(N' = rN \left( 1 - \frac{N}{K} \right)\).}
     \label{fig:logistic-solutions-phase-lines}
   \end{figure}
 
-  \faStar{} The above graph \hlmain{predicts} that if a solution curve 
+  \faStar{} The useful but not obvious observation is that we can say more than just increasing/no change/decreasing for solutions. Figure~\ref{fig:logistic-solutions-phase-lines} \hlmain{predicts} that if \underline{\hspace{2in}}
   \begin{itemize}
     \item \underline{\hspace{2in}}, then the solution \underline{\hspace{3in}}.
     \item \underline{\hspace{2in}}, then the solution \underline{\hspace{3in}}.
   \end{itemize}
 
-  This prediction is easily obtained, because we do not need to solve the differential equation.
-
-  Does the above prediction match reality? Here are several solution curves for the logistic equation.
+  Does the above prediction match reality? Here are several solutions for the logistic equation.
   \begin{figure}[H] % [h] for here, [ht] for here top, [hb] for here bottom
     \centering
     \includegraphics{../standalones/build/plot-logistic-solutions}
@@ -35,24 +33,92 @@ We introduce the idea of phase-line plots using the logistic equation.
 
 \end{example}
 
-The punchline of this example is that such predictions can be made reliably for all autonomous equations.  Plots like Figure~\ref{fig:logistic-solutions-phase-lines} are called phase-line plots.
+The punchline of Example~\ref{eq:diff-eq-logistic-equation-equilibria} is that predictions similar to that of \faStar{} can be made reliably \hlmain{for all autonomous equations}.  Plots like Figure~\ref{fig:logistic-solutions-phase-lines} are called phase-line plots. 
 
-\clearpage
+\begin{definition}[phase-line plot]
+  Suppose we have an \emph{autonomous} differential equation
+  \[
+    u' = g(u),
+  \]
+  where \(g\) is an expression involving the dependent variable \(u\) only and the independent variable of the differential equation does not appear in \(g\) at all.
 
-Creating a phase-line plot is really a job for the computer. We will do more of that when discussing scientific computing.
+  The \hlmain{phase-line plot} of the autonomous differential equation is the graph of \(g\).
+\end{definition}
 
-For the rest of the section, we learn the concept of stability of equilibria.
+\faExclamationTriangle{} Phase-line plots are ONLY defined for autonomous equations.
 
-\begin{definition}[stability of equilibria]
-  Suppose we have an \emph{autonomous} differential equation in which \(u\) is the unknown function. 
+We learn to identify equilibria of autonomous differential equations from a phase-line plot. Review page~\ref{def:diff-eq-equilibrium} for the technique to find equilibria algebraically.
 
-  Equilibria of the autonomous differential equation shows up as zeros of the phase-line plot.
+\begin{example}
+  Find equilibria of \(u'(t) = u(t)(u(t)-1)(2 - u(t))^{2}(1 - u(t)/3)\) algebraically and graphically.
+  
+  \includegraphics{../standalones/build/plot-phase-lines-example1}
+\end{example}
+
+\begin{example}
+  Find equilibria of \(y'(x) = (y(x) + 3)^{200} (3y(x) - 2) (1/3 - 5y(x))\) algebraically. Use a graphing software to find them graphically. Make sure both methods lead to the same equilibria.
+  \blanklines{10}
+\end{example}
+
+\faPencil*{} What is the takeaway of equilibria of autonomous differential equations?
+\blanklines{5}
+
+We can now describe the idea in \faStar{} in full generality.
+
+\begin{method}[stability analysis of equilibria of autonomous differential equations] 
+  Suppose \(\bar{u}\) is an equilibrium of an autonomous differential equation \(u' = g(u)\). 
 
   \begin{itemize}
     \item If the phase-line plot is \hlmain{above} the horizontal axis (the \(u\)-axis) to the left of \(\bar{u}\) and \hlsupp{below} the horizontal axis to the right of \(\bar{u}\), then \(\bar{u}\) is called a \hlmain{locally asymptotically stable} equilibrium.
+
+      In such a case, if \(u(\text{\color{attn} any constant})\) is near a \hlmain{locally asymptotically stable} equilibrium \(\bar{u}\), then the long-term behaviour of \(u(t)\) is \(\lim_{t \to \infty} u(t) = \bar{u}\).
+
+      \vspace{1cm}
+
     \item If the phase-line plot is \hlsupp{below} the horizontal axis (the \(u\)-axis) to the left of \(\bar{u}\) and \hlmain{above} the horizontal axis to the right of \(\bar{u}\), then \(\bar{u}\) is called a \hlmain{locally asymptotically unstable} equilibrium.
+
+      In such a case, if \(u(\text{\color{attn} any constant})\) is near a \hlmain{locally asymptotically unstable} equilibrium \(\bar{u}\), then the long-term behaviour of \(u(t)\) is \(\lim_{t \to \infty} u(t) \ne \bar{u}\).
+
+      \vspace{1cm}
+
+    \item Lastly, an equilibrium can be neither stable nor unstable. Such an equilibrium attracts some nearby solutions but repels some other nearby solutions.
   \end{itemize}
-\end{definition}
+\end{method}
+\faExclamationTriangle{} In a stability analysis, we always consider the limit of \(u(t)\) as \(t \to \infty\).
+
+We can summarize stability analysis in a picture. 
+\begin{center}
+  \includegraphics{../standalones/build/plot-phase-lines-stability-wide}
+\end{center}
+\blanklines{5}
+
+
+The stability of an equilibrium \(\bar{u}\) of an autonomous differential equation \(u' = g(u)\) can be described in terms of derivatives of \(g'\) whenever \(g\) is differentiable.
+\begin{itemize}
+  \item If \(g'(\bar{u}) < 0\), then \(\bar{u}\) is a \underline{\hspace{4in}}.
+  \item If \(g'(\bar{u}) > 0\), then \(\bar{u}\) is a \underline{\hspace{4in}}.
+  \item If \(g'(\bar{u}) = 0\), then \(\bar{u}\) can be \underline{\hspace{4in}}.
+\end{itemize}
+
+\clearpage
+We can perform phase-line analysis algebraically. \faPencil*{} Remember, \(u(t)\) always moves towards a stable equilibrium and away from an unstable equilibrium as \(t \to \infty\).
+
+\begin{example}
+  Consider the differential equation \(u'(t) = u(t)  (3 - u(t)/2) ( 2 - u(t) )(x-5)\). 
+  \blanklines{10}
+  \begin{enumerate}[wide]
+    \item Evaluate \(\lim_{t \to \infty} u(t)\) given \(u(0) = 1\).  
+      \blanklines{5}
+    \item Determine the long-term behaviour of \(u(t)\) given \(u(43738921740321678914) = 1\).  
+      \blanklines{5}
+    \item Evaluate \(\lim_{t \to \infty} u(t)\) given \(u(-4326) = -0.723\).  
+      \blanklines{5}
+    \item Determine the long-term behaviour of \(u(t)\) given \(u(-1) = 6\).  
+      \blanklines{5}
+    \item Suppose \(u(\pi) = 5.0001\). After a long time, what do we expect \(u(t)\) to approach?
+      \blanklines{5}
+  \end{enumerate}
+\end{example}
 
 % \faStar{} We \hlsupp{do not need to solve} \emph{autonomous} differential equations to understand \hlmain{how their equilibria affect solutions}.  The idea we need is a slight change of mindset: Treat the dependent variable \(u\) in a differential equation as the independent variable for \(u'\). 
 
@@ -64,154 +130,73 @@ For the rest of the section, we learn the concept of stability of equilibria.
 %   We \hlsupp{do not need to solve} the differential equation at all.
 % \end{definition}
 
-\begin{example}
-  Consider the following phase-line plot.  Identify its equilibria and their stability.
-
-  \begin{tikzpicture}
-    \begin{axis}[
-    axis lines = middle, % boxed, middle
-    axis on top,
-    axis equal image,
-    %
-    % domain and range
-    %
-    % xmin={}, xmax={},
-    % ymin={}, ymax={},
-    enlargelimits=true,
-    %
-    % axis labels
-    %
-    xlabel={\(u\)}, xlabel style={anchor=west},
-    ylabel={\(u'\)}, ylabel style={anchor=south},
-    label style={at={(ticklabel* cs:1)}},
-    %
-    % ticks
-    %
-    % xtick={}, xticklabels={},
-    % ytick={}, yticklabels={},
-    ticklabel style={font=\footnotesize},
-    %
-    % grid
-    % none, major, minor, both
-    grid=none, grid style={gray!20},
-    % minor tick num=1, 
-    % minor grid style={gray!20},
-    % 
-    % plot parameters
-    %
-    smooth, samples=100, no markers,
-    ]
-    % \usepackage{pgfplots}
-    % \pgfplotsset{compat=newest, trig format=rad} 
-    % \pgfplotsset{label style={font=\footnotesize}}
-    \addplot[domain=0:2] {x*sin(x*pi) + 1};
-    \end{axis}
-  \end{tikzpicture}
-\end{example}
-
-
-\begin{example}
-  Consider the following phase-line plot.  Identify its equilibria and their stability.
-
-  \begin{tikzpicture}
-    \begin{axis}[
-      axis lines = middle, % boxed, middle
-      axis on top,
-      axis equal image,
-      %
-      % domain and range
-      %
-      % xmin={}, xmax={},
-      % ymin={}, ymax={},
-      enlargelimits=true,
-      %
-      % axis labels
-      %
-      xlabel={\(u\)}, xlabel style={anchor=west},
-      ylabel={\(u'\)}, ylabel style={anchor=south},
-      label style={at={(ticklabel* cs:1)}},
-      %
-      % ticks
-      %
-      % xtick={}, xticklabels={},
-      % ytick={}, yticklabels={},
-      ticklabel style={font=\footnotesize},
-      %
-      % grid
-      % none, major, minor, both
-      grid=none, grid style={gray!20},
-      % minor tick num=1, 
-      % minor grid style={gray!20},
-      % 
-      % plot parameters
-      %
-      smooth, samples=100, no markers,
-      ]
-      % \usepackage{pgfplots}
-      % \pgfplotsset{compat=newest, trig format=rad} 
-      % \pgfplotsset{label style={font=\footnotesize}}
-      \addplot[domain=0:1] {sin(x*4*pi)/2 - 1/2};
-    \end{axis}
-  \end{tikzpicture}
-\end{example}
-
-What if a computer is not available to create a phase-line plot? We can use qualitative analysis to identify equilibria and their stability.
-
-\begin{example}
-  Find equilibria of \(u'(t) = u(t) ( 2 - u(t) )^{2} (3 - u(t)/2)\) and their stability.
-
-  \blanklines{30}
-
-  Evaluate \(\lim_{t \to \infty} u(t)\) given \(u(0) = 5\).  Hint: What did we do in \faStar{} on page \pageref{eq:diff-eq-logistic-equation-equilibria}.
-  \blanklines{15}
-\end{example}
 \clearpage
+
 
 \begin{example}
   Find the long-term behaviour of the initial-value problem 
   \[
     u'(t) = (u(t) - 3) (2u(t) - 1) (u(t) - 5) \quad\text{and}\quad u(1) = 4.
   \]
-  \blanklines{15}
+  \blanklines{10}
 \end{example}
 
 
 \begin{example}
-  Evaluate \(\lim_{t \to \infty} u(t)\) given
+  A population \(N(t)\) is modelled by 
   \[
-    N'(t) = (N(t) + 1)^{2} (N(t) - 2) (N(t) - 3) \quad\text{and}\quad u(500) = 1.5.
+    N'(t) = N(t)^{2} + N(t) - 6 \quad\text{and}\quad u(500) = 2.99.
   \]
-  \blanklines{15}
+  Predict the number to which the population approaches after a long time.
+  \blanklines{10}
 \end{example}
 
+\begin{example}
+  Consider the following phase-line plot of an autonomous differential equation.  Identify its equilibria and their stability and fill in the blanks with suitable inequalities.
+  \begin{itemize}
+    \item If \(\lim_{t \to \infty} u(t) = 3\), then \(\underline{\hspace{1in}} u(\text{0.5}) \underline{\hspace{1in}}\). 
+    \item If \(\lim_{t \to \infty} u(t) = \infty\), then \(\underline{\hspace{1in}} u(\text{3}) \underline{\hspace{1in}}\). 
+    \item If \(\lim_{t \to \infty} u(t) = -\infty\), then \(\underline{\hspace{1in}}  u(\text{4})  \underline{\hspace{1in}}\). 
+  \end{itemize}
+
+  \includegraphics{../standalones/build/plot-phase-lines-example2}
+\end{example}
+
+
+\clearpage
 \begin{example}
   Consider the differential equation
   \[
     N'(t) = (N(t) - 1) (N(t) - 3) (N(t) - 20)^{3}.
   \]
 
-  Which of the following initial value leads to \(\lim_{t \to \infty} u(t) = 3\)?
+  Which of the following initial values lead to \(\lim_{t \to \infty} u(t) = 3\)? In other words, the question asks that if \(u(t)\) is a solution to the differential equation, which initial condition \(u(t)\) must satisfy so that \(\lim_{t \to \infty} u(t) = 3\)?
+
+  There are multiple correct answers.
   \begin{enumerate}[label=(\alph*)]
     \item \(u(0) = 19\)
     \item \(u(-1) = 21\)
-    \item \(u(3) = -1\)
+    \item \(u(3) = 0.9\)
     \item \(u(5) = 1.1\)
+    \item \(u(2000) = 2.5\)
   \end{enumerate}
 \end{example}
 
-\begin{example}[generate your own exam problem]
-  Pick at most \(5\) numbers \(a_{1}, a_{2}, a_{3}, a_{4}, a_{5}\). Duplicates are okay.
+\bigskip
+The next exercise asks you to combine stability analysis and your knowledge from Calculus 1000 to deduce phase-line plots of near an equilibrium that is neither stable nor unstable. For hints, see page 67 of the textbook.
 
-  Consider the differential equation
-  \[
-    u' = (u - a_{1}) (u - a_{2})(u - a_{3})(u - a_{4})(u - a_{5}).
-  \]
+\begin{example}
+  In the plots below, sketch the phase-line plots of four differential equations such that \(g'(\bar{u}) = 0\), but two are stable, and two are neither stable nor unstable.
 
-  Randomly pick a number \(u_{0}\) between \(a_{1}\) and \(a_{5}\).  Ask yourself the following question:
-  \begin{enumerate}
-    \item What are the equilibria of the differential equation?
-    \item What is the long-term behaviour of the solution that satisfies \(u(0) = u_{0}\)?
-    \item Plot the phase-line graph to confirm your answer.
-  \end{enumerate}
+  \begin{center}
+    \includegraphics{../standalones/build/plot-phase-lines-stability}
+    \quad
+    \includegraphics{../standalones/build/plot-phase-lines-stability}
+    \quad
+    \includegraphics{../standalones/build/plot-phase-lines-stability}
+    \quad
+    \includegraphics{../standalones/build/plot-phase-lines-stability}
+  \end{center}
 \end{example}
+
 \end{document}

@@ -8,19 +8,19 @@
   \begin{axis}[
     height=4in,
     axis lines = middle, % boxed, middle
-    axis on top,
+    % axis on top,
     axis equal image,
     %
     % domain and range
     %
     % xmin={}, xmax={},
     % ymin={}, ymax={},
-    % enlargelimits=true,
+    enlargelimits=true,
     %
     % axis labels
     %
-    xlabel={\(t\)}, xlabel style={anchor=west},
-    ylabel={\(N\)}, ylabel style={anchor=south},
+    xlabel={\(u\)}, xlabel style={anchor=west},
+    ylabel={\(u'\)}, ylabel style={anchor=south},
     label style={at={(ticklabel* cs:1)}},
     %
     % ticks
@@ -31,28 +31,24 @@
     %
     % grid
     % none, major, minor, both
-    grid=none, grid style={gray!20},
+    grid=major, grid style={gray!20},
     % minor tick num=1, 
     % minor grid style={gray!20},
     % 
     % plot parameters
     %
     smooth, samples=100, no markers,
-    domain=0:3,
-    xtick={\empty}, 
-    ytick={1}, yticklabel={\(K\)},
-    extra x ticks={0},
-    extra y ticks={0}, extra y tick labels={\(0\)},
-    ymax=1.5,
+    % xtick={}, xticklabel={},
+    % ytick={}, yticklabel={}
     ]
 
-    \foreach \p in {0.1, 0.4, ..., 0.9} {
-      \addplot[main, thick] {1 / ( 1 + ( (1 -  \p) /  \p ) * exp( -x ) )};
-    }
-    \foreach \p in {1.1, 1.25, 1.5} {
-      \addplot[supp, thick] {1 / ( 1 + ( (1 -  \p) /  \p ) * exp( -x ) )};
-    }
-    \addplot[dashed] {1};
+    % \foreach \p in {0.1, 0.2, ..., 0.9} {
+    %   \addplot[main, thick] {1 / ( 1 + ( (1 -  \p) /  \p ) * exp( -x ) )};
+    % }
+    % \foreach \p in {1.1, 1.2, ..., 1.5} {
+    %   \addplot[supp, thick] {1 / ( 1 + ( (1 -  \p) /  \p ) * exp( -x ) )};
+    % }
+    \addplot[very thick, domain=-0.2:3.2] {x*(x-1)*(2-x)^2*(1-x/3)};
   \end{axis}
 \end{tikzpicture}
 \end{document}
