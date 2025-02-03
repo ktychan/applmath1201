@@ -2,22 +2,94 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Conditional Probability}
 
-\begin{objective}
-  \begin{enumerate}
-    \item calculate the probability of an event \(E\) given that another event \(F\) has already occurred,
-    \item apply the \hlmain{weak law of large numbers},
-    \item understand \hlmain{mutually exclusive and exhaustive} events,
-    \item apply \hlmain{the law of total probability}
-    \item understand \hlmain{conditional independence} 
-  \end{enumerate}
-\end{objective}
+We now consider probability of an event \hlmain{given} that another event has already happened.   We consider a concrete example from the first principle to motivate the formula associated to conditional probability.
 
-Let \(E,F\) be two events in a sample space \(\Omega\). The probability of \hlmain{\(F\) occurring given \(E\)} has already occurred is defined to be
-\[
-  \mathbb{P}(F \mid E) = \frac{\mathbb{P}(F \cap E)}{\mathbb{P}(E)}.
-\]
+\begin{example} \label{ex:probability-conditional-motivation}
+  Let \(\Omega = \{1,2,3,4,5,6\}\) be the sample space of six people.  It is known that 
+  \begin{itemize}
+    \item \(1,2,3,4\) like ketchup flavoured chips,
+    \item \(5,6\) like barbecue flavoured chips,
+    \item \(1,3,5\) like coffee, and
+    \item \(2,4,6\) like tea.
+  \end{itemize}
+
+  What is the probability of \emph{randomly} selecting someone who like coffee \emph{given} that we know they like ketchup chips?
+
+  \blanklines{15}
+\end{example}
+
+\begin{definition}[conditional probability]
+  Suppose \(E,F\) are events inside a common sample space \(\Omega\).  The probability of \hlmain{\(E\) given \(F\)} is the probability of \(E \cap F\) inside the smaller sample space \(F\) and
+  \[
+    \mathbb{P}( E \mid F ) = \frac{\mathbb{P}(E \cap F)}{\mathbb{P}(F)}.
+  \]
+
+  The probability \(\mathbb{P}( E \mid F )\) is called a \hlmain{conditional probability} because it represents the probability of the event \(E\) under the condition that \(F\) has already happened.
+\end{definition}
 
 \begin{example}
-  Let \(E,F\) be two events in a sample space \(\Omega\). If \(E,F\) are independent events, does that mean \(E\) and \(F\) are mutually exclusive?
+  Express the probability in Example~\ref{ex:probability-conditional-motivation} in symbols.
+  \blanklines{5}
 \end{example}
+\clearpage
+
+
+\begin{example}
+  Suppose we wish to calculate the probability of a person catching a cold given they 
+\end{example}
+
+\begin{example}
+  Suppose the probability of having green eyes is \(10\%\), brown hair \(50\%\), and both green eyes and brow hair \(9\%\). What is the probability of having brown hair given that one has green eyes?
+\end{example}
+
+We have to be careful to distinguish conditional probability from conjunctions. 
+\begin{example}
+  Let \(\Omega = \{1,2,\ldots,10\}\) be the sample space.  Let \(E\) be the subset of even numbers. Let \(O\) be the subset of odd numbers.  Calculate the following probabilities.
+
+  \begin{enumerate}[wide]
+    \item The probability of randomly choosing an even number less than \(8\).
+      \blanklines{10}
+    \item The probability of randomly choosing an even number given that the number is less than \(8\).
+      \blanklines{10}
+  \end{enumerate}
+\end{example}
+
+We introduce the law of total probability mathematically. Now we turn to conditional probability and mutually and exhaustive events. 
+\blanklines{20}
+
+\begin{definition}[law of total probability]
+  The \hlmain{law of total probability} is
+  \[
+    \mathbb{P}(A) = \mathbb{P}(A \mid B_{1}) \mathbb{P}(B_{1}) + \mathbb{P}(A \mid B_{2}) \mathbb{P}(B_{2}) + \cdots \mathbb{P}(A \mid B_{n}) \mathbb{P}(B_{n}),
+  \]
+  given that \(A\) is an event in the sample space \(\Omega\) partitioned by \(B_{1},\ldots,B_{n}\).
+\end{definition}
+
+\begin{definition}[independent events]
+  Two events \(E,F\) in a common sample space are said to be \hlmain{independent} if 
+  \[
+    \mathbb{P}(E \cap F) = \mathbb{P}(E) \mathbb{P}(F).
+  \]
+\end{definition}
+
+TODO: Explain independence. 
+
+\begin{example}
+  Let \(\Omega\) be the sample space of outcomes of two coins tosses.  
+\end{example}
+
+\faStar{} If \(E,F\) are independent events, then
+\begin{equation} \label{eq:probability-conditional-of-independent}
+  \mathbb{P}(E \mid F) = \hspace{1.5in}
+  \quad\text{ and }\quad
+  \mathbb{P}(F \mid E) = \hspace{1.5in}
+\end{equation}
+
+\begin{example} 
+  Let \(E,F\) be two events in a sample space \(\Omega\). If \(E,F\) are independent events, does that imply \(E\) and \(F\) are mutually exclusive?  Conversely, if \(E,F\) are mutually exclusive, does that imply \(E\) and \(F\) are independent?
+
+  \blanklines{10} 
+\end{example}
+
+Mutually exclusive and exhaustive events are particularly useful for computing conditional probabilities.  
 \end{document}
