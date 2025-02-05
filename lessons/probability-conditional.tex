@@ -35,61 +35,34 @@ We now consider probability of an event \hlmain{given} that another event has al
 
 
 \begin{example}
-  Suppose we wish to calculate the probability of a person catching a cold given they 
+  Suppose the probability of having green eyes is \(10\%\), the probability of having brown hair is \(75\%\), and the probability of having both green eyes and brown hair is \(9\%\), what is the probability of having brown hair given that you have green eyes?
+  
+  {\footnotesize Reference. Exercise P3.2 of \emph{A Biologist's Guide to Mathematical Modeling in Ecology and Evolution} by Otto and Day.}
+
+  \blanklines{5}
+\end{example}
+
+It takes a little bit of practice to detect conditional probability from natural language.
+\begin{example}
+  A ball pit contains balls labelled \(1\) and \(2\), some are black and some are white.  \(13\%\) of the balls are black and labelled \(1\), \(25\%\) black and labelled \(2\), \(10\%\) white and labelled \(1\), and the rest are white and labelled \(2\).
+
+  What is the probability of randomly picking a white one from the balls labelled \(2\)?
+  \blanklines{5}
 \end{example}
 
 \begin{example}
-  Suppose the probability of having green eyes is \(10\%\), brown hair \(50\%\), and both green eyes and brow hair \(9\%\). What is the probability of having brown hair given that one has green eyes?
+  A clothing store is stocked with \(95\) T-shirts, \(25\) jackets, \(15\) dress pants, \(40\) sweat pants and \(100\) socks. What is the probability that a randomly selected pair of pants is a pair of sweat pants?
+  \blanklines{10}
 \end{example}
-
-We have to be careful to distinguish conditional probability from conjunctions. 
-\begin{example}
-  Let \(\Omega = \{1,2,\ldots,10\}\) be the sample space.  Let \(E\) be the subset of even numbers. Let \(O\) be the subset of odd numbers.  Calculate the following probabilities.
-
-  \begin{enumerate}[wide]
-    \item The probability of randomly choosing an even number less than \(8\).
-      \blanklines{10}
-    \item The probability of randomly choosing an even number given that the number is less than \(8\).
-      \blanklines{10}
-  \end{enumerate}
-\end{example}
-
-We introduce the law of total probability mathematically. Now we turn to conditional probability and mutually and exhaustive events. 
-\blanklines{20}
-
-\begin{definition}[law of total probability]
-  The \hlmain{law of total probability} is
-  \[
-    \mathbb{P}(A) = \mathbb{P}(A \mid B_{1}) \mathbb{P}(B_{1}) + \mathbb{P}(A \mid B_{2}) \mathbb{P}(B_{2}) + \cdots \mathbb{P}(A \mid B_{n}) \mathbb{P}(B_{n}),
-  \]
-  given that \(A\) is an event in the sample space \(\Omega\) partitioned by \(B_{1},\ldots,B_{n}\).
-\end{definition}
-
-\begin{definition}[independent events]
-  Two events \(E,F\) in a common sample space are said to be \hlmain{independent} if 
-  \[
-    \mathbb{P}(E \cap F) = \mathbb{P}(E) \mathbb{P}(F).
-  \]
-\end{definition}
-
-TODO: Explain independence. 
 
 \begin{example}
-  Let \(\Omega\) be the sample space of outcomes of two coins tosses.  
+  Suppose \(\mathbb{P}(E) = 0.2\), \(\mathbb{P}(F) = 0.5\) and \(\mathbb{P}(E \mid F) = 0.25\). Calculate \(\mathbb{P}(E \cap F)\).
+  \blanklines{5}
 \end{example}
 
-\faStar{} If \(E,F\) are independent events, then
-\begin{equation} \label{eq:probability-conditional-of-independent}
-  \mathbb{P}(E \mid F) = \hspace{1.5in}
-  \quad\text{ and }\quad
-  \mathbb{P}(F \mid E) = \hspace{1.5in}
-\end{equation}
-
-\begin{example} 
-  Let \(E,F\) be two events in a sample space \(\Omega\). If \(E,F\) are independent events, does that imply \(E\) and \(F\) are mutually exclusive?  Conversely, if \(E,F\) are mutually exclusive, does that imply \(E\) and \(F\) are independent?
-
-  \blanklines{10} 
+\begin{example}
+  Suppose \(\mathbb{P}(E \cup F) = 0.9\), \(\mathbb{P}(E) = 0.7\), \(\mathbb{P}(E \cap F) = 0.5\). Calculate \(\mathbb{P}(E \mid F)\).
+  \blanklines{5}
 \end{example}
 
-Mutually exclusive and exhaustive events are particularly useful for computing conditional probabilities.  
 \end{document}

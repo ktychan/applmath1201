@@ -2,10 +2,86 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Errors and probability}
 
-In many medical testing, we need to consider errors \hlmain{with respect to} an initial (educated) guess called a \hlmain{null hypothesis}.
+Everyday science uses tests to infer truth. However, tests can be wrong. Naturally, we want to know \emph{how likely is a test wrong and in what way}? We introduce types I and II errors.
+
+\begin{definition}\label{def:errors}
+  Suppose a test returns \emph{either} positive \emph{or} negative on a certain medical or biological condition. 
+
+  Each test has four possible results.
+  \begin{itemize}
+    \item If a test returns negative \faThumbsDown[regular]{} \emph{given} that the condition is not present \faTimes{}, then the test result is called a \hlmain{true negative}.
+
+    \item If a test returns positive \faThumbsUp[regular]{} \emph{given} that the condition is not present \faTimes{}, then the test result is called a \hlmain{false positive}, and the test admits a \hlmain{type-I error}.
+
+    \item If a test returns positive \faThumbsUp[regular]{} \emph{given} that the condition is present \faCheck{}, then the test result is called a \hlmain{true positive}.
+
+    \item If a test returns negative \faThumbsDown[regular]{} \emph{given} that the condition is present \faCheck{}, then the test result is called a \hlmain{false negative}, and the test admits a \hlmain{type-II error}.
+  \end{itemize}
+
+  Four associated probabilities are defined.% on the sample space of tested individuals.
+  \begin{displaymath}
+    \begin{array}{ccccc}
+      \text{specificity} &=& \mathbb{P}(\text{true negatives}) &=& \underline{\hspace{2.5in}} \\[3ex]
+      \mathbb{P}(\text{type-I errors}) &=& \mathbb{P}(\text{false positives}) &=& \underline{\hspace{2.5in}} \\[3ex]
+      \text{sensitivity} &=& \mathbb{P}(\text{true positives}) &=& \underline{\hspace{2.5in}} \\[3ex]
+      \mathbb{P}(\text{type-II errors}) &=& \mathbb{P}(\text{false negatives}) &=& \underline{\hspace{2.5in}} \\[3ex]
+    \end{array}
+  \end{displaymath}
+\end{definition}
+
+Let's try to get a feel for the above definition.
+\begin{example}
+  If we were to choose a test to screen for migraine, do we want its specificity to be high or low? How about sensitivity?
+  \blanklines{15}
+\end{example}
+\clearpage
 
 \begin{example}
-  A null hypothesis must be a statement whose truth can be (potentially) verified experimentally.
+  In a town of \(2,000\) people, a clinic tested \(10\) people for pregnancy, and \(7\) were actually pregnant (confirmed two months later by ultrasounds).  Out of the \(3\) people who were not pregnant, \(2\) tested negative, and \(1\) received a positive test result.  The total number of people who tested positive was \(6\). Calculate all four probabilities above.
+  \blanklines{15}
 \end{example}
 
+\faStar{} The four probabilities in Definition~\ref{def:errors} come in pairs.  Study their definitions and deduce how they should be paired up. Which of the following equations are true?
+
+\begin{itemize}[wide]
+  \item \(\mathbb{P}(\text{true positives}) + \mathbb{P}(\text{true negatives}) = 1\)
+  \item \(\mathbb{P}(\text{true positives}) + \mathbb{P}(\text{false negatives}) = 1\)
+  \item \(\mathbb{P}(\text{false positives}) + \mathbb{P}(\text{true negatives}) = 1\)
+  \item \(\mathbb{P}(\text{false positives}) + \mathbb{P}(\text{false negatives}) = 1\)
+\end{itemize}
+\blanklines{25}
+\clearpage
+
+Let's practise using the above relations to calculate probabilities.
+\begin{example}
+  Suppose a cutting-edge test can predict whether one is a morning person. The test has sensitivity of \(80\%\) and specificity of \(90\%\). 
+
+  Apply the tests to a class of \(240\) students in which the prevalence of being a morning person is \(40\%\).  How many true negatives are expected? False positives? True positives? False negatives?
+  \blanklines{40}
+\end{example}
+\clearpage
+
+
+How can we figure out the sensitivity and specificity of a test? We appeal to the \emph{weak law of large numbers} which says that, under suitable\footnote{We are not required to know what assumptions count as suitable.} assumptions, we can estimate the probability of an event using repeated trials as follows
+\[
+  \mathbb{P}(E) \approx \frac{\text{number of times \(E\) occurs}}{\text{number of repetitions}}.
+\]
+Note that the event \(E\) on the right-hand side should be interpreted as an \emph{instance} of that event. 
+
+\begin{example}
+  Estimate the probability of drawing a heart from a deck of \(52\) playing cards.
+  \blanklines{5}
+\end{example}
+
+\begin{example}
+  Dr. Wurst developed a test for the age-old debate: \emph{Is a hotdog a sandwich?}
+
+  The intense research effort went something like this on a slightly snowy Tuesday lunch time. Sandwich and chips usual go together. If one ever eats a hot dog and chips on the same day, then one probably believes a hot dog is a sandwich. 
+
+  The test returns positive if you ever had a hot dot and chips on the same day. 
+
+  Using the class' data, calculate the sensitivity and specificity of the test.
+
+  \blanklines{25}
+\end{example}
 \end{document}

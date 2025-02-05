@@ -2,32 +2,21 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Probability}
 
-% Introduce random variables as data recording devices.
-
 Probability gives us a computable language to describe anything with natural uncertainty, such as the effectiveness of a treatment.
 
-\begin{definition}[sample spaces and outcomes]
-  A \hlmain{sample space} is a set, typically denoted as \(\Omega\).  An element of \(\Omega\) is called an \hlmain{outcome}.  
+\begin{definition}[sample spaces, outcomes and events]
+  A \hlmain{sample space} is a set, typically denoted as \(\Omega\).  An element of \(\Omega\) is called an \hlmain{outcome}.   In other words, the sample space consists of all possible outcomes (of an experiment).
 
-  In other words, the sample space consists of all possible outcomes (of an experiment).
-\end{definition}
-
-\begin{example} \label{ex:probability-die-1}
-  Suppose we perform an experiment by rolling a six-sided die \emph{once}.  The outcomes (plural!) of this experiment are \underline{\hspace{2in}}.  The sample space (singular!) of this experiment is \underline{\hspace{2in}}.
-\end{example}
-
-Sometimes, we don't care about a particular outcome but a bunch outcomes together. Instead of saying a bunch of outcomes, we use the fancy term \emph{events}.
-
-\begin{definition}[events]
   An \hlmain{event} in a sample space \(\Omega\) is a subset of \(\Omega\).  Intuitive, an event is a bunch of outcomes, and an event contains outcomes.
-
-  \faExclamationTriangle{} It \emph{does not make sense} to think about an event without its enclosing sample space.
 \end{definition}
 In probability, the word \emph{event} should be understood in the same sense as ``\emph{in the event of...}.'' Saying that \(E\) is an event \emph{does not} mean such an event has already happened.
 
-\begin{example} \label{ex:probability-die-2}
-  Continue from Example~\ref{ex:probability-die-1}.  Describe the event that a die-roll is even.
-  \blanklines{5}
+\blanklines{5}
+
+\begin{example} \label{ex:probability-die-1}
+  Suppose we perform an experiment by rolling a six-sided die \emph{once}.  Describe the outcomes, the sample space and the event of rolling an even number. 
+
+  \blanklines{10}
 \end{example}
 
 Events and their sample space \emph{together} give us the language of probability.
@@ -50,10 +39,8 @@ A probability is a number \underline{\hspace{3in}}. To calculate a probability f
   \blanklines{15}
 \end{example}
 
-
-\faStar{} Equation~\eqref{eq:probability} tells us that calculating a probability from the first principle is essentially a counting problem. Less obvious is that counting can get rather challenging. In \thecoursesubject~\thecoursenumb, we will try to avoid the first principle approach to probability whenever possible and use relations among events to calculate probabilities of events by relating them to probabilities of known events.
-
-We recall set operations. Given two events \(E,F\) in a sample space \(\Omega\), define
+Equation~\eqref{eq:probability} tells us that calculating a probability from the first principle is essentially a counting problem. The language of sets come in handy. % Less obvious is that counting can get rather challenging. In \thecoursesubject~\thecoursenumb, we will try to avoid the first principle approach to probability whenever possible and use relations among events to calculate probabilities of events by relating them to probabilities of known events.
+Given two events \(E,F\) in a sample space \(\Omega\), define
 \[
   E \cap F = \{\text{ outcomes in \(E\) and in \(F\) } \} \quad\text{and}\quad
   E \cup F = \{\text{ outcomes in \(E\) or in \(F\) } \}.
@@ -70,95 +57,152 @@ We recall set operations. Given two events \(E,F\) in a sample space \(\Omega\),
   \mathbb{P}( E \cup F ) = \hspace{4in}
 \end{align}
 
-Denote \(E^{c} = \{ \text{ outcomes in \(\Omega\) but not in \(E\) } \}\). Equation~\eqref{eq:probability-cup-cap} becomes
+Denote \(E^{c} = \{ \text{ outcomes in \(\Omega\) but not in \(E\) } \}\). Apply Equation~\eqref{eq:probability-cup-cap} with \(F = E^{c}\) to get
 \begin{align} \label{eq:probability-comp}
   \mathbb{P}( E^{c} ) = \hspace{4in}
 \end{align}
 \blanklines{5}
 \clearpage
 
-It is often natural to assign every outcome in a sample space to exactly one event. The probability lingo is \emph{mutually exclusive} and \emph{mutually exclusive and exhaustive}.
-
-\begin{definition}[mutually exclusive and exhaustive]
-  Two events \(E, F\) in a sample space \(\Omega\) are \hlmain{mutually exclusive} if \(E \cap F\) is empty. 
-
-  A bunch events \(E_{1}, \ldots, E_{n}\) in a sample space \(\Omega\) are \hlmain{mutually exclusive and exhaustive} if \hlattn{every} outcome in \(\Omega\) belongs to \hlattn{exactly one} of these events, no outcome is left behind and no outcome outside of the sample space is included. The precise relations are
-  \[
-    \Omega = E_{1} \cup \cdots \cup E_{n} \quad\text{ and }\quad E_{i} \cap E_{j} = \emptyset \text{ for all } i \ne j. 
-  \]
-\end{definition}
-\blanklines{8}
-
-\faStar{} In real-life applications, \emph{mutually exclusive and exhaustive} events capture groupings by non-overlapping characteristics within the sample space.
-
+Let's practise using probability formulas and/or Venn diagrams to calculate probability.
 \begin{example}
-  Typical mutually exclusive and exhaustive events in medical science is grouping by age.  
+  Suppose the sample space is \(\Omega = \{1,2,\ldots,10\}\).  Let \(E = \{1,3,5\}\) and \(F = \{2,7,3,4\}\). Find the probability \(\mathbb{P}( (E \cap F) \cup (E \cap F^{c})) \).
+  \blanklines{10}
 \end{example}
 
 \begin{example}
-  The next Ontario election is on February 27, 2025 (\url{https://www.elections.on.ca}). Let \(\Omega\) be Ontario voters. Which of the following describe mutually exclusive and exhaustive events for \(\Omega\)?
-
-  \begin{enumerate}[label=(\alph*)]
-    \item \(\{ \text{ under 21 }\}, \{ \text{ university students } \}, \{ \text{ everybody else } \}\)
-    \item \(\{ \text{ born in ON }\}, \{ \text{ born in QC } \}, \{ \text{ born elsewhere in Canada }\}, \{ \text{ born outside of Canada }\} \)
-    \item \(\{ \text{ no high school diploma } \}, \{ \text{ has high school diploma } \}, \{ \text{ has a university degree } \}\) 
-    \item \(\{ \text{ MB residents } \}, \{ \text{ ON residents } \}, \{ \text{ QC residents }\}, \{ \text{ everybody else }\}\) 
-  \end{enumerate}
+  Suppose the sample space is \(\Omega = \{1,2,3,4,5\}\).  Let \(E = \{2,5\}\), \(F = \{1,2,3\}\) and \(G = \{2,4\}\). Find the probability \(\mathbb{P}( (E \cap G^{c}) \cap \{ F^{c} \cup E^{c} \}) \).
+  \blanklines{10}
 \end{example}
 
 \begin{example}
-  Let \(\Omega\) be a sample space of candies.  An intern proposes events \(E_{1}, E_{2}, E_{3}\) and noticed that all candies are in at least one of the events.  Moreover, no candy belongs to all three events.  
+  Suppose \(\mathbb{P}(E) = 0.6\), \(\mathbb{P}(F) = 0.45\) and \(\mathbb{P}(E \cap F) = 0.4\). Calculate \(\mathbb{P}( (E \cup F)^{c})\).
+  \blanklines{10}
+\end{example}
 
-  Has the intern provided enough evidence that \(E_{1}, E_{2}, E_{3}\) are mutually exclusive and exhaustive?
+\begin{example}
+  Consider events \(E\) and \(F\) inside some sample space. Given \(\mathbb{P}(E) = 0.5\), \(\mathbb{P}(F^{c}) = 0.8\), \(\mathbb{P}(E \cap F) = 0.05\). Find the probability of \(\mathbb{P}(E \cup F^{c})\).
+  \blanklines{10}
+\end{example}
+\clearpage
+
+Here are some more exercises.
+\begin{example}
+  Toss a coin and roll a four-sided die labelled \(1,2,3,4\).  Find the probability of getting a tail and an even number.
 
   \blanklines{10}
 \end{example}
 
 \begin{example}
-  Let \(\Omega = \{1,2,3,4,5,6\}\) be the sample space. Which two of the following events are mutually exclusive?
+  You randomly draw two numbers from \(\{1,2,3,4,5\}\). What is the probability that the sum is at least \(3\)?
+
+  \blanklines{10}
+\end{example}
+
+\begin{example}
+  Allele are variants of genes that determine traits.  A gene that determine eye colour might have an allele for brown eyes and an allele for blue eyes.  
+
+  Suppose for a particular trait, an organism can inherits \(0,1,2\) allele from its mother and \(0\) or \(1\) alleles from its father, what is the probability that the organism inherits \(2\) alleles?
+
+  \blanklines{10}
+\end{example}
+\clearpage
+
+% We can calculate probability of a sequence of outcomes using a tree (branching) diagram.  It is easier to describe this though an example. 
+%
+% \begin{example}
+%   Let's roll a four-sided die and then toss a coin.  Find the probability of getting a \(3\) and a tail.
+%
+%   \blanklines{10}
+% \end{example}
+%
+% \begin{example}
+%   Toss a coin three times in a row.  Find the probability of getting two heads and one tail in any order. 
+%
+%   \blanklines{10}
+% \end{example}
+%
+% \begin{example}
+%   Toss a coin, roll a four-sided die, then toss a coin again. What is the probability of getting \(2\) tails and a \(1\) in any order?
+%
+%   \blanklines{10}
+% \end{example}
+% \clearpage
+%
+% Tree (branching) diagrams nicely capture of the probabilities of gene mutations. 
+% \begin{example}
+%   The sex of a bee is determined by the number of chromosomes an individual possesses. Diploids are cells that carry two sets of genes, one from each parent. In contrast, haploids only carry one set of chromosome from their mother.
+%
+%   Female bees are diploids.   Male bees are haploids.
+%
+%   What is the probability that an allele currently carried by a male bee descended from a male exactly \(2\) generations ago?
+%
+%   \blanklines{40}
+% \end{example}
+% \clearpage
+
+It is often natural to assign every outcome in a sample space to exactly one event. The probability lingo is \emph{mutually exclusive} and \emph{mutually exclusive and exhaustive}. In real-life applications, \emph{mutually exclusive and exhaustive} events capture groupings by non-overlapping characteristics within the sample space.
+
+\begin{definition}[mutually exclusive and exhaustive]
+  Two events \(E, F\) in a sample space \(\Omega\) are \hlmain{mutually exclusive} if \(E \cap F\) is empty. 
+
+  Events \(E_{1}, \ldots, E_{n}\) in a sample space \(\Omega\) are \hlmain{mutually exclusive and exhaustive} if \hlattn{every} outcome in \(\Omega\) belongs to \hlattn{exactly one} of these events, no outcome is left behind and no outcome outside of the sample space is included. The precise relations are
+  \[
+    \Omega = E_{1} \cup \cdots \cup E_{n} \quad\text{ and }\quad E_{i} \cap E_{j} = \emptyset \text{ for all } i \ne j. 
+  \]
+\end{definition}
+\blanklines{15}
+
+
+% \begin{example}
+%   The next Ontario election is on February 27, 2025 (\url{https://www.elections.on.ca}). Let \(\Omega\) be Ontario voters. Which of the following describe mutually exclusive and exhaustive events for \(\Omega\)?
+%
+%   \begin{enumerate}[label=(\alph*)]
+%     \item \(\{ \text{ under 21 }\}, \{ \text{ university students } \}, \{ \text{ everybody else } \}\)
+%     \item \(\{ \text{ born in ON }\}, \{ \text{ born in QC } \}, \{ \text{ born elsewhere in Canada }\}, \{ \text{ born outside of Canada }\} \)
+%     \item \(\{ \text{ no high school diploma } \}, \{ \text{ has high school diploma } \}, \{ \text{ has a university degree } \}\) 
+%     \item \(\{ \text{ MB residents } \}, \{ \text{ ON residents } \}, \{ \text{ QC residents }\}, \{ \text{ everybody else }\}\) 
+%   \end{enumerate}
+% \end{example}
+
+\begin{example}
+  Let \(\Omega = \{1,2,3,4,5,6\}\) be the sample space. Which of the following events are mutually exclusive?
 
   \begin{enumerate}[label=(\alph*)]
-    \item \(E_{1} = \{1,2,5\}\)
+    \item \(E_{1} = \{2,5\}\)
     \item \(E_{2} = \{3,2\}\)
     \item \(E_{3} = \{6,3\}\)
     \item \(E_{4} = \{2,3,5,6\}\)
+    \item \(E_{5} = \{1\}\)
   \end{enumerate}
 \end{example}
 
+
 \begin{example}
-  Let \(\Omega = \{1,2,,\ldots,10\}\) be the sample space. Find all sets that are mutually exclusive with each other.
+  Let \(\Omega = \{1,2,,\ldots,10\}\) be the sample space. Which events together are mutually exclusive and exhaustive?
 
   \begin{enumerate}[label=(\alph*)]
-    \item \(E_{1} = \{1,2,5\}\)
-    \item \(E_{2} = \{3,2\}\)
-    \item \(E_{3} = \{6,3\}\)
-    \item \(E_{4} = \{2,3,5,6\}\)
+    \item \(E_{1} = \{1,3,5\}\)
+    \item \(E_{2} = \{8,9\}\)
+    \item \(E_{3} = \{3,7\}\)
+    \item \(E_{4} = \{4,10\}\)
+    \item \(E_{5} = \{2,6,7\}\)
   \end{enumerate}
 \end{example}
 
-\begin{example}
-  In all above examples, the sample space is explicitly given. However, real-life probability arguments are often quite vague. Validating a probability argument requires one to explicitly identify the sample space and the event.  
 
-  \begin{quote}
-    What is the probability of winning a lottery? Obviously \(50\%\). You either win or lose!
-  \end{quote}
-
-  Does the above argument make sense? 
-\end{example}
-
-\begin{example}
-  Let the interval \(\Omega = [0,1]\) be the sample space.  Which of the following events are mutually exclusive and exhaustive?
-
-  \begin{enumerate}[label=(\alph*)]
-    \item \(\{\text{ all rational numbers in \(\Omega\) } \}\) and \(\{\text{ all irrational numbers in \(\Omega\) } \}\)
-    \item \(\left\{1, \frac{1}{2},  \frac{1}{3} , \frac{1}{4} , \frac{1}{5} , \ldots\right\}, \left\{2, \frac{2}{2} , \frac{2}{3} , \frac{2}{4} , \frac{2}{5} , \frac{2}{6} , \ldots\right\}, \left\{3, \frac{3}{3} , \frac{3}{4} , \frac{3}{5} , \ldots\right\}, \ldots\)
-    \item \(E_{3} = \{6,3\}\)
-    \item \(E_{4} = \{2,3,5,6\}\)
-  \end{enumerate}
-\end{example}
+% \begin{example}
+%   Let the interval \(\Omega = [0,1]\) be the sample space.  Which of the following events are mutually exclusive and exhaustive?
+%
+%   \begin{enumerate}[label=(\alph*)]
+%     \item \(\{\text{ all rational numbers in \(\Omega\) } \}\) and \(\{\text{ all irrational numbers in \(\Omega\) } \}\)
+%     \item \(E_{1} = [0,1/2), \quad E_{2} = [1/2, 3/4], \quad E_{3} = [3/4,1), \quad E_{4} = \{1\}\).
+%   \end{enumerate}
+% \end{example}
+\clearpage
 
 \begin{example}
-  Assume \(E_{1}, E_{2}\) are events in a sample space \(\Omega\).  Which of the followings \emph{together} confirms that \(E_{1}, E_{2}\) are mutually exclusive and exhaustive. 
+  Assume \(E_{1}, E_{2}\) are events in a sample space \(\Omega\).  Which of the followings \emph{together} imply that \(E_{1}, E_{2}\) are mutually exclusive and exhaustive. 
   \begin{enumerate}[label=(\alph*)]
     \item \(\mathbb{P}(E_{1} \cap E_{2}) = 0\).
     \item \(\mathbb{P}(E_{1} \cap E_{2}) = \mathbb{P}(E_{1}) + \mathbb{P}(E_{2})\).
@@ -166,14 +210,24 @@ It is often natural to assign every outcome in a sample space to exactly one eve
     \item \(\mathbb{P}(E_{1} \cup E_{2}) = 0\).
     \item \(\mathbb{P}(E_{1} \cup E_{2}) = 1\).
   \end{enumerate}
+  \blanklines{5}
 \end{example}
-\blanklines{5}
 
 
-\faExclamationTriangle{} When there are three or more events, checking
-\[
-  \mathbb{P}(E_{1} \cup \cdots \cup E_{n}) = 1 \quad\text{and}\quad \mathbb{P}(E_{1} \cap \cdots \cap E_{n}) = 0
-\]
-is NOT ENOUGH to guarantee \(E_{1}, \ldots, E_{n}\) are mutually exclusive and exhaustive.
+\begin{example}[a common mistake]
+  Let \(\Omega = \{1,\ldots,10\}\) be a sample space.  An intern observes the following. Events \(E_{1}, E_{2}, E_{2}\) have no outcomes in common and every outcome in the sample space is in at least one of the events. Express the intern's observation using set operations.
+  \blanklines{5}
 
+  Describe three sets \(E_{1}, E_{2}, E_{3}\) in the given sample space matching the intern's observation but are not mutually exclusive and exhaustive.  In other words, prove the intern wrong.
+  \blanklines{5}
+
+  When there are three or more events, being able to confirm
+  \[
+    \mathbb{P}(E_{1} \cup \cdots \cup E_{n}) = 1 \quad\text{and}\quad \mathbb{P}(E_{1} \cap \cdots \cap E_{n}) = 0
+  \]
+  is NOT ENOUGH to guarantee \(E_{1}, \ldots, E_{n}\) are mutually exclusive and exhaustive. We must check
+  \[
+    \mathbb{P}(E_{1} \cup \cdots \cup E_{n}) = 1 \quad\text{and}\quad \mathbb{P}(E_{i} \cap E_{j}) = 0 \text{ for all } i \ne j.
+  \]
+\end{example}
 \end{document}
