@@ -14,20 +14,20 @@ If we divide the sample space into mutually exclusive and exhaustive events \(F_
 If we divide the sample space into mutually exclusive and exhaustive events \(F_{1}, F_{2}, F_{3}\) and try to compute \(\mathbb{P}(E)\), then we should get ...
 \blanklines{10}
 
-\faStar{} The law of total probability is the above pattern in full generality. Suppose \(B_{1}, \ldots, B_{n}\) are mutually exclusive and exhaustive events in a sample space \(\Omega\). The \hlmain{law of total probability} is a way to express \(\mathbb{P}(E)\) as 
+\faStar{} The law of total probability is the above pattern in full generality. Suppose \(B_{1}, \ldots, B_{n}\) are mutually exclusive and exhaustive events in a sample space \(\Omega\). The \hlmain{law of total probability} is a way to express \(\mathbb{P}(E)\) as ...
 \blanklines{10}
 \clearpage
 
-Two events are independent if the occurrence of one does not affect the other.
+Intuitively, two events are independent if the occurrence of one does not affect the other.
 
 \begin{definition}[independent events]
   Two events \(E,F\) in a common sample space are said to be \hlmain{independent} if 
-  \[
-    \mathbb{P}(E \cap F) = \mathbb{P}(E) \mathbb{P}(F).
-  \]
+  \begin{equation} 
+    \mathbb{P}(E \cap F) = \mathbb{P}(E) \mathbb{P}(F). 
+  \end{equation}
 \end{definition}
 
-\faStar{} If \(E,F\) are independent events, then
+\faStar{} Events \(E,F\) are independent events if and only if
 \begin{equation} \label{eq:probability-conditional-of-independent}
   \mathbb{P}(E \mid F) = \hspace{1.5in}
   \quad\text{ and }\quad
@@ -38,10 +38,21 @@ Two events are independent if the occurrence of one does not affect the other.
 The above offers several ways to identify independent events.
 \blanklines{10}
 
+\begin{example}
+  Let \(E, F\) be events in a common sample space. Let \(\mathbb{P}(E) = 0.3\), \(\mathbb{P}(B) = 0.2\) and \(\mathbb{P}(A \cap B) = 0.06\). Determine if \(E,F\) are independent.
+  \blanklines{5}
+\end{example}
+
 \begin{example} 
-  Let \(E,F\) be two events in a sample space \(\Omega\). If \(E,F\) are independent events, does that imply \(E\) and \(F\) are mutually exclusive?  Conversely, if \(E,F\) are mutually exclusive, does that imply \(E\) and \(F\) are independent?
+  Let \(E,F\) be two events in a sample space \(\Omega\). If \(E,F\) are independent events and \(\mathbb{P}(E) > 0\), does that imply \(E\) and \(F\) are mutually exclusive?
 
   \blanklines{10} 
+\end{example}
+
+\begin{example}
+  If \(E\) and \(F\) are independent events, does that mean \(E^{c}\) and \(F\) are also independent events?
+
+  \blanklines{5}
 \end{example}
 
 \end{document}

@@ -1,0 +1,118 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+\begin{document} \section{Strategies and more exercises}
+
+We discuss problem-solving strategies.  
+\blanklines{50}
+\clearpage
+
+\begin{example}[\hlmain{organize knowledge by thinking patterns, not wording}] \label{ex:strategy-connection}
+  Compare the problems below.
+
+  From quiz 1 ...
+  \begin{quote}
+    An initial investment of \(3,000\) dollars accrues annually compounded interest at a rate of \(15\%\). At the end of every year the investor can withdraw some fixed dollar amount from the investment. What fixed annual withdrawal would leave the investment worthless after exactly \(15\) years?
+  \end{quote}
+
+  A slightly modification of Example~2 on page 33 of the textbook.
+  \begin{quote}
+    A particular drug is metabolized at a rate of \(10\%\) per hour. Assume the drug is administered at one point in time only, how long will it take for the amount in a patient's body to fall below \(1\%\) of the original dose?
+
+    Metabolism yields an internal rate of change.
+  \end{quote}
+
+  Surprisingly (or maybe not) the same problem-solving strategy works for both problems.  To see this, we throw away details of calculations.
+
+  \blanklines{35}
+\end{example}
+\clearpage
+
+\begin{example}[\hlmain{follow the method, not the numbers}]
+  Compare the following modelling problems. 
+
+  Example~\ref{ex:diff-eq-model-mixing-1}.
+  \begin{quote}
+    A well-mixed tank contains \(10\) L of water with no sodium chloride. At \(t = 0\), a saline solution with concentration \(1/4\) mg per mL flows continuously into the tank at a rate of \(10\) mL per second. The tank leaks at a rate of \(10\) mL per second. 
+
+    Let \(u(t)\) be the mass of sodium chloride in the tank at time \(t\). Develop an initial value problem to which \(u(t)\) is the solution.
+  \end{quote}
+  \blanklines{10}
+
+  A variant of Example~\ref{ex:diff-eq-model-mixing-1}.
+  \begin{quote}
+    A well-mixed tank contains \(10\) L of water with no sodium chloride. At \(t = 0\), a saline solution with concentration \(1/4\) mg per mL flows continuously into the tank at a rate of \(10\) mL per second. The tank leaks at a rate of \(15\) mL per second. 
+
+    Let \(u(t)\) be the mass of sodium chloride in the tank at time \(t\). Develop an initial value problem to which \(u(t)\) is the solution.
+  \end{quote}
+  \blanklines{25}
+\end{example}
+\clearpage
+
+Let's reinforce a sub-strategy often used in Calculus~1000.  In fact, we used this in Example~\ref{ex:strategy-connection}. 
+
+\begin{example}
+  A function \(u(t) = e^{kt^{2}} - 1\) is a solution to the differential equation \(u'(t) - tu(t) = t^{2}\).  Find the unknown constant \(k\).
+
+  \blanklines{20}
+\end{example}
+
+\clearpage
+Here are some exercises for scientific computing.
+\begin{example}
+  What is the output of the following Python code?
+
+  \begin{pythoncode}
+print("The first item in an list called a is a[0].")
+  \end{pythoncode}
+\end{example}
+
+\begin{example}
+  What is the output of the following code?
+
+  \begin{pythoncode}
+a = [1, 1, 8, 5]
+print( a[2] * 5 )
+  \end{pythoncode}
+\end{example}
+
+
+\begin{example}
+  What is the output of the following code?
+  \begin{pythoncode}
+import numpy
+
+a = [1, 1, 8, 5]
+print( numpy.log(a) )
+  \end{pythoncode}
+\end{example}
+
+\begin{example}
+  What is the output of the following code?
+
+  \begin{pythoncode}
+import numpy
+
+numpy.arange(-1, 15.1, 4)
+  \end{pythoncode}
+\end{example}
+
+\begin{example}
+  What points do you expect to see on the output of the following code?
+
+  \begin{pythoncode}
+import matplotlib.pyplot as plt
+import numpy
+
+plt.xlim(0, 5);
+plt.ylim(0, 5);
+plt.xticks(numpy.arange(0, 5.1, 1))
+plt.yticks(numpy.arange(0, 5.1, 1))
+plt.grid(linestyle = '-.', linewidth = 0.5)
+
+a = [1, 2]
+b = [3, 4]
+plt.plot(a, b, 'o');
+  \end{pythoncode}
+\end{example}
+
+\end{document}
