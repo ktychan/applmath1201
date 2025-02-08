@@ -1,0 +1,63 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+\begin{document} \section{Summary of the fundamentals of probability}
+
+Calculating probability from the \hlsupp{first principle} is a counting problem. Determine the number of outcomes in an event \(E\) and the total number of outcomes in the sample space and use the \hlsupp{definition}
+\begin{equation}
+  \mathbb{P}(E) = \frac{\text{number of outcomes in \(E\)}}{\text{total number of outcomes in \(\Omega\)}}. \tag{\ref{eq:probability}}
+\end{equation}
+
+Given two events \(E,F\) in a common sample space \(\Omega\), we have the \hlmain{inclusion-exclusion principle}
+\begin{align}
+  \mathbb{P}(E \cup F) 
+  &= \mathbb{P}(E) + \mathbb{P}(F) - \mathbb{P}(E \cap F). \tag{\ref{eq:probability-cup-cap}}
+\end{align}
+
+Given an event \(E\), we can compute the probability of its \hlmain{complement}
+\begin{equation}
+  \mathbb{P}(E^{c}) = 1 - \mathbb{P}(E) = \frac{\text{number of outcomes \hlwarn{not} in \(E\)}}{\text{total number of outcomes in \(\Omega\)}}. 
+  \tag{\ref{eq:probability-comp}}
+\end{equation}
+
+Two events \(E,F\) are called mutually exclusive if \(E \cap F = \emptyset\). In other words, two mutually exclusive events have nothing in common and
+\[
+\mathbb{P}(E \cup F) = \mathbb{P}(E) + \mathbb{P}(F) \quad\text{ if and only if}\quad \text{\(E\) and \(F\) are mutually exclusive}.
+\]
+
+Three events \(E_{1}, E_{2}, E_{3}\) are mutually exclusive if \(E_{1} \cap E_{2} = \emptyset\) and \(E_{1} \cap E_{3} = \emptyset\) and \(E_{2} \cap E_{3} = \emptyset\). In general, events \(E_{1}, E_{2}, \ldots, E_{n}\) are mutually exclusive if \hlwarn{all pairs \(E_{i}, E_{j}\) for all \(i \ne j\)} are mutually exclusive.
+
+A \hlmain{conditional probability} is the probability of an event \(E\) \hlmain{given} that an event \(F\) has already happened 
+\begin{equation}
+  \mathbb{P}(E \mid F) = \frac{\mathbb{P}(E \cap F)}{\mathbb{P}(F)} = \frac{\text{number of outcomes in \(E\) and \(F\)}}{\text{number of outcomes in \(F\) only}}.
+\end{equation}
+
+An application of conditional probability is errors in medical testing. We have four probabilities
+\[
+  \begin{array}{cclcl}
+    \text{specificity} 
+  &=& \mathbb{P}(\text{true negatives}) 
+  &=& \mathbb{P}( \text{negatives} \mid \text{condition not present} ) \\
+  \mathbb{P}(\text{type-I errors})
+  &=& \mathbb{P}(\text{false positives}) 
+  &=& \mathbb{P}( \text{positives} \mid \text{condition not present} ) \\
+    \text{sensitivity} 
+  &=& \mathbb{P}(\text{true positives}) 
+  &=& \mathbb{P}( \text{positives} \mid \text{condition present} ) \\
+  \mathbb{P}(\text{type-II errors})
+  &=& \mathbb{P}(\text{false negative}) 
+  &=& \mathbb{P}( \text{negatives} \mid \text{condition present} ) \\
+  \end{array}
+\]
+
+The \hlmain{law of total probability} states that if \(F_{1}, \ldots, F_{n}\) are mutually exclusive and exhaustive events of a sample space \(\Omega\), then 
+\[
+  \mathbb{P}(E) = \sum_{i=1}^{n} \mathbb{P}(E \mid F_{i}) \mathbb{P}(F_{i}).
+\]
+
+Two events are independent if 
+\begin{equation}
+  \mathbb{P}(E \cap F) = \mathbb{P}(E) \mathbb{P}(F).
+  \tag{\ref{eq:probability-independence}}
+\end{equation}
+
+\end{document}

@@ -34,10 +34,46 @@ A probability is a number \underline{\hspace{3in}}. To calculate a probability f
 \clearpage
 
 \begin{example}
-  We roll two four-sided dice \emph{once}.  Assuming the faces are labelled \(1,2,3,4\), what is the probability that the sum is \(6\)?
+  We flip a coin twice.  What is the probability that we get at least one tail?
+  \blanklines{20}
+\end{example}
+
+\begin{example}[human genetics]
+  Consider a simple genetic trait controlled by a single gene \(A\) which can be either dominant (denoted by \(A+\)) or recessive (denoted by \(A-\)).
+
+  Humans carry two copies of both genes, one inherited from each biological parent. Suppose a child inherit a trait from their parents who each carry one dominant and one recessive gene. 
+
+  What is the probability that the child carry
+  \begin{enumerate}
+    \item one dominant and one recessive gene?
+    \item at least one dominant gene?
+    \item at least one recessive gene?
+  \end{enumerate}
+  \blanklines{20}
+\end{example}
+
+\begin{example}
+  We roll two four-sided dice \emph{once} one blue and one red.  Assuming the faces are labelled \(1,2,3,4\), what is the probability that the sum is \(6\)?
 
   \blanklines{15}
 \end{example}
+
+\begin{example}
+  Suppose we have two bags of marbles.  The first bag has a white and a black marble.  The second bag has a red, a blue and a green marble.
+
+  Consider an experiment where we draw one marble from each bag.  Determine the sample space and find the probability of drawing a white and a green marble. 
+
+  \blanklines{15}
+\end{example}
+
+\begin{example}
+  Allele are variants of genes that determine traits.  A gene that determine eye colour might have an allele for brown eyes and an allele for blue eyes.  
+
+  Suppose for a particular trait, an organism can inherits \(0,1,2\) allele from its mother and \(0\) or \(1\) alleles from its father, what is the probability that the organism inherits \(2\) alleles?
+
+  \blanklines{10}
+\end{example}
+\clearpage
 
 Equation~\eqref{eq:probability} tells us that calculating a probability from the first principle is essentially a counting problem. The language of sets come in handy. % Less obvious is that counting can get rather challenging. In \thecoursesubject~\thecoursenumb, we will try to avoid the first principle approach to probability whenever possible and use relations among events to calculate probabilities of events by relating them to probabilities of known events.
 Given two events \(E,F\) in a sample space \(\Omega\), define
@@ -52,28 +88,47 @@ Given two events \(E,F\) in a sample space \(\Omega\), define
 \end{center}
 {\footnotesize A little memory trick: The \(\cap\) symbol looks sort of like the \(A\) in AND.}
 
-\faStar{} We have a relation, called the \emph{inclusion-exclusion principle}, 
+We have a relation, called the \emph{inclusion-exclusion principle}, 
 \begin{align} \label{eq:probability-cup-cap}
   \mathbb{P}( E \cup F ) = \hspace{4in}
 \end{align}
 
-Denote \(E^{c} = \{ \text{ outcomes in \(\Omega\) but not in \(E\) } \}\). Apply Equation~\eqref{eq:probability-cup-cap} with \(F = E^{c}\) to get
+Once we define an events called \(E\), then we can talk about outcomes \emph{not} in \(E\).  
+\begin{center}
+  \includegraphics{../standalones/build/diagram-venn-complement}
+\end{center}
+
+Denote \(E^{c} = \{ \text{ outcomes in \(\Omega\) but not in \(E\) } \}\).  We have an associated formula
 \begin{align} \label{eq:probability-comp}
   \mathbb{P}( E^{c} ) = \hspace{4in}
 \end{align}
-\blanklines{5}
+
+\faStar{} It is important to \emph{remember} and know how to \emph{use} Equations~\ref{eq:probability-cup-cap}~and~\ref{eq:probability-comp}.
+
+Venn diagrams are very useful for seeing relations among sets and calculating probabilities. 
+\begin{example}
+  Suppose \(A = \{1\}, B = \{1,2,4\}, C = \{1,3,5\}\) are events in a sample space \(\Omega = \{1,2,3,4,5\}\). Use a Venn diagram to find the elements of \( (A \cup B)^{c} \cap C^{c}\) and calculate \(\mathbb{P}( (A \cup B)^{c} \cap C^{c} )\).
+  \blanklines{10}
+\end{example}
+
 \clearpage
 
-Let's practise using probability formulas and/or Venn diagrams to calculate probability.
+\begin{example}
+  Suppose the sample space is \(\Omega = \{1,2,\ldots,8\}\). Let \(A = \{1,2,8\}\), \(B = \{2,5,8\}\) and \(C = \{3,4,5,6\}\).  Find the probability \(\mathbb{P}( C^{c} \cup (A \cap B) )\).
+  
+  \blanklines{15}
+\end{example}
+
 \begin{example}
   Suppose the sample space is \(\Omega = \{1,2,\ldots,10\}\).  Let \(E = \{1,3,5\}\) and \(F = \{2,7,3,4\}\). Find the probability \(\mathbb{P}( (E \cap F) \cup (E \cap F^{c})) \).
-  \blanklines{10}
+  \blanklines{15}
 \end{example}
 
 \begin{example}
   Suppose the sample space is \(\Omega = \{1,2,3,4,5\}\).  Let \(E = \{2,5\}\), \(F = \{1,2,3\}\) and \(G = \{2,4\}\). Find the probability \(\mathbb{P}( (E \cap G^{c}) \cap \{ F^{c} \cup E^{c} \}) \).
-  \blanklines{10}
+  \blanklines{13}
 \end{example}
+\clearpage
 
 \begin{example}
   Suppose \(\mathbb{P}(E) = 0.6\), \(\mathbb{P}(F) = 0.45\) and \(\mathbb{P}(E \cap F) = 0.4\). Calculate \(\mathbb{P}( (E \cup F)^{c})\).
@@ -84,9 +139,7 @@ Let's practise using probability formulas and/or Venn diagrams to calculate prob
   Consider events \(E\) and \(F\) inside some sample space. Given \(\mathbb{P}(E) = 0.5\), \(\mathbb{P}(F^{c}) = 0.8\), \(\mathbb{P}(E \cap F) = 0.05\). Find the probability of \(\mathbb{P}(E \cup F^{c})\).
   \blanklines{10}
 \end{example}
-\clearpage
 
-Here are some more exercises.
 \begin{example}
   Toss a coin and roll a four-sided die labelled \(1,2,3,4\).  Find the probability of getting a tail and an even number.
 
@@ -94,18 +147,12 @@ Here are some more exercises.
 \end{example}
 
 \begin{example}
-  You randomly draw two numbers from \(\{1,2,3,4,5\}\). What is the probability that the sum is at least \(3\)?
+  You randomly draw two balls from \(\{1,2,3,4,5\}\).  Repeats are not allowed, e.g., you cannot draw \(3\) twice.  What is the probability that the sum is at least \(3\)?
 
-  \blanklines{10}
+  \blanklines{13}
 \end{example}
 
-\begin{example}
-  Allele are variants of genes that determine traits.  A gene that determine eye colour might have an allele for brown eyes and an allele for blue eyes.  
 
-  Suppose for a particular trait, an organism can inherits \(0,1,2\) allele from its mother and \(0\) or \(1\) alleles from its father, what is the probability that the organism inherits \(2\) alleles?
-
-  \blanklines{10}
-\end{example}
 \clearpage
 
 % We can calculate probability of a sequence of outcomes using a tree (branching) diagram.  It is easier to describe this though an example. 
@@ -141,7 +188,7 @@ Here are some more exercises.
 % \end{example}
 % \clearpage
 
-It is often natural to assign every outcome in a sample space to exactly one event. The probability lingo is \emph{mutually exclusive} and \emph{mutually exclusive and exhaustive}. In real-life applications, \emph{mutually exclusive and exhaustive} events capture groupings by non-overlapping characteristics within the sample space.
+It is often natural to assign every outcome in a sample space to exactly one event. The probability lingo is \hlmain{mutually exclusive} and \hlmain{exhaustive}. In real-life applications, \emph{mutually exclusive and exhaustive} events capture groupings by non-overlapping characteristics within the sample space, e.g., grouping of patients by age group.
 
 \begin{definition}[mutually exclusive and exhaustive]
   Two events \(E, F\) in a sample space \(\Omega\) are \hlmain{mutually exclusive} if \(E \cap F\) is empty. 
@@ -168,64 +215,63 @@ It is often natural to assign every outcome in a sample space to exactly one eve
 \begin{example}
   Let \(\Omega = \{1,2,3,4,5,6\}\) be the sample space. Which of the following events are mutually exclusive?
 
-  \begin{enumerate}[label=(\alph*)]
-    \item \(E_{1} = \{2,5\}\)
-    \item \(E_{2} = \{3,2\}\)
-    \item \(E_{3} = \{6,3\}\)
-    \item \(E_{4} = \{2,3,5,6\}\)
-    \item \(E_{5} = \{1\}\)
-  \end{enumerate}
+  \begin{multicols}{2}
+    \begin{enumerate}[label=(\alph*)]
+      \item \(E_{1} = \{2,5\}\)
+      \item \(E_{2} = \{3,2\}\)
+      \item \(E_{3} = \{6,3\}\)
+      \item \(E_{4} = \{2,3,5,6\}\)
+      \item \(E_{5} = \{1\}\)
+    \end{enumerate}
+  \end{multicols}
+  \blanklines{2}
 \end{example}
 
 
 \begin{example}
   Let \(\Omega = \{1,2,,\ldots,10\}\) be the sample space. Which events together are mutually exclusive and exhaustive?
 
-  \begin{enumerate}[label=(\alph*)]
-    \item \(E_{1} = \{1,3,5\}\)
-    \item \(E_{2} = \{8,9\}\)
-    \item \(E_{3} = \{3,7\}\)
-    \item \(E_{4} = \{4,10\}\)
-    \item \(E_{5} = \{2,6,7\}\)
-  \end{enumerate}
+  \begin{multicols}{2}
+    \begin{enumerate}[label=(\alph*)]
+      \item \(E_{1} = \{1,3,5\}\)
+      \item \(E_{2} = \{8,9\}\)
+      \item \(E_{3} = \{3,7\}\)
+      \item \(E_{4} = \{4,10\}\)
+      \item \(E_{5} = \{2,6,7\}\)
+    \end{enumerate}
+  \end{multicols}
+  \blanklines{2}
 \end{example}
-
-
-% \begin{example}
-%   Let the interval \(\Omega = [0,1]\) be the sample space.  Which of the following events are mutually exclusive and exhaustive?
-%
-%   \begin{enumerate}[label=(\alph*)]
-%     \item \(\{\text{ all rational numbers in \(\Omega\) } \}\) and \(\{\text{ all irrational numbers in \(\Omega\) } \}\)
-%     \item \(E_{1} = [0,1/2), \quad E_{2} = [1/2, 3/4], \quad E_{3} = [3/4,1), \quad E_{4} = \{1\}\).
-%   \end{enumerate}
-% \end{example}
 \clearpage
 
 \begin{example}
   Assume \(E_{1}, E_{2}\) are events in a sample space \(\Omega\).  Which of the followings \emph{together} imply that \(E_{1}, E_{2}\) are mutually exclusive and exhaustive. 
-  \begin{enumerate}[label=(\alph*)]
-    \item \(\mathbb{P}(E_{1} \cap E_{2}) = 0\).
-    \item \(\mathbb{P}(E_{1} \cap E_{2}) = \mathbb{P}(E_{1}) + \mathbb{P}(E_{2})\).
-    \item \(\mathbb{P}(E_{1} \cup E_{2}) = \mathbb{P}(E_{1}) + \mathbb{P}(E_{2})\).
-    \item \(\mathbb{P}(E_{1} \cup E_{2}) = 0\).
-    \item \(\mathbb{P}(E_{1} \cup E_{2}) = 1\).
-  \end{enumerate}
-  \blanklines{5}
+  \begin{multicols}{2}
+    \begin{enumerate}[label=(\alph*)]
+      \item \(\mathbb{P}(E_{1} \cap E_{2}) = 0\).
+      \item \(\mathbb{P}(E_{1} \cap E_{2}) = \mathbb{P}(E_{1}) + \mathbb{P}(E_{2})\).
+      \item \(\mathbb{P}(E_{1} \cup E_{2}) = \mathbb{P}(E_{1}) + \mathbb{P}(E_{2})\).
+      \item \(\mathbb{P}(E_{1} \cup E_{2}) = 0\).
+      \item \(\mathbb{P}(E_{1} \cup E_{2}) = 1\).
+    \end{enumerate}
+  \end{multicols}
+
+  \blanklines{10}
 \end{example}
 
 
-\begin{example}[a common mistake]
+\begin{example}[a common mistake] \label{ex:mutually-exclusive-three-or-more}
   Let \(\Omega = \{1,\ldots,10\}\) be a sample space.  An intern observes the following. Events \(E_{1}, E_{2}, E_{2}\) have no outcomes in common and every outcome in the sample space is in at least one of the events. Express the intern's observation using set operations.
   \blanklines{5}
 
   Describe three sets \(E_{1}, E_{2}, E_{3}\) in the given sample space matching the intern's observation but are not mutually exclusive and exhaustive.  In other words, prove the intern wrong.
   \blanklines{5}
 
-  When there are three or more events, being able to confirm
+  \faExclamationTriangle{} Example~\ref{ex:mutually-exclusive-three-or-more} serves as a warning. When there are \hlwarn{three or more} events, being able to confirm
   \[
     \mathbb{P}(E_{1} \cup \cdots \cup E_{n}) = 1 \quad\text{and}\quad \mathbb{P}(E_{1} \cap \cdots \cap E_{n}) = 0
   \]
-  is NOT ENOUGH to guarantee \(E_{1}, \ldots, E_{n}\) are mutually exclusive and exhaustive. We must check
+  is \hlwarn{not enough} to guarantee \(E_{1}, \ldots, E_{n}\) are mutually exclusive and exhaustive. To guarantee that three or more events are mutually exclusive, we must be able to confirm the following conditions
   \[
     \mathbb{P}(E_{1} \cup \cdots \cup E_{n}) = 1 \quad\text{and}\quad \mathbb{P}(E_{i} \cap E_{j}) = 0 \text{ for all } i \ne j.
   \]
