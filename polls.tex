@@ -17,6 +17,16 @@
   \end{tikzpicture}    
 }
 
+\newcommand{\yesno}{
+ \begin{enumerate}
+    \item Yes.
+    \item No.
+    \item 
+    \item 
+    \item I am not sure
+  \end{enumerate} 
+}
+
 \usepackage{enumitem}
 \setlist[enumerate]{label={\color{supp}(\alph*)}, itemsep={2ex}, topsep={1ex}}
 
@@ -377,4 +387,53 @@
   \end{enumerate}
 \end{frame}
 
+\section{Probability}
+
+\begin{frame}[c]
+  Does it make sense to say ``the probability of winning the lottery is \(50\%\)?''
+
+  Articulate your reasoning. 
+\end{frame}
+
+\begin{frame}[c]
+  What is your answer for Example~6.11?
+
+  \begin{enumerate}
+    \item \(1/2\).
+    \item \(1/8\).
+    \item \(5/8\).
+    \item None of the above.
+    \item I am not sure.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[c]
+  What is your answer for Example~6.12?
+
+  \begin{enumerate}
+    \item \(3/10\).
+    \item \(4/10\).
+    \item \(1/2\).
+    \item None of the above.
+    \item I am not sure.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  If we know \(\mathbb{P}(E \cup F) = 1\), can we be sure that \(E \cup F\) is the entire sample space?
+
+  \yesno
+\end{frame}
+
+\begin{frame}
+  If we know \(\mathbb{P}(E \cap F) = 0\), can we be sure that \(E\) and \(F\) are mutually exclusive?
+
+  \yesno
+\end{frame}
+
+\begin{frame}
+  If we know \(\mathbb{P}(E_{1} \cap E_{2} \cap E_{3}) = 0\), can we be sure that \(E_{1}, E_{2}, E_{3}\) are mutually exclusive?
+
+  \yesno
+\end{frame}
 \end{document}
