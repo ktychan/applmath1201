@@ -1,6 +1,6 @@
 %! TeX program = lualatex
 \documentclass[../main.tex]{subfiles}
-\begin{document} \section{Random variables}
+\begin{document} \section{Introduction to random variables}
 
 In a nutshell, a \hlmain{random variable} is a mathematically computable formality to \hlsupp{represent a two-column table} (could have finitely or infinitely many rows) associating each outcome in a sample space \emph{to} a number.  Colloquially, random variables are simply called statistics.
 
@@ -40,7 +40,7 @@ We build some intuition through an example before thinking about formalities.
 Formally, a \emph{random variable}, typically denoted by a capital letter \(X\), is a \emph{function} whose domain is a sample space and whose range is either a set of discrete numbers, e.g., \(\{1,2,3,\ldots\}\), or an interval. 
 
 We need to correctly interpret various notations associated to random variables.
-\begin{definition}
+\begin{definition} \label{def:random-variables}
   Let \(X\) be a random variable defined on a sample space \(\Omega\). 
 
   \begin{itemize}
@@ -56,7 +56,7 @@ We need to correctly interpret various notations associated to random variables.
       \[
         X = (\text{some number})
       \] 
-      represents \emph{the event} (could be empty) containing outcomes whose \(X\)-statistic is equal to the number on the right-hand side. 
+      represents \underline{\hspace{2in}} containing outcomes whose \(X\)-statistic is equal to the number on the right-hand side. 
 
       Consequently, the notation
       \[
@@ -68,7 +68,7 @@ We need to correctly interpret various notations associated to random variables.
       \[
         a \le X \le b
       \]
-      represents \underline{\hspace{2in}} containing outcomes whose \(X\)-statistic 
+      represents \underline{\hspace{2in}} containing outcomes whose \(X\)-statistic is \underline{\hspace{5in}}.
 
       Consequently, the notation 
       \[
@@ -162,6 +162,10 @@ We accumulate some examples before introducing formal definitions.
 \end{example}
 \clearpage
 
+\section{Discrete random variable}
+
+A random variable is discrete if all possible values of \(X(\text{outcome})\) form a discrete set. For all practical intents and purposes, this name is not as important as the two functions associated to them: \emph{probability mass function} (this page) and \emph{cumulative distribution function} (page~\pageref{def:discrete-cdf}).
+
 \begin{definition}[probability mass function]
   The \hlmain{probability mass function} for a discrete random variable \(X\), denoted by \(f_{X}(x)\), is defined by
   \[
@@ -177,7 +181,7 @@ We accumulate some examples before introducing formal definitions.
   \begin{enumerate}
     \item Introduce appropriate notations.
     \item List all elements in the domain of the probability mass function.
-    \item For every value in the domain, describe its output under the probability mass function.
+    \item For every number in the domain, describe its output under the probability mass function.
   \end{enumerate}
 
   \hfill{}
@@ -194,20 +198,33 @@ We accumulate some examples before introducing formal definitions.
     Selene & \(167\) \\
     Achilles & \(180\)
   \end{tabular}
-  \blanklines{5}
+  \blanklines{15}
 \end{example}
+\clearpage
+
+The challenge of many problems relating to a probability mass function is knowing what the question asks us to calculate.  \faStar{} An effective problem-solving strategy is to express the event given in the problem using the language of random variables in Definition~\ref{def:random-variables}. 
 
 \begin{example}
-  Suppose we have an unfair coin. The probability mass function for a random variable \(X\) associating sequences of coin tosses to the number \(k\) of tosses required until a tail appears is
+  Suppose we have an fair coin. The probability mass function for a random variable \(X\) associating sequences of coin tosses to the number \(k\) of tosses required until a tail appears is
   \[
-    f_{X}(k) = (1-1/4)^{k} (1/4),  \text{ for integers } k \ge 1.
+    f_{X}(k) = (1/2)^{k},  \text{ for integers } k \ge 1.
   \]
-  Take for granted that \(f_{X}\) is a legal probability mass function. What is the probability 
-that at most \(3\) tosses are required before a tail appears?
-\blanklines{10}
+  Take for granted that \(f_{X}\) is a legal probability mass function. 
+
+
+  \begin{enumerate}[wide]
+    \item What is the meaning of \(f_{X}(2)\) in the context of this question?
+      \blanklines{5}
+    \item Describe the event in the question using the language of random variables in Definition~\ref{def:random-variables}. 
+      \blanklines{5}
+    \item What is the probability that at most \(3\) tosses are required before a tail appears?
+      \blanklines{5}
+  \end{enumerate}
 \end{example}
 
-\begin{definition}[cumulative distribution function]
+\clearpage
+
+\begin{definition}[cumulative distribution function] \label{def:discrete-cdf}
   The \hlmain{cumulative distribution function} for a random variable, denoted by \(F_{X}(x)\) is defined by 
   \[
     \mathbb{P}(X \le x).
@@ -256,7 +273,6 @@ The next example demonstrates the relation between probability mass function and
 
   Find the probabilities \(\mathbb{P}(X = 5)\) and \(\mathbb{P}(1 \le X \le 3)\).
   \blanklines{10}
-
 \end{example}
 
 % \begin{definition}[probability density function]
