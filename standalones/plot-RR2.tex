@@ -1,0 +1,22 @@
+\documentclass{standalone}
+
+\input{../colours.tex.preamble}
+\input{../tikz.tex.preamble}
+
+\begin{document}
+\begin{tikzpicture}
+  \begin{axis}[
+    axis equal image,
+    axis lines=middle,
+    enlargelimits=true,
+    grid=both,
+    scaled ticks=false,
+    xtick={-4,-2,...,4},
+    ytick={-4,-2,...,4},
+    minor tick num=1,
+    xmin=-4, xmax=4,
+    ymin=-4, ymax=4,
+    ]
+  \end{axis}
+\end{tikzpicture}
+\end{document}

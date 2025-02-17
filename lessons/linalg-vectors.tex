@@ -1,4 +1,137 @@
 %! TeX program = lualatex
 \documentclass[../main.tex]{subfiles}
-\begin{document} \section{Vectors}
+\begin{document} 
+\section{Vectors}
+
+We have been looking at models involving one quantity, e.g., the population of a group of unicorns.  We now develop mathematical tools (\emph{linear} vector fields and \emph{linear} systems of differential equations) to model systems involving two or more quantities, e.g., an ecosystem involving a predator and prey.
+
+\begin{example}
+  We begin with an ecosystem involving orcas (predators) and seals (preys). Their population data over time are presented as graphs.
+
+\end{example}
+
+\vfill{}
+
+We study vectors and vector-valued functions because their graphs look like the one on the right and can be used to encode states, relations and changes of biological systems.
+
+\begin{definition}[vectors]
+  A (state) \hlmain{vector} \(\vec{x}\) is an ordered list of numbers
+  \[
+    \vec{x} = 
+    \begin{bmatrix}
+      x_{1} \\ x_{2} \\ \vdots \\ x_{n}
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+      x_{1} & x_{2} & \cdots & x_{n}
+    \end{bmatrix}^{T}.
+  \]
+
+  The number of rows in \(\vec{x}\) (zeros included) is called the \hlmain{dimension} of \(\vec{x}\).   
+\end{definition}
+\clearpage
+
+\section{Operations on vectors}
+
+We study vectors abstractly. Every vector \(\vec{v}\) has a \hlmain{length} defined by 
+\begin{equation}
+  \| \vec{v} \| = \sqrt{ (v_{1})^{2} + \cdots + (v_{n})^{2} }.
+\end{equation}
+
+\includegraphics{../standalones/build/plot-RR2}
+
+The following two operations are often defined together because they have nice geometric meanings. \begin{equation}
+  c
+  \begin{bmatrix}
+    u_{1} \\ u_{2} \\ \vdots \\ u_{n}
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    c u_{1} \\ c u_{2} \\ \vdots \\ cu_{n}
+  \end{bmatrix}
+  \quad\text{and}\quad
+  \vec{u} + \vec{v} 
+  =
+  \begin{bmatrix}
+    u_{1} \\ u_{2} \\ \vdots \\ u_{n}
+  \end{bmatrix}
+  +
+  \begin{bmatrix}
+    v_{1} \\ v_{2} \\ \vdots \\ v_{n}
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    u_{1} + v_{1} \\ v_{2} + v_{2} \\ \vdots \\ u_{n} + v_{n}
+  \end{bmatrix}.
+\end{equation}
+The constant \(c\) is called a \hlmain{scalar} because it scales a vector's length without rotation.  This effect is expressed in the identity \underline{\hspace{1.5in}\phantom{\huge X}}.
+\bigskip
+
+\includegraphics{../standalones/build/plot-RR2}
+\quad
+\includegraphics{../standalones/build/plot-RR2}
+\quad
+\includegraphics{../standalones/build/plot-RR2}
+
+\blanklines{10}
+\clearpage
+
+In general, we cannot multiply vectors. However, we can define a special product that takes two vectors and produces a single number. 
+
+\begin{definition}[dot product]
+  The \hlmain{dot product} of two vectors of the same dimension is defined by 
+  \begin{equation}
+    \vec{u} \bullet \vec{v} = u_{1} v_{1} + u_{2} v_{2} + \cdots + u_{n} v_{n}.
+  \end{equation}
+
+  Moreover, \(\vec{u} \bullet \vec{v} = \|\vec{u}\| \|\vec{v}\| \cos(\text{angle between \(\vec{u}\) and \(\vec{v}\)})\).
+
+  \includegraphics{../standalones/build/plot-RR2}
+\end{definition}
+
+\faStar{} Two vectors \(\vec{u}\) and \(\vec{v}\) of the same dimension are equal if \(u_{1} = v_{1}, u_{2} = v_{2}, \dots, u_{n} = v_{n}\).  
+
+\begin{example}
+  Find the vector \(\vec{x}\) in the equation \(\begin{bmatrix} 1 \\ 3 \end{bmatrix} + 2 \vec{x} = \begin{bmatrix} -3 \\ 5 \end{bmatrix}\) and calculate \(\| -5 \vec{x} \|\).
+
+  \blanklines{10}
+\end{example}
+
+\begin{example}
+  Let \(\vec{x} = [ x_{1} \; x_{2} \; x_{3} ]^{T}\).  Write \(-3x_{1} + x_{2} - 3x_{3}\) as a dot product. 
+
+  \blanklines{5}
+\end{example}
+
+\begin{example}
+  Let \(\vec{x} = [ x_{1} \; x_{2} \; x_{3} ]^{T}\).  Write \(- x_{1} + \tfrac{1}{2}x_{3}\) as a dot product. 
+  
+  \blanklines{5}
+\end{example}
+
+\begin{example}
+  Consider the equation \(\vec{u} \bullet \vec{v} = 4\). What is \(\|\vec{u}\|\) if \(\vec{v} = \left(\tfrac{1}{\sqrt{2}}, \tfrac{1}{\sqrt{2}}\right)\) and the angle between them is \(\pi/6\)?
+
+  \blanklines{10}
+\end{example}
+
+For completeness, here is a frequently used terminology in the study of vectors.
+
+A linear combination of (finitely many) vectors \(\vec{u}, \vec{v}, \vec{w}, \ldots\) is 
+\[
+  a \vec{u} + b \vec{v} + c \vec{w} + \cdots, \text{ where \(a,b,c, \ldots\) are scalers}.
+\]
+
+Also for completeness, we can take two vectors \(\vec{u}, \vec{v}\) and define a third vector called their cross product 
+\[
+  \vec{u} \times \vec{v} = 
+  \begin{bmatrix}
+    u_{2} v_{3} - u_{3} v_{2} \\
+    - u_{1} v_{3} + u_{3} v_{1} \\
+    u_{1} v_{2} - u_{2} v_{1} \\
+  \end{bmatrix}.
+\]
+
+For more details of the cross product, see pages 149 to 151 of the textbook. 
+
 \end{document}

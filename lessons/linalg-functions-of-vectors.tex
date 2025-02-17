@@ -1,4 +1,27 @@
 %! TeX program = lualatex
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Functions of vectors}
+
+We dip out toes in the general idea of vector-value functions. 
+
+A function is a real-valued function if the output is a real number. These are our familiar functions.  For example, 
+\[
+  f(\vec{x}) = e^{x_{1} + x_{2}}
+\]
+is a real-valued function because its output is a real number. Its input does not matter. 
+
+A function is a vector-valued function if the output is a vector (with dimension \(2\) or more). For example, 
+\[
+  f(\vec{x}) = 
+  \begin{bmatrix}
+    x_{1}^{2} \\
+    x_{2}^{2}
+  \end{bmatrix}
+\]
+is a vector-valued function. 
+
+One of the major differences between real-value functions and vector-value functions is that a vector-value function (in which the input and output vectors have the same dimension) can be used to encode multi-dimensional data such as our orca-seal data.
+
+To visualize a vector-valued function, we draw the output vector as a line segment originating from the point of the input vector.
+
 \end{document}
