@@ -1,0 +1,78 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+\begin{document} \section{Complex numbers}
+
+Complex numbers come from the theoretical need to solve equations such as \(x^{2} = -1\) but are fundamentally useful in all sciences.  In this section, we learn complex numbers for the purpose of understanding how vectors move in a vector field by calculating eigenvalues in the next section.
+
+\begin{definition}[complex numbers]
+  The symbol \(i\) is called \hlmain{\emph{the} imaginary number}, and define
+  % is forced to satisfy
+  \[
+    \sqrt{-1} = \underline{\hspace{1cm}}
+    \quad\text{and}\quad 
+    i^{2} = \underline{\hspace{1cm}}.
+  \]
+
+  \hlmain{Complex numbers} are \hlsupp{polynomials in \(i\)}, but powers of \(i\) \hlwarn{must be simplified}.
+  % polynomials in i
+
+  A complex number can always be simplified to \underline{\hspace{2cm}} where \underline{\hspace{1.5in}}. In this simplified form, its \hlmain{real part} is \underline{\hspace{1cm}}, and \hlmain{imaginary part} is \underline{\hspace{1cm}}.
+\end{definition}
+
+
+\begin{example}
+  Identify the real and imaginary parts of each complex number below. 
+
+  \begin{itemize}[wide]
+    \item \(-\pi + 3i - 5i + \sqrt{-2}\)
+      \blanklines{4}
+
+    \item \(-5 + i^{30} \)
+      \blanklines{4}
+
+    \item \((3 + 5i) (4 - 6i^{3})\)
+      \blanklines{5}
+
+    \item \(\frac{1 + 2i}{1 + 2i + \sqrt{-4}}\) \quad Hint: Simplify then rationalize the denominator.
+      \blanklines{10}
+  \end{itemize}
+\end{example}
+\clearpage
+
+For any complex number \underline{\hspace{1in}} to the form \(z = a + bi\) where \(a,b\) are \underline{\hspace{3cm}}, define its \hlmain{complex conjugate} to be \(\bar{z} = \underline{\hspace{1in}}\) and its \hlmain{length} to be \(|z| = \underline{\hspace{3cm}}\).  It follows that division has a shorter formula
+\[
+  \frac{1}{z} = \hspace{1in}
+\]
+\blanklines{5}
+
+\faStar{} We use complex numbers and the quadratic formula to solve equations appearing later this week.
+\begin{example}
+  Let \(\lambda\) be an unknown. Solve \((\lambda - 5) (\lambda^{2} + 5) = 0\).
+  \blanklines{10}
+\end{example}
+
+\begin{example}
+  Let \(\lambda\) be an unknown. Solve \(\lambda^{2} + 3\lambda + 1 = 0\).
+  \blanklines{10}
+\end{example}
+
+\begin{example}
+  Let \(\lambda\) be an unknown. Solve \((\lambda - 10) (\lambda^{2} + 5\lambda - 7) = 0\).
+  \blanklines{15}
+\end{example}
+
+\clearpage
+
+We can visualize algebraic operations for complex number because they can always be simplified to the form \(a + bi\) where \(a,b\) are real numbers.
+
+\begin{example}
+  Visualize \((1 + 2i) + ( -1 + i)\).
+
+  \includegraphics{../standalones/build/plot-complex-plane}
+\end{example}
+
+\includegraphics{../standalones/build/plot-complex-plane}
+
+\includegraphics{../standalones/build/plot-complex-plane}
+
+\end{document}

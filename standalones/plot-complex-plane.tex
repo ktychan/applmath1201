@@ -1,0 +1,24 @@
+\documentclass{standalone}
+\usepackage{amssymb}
+
+\input{../colours.tex.preamble}
+\input{../tikz.tex.preamble}
+
+\begin{document}
+\begin{tikzpicture}
+  \begin{axis}[
+    axis equal image,
+    axis lines=middle,
+    enlargelimits=true,
+    grid=both,
+    scaled ticks=false,
+    xtick={-1,0,...,5},
+    ytick={-1,0,...,5},
+    xmin=-1, xmax=5,
+    ymin=-1, ymax=5,
+    xlabel={\empty}, xlabel style={anchor=west},
+    ylabel={\empty}, ylabel style={anchor=south},
+    ]
+  \end{axis}
+\end{tikzpicture}
+\end{document}

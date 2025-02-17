@@ -1,0 +1,44 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+\begin{document} \section{Finding eigenvalues and eigenvectors}
+
+Recall that linear vector fields are functions of the form \(f(\vec{x}) = A\vec{x}\) where \(A\) is a matrix of an appropriate dimension.  
+
+In particular, we are interested in understanding ``how do (state) vectors move inside a vector field?''
+
+TODO add two plots.
+
+\begin{definition}[eigenvalues and eigenvectors]
+  Suppose \(A\) is a square matrix \(A\). An eigenvalue-eigenvector pair is a solution to the equation
+  \[
+    A \vec{v} = \lambda \vec{v},
+  \]
+  where \(\lambda\) is a scalar and \(\vec{v}\) is a \hlwarn{non-zero} vector. 
+
+  Moreover, eigenvalues of \(A\) are roots of the equation (whose unknown is \(\lambda\))
+  \[
+    \det( A - \lambda I ) = 0,
+  \]
+  where \(I\) is the identity matrix having the same dimension as \(A\).
+\end{definition}
+
+\begin{example}
+  Find eigenvalues of the matrix 
+  \(
+    A = \begin{bmatrix}
+      1 & -1 \\
+      2 & 3
+    \end{bmatrix}
+  \).
+\end{example}
+
+\begin{example}
+  Find eigenvalues of the matrix 
+  \(
+    A = \begin{bmatrix}
+      1 & -1 \\
+      1 & 1
+    \end{bmatrix}
+  \).
+\end{example}
+\end{document}
