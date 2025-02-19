@@ -1,5 +1,6 @@
 %! vim: ft=tex
 \usepackage{tikz, pgfplots}
+\usepgfplotslibrary{fillbetween}
 
 % 
 % general options

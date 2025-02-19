@@ -5,19 +5,59 @@
 Probability gives a big picture view of data. Pictorially, probability mass/density functions let us visualize the data. Other common ways of thinking about data involves computing their \hlmain{expectation} and \hlmain{variance}. 
 
 \begin{definition}[expectation]
-  The expectation of a random variable depends on its type.
+  The \hlmain{expectation} of a discrete random variable \(X\) with PMF \(f_{X}(x)\) and values \(x_{1}, \ldots, x_{n}\) is
+  \begin{equation} \label{eq:expectation-discrete}
+    E(X) = \sum_{i = 1}^{n} x_{i} f_{X}(x_{i}).
+  \end{equation}
 
-  \begin{enumerate}
-    \item The \hlmain{expectation} of a discrete random variable \(X\) with range \(x_{1},\ldots,x_{n}\) is
-      \[
-        \mathbb{E}(X) = \sum_{i = 1}^{n} x_{i} \cdot \mathbb{P}(X = x_{i}).
-      \]
-
-    \item The \hlmain{expectation} of a continuous random variable \(X\) with probability density function \(f(x)\) is
-      \[
-        \mathbb{E}(X) = \int_{-\infty}^{\infty} x f(x) \;dx.
-      \]
-  \end{enumerate}
+  The \hlmain{expectation} of a continuous random variable \(X\) with PDF \(f(x)\) is
+  \begin{equation} \label{eq:expectation-continuous}
+    E(X) = \int_{-\infty}^{\infty} x f(x) \;dx.
+  \end{equation}
 \end{definition}
 
+\begin{example} \label{ex:variance-discrete-betting}
+  We play a betting game of predicting the outcome of rolling a fair six-sided die.  Each bet costs \(1\) chore token. If we win, we collect \(2\) chore tokens.
+
+  This game is modelled by the random variable \(X\) where \(X = \underline{\hspace{1cm}}\) is the event in which we lose and \(X = \underline{\hspace{1cm}}\) is the event in which we win.  We work out that \(\mathbb{P}(X = \underline{\hspace{1cm}}) = \underline{\hspace{1cm}}\) and \(\mathbb{P}(X = \underline{\hspace{1cm}}) = \underline{\hspace{1cm}}\).  What is the expected return if we play the game \(10\) times?
+
+  \blanklines{10}
+\end{example}
+
+\begin{example} \label{ex:variance-continuous-uniform}
+  Let \(X\) be a continuous random variable with PDF \(f(x) = 1/5\) on \([-1, 1]\), \(f(x) = 1/10\) on \([2,8]\) and \(0\) everywhere else.  Calculate \(E(X)\).
+
+  \blanklines{15}
+\end{example}
+\clearpage
+
+Variance is defined as \(Var(X) = E( (X - E(x))^{2} )\) regardless of whether \(X\) is discrete or continuous. However, this formula can be specialized.  
+\begin{definition}[variance]
+  Let \(\mu = E(x)\). Recall that \(\mu\) is a constant.
+
+  The \hlmain{variance} of a discrete random variable \(X\) with PMF \(f_{X}(x)\) and values \(x_{1}, \ldots, x_{n}\) is 
+  \begin{equation} \label{def:variance-discrete}
+    Var(X) = \sum_{i=1}^{n} (x_{i} - \mu)^{2} f_{X}(x_{i}).
+  \end{equation}
+
+  The \hlmain{variance} of a continuous random variable \(X\) with PDF \(f(x)\) is 
+  \begin{equation} \label{def:variance-continuous}
+    Var(X) = \int_{-\infty}^{\infty} (x - \mu)^{2} f(x) \;dx.
+  \end{equation}
+\end{definition}
+
+\begin{example}
+  Calculate the variance for the discrete random variable in Example~\ref{ex:variance-discrete-betting}.
+
+  \blanklines{10}
+\end{example}
+
+\begin{example}
+  Calculate the variance for the continuous random variable in Example~\ref{ex:variance-continuous-uniform}.
+
+  \blanklines{15}
+\end{example}
+\clearpage
+
+What do expectation and variance measure?
 \end{document}
