@@ -1,0 +1,106 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+\begin{document} \section{Introduction to random variables}
+
+In a nutshell, a \hlmain{random variable} is a mathematically computable formality to \hlsupp{represent a two-column table} (could have finitely or infinitely many rows) associating each outcome in a sample space \emph{to} a number.  Random variables are statistical models.
+
+We build some intuition through an example before thinking about formalities. 
+
+\begin{example}[height distribution is a random variable] \label{ex:random-variable-intro}
+  Consider the following questions related to the height data of some mythical figures.
+
+  Pay attention to how we use the data to \hlattn{formulate} each question in the language of probability, i.e., sample space and events.
+
+  {\color{main}
+    What is the probability of randomly selecting someone whose height is 
+    \begin{enumerate}
+      \item exactly \(170\) cm?
+      \item between \(160\) and \(180\) cm (inclusive)?
+      \item at least \(175\) cm?
+    \end{enumerate}
+  }
+
+  \hfill{}
+  \begin{tabular}{l|l}
+    Person & Height \\\midrule
+    Zeus & \(165\) \\
+    Hera & \(155\) \\
+    Perseus & \(180\) \\
+    Theseus & \(160\) \\
+    Athena & \(170\) \\
+    Poseidon  & \(170\) \\
+    Hades & \(160\) \\
+    Helios & \(170\) \\
+    Selene & \(180\) \\
+    Achilles & \(180\)
+  \end{tabular}
+
+  \blanklines{20}
+\end{example}
+\clearpage
+
+Formally, a \emph{random variable}, typically denoted by a capital letter \(X\), is a \emph{function} whose domain is a sample space and whose range is either a set of discrete numbers, e.g., \(\{1,2,3,\ldots\}\), or an interval. 
+
+We need to correctly interpret various notations associated to random variables.
+\begin{definition} \label{def:random-variables}
+  A random variable \(X\) on \(\Omega\) associates outcomes to values.
+
+  \begin{itemize}[itemsep={2ex}]
+    \item The notation 
+      \[
+        X(\text{the name of an outcome})
+      \] 
+      represents the value associated to the named outcome.
+      
+      % For example, if \(X\) is a random variable recording heights of everybody in our class, then \(X(\underline{\hspace{1in}})\) is \underline{\hspace{1.5cm}}.
+
+    \item The notation 
+      \[
+        X = (\text{some value})
+      \] 
+      represents \underline{\hspace{2in}} containing outcomes whose \underline{\hspace{2cm}} is equal to the \emph{given} value on the right-hand side. 
+      Consequently, 
+      \[
+        \mathbb{P}(X = (\text{some value}))
+      \]
+      is \underline{\hspace{5in}} % probability of the event X = (some value).
+
+    \item The notation (and its variants involving different inequalities)
+      \[
+        a \le X \le b
+      \]
+      represents \underline{\hspace{2in}} containing outcomes whose \underline{\hspace{2cm}} satisfies \underline{\hspace{4in}}.
+      Consequently,
+      \[
+        \mathbb{P}(a \le X \le b)
+      \]
+      is \underline{\hspace{5in}} % probability of the event a ≤ X ≤ b.
+  \end{itemize}
+\end{definition}
+
+\begin{example}
+  Let \(X\) be a random variable representing heights of the class.  Match notations to their descriptions. 
+
+  \begin{multicols}{2}
+   \begin{itemize}
+      \item Everyone whose height is in \((160, 180]\).
+      \item Everyone who is at most \(180\) cm tall.
+      \item Someone who is exactly \(180\) cm tall.
+      \item Everyone who is exactly \(180\) cm tall.
+      \item Alex is \(180\) cm tall.
+      \item The height of Alex.
+      \item The entire sample space.
+      \item Does not make sense. 
+    \end{itemize} 
+    \columnbreak
+    \begin{itemize}
+      \item \(X \le 180\)
+      \item \(160 < X \le 180\)
+      \item \(X = 180\)
+      \item \(X(\text{Alex})\)
+      \item \(X(180)\)
+      \item \( X < \infty\)
+    \end{itemize}
+  \end{multicols}
+\end{example}
+\end{document}
