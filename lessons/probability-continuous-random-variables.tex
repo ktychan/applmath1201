@@ -113,10 +113,10 @@ Like discrete random variables, a continuous random variable can be described by
 
   \begin{tikzpicture}
     \begin{axis}[title={PDF}, smooth, samples=100, width=5in, height=2in, axis lines=middle, enlargelimits, ymin=0, ymax=1, ytick={0.5, 1}, yticklabels={,1}, xtick={-2,-1,0,1,2}]
-      \addplot[domain=-2:-0.3, name path=f] {e^(-x^2)/sqrt(pi)};
+      \addplot[domain=-2:-0.3, name path=f] {e^(-x^2)/sqrt(2*pi)};
       \addplot[domain=-2:-0.3, name path=g] {0};
       \addplot[fill=main!50] fill between [of=f and g];
-      \addplot[very thick, domain=-2:2] {e^(-x^2)/sqrt(pi)};
+      \addplot[very thick, domain=-2:2] {e^(-x^2)/sqrt(2*pi)};
       
     \end{axis}
   \end{tikzpicture}
