@@ -99,12 +99,13 @@
 \usepackage{microtype} 
 \usepackage{parskip}
 \usepackage{ragged2e}
+\usepackage[normalem]{ulem}
 
 % embedded markups
 \usepackage{markdown}
 \usepackage[outputdir=./build/aux]{minted}
-\newmintinline{python}{python3, bgcolor=gray!10}
-\newminted{python}{python3, bgcolor=gray!5}
+\newmintinline{python}{python3, bgcolor=gray!10, mathescape}
+\newminted{python}{python3, bgcolor=gray!5, mathescape}
 
 % subfiles
 \usepackage{refcount, xr, subfiles}

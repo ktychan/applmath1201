@@ -1,20 +1,116 @@
 %! TeX program = lualatex
 \documentclass[../main.tex]{subfiles}
-\begin{document} \section{Pseudorandom number generator}
+\begin{document} \section{Pseudorandom variable}
 
-To demonstrate a useful application of probability, called the Monte Carlo Simulation (see page \pageref{sec:monte-carlo}), we need to be able to \emph{randomly} pick numbers from an interval \([0,1]\).
+In this section, we discuss how to randomly sample data following a certain random variable and introduce pseudorandom variables, which will be used for simulation in the next section.
 
-Start by choosing \emph{integers} \(m,a,b,c\) such that \(m,a\) are positive and \(b,c\) are non-negative. Generate a list of numbers defined by the recursion
-\[
-  \quad u_{0} = c \qquad\text{and}\qquad u_{t} = (a u_{t-1} + b) \mod m \quad\text{for every \(t \ge 1\)}.
-\]
-\blanklines{5}
+In breaking with tradition, we learn pseudorandom variables through a mix of mathematics and scientific computing. 
 
-Under appropriate choices of \(m,a,b\), such as \(m = 2^{32}, a = 1664525, b = 1013904223\), 
-\begin{enumerate}
-  \item the resulting integers are roughly evenly spread out in \([0,m]\), and
-  \item if we have already generated \(u_{1},\ldots,u_{n}\) and try to predict the next one in the sequence, our prediction amounts to a random guess.
-\end{enumerate}
+\begin{definition}[integer division]
+  Let \(m\) be a positive integer. 
 
+  If \(x\) is an integer, then we can \hlmain{divide \(x\) by \(m\)} and calculate
+  \[
+    \underbrace{r = x \mod{m}}_{\text{math notation}} 
+    \quad\text{and}\quad
+    \underbrace{\texttt{r = x \% m}}_{\text{python code}},
+  \] where \(r\) is the \emph{smaller non-negative} remainder of \(x\) when divided by \(m\).  \hlsupp{The result must satisfy \(0 \le r < m\).}
 
+  Moreover, integers \(a,b\) are called \hlmain{equivalent modulo \(m\)} if \((a - b) \mod{m}\) is \(0\)
+\end{definition}
+\faStar{} You should know how to calculate \(x \mod{m}\) by hand and using a computer.
+
+\begin{example}
+  Calculate \(8 \mod 3\) by hand and verify your computation using python.
+  \blanklines{5}
+\end{example}
+
+% \begin{definition}[{the uniform distribution on \([0,1]\)}]
+%   The continuous random variable with PDF \(f(x) = 1\) on \([0,1]\) and \(f(x) = 0\) everywhere else is called the \hlmain{uniform distribution on \([0,1]\), denoted by \(U(0,1)\)}. 
+% \end{definition}
+%
+% \begin{example}
+%   Calculate \(E(X)\), \(Var(X)\) and \(\sigma\) for \(X = U(0,1)\). Sketch its PDF and CDF.
+%   \blanklines{15}
+% \end{example}
+% \clearpage
+%
+% The uniform distribution is the simplest continuous random variable since its PDF is just a constant function on \([0,1]\). To generate data that follow \(U(0,1)\) means to randomly generate numbers on the interval \([0,1]\) \emph{with equal probability}. 
+
+We can use integer division to generate pseudorandom numbers. 
+\begin{definition}[pseudorandom number generator] \label{def:pseudorandom-number-generator}
+  A pseudorandom number generator parameterized by \(a,b,c,m\) is the sequence of numbers defined by the recurrence
+  \begin{equation} \label{eq:pseudorandom-number-generator}
+    \quad u_{0} = c \qquad\text{and}\qquad u_{t} = (a u_{t-1} + b) \mod m \quad\text{for every integer \(t \ge 1\)}.
+  \end{equation}
+\end{definition}
+
+Let's cozy up to Equation~\ref{eq:pseudorandom-number-generator}.
+\begin{example}
+  Set \(a = 5, b = 1, c = 1, m = 8\) in the pseudorandom generator. Write down the corresponding recurrence and calculate the first \(3\) numbers. 
+
+  \blanklines{10}
+\end{example}
+\clearpage
+
+Definition~\ref{def:pseudorandom-number-generator} generates fake random numbers because they follow a pattern (hence fake) but is hard to predict what comes next in the sequence (hence random) without knowing \(a,b,c,m\).
+
+In python, pseudorandom numbers are generated using a for-loop.
+
+\begin{listing}[h!]
+  \begin{pythoncode}
+# fill in the right-hand sides with actual positive integers
+# the choices below come from the textbook page 113.
+a = 1664525 
+b = 1013904223
+m = 2 ** 32
+c = 0            # your choice: c can be integer between 0 and m-1 (inclusive).
+n = 1000         # your choice: how many numbers you want from this generator.
+
+# carry out the computation
+u = [0] * n      # create a list with n number of 0's.
+u[0] = c         # sets $u_{0}$ to c
+for t in range(1, n): 
+    u[t] = ( a * u[t-1] + b ) % m    # Equation $\ref{eq:pseudorandom-number-generator}$
+# END of the for-loop
+  \end{pythoncode}
+
+  \caption{Python code for pseudorandom number generator}
+  \label{lst:pseudorandom-number-generator}
+\end{listing}
+
+\faExclamationTriangle{} The colon at the end of \pythoninline{for t in range(1, n):} signals the beginning of a for-loop. Every line inside the for-loop needs the \emph{same} number of leading spaces (must be at least \(2\) spaces, typically \(4\)).
+
+\faStar{} We use pseudorandom number generator to randomly sample data following \hlmain{\(U(\alpha,\beta)\) the uniform distribution on \([\alpha, \beta]\)}. \(U(\alpha,\beta)\) is a continuous random variable whose PDF is a constant function on an interval \([\alpha, \beta]\) assuming \(\alpha < \beta\).
+
+\begin{method} \label{method:pseudorandom-U(a,b)}
+  A pseudorandom number generator spits out integers \(u_{0}, \ldots, u_{n-1}\) whose values fall between \(0\) and \(m-1\) (inclusive), regardless of the choices for other parameters. Therefore, we can convert generated numbers to random samples \(x_{0}, \ldots, x_{n-1}\) that follow \(U(\alpha,\beta)\) using the formula
+  \[
+    x_{i} = \alpha + (\beta-\alpha) \frac{u_{i}}{m - 1} \text{ for every integer } i = 0, \ldots, n-1.
+  \]
+\end{method}
+
+Method~\ref{method:pseudorandom-U(a,b)} is just a sequence of transformations of the interval \([0, m-1]\) (Calc~1000 week 1 material).
+
+\blanklines{10}
+\clearpage
+
+\begin{example}
+  Suppose a pseudorandom number generator with parameter \(m = 2^{12}\) generated \(100\) numbers \(u_{0}, \ldots, u_{99}\).  
+  \begin{enumerate}
+    \item Write down the formula that converts the generated numbers to random samples \(x_{0}, \ldots, x_{99}\) that follow \(U(-1, 1)\). 
+    \item Modify Listing~\ref{lst:pseudorandom-number-generator} to generate \(x_{0}, \ldots, x_{99}\).
+  \end{enumerate}
+
+  \blanklines{5}
+\end{example}
+
+\medskip
+Here is an extra practice on \(U(\alpha,\beta)\). It is not related to pseudorandom variables.
+\begin{example}
+  Find the PDF, CDF, expectation, variance and standard deviation for \(U(\alpha, \beta)\) assuming \(\alpha < \beta\).
+  \blanklines{30}
+\end{example}
+\vfill{}
+Hint: Remember Example~\ref{ex:distribution-with-unknown-bounds}?
 \end{document}

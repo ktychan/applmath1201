@@ -17,9 +17,9 @@ Probability gives a big picture view of data. Pictorially, probability mass/dens
 \end{definition}
 
 \begin{example} \label{ex:variance-discrete-betting}
-  We play a betting game of predicting the outcome of rolling a fair six-sided die.  Each bet costs \underline{\hspace{1cm}} chores token. If we win, we collect \underline{\hspace{1cm}} chores tokens.
+  We play a betting game of predicting the outcome of rolling a fair six-sided die.  Each bet costs \(1\) chore token. If we win, we collect \(3\) chore tokens.
 
-  This game is modelled by the random variable \(X\) where \(X = \underline{\hspace{1cm}}\) is the event in which we lose and \(X = \underline{\hspace{1cm}}\) is the event in which we win.  We work out that \(\mathbb{P}(X = \underline{\hspace{1cm}}) = \underline{\hspace{1cm}}\) and \(\mathbb{P}(X = \underline{\hspace{1cm}}) = \underline{\hspace{1cm}}\).  What is the expected return if we play the game \(10\) times?
+  This game is modelled by the random variable \(X\) where \(X = -1\) is the event in which we lose and \(X = 3\) is the event in which we win. We work out that \(\mathbb{P}(X = -1) = \underline{\hspace{1cm}}\) and \(\mathbb{P}(X = 3) = \underline{\hspace{1cm}}\).  What is the expected return if we play the game \(10\) times?
 
   \blanklines{10}
 \end{example}
@@ -31,7 +31,7 @@ Probability gives a big picture view of data. Pictorially, probability mass/dens
 \end{example}
 \clearpage
 
-Variance is defined as \(Var(X) = E( (X - E(x))^{2} )\) regardless of whether a random variable \(X\) is discrete or continuous. However, this formula should be be specialized because it does not directly tell us how to calculate variance.
+Variance is defined as \(Var(X) = E( (X - E(x))^{2} )\) regardless of whether a random variable \(X\) is discrete or continuous. However, this formula needs further explanation because it does not \emph{directly} tell us how to calculate variance.
 \begin{definition}[variance and standard deviation]
   Let \(\mu = E(x)\) which is a constant.
 
@@ -46,12 +46,14 @@ Variance is defined as \(Var(X) = E( (X - E(x))^{2} )\) regardless of whether a 
   \end{equation}
 
   The \hlmain{standard deviation} (for both types) is \(Stddev(X) = \sqrt{Var(X)}\).
+
+  It is quite common to denote standard deviation by \(\sigma\) or \(s\) and variance by \(\sigma^{2}\) or \(s^{2}\).
 \end{definition}
 
 \begin{example}
   Calculate the variance for the discrete random variable in Example~\ref{ex:variance-discrete-betting}.
 
-  \blanklines{15}
+  \blanklines{10}
 \end{example}
 
 \begin{example}
@@ -63,7 +65,7 @@ Variance is defined as \(Var(X) = E( (X - E(x))^{2} )\) regardless of whether a 
 
 \faStar{} Expectation measures the \hlmain{centre} of data. Variance and standard deviation measure how far the data spread from its expectation.
 
-\begin{example}
+\begin{example} \label{ex:drv-shapes}
   Consider the following PMFs.
 
   \begin{tikzpicture}
@@ -119,7 +121,7 @@ Variance is defined as \(Var(X) = E( (X - E(x))^{2} )\) regardless of whether a 
   \end{tikzpicture}
 \end{example}
 
-\begin{example}
+\begin{example} \label{ex:crv-shapes}
   Consider the following PDFs.
 
   \begin{center}
@@ -138,5 +140,28 @@ Variance is defined as \(Var(X) = E( (X - E(x))^{2} )\) regardless of whether a 
     \end{tikzpicture}
   \end{center}
 \end{example}
+\clearpage
+
+Examples~\ref{ex:drv-shapes}~and~\ref{ex:crv-shapes} demonstrate the general observation that \hlmain{expectation \(\mu\), variance \(\sigma^{2}\) and standard deviation \(\sigma\)} together roughly describe the \hlmain{shape of a random variable}.  Sometimes (in reality and in this course), we want to randomly generate data that replicate experiments with certain sample mean and sample variance.  Look ahead to Example~\ref{ex:simulation} on page~\pageref{ex:simulation} for a preview.
+
+In mathematical terms, we want to find a suitable PDF given its expectation \(\mu\) and variance \(\sigma^{2}\) (or standard deviation \(\sigma\)). The idea (not the computational steps) we used in Example~\ref{ex:uniform-distribution-with-unknown-bounds} is helpful.
+
+\begin{example} \label{ex:uniform-distribution-from-mean-and-stddev}
+  We want a continuous random variable \(X\) with 
+  \[
+    \text{PDF }
+    f(x) = 
+    \begin{cases}
+      \frac{1}{2a} & \text{if } |x| < a \\
+      0 & \text{otherwise}
+    \end{cases},
+    \quad
+    \mu = 0 \quad\text{and}\quad \sigma^{2} = \frac{11.25}{11}.
+  \]
+  Find the unknown parameter \(a\). Approximate to four decimal places if necessary.
+
+  \blanklines{20}
+\end{example}
+\clearpage
 
 \end{document}
