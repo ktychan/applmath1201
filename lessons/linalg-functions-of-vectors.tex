@@ -2,26 +2,58 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Functions of vectors}
 
-We dip out toes in the general idea of vector-value functions. 
-
 A function is a real-valued function if the output is a real number. These are our familiar functions.  For example, 
 \[
   f(\vec{x}) = e^{x_{1} + x_{2}}
 \]
 is a real-valued function because its output is a real number. Its input does not matter. 
 
-A function is a vector-valued function if the output is a vector (with dimension \(2\) or more). For example, 
+A function is a vector-valued function if the output is a vector (with dimension \(2\) or more). For example, these are vector-valued functions
 \[
   f(\vec{x}) = 
   \begin{bmatrix}
     x_{1}^{2} \\
     x_{2}^{2}
-  \end{bmatrix}
+  \end{bmatrix} 
+  \qquad\text{and}\qquad
+  g(\vec{x}) = 
+  \begin{bmatrix}
+    0.1 x_{1} x_{2} + x_{1} \\
+    0.7 x_{1} + 0.8 x_{1} x_{2} \\
+  \end{bmatrix}.
 \]
-is a vector-valued function. 
 
-One of the major differences between real-value functions and vector-value functions is that a vector-value function (in which the input and output vectors have the same dimension) can be used to encode multi-dimensional data such as our orca-seal data.
+In particular, the notation for vector-valued functions are just a compact way to write a couple equations together. The function \(g(\vec{x})\) can be written as 
+\begin{align*}
+  y_{1} &= 0.1 x_{1} x_{2} + x_{1} \\
+  y_{2} &= 0.7 x_{1} + 0.8 x_{1} x_{2}
+\end{align*}
+where \(x_{1}, x_{2}\) are inputs and \(y_{1}, y_{2}\) are outputs. In other words, we are just writing \(g(\vec{x}) = \begin{bmatrix} y_{1} \\ y_{2} \end{bmatrix}\).
 
-To visualize a vector-valued function, we draw the output vector as a line segment originating from the point of the input vector.
+\faStar{} A vector-valued function \(f(\vec{x})\) is \hlmain{linear} if it satisfies 
+\begin{equation}
+  f(\vec{0}) = \vec{0} 
+  \quad\text{and}\quad
+  f(a \vec{x} + b \vec{y}) = a f(\vec{x}) + b f(\vec{y}),
+\end{equation}
+for all scalers \(a,b\) and all vectors (of the same dimension) \(\vec{x}, \vec{y}\).
 
+Linear vector-valued functions are \sout{particularly} extremely nice.  There is a ton of \sout{mathematical theory} software capable of doing all sort of things with linear vector-valued functions. Therefore, we should identify linear vector-valued functions.
+
+\begin{example}
+  Show that \(f(\vec{x}) = \begin{bmatrix} x_{1} + 3x_{2} \\ -x_{1} + x_{2} \end{bmatrix}\) is a linear vector-valued function. 
+\end{example}
+
+\begin{example}[Example~6 on page 157 of the textbook]
+  Consider a population of juveniles and adults.  At the end of each year, 
+  \begin{itemize}
+    \item \(20\%\) of the surviving juveniles become adults, 
+    \item \(90\%\) of the adults survive, and
+    \item the per-adult-capita birth rate is \(15\%\). 
+  \end{itemize}
+
+  Encode the age-structured population dynamics as a vector field and predict the number of adults and juveniles after \(2\) years if the initial population consists of \(2\) juveniles and \(4\) adults.
+
+  \blanklines{5}
+\end{example}
 \end{document}
