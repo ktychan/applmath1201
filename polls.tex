@@ -8,6 +8,7 @@
 \beamertemplatenavigationsymbolsempty{}
 \usepackage[normalem]{ulem}
 \usepackage{fontawesome5}
+\usepackage{multicol}
 
 \input{./colours.tex.preamble}
 \input{./tikz.tex.preamble}
@@ -474,20 +475,35 @@
   Articulate your reasoning using the language of probability, e.g., sample space, events.
 \end{frame}
 
-\begin{frame}
-  Which function in Example~9.2 is a valid probability density function?
+\begin{frame}[c]
+  Which functions in Example~9.2 are valid probability density functions?
 \end{frame}
 
 \begin{frame}
   Suppose \(X\) is a continuous random variable. Which of the following is true?
 
   \begin{enumerate}
-    \item \(f_{X}'(x) = F_{x}(x)\)
-    \item \(f_{X}(x) = \int F_{X}(x) \;dx\)
-    \item \(F_{X}'(x) = f_{x}(x)\)
-    \item \(F_{X}(x) = \int f_{X}(x) \;dx\)
+    \item \(f'(x) = F(x)\)
+    \item \(f(x) = \int F(x) \;dx\)
+    \item \(F'(x) = f(x)\)
+    \item \(F(x) = \int f(x) \;dx\)
     \item I am not sure.
   \end{enumerate}
 \end{frame}
 
+
+\begin{frame}
+  If we are given the CDF \(F(x)\) of a continuous random variable \(X\) and want to calculate \(E(X)\), what do we calculate?
+
+  \begin{multicols}{2}
+    \begin{enumerate}
+      \item \(\int_{-\infty}^{\infty} x F(x) \;dx\)
+      \item \(\int_{-\infty}^{\infty} \frac{F(x)}{x} \;dx\)
+      \item \(\int_{-\infty}^{\infty} x F'(x) \;dx\)
+      \item \(\int_{-\infty}^{\infty} \frac{F'(x)}{x} \;dx\)
+        \columnbreak
+      \item I am not sure.
+    \end{enumerate}
+  \end{multicols}
+\end{frame}
 \end{document}
