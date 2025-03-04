@@ -111,7 +111,7 @@ x = [1.7, 0.7, -0.4, -1.8, 0.2, 0.9, -1.2, -0.9, -1.8, -1.4, -1.8, -2.0]
   \sout{Let's figure out this constant \(a\).} We already figured out this constant \(a\) in Example~\ref{ex:uniform-distribution-from-mean-and-stddev}.
   \blanklines{5}
 
-  We need to decide what generated sample should be a false positive (because we decided that we want to count false positives in the simulation step).
+  We need to decide what generated replica should be a false positive (because we decided that we want to count false positives in the simulation step).
   \blanklines{10}
 
   Finally, we can compute \(\mathbb{P}(\text{false positives})\) by repeating the following simulated experiment a large number of times, say \underline{\hspace{2cm}}, and keep track of the total number of false positives we generated.
@@ -119,13 +119,13 @@ x = [1.7, 0.7, -0.4, -1.8, 0.2, 0.9, -1.2, -0.9, -1.8, -1.4, -1.8, -2.0]
   Each simulated experiment has two steps.
   \begin{enumerate}
     \item Use pseudorandom variable to generate \(n = 12\) samples following \(U(-a,a)\).
-    \item For each sample, decide if we have a false positive.  Keep a count.
+    \item For each replica, decide if we have a false positive.  Keep a count.
   \end{enumerate}
   \blanklines{5}
 
   We conclude that 
   \[
-    \mathbb{P}(\text{false positives}) = \frac{\text{total number of false positives}}{\text{total number of generated samples}} = 
+    \mathbb{P}(\text{false positives}) = \frac{\text{total number of false positives}}{\text{total number of generated replicas}} = 
   \]
 \end{example}
 
