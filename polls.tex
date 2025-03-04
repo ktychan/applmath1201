@@ -9,6 +9,7 @@
 \usepackage[normalem]{ulem}
 \usepackage{fontawesome5}
 \usepackage{multicol}
+\usepackage{cancel}
 
 \input{./colours.tex.preamble}
 \input{./tikz.tex.preamble}
@@ -505,5 +506,19 @@
       \item I am not sure.
     \end{enumerate}
   \end{multicols}
+\end{frame}
+
+\section{Simulation}
+
+\begin{frame}
+  Which probability is the likelihood that our hypothesis \hlsupp{\emph{ABC causes \cancel{weight} mass loss}} is wrong?
+
+  \begin{enumerate}
+    \item \(\mathbb{P}(\text{false positive})\)
+    \item \(\mathbb{P}(\text{false negative})\)
+    \item Depends on what we mean by \emph{positive}.
+    \item 
+    \item I am not sure.
+  \end{enumerate}
 \end{frame}
 \end{document}
