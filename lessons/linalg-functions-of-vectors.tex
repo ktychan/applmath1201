@@ -2,6 +2,11 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Functions of vectors}
 
+An equation of the form \(A \vec{x} = \vec{b}\) takes vectors as inputs and spits out vectors. We can write that in the form as a function.
+\blanklines{10}
+
+Such a function is called a \hlmain{vector-valued function} because their outputs are vectors.  
+
 A function is a real-valued function if the output is a real number. These are our familiar functions.  For example, 
 \[
   f(\vec{x}) = e^{x_{1} + x_{2}}
@@ -32,28 +37,10 @@ where \(x_{1}, x_{2}\) are inputs and \(y_{1}, y_{2}\) are outputs. In other wor
 
 \faStar{} A vector-valued function \(f(\vec{x})\) is \hlmain{linear} if it satisfies 
 \begin{equation}
-  f(\vec{0}) = \vec{0} 
+  f(c \vec{v}) = c f(\vec{v})
   \quad\text{and}\quad
-  f(a \vec{x} + b \vec{y}) = a f(\vec{x}) + b f(\vec{y}),
+  f(\vec{x} + \vec{y}) = f(\vec{x}) + f(\vec{y}),
 \end{equation}
-for all scalers \(a,b\) and all vectors (of the same dimension) \(\vec{x}, \vec{y}\).
+for all scalers \(c\) and all vectors \(\vec{x}, \vec{y}\) having the same dimension.
 
-Linear vector-valued functions are \sout{particularly} extremely nice.  There is a ton of \sout{mathematical theory} software capable of doing all sort of things with linear vector-valued functions. Therefore, we should identify linear vector-valued functions.
-
-\begin{example}
-  Show that \(f(\vec{x}) = \begin{bmatrix} x_{1} + 3x_{2} \\ -x_{1} + x_{2} \end{bmatrix}\) is a linear vector-valued function. 
-\end{example}
-
-\begin{example}[Example~6 on page 157 of the textbook]
-  Consider a population of juveniles and adults.  At the end of each year, 
-  \begin{itemize}
-    \item \(20\%\) of the surviving juveniles become adults, 
-    \item \(90\%\) of the adults survive, and
-    \item the per-adult-capita birth rate is \(15\%\). 
-  \end{itemize}
-
-  Encode the age-structured population dynamics as a vector field and predict the number of adults and juveniles after \(2\) years if the initial population consists of \(2\) juveniles and \(4\) adults.
-
-  \blanklines{5}
-\end{example}
 \end{document}

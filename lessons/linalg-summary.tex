@@ -1,0 +1,58 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+\begin{document} \section{Summary of rules of vectors and matricies}
+
+On this page, we summarize rules for vectors and matricies in \(2\) dimensions.
+
+Scaling and addition.
+\[
+  a 
+  \begin{bmatrix}
+    u_{1} \\ u_{2}
+  \end{bmatrix}
+  + 
+  b 
+  \begin{bmatrix}
+    v_{1} \\ v_{2}
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    au_{1} + bv_{1} \\
+    au_{2} + bu_{2}
+  \end{bmatrix}.
+\]
+
+Matrix-vector multiplication.
+\[
+  \begin{bmatrix}
+    a & b \\
+    c & d
+  \end{bmatrix}
+  \begin{bmatrix}
+    v_{1} \\ v_{2}
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    a v_{1} + b v_{2} \\
+    c v_{1} + c v_{2}
+  \end{bmatrix}.
+\]
+
+Matrix-matrix multiplication.
+\[
+  \begin{bmatrix}
+    a & b \\
+    c & d
+  \end{bmatrix}
+  \begin{bmatrix}
+    e & f \\
+    g & h
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    ae + bg & af + bh \\
+    ce + dg & cf + dh
+  \end{bmatrix}.
+\]
+
+\end{document}

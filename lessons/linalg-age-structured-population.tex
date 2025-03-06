@@ -1,0 +1,40 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+\begin{document} \section{Age-structured population}
+
+We can use vector and matricies multi-dimensional phenomenon, such as age-structured population.  By age-structured population, we mean a population with two mutually exclusive subgroups \emph{adults} and \emph{juveniles} and consider the effect of growing up.
+
+\begin{example}[Example~6 on page 157 of the textbook]
+  Consider a population of juveniles and adults. Initially, there are \(2\) juveniles and \(4\) adults. At the end of each year, 
+  \begin{itemize}[itemsep={0ex}]
+    \item \(20\%\) of the surviving juveniles become adults, and the rest juveniles die, 
+    \item \(90\%\) of the adults survive, and the rest of adults die, and
+    \item only adults produce offsprings, and the per-capita birth rate is \(15\%\). 
+  \end{itemize}
+
+  Predict the number of adults and juveniles after \(2\) years.  How would you predict the populations at the end of \(n\) years?
+  \blanklines{35}
+
+  \clearpage
+  \blanklines{50}
+\end{example}
+\clearpage
+
+\begin{example}
+  Write down the matrix representing the following network.
+
+  \begin{center}
+    \includegraphics{../standalones/build/diagram_transition.pdf}
+  \end{center}
+
+  Moreover, describe the transition between juveniles and adults in words.
+
+  \blanklines{20}
+\end{example}
+
+\begin{example}
+  Express the recurrence equation \(\vec{x}(t+1) = A \vec{x}(t)\) as a network diagram where \(A = \begin{bmatrix} 0.05 & 0.33 \\ 0.2 & 0.5 \end{bmatrix}\). Moreover, describe the transition between juveniles \(x_{1}\) and adults \(x_{2}\) in words.
+
+  \blanklines{20}
+\end{example}
+\end{document}
