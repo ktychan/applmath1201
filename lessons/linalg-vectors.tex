@@ -3,7 +3,7 @@
 \begin{document} 
 \section{Vectors}
 
-We have been looking at models involving one quantity, e.g., the population of a group of unicorns.  We now develop mathematical tools (\emph{linear} vector fields and \emph{linear} systems of differential equations) to model systems involving two or more quantities, e.g., an ecosystem involving a predator and prey.
+We have been looking at models involving one quantity, e.g., the population of a group of unicorns.  We now develop mathematical tools (vectors and matricies) to model systems involving two or more quantities, e.g., an ecosystem involving predators and preys.
 
 We use an introductory example to demonstrate why vectors are useful in science.
 \begin{example}
@@ -100,7 +100,7 @@ We now study vectors abstractly and quickly introduce all fundamental operations
     \quad
     \includegraphics{../standalones/build/plot-RR2}
 
-    \faStar{} In the operation \(c \, \vec{v}\), the constant \(c\) is called a \hlmain{scalar} because it stretches (aka scales) a vector's length without rotation.  The length of the stretched vector \(c \, \vec{v}\) is \underline{\hspace{2in}\phantom{\huge X}}.
+    The operation \(c \, \vec{v}\) is called a scalar-multiplication because the constant \(c\) scales a vector's length without any change of direction.  The length of the scaled vector \(c \, \vec{v}\) is \underline{\hspace{2in}\phantom{\huge X}}.
 
   % \item The \hlmain{dot product} \(\vec{u} \bullet \vec{v}\) takes two vectors of the same dimension as input and outputs a scaler. 
   %   \begin{equation}
@@ -122,9 +122,7 @@ In general, we can multiply an \(m\)-by-\(n\) matrix \(A\) by a \(n\)-dimensiona
 \blanklines{5}
 
 % The number of columns in \(A\) \hlwarn{must match} the number of rows in \(\vec{v}\).  Matrix-vector multiplication is defined by 
-\faStar{} A main reason we study matricies is that matrix-vector multiplication can be used to encode system of linear equations in variable \(x_{1}, \ldots, x_{n}\) in the form \(A \vec{x} = \vec{b}\). 
-
-We demonstrate this process through an example.
+A main reason we study matricies is that matrix-vector multiplication can be used to encode linear equations in variable \(x_{1}, \ldots, x_{n}\) in the form \(A \vec{x} = \vec{b}\). 
 
 \begin{example}
   Write the following equations in the form \(A \vec{x} = \vec{b}\).
@@ -159,9 +157,9 @@ We demonstrate this process through an example.
 \end{example}
 \clearpage
 
-We can even encode recurrence using matrix-vector multiplication. 
+\faStar{} We can now upgrade recurrence to include multiple quantities. 
 \begin{example}
-  Write the following system of recurrence equations in the form \(\vec{x}(t+1) = A \vec{x}(t)\).
+  Write the following recurrence equations in the form \(\vec{x}(t+1) = A \vec{x}(t)\).
   \[
     \begin{array}{rcrcr}
       x_{1}(t+1) &=& & & 0.5 x_{2}(t) \\
@@ -172,7 +170,7 @@ We can even encode recurrence using matrix-vector multiplication.
 \end{example}
 
 \begin{example}
-  Write \(\vec{x}(t+1) = A \vec{x}(t)\) as a system of recurrence equations where \(A = \begin{bmatrix} 0.2 & 0.8 \\ 0 & -0.7 \end{bmatrix}\).
+  Write \(\vec{x}(t+1) = A \vec{x}(t)\) as recurrence equations where \(A = \begin{bmatrix} 0.2 & 0.8 \\ 0 & -0.7 \end{bmatrix}\).
 
   \blanklines{8}
 \end{example}
