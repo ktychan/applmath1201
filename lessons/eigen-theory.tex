@@ -1,42 +1,113 @@
 %! TeX program = lualatex
 \documentclass[../main.tex]{subfiles}
-\begin{document} \section{Finding eigenvalues and eigenvectors}
+\begin{document} \section{Eigenvectors and eigenvalues}
 
-Recall that linear vector fields are functions of the form \(f(\vec{x}) = A\vec{x}\) where \(A\) is a matrix of an appropriate dimension.  
+The (family of) exponential functions \(v(x) = e^{\lambda x}\) has a feature that no other families of real-valued \hlsupp{non-zero} functions possess. They \emph{scale linearly} under differentiation.
+\blanklines{5}
 
-In particular, we are interested in solving systems of recurrence equations. 
+From above, we distill an useful abstract property \hlmain{\((\text{operation}) \; (\text{object}) = (\text{constant}) \; (\text{the same object})\)} because it is a \emph{blueprint} for quantitative and qualitative tools to understand systems of recurrence equations and systems of differential equations (next week). In matrix theory, such operations are matrix-vector multiplication, and such objects are called eigenvectors.  
 
-\begin{definition}[eigenvalues and eigenvectors]
-  Suppose \(A\) is a square matrix \(A\). An eigenvalue-eigenvector pair is a solution to the equation
-  \[
+\begin{definition}[eigenvector with corresponding eigenvalue]
+  Let \(A\) be a square matrix. A constant \(\lambda\) (could be \(0\)) and a \hlsupp{non-zero} vector \(\vec{v}\) satisfying 
+  \begin{equation} \label{eq:eigenpair}
     A \vec{v} = \lambda \vec{v},
-  \]
-  where \(\lambda\) is a scalar and \(\vec{v}\) is a \hlwarn{non-zero} vector. 
-
-  Moreover, eigenvalues of \(A\) are roots of the equation (whose unknown is \(\lambda\))
-  \[
-    \det( A - \lambda I ) = 0,
-  \]
-  where \(I\) is the identity matrix having the same dimension as \(A\).
+  \end{equation}
+  are called \hlmain{an eigenvector \(\vec{v}\) with corresponding eigenvalue \(\lambda\)}.
 \end{definition}
 
+In this section, we learn the following (all examinable) for \(2 \times 2\) matricies. 
+\begin{itemize}
+  \item Given a matrix \(A\), determine if a vector \(\vec{v}\) is an eigenvector and find the corresponding eigenvalue for \(\vec{v}\), i.e., decide if a given \(\vec{v}\) satisfies Equation~\ref{eq:eigenpair} and find \(\lambda\) if so.
+  \item Find all eigenvalues and eigenvectors for a matrix. See Methods~\ref{method:eigenvalues}~and~\ref{method:eigenvectors}.
+\end{itemize}
+
 \begin{example}
-  Find eigenvalues of the matrix 
-  \(
-    A = \begin{bmatrix}
-      1 & -1 \\
-      2 & 3
-    \end{bmatrix}
-  \).
+  Which of \(\vec{u} = \begin{bmatrix} 1 \\ -1 \end{bmatrix}, \vec{v} = \begin{bmatrix} 1 \\ -2 \end{bmatrix}, w = \begin{bmatrix}  0 \\ 1 \end{bmatrix}\) are eigenvectors for \(A = \begin{bmatrix} 2 & 0 \\ -6 & -1 \end{bmatrix}\)? If so, find its corresponding eigenvalue. 
+
+  \blanklines{20}
+\end{example}
+\clearpage
+
+\begin{method}[finding eigenvalue] \label{method:eigenvalues}
+  The eigenvalues \(\lambda\) for a given matrix \(A = \begin{bmatrix}a & b \\ c & d \end{bmatrix}\) are solutions of
+  \begin{equation} \label{eq:char-poly}
+    (a - \lambda)(d - \lambda) - bc = 0.
+  \end{equation}
+
+  Solve for \(\lambda\) using the quadratic formula. Note that \(\lambda\) could be real or complex.
+\end{method}
+Equation~\eqref{eq:char-poly} is the same as \(\det(A - \lambda I) = 0\) which is another way to remember it.
+\blanklines{10}
+
+\begin{example} \label{ex:eigenvalues-real}
+  Find all eigenvalues for \(A = \begin{bmatrix} 2 & 0 \\ -6 & -1 \end{bmatrix}\).
+  \blanklines{12}
+\end{example}
+
+\begin{example} \label{ex:eigenvalues-complex}
+  Find all eigenvalues for \(A = \begin{bmatrix} 1 & 1 \\ -1 & 0 \end{bmatrix}\).
+  \blanklines{10}
+\end{example}
+
+{\footnotesize \faExclamationTriangle{} A useful quick sanity check. The quadratic formula has a \(\pm\) in front of the square root. Therefore, if \(\alpha + \beta i\) is an eigenvalue for a matrix \(A\), then the other eigenvalue must be \(\alpha - \beta i\).  In other words, complex eigenvalues always \hlmain{come in pairs} \(\alpha \pm \beta i\) for \(2 \times 2\) matricies.}
+\clearpage
+
+\begin{method}[finding eigenvectors] \label{method:eigenvectors}
+  Finding eigenvectors for a matrix \(A\) is a two-step process.
+  \begin{enumerate}
+    \item Find all its eigenvalues \(\lambda\). 
+    \item For each \(\lambda\), use back-substitution to find vectors \(\vec{v}\) satisfying \(A \vec{v} = \lambda \vec{v}\). 
+  \end{enumerate}
+\end{method}
+
+\begin{example}
+  Find all eigenvectors for the matrix \(A = \begin{bmatrix} 2 & 0 \\ -6 & -1\end{bmatrix}\) in Example~\ref{ex:eigenvalues-real}.
+  \blanklines{20}
 \end{example}
 
 \begin{example}
-  Find eigenvalues of the matrix 
-  \(
-    A = \begin{bmatrix}
-      1 & -1 \\
-      1 & 1
-    \end{bmatrix}
-  \).
+  Find all eigenvalues for the matrix \(A = \begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix}\) in Example~\ref{ex:eigenvalues-complex}.
+  \blanklines{20}
+\end{example}
+
+\clearpage
+
+\faStar{} Matricies can have exactly one eigenvalue. In such a case, Method~\ref{method:eigenvectors} still apply. Examples~\ref{ex:eigenvalues-unique-full-rank}~and~\ref{ex:eigenvalues-unique-dim1} show us how to find eigenvectors when the matrix has only one eigenvalue.
+\begin{example} \label{ex:eigenvalues-unique-full-rank}
+  Find all eigenvalues for the matrix \(A = \begin{bmatrix} 3 & 0 \\ 0.1 & 3 \end{bmatrix}\).
+  \blanklines{20}
+\end{example}
+
+\begin{example} \label{ex:eigenvalues-unique-dim1}
+  Find all eigenvalues for the matrix \(A = \begin{bmatrix} -1 & 0 \\ 0 & -1 \end{bmatrix}\).
+  \blanklines{20}
+\end{example}
+\clearpage
+
+Here are some more exercises.  The result of Example~\ref{eq:age-structured-eigenvectors} is used in Example~\ref{eq:age-structured-recurrence-solution}.
+
+\begin{example} \label{eq:age-structured-eigenvectors}
+  Find all eigenvectors for \(A = \begin{bmatrix} 0 & 6 \\ 1/4 & 1/2 \end{bmatrix}\).
+
+  \blanklines{25}
+\end{example}
+
+\begin{example}
+  Find all eigenvectors for \(A = \begin{bmatrix} 3 & 0 \\ 0 & -2 \end{bmatrix}\).
+
+  \blanklines{20}
+\end{example}
+\clearpage
+
+\begin{example}
+  Find all eigenvectors for \(A = \begin{bmatrix} 0 & -1 \\ 2 & 1 \end{bmatrix}\).
+
+  \blanklines{20}
+\end{example}
+
+\begin{example}
+  Find all eigenvectors for \(A = \begin{bmatrix} 1/2 & 1 \\ -1 & 1/3 \end{bmatrix}\).
+
+  \blanklines{20}
 \end{example}
 \end{document}
