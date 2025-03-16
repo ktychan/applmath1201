@@ -1,6 +1,7 @@
 %! Tex Program = lualatex
 \documentclass[t, 14pt]{beamer} 
 \usetheme{metropolis} 
+\usepackage{amsmath, amssymb}
 
 \everymath{\displaystyle} 
 \setbeamersize{text margin left=.5cm} 
@@ -524,5 +525,32 @@
     \item 
     \item I am not sure.
   \end{enumerate}
+\end{frame}
+
+\section{Linear algebra}
+
+\begin{frame}
+  Which of the following is equal to \(\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} \begin{bmatrix}x_{1} \\ x_{2}\end{bmatrix}\)?
+  \begin{multicols}{2}
+    \begin{enumerate}
+      \item \(\begin{bmatrix} x_{1} + 2 x_{2} \\ 3x_{1} + 4x_{2} \end{bmatrix}\)
+      \item \(\begin{bmatrix} x_{1} + 3 x_{2} \\ 2x_{1} + 4x_{2} \end{bmatrix}\)
+      \item 
+      \item 
+      \item I am not sure.
+    \end{enumerate}
+  \end{multicols}
+\end{frame}
+
+
+\begin{frame}[c]
+  \begin{center}
+    \includegraphics{./standalones/build/diagram_transition.pdf}
+  \end{center}
+
+  Describe the transition between populations encoded by the diagram. ``At the end of \(t\) years, \ldots{}''
+\end{frame}
+
+\begin{frame}{c}
 \end{frame}
 \end{document}
