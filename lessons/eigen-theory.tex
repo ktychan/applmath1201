@@ -30,6 +30,40 @@ In this section, we learn the following (all examinable) for \(2 \times 2\) matr
 \end{example}
 \clearpage
 
+Let's get a pictorial feel for eigenvectors their associated eigenvalues eigenvalues. 
+
+In the picture below, we draw the unit square and calculate its image under a matrix \(A\). However, there is no need to calculate \(A \vec{v}\) for every point \(\vec{v}\) in the unit square.  We just need to calculate what happens to the four corners. 
+
+\begin{example}
+  Consider the matrix \(A = \begin{bmatrix} 2 & -3/2 \\ 0 & 1/2 \end{bmatrix}\). Sketch the image of the unit square by calculating \(A \vec{v}\) where \(\vec{v}\) are the four corners of the unit square.  
+
+  Can you see the eigenvectors and their corresponding eigenvalue from the picture?
+
+  % sage: A * vector([1,0])
+  % (2, 0)
+  % sage: A * vector([1,1])
+  % (1/2, 1/2)
+  % sage: A * vector([0,1])
+  % (-3/2, 1/2)
+
+  \blanklines{15}
+
+  \begin{center}
+    \begin{tikzpicture}[scale=1]
+      \begin{axis}[xmin=0, xmax=3, ymin=0, ymax=3, grid=major, axis lines=middle, axis equal image]
+      \end{axis}
+    \end{tikzpicture}
+    \hspace{1in}
+    \begin{tikzpicture}[scale=1]
+      \begin{axis}[xmin=0, xmax=3, ymin=0, ymax=3, grid=major, axis lines=middle, axis equal image]
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+\end{example}
+
+
+\clearpage
+
 \begin{method}[finding eigenvalue] \label{method:eigenvalues}
   The eigenvalues \(\lambda\) for a given matrix \(A = \begin{bmatrix}a & b \\ c & d \end{bmatrix}\) are solutions of
   \begin{equation} \label{eq:char-poly}
