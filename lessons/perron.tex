@@ -2,7 +2,10 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Long-term behaviour of recurrence equations (with primitive matricies)}
 
-We start with a hidden pattern of Example~\ref{ex:weather-forecast} whose recurrence is
+\begin{wrapfigure}[9]{r}{2in}
+  \includegraphics{../standalones/build/plot-vector-field-dominant-weather-forecast}
+\end{wrapfigure}
+We revisit Example~\ref{ex:weather-forecast} whose recurrence is
 \[
   \vec{p}(t+1) = 
   \begin{bmatrix}
@@ -21,7 +24,7 @@ We start with a hidden pattern of Example~\ref{ex:weather-forecast} whose recurr
   \end{array}.
 \]
 
-A hidden pattern emerges when we \emph{arbitrarily} change the initial condition.
+A hidden pattern for the long-term behaviour emerges when we \emph{arbitrarily} change the initial condition.
 \[
   \begin{array}{rclcrclc}
     A^{100} \begin{bmatrix} 0.5 \\ 0.5 \end{bmatrix} &\approx& \begin{bmatrix} 0.615 \\ 0.385 \end{bmatrix}, &\dots&
@@ -32,7 +35,8 @@ A hidden pattern emerges when we \emph{arbitrarily} change the initial condition
     A^{10000} \begin{bmatrix} 3 \\ -0.1 \end{bmatrix} &\approx& \begin{bmatrix} 1.785 \\ 1.115 \end{bmatrix}, &\dots
   \end{array}
 \]
-Part 1 of the pattern: The ratios \(0.615 / 0.385\), \(0.123 / 0.077\), \(0.175 / 1.115\) are \underline{\hspace{2in}}.
+
+The pattern: The ratios \(0.615 / 0.385\), \(0.123 / 0.077\), \(0.175 / 1.115\) are all roughly \(1.6\).
 
 Can we see this pattern from the solution? Recall that \(A\) has eigenvectors 
 \[
@@ -43,18 +47,18 @@ Can we see this pattern from the solution? Recall that \(A\) has eigenvectors
 
 % Moreover, \(\vec{v}(0) = {\color{gray} \frac{1}{0.625}} {\color{main} \vec{u}} + {\color{gray} \frac{0.8125}{1.625}} \vec{v}\), and 
 
-Regardless of the initial condition, the final solution for \(\vec{p}(t+1) = A\vec{p}(t)\) has the form
-\[
-  \vec{p}(t) = a (1)^{n} {\color{main} \vec{u}} + b (0.35)^{n} \vec{v} = a (1)^{t}  \begin{bmatrix} {\color{main} 1} \\ {\color{main} 0.625} \end{bmatrix}+ b (0.35)^{t} \vec{v}
-  \quad\text{where}\quad
-  \vec{p}(0) = a \vec{u} + b \vec{v}.
-\]
+% Regardless of the initial condition, the final solution for \(\vec{p}(t+1) = A\vec{p}(t)\) has the form
+% \[
+%   \vec{p}(t) = a (1)^{n} {\color{main} \vec{u}} + b (0.35)^{n} \vec{v} = a (1)^{t}  \begin{bmatrix} {\color{main} 1} \\ {\color{main} 0.625} \end{bmatrix}+ b (0.35)^{t} \vec{v}
+%   \quad\text{where}\quad
+%   \vec{p}(0) = a \vec{u} + b \vec{v}.
+% \]
 
-Part 2 of the pattern: \(u_{1} / u_{2} = \underline{\hspace{2in}}\).
+The magic: The largest eigenvalue is \underline{\hspace{1cm}} with a corresponding eigenvector \underline{\hspace{1cm}}. Moreover, \(u_{1} / u_{2} = \underline{\hspace{2in}}\).
 
-Part 3 of the pattern: The eigenvalue \(1\) is the \emph{largest} eigenvalue and \(\vec{u}\) is a corresponding eigenvector.
+\bigskip
 
-\faStar{} The above pattern is not a coincidence and allows us to \emph{quickly} determine long-term behaviour for recurrence equations.
+The above magic is not a coincidence and allows us to \emph{quickly} determine long-term behaviour for recurrence equations.
 
 \begin{method}[long-term behaviour for recurrence equations (with primitive matricies)]
   For ``nice enough'' matricies \(A\), the following is true:
@@ -65,9 +69,9 @@ Part 3 of the pattern: The eigenvalue \(1\) is the \emph{largest} eigenvalue and
   The \hlmain{dominant eigenvalue} \(\mu\) is the largest eigenvalue, and a \hlmain{dominant eigenvector} is an eigenvector whose associated eigenvalue is \(\mu\).
 \end{method}
 
-\faExclamationTriangle{} We are not required to know what ``nice enough'' means. 
+{\footnotesize We are not required to know what ``nice enough'' means. The technical term is primitive matricies.}
 
-{\footnotesize For those who are interested, the technical term for ``nice enough'' is primitive meaning a matrix \(A\) has only non-negative entries and \(A^{(\text{some power})}\) only contains positive entries (no zeros are allowed).  For example \(A = \begin{bmatrix} 1 & 1 \\ 0 & 1\end{bmatrix}\) is not primitive because no power of \(A\) has only positive entries. However, \(B = \begin{bmatrix} 0 & 1 \\ 1 & 1\end{bmatrix}\) is a primitive matrix because \(B^{2}\) only contains positive entries.}
+% {\footnotesize For those who are interested, the technical term for ``nice enough'' is primitive meaning a matrix \(A\) has only non-negative entries and \(A^{(\text{some power})}\) only contains positive entries (no zeros are allowed).  For example \(A = \begin{bmatrix} 1 & 1 \\ 0 & 1\end{bmatrix}\) is not primitive because no power of \(A\) has only positive entries. However, \(B = \begin{bmatrix} 0 & 1 \\ 1 & 1\end{bmatrix}\) is a primitive matrix because \(B^{2}\) only contains positive entries.}
 
 \clearpage
 
