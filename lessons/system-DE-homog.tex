@@ -1,0 +1,71 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+\begin{document} \section{Homogeneous linear systems of DEs with distinct eigenvalues}
+  
+In this section, we solve systems of differential equations 
+\begin{equation} \label{eq:homogeneous-linear-DE}
+  \frac{d\vec{x}}{dt} = A \vec{x}(t) \quad\text{with initial condition}\quad \vec{x}(0).
+\end{equation}
+
+\begin{method}[solutions of homogeneous {\(2\)-by-\(2\)} systems of DEs with \hlattn{distinct} eigenvalues] \label{method:DE-homogeneous-linear-distinct-eigenvalues}
+  Find eigenvectors \(\vec{u}\) with eigenvalue \(\mu\) and \(\vec{v}\) with eigenvalue \(\lambda\).
+
+  If \hlattn{\(\mu \ne \lambda\)}, then the following applies; otherwise, use Method~\ref{method:DE-homogeneous-linear-rank-1}.
+
+  Solve for scalars \hlsupp{\(\alpha, \beta\)} so that \(\vec{x}(0) = \hlsupp{\alpha} \vec{u} + \hlsupp{\beta} \vec{v}\). The solution to Equation~\eqref{eq:homogeneous-linear-DE} is
+  \begin{equation} \label{eq:DE-homogeneous-linear-distinct-eigenvalues}
+    \vec{x}(t) = \hlsupp{\alpha} \cdot \hlmain{\left( \parbox[c]{1.6in}{\centering fundamental solution associated to \(\vec{u}\)} \right) } + \hlsupp{\beta} \cdot \hlmain{\left( \parbox[c]{1.6in}{\centering fundamental solution associated to \(\vec{v}\)} \right)}.
+  \end{equation}
+
+  The \hlmain{fundamental solution} associated to an eigenvector \(\vec{v}\) with eigenvalue \(\lambda\) is \hlmain{\(e^{\lambda t} \vec{v}\)}.  However, if \(\lambda\) is complex, then \(\vec{v}\) has complex numbers in its components, and more explicit expression can be found.
+\end{method}
+
+\faStar{} To reduce the mental load and stress of memorizing seemingly different formulas, you are \emph{strongly encouraged} to compare Method~\ref{method:solutions-for-recurrence-systems} (on page \pageref{eq:solutions-for-recurrence-systems}) with Method~\ref{method:DE-homogeneous-linear-distinct-eigenvalues} and to notice (and remember) that they come from the same \emph{idea}: \hlmain{Express the initial condition as a sum of eigenvectors and the solution is the corresponding sum of \emph{fundamental solutions}.} 
+
+\begin{example}
+  Solve the initial-value problem \( \frac{d\vec{x}}{dt} = \begin{bmatrix} 2   & 0  \\ -6 & -1 \end{bmatrix} \vec{x}(t) \) with \(\vec{x}(0) = \begin{bmatrix} 4 \\ 2 \end{bmatrix}\).
+
+  \blanklines{20}
+\end{example}
+\clearpage
+\clearpage
+
+\begin{example}
+  Solve 
+  \(
+    \begin{array}{rcrcr}
+      x'_{1}(t) &=& -2 x_{1}(t) &+&  x_{2}(t) \\
+      x'_{2}(t) &=&    x_{1}(t) &+& 2x_{2}(t)
+    \end{array}
+  \) with \(
+    \begin{array}{rcr}
+      x_{1}(0) &=&  2 \sqrt{5} \\
+      x_{2}(0) &=& -2 \sqrt{5} \\
+    \end{array}
+  \).
+  \blanklines{50}
+\end{example}
+\clearpage
+
+\begin{example}
+  Find the general solution for \( \frac{d\vec{x}}{dt} = \begin{bmatrix} 2   & 0  \\ -6 & -1 \end{bmatrix} \vec{x}(t) \).
+\end{example}
+
+\subsection{Fundamental solutions for distinct complex eigenvalues} \label{sec:DE-homogeneous-linear-distinct-complex-eigenvalues}
+
+\begin{definition}[fundamental solution for an eigenvector with a \emph{complex} eigenvalue]
+  If \(\vec{v}\) is an eigenvector for \(A\) with real eigenvalue \(\lambda\), then the \hlmain{fundamental solution corresponding to \(\vec{v}\)} is 
+  \[
+    e^{\lambda t} \vec{v}.
+  \]
+
+  However, using Euler's identity \(e^{i \theta} = \cos(\theta) + i \sin(\theta)\), we have a further simplification. If \(\lambda = a + bi\) and \(\vec{v} = \vec{A} + \vec{B}i\) where \(a,b,\vec{A},\vec{B}\) only contain real numbers, then
+  \[
+    e^{\lambda t} \vec{v} = \underbrace{e^{at}(\cos(bt) \vec{A} - \sin(bt) \vec{B})}_{\text{real part}} + i \underbrace{e^{at} \sin(bt) \vec{A} + \cos(bt) \vec{B}}_{\text{imaginary part}}.
+  \]
+\end{definition}
+
+\begin{example}
+  Solve 
+\end{example}
+\end{document}
