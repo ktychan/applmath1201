@@ -2,4 +2,81 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Introduction to systems of differential equations}
 
+A system of differential equations consists of multiple equations of differentiable functions and their derivatives.  Unknown functions can depend on each other and their derivatives to express relations among quantities.
+
+\begin{example}[Lokta-Volterra Equations]
+  Next week, we will run into the Lokta-Volterra equations
+  \begin{align*}
+    x_{1}'(t) &= \alpha x_{1}'(t) - \beta x_{1}'(t) x_{2}'(t) \\
+    x_{2}'(t) &= \gamma x_{1}'(t) x_{2}'(t) - \delta x_{2}'(t).
+  \end{align*}
+
+  The dependent variables (unknown functions) in the Lokta-Volterra equations are \underline{\hspace{1in}}, and the independent variable is \underline{\hspace{1cm}}.
+\end{example}
+
+We use compact notations \(\frac{d \vec{x}}{dt}\) or \(\vec{x}'(t)\) to express the derivatives of the components of \(\vec{x}(t)\).   By definition, we have
+\[
+  \frac{d \vec{x}}{dt} = \begin{bmatrix} x_{1}'(t) \\ \vdots \\ x_{n}'(t)\end{bmatrix}.
+\]
+
+
+\begin{example}
+  Suppose \(x_{1}(t) = 3 e^{5t} -2 e^{t/2}\) and \(x_{2}(t) = 2 e^{5t} + \frac{1}{2}e^{t/2}\). Find \(\frac{d \vec{x}}{dt}\) and express the result as a linear combination of vectors.
+
+  \blanklines{18}
+\end{example}
+
+\faStar{} Classification of systems of DEs are similar to that of differential equations. However, notice the use of ``only'' and ``some'' in the definitions below.
+\begin{itemize}
+  \item A first-order system contains \hlmain{only} first-order differential equations.
+  \item A linear system contains  \hlmain{only} linear differential equations.
+  \item A non-linear system contains \hlsupp{some} non-linear differential equations.
+  \item A first-order, linear system contains \hlmain{only} first-order, linear differential equations.
+\end{itemize}
+
+For example, the Lokta-Volterra equations are \underline{\hspace{3in}}.
+\clearpage
+
+Linear, first-order systems of DEs can be expressed as a matrix equation \(\frac{d \vec{x}}{dt} = A \vec{x}(t) + \vec{b}\) where \(\vec{b}\) only has constants.
+
+\begin{example}
+  Express the following linear, first-order system of DEs as a matrix equation.
+  \[
+     \begin{array}{rcrcr}
+      x_{1}'(t) &=&  2 x_{1}(t) \\
+      x_{2}'(t) &=& -6 x_{1}(t) &-& x_{2}(t) \\
+     \end{array}
+     \quad\text{with initial condition}\quad
+     \begin{array}{rcr}
+      x_{1}'(0) &=& 4 \\
+      x_{2}'(0) &=& 2
+     \end{array}
+  \]
+
+  \blanklines{10}
+\end{example}
+
+\begin{example}
+  Express the following linear, first-order system of DEs as a matrix equation.
+  \[
+     \begin{array}{rcl}
+       x_{1}'(t) &=& 0.3 - 0.1 x_{2}(t) \\
+       x_{2}'(t) &=&   5 x_{1}(t) + x_{2}(t) + 0.2 \\
+     \end{array}
+     \quad\text{with initial condition}\quad
+     \begin{array}{rcr}
+      x_{1}'(0) &=& 4 \\
+      x_{2}'(0) &=& 2
+     \end{array}
+  \]
+
+  \blanklines{10}
+\end{example}
+
+An equilibrium solution for a system of DE is a vector of constant functions, denoted as \(\vec{x}^{*} = \begin{bmatrix} x_{1}^{*} \\ x_{2}^{*} \end{bmatrix}\).
+\begin{example}
+  Find equilibrium solutions for 
+\end{example}
+
+  \vec{x}(t) = \hlsupp{\alpha} \cdot \underbrace{e^{\mu t} \vec{u}}_{ \parbox[c]{1.6in}{\centering fundamental solution associated to \(\vec{u}\)}  } + \hlsupp{\beta} \cdot \underbrace{e^{\lambda t} \vec{v}}_{ \parbox[c]{1.6in}{\centering fundamental solution associated to \(\vec{v}\)} }.
 \end{document}
