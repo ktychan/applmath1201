@@ -4,7 +4,7 @@
   
 In this section, we solve linear, first-order systems of differential equations 
 \begin{equation} \label{eq:homogeneous-linear-DE}
-  \frac{d\vec{x}}{dt} = A \vec{x}(t) \quad\text{with initial condition}\quad \vec{x}(0).
+  \frac{d\vec{x}}{dt} = A \vec{x}(t) \text{ with or without a given } \vec{x}(0).
 \end{equation}
 
 \begin{method}[solutions of homogeneous {\(2\)-by-\(2\)} systems of DEs with \hlattn{distinct} eigenvalues] \label{method:DE-homogeneous-linear-distinct-eigenvalues}
@@ -23,7 +23,7 @@ In this section, we solve linear, first-order systems of differential equations
   \]
 \end{method}
 
-You are \emph{strongly encouraged} to compare and contrast Method~\ref{method:solutions-for-recurrence-systems} (on page \pageref{eq:solutions-for-recurrence-systems}) with Method~\ref{method:DE-homogeneous-linear-distinct-eigenvalues} to \emph{reduce} the mental load and \emph{stress} of memorizing seemingly different (they are not) techniques. Notice and remember that the two methods come from the same \emph{idea}: \hlmain{Express the initial condition as a sum of eigenvectors, and then the solution (of the system of DEs) is the corresponding sum of \emph{fundamental solutions}.} 
+You are \emph{strongly encouraged} to compare and contrast Method~\ref{method:recurrences-system} (on page \pageref{eq:solutions-for-recurrence-systems}) with Method~\ref{method:DE-homogeneous-linear-distinct-eigenvalues} to \emph{reduce} the mental load of learning techniques in isolation. Notice and remember that the two methods come from the same \emph{idea}: \hlmain{Express the initial condition as a sum of eigenvectors, and then the solution (of the system of DEs) is the corresponding sum of \emph{fundamental solutions}.} 
 
 \begin{example}
   Solve the initial-value problem \( \frac{d\vec{x}}{dt} = \begin{bmatrix} 2   & 0  \\ -6 & -1 \end{bmatrix} \vec{x}(t) \) with \(\vec{x}(0) = \begin{bmatrix} 4 \\ 2 \end{bmatrix}\).
@@ -36,24 +36,23 @@ You are \emph{strongly encouraged} to compare and contrast Method~\ref{method:so
   Solve 
   \(
   \begin{array}{rcrcr}
-    x'_{1}(t) &=& -2 x_{1}(t) &+&  x_{2}(t) \\
-    x'_{2}(t) &=&    x_{1}(t) &+& 2x_{2}(t)
+    x'_{1}(t) &=&    x_{1}(t) &-& 4x_{2}(t) \\
+    x'_{2}(t) &=& -8 x_{1}(t) &+& 5x_{2}(t)
   \end{array}
   \) with \(
   \begin{array}{rcr}
-    x_{1}(0) &=&  2 \sqrt{5} \\
-    x_{2}(0) &=& -2 \sqrt{5} \\
+    x_{1}(0) &=&  2 \\
+    x_{2}(0) &=& -2 \\
   \end{array}
   \).
-  \blanklines{50}
+  % \blanklines{50}
+
+  % The eigenvectors are \(mu = 9\) with \(\vec{u} = \begin{bmatrix}1 \\ -2\end{bmatrix}\) and \(\lambda = -3\) with \(\vec{v} = \begin{bmatrix}1 \\ 1\end{bmatrix}\). Note \(\vec{x}(0) = \frac{4}{3} \vec{u} + \frac{2}{3} \vec{v}\).
 \end{example}
 \clearpage
 
 
 \faStar{} Method~\ref{method:DE-homogeneous-linear-distinct-eigenvalues} directly gives us specific solutions satisfying some given initial condition.  If the initial condition is not given, then the best we can hope for is a general solution.  \hlmain{To find the general solution, apply Method~\ref{method:DE-homogeneous-linear-distinct-eigenvalues} but simply leave \(\alpha, \beta\) as free variables in Equation~\ref{eq:DE-homogeneous-linear-distinct-eigenvalues}}.  The calculation shortens to finding the eigenvectors for \(A\) and then use Equation~\ref{eq:DE-homogeneous-linear-distinct-eigenvalues}.
-
-Notice that the general solution \emph{does not} have ``\(+C\)'s''.
-
 
 \begin{example}
   Find the general solution for \( \frac{d\vec{x}}{dt} = \begin{bmatrix} 2   & 0  \\ -6 & -1 \end{bmatrix} \vec{x}(t) \).
@@ -61,12 +60,24 @@ Notice that the general solution \emph{does not} have ``\(+C\)'s''.
   \blanklines{10}
 \end{example}
 
+\begin{example}
+  Find the general solution for \( \frac{d\vec{x}}{dt} = \begin{bmatrix} 0 & -1  \\ 2 & 3 \end{bmatrix} \vec{x}(t) \).
 
-Why does Method~\ref{method:DE-homogeneous-linear-distinct-eigenvalues} work?
-\blanklines{30}
+  \blanklines{30}
+\end{example}
+
+% Why does Method~\ref{method:DE-homogeneous-linear-distinct-eigenvalues} work?
+% \blanklines{30}
 
 \clearpage
-Here is an exercise with more involved arithmetic.
+More exercises.
+
+\begin{example}
+  Solve the initial-value problem \( \frac{d\vec{x}}{dt} = \begin{bmatrix} 3 & 0  \\ 0 & -2 \end{bmatrix} \vec{x}(t) \) with \(\vec{x}(0) = \begin{bmatrix} 1/2 \\ 1/3 \end{bmatrix}\).
+  \blanklines{50}
+\end{example}
+\clearpage
+
 \begin{example}
   Solve 
   \(
@@ -80,8 +91,10 @@ Here is an exercise with more involved arithmetic.
     x_{2}(0) &=& -2 \sqrt{5} \\
   \end{array}
   \).
+
   \blanklines{50}
 \end{example}
+\clearpage
 
 If the matrix \(A\) in \(\frac{d\vec{x}}{dt} = A \vec{x}(t)\) has complex eigenvalues, then the fundamental solutions have explicit expression. 
 

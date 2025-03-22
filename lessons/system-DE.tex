@@ -46,7 +46,7 @@ Linear, first-order systems of DEs can be expressed as a matrix equation \(\frac
       x_{1}'(t) &=&  2 x_{1}(t) \\
       x_{2}'(t) &=& -6 x_{1}(t) &-& x_{2}(t) \\
      \end{array}
-     \quad\text{with initial condition}\quad
+     \quad\text{with}\quad
      \begin{array}{rcr}
       x_{1}'(0) &=& 4 \\
       x_{2}'(0) &=& 2
@@ -59,24 +59,24 @@ Linear, first-order systems of DEs can be expressed as a matrix equation \(\frac
 \begin{example}
   Express the following linear, first-order system of DEs as a matrix equation.
   \[
-     \begin{array}{rcl}
-       x_{1}'(t) &=& 0.3 - 0.1 x_{2}(t) \\
-       x_{2}'(t) &=&   5 x_{1}(t) + x_{2}(t) + 0.2 \\
+     \begin{array}{rcrcrcrcr}
+       x_{1}'(t) &=&              &-& 0.1 x_{2}(t) &+& 2 x_{3} &+& 0.3\\
+       x_{2}'(t) &=&   5 x_{1}(t) &+&     x_{2}(t) &+&   x_{3} &+& 0.2 \\
+       x_{3}'(t) &=&  -3 x_{1}(t) &-& 0.3 x_{2}(t) &+&   x_{3} \\
      \end{array}
-     \quad\text{with initial condition}\quad
+     \quad\text{with}\quad
      \begin{array}{rcr}
       x_{1}'(0) &=& 4 \\
-      x_{2}'(0) &=& 2
+      x_{2}'(0) &=& 2 \\
+      x_{3}'(0) &=& -1
      \end{array}
   \]
 
   \blanklines{10}
 \end{example}
 
-An equilibrium solution for a system of DE is a vector of constant functions, denoted as \(\vec{x}^{*} = \begin{bmatrix} x_{1}^{*} \\ x_{2}^{*} \end{bmatrix}\).
-\begin{example}
-  Find equilibrium solutions for 
-\end{example}
-
-  \vec{x}(t) = \hlsupp{\alpha} \cdot \underbrace{e^{\mu t} \vec{u}}_{ \parbox[c]{1.6in}{\centering fundamental solution associated to \(\vec{u}\)}  } + \hlsupp{\beta} \cdot \underbrace{e^{\lambda t} \vec{v}}_{ \parbox[c]{1.6in}{\centering fundamental solution associated to \(\vec{v}\)} }.
+% An equilibrium solution for a system of DE is a vector of constant functions, denoted as \(\vec{x}^{*} = \begin{bmatrix} x_{1}^{*} \\ x_{2}^{*} \end{bmatrix}\).
+% \begin{example}
+%   Find equilibrium solutions for 
+% \end{example}
 \end{document}
