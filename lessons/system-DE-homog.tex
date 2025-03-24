@@ -10,12 +10,12 @@ In this section, we solve linear, first-order systems of differential equations
 \begin{method}[solutions of homogeneous {\(2\)-by-\(2\)} systems of DEs with \hlattn{distinct} eigenvalues] \label{method:DE-homogeneous-linear-distinct-eigenvalues}
   Find eigenvectors \(\vec{u}\) with eigenvalue \(\mu\) and \(\vec{v}\) with eigenvalue \(\lambda\).
 
-  We just need \emph{one} eigenvector (with actual numbers) for each eigenvalue. 
-
-  Solve for scalars \hlsupp{\(\alpha, \beta\)} so that \(\vec{x}(0) = \hlsupp{\alpha} \vec{u} + \hlsupp{\beta} \vec{v}\). The solution to Equation~\eqref{eq:homogeneous-linear-DE} is
+  The \hlmain{general solution} to Equation~\eqref{eq:homogeneous-linear-DE} is
   \begin{equation} \label{eq:DE-homogeneous-linear-distinct-eigenvalues}
-    \vec{x}(t) = \hlsupp{\alpha} \cdot \hlmain{\left( \parbox[c]{1.6in}{\centering fundamental solution associated to \(\vec{u}\)} \right) } + \hlsupp{\beta} \cdot \hlmain{\left( \parbox[c]{1.6in}{\centering fundamental solution associated to \(\vec{v}\)} \right)}.
+    \vec{x}(t) = \hlsupp{\alpha} \times \hlmain{\left( \parbox[c]{1.6in}{\centering fundamental solution associated to \(\vec{u}\)} \right) } + \hlsupp{\beta} \times \hlmain{\left( \parbox[c]{1.6in}{\centering fundamental solution associated to \(\vec{v}\)} \right)}.
   \end{equation}
+
+  If we wish to find the \hlmain{specific solution} for a given initial condition \(\vec{x}(0)\), then solve for scalars \hlsupp{\(\alpha, \beta\)} so that \(\vec{x}(0) = \hlsupp{\alpha} \vec{u} + \hlsupp{\beta} \vec{v}\). 
 
   The \hlmain{fundamental solution} associated to an eigenvector \(\vec{w}\) with eigenvalue \(\theta\) is \hlmain{\(e^{\theta t} \vec{w}\)}.  Therefore, Equation~\ref{eq:DE-homogeneous-linear-distinct-eigenvalues} has a more explicit expression:
   \[
@@ -26,7 +26,8 @@ In this section, we solve linear, first-order systems of differential equations
 You are \emph{strongly encouraged} to compare and contrast Method~\ref{method:recurrences-system} (on page \pageref{eq:solutions-for-recurrence-systems}) with Method~\ref{method:DE-homogeneous-linear-distinct-eigenvalues} to \emph{reduce} the mental load of learning techniques in isolation. Notice and remember that the two methods come from the same \emph{idea}: \hlmain{Express the initial condition as a sum of eigenvectors, and then the solution (of the system of DEs) is the corresponding sum of \emph{fundamental solutions}.} 
 
 \begin{example}
-  Solve the initial-value problem \( \frac{d\vec{x}}{dt} = \begin{bmatrix} 2   & 0  \\ -6 & -1 \end{bmatrix} \vec{x}(t) \) with \(\vec{x}(0) = \begin{bmatrix} 4 \\ 2 \end{bmatrix}\).
+  Solve \( \frac{d\vec{x}}{dt} = \begin{bmatrix} 2   & 0  \\ -6 & -1 \end{bmatrix} \vec{x}(t) \) with \(\vec{x}(0) = \begin{bmatrix} 4 \\ 2 \end{bmatrix}\).
+  We know this matrix from Example~\ref{ex:eigenvalues-real}.
 
   \blanklines{20}
 \end{example}
@@ -45,19 +46,17 @@ You are \emph{strongly encouraged} to compare and contrast Method~\ref{method:re
     x_{2}(0) &=& -2 \\
   \end{array}
   \).
-  % \blanklines{50}
+  \blanklines{50}
 
   % The eigenvectors are \(mu = 9\) with \(\vec{u} = \begin{bmatrix}1 \\ -2\end{bmatrix}\) and \(\lambda = -3\) with \(\vec{v} = \begin{bmatrix}1 \\ 1\end{bmatrix}\). Note \(\vec{x}(0) = \frac{4}{3} \vec{u} + \frac{2}{3} \vec{v}\).
 \end{example}
 \clearpage
 
 
-\faStar{} Method~\ref{method:DE-homogeneous-linear-distinct-eigenvalues} directly gives us specific solutions satisfying some given initial condition.  If the initial condition is not given, then the best we can hope for is a general solution.  \hlmain{To find the general solution, apply Method~\ref{method:DE-homogeneous-linear-distinct-eigenvalues} but simply leave \(\alpha, \beta\) as free variables in Equation~\ref{eq:DE-homogeneous-linear-distinct-eigenvalues}}.  The calculation shortens to finding the eigenvectors for \(A\) and then use Equation~\ref{eq:DE-homogeneous-linear-distinct-eigenvalues}.
-
 \begin{example}
-  Find the general solution for \( \frac{d\vec{x}}{dt} = \begin{bmatrix} 2   & 0  \\ -6 & -1 \end{bmatrix} \vec{x}(t) \).
+  Find the general solution for \( \frac{d\vec{x}}{dt} = \begin{bmatrix} 1 & 2  \\ 1 & 0 \end{bmatrix} \vec{x}(t) \).
 
-  \blanklines{10}
+  \blanklines{20}
 \end{example}
 
 \begin{example}
@@ -79,7 +78,7 @@ More exercises.
 \clearpage
 
 \begin{example}
-  Solve 
+  Find the general and the specific solutions for
   \(
   \begin{array}{rcrcr}
     x'_{1}(t) &=& -2 x_{1}(t) &+&  x_{2}(t) \\
@@ -110,6 +109,6 @@ If the matrix \(A\) in \(\frac{d\vec{x}}{dt} = A \vec{x}(t)\) has complex eigenv
 \end{definition}
 
 \begin{example}
-  Solve \(\frac{d\vec{x}}{dt} = \begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix}\vec{x}(t)\) with initial condition \(\vec{x}(0) = \begin{bmatrix} 1 \\ 1 \end{bmatrix}\).
+  Find the general and specific solutions for \(\frac{d\vec{x}}{dt} = \begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix}\vec{x}(t)\) with initial condition \(\vec{x}(0) = \begin{bmatrix} 1 \\ 1 \end{bmatrix}\).
 \end{example}
 \end{document}

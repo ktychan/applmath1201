@@ -11,7 +11,7 @@ We can distill a general concept from solving \(A \vec{x} = \vec{b}\) called the
 \hlsupp{What is invertibility good for?}  Let's say we want to solve \(A \vec{x} = \vec{b}\), and \(A\) happens to be invertible. 
 \blanklines{5}
 
-\hlsupp{What is a quick way to determine if \(A\) is invertible?} That's the job for a determinant. The \hlmain{determinant}\footnote{For those who are interested, a general method for calculating determinants is called co-factor expansion.} for a \(2\)-by-\(2\) matrix is \(\det \begin{bmatrix} a & b \\ c & d \end{bmatrix} = ad - bc\).  The determinant for a \(3\)-by-\(3\) matrix is \(\det \begin{bmatrix} a & b & c \\ d & e & f \\ g & h & i\end{bmatrix} = {\color{gray!50} a (ei - fh) - b (di - fg) + c (dh - eg)} = aei - afh - bdi + bfg + cdh - ceg \). 
+\hlsupp{What is a quick way to determine if \(A\) is invertible?} That's the job for a determinant. The \hlmain{determinant}\footnote{For those who are interested, a general method for calculating determinants is called co-factor expansion.} for a \(2\)-by-\(2\) matrix is \(\det \begin{bmatrix} a & b \\ c & d \end{bmatrix} = ad - bc\).  The determinant for a \(3\)-by-\(3\) matrix is \(\det \begin{bmatrix} a & b & c \\ d & e & f \\ g & h & i\end{bmatrix} = a (ei - fh) - b (di - fg) + c (dh - eg) = aei - afh - bdi + bfg + cdh - ceg \). 
 \blanklines{8}
 
 \faStar{} If \(A\) is a square matrix and \(\det(A) \ne 0\), then \(A\) is invertible. 
@@ -34,19 +34,36 @@ We can distill a general concept from solving \(A \vec{x} = \vec{b}\) called the
 \faStar{} The following is a summary of matrix operations that we talked about.
 
 \begin{itemize}
-  \item The \hlmain{characteristic polynomial} of a square matrix \(A\) is \(\det(A - \lambda I)\) where \(\lambda\) is an unknown scalar (constant).  The roots of the characteristic polynomial are the eigenvalues for \(A\).  In other words, all \(\lambda\) satisfying \(\det(A - \lambda I) = 0\) is an eigenvalue of \(A\).
+  \item The \hlmain{characteristic polynomial} of a square matrix \(A\) is \hlmain{\(\det(A - \lambda I)\)} where \(\lambda\) is an unknown scalar (constant).  The roots of the characteristic polynomial are the eigenvalues for \(A\).  In other words, all \(\lambda\) satisfying \(\det(A - \lambda I) = 0\) is an eigenvalue of \(A\).
 
-  \item We can multiply a scalar (constant) \(\lambda\) by a matrix \(A\). The result of the multiplication \(C = \lambda A\) is defined by \[C_{ij} = \lambda A_{ij}.\]  In particular, scalar multiplication for \(2\)-by-\(2\) matricies is
+  \item We can multiply a matrix \(A\) by a vector \(\vec{v}\). The result of the multiplication \(\vec{u} = A\vec{v}\) is defined by \[u_{i} = \sum_{j=1}^{n} A_{ij}v_{j}.\]  In particular, formulas for matrix-vector multiplication for \(2\)-by-\(2\) and \(3\)-by-\(3\) matricies are
 \[
-  \lambda 
   \begin{bmatrix}
     a & b \\
-    c & d
+    c & d 
+  \end{bmatrix}
+  \begin{bmatrix}
+    v_{1} \\ v_{2}
   \end{bmatrix}
   = 
   \begin{bmatrix}
-    \lambda a & \lambda b \\
-    \lambda c & \lambda d
+    a v_{1} + b v_{2} \\
+    c v_{1} + d v_{2}
+  \end{bmatrix}
+  \quad\text{and}\quad
+  \begin{bmatrix}
+    a & b & c \\
+    d & e & f \\
+    g & h & i
+  \end{bmatrix}
+  \begin{bmatrix}
+    v_{1} \\ v_{2} \\ v_{3}
+  \end{bmatrix}
+  = 
+  \begin{bmatrix}
+    a v_{1} + b v_{2} + c v_{3} \\
+    d v_{1} + e v_{2} + f v_{3} \\
+    g v_{1} + h v_{2} + i v_{3}
   \end{bmatrix}.
 \]
 
