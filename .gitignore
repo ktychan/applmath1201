@@ -4,6 +4,7 @@ build
 publish
 _minted-*
 misc
+.ipynb_checkpoints
 
 # system files
 .DS_Store

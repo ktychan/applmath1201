@@ -1,21 +1,43 @@
 %! TeX program = lualatex
 \documentclass[../main.tex]{subfiles}
-\begin{document} \section{Vector fields for systems of differential equations}
+\begin{document} \section{The Lokta-Volterra equations}
 
-Visualization give us quick and dirty answers to many ``what if'' questions.  
+System of differential equations are not always linear and first-order. The example below showcases a non-linear, first-order system --- the Lokta-Volterra equations.
+
+This following example is adapted from the book \emph{Modelling Life} by Garfinkel, Shevtsov and Guo.
 
 \begin{example} 
-  Let's play the role of Fisheries and Oceans Canada (\href{https://www.dfo-mpo.gc.ca}{\ttfamily dfo-mpo.gc.ca}).  Fisheries in the Atlantic provinces report an increased shark (predator) sightings.  Concerns for diminishing tuna (prey) population and fishing boats safety are mounting. Calls for relocation of a portion of sharks are picking up momentum. 
+  Let's play the role of Fisheries and Oceans Canada (\href{https://www.dfo-mpo.gc.ca}{\ttfamily dfo-mpo.gc.ca}) concerning an ecosystem of sharks (predators) and tuna (preys) in the Atlantic provinces.  Fisheries report an increase in shark sightings.  As a result, concerns for a diminishing tuna population and fishing boats safety are mounting.  Calls for relocation of a portion of sharks are picking up momentum. 
 
-  The population dynamics between tunas and sharks is described by the (scaled) vector field below. 
+  As policy makers, we ask ourselves: \hlmain{Is relocating sharks a good idea?} % Can you see an optimal solution on the vector field?
 
-  Is shark relocation a good idea? % Can you see an optimal solution on the vector field?
+  \medskip
 
-  \begin{center}
-    \includegraphics{../standalones/build/plot-vector-field-predatory-prey-scaled}
-  \end{center}
+  We model tuna-shark population dynamics using the following observations.
+  \begin{itemize}
+    \item The ecosystem is \emph{closed} to migrations.
+    \item The per-capita birth rate of tuna is a constant, say \(50\%\).
+    \item The per-capita death rate of tuna is a function of the population of sharks, say \(1\%\) of the sharks population.
+    \item The per-capita birth rate of sharks is a function of the population of tuna, say \(0.5\%\) of the tuna population.
+    \item The per-capita death rate of sharks is a constant, say \(20\%\).
+  \end{itemize}
 
-  {\footnotesize This example is adapted from the book \emph{Modelling Life} by Garfinkel, Shevtsov and Guo.}
+  \blanklines{30}
+  \clearpage
+
+  Here is the vector field for the tuna-sharks system of equations.
+
+  \includegraphics{../standalones/build/plot-vector-field-predatory-prey-scaled}
+
+  Lastly, fishing policies should take sustainability and worker safety into account.
+  \begin{enumerate}
+    \item We cannot fish if the tuna population drops below 20 (thousands).
+    \item We cannot fish if the sharks population is above 70 (thousands).
+  \end{enumerate}
+
+  Now, let's try to explore the question: \hlmain{Is relocating sharks a good idea?}
+
+  \blanklines{30}
 \end{example}
 
 \end{document}

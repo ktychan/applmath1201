@@ -11,7 +11,16 @@
     ylabel={predator}, 
     axis lines=middle,
     label style={font=\footnotesize, at={(ticklabel* cs:1)}},
+    ticklabel style={font=\footnotesize},
+    xlabel={tunas}, xlabel style={anchor=west},
+    ylabel={sharks}, ylabel style={anchor=south},
+    % xmin={0}, xmax={100},
+    % ymin={0}, ymax={100},
+    xtick={50},
+    ytick={50}
     ]
+    % \fill[supp!30] (axis cs:0,70) rectangle (axis cs:100,100);
+    % \fill[supp!30] (axis cs:0,0) rectangle (axis cs:20,100);
     \addplot[-{Latex[round, length=2pt, width=1.5pt]}] coordinates { (0.00,0.00) (0.00,0.00) };
     \addplot[-{Latex[round, length=2pt, width=1.5pt]}] coordinates { (0.00,4.00) (0.00,1.00) };
     \addplot[-{Latex[round, length=2pt, width=1.5pt]}] coordinates { (0.00,8.00) (0.00,5.00) };
