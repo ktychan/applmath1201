@@ -6,8 +6,8 @@ A system of differential equations consists of multiple equations of differentia
 
 \begin{example}[Lokta-Volterra Equations]
   \begin{align*}
-    x_{1}'(t) &= \alpha x_{1}'(t) - \beta x_{1}'(t) x_{2}'(t) \\
-    x_{2}'(t) &= \gamma x_{1}'(t) x_{2}'(t) - \delta x_{2}'(t).
+    x_{1}'(t) &= \alpha x_{1}(t) - \beta x_{1}(t) x_{2}(t) \\
+    x_{2}'(t) &= \gamma x_{1}(t) x_{2}(t) - \delta x_{2}(t).
   \end{align*}
 
   The dependent variables (unknown functions) in the Lokta-Volterra equations are \underline{\hspace{1in}}, and the independent variable is \underline{\hspace{1cm}}.
@@ -42,15 +42,15 @@ Linear, first-order systems of DEs can be expressed as a matrix equation \(\frac
   Express the following linear, first-order system of DEs as a matrix equation.
   \[
      \begin{array}{rcrcrcrcr}
-       x_{1}'(t) &=&              &-& 0.1 x_{2}(t) &+& 2 x_{3} &+& 0.3\\
-       x_{2}'(t) &=&   5 x_{1}(t) &+&     x_{2}(t) &+&   x_{3} &+& 0.2 \\
-       x_{3}'(t) &=&  -3 x_{1}(t) &-& 0.3 x_{2}(t) &+&   x_{3} \\
+       x_{1}'(t) &=&              &-& 0.1 x_{2}(t) &+& 2 x_{3}(t) &+& 0.3\\
+       x_{2}'(t) &=&   5 x_{1}(t) &+&     x_{2}(t) &+&   x_{3}(t) &+& 0.2 \\
+       x_{3}'(t) &=&  -3 x_{1}(t) &-& 0.3 x_{2}(t) &+&   x_{3}(t) \\
      \end{array}
      \quad\text{with}\quad
      \begin{array}{rcr}
-      x_{1}'(0) &=& 4 \\
-      x_{2}'(0) &=& 2 \\
-      x_{3}'(0) &=& -1
+      x_{1}(0) &=& 4 \\
+      x_{2}(0) &=& 2 \\
+      x_{3}(0) &=& -1
      \end{array}
   \]
 
