@@ -1,0 +1,9 @@
+\usepackage{fontspec, unicode-math}
+\usepackage{microtype} 
+\usepackage{parskip}
+\usepackage{ragged2e}
+\usepackage[normalem]{ulem}
+
+\setmainfont{STIX Two Text}
+\setmathfont{STIX Two Math}
+\setmathfont[range=bb]{TeX Gyre Termes Math}

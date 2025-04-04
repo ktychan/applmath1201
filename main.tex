@@ -95,15 +95,9 @@
 \everymath{\displaystyle}
 
 % typography
-\usepackage{fontspec}
-\usepackage{microtype} 
-\usepackage{parskip}
-\usepackage{ragged2e}
-\usepackage[normalem]{ulem}
+\input{typography.tex.preamble}
 
 % embedded markups
-\usepackage{markdown}
-% \usepackage[outputdir=./build/aux]{minted}
 \usepackage{minted}
 \newmintinline{python}{python3, bgcolor=gray!10, mathescape}
 \newminted{python}{python3, bgcolor=gray!5, mathescape}
