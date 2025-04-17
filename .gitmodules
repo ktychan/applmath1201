@@ -1,0 +1,3 @@
+[submodule "guidednotes"]
+	path = guidednotes
+	url = git@github.com:ktychan/guidednotes
