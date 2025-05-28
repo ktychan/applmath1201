@@ -1,0 +1,33 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}
+  \node at (-1, 4) {\bf (a)};
+  \draw[-latex] (0,0) -- (4,0) node[below] {dim 1};
+  \draw[-latex] (0,0) -- (0,4) node[above] {dim 2};
+  \foreach \i in {1, 2, 3}
+  {
+    \draw[dotted] (0,\i) -- (3.5,\i);
+    \draw[dotted] (\i,0) -- (\i,3.5);
+  }
+  \node at (1,2) {\(\bullet\)};
+  \node[below] at (1,2) {\(\vec{x}\)};
+  \node at (3,3) {\(\bullet\)};
+  \draw (1,2) -- (3,2) -- (3,3);
+  \node[above] at (2,2) {\(y_1\)};
+  \node[right] at (3,2.5) {\(y_2\)};
+  \node at (2,1) {\(\bullet\)};
+  \node[below] at (2,1) {\(\vec{y}\)};
+  \node[above] at (3,3) {\(\vec{x}+\vec{y}\)};
+\end{tikzpicture}
+\begin{tikzpicture}
+  \node at (-1, 4) {\bf (b)};
+  \draw[-latex] (0,0) -- (4,0) node[below] {dim 1};
+  \draw[-latex] (0,0) -- (0,4) node[above] {dim 2};
+  \draw[->, >=stealth, blue] (0,0)--(1,2) node[above] {\(\vec{x}\)};
+  \draw[->, >=stealth, blue] (0,0)--(2,1) node[below] {\(\vec{y}\)};
+  \draw[->, >=stealth, blue,dotted] (1,2)--(3,3) node[above] {\(\vec{x}+\vec{y}\)};
+  \draw[->,>=stealth, blue] (0,0)--(3,3);
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,25 @@
+\documentclass[tikz]{standalone}
+
+\begin{document}
+\begin{tikzpicture}
+  \draw[variable=\t,domain=180:360,samples=100]
+  plot( {3 + 0.25*cos(\t)}, {5.25 + 0.25*sin(\t)});
+  \foreach \t in {220, 240, 260, 280, 300, 320}
+  {
+    \draw[variable=\r, domain=0.25:0.65]
+    plot( {3 + \r*cos(\t)}, {5.25 + \r*sin(\t)});
+  }
+  \draw[->,>=stealth,blue]
+  (0,0)--(4.25,0) node[below] {\(\vec{y}\)};
+  \draw[->,>=stealth,blue]
+  (0,0)--(3,4) node[left] {\(\vec{x}\)};
+  \draw[->,>=stealth,ultra thick,gray] (0,0)--(3,0);
+  \draw[dotted] (3,4)--(3,0); 
+  \node at (0.6,0.35) {\(\theta\)};
+  \draw[<->] (0,-0.4)--(3,-0.4); 
+  \node[below] at (1.5,-0.4) {\(k\)};
+  % \node[right] at (5, 3.25) {\(k = \| \vec{x}\|  \cos \theta\)};
+  % \node[right] at (4.6, 2.25) {\(k \| \vec{y}\| = \| \vec{x}\| \| \vec{y}\|  \cos \theta\)};
+  % \node[right] at (6.07, 1.25) {\(=\vec{x}\bullet \vec{y}\)};
+\end{tikzpicture}
+\end{document}

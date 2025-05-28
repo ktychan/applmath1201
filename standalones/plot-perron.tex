@@ -1,0 +1,46 @@
+\documentclass[tikz]{standalone}
+\begin{document}
+\begin{tikzpicture}
+  \draw (-0.6,1.5) -- (12.1,1.5);
+  \draw (-0.6,0.5) -- (12.1,0.5);
+  \draw (-0.6,-12) -- (12.1,-12);
+  \node[right] at (0,1) {$t$};
+  \node[right] at (1,1) {$x_1(t)$};
+  \node[right] at (3.5,1) {$x_2(t)$};
+  \node[right] at (6,1) {$\frac{x_1(t)}{x_2(t)}$};
+  \node[right] at (8,1) {$\frac{x_1(t)}{x_1(t-1)}$};
+  \node[right] at (10,1) {$\frac{x_2(t)}{x_2(t-1)}$};
+  \node[right] at (8,0) {- -};
+  \node[right] at (10,0) {- -};
+  \foreach \t in {0,1,2,...,15}
+  {
+    \tikzmath{
+      \x1 = 10.4*(1.5)^\t - 8.4*(-1)^\t;
+      \x2 =  2.6*(1.5)^\t + 1.4*(-1)^\t;
+      \r = \x1/\x2;
+    }
+    \node[right] at (0, -\t*0.75) {$\t$};
+    \node[right] at (1, -\t*0.75) {$\x1$};
+    \node[right] at (3.5, -\t*0.75) {$\x2$};
+    \node[right] at (6,-\t*0.75) {$\r$};
+  }
+  \foreach \t in {1,2,...,15}
+  {
+    \tikzmath{
+      \new = 10.4*(1.5)^\t - 8.4*(-1)^\t;
+      \old = 10.4*(1.5)^(\t-1) - 8.4*(-1)^(\t-1);
+      \r = \new/\old;
+    }
+    \node[right] at (8,-\t*0.75) {$\r$};
+  }
+  \foreach \t in {1,2,...,15}
+  {
+    \tikzmath{
+      \new = 2.6*(1.5)^\t + 1.4*(-1)^\t;
+      \old = 2.6*(1.5)^(\t-1) + 1.4*(-1)^(\t-1);
+      \r = \new/\old;
+    }
+    \node[right] at (10,-\t*0.75) {$\r$};
+  }
+\end{tikzpicture}
+\end{document}

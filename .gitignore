@@ -1,4 +1,5 @@
 # directories
+_build
 build
 .confidential
 publish

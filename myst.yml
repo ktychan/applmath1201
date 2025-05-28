@@ -1,0 +1,32 @@
+version: 1
+
+project:
+  id: 4da9cb15-177c-41f5-8c4e-6a24b4e87eab
+  title: "AM1201 @ UWO"
+  description: "Applied Math 1201: Calculus & Probabilities with Biological Applications, University of Western Ontario"
+  affiliations: 
+    - id: uwo 
+      institution: "University of Western Ontario"
+      department: "Department of Mathematics"
+  authors:
+    - name: Kelvin Chan
+      affiliation: uwo
+      website: https://ktychan.github.io
+      github: ktychan
+    - name: Geoff Wild
+      affiliation: uwo
+  toc:
+    - file: ./index.md
+    - pattern: "./book/ch*.md"
+  abbreviations:
+    FTC: "Fundamental Theorem of Calculus"
+
+site:
+  template: book-theme
+  options:
+    favicon: Western-simplified.png
+    logo: Western-full.png
+    folders: true
+    style: ./style.css
+  parts:
+    footer: footer.md

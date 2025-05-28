@@ -1,0 +1,18 @@
+\documentclass[tikz]{standalone}
+
+\begin{document}
+\begin{tikzpicture}
+  \draw[-latex] (0,0) -- (5.25,0) node[above] {\(t\)};
+  \draw[-latex] (0,0) -- (0,10) node[right] {\(u(t)\)};
+  \draw[dashed] (0,5.705) -- (5,5.705);
+  \draw[variable=\t, domain=0:5, samples=100]
+  plot( 
+  {\t}, { 5.705 + ((0.25)^\t)*(0.992^\t)*(0 - 5.705) }
+  );
+  \foreach \ic in {2.5,4,7.5,9}		
+  \draw[variable=\t, domain=0:5, samples=100,dotted]
+  plot( 
+  {\t}, { 5.705 + ((0.25)^\t)*(0.992^\t)*(\ic - 5.705) }
+  );
+\end{tikzpicture}
+\end{document}

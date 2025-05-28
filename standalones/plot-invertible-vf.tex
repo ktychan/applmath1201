@@ -1,0 +1,20 @@
+\documentclass[tikz]{standalone}
+
+\begin{document}
+\begin{tikzpicture}
+  \draw[latex-latex] (-4,-1)--(-2,1);
+  \draw[latex-latex] (-4.4142,0)--(-1.5858,0);
+  \draw[latex-latex] (-3,-1.4142)--(-3,1.4142);
+                %
+  \draw[latex-latex] (2,-1)--(4,1);
+  \draw[latex-latex] (1.5858,0)--(4.4142,0);
+  \draw[latex-latex] (3,-1.4142)--(3,1.4142);
+                %
+  \node[above] at (0,1.75) {\(A\)};
+  \draw[variable=\t, domain=45:135, samples=50,->,thick]
+  plot( {1.75*cos(\t)}, {1.75*sin(\t)} );
+  \draw[variable=\t, domain=225:315, samples=50,->,thick]
+  plot( {1.75*cos(\t)}, {1.75*sin(\t)} );
+  \node[below] at (0,-1.75) {\(A^{-1}\)};
+\end{tikzpicture}
+\end{document}

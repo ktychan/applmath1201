@@ -1,0 +1,20 @@
+\documentclass[tikz]{standalone}
+
+\usepackage{amsmath, amssymb}
+
+\begin{document}
+\begin{tikzpicture}[xscale=15,yscale=0.4]
+  \draw[-latex] (-0.1,0) -- (0.5,0) node[above right] {\(t\)}; 
+  \draw[-latex] (0,-10)--(0,8);
+  \draw[variable=\t,domain=-0.1:0.5,samples=200]
+  plot({\t}, {
+  (sqrt(5)-3)*exp(\t*sqrt(5))+(sqrt(5)+3)*exp(-\t*sqrt(5))} ) node[right] {\(u_1(t)\)};
+  \draw[dotted] (-0.1,4.472135954)--(0.5,4.472135954)
+  node[above left] {\(2\sqrt{5}\)};
+  \draw[variable=\t,domain=-0.1:0.45,samples=200]
+  plot({\t}, {
+  (sqrt(5)-3)*(sqrt(5)+2)*exp(\t*sqrt(5))+(sqrt(5)+3)*(-sqrt(5)+2)*exp(-\t*sqrt(5))} ) node[right] {\(u_2(t)\)};
+  \draw[dotted] (-0.1,-4.472135954)--(0.5,-4.472135954)
+  node[above left] {\(-2\sqrt{5}\)};
+\end{tikzpicture}
+\end{document}
