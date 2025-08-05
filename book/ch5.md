@@ -323,7 +323,7 @@ To choose {math}`a` correctly, we note that our pseudorandom numbers model rando
     f(x)
     =
     \begin{cases}
-        \dfrac{1}{2a} & -a \leq x \leq a\```{math}1ex]
+        \dfrac{1}{2a} & -a \leq x \leq a \\[1ex]
         0 & \text{otherwise.}
     \end{cases}
 ```
