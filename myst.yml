@@ -15,11 +15,27 @@ project:
       github: ktychan
     - name: Geoff Wild
       affiliation: uwo
+  jupyter:
+    lite: true
   toc:
     - file: ./index.md
-    - pattern: "./book/ch*.md"
+    - file: ./book/ch1.md
+    - file: ./book/ch2.md
+    - file: ./book/ch3.md
+    - file: ./book/ch4.md
+    - file: ./book/ch5.md
+    - file: ./book/ch6.md
+    - file: ./book/ch7.md
+    - file: ./book/ch8.md
   abbreviations:
     FTC: "Fundamental Theorem of Calculus"
+  numbering: 
+    enabled: true
+    title: true
+    headings: true
+    example:
+      continue: true
+
 
 site:
   template: book-theme

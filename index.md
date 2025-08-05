@@ -1,3 +1,7 @@
+---
+numbering: false
+---
+
 # Welcome to Applied Math 1201
 
 
