@@ -10,9 +10,11 @@ A random variable is discrete if all possible values of \(X(\text{outcome})\) fo
     \mathbb{P}(X = x) \hspace{4in}
   \]
 \end{definition}
+
 \blanklines{5}
 
 \faStar{} A valid PMF \(f_{X}\) must satisfy \(\sum_{i=1}^{n} f_{X}(x_{i}) = \underline{\hspace{1cm}}\) where \(x_{1},\ldots,x_{n}\) are all possible values of \(X\).
+
 \blanklines{5}
 
 \begin{example}
@@ -50,6 +52,7 @@ A random variable is discrete if all possible values of \(X(\text{outcome})\) fo
       \end{tikzpicture}
     \end{minipage}
   \end{center}
+
   \blanklines{10}
 \end{example}
 \clearpage
@@ -63,8 +66,11 @@ A random variable is discrete if all possible values of \(X(\text{outcome})\) fo
 
   \begin{enumerate}[wide]
     \item What is the meaning of \(f_{X}(2)\) in the context of this question?
+
       \blanklines{5}
+
     \item What is the probability that at most \(3\) tosses are required before a tail appears?
+
       \blanklines{10}
   \end{enumerate}
 \end{example}
@@ -78,11 +84,13 @@ A random variable is discrete if all possible values of \(X(\text{outcome})\) fo
     \item \(f_{X}(0) = -1/2, f_{X}(1) = 1/2, f_{X}(2) = 1\).
     \item None of the above.
   \end{enumerate}
+
   \blanklines{5}
 \end{example}
 
 \begin{example}
   Suppose a PMF \(f_{X}(x)\) is given by \(f_{X}(3) = 1/7\), \(f_{X}(5)\) is unknown, and \(f_{X}(10) = 2/5\).  Find the unknown probability.
+
   \blanklines{5}
 \end{example}
 
@@ -96,6 +104,7 @@ Sometimes, it's convenient to describe a discrete random variable by asking for 
     \mathbb{P}(X \le x) \hspace{4in} % \mathbb{P}(X \le x).
   \]
 \end{definition}
+
 \blanklines{3}
 
 \faStar{} A valid CDF must be non-decreasing and satisfy \(\lim_{x \to -\infty} F(x) = 0\) and \(\lim_{x \to \infty} F(x) = 1\).
@@ -153,9 +162,11 @@ Sometimes, it's convenient to describe a discrete random variable by asking for 
   
 
   Find \(\mathbb{P}(X = 2)\) and \(\mathbb{P}(2 \le X \le 3)\).
+
   \blanklines{8}
 
   Describe the PMF for \(X\). Can you \emph{see} the PMF on the plot of CDF?
+
   \blanklines{8}
 \end{example}
 \clearpage
@@ -163,9 +174,11 @@ Sometimes, it's convenient to describe a discrete random variable by asking for 
 In general, we can easily convert between PMF and CDF for a discrete random variable \(X\). Suppose \(X\) takes values \(x_{1} < x_{2} < \cdots < x_{n}\).
 
 \faStar{} If the PMF \(f_{X}\) is known, then its CDF \(F_{X}\) is
+
 \blanklines{10}
 
 \faStar{} If the CDF \(F_{X}\) is known, then its PMF \(f_{X}\) is
+
 \blanklines{10}
 
 We converted a CDF to a PMF in Example~\ref{ex:discrete-random-varialbe-cdf-to-pmf}. In the next example, we revert the process to convert from a PMF to a CDF.

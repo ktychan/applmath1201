@@ -17,11 +17,13 @@ At the end of this section, we will be able to do the following.
 To calculate a few terms of a given recurrence, we simply start with time \(t=1\) and calculate \(u_{1}\) using the recurrence equation. Once \(u_{1}\) is calculated, we apply \(t = 2\) to the recurrence equation to calculate \(u_{2}\) and so on.
 \begin{example} \label{ex:recurrence-bruteforce}
   Calculate the balance at the end of years 1, 2, and 3 using the recurrence in Example~\ref{ex:recurrsion-investment-model}.
+
   \blanklines{15}
 \end{example}
 
 \begin{example}
   Calculate the balance at the end of years 3 using the recurrence in Example~\ref{ex:recurrsion-investment-model} but change the initial deposit to \(5000\) dollars.
+
   \blanklines{10}
 \end{example}
 
@@ -45,6 +47,7 @@ First, let's understand what it means for a function to be a solution of a recur
 
 \begin{example}
   Verify that \(f(t) = 1000 (1.02)^{t}\) is \emph{not} a solution of the recursion in Example~\ref{ex:recurrsion-investment-model}.
+
   \blanklines{30}
 \end{example}
 \clearpage
@@ -52,6 +55,7 @@ First, let's understand what it means for a function to be a solution of a recur
 To denote a solution, we can skip the function notation.
 \begin{example}
   Verify that \(b_{t} = -1500 (1.02)^{t} + 2500\) is a solution of the recurrence in Example~\ref{ex:recurrsion-investment-model}.
+
   \blanklines{50}
 \end{example}
 \clearpage
@@ -69,6 +73,7 @@ However, the initial deposit \(2500\) is special. It leads to no change from yea
 \begin{example}
   Verify that \(\hat{b} = 2500\) is an equilibrium solution of \(b_{t} = 1.02 b_{t-1} - 50\).  Moreover, explain in plain English why this makes sense in the context of Example~\ref{ex:recurrsion-investment-model}.
   % results in no change in states
+
   \blanklines{18}
 \end{example}
 
@@ -76,12 +81,14 @@ However, the initial deposit \(2500\) is special. It leads to no change from yea
 
 \begin{example}
   Find \emph{all} equilibrium solutions of the recurrence equation \(u_{t} = \sqrt{3 u_{t-1} - 2}\).
+
   \blanklines{15}
 \end{example}
 \clearpage
 
 \begin{example}
   Find equilibrium solution(s) of the recurrence equation \(p_{t} = \frac{1}{2} p_{t-1} - \frac{1}{2}\).
+
   \blanklines{15}
 \end{example}
 
@@ -96,6 +103,7 @@ Guess and check is the simplest technique to solve recursions. However, it is no
   forms the foundation of solving recurrence in this course. 
   
   Solve this recurrence by guess and check.
+
   \blanklines{20}
 \end{example}
 
@@ -113,15 +121,18 @@ Change-of-variable is the general technique we use in this course.
   \begin{enumerate}[wide, label={Step~(\arabic*).}]
     \item Perform the change of variable. The two methods below lead to the same solution.
       \begin{enumerate}[label={(\alph*)}]
-        \item Calculate the equilibrium solution \(\hat{u}\), and the change of variable is \(b_{t} = u_{t} {\color{warn}+} \hat{u}\).
+        \item Calculate the equilibrium solution \(\hat{u}\), and the change of variable is \(b_{t} = u_{t} + \hat{u}\).
         \item Blindly perform the change of variable \(b_{t} = u_{t} - c\), then set \(c\) to be the number so that the constant term is \(0\).  
       \end{enumerate}
+
       \blanklines{20}
 
     \item Calculate \(u_{0}\) and solve for the new recurrence in \(u_{t}\). 
+
       \blanklines{10}
 
     \item Recover the solution of the original recurrence. Verify that we didn't make a mistake.
+
       \blanklines{5}
   \end{enumerate}
 \end{example}
@@ -147,4 +158,15 @@ Solutions of recurrence allows us to answer interesting questions.
   
   Don't simply list all \(b_{t}\). Use the solution of the recurrence and basic algebra to solve this problem.
 \end{example}
+\clearpage
+
+\begin{example}[retirement savings]
+  How much savings does one need at the time of retirement (say, January 1, 2060) if the savings generate \(5\%\) return on investment annually, and they withdraw \(\$150,000\) at the beginning of each year.
+
+  \blanklines{40}
+\end{example}
+
+\clearpage
+
+
 \end{document}

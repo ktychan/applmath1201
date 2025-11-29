@@ -38,8 +38,10 @@ Linear, first-order differential equations are (relatively) easy to solve.
 \begin{example}[make your choice]
   Use Theorem~\ref{thm:diff-eq-linear-first-order} to find the general solution for \(u'(t) + u(t) = 1\).
   {\footnotesize The answer is \(u(t) = 1 + C e^{-t}\) where \(C\) is a general constant.}
+
   \blanklines{12}
 \end{example}
+\clearpage
 
 \faStar{} Equations~\eqref{eq:diff-eq-integrating-factor} and \eqref{eq:diff-eq-linear-first-order-solution1} both come out of nowhere, and Equation~\eqref{eq:diff-eq-linear-first-order-solution1} looks rather complicated. The good news is that Theorem~\ref{thm:diff-eq-linear-first-order} is the (overly?) compact form of Method~\ref{method:integrating-factor} on page~\pageref{method:integrating-factor}.
 
@@ -61,12 +63,15 @@ Linear, first-order differential equations are (relatively) easy to solve.
   
   \begin{enumerate}[wide, label=(Step~\arabic*)]
     \item Multiply through by an integrating factor \(v(t)\).
+
       \blanklines{10}
 
     \item Rewrite the left-hand side as \(\frac{d}{dt} \bigg( u(t) v(t) \bigg)\).  This is the clever idea.
+
       \blanklines{5}
       
     \item Integrate both sides and solve for \(u(t)\). \faExclamationTriangle{} To minimize mistakes, evaluate both integrals at the same time and keep only the integration constant on the right-hand side for convenience. 
+
       \blanklines{15}
   \end{enumerate}
 \end{example}
@@ -79,6 +84,7 @@ Solving initial-value problems requires us to combine the general solution and t
   \[
     u'(t) + \frac{2}{t} u(t) = t^{2} \quad\text{and}\quad u(1) = 2.
   \]
+
   \blanklines{10}
 \end{example}
 
@@ -88,6 +94,7 @@ Here are two more exercises using the same idea.
   \[
     u'(t) + \frac{2}{t} u(t) = t^{2} \quad\text{and}\quad u(10) = \sqrt{2}.
   \]
+
   \blanklines{10}
 \end{example}
 
@@ -96,6 +103,7 @@ Here are two more exercises using the same idea.
   \[
     u'(t) + \frac{2}{t} u(t) = t^{2} \quad\text{and}\quad u(3) = 0.
   \]
+
   \blanklines{10}
 \end{example}
 \clearpage
@@ -107,6 +115,7 @@ Here is a comprehensive initial-value problem.
     u'(t) - \frac{2}{t+1} u(t) = t \quad\text{and}\quad u(0) = \pi.
   \]
   The solution is longer than that of Calculus~1000 problems and is typical of such a type of problems. 
+
   \blanklines{49}
 \end{example}
 \clearpage
@@ -147,6 +156,7 @@ Here is one more example that combines differential equations and calculus.
   \[
     \frac{dy}{dx} + y = e^{x} \text{ and \(y(0) = \frac{3}{2}\)}.
   \]
+
   \blanklines{45}
 \end{example}
 \clearpage
@@ -154,6 +164,7 @@ Here is one more example that combines differential equations and calculus.
 Here are some generic practice problems.
 \begin{example}
   Find the general solution for \(\frac{du}{dt} + u(t) = t^{2}e^{-t}\).
+
   \blanklines{50}
 \end{example}
 \clearpage
@@ -164,6 +175,7 @@ Here are some generic practice problems.
   What is the qualitative behaviour (increase, no change or decrease) of the solution function at \(t = 1\)?  
 
   How about at \(t = 0\)? Is there a really quick way to answer this question without solving for \(u(t)\)?
+
   \blanklines{50}
 \end{example}
 \clearpage

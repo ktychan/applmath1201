@@ -1,0 +1,150 @@
+%! Tex Program = lualatex
+\documentclass[t, 14pt]{beamer} 
+\usetheme{metropolis} 
+\usepackage{amsmath, amssymb}
+\usepackage{qrcode}
+
+\everymath{\displaystyle} 
+\setbeamersize{text margin left=.5cm} 
+\setbeamersize{text margin right=.5cm} 
+\beamertemplatenavigationsymbolsempty{}
+\usepackage[normalem]{ulem}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage{cancel}
+\usepackage{booktabs}
+
+\input{./colours.tex.preamble}
+\input{./tikz.tex.preamble}
+
+\usepackage{enumitem}
+\setlist[enumerate]{label={\color{supp}(\alph*)}, itemsep={2ex}, topsep={1ex}}
+
+\begin{document} 
+
+\begin{frame}[c]
+  \thispagestyle{empty}
+
+  \begin{enumerate} 
+    \item \underline{\hspace{4in}}
+    \item \underline{\hspace{4in}}
+    \item \underline{\hspace{4in}}
+    \item \underline{\hspace{4in}}
+    \item \underline{\hspace{4in}}
+  \end{enumerate} 
+\end{frame}
+
+\begin{frame}[t]
+  Office hours are Wednesdays and Fridays 2 pm to 3 pm in Math Help Centre.  I would like to set up one more office hour on Thursdays. Which of the following is most convenient for you on \emph{Thursdays}?
+
+  \begin{enumerate} 
+    \item 1 pm to 2:30 pm.
+    \item 2 pm to 3:30 pm.
+    \item 3 pm to 4:30 pm.
+    \item 
+    \item 
+  \end{enumerate} 
+\end{frame}
+
+\section{Introduction week}
+\begin{frame}
+
+  \huge
+  Welcome to Applied Math 1201B (section 001)
+  \bigskip
+
+  \normalsize
+  Please see OWL for everything about the course.
+
+  \begin{center}
+    \url{https://join.iclicker.com/FPTW} 
+
+    \qrcode[height=1.5in]{https://join.iclicker.com/FPTW}
+
+    (starts next week)
+  \end{center}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{What do we learn in Applied Math 1201?}
+
+  \includegraphics[width=\textwidth]{./standalones/intro-excerpt.png}
+
+  \small An excerpt from \emph{A Biologist's Guide to Mathematical Modelling in Ecology and Evolution} by Sarah P. Otto and Troy Day.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Themes in Applied Math 1201}
+
+  Course contents are centred around modelling.
+
+  \begin{itemize}\setlength\itemsep{2ex}
+
+    \item<+-> The usual math (\hlmain{definitions}, \hlattn{ideas}, \hlsupp{techniques}).
+      \onslide<5->{
+        \begin{itemize}
+          \item \hlmain{Recurrence and differential equations.}
+          \item<7-> \hlmain{Probability (for capturing phenomena with uncertainty).}
+          \item<8-> \hlmain{Vectors and systems of differential equations.}
+        \end{itemize}
+      }
+    \item<+-> \hlattn{Building models using mathematical objects.}
+      \onslide<6->{
+        \begin{itemize}
+          \item shapes and change.
+        \end{itemize}
+      }
+    \item<+-> \hlsupp{Making sense of models.}
+
+    \item<+-> How to be a scientist in 2024 and beyond.
+      \onslide<9->{
+        \begin{itemize}
+          \item No prior scientific computing experience is required.
+          \item We will use Google Colab (free!) and (a tiny bit of) Python.
+        \end{itemize}
+      }
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{How to succeed?}
+
+  \begin{itemize}
+    \item Stay healthy (sleep well, eat well, stay hydrated, etc.)
+    \item Explore
+    \item Have fun
+  \end{itemize}
+
+  \pause
+  What about the course content?
+
+  \begin{itemize}\setlength\itemsep{2ex}
+    \item Read the course outline.
+    \item Stay up-to-date and ahead of due dates.
+      \begin{itemize}
+      \item A day behind is no big deal. 
+      \item Two days behind is probably going to hurt.
+    \end{itemize}
+    \item Preview fillable course notes before coming to class.
+    \item Get your hands dirty and use class time to your advantage.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Mental health}
+
+  It's okay to say ``\emph{I don't know}.''
+
+  It's okay to be tired.
+
+  It's okay to feel unmotivated. 
+
+  \pause
+  \bigskip
+
+  \hlmain{Be honest with ourselves}. We will do this together. 
+
+\end{frame}
+
+\end{document}

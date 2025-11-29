@@ -2,8 +2,8 @@ version: 1
 
 project:
   id: 4da9cb15-177c-41f5-8c4e-6a24b4e87eab
-  title: "AM1201 @ UWO"
-  description: "Applied Math 1201: Calculus & Probabilities with Biological Applications, University of Western Ontario"
+  title: "ApplMath 1201 @ UWO"
+  description: "Calculus & Probabilities with Biological Applications"
   affiliations: 
     - id: uwo 
       institution: "University of Western Ontario"
@@ -18,7 +18,7 @@ project:
   jupyter:
     lite: true
   toc:
-    - file: ./index.md
+    - file: ./book/index.md
     - file: ./book/ch1.md
     - file: ./book/ch2.md
     - file: ./book/ch3.md

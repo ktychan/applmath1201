@@ -4,16 +4,30 @@ Mathematical models are often expressed as differential equations. To be success
 
 ## What is a differential equation?
 A differential equation is the special name given to an equation involving an unknown function {math}`u(t)` and its derivatives {math}`u'(t), u''(t), \ldots`. 
-For example,
+For example, the equation
 :::{math}
-  u'(t) = u(t)
-  \quad \text{and} \quad
   u''(t) - u(t)\, u'(t) = 0
 :::
-are differential equations because each one expresses a mathematical relationship between an unknown function, namely {math}`u(t)`, and its derivatives. 
+is a differential equation because it expresses a mathematical relationship between an unknown function, namely {math}`u(t)`, and its derivatives. 
+
+The variable, {math}`t` in the following equation, can appear outside of the unknown function. For example, 
+```{math}
+ u'(t) + (3t + 1) u(t) = t^{2}
+```
+is a valid differential equation. Note that the expression {math}`(3t + 1)u(t)` is a product of two functions. The function {math}`u(t)` is the unknown function.
+
+## Why do we need differential equations?
+
+Differential equations can be used to describe natural phenomenons and, perhaps more interestingly, be used to simulate real-life events and make evidence-based predictions.  Differential equations form a mature branch of mathematics that offer tools to study biology [^DEnote] quantitatively.
+[^DEnote]: Differential equations appears widely in science, engineering and even business. They are essentially everywhere. However, we only discuss differential equations with application to biology in this course. 
+
+Here are a few examples of differential equations.
+
+- {math}`u'(t) = k u(t)` describes exponential growth and decay. The symbol {math}`k` represents a constant.
 
 ## What is a solution to a differential equation?
 We can plug functions into a differential equation.  A solution for a differential equation is a function that makes both sides of the differential equation equal to each other. 
+
 
 :::{prf:example}
 
@@ -23,7 +37,7 @@ Consider the differential equation {math}`u'(t) = u(t)`.
 
 1. We can plug {math}`u(t) = e^{t}` into the differential equation. To do so, we replace every {math}`u(t)` by {math}`e^{t}`. The left-hand side of the differential equation becomes {math}`(e^{t})'` which is just {math}`e^{t}`. The right-hand side of the differential equation is just {math}`e^{t}`.  Because the two sides are equal when {math}`u(t) = e^{t}` is plugged into the differential equation, we say that {math}`e^{t}` is a solution.
 
-1. We can plug {math}`u(t) = t^{2}` into the differential equation. The left-hand side of the differential equation becomes {math}`(t^{2})'` which is {math}`2t`.  The right-hand side of the differential equation is {math}`t^{2}`. Because the two sides are \emph{not equal} when {math}`u(t) = t^{2}` is plugged into the differential equation, we say that {math}`t^{2}` is not a solution.
+1. We can plug {math}`u(t) = t^{2}` into the differential equation. The left-hand side of the differential equation becomes {math}`(t^{2})'` which is {math}`2t`.  The right-hand side of the differential equation is {math}`t^{2}`. Because the two sides are *not equal* when {math}`u(t) = t^{2}` is plugged into the differential equation, we say that {math}`t^{2}` is not a solution.
 
 1. Try it for yourself. Which of the following is a solution to the given differential equation?
     1. {math}`u(t) = t^{3}`.
@@ -31,14 +45,12 @@ Consider the differential equation {math}`u'(t) = u(t)`.
     1. {math}`u(t) = e^{5t}`. 
 :::
 
-The process of turning the unknown function {math}`u(t)` in a differential equation into an explicit function, one that you can plug in numbers for {math}`t` to get useful outputs, is call \hlmain{solving an differential equation}. In other words, to solve a differential equation is to find the unknown function or functions that make the given statement true. 
+The process of turning the unknown function {math}`u(t)` in a differential equation into an explicit function, one that you can plug in numbers for {math}`t` to get useful outputs, is call **solving an differential equation**. In other words, to solve a differential equation is to find the unknown function (or functions) that make the given equation true. 
 
-In general, a differential equation can be expressed as the zero of a multivariable function of {math}`t`, {math}`u`, and the various derivatives of {math}`u`. That is to say, we can always write a differential equation as
-```{math}
-  f( t, u(t), u'(t), u''(t), \ldots , u^{(n)}(t) ) = 0.
-```	
 
-We can see that, when expressed in this way, a differential equation serves as a recursive model that relates {math}`u` and {math}`t`. By solving the differential equation, we can turn the recursive model into one that involves {math}`u` and {math}`t` only.	
+## Classification
+
+Differential equations are grouped by certain characteristics. 
 
 At a basic level, differential equations are classified according to the highest-order derivative they contain. The example {math}`u'(t) = u(t)` above is known as a *first-order* differential equation because {math}`u'(t)` is the derivative of highest order involved in its statement. The example {math}`u''(t) - u(t)u'(t) =0` is a second-order differential equation, because {math}`u''(t)` is the derivative of highest order we find in it.
 

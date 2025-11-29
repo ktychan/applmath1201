@@ -9,15 +9,18 @@ We can distill a general concept from solving \(A \vec{x} = \vec{b}\) called the
 \faStar{} A square matrix \(A\) is called \hlmain{invertible} if we can find a matrix \(B\) so that \(AB = I\) and \(BA = I\), such a matrix \(B\) is often denoted as \(A^{-1}\). 
 
 \hlsupp{What is invertibility good for?}  Let's say we want to solve \(A \vec{x} = \vec{b}\), and \(A\) happens to be invertible. 
+
 \blanklines{5}
 
 \hlsupp{What is a quick way to determine if \(A\) is invertible?} That's the job for a determinant. The \hlmain{determinant}\footnote{For those who are interested, a general method for calculating determinants is called co-factor expansion.} for a \(2\)-by-\(2\) matrix is \(\det \begin{bmatrix} a & b \\ c & d \end{bmatrix} = ad - bc\).  The determinant for a \(3\)-by-\(3\) matrix is \(\det \begin{bmatrix} a & b & c \\ d & e & f \\ g & h & i\end{bmatrix} = a (ei - fh) - b (di - fg) + c (dh - eg) = aei - afh - bdi + bfg + cdh - ceg \). 
+
 \blanklines{8}
 
 \faStar{} If \(A\) is a square matrix and \(\det(A) \ne 0\), then \(A\) is invertible. 
 
 \begin{example}
   Is \(A = \begin{bmatrix} 0 & -1 & 1 \\ 1 & 9 & -1 \\ 1 & 0 & -1\end{bmatrix}\) invertible?
+
   \blanklines{10}
 \end{example}
 \clearpage
