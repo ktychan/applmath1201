@@ -89,30 +89,32 @@ However, the initial deposit \(2500\) is special. It leads to no change from yea
 \begin{example}
   Find equilibrium solution(s) of the recurrence equation \(p_{t} = \frac{1}{2} p_{t-1} - \frac{1}{2}\).
 
-  \blanklines{15}
+  \blanklines{20}
 \end{example}
 
 Our last learning goal is to solve recurrence.
 
-Guess and check is the simplest technique to solve recursions. However, it is not very useful in general and only works for very simple recursions.
-\begin{example}[important] \label{ex:recurrence-exp}
-  Let \(a,\lambda\) be constants. Assume \(\lambda > 0\). The recurrence 
+\begin{thm} \label{thm:recurrence-exp}
+  Let \(a,\lambda\) be constants and \(\lambda > 0\). The solution to the recurrence
   \[ 
-    u_{0} = a \quad\text{and}\quad u_{t} = \lambda u_{t-1}, \text{ for integers } t \ge 1 
-  \] 
-  forms the foundation of solving recurrence in this course. 
-  
-  Solve this recurrence by guess and check.
+    u_{t} = \lambda u_{t-1}, \text{ for integers } t \ge 1 
+  \]
+  is 
+  \[
+    u_{t} = u_{0} \lambda^{t}.
+  \]
 
-  \blanklines{20}
-\end{example}
+  In this statement, \(u_{0}\) can be any constant.
+\end{thm}
+
+\blanklines{15}
 
 \clearpage
 
-Change-of-variable is the general technique we use in this course. 
+Change-of-variable is the general technique we use in this course.
 
 \begin{method} \label{method:recurrence-sub}
-  Given a recurrence of the form \(v_{t} = A v_{t-1} + B\), we wish to make a change of variable \(u_{t} = v_{t} + c\) so that \(u_{t}\) is the recurrence in Example~\ref{ex:recurrence-exp}. Solve the new recurrence and recover the original solution.
+  Given a recurrence of the form \(v_{t} = A v_{t-1} + B\), we wish to make a change of variable \(u_{t} = v_{t} + c\) so that \(u_{t}\) is the recurrence in Theorem~\ref{thm:recurrence-exp}. Solve the new recurrence and recover the original solution.
 \end{method}
 
 \begin{example}
