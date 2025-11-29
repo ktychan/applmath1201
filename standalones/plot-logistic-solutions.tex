@@ -1,7 +1,7 @@
 \documentclass{standalone}
-
-\input{../colours.tex.preamble}
+\input{../typography.tex.preamble}
 \input{../tikz.tex.preamble}
+
 
 \begin{document}
 \begin{tikzpicture}[define rgb/.code={\definecolor{mycolor}{RGB}{#1}}, rgb color/.style={define rgb={#1},mycolor}]

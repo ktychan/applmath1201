@@ -2,7 +2,7 @@
 
 \setauthor{Kelvin Chan}{University of Western Ontario}
 \setcourse{Applied Math}{ApplMath}{1201}{Calculus \& Probability with Biological Applications}
-\setterm{Winter}{2026}{2026-02-16}
+\setterm{K. Chan, Winter}{2026}{2026-02-16}
 
 % embedded markups
 \usepackage{minted}
@@ -10,6 +10,8 @@
 \newminted{python}{python3, bgcolor=gray!5, mathescape}
 
 % plots
+\standaloneconfig{mode=image}
+\input{./typography.tex.preamble}
 \input{./tikz.tex.preamble}
 
 \newenvironment{objective}{
@@ -66,7 +68,7 @@
   \subfile{./lessons/probability-basics-summary.tex} \clearpage
 \end{week}
 
-\begin{week}{February 17 to 21 --- reading week}
+\begin{week}{February 17 to 21}
   \subfile{./lessons/reading-week.tex}
 \end{week}
 

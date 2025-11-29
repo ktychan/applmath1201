@@ -1,5 +1,5 @@
 %! Tex Program = lualatex
-\documentclass[t, 14pt]{beamer} 
+\documentclass[aspectratio=169, t, 14pt]{beamer} 
 \usetheme{metropolis} 
 \usepackage{amsmath, amssymb}
 \usepackage{qrcode}
@@ -14,7 +14,7 @@
 \usepackage{cancel}
 \usepackage{booktabs}
 
-\input{./colours.tex.preamble}
+\input{./typography.tex.preamble}
 \input{./tikz.tex.preamble}
 \setbeamertemplate{background}{
   \begin{tikzpicture}[overlay, remember picture]
@@ -547,7 +547,7 @@
 
 \begin{frame}[c]
   \begin{center}
-    \includegraphics{./standalones/build/diagram_transition.pdf}
+    \includegraphics{./standalones/diagram_transition.pdf}
   \end{center}
 
   Describe the transition between populations encoded by the diagram. ``At the end of \(t\) years, \ldots{}''

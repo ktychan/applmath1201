@@ -1,16 +1,28 @@
-# directories
-_build
-build
-.confidential
+# two generic but ignored directories
+generated
+untracked
+.aux
+standalones/grid_*.tex
 publish
-_minted-*
 misc
 .ipynb_checkpoints
 
-# system files
+# student data
+.confidential
+
+# OS level junk
 .DS_Store
 
-# ignore output
+# latex generated files
 *.pdf
-*.synctex
 *.synctex.gz
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.xdv
+
+# beamer files
+*.snm
+*.nav
