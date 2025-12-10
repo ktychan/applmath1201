@@ -1,0 +1,231 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+
+\usepackage{longtable}
+\usepackage[table]{xcolor}
+
+% Define colors for each month
+\definecolor{Sep}{RGB}{226, 240, 217} % light green
+\definecolor{Oct}{RGB}{222, 235, 247} % light blue
+\definecolor{Nov}{RGB}{255, 242, 204} % light yellow
+\definecolor{Dec}{RGB}{244, 219, 224} % light pink
+
+\definecolor{Jan}{RGB}{226, 240, 217} % light green
+\definecolor{Feb}{RGB}{222, 235, 247} % light blue
+\definecolor{Mar}{RGB}{255, 242, 204} % light yellow
+\definecolor{Apr}{RGB}{244, 219, 224} % light pink
+
+\renewcommand{\arraystretch}{1.1}
+
+% Define column types for right/top
+\newcolumntype{T}{>{\centering\arraybackslash}p{1em}}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}p{2cm}}
+\setlist[enumerate, 2]{label={\arabic*.}}
+
+\newcommand{\classno}[1]{\parbox{2cm}{
+\begin{tikzpicture}
+  \draw[thick, dotted, gray] (0,0) circle[radius=2ex];
+  \node at (0,0) {\color{main} #1};
+\end{tikzpicture}
+}}
+
+\begin{document}
+
+\section{Class schedules}
+
+\begin{multicols}{2}
+  \begin{enumerate}[wide, label={\textbf{Week \arabic*}.}]
+    \item Fundamentals of modelling.
+    \begin{enumerate}
+      \item Dimension homogeneity.
+      \item Scaling models.
+      \item Allometry.
+      \item Allometry continued.
+    \end{enumerate}
+
+  \item Recurrence.
+    \begin{enumerate}[resume]
+      \item Recurrence and their solutions.  Equilibria.
+      \item Modelling with recurrence.
+      \item Solving linear recursions.
+      \item Problem-solving with recurrence.
+    \end{enumerate}
+
+  \item Conceptual understanding of DE.
+    \begin{enumerate}[resume]
+      \item Scientific computing session 1.
+      \item DE, IVP and their solutions.
+      \item Slope fields and equilibria.
+      \item Modelling with DE.
+    \end{enumerate}
+
+  \item Working with DE.
+    \begin{enumerate}[resume]
+      \item Modelling with DE continued.
+      \item The logistic model.
+      \item Solving linear first-order DE.
+      \item Solving linear first-order DE continued.
+    \end{enumerate}
+
+  \item Working with DE continued. Probability.
+    \begin{enumerate}[resume]
+      \item Bernoulli substitution.
+      \item Bernoulli substitution continued.
+      \item Autonomous equations.
+      \item Sample space and probability.
+    \end{enumerate}
+
+  \item Probability.
+    \begin{enumerate}[resume]
+      \item Probability continued.
+      \item Probability continued.
+      \item Conditional probability.
+      \item Errors.
+    \end{enumerate}
+
+  \item Reading week.
+
+  \item Midterm week.
+    \begin{enumerate}[resume]
+      \item Errors continued. Independence.
+      \item Review.
+      \item[{\faStar{}}] Midterm. 
+      \item[] No class.
+    \end{enumerate}
+
+  \item Random variables.
+    \begin{enumerate}[resume]
+      \item Discrete random variables.
+      \item Discrete random variables continued.
+      \item Continuous random variables.
+      \item Continuous random variables continued.
+    \end{enumerate}
+
+  \item Simulation. Vectors.
+    \begin{enumerate}[resume]
+      \item Scientific computing session 2.
+      \item Sampling and simulation.
+      \item Vector and systems of equations.
+      \item Modelling age-structured populations.
+    \end{enumerate}
+
+  \item Matricies and eigen-theory.
+    \begin{enumerate}[resume]
+      \item Vector field and linearity.
+      \item Complex numbers.
+      \item Eigenvectors and eigenvalues.
+      \item Eigenvectors and eigenvalues continued.
+    \end{enumerate}
+
+  \item Linear systems.
+    \begin{enumerate}[resume]
+      \item Long-term behaviour of linear systems.
+      \item Solving age-structured models.
+      \item Solving age-structured models continued.
+      \item Linear systems of DE.
+    \end{enumerate}
+
+  \item Systems of DE.
+    \begin{enumerate}[resume]
+      \item Linear systems of DE continued.
+      \item Linear systems of DE continued.
+      \item Lokta-Volterra.
+    \end{enumerate}
+
+  \item Review.
+  \end{enumerate}
+\end{multicols}
+\clearpage
+
+\begin{longtable}[t]{|T|R|R|R|R|R|R|R|}
+\multicolumn{8}{c}{\textbf{2026 Winter}, \thiscourse, Mo/We/Th/Fr} \\
+\toprule
+W    & Sun    & \textbf{Mon}             & Tue                     & \textbf{Wed}          & \textbf{Thu}        & \textbf{Fri}            & Sat    \\
+\midrule
+\endfirsthead
+\toprule
+W    & Sun    & \textbf{Mon}             & Tue                     & \textbf{Wed}          & \textbf{Thu}        & \textbf{Fri}            & Sat    \\
+\midrule
+\endhead
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+
+\textbf{1 } & Jan 4  & \cellcolor{Jan}5        & 6                      & \cellcolor{Jan}7      & \cellcolor{Jan}8    & \cellcolor{Jan}9        & 10     \\
+            &        & \cellcolor{Jan}\classno{1} &                     & \cellcolor{Jan}\classno{2} & \cellcolor{Jan}\classno{3} & \cellcolor{Jan}\classno{4} &        \\\midrule
+\textbf{2 } & 11     & \cellcolor{Jan}12       & 13                     & \cellcolor{Jan}14     & \cellcolor{Jan}15   & \cellcolor{Jan}16       & 17     \\
+            &        & \cellcolor{Jan}\classno{5} &                     & \cellcolor{Jan}\classno{6} & \cellcolor{Jan}\classno{7} & \cellcolor{Jan}\classno{8} &        \\\midrule
+\textbf{3 } & 18     & \cellcolor{Jan}19       & 20                     & \cellcolor{Jan}21     & \cellcolor{Jan}22   & \cellcolor{Jan}23       & 24     \\
+            &        & \cellcolor{Jan}\classno{9} &                     & \cellcolor{Jan}\classno{10} & \cellcolor{Jan}\classno{11} & \cellcolor{Jan}\classno{12} &        \\\midrule
+\textbf{4 } & 25     & \cellcolor{Jan}26       & 27                     & \cellcolor{Jan}28     & \cellcolor{Jan}29   & \cellcolor{Jan}30       & 31     \\
+            &        & \cellcolor{Jan}\classno{13} &                    & \cellcolor{Jan}\classno{14} & \cellcolor{Jan}\classno{15} & \cellcolor{Jan}\classno{16} &        \\\midrule
+\textbf{5 } & Feb 1  & \cellcolor{Feb}2        & 3                      & \cellcolor{Feb}4      & \cellcolor{Feb}5    & \cellcolor{Feb}6        & 7      \\
+            &        & \cellcolor{Feb}\classno{17} &                    & \cellcolor{Feb}\classno{18} & \cellcolor{Feb}\classno{19} & \cellcolor{Feb}\classno{20} &        \\\midrule
+\textbf{6 } & 8      & \cellcolor{Feb}9        & 10                     & \cellcolor{Feb}11     & \cellcolor{Feb}12   & \cellcolor{Feb}13       & 14     \\
+            &        & \cellcolor{Feb}\classno{21} &                    & \cellcolor{Feb}\classno{22} & \cellcolor{Feb}\classno{23} & \cellcolor{Feb}\classno{24} &        \\\midrule
+\textbf{7 } & 15     & 16                      & 17                     & 18                    & 19                  & 20                      & 21     \\
+            &        & \multicolumn{5}{c|}{Reading Week} &                                                                                               \\\midrule
+\textbf{8 } & 22     & \cellcolor{Feb}23       & 24                     & \cellcolor{Feb}25     & \cellcolor{Feb}26   & 27       & 28     \\
+            &        & \cellcolor{Feb}\classno{25} &                    & \cellcolor{Feb}\classno{26} & \cellcolor{Feb}\parbox{2cm}{Midterm\faStar} & \textit{No class} &        \\\midrule
+\textbf{9 } & Mar 1  & \cellcolor{Mar}2        & 3                      & \cellcolor{Mar}4      & \cellcolor{Mar}5    & \cellcolor{Mar}6        & 7      \\
+            &        & \cellcolor{Mar}\classno{27} &                    & \cellcolor{Mar}\classno{28} & \cellcolor{Mar}\classno{29} & \cellcolor{Mar}\classno{30} &        \\\midrule
+\textbf{10} & 8      & \cellcolor{Mar}9        & 10                     & \cellcolor{Mar}11     & \cellcolor{Mar}12   & \cellcolor{Mar}13       & 14     \\
+            &        & \cellcolor{Mar}\classno{31} &                    & \cellcolor{Mar}\classno{32} & \cellcolor{Mar}\classno{33} & \cellcolor{Mar}\classno{34} &        \\\midrule
+\textbf{11} & 15     & \cellcolor{Mar}16       & 17                     & \cellcolor{Mar}18     & \cellcolor{Mar}19   & \cellcolor{Mar}20       & 21     \\
+            &        & \cellcolor{Mar}\classno{35} &                    & \cellcolor{Mar}\classno{36} & \cellcolor{Mar}\classno{37} & \cellcolor{Mar}\classno{38} &        \\\midrule
+\textbf{12} & 22     & \cellcolor{Mar}23       & 24                     & \cellcolor{Mar}25     & \cellcolor{Mar}26   & \cellcolor{Mar}27       & 28     \\
+            &        & \cellcolor{Mar}\classno{39} &                    & \cellcolor{Mar}\classno{40} & \cellcolor{Mar}\classno{41} & \cellcolor{Mar}\classno{42} &        \\\midrule
+\textbf{13} & 29     & \cellcolor{Mar}30       & 31                     & \cellcolor{Apr}1      & \cellcolor{Apr}2    & 3                   & 4      \\
+            &        & \cellcolor{Mar}\classno{43} &                    & \cellcolor{Apr}\classno{44} & \cellcolor{Apr}\classno{45} &      &        \\\midrule
+\textbf{14} & 5      & \cellcolor{Apr}6        & 7                      & \cellcolor{Apr}8      & \cellcolor{Apr}9    & 10       & 11     \\
+            &        & \cellcolor{Apr}\classno{46} &                    & \cellcolor{Apr}\classno{47} & \cellcolor{Apr}\classno{48} & &        \\
+\end{longtable}
+\clearpage
+
+\begin{longtable}[t]{|T|R|R|R|R|R|R|R|}
+\multicolumn{8}{c}{\textbf{2025 Winter}, \thiscourse, Mo/We/Th/Fr} \\
+\toprule
+W    & Sun    & \textbf{Mon}             & Tue                     & \textbf{Wed}          & \textbf{Thu}        & \textbf{Fri}            & Sat    \\
+\midrule
+\endfirsthead
+\toprule
+W    & Sun    & \textbf{Mon}             & Tue                     & \textbf{Wed}          & \textbf{Thu}        & \textbf{Fri}            & Sat    \\
+\midrule
+\endhead
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+
+\textbf{1 } & Jan 5  & \cellcolor{Jan}6        & 7                      & \cellcolor{Jan}8      & \cellcolor{Jan}9    & \cellcolor{Jan}10       & 11     \\
+            &        & \cellcolor{Jan}\classno{1} &                     & \cellcolor{Jan}\classno{2} & \cellcolor{Jan}\classno{3} & \cellcolor{Jan}\classno{4} &        \\\midrule
+\textbf{2 } & 12     & \cellcolor{Jan}13       & 14                     & \cellcolor{Jan}15     & \cellcolor{Jan}16   & \cellcolor{Jan}17       & 18     \\
+            &        & \cellcolor{Jan}\classno{5} &                     & \cellcolor{Jan}\classno{6} & \cellcolor{Jan}\classno{7} & \cellcolor{Jan}\classno{8} &        \\\midrule
+\textbf{3 } & 19     & \cellcolor{Jan}20       & 21                     & \cellcolor{Jan}22     & \cellcolor{Jan}23   & \cellcolor{Jan}24       & 25     \\
+            &        & \cellcolor{Jan}\classno{9} &                     & \cellcolor{Jan}\classno{10} & \cellcolor{Jan}\classno{11} & \cellcolor{Jan}\classno{12} &        \\\midrule
+\textbf{4 } & 26     & \cellcolor{Jan}27       & 28                     & \cellcolor{Jan}29     & \cellcolor{Jan}30   & \cellcolor{Jan}31       & Feb 1  \\
+            &        & \cellcolor{Jan}\classno{13} &                    & \cellcolor{Jan}\classno{14} & \cellcolor{Jan}\classno{15} & \cellcolor{Jan}\classno{16} &        \\\midrule
+\textbf{5 } & 2      & \cellcolor{Feb}3        & 4                      & \cellcolor{Feb}5      & \cellcolor{Feb}6    & \cellcolor{Feb}7        & 8      \\
+            &        & \cellcolor{Feb}\classno{17} &                    & \cellcolor{Feb}\classno{18} & \cellcolor{Feb}\classno{19} & \cellcolor{Feb}\classno{20} &        \\\midrule
+\textbf{6 } & 9      & \cellcolor{Feb}10       & 11                     & \cellcolor{Feb}12     & \cellcolor{Feb}13   & \cellcolor{Feb}14       & 15     \\
+            &        & \cellcolor{Feb}\classno{21} &                    & \cellcolor{Feb}\classno{22} & \cellcolor{Feb}\classno{23} & \cellcolor{Feb}\classno{24} &        \\\midrule
+\textbf{7 } & 16     & 17                      & 18                     & 19                    & 20                  & 21                      & 22     \\
+            &        & \multicolumn{5}{c|}{Reading Week} &                                                                                               \\\midrule
+\textbf{8 } & 23     & \cellcolor{Feb}24       & 25                     & \cellcolor{Feb}26     & \cellcolor{Feb}27   & \cellcolor{Feb}28       & Mar 1  \\
+            &        & \cellcolor{Feb}\classno{25} &                    & \cellcolor{Feb}\classno{26} & \cellcolor{Feb}\parbox{2cm}{Midterm\faStar} & \cellcolor{Feb}\classno{27} &        \\\midrule
+\textbf{9 } & 2      & \cellcolor{Mar}3        & 4                      & \cellcolor{Mar}5      & \cellcolor{Mar}6    & \cellcolor{Mar}7        & 8      \\
+            &        & \cellcolor{Mar}\classno{28} &                    & \cellcolor{Mar}\classno{29} & \cellcolor{Mar}\classno{30} & \cellcolor{Mar}\classno{31} &        \\\midrule
+\textbf{10} & 9      & \cellcolor{Mar}10       & 11                     & \cellcolor{Mar}12     & \cellcolor{Mar}13   & \cellcolor{Mar}14       & 15     \\
+            &        & \cellcolor{Mar}\classno{32} &                    & \cellcolor{Mar}\classno{33} & \cellcolor{Mar}\classno{34} & \cellcolor{Mar}\classno{35} &        \\\midrule
+\textbf{11} & 16     & \cellcolor{Mar}17       & 18                     & \cellcolor{Mar}19     & \cellcolor{Mar}20   & \cellcolor{Mar}21       & 22     \\
+            &        & \cellcolor{Mar}\classno{36} &                    & \cellcolor{Mar}\classno{37} & \cellcolor{Mar}\classno{38} & \cellcolor{Mar}\classno{39} &        \\\midrule
+\textbf{12} & 23     & \cellcolor{Mar}24       & 25                     & \cellcolor{Mar}26     & \cellcolor{Mar}27   & \cellcolor{Mar}28       & 29     \\
+            &        & \cellcolor{Mar}\classno{40} &                    & \cellcolor{Mar}\classno{41} & \cellcolor{Mar}\classno{42} & \cellcolor{Mar}\classno{43} &        \\\midrule
+\textbf{13} & 30     & \cellcolor{Mar}31       & Apr 1                  & \cellcolor{Apr}2      & \cellcolor{Apr}3    & \cellcolor{Apr}4        & 5      \\
+            &        & \cellcolor{Mar}\classno{44} &                    & \cellcolor{Apr}\classno{45} & \cellcolor{Apr}\classno{46} & \cellcolor{Apr}\classno{47} &        \\
+\end{longtable}
+
+\clearpage
+
+\end{document}
