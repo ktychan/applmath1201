@@ -1,7 +1,7 @@
 %! TeX program = lualatex
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Scaling, isometry and allometry}
-In Example~\ref{ex:toucan}, we made an assumption about the scaling relation between lengths of birds and their volume. This assumption results in an \hlwarn{outlier} which simply does not fit our model.
+In Example~\ref{ex:toucan}, the ecologist's team made an assumption about the scaling relation between lengths of birds and their volume. As a result, a data point is poorly predicted by the model, making it an outlier.
 
 \begin{minipage}{.5\textwidth}
   \includegraphics{../standalones/plot-birds-of-costa-rica}
@@ -12,16 +12,16 @@ In Example~\ref{ex:toucan}, we made an assumption about the scaling relation bet
   {\footnotesize{} Images reproduced under the terms of the Enhanced Licensing agreement, Adobe Inc.}
 \end{minipage}
 
-Which of the above birds correspond to the outlying data point? 
+Which of the above bird correspond to the outlying data point? 
 
 \blanklines{3}
 
-What is this assumption?
+What assumption comes with the model?
 % these birds have similar density with respect to a cube.
 
 \blanklines{10}
 
-If we use our model to predict the weight of the outlier, should we expect an accurate answer?
+If we use our model to predict the mass of the outlier, should we expect an accurate answer?
 
 \blanklines{5}
 
@@ -33,29 +33,36 @@ What caveats should accompany our model and its predictions?
 \clearpage
 Let's build some vocabulary for building simple models using scaling relations, c.f. Example~\ref{ex:toucan}.
 
-\begin{mdframed}[style=simple-compact]
-  If two quantities \(x,y\) are related by a \hlattn{linear} relation \(y = c x\) for some constant \(c > 0\), then we say \hlmain{\(x\) and \(y\) exhibit isometry}.
-
-  If two quantities \(x,y\) are related by a \hlattn{non-linear} relation, i.e., \(y = c x^{\alpha}\) for some constant \(c > 0\) and \(\alpha \ne 1\), then we say \hlmain{\(x\) and \(y\) exhibit allometry}.
-\end{mdframed}
+\begin{definition}
+  Suppose two quantities \(x,y\) are related by a power rule \(y = c x^{\alpha}\) for some constant \(c > 0\).
+  \begin{itemize}
+    \item If \(\alpha = 1\), then \(x\) and \(y\) exhibit isometry (proportional change).
+    \item If \(\alpha \ne 1\), then \(x\) and \(y\) exhibit allometry (not proportional change).
+  \end{itemize}
+\end{definition}
 
 \begin{example}
-  Consider lengths, volumes and weights of birds as discussed in Example~\ref{ex:toucan}.
+  Consider lengths, volumes and mass of birds as discussed in Example~\ref{ex:toucan}.
 
   \begin{enumerate}[wide]
-    \item Do length and weight exhibit isometry or allometry? Explain your reasoning.
+    \item Do length and mass exhibit isometry or allometry? Explain your reasoning.
 
-      \blanklines{10}
+      \blanklines{8}
 
-    \item Do volume and weight exhibit isometry or allometry? Explain your reasoning.
+    \item Do volume and mass exhibit isometry or allometry? Explain your reasoning.
 
-      \blanklines{10}
+      \blanklines{8}
   \end{enumerate}
 \end{example}
 
-The purpose of the next example is to understand the phrase ``\emph{by what factor does \ldots{}}.''
+Now we can do something real!! {\emojifont{🧠}} 
 \begin{example}
-  If we double the diameter of a circle, then by what factor do we expect its area to increase? Support your reasoning with calculations.
+  An excerpt from \emph{The allometry of brain size in mammals} by Burger, George, Leadbetter and Shaikh, Journal of Mammalogy (\url{https://doi.org/10.1093/jmammal/gyz043}).
+  \begin{quote}
+    The brain–body size allometry across all mammals is \(\text{(Brain)} = −1.26 \text{(Body)}^{0.75}\).
+  \end{quote}
+
+  If body size increases by \(10\%\), how does brain size change? Ignore\footnote{We really shouldn't. But Kelvin didn't have time to read through the article to find this info. Oh well...} units for the moment. 
 
   \blanklines{12}
 \end{example}
@@ -63,20 +70,80 @@ The purpose of the next example is to understand the phrase ``\emph{by what fact
 \clearpage
 Let's tie everything together and wrap up the introduction week with a comprehensive modelling exercise using scaling relations.
 \begin{example}
-  A team of palaeontologists has discovered two \emph{Tyrannosaurus rex} footprints. The first measures \(85\) cm in length and the second measures \(70\) cm in length, suggesting they were made by different dinosaurs. 
+  A team of palaeontologists has discovered two \emph{Tyrannosaurus rex} footprints. The first measures \(85\) cm in length and the second measures \(70\) cm in length, suggesting they were made by different dinosaurs.  Assume T-rex have similar body shapes.
 
   \begin{enumerate}[wide]
     \item Based on these footprints, predict how much heavier the first dinosaur was.
 
-      \blanklines{25}
+      \blanklines{30}
 
     \item What assumptions did you make? What caveats should accompany your prediction?
 
-      \blanklines{10}
-
-    \item Given footprint data of a T. rex and a Diplodocus, should you be confident comparing their weights in the same way? Articulate your reasoning.
-
       \blanklines{5}
+
+    \item Given footprint data of a T. rex (below left) and a Diplodocus (below right), should you be confident comparing their weights in a similar way? Articulate your reasoning. The images are from Wikipedia.
+
+      \begin{center}
+        \includegraphics[height=1in]{../standalones/image-trex}
+        \quad
+        \includegraphics[height=1in]{../standalones/image-diplodocus}
+      \end{center}
   \end{enumerate}
 \end{example}
+
+We'll do some in-class exercises if time allows.  Everything below is a combination of the core concepts we learned this week and some algebra manipulations.
+
+The exercises on this page are about the definition of \(\propto\). When you don't know what to do with \(y \propto x^{\alpha}\), just work with \(y = c x^{\alpha}\) instead. 
+
+\begin{exercise}
+  If \(y \propto x^{3}\), then what is the \(\beta\) in \(x \propto y^{\beta}\)?
+
+  \blanklines{15}
+\end{exercise}
+
+\begin{exercise}
+  If \(y \propto x^{3}\) and \(z \propto x^{2}\), then how does \(y\) and \(z\) relate?
+
+  \blanklines{15}
+\end{exercise}
+
+\begin{exercise}
+  If \(y \propto x^{-2/3}\), then what is the \(\beta\) in \(x \propto y^{\beta}\)?
+
+  \blanklines{15}
+\end{exercise}
+\clearpage
+
+\faStar{} The language ``increases by \(x\%\)'' and ``decrease by \(y\%\)'' show up a lot in science. Remember that ``increases by \(x\%\)'' means to scale by \(1+x/100\) and that ``decrease by \(y\%\)'' means to scale by \(1 - y/100\).  For example, a \(5\%\) increase means to scale by \(1.05\), and a \(1\%\) decrease means to scale by \(0.99\).
+
+Another way to remember this language is to think about wage. A \(50\%\) increase in wage is \(1.5\) times of the usual pay, like statutory holiday pay. A \(100\%\) increase in wage means double the pay! 
+
+\begin{exercise}
+  If the radius of a sphere increases by \(10\%\), then how does its volume change? Note \(V = \frac{4}{3} \pi r^{3}\).
+
+  \blanklines{15}
+\end{exercise}
+
+\begin{exercise}
+  If the radius of a sphere decrease by \(10\%\), then how does its volume change? Note \(V = \frac{4}{3} \pi r^{3}\).
+
+  \blanklines{15}
+\end{exercise}
+
+\begin{exercise}
+  If \(x\) and \(y\) exhibit isometry, then 
+  \begin{itemize}
+    \item a \(57\%\) increase in \(x\) results in \(\underline{\hspace{1cm}}\%\) \underline{\hspace{1in}} (increase or decrease?) in \(y\).
+    \item a \(23\%\) decrease in \(x\) results in \(\underline{\hspace{1cm}}\%\) \underline{\hspace{1in}} (increase or decrease?) in \(y\).
+  \end{itemize}
+\end{exercise}
+\clearpage
+
+\begin{exercise}[weekly challenge]
+  Suppose \(y \propto x^{-1/3}\) and \(z \propto x^{2}\).  If \(y\) increases by \(5\%\), how does \(z\) change? 
+
+  \blanklines{25}
+\end{exercise}
+
+That's it for week 1! {\emojifont{🎉}}
 \end{document}
