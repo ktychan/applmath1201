@@ -29,6 +29,7 @@
 \end{tikzpicture}
 }}
 
+\newcommand{\assessment}[1]{{\footnotesize #1 \faPencil*{}}}
 \begin{document}
 
 \section{Class schedules}
@@ -54,42 +55,42 @@
   \item Conceptual understanding of DE.
     \begin{enumerate}[resume]
       \item Scientific computing session 1.
-      \item DE, IVP and their solutions.
-      \item Slope fields and equilibria.
-      \item Modelling with DE.
+      \item DE. IVP and their solutions.
+      \item \(y' = ky\) and qualitative information.
+      \item Autonomous DE. Equilibra and stability.
     \end{enumerate}
 
   \item Working with DE.
     \begin{enumerate}[resume]
-      \item Modelling with DE continued.
-      \item The logistic model.
-      \item Solving linear first-order DE.
-      \item Solving linear first-order DE continued.
+      \item The logistic model and its derivation.
+      \item Modelling.
+      \item Modelling continued.
+      \item Classification. Linear first-order DE.
     \end{enumerate}
 
-  \item Working with DE continued. Probability.
+  \item DE continued.  Probability.
     \begin{enumerate}[resume]
+      \item Linear first-order DE continued.
       \item Bernoulli substitution.
-      \item Bernoulli substitution continued.
-      \item Autonomous equations.
-      \item Sample space and probability.
+      \item \emph{Buffer}.
+      \item Probability.
     \end{enumerate}
 
   \item Probability.
     \begin{enumerate}[resume]
       \item Probability continued.
-      \item Probability continued.
       \item Conditional probability.
-      \item Errors.
+      \item Type-I and type-II errors.
+      \item Independence.  Random variables.
     \end{enumerate}
 
   \item Reading week.
 
   \item Midterm week.
     \begin{enumerate}[resume]
-      \item Errors continued. Independence.
-      \item Review.
-      \item[{\faStar{}}] Midterm. 
+      \item \emph{Buffer}.
+      \item \emph{Buffer}.
+      \item[{\faStar{}}] Midterm.
       \item[] No class.
     \end{enumerate}
 
@@ -101,33 +102,33 @@
       \item Continuous random variables continued.
     \end{enumerate}
 
-  \item Simulation. Vectors.
+  \item Simulation. Vectors and matricies.
     \begin{enumerate}[resume]
       \item Scientific computing session 2.
       \item Sampling and simulation.
-      \item Vector and systems of equations.
+      \item Vectors, linear systems and matricies.
       \item Modelling age-structured populations.
     \end{enumerate}
 
-  \item Matricies and eigen-theory.
+  \item Linearity. Eigen-theory.
     \begin{enumerate}[resume]
-      \item Vector field and linearity.
+      \item Vector functions. Linearity.
+      \item Linearity continued.
       \item Complex numbers.
-      \item Eigenvectors and eigenvalues.
-      \item Eigenvectors and eigenvalues continued.
+      \item Eigenvalues and eigenvectors.
     \end{enumerate}
 
   \item Linear systems.
     \begin{enumerate}[resume]
+      \item Eigenvalues and eigenvectors continued.
       \item Long-term behaviour of linear systems.
-      \item Solving age-structured models.
-      \item Solving age-structured models continued.
-      \item Linear systems of DE.
+      \item Linear systems of recurrence.
+      \item Linear systems of recurrence continued.
     \end{enumerate}
 
   \item Systems of DE.
     \begin{enumerate}[resume]
-      \item Linear systems of DE continued.
+      \item Linear systems of DE.
       \item Linear systems of DE continued.
       \item Lokta-Volterra.
     \end{enumerate}
@@ -135,6 +136,158 @@
   \item Review.
   \end{enumerate}
 \end{multicols}
+\clearpage
+
+\section*{Detailed Learning Outcomes}
+\begin{itemize}
+  \item \textbf{Dimensional homogeneity}.  Students should be able to
+    \begin{enumerate}
+      \item identify whether a given equation is dimensionally homogeneous.
+      \item deduce dimensions (units) of a unknown quantity from an given dimensionally homogeneous equation.
+    \end{enumerate}
+
+  \item \textbf{Scaling models} \(y = c x^{\alpha}\) for \(c \ne 0\) or, equivalently, \(y \propto x^{\alpha}\). Students should be able to 
+    \begin{enumerate}
+      \item apply log-log transformation to obtain \(\ln(y) = \alpha \ln(x) + \ln(c)\).
+      \item transform a power rule model in log-log form \(\ln(y) = \alpha \ln(x) + \ln(c)\) back into a power rule expression \(y = c x^{\alpha}\).
+      \item plot given power rule models in log-log scale.
+      \item identify power rule models from their log-log plots.
+      \item use algebraic manipulations to relates two or more quantities using power rule models.
+    \end{enumerate}
+
+  \item \textbf{Scaling relations}, i.e., isometric vs allometric scaling.  Students should be able to 
+    \begin{enumerate}
+      \item identify if given power rule models exhibit isometric or allometric scaling relation.
+      \item calculate proportions of increase/decrease given one or more related power rule models.
+      \item use a \textbf{combination of skills} from dimension homogeneity, power rule models and scaling relations to solve problems.
+    \end{enumerate}
+
+  \item \textbf{Linear recursions} of the form \(u_{t} = \lambda u_{t-1} + b\) with and without initial conditions.  Students should be able to
+    \begin{enumerate}
+      \item manually calculate the first few terms of a linear recursion.
+      \item model using linear recursions.
+      \item interpret models involving linear recursions.
+      \item solve such linear recursions with or without an initial condition.
+      \item find unknown parameters in given linear recursions satisfying given conditions.
+      \item long-term and qualitative behaviours of linear recursions by studying its solution using calculus (restricted to Calc~1000A techniques).
+    \end{enumerate}
+
+  \item \textbf{Differential equations} of a single unknown function. Students should be able to 
+    \begin{enumerate}
+      \item verify if a proposed function is a solution to an \textbf{initial-value problem}. Such problems are not necessarily restricted to linear first-order differential equations.
+      \item use calculus to investigate qualitative behaviour (increasing/decreasing) of differential equations.
+    \end{enumerate}
+
+  \item \textbf{Modelling with differential equations}. 
+  \item use dimension homogeneity to determine if given differential equations is valid or not.
+    \begin{enumerate}
+      \item Autonomous equations.  Students should be able to
+        \begin{enumerate}
+          \item recognize autonomous equations.
+          \item find equilibria of autonomous equations algebraically or graphically.
+          \item use phase-line plots to determine stability of equilibria.
+          \item understand the logistic model and its assumptions.
+        \end{enumerate}
+      \item Conservation law \(\frac{d}{dt} (\text{quantity}) = (\text{net rate of production}) - \text{net rate of loss})\). Students should be able to
+        \begin{enumerate}
+          \item model real-life phenomenons using differential equations.
+          \item use the conservation law to model mixing problems in a single variable.
+          \item interpret models of differential equations using the conservation law.
+          \item use differential equations to model a metabolism problem. See Geoff's notes Example~2.6 on page 19.
+        \end{enumerate}
+    \end{enumerate}
+
+  \item Solving \textbf{differential equations}. Students should be able to
+    \begin{enumerate}
+      \item recognize and classify differential equations.
+      \item identify an appropriate integrating factor given linear first-order differential equations.
+      \item solve linear first-order differential equations by \emph{showing the entire process} of undoing the product rule.
+      \item solve suitable non-linear first-order differential equation using \textbf{Bernoulli substitution}.
+      \item find general or specific solutions depending on the context. 
+    \end{enumerate}
+
+  \item Fundamentals of \textbf{Probability}.  Students should be able to 
+    \begin{enumerate}
+      \item understand sample space and the definition of probability of events.
+      \item describe elements of the sample space of a probability.
+      \item calculate probability using basic counting.
+      \item calculate probability from Venn diagrams.
+      \item apply fundamental properties of probabilities using set relations.
+      \item understand \textbf{mutually exclusive and exhaustive events} and their algebraic relations.
+      \item understand \textbf{conditional probabilities}, \textbf{independence} and the \textbf{law of total probability} and their algebraic relations.
+    \end{enumerate}
+
+  \item \textbf{Conditional probabilities}. Students should be able to
+    \begin{enumerate}
+      \item calculate conditional probabilities using the definition \(\mathbb{P}(A \mid B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{\mathbb{B}}}\).
+      \item calculate conditional probabilities using Venn diagrams.
+      \item understand and calculate probabilities of type-I and type-II errors and their related probabilities.
+      \item apply conditional probabilities to real-life applications.
+    \end{enumerate}
+
+  \item \textbf{Random variables}. Students should be able to 
+    \begin{enumerate}
+      \item understand the definition random variables and associated terminologies and notations.
+      \item list elements of the sample space of random variables.
+      \item express random variables as functions.
+      \item distinguish discrete versus continuous random variable.
+      \item understand \textbf{probability mass functions} and \textbf{cumulative distribution functions} of \emph{discrete} random variables.
+      \item understand \textbf{probability density functions} and \textbf{cumulative distribution functions} of \emph{continuous} random variables.
+      \item calculate and/or sketch probability mass/density functions from cumulative distribution functions using calculus (restricted to Calc~1000A techniques).
+      \item understand the relation between probability mass/density functions and their corresponding cumulative distribution functions.
+      \item determine the validity of proposed probability mass/density functions and 
+      \item calculate \textbf{mean}, \textbf{variance} and \textbf{standard deviation} from random variables (restricted to Calc~1000A techniques for continuous random variables).
+       \item understand uniform distribution \(U(a,b)\).
+       \item determine unknown parameter of \(U(a,b)\) satisfying certain given requirements.
+    \end{enumerate}
+    
+  \item \textbf{Working with (sample) data}. Students should be able to
+     \begin{enumerate}
+       \item calculate sample mean, sample variance and sample standard deviation.
+       \item calculate \(z\)-score of sample data.
+       \item use \(z\)-scores to compare inherently random data.
+       \item understand the purpose of each component of a statistical simulation.
+       \item understand how to choose parameters for a statistical simulation.
+       \item use Python to perform statistical simulations.
+     \end{enumerate}
+
+   \item \textbf{Vectors} and \textbf{systems of linear equations}. Students should be able to
+     \begin{enumerate}
+       \item model multi-variate quantities using vectors.  In particular, be able to distinguish state vectors and change vectors from given context.
+       \item express linear equations as matrix-vector equations, and vice versa.
+       \item perform linear operations (addition, subtractions and scalar multiplication) with vectors algebraically and pictorially.
+       \item perform matrix operations (addition, subtractions, multiplication and exponentiation) with vectors.
+       \item perform matrix-vector operations operations.
+       \item understand functions whose input and output are vectors.
+       \item manually calculate outputs of functions whose inputs are vectors.
+     \end{enumerate}
+
+   \item Applications of \textbf{Linear systems of recurrence} of the form \(\vec{v}(t) = A \vec{v}(t+1)\).
+     \begin{enumerate}
+       \item understand recurrences of the form \(\vec{v}(t) = A \vec{v}(t+1)\) with and without initial conditions.
+       \item understand the vector field of matricies \(A\) by associating each vector \(\vec{v} \in \mathbb{R}^{2}\) with \((A - I) \vec{v}\), typically scaled.
+       \item use vector fields to visually identify solutions to linear systems of recurrence.
+       \item model \textbf{age-structured populations and similar phenomena} using linear system of recurrence and understand their transition diagrams.
+       \item draw the transition diagram of given age-structure linear systems of recurrence.
+     \end{enumerate}
+
+   \item \textbf{Eigenvalues and eigenvectors}. Students should be able to
+     \begin{enumerate}
+       \item understand complex numbers for the purpose of finding eigenvalues of \(2 \times 2\) systems.
+       \item understand, algebraically and pictorially, the effect of matricies acting on its eigenvectors for both real and complex eigenvectors.
+       \item write down the determinant of \(2 \times 2\) and \(3 \times 3\) matricies.
+       \item write down and solve the \textbf{characteristic polynomial} of \(2 \times 2\) and \(3 \times 3\) systems manually.
+       \item find all eigenvalues (real and/or complex) and their associated eigenvectors of linear systems.
+       \item determine asymptotic behaviour of linear recurrence \(\vec{v}(t+1) = A \vec{v}(t)\) by identifying dominant eigenvalues and eigenvectors.
+       \item solve recurrence \(\vec{v}(t+1) = A \vec{v}(t)\) with given initial condition.
+     \end{enumerate}
+
+   \item \textbf{Systems of differential equations}. Students should be able to 
+     \begin{enumerate}
+       \item solve IVP of homogeneous \(2 \times 2\) systems of DEs with distinct real eigenvalues.
+       \item understand the Lokta-Volterra model.
+     \end{enumerate}
+\end{itemize}
 \clearpage
 
 \begin{longtable}[t]{|T|R|R|R|R|R|R|R|}
@@ -157,29 +310,29 @@ W    & Sun    & \textbf{Mon}             & Tue                     & \textbf{Wed
 \textbf{2 } & 11     & \cellcolor{Jan}12       & 13                     & \cellcolor{Jan}14     & \cellcolor{Jan}15   & \cellcolor{Jan}16       & 17     \\
             &        & \cellcolor{Jan}\classno{5} &                     & \cellcolor{Jan}\classno{6} & \cellcolor{Jan}\classno{7} & \cellcolor{Jan}\classno{8} &        \\\midrule
 \textbf{3 } & 18     & \cellcolor{Jan}19       & 20                     & \cellcolor{Jan}21     & \cellcolor{Jan}22   & \cellcolor{Jan}23       & 24     \\
-            &        & \cellcolor{Jan}\classno{9} &                     & \cellcolor{Jan}\classno{10} & \cellcolor{Jan}\classno{11} & \cellcolor{Jan}\classno{12} &        \\\midrule
-\textbf{4 } & 25     & \cellcolor{Jan}26       & 27                     & \cellcolor{Jan}28     & \cellcolor{Jan}29   & \cellcolor{Jan}30       & 31     \\
-            &        & \cellcolor{Jan}\classno{13} &                    & \cellcolor{Jan}\classno{14} & \cellcolor{Jan}\classno{15} & \cellcolor{Jan}\classno{16} &        \\\midrule
-\textbf{5 } & Feb 1  & \cellcolor{Feb}2        & 3                      & \cellcolor{Feb}4      & \cellcolor{Feb}5    & \cellcolor{Feb}6        & 7      \\
-            &        & \cellcolor{Feb}\classno{17} &                    & \cellcolor{Feb}\classno{18} & \cellcolor{Feb}\classno{19} & \cellcolor{Feb}\classno{20} &        \\\midrule
+            &        & \cellcolor{Jan}\classno{9} &  \assessment{Quiz 1}                    & \cellcolor{Jan}\classno{10} & \cellcolor{Jan}\classno{11} & \cellcolor{Jan}\classno{12} &        \\\midrule
+\textbf{4 } & 25     & \cellcolor{Jan}26       & 27                   & \cellcolor{Jan}28     & \cellcolor{Jan}29   & \cellcolor{Jan}30       & 31     \\
+            &        & \cellcolor{Jan}\classno{13} &              & \cellcolor{Jan}\classno{14} & \cellcolor{Jan}\classno{15} & \cellcolor{Jan}\classno{16} &        \\\midrule
+\textbf{5 } & Feb 1  & \cellcolor{Feb}2       & 3                     & \cellcolor{Feb}4      & \cellcolor{Feb}5    & \cellcolor{Feb}6        & 7      \\
+            &        & \cellcolor{Feb}\classno{17} & \assessment{Quiz 2}                   & \cellcolor{Feb}\classno{18} & \cellcolor{Feb}\classno{19} & \cellcolor{Feb}\classno{20} &        \\\midrule
 \textbf{6 } & 8      & \cellcolor{Feb}9        & 10                     & \cellcolor{Feb}11     & \cellcolor{Feb}12   & \cellcolor{Feb}13       & 14     \\
-            &        & \cellcolor{Feb}\classno{21} &                    & \cellcolor{Feb}\classno{22} & \cellcolor{Feb}\classno{23} & \cellcolor{Feb}\classno{24} &        \\\midrule
+            &        & \cellcolor{Feb}\classno{21} & \assessment{Quiz 3}                  & \cellcolor{Feb}\classno{22} & \cellcolor{Feb}\classno{23} & \cellcolor{Feb}\classno{24} &        \\\midrule
 \textbf{7 } & 15     & 16                      & 17                     & 18                    & 19                  & 20                      & 21     \\
             &        & \multicolumn{5}{c|}{Reading Week} &                                                                                               \\\midrule
 \textbf{8 } & 22     & \cellcolor{Feb}23       & 24                     & \cellcolor{Feb}25     & \cellcolor{Feb}26   & 27       & 28     \\
-            &        & \cellcolor{Feb}\classno{25} &                    & \cellcolor{Feb}\classno{26} & \cellcolor{Feb}\parbox{2cm}{Midterm\faStar} & \textit{No class} &        \\\midrule
+            &        & \cellcolor{Feb}\classno{25} & \assessment{Quiz 4}                   & \cellcolor{Feb}\classno{26} & \cellcolor{Feb}\parbox{2cm}{Midterm\faStar} & \textit{No class} &        \\\midrule
 \textbf{9 } & Mar 1  & \cellcolor{Mar}2        & 3                      & \cellcolor{Mar}4      & \cellcolor{Mar}5    & \cellcolor{Mar}6        & 7      \\
             &        & \cellcolor{Mar}\classno{27} &                    & \cellcolor{Mar}\classno{28} & \cellcolor{Mar}\classno{29} & \cellcolor{Mar}\classno{30} &        \\\midrule
 \textbf{10} & 8      & \cellcolor{Mar}9        & 10                     & \cellcolor{Mar}11     & \cellcolor{Mar}12   & \cellcolor{Mar}13       & 14     \\
-            &        & \cellcolor{Mar}\classno{31} &                    & \cellcolor{Mar}\classno{32} & \cellcolor{Mar}\classno{33} & \cellcolor{Mar}\classno{34} &        \\\midrule
+            &        & \cellcolor{Mar}\classno{31} & \assessment{Quiz 5}                   & \cellcolor{Mar}\classno{32} & \cellcolor{Mar}\classno{33} & \cellcolor{Mar}\classno{34} &        \\\midrule
 \textbf{11} & 15     & \cellcolor{Mar}16       & 17                     & \cellcolor{Mar}18     & \cellcolor{Mar}19   & \cellcolor{Mar}20       & 21     \\
-            &        & \cellcolor{Mar}\classno{35} &                    & \cellcolor{Mar}\classno{36} & \cellcolor{Mar}\classno{37} & \cellcolor{Mar}\classno{38} &        \\\midrule
+            &        & \cellcolor{Mar}\classno{35} &  \assessment{Quiz 6}                  & \cellcolor{Mar}\classno{36} & \cellcolor{Mar}\classno{37} & \cellcolor{Mar}\classno{38} &        \\\midrule
 \textbf{12} & 22     & \cellcolor{Mar}23       & 24                     & \cellcolor{Mar}25     & \cellcolor{Mar}26   & \cellcolor{Mar}27       & 28     \\
             &        & \cellcolor{Mar}\classno{39} &                    & \cellcolor{Mar}\classno{40} & \cellcolor{Mar}\classno{41} & \cellcolor{Mar}\classno{42} &        \\\midrule
 \textbf{13} & 29     & \cellcolor{Mar}30       & 31                     & \cellcolor{Apr}1      & \cellcolor{Apr}2    & 3                   & 4      \\
-            &        & \cellcolor{Mar}\classno{43} &                    & \cellcolor{Apr}\classno{44} & \cellcolor{Apr}\classno{45} &      &        \\\midrule
+            &        & \cellcolor{Mar}\classno{43} &  \assessment{Quiz 7}                  & \cellcolor{Apr}\classno{44} & \cellcolor{Apr}\classno{45} &      &        \\\midrule
 \textbf{14} & 5      & \cellcolor{Apr}6        & 7                      & \cellcolor{Apr}8      & \cellcolor{Apr}9    & 10       & 11     \\
-            &        & \cellcolor{Apr}\classno{46} &                    & \cellcolor{Apr}\classno{47} & \cellcolor{Apr}\classno{48} & &        \\
+            &        & \cellcolor{Apr}\classno{46} &  \assessment{Quiz 8}                 & \cellcolor{Apr}\classno{47} & \cellcolor{Apr}\classno{48} & &        \\
 \end{longtable}
 \clearpage
 
@@ -225,7 +378,6 @@ W    & Sun    & \textbf{Mon}             & Tue                     & \textbf{Wed
 \textbf{13} & 30     & \cellcolor{Mar}31       & Apr 1                  & \cellcolor{Apr}2      & \cellcolor{Apr}3    & \cellcolor{Apr}4        & 5      \\
             &        & \cellcolor{Mar}\classno{44} &                    & \cellcolor{Apr}\classno{45} & \cellcolor{Apr}\classno{46} & \cellcolor{Apr}\classno{47} &        \\
 \end{longtable}
-
 \clearpage
 
 \end{document}

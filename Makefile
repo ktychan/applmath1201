@@ -1,7 +1,7 @@
 LATEXMK=latexmk -halt-on-error -interaction=nonstopmode
 COURSE="ApplMath_1201B_W26"
 
-.PHONY: all clean standalones main publish
+.PHONY: all clean standalones slides exercises main publish
 
 all: publish
 
@@ -22,6 +22,9 @@ appendix:
 
 slides:
 	${LATEXMK} -jobname="${COURSE}_%A" slides.tex polls.tex
+
+exercises:
+	${LATEXMK} -jobname="${COURSE}_exercises_%A" exercises/week*.tex
 
 main: standalones 
 	rm -rf publish/*.tex

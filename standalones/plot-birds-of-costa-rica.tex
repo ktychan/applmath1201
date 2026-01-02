@@ -1,19 +1,88 @@
 \documentclass[tikz]{standalone}
+
 \input{../tikz.tex.preamble}
 \input{../typography.tex.preamble}
 
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.18}
+\pgfplotsset{
+  data points/.style={
+    only marks,
+    mark options={main},
+  },
+  loglog points/.style={
+    only marks,
+    mark options={supp},
+  },
+  original data/.style={
+    xlabel={Length \(\ell\)}, 
+    ylabel={Mass \(m\)},
+    ytick = {0, 500, 1000, 1500, 2000, 2500, 3000},
+    grid=major,
+    restrict y to domain = {0:3000}, % fixes dimension too large error
+    title style={align=center},
+  },
+  intern curve/.style={
+    ultra thick, 
+    smooth, 
+    samples=100, 
+    domain=0:150,
+  }
+}
 
 \begin{document}
 \begin{tikzpicture}
-  \begin{axis}[
-    xlabel={Length \(\ell\)}, 
-    ylabel={Weight \(w\)},
-    title ={Original Data},
-    ytick = {0, 1000, 2000, 3000},
-    ]
-    \addplot+ [only marks] table[col sep=comma] {./data-birds-of-costa-rica.csv};
+  \begin{axis}[original data, title ={Original Data}]
+    \addplot+ [data points] table[col sep=comma] {./data-birds-of-costa-rica.csv};
   \end{axis}
 \end{tikzpicture}
+
+
+\begin{tikzpicture}
+  \begin{axis}[
+    axis equal image,
+    xlabel={\(\ln(\ell)\)}, 
+    ylabel={\(\ln(m)\)},
+    xmin={0}, xmax={6}, xtick distance={2},
+    ymin={-6}, ymax={9}, ytick distance={2},
+    minor tick length={0},
+    grid=both,
+    minor tick num={1},
+    title style={align=center},
+    title={Log-log transformation\\{\footnotesize (big picture)}},
+    ]
+    \addplot+ [loglog points] table[col sep=comma] {./data-birds-of-costa-rica-loglog.csv};
+  \end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}
+  \begin{axis}[
+    axis equal image,
+    xlabel={\(\ln(\ell)\)}, 
+    ylabel={\(\ln(m)\)},
+    xmin={1.5}, xmax={5.5}, xtick distance={2},
+    ymin={0.5}, ymax={8.5}, ytick distance={2},
+    minor tick length={0},
+    grid=both,
+    minor tick num={1},
+    title style={align=center},
+    title={Log-log transformation\\{\footnotesize (zoomed in)}},
+    ]
+    \addplot+ [loglog points] table[col sep=comma] {./data-birds-of-costa-rica-loglog.csv};
+  \end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}
+  \begin{axis}[original data, title ={Intern A proposes {\(m = 0.25\ell^{2}\)}}]
+    \addplot+ [data points] table[col sep=comma] {./data-birds-of-costa-rica.csv};
+    \addplot[intern curve] {x^2*0.25};
+\end{axis}
+\end{tikzpicture}
+
+
+\begin{tikzpicture}
+  \begin{axis}[original data, title ={Intern B proposes {\(m = 0.0061\ell^{3}\)}}]
+    \addplot+ [data points] table[col sep=comma] {./data-birds-of-costa-rica.csv};
+    \addplot[intern curve] {x^3*0.0061};
+\end{axis}
+\end{tikzpicture}
+
 \end{document}

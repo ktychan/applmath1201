@@ -1,0 +1,254 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+
+\newenvironment{solution}{
+  \begin{proof}[Sample solution]
+    \color{main}
+  }{
+  \end{proof}
+}
+
+\begin{document}
+
+\chapter*{Week 2 practice problems}
+
+\begin{exercise}
+  For each recurrence below, calculate \(u_{1}, u_{2}, u_{3}\).
+  \begin{enumerate}
+    \item \(u_{0} = 3\) and \(u_{t} = u_{t-1}^{2}\) for integers \(t \ge 1\)
+
+      \begin{solution}
+        \begin{align*}
+          u_{0} &= 3, &\text{(given)} \\
+          u_{1} &= u_{0}^{2} = 3^{2} = 9, \\
+          u_{2} &= u_{1}^{2} = 9^{2} = 81,\\
+          u_{3} &= u_{2}^{2} = 81^{2}. 
+        \end{align*}
+      \end{solution}
+
+    \item \(u_{0} = 1\) and \(u_{t} = \frac{1}{3} u_{t-1} + \frac{1}{4}\) for integers \(t \ge 1\).
+
+      \begin{solution}
+        \begin{align*}
+          u_{0} &= 1, &\text{(given)} \\
+          u_{1} &= \frac{1}{3}u_{0} + \frac{1}{4} = \frac{1}{3} \cdot 1 + \frac{1}{4} = \frac{7}{12}, \\
+          u_{2} &= \frac{1}{3}u_{1} + \frac{1}{4} = \frac{1}{3} \cdot \frac{7}{12} + \frac{1}{4} = \frac{4}{9}, \\
+          u_{3} &= \frac{1}{3}u_{2} + \frac{1}{4} = \frac{1}{3} \cdot \frac{4}{9} + \frac{1}{4}.
+        \end{align*}
+      \end{solution}
+
+    \item \(u_{0} = 8\) and \(u_{t} = \frac{1}{2} u_{t-1}\).
+  \end{enumerate}
+\end{exercise}
+
+
+\begin{exercise}
+  Determine the long-term behaviour of these recurrences.
+
+  \begin{enumerate}
+    \item \(u_{0} = 3\) and \(u_{t} = 1.1 u_{t-1}\) for integers \(t \ge 1\).
+
+      \begin{solution}
+        The solution to the given recurrence is \(u_{t} = 3 \cdot 1.1^{t}\).  Its long term behaviour is 
+        \[
+          \lim_{t \to \infty} u_{t} = \lim_{t \to \infty} 3 \cdot 1.1^{t} = \infty.
+        \]
+        It means that \(u_{t}\) will increase without bound as \(t\) increases.
+      \end{solution}
+
+    \item \(u_{0} > 0\) and \(u_{t} = \frac{1}{2} u_{t-1}\) for integers \(t \ge 1\).
+
+      \begin{solution}
+        The solution to the given recurrence is \(u_{t} = u_{0} \cdot \left(\frac{1}{2}\right)^{t}\).  Its long term behaviour is 
+        \[
+          \lim_{t \to \infty} u_{t} = \lim_{t \to \infty} u_{0} \cdot \left( \frac{1}{2} \right)^{t}  = u_{0} \lim_{t \to \infty} e^{\ln(1/2)t} = \lim_{t \to \infty} e^{(\text{negative constant}) t} = 0.
+        \]
+        It means that \(u_{t}\) will decrease to \(0\) as \(t\) increases.
+      \end{solution}
+
+    \item \(u_{0} < 0\) and \(u_{t} = \frac{3}{4} u_{t-1}\) for integers \(t \ge 1\).
+
+      \begin{solution}
+        The solution to the given recurrence is \(u_{t} = u_{0} \cdot \left(\frac{3}{4}\right)^{t}\).  Its long term behaviour is 
+        \[
+          \lim_{t \to \infty} u_{t} = \lim_{t \to \infty} u_{0} \cdot \left( \frac{3}{4} \right)^{t}  = u_{0} \lim_{t \to \infty} e^{\ln(3/4)t} = \lim_{t \to \infty} e^{(\text{negative constant}) t} = 0.
+        \]
+        It means that \(u_{t}\) will increase to \(0\) as \(t\) increases.
+      \end{solution}
+
+    \item \(u_{0} = -1\) and \(u_{t} = \sqrt{2} \cdot u_{t-1}\) for integers \(t \ge 1\).
+
+      \begin{solution}
+        The solution to the given recurrence is \(u_{t} = - \left(\sqrt{2} \right)^{t}\).  Its long term behaviour is 
+        \[
+          \lim_{t \to \infty} u_{t} = \lim_{t \to \infty} -\left( \sqrt{2} \right)^{t} = - \lim_{t \to \infty} e^{\ln(\sqrt{2})t} = -\lim_{t \to \infty} e^{(\text{positive constant}) t} = -\infty.
+        \]
+        It means that \(u_{t}\) will decrease to \(-\infty\) as \(t\) increases.
+      \end{solution}
+  \end{enumerate}
+\end{exercise}
+
+% \begin{exercise}
+%   Which of the following describe an equilibrium solution of an unknown recurrence equation involving \(u_{t}\)?
+%
+%   \begin{enumerate}
+%     \item \(u_{t} = 0\) for every \(t \ge 0\).
+%     \item \(u_{t}\) is constant with respect to \(t\).
+%     \item \(u_{0} = u_{1} = u_{2} = u_{3} = \cdots\) and so on.
+%     \item \(u_{t} = t\) for every \(t \ge 0\).
+%   \end{enumerate}
+% \end{exercise}
+
+\begin{exercise}
+  For each recurrence equation below, find their equilibria.
+  \begin{enumerate}
+    \item \(2u_{t} = u_{t - 1}^{2} + 1\).
+      \begin{solution}
+        Let \(\hat{u}\) denote the equilibrium solution which is just a constant that satisfies the recurrence.  Replace every \(u_{t}\) and \(u_{t-1}\) by \(\hat{u}\) and solve for it.  We get
+        \begin{align*}
+          2\hat{u} &= \hat{u}^{2} + 1 \\
+          \hat{u}^{2} - 2\hat{u} + 1 &= 0 \\
+          \hat{u} = 1
+        \end{align*}
+        There is only one equilibrium \(\hat{u} = 1\).
+
+      \end{solution}
+    \item \(w_{t} = 3\sqrt{w_{t - 1}w_{t - 2} - 1}\).
+      \begin{solution}
+        Let \(\hat{w}\) denote the equilibrium solution which is just a constant that satisfies the recurrence.  Replace every \(w_{t}, w_{t-1}, w_{t-2}\) by \(\hat{w}\) and solve for it.  We get
+        \begin{align*}
+          \hat{w} &= 3\sqrt{\hat{w}^{2} - 1} \\
+          \hat{w}^{2} &= 9(\hat{w}^{2} - 1) \\
+          \hat{w} &= \pm \sqrt{\frac{9}{8}}.
+        \end{align*}
+        There are two equilibrium solutions \(\hat{w} = \sqrt{\frac{9}{8}}\) and \(\hat{w} = -\sqrt{\frac{9}{8}}\).
+      \end{solution}
+
+    \item \(p_{t} = \frac{2}{3}p_{t-1}\).
+
+      \begin{solution}
+        Let \(\hat{p}\) denote the equilibrium solution which is just a constant that satisfies the recurrence.  Replace every \(p_{t}, p_{t-1}\) by \(\hat{p}\) and solve for it.  We get
+        \begin{align*}
+          \hat{p} &= \frac{2}{3}\hat{p} \\
+          \hat{p} &= 0.
+        \end{align*}
+        The only equilibrium is \(\hat{p} = 0\).
+      \end{solution}
+
+    \item \(p_{t} = \frac{2}{3}p_{t-1} - \frac{1}{5}\).
+
+      \begin{solution}
+        Let \(\hat{p}\) denote the equilibrium solution which is just a constant that satisfies the recurrence.  Replace every \(p_{t}, p_{t-1}\) by \(\hat{p}\) and solve for it.  We get
+        \begin{align*}
+          \hat{p} &= \frac{2}{3}\hat{p} - \frac{1}{5} \\
+          \hat{p} &= \frac{5}{3}.
+        \end{align*}
+        The only equilibrium is \(\hat{p} = \frac{5}{3}\).
+      \end{solution}
+
+    \item \(w_{t} = w_{t-1} - \frac{1}{5}\).
+      \begin{solution}
+        Let \(\hat{w}\) denote the equilibrium solution which is just a constant that satisfies the recurrence.  Replace every \(w_{t}, w_{t-1}\) by \(\hat{w}\) and solve for it.  We get
+        \begin{align*}
+          \hat{w} &= \hat{w} - \frac{1}{5} \\
+          0 &= -\frac{1}{5}.
+        \end{align*}
+        This is not possible. Therefore, the equilibrium solution does not exist.
+      \end{solution}
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  How is an equilibrium different from the long-term behaviour of a recurrence?
+
+  \begin{solution}
+    Let's say the symbol (without the subscript) of our recurrence is \(w\).
+
+    \begin{itemize}
+      \item An equilibrium solution is just a constant that satisfies the recurrence. In symbolic form, an equilibrium means \(w_{0} = w_{1} = w_{2} = \cdots\) forever.
+      \item The long-term behaviour of a recurrence is the limit \(\lim_{t \to \infty} w_{t}\). To computer this limit, we need\footnote{There are other ways to do it without solving it. But that's outside the scope of this course.} to solve the recursion.
+    \end{itemize}
+  \end{solution}
+\end{exercise}
+
+\begin{exercise}
+  Solve the following recurrence.
+  \begin{enumerate}
+    \item \(v_{0} = 1\) and \(v_{t} = \frac{1}{3} v_{t-1} + \frac{1}{4}\).
+      \begin{solution}
+        Notice that \(a = 1/3\) and \(b = 1/4\). Because \(a \ne 1\), we have an equilibrium \(\hat{v} = \frac{b}{1-a} = \frac{1/4}{2/3} = \frac{3}{2}\).  
+
+        Depending on your preference, either pull out the formula \(v_{t} = (v_{0} - \hat{v}) a^{t} + \hat{v}\) or go through the substitution \(u_{t} = v_{t} + \hat{v}\).
+
+        \begin{itemize}
+          \item If you use the formula, then \(v_{t} = \left(1 - \frac{3}{2}\right) \left( \frac{1}{3} \right)^{t} + \frac{3}{2}\). You are done.
+
+          \item If you substitute \(u_{t} = v_{t} + \hat{p}\), then the recurrence becomes
+            \[
+              u_{0} = \left(1 - \frac{2}{3}\right) \quad\text{and}\quad u_{t} = \left(1 - \frac{3}{2}\right) u_{t-1}.
+            \]
+            Solve this recurrence to get \(u_{t} =\left(1 - \frac{2}{3}\right) \left(\frac{1}{3}\right)^{t}\). Put back \(v_{t}\) to get \(v_{t} = \left(1 - \frac{3}{2}\right) \left( \frac{1}{3} \right)^{t} + \frac{3}{2}\). It's the same solution as above.
+        \end{itemize}
+      \end{solution}
+
+    \item \(u_{0} = 8\) and \(u_{t} = \frac{1}{2} u_{t-1}\).
+      \begin{solution}
+        There isn't much to do except straight up apply the formula \(u_{t} = u_{0} a^{t}\) where \(a = \frac{1}{2}\). Therefore, 
+        \[
+          u_{t} = 8 \left(\frac{1}{2}\right)^{t}.
+        \]
+
+      \end{solution}
+    \item \(v_{0} = 8\) and \(v_{t} = \frac{1}{2} v_{t-1} + \frac{1}{2}\).
+      \begin{solution}
+        Notice that \(a = 1/2\) and \(b = 1/2\). Because \(a \ne 1\), we have an equilibrium \(\hat{v} = \frac{b}{1-a} = \frac{1/2}{1/2} = 1\).  Applying the formula quickly gives us the answer \(v_{t} = 7 \left(\frac{1}{2}\right)^{t} + 1\).
+      \end{solution}
+      
+    \item \(b_{0} = 300\) and \(b_{t} = 1.2 b_{t-1} - 10\).
+      \begin{solution}
+        Notice that \(A = 1.2\) and \(B = -10\). Don't forget the mimes sign. Because \(A \ne 1\), we have an equilibrium \(\hat{b} = \frac{B}{1-A} = \frac{-10}{-1.2} = 50\).  Applying the formula quickly gives us the answer \(b_{t} = 250 \left(1.2\right)^{t} + 50\).
+
+        The solutions make sense if you think of the \(1.2\) as annual return on investment and the \(-10\) as annual withdrawal. Our initial investment \(300\) earns \(300 \times 20\% = 60\) interest at the end of the first year, but we only take out \(10\). So the principle grows at the end of each year.
+      \end{solution}
+
+    \item \(a_{0} = 1000\) and \(a_{t} = 1.15 a_{t-1} + 10\).
+      \begin{solution}
+        Notice that \(A = 1.15\) and \(B = 10\). Because \(A \ne 1\), we have an equilibrium \(\hat{a} = \frac{B}{1-A} = \frac{10}{1 - 1.15} = -\frac{10}{0.15}\).  Applying the formula quickly gives us the answer \(v_{t} = \left(1000 - \frac{10}{0.15}\right) \left(1.15\right)^{t} - \left( \frac{10}{0.15} \right)\).
+      \end{solution}
+
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  For each recurrence below, find the unknown parameter so that the given condition is satisfied.
+  \begin{enumerate}
+    \item \(m_{t} = m_{t-1} + 30\) for integers \(t \ge 1\).  Find the unknown \(m_{0}\) so that \(m_{30} = 2750\).
+    \item \(b_{0} = 3000\) and \(b_{t} = a m_{t-1} - 100\) for integers \(t \ge 1\).  Find the unknown constant \(a\) so that \(b_{17} = 1000\).
+    \item \(p_{0} = 1\) and \(p_{t} = \frac{1}{3} m_{t-1} + c\) for integers \(t \ge 1\).  Find the unknown \(r\) so that \(b_{17} = 1000\).
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  A radioactive substance has a half-life of \(300\) years.   If the amount of substance is \(10\) grams, how many years will it take for the substance to decay to \(0.1\) milligrams?
+\end{exercise}
+
+\begin{exercise}
+  Carbon-14 has a half-life of \(5,730\) years. If an artifact has \(7\) grams of Carbon-14 initially and has \(5\) gram left, estimate the age of the artifact.
+\end{exercise}
+
+\begin{exercise}
+  Suppose a person retires on January 1, 2065.
+
+  Suppose they have one million dollars at the beginning of retirement.  The fund is invested and returns \(5\%\) interest on December 31 every year. Suppose they withdraw \(50,000\) at the beginning of each year for annual expenses, starting at retirement.
+
+  Will this person ever run out of money? If so, when?
+\end{exercise}
+
+\begin{exercise}
+  Someone plans to retire on January 1 some time in the future.
+
+  Suppose their expenses is \(80,000\) per year withdrawn at the beginning of each year from their retirement fund. Moreover, suppose the retirement fund is invested and returns \(7\%\) interest on December 31 every year. 
+
+  What is the minimum amount of money needed at the beginning of the retirement if the person is expected to live \(25\) years past retirement?
+\end{exercise}
+\end{document}

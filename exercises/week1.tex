@@ -1,0 +1,268 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+
+\newenvironment{solution}{
+  \begin{proof}[Sample solution]
+    \color{main}
+  }{
+  \end{proof}
+}
+
+\pgfplotsset{
+  loglog line/.style={
+    loglog,
+    ymin=-2, ymax=2,
+    xmin=-2, xmax=2,
+    xlabel style = {anchor=south, font={\tiny}},
+    ylabel style = {anchor=west, font={\tiny}},
+  }
+}
+
+\begin{document}
+
+\chapter*{Week 1 practice problems}
+
+\begin{exercise}
+  For each log-log plot below, determine its power rule model in \(y = c x^{\alpha}\) and in \(y \propto x^{\alpha}\) forms.
+
+  \begin{tikzpicture}
+    \begin{axis}[loglog]
+      \addplot[very thick] {3*x + 1};
+    \end{axis}
+  \end{tikzpicture}
+  \hfill
+  \begin{tikzpicture}
+    \begin{axis}[loglog]
+      \addplot[very thick] {-1/2*x + 2};
+    \end{axis}
+  \end{tikzpicture}
+
+  \begin{tikzpicture}
+    \begin{axis}[loglog]
+      \addplot[very thick] {3/2*x + 3};
+    \end{axis}
+  \end{tikzpicture}
+  \hfill
+  \begin{tikzpicture}
+    \begin{axis}[loglog]
+      \addplot[very thick] {-1/4*x + 2};
+    \end{axis}
+  \end{tikzpicture}
+
+  \begin{solution}
+    \phantom{top}
+
+    \begin{itemize}
+      \item Top left.  \(y = e x^{3}\) and \(y \propto x^{3}\).
+
+      \item Top right. \(y = e^{2} x^{-1/2}\) and \(y \propto x^{-1/2}\).
+
+      \item Bottom left. \(y = e^{3} x^{3/2}\) and \(y \propto x^{3/2}\).
+
+      \item Bottom right. \(y = e^{2} x^{-1/4}\) and \(y \propto x^{-1/4}\).
+    \end{itemize}
+  \end{solution}
+\end{exercise}
+
+\begin{exercise}
+  Graph the log-log transformation of the power rule models. 
+  \begin{multicols}{4}
+    \begin{itemize}
+      \item \(y = x^{1}\)
+      \item \(y = x^{2}\)
+      \item \(y = x^{3}\)
+      \item \(y = \frac{1}{2}x^{1}\)
+      \item \(y = \frac{1}{2}x^{2}\)
+      \item \(y = \frac{1}{2}x^{3}\)
+      \item \(y = x^{-1}\)
+      \item \(y = x^{-2}\)
+      \item \(y = x^{-3}\)
+      \item \(y = \frac{1}{2}x^{-1}\)
+      \item \(y = \frac{1}{2}x^{-2}\)
+      \item \(y = \frac{1}{2}x^{-3}\)
+    \end{itemize}
+  \end{multicols}
+
+  For each model, reflect on the following questions.
+  \begin{enumerate}
+    \item Does \(x\) and \(y\) exhibit isometry or allometry?
+    \item If \(x\) increases, does \(y\) increase or decrease? Which feature of the plot shows this trend?
+    \item If \(x\) decreases, does \(y\) increase or decrease? Which feature of the plot shows this trend?
+    \item If \(y\) increases, does \(x\) increase or decrease? Which feature of the plot shows this trend?
+    \item If \(y\) decreases, does \(x\) increase or decrease? Which feature of the plot shows this trend?
+  \end{enumerate}
+
+  \begin{solution}
+    \phantom{top}
+
+    \begin{tikzpicture}
+      \begin{axis}[loglog line, title={\(y = x^{1} \rightarrow \ln(y) = \ln(x)\)}]
+        \addplot[very thick] {x};
+      \end{axis}
+    \end{tikzpicture}
+    \begin{tikzpicture}
+      \begin{axis}[loglog line, title={\(y = \frac{1}{2}x^{1} \rightarrow \ln(y) = \ln(x) - \ln(2)\)}]
+        \addplot[very thick] {x - ln(2)};
+      \end{axis}
+    \end{tikzpicture}
+
+
+    \begin{tikzpicture}
+      \begin{axis}[loglog line, title={\(y = x^{2} \rightarrow \ln(y) = 2\ln(x)\)}]
+        \addplot[very thick] {2*x};
+      \end{axis}
+    \end{tikzpicture}
+    \begin{tikzpicture}
+      \begin{axis}[loglog line, title={\(y = \frac{1}{2}x^{2} \rightarrow \ln(y) = 2\ln(x) - \ln(2)\)}]
+        \addplot[very thick] {2*x - ln(2)};
+      \end{axis}
+    \end{tikzpicture}
+
+    \begin{tikzpicture}
+      \begin{axis}[loglog line, title={\(y = x^{3} \rightarrow \ln(y) = 3\ln(x)\)}]
+        \addplot[very thick] {3*x};
+      \end{axis}
+    \end{tikzpicture}
+    \begin{tikzpicture}
+      \begin{axis}[loglog line, title={\(y = \frac{1}{2}x^{3} \rightarrow \ln(y) = 3\ln(x) - ln(2)\)}]
+        \addplot[very thick] {3*x - ln(2)};
+      \end{axis}
+    \end{tikzpicture}
+
+
+    \begin{tikzpicture}
+      \begin{axis}[loglog line, title={\(y = x^{-1} \rightarrow \ln(y) = -\ln(x)\)}]
+        \addplot[very thick] {-x};
+      \end{axis}
+    \end{tikzpicture}
+    \begin{tikzpicture}
+      \begin{axis}[loglog line, title={\(y = \frac{1}{2}x^{-1} \rightarrow \ln(y) = -\ln(x) - \ln(2)\)}]
+        \addplot[very thick] {-x - ln(2)};
+      \end{axis}
+    \end{tikzpicture}
+
+    \begin{tikzpicture}
+      \begin{axis}[loglog line, title={\(y = x^{-2} \rightarrow \ln(y) = -2\ln(x)\)}]
+        \addplot[very thick] {-2*x};
+      \end{axis}
+    \end{tikzpicture}
+    \begin{tikzpicture}
+      \begin{axis}[loglog line, title={\(y = \frac{1}{2}x^{-2} \rightarrow \ln(y) = -2\ln(x) - \ln(2)\)}]
+        \addplot[very thick] {-2*x - ln(2)};
+      \end{axis}
+    \end{tikzpicture}
+
+    \begin{tikzpicture}
+      \begin{axis}[loglog line, title={\(y = x^{-3} \rightarrow \ln(y) = -3\ln(x)\)}]
+        \addplot[very thick] {-3*x};
+      \end{axis}
+    \end{tikzpicture}
+    \begin{tikzpicture}
+      \begin{axis}[loglog line, title={\(y = \frac{1}{2}x^{-3} \rightarrow \ln(y) = -3\ln(x) - ln(2)\)}]
+        \addplot[very thick] {-3*x - ln(2)};
+      \end{axis}
+    \end{tikzpicture}
+  \end{solution}
+\end{exercise}
+
+
+
+\begin{exercise}
+  We explore allometric relations with biological models. 
+
+  \begin{figure}[H]
+    \centering
+
+    \begin{tabular}{l|l|l}
+      Quantity & Quantity & Scaling Relation \\ \midrule\midrule
+      Metabolic rate (\(R\)) & Body mass ($m$) & $R \propto m^{3/4}$ \\ \midrule
+      Heart rate (\(H\)) & Body mass ($m$) & $H \propto m^{-1/4}$
+    \end{tabular}
+  \end{figure}
+
+  \begin{enumerate}
+    \item If heart rate increases by \(5\%\), how does metabolic rate change in terms of scaling and percentage?
+      \begin{solution}
+        The model is \(R \propto m^{3/4}\). A \(5\%\) increase means we scale mass by \(1.05\). In terms of scaling, heart rate scales \emph{by a factor} of \(1.05^{3/4} \approx 1.037\) which is an increase. In terms of percentage, metabolic rate increase by roughly \(3.7\%\).
+      \end{solution}
+
+    \item If heart rate decreases by \(7\%\), how does metabolic rate change in terms of scaling and percentage?
+      \begin{solution}
+        The model is \(R \propto m^{3/4}\). A \(7\%\) decrease means we scale mass by \(0.93\). In terms of scaling, metabolic rate scales \emph{by a factor} of \(0.93^{3/4} \approx 0.962\) which is an decrease. In terms of percentage, heart rate decreases by roughly \(1 - 0.962 = (3.8\%)\).
+      \end{solution}
+
+    \item If body mass increases by \(10\%\), how does heart rate change in terms of scaling and percentage?
+      \begin{solution}
+        The model is \(R \propto m^{-1/4}\). A \(10\%\) increase means we scale mass by \(1.1\). In terms of scaling, metabolic rate scales \emph{by a factor} of \(1.1^{-1/4} \approx 0.976\) which is an decrease. In terms of percentage, heart rate decreases by roughly \(1 - 0.976 = (2.4\%)\).
+      \end{solution}
+
+    \item If body mass decreases by \(5\%\), how does heart rate change in terms of scaling and percentage?
+      \begin{solution}
+        The model is \(R \propto m^{-1/4}\). A \(5\%\) decrease means we scale mass by \(0.95\). In terms of scaling, metabolic rate scales \emph{by a factor} of \(0.95^{-1/4} \approx 1.0129\) which is an increase. In terms of percentage, heart rate increases by roughly \(1.29\%\).
+      \end{solution}
+
+    \item If a patient's heart rate increases, do the models predict their metabolic rate to increase or decrease?
+      \begin{solution}
+        We want heart rate to be the independent variable, so we isolate for \(H\) in terms of \(m\) to get \(m \propto R^{-1/4}\). Plug \(m\) into the metabolic rate vs body mass model to get \(R \propto (H^{-4})^{3/4}\). Simplify the exponents to get \(R \propto H^{-3}\).
+
+        The exponent on heart rate is negative. Therefore, the model predicts that an increase in heart rate results in a decrease in metabolic rate. 
+
+      \end{solution}
+
+    \item If a patient's metabolic rate decreases, do the models predict their heart rate to increase or decrease?
+
+      \begin{solution}
+        We want metabolic rate to be the independent variable, so we isolate for \(R\) in terms of \(m\) to get \(m \propto R^{4/3}\). Plug \(m\) into the heart rate vs body mass model to get \(H \propto (R^{4/3})^{-1/4}\). Simplify the exponents to get \(H \propto R^{-1/3}\).
+
+        The exponent on metabolic rate is negative. Therefore, the model predicts that an decrease in metabolic rate results in an increase in heart rate.
+      \end{solution}
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Consider scaling relation in drug dosage.
+  \begin{enumerate}
+    \item Suppose the dosage of a particular drug and patient's body weight scale isometrically.  If a patient weighs \(150\) lbs should receive \(100\)mg of dosage, what dosage should a \(170\) lbs patient receive?
+
+      \begin{solution}
+        We let \(m\) denote body weight (lbs) and \(d\) drug dosage (mg).  Being isometrically related means \(d = (\text{constant}) \times m\). Given \(m = 150\) lbs and \(d = 100\) mg, we can solve for \[\text{constant} = \frac{d}{m} = \frac{100}{150}.\]  Therefore, the model is \(d = \frac{100}{150} m\), and an \(170\) lbs patient should receive a dosage of \[d = \frac{100}{150} 170 \approx 113 \text{ mg}.\]
+      \end{solution}
+
+    \item Suppose the dosage of a particular drug and patient's body weight scale allometrically.  A patient has been receiving \(100\)mg of dosage. If the patient experiences a \(5\%\) weight loss, and a new prescription says the patient should receive \(95\) mg (of the same) drug, should you suspect there is a mistake?
+
+      \begin{solution}
+        Yes, there could be a mistake. The proposed drug dosage in relation to weight change \emph{coincides} with an isometric relation, which contradicts the given data. 
+      \end{solution}
+  \end{enumerate}
+\end{exercise}
+
+
+\begin{exercise}
+  Electrical power (\(P\)), voltage (\(V\)) and resistance (\(R\)) are related by \(\ln(P) = -\ln(R) + 2\ln(V)\). 
+  \begin{enumerate}
+    \item If \(V\) remains constant and \(R\) increases by \(100\%\), how does \(P\) change?
+
+      \begin{solution}
+        Convert the log-log transformation back into \(P = \frac{V^{2}}{R}\).
+
+      If \(V\) remains constant, then \(P \propto R^{-1}\). An \(100\%\) increase in \(V\) means \(V\) scales by \(2\). Therefore \(P\) scales by a factor of \(2^{-1} = 1/2\) which is a decrease.  In terms of percentage, \(P\) decreases by \(50\%\).
+      \end{solution}
+
+    \item If \(R\) remains constant and \(V\) doubles, how does \(P\) change?
+
+      \begin{solution}
+        Convert the log-log transformation back into \(P = \frac{V^{2}}{R}\).
+
+        If \(R\) remains constant, then \(P \propto V^{2}\). Doubling \(V\) means \(V\) scales by \(2\). Therefore, \(P\) scales by \(2^{2} = 4\) which is an increase.  In terms of percentage, \(P\) increases by \(300\%\).
+      \end{solution}
+
+      
+    \item If \(V\) remains constant and \(P\) halves, how does \(R\) change?
+      \begin{solution}
+        Convert the log-log transformation back into \(P = \frac{V^{2}}{R}\).
+
+        The question wants information on \(R\), so we want \(R\) to be the dependent variable.  The equation rewrites as \(R = \frac{V^{2}}{P}\). Since \(V\) remains constant in this scenario, then \(R \propto P^{-1}\). Having \(P\) means \(P\) scales by \(0.5\). Therefore, \(R\) scales by \(0.5^{-1} = 2\) which is an increase.  In terms of percentage, \(R\) increases by \(100\%\).
+      \end{solution}
+  \end{enumerate}
+\end{exercise}
+\end{document}

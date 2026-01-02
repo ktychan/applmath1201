@@ -1,0 +1,41 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+
+\newenvironment{solution}{
+  \begin{proof}[Sample solution]
+    \color{main}
+  }{
+  \end{proof}
+}
+
+\begin{document}
+
+\chapter{Continuous-time models and Differential Equations}
+
+\begin{exercise}
+  A population exhibits exponential growth.  At time \(t = 0\), the population is \(100\) and grows to \(400\) after \(20\) time units.  
+  \begin{enumerate}
+    \item At what time \(t\) is the population \(10\)?
+    \item At what time \(t\) is the population \(50\)?
+    \item At what time \(t\) is the population \(50,000\)?
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  A population \(P\) is modelled by the differential equation \(P'(t) = 0.95 P(t)\). 
+  \begin{enumerate}
+    \item Is the population growing or shrinking when the population reaches \(100\)?
+    \item Does the population ever decrease?
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Consider the differential equation \(y' = (x-y) e^{x+y}\).
+
+  \begin{enumerate}
+    \item Is \(y\) increasing or decreasing at \(x = 0\) and \(y = 3\)?
+    \item Is \(y\) increasing or decreasing at \(x = 3\) and \(y = 0\)?
+  \end{enumerate}
+\end{exercise}
+
+\end{document}
