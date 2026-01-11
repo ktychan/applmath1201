@@ -2,9 +2,9 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Introduction to discrete-time models and recursion}
 
-\hlmain{Discrete-time models} are models in which the time variable takes on (typically non-negative) integer values. In discrete-time models, time progresses in discrete steps instead of flowing continuously. 
+\hlmain{Discrete-time models} are models in which the time variable takes on (typically non-negative) integer values. In discrete-time models, time progresses in integer-valued steps instead of flowing continuously. 
 
-\hlmain{Recursions} are equations for describing changes over discrete time steps and are often used to describe discrete-time models.
+\hlmain{Recursions}, also known as difference equations, are equations for describing changes over discrete time steps and are often used to describe discrete-time models.
 
 We introduce these two ideas together through Example~\ref{ex:origami}.  
 
@@ -48,7 +48,7 @@ Let's sharpen the concept of recurrence by writing down a precise definition.
   \faExclamationTriangle{} Recurrences are used to describe discrete-time models.
 \end{definition}
 
-\begin{example}
+\begin{exercise}
   Here are some examples of recurrences. For each recurrence below, identify its initial condition and its recurrence equation.
 
   \begin{enumerate}[wide, itemsep={2ex}]
@@ -90,5 +90,5 @@ Let's sharpen the concept of recurrence by writing down a precise definition.
         F_{t} = F_{t-1} + F_{t-2}.
       \end{equation}
   \end{enumerate}
-\end{example}
+\end{exercise}
 \end{document}

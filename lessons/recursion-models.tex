@@ -12,35 +12,24 @@ Before we investigate mathematical properties of recurrence, let's see why we sh
 % use the word balance instead of value of the investment
 Let's start with an everyday example of discrete-time models.
 \begin{example} \label{ex:recurrsion-investment-model}
-  We deposit \(1000\) dollars into a savings account. At the end of every year since the initial deposit, interest of \(6\%\) of the current balance is paid. We would like to withdraw \(50\) dollars \emph{after} each interest payment.
+  We deposit \(\$ 1,000\) into a savings account on January 1. At the end of every year, an interest of \(2\%\) of the current balance is paid. We would like to withdraw \(\$ 50\) \emph{after} each interest payment.
 
-  Develop a discrete-time model for the relation between the balance of the saving and time.
+  Develop a discrete-time model (a recurrence) for the relation between the balance of the saving and time.  
 
   \blanklines{30}
 \end{example}
 \clearpage
 
 \begin{exercise} \label{ex:recurrsion-half-life}
-  Carbon-14 is a radioactive element that can be used to determine the age of archaeological artifacts of biological origin.  The amount of carbon-14 in a sample decreases by \(50\%\) after roughly \(5730\) years. In other words, the half-life of carbon-14 is \(5730\) years. 
+  Carbon-14 is a radioactive element that can be used to determine the age of archaeological artifacts of biological origin.  The amount of carbon-14 in a sample decreases by \(50\%\) after roughly \(5,730\) years. In other words, the half-life of carbon-14 is \(5,730\) years. 
 
-  Develop a discrete-time model for the relation between the amount of carbon-14 in a sample and time.
+  Develop a discrete-time model (a recurrence) for the relation between the amount of carbon-14 in a sample and time. 
+
+  Be careful with how you measure time.
 
   \blanklines{45}
 \end{exercise}
 \clearpage
 
-Given a recursive discrete-time model, we can find explanations for the recurrence.
-\begin{exercise}[challenge of the week]
-  A house has a cat and some mouse.  The cat chases away a fixed portion of mouse everyday during the day. Voluntary move-ins/outs happen before midnight. 
-  A census of the mouse population is taken every midnight.
 
-  An intern proposes the following model for the number of mouse \(m_{t}\) at night \(t\).  
-  \[
-    m_{0} \text{ is unknown } \quad\text{and}\quad m_{t} = 0.2 m_{t-1} + 5, \text{ for integers } t \ge 1.
-  \]
-
-  What percentage of the mouse population is chased away by the cat everyday?
-
-  \blanklines{45}
-\end{exercise}
 \end{document}

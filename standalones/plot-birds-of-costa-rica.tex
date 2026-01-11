@@ -71,18 +71,16 @@
 \end{tikzpicture}
 
 \begin{tikzpicture}
-  \begin{axis}[original data, title ={Intern A proposes {\(m = 0.25\ell^{2}\)}}]
-    \addplot+ [data points] table[col sep=comma] {./data-birds-of-costa-rica.csv};
-    \addplot[intern curve] {x^2*0.25};
-\end{axis}
-\end{tikzpicture}
-
-
-\begin{tikzpicture}
-  \begin{axis}[original data, title ={Intern B proposes {\(m = 0.0061\ell^{3}\)}}]
+  \begin{axis}[original data, title ={Intern A proposes {\(m = 0.0061\ell^{3}\)}}]
     \addplot+ [data points] table[col sep=comma] {./data-birds-of-costa-rica.csv};
     \addplot[intern curve] {x^3*0.0061};
 \end{axis}
 \end{tikzpicture}
 
+\begin{tikzpicture}
+  \begin{axis}[original data, title ={Intern B proposes {\(m = 0.25\ell^{2}\)}}]
+    \addplot+ [data points] table[col sep=comma] {./data-birds-of-costa-rica.csv};
+    \addplot[intern curve] {x^2*0.25};
+\end{axis}
+\end{tikzpicture}
 \end{document}

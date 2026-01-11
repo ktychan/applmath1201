@@ -2,30 +2,30 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Mathematical techniques for recursive models}
 
-Now that we know how to turn words into recursive models, we can start to think about techniques to investigate recursion equations. 
+Now that we know how to turn words into recursive models, we learn techniques to investigate recurrence.
 
 At the end of this section, we will be able to do the following.
 \begin{enumerate}
-  \item Given a recursion, computer a few terms to get an sense of its behaviour.
   \item Verify proposed solutions of recursions.
   \item Understand the effect of initial conditions and find equilibrium solutions.
   \item Solve simple recursions.
+  \item Use calculus to solve problems involving discrete-time models.
 \end{enumerate}
 
 \faLightbulb{} Although Example 2.5 is not a biological model, it is intuitive and sophisticated enough to demonstrate all of this section's learning goals.
 
 To calculate a few terms of a given recurrence, we simply start with time \(t=1\) and calculate \(u_{1}\) using the recurrence equation. Once \(u_{1}\) is calculated, we apply \(t = 2\) to the recurrence equation to calculate \(u_{2}\) and so on.
 \begin{example} \label{ex:recurrence-bruteforce}
-  Calculate the balance at the end of years 1, 2, and 3 using the recurrence in Example~\ref{ex:recurrsion-investment-model}.
+  Calculate the balance at the end of years 1, 2, and 3 using the model in Example~\ref{ex:recurrsion-investment-model}.
 
-  \blanklines{15}
+  \blanklines{20}
 \end{example}
 
-\begin{example}
-  Calculate the balance at the end of years 3 using the recurrence in Example~\ref{ex:recurrsion-investment-model} but change the initial deposit to \(5000\) dollars.
+\begin{exercise} \label{ex:recurrence-equilibrium}
+  Calculate the balance at the end of years 3 using the model in Example~\ref{ex:recurrsion-investment-model} but change the initial deposit to \(\$ 5,000\).
 
   \blanklines{10}
-\end{example}
+\end{exercise}
 
 \clearpage
 
@@ -35,8 +35,8 @@ In some cases, we can use mathematical techniques to ``get rid'' of the recursio
 
 First, let's understand what it means for a function to be a solution of a recursion. 
 
-\begin{definition}[solutions of recursions]
-  Suppose \(u_{t}\) satisfies a recursion with some initial condition \(u_{0}\). A function \(f(t)\) is a solution of the recursion if 
+\begin{definition}
+  Suppose we have a recurrence \(u_{t}\) with some initial condition \(u_{0}\). A function \(f(t)\) is a solution of the recursion if 
   \begin{enumerate}
     \item \(f(t)\) satisfies the defining recursion equation for \(u_{t}\), \emph{and}
     \item \(u_{0} = f(0)\).
@@ -46,111 +46,125 @@ First, let's understand what it means for a function to be a solution of a recur
 \end{definition}
 
 \begin{example}
-  Verify that \(f(t) = 1000 (1.02)^{t}\) is \emph{not} a solution of the recursion in Example~\ref{ex:recurrsion-investment-model}.
+  Is \(a_{t} = 2^{2^{t-1}}\) the solution for \(a_{1} = 2\) and \(a_{t} = a_{t-1}^{2}\) for \(t \ge 1\)?
 
   \blanklines{30}
 \end{example}
 \clearpage
 
-To denote a solution, we can skip the function notation.
-\begin{example}
-  Verify that \(b_{t} = -1500 (1.02)^{t} + 2500\) is a solution of the recurrence in Example~\ref{ex:recurrsion-investment-model}.
+\begin{exercise}[concept check and algebra skill practice]
+  Is \(b_{t} = -1500 (1.02)^{t} + 2500\) is a solution of the recurrence in Example~\ref{ex:recurrsion-investment-model}?
 
   \blanklines{50}
+\end{exercise}
+\clearpage
+
+Guess-and-check is an inefficient method of looking for solutions of recursions. We are better off looking for systematic methods.
+
+\begin{method} \label{method:recurrence-exp}
+  Let \(a > 0\) be a constant. The solution to the recurrence \(u_{t} = a u_{t-1}\) is 
+  \[
+    u_{t} = u_{0} a^{t}.
+  \]
+
+  In this statement, \(u_{0}\) can be any constant.
+\end{method}
+
+Why does this work?
+
+\blanklines{5}
+
+\faStar{} Recurrence offers a convenient language to develop discrete-time models. However, none of the calculus tools apply \emph{directly} to recurrence. \hlmain{Solving a recurrence converts a unfamiliar problem to a familiar problem.}
+
+\begin{example}
+  Suppose a population grows at rate \(r\) (annually) with an initial population \(P_{0} = 1,000\).   What is the long-term behaviour of the population , i.e., \(\lim_{t \to \infty} P_{t}\), when
+  \begin{enumerate}
+    \item \(r = 1\)?
+    \item \(r > 1\)?
+    \item \(0 < r < 1\)?
+  \end{enumerate}
+
+  \blanklines{25}
 \end{example}
 \clearpage
 
-We now turn to the third learning goal of this section: Initial conditions and equilibrium solutions. 
 
-Recurrences are sensitive to their initial condition. Consider once again Example~\ref{ex:recurrsion-investment-model}. Recall our savings account pays \(2\%\) annual interest rate, and we withdrawal \(50\) dollars after each interest payment.  Initial deposits of \(1000\) vs \(2500\) should lead to different balances after \(10\) years.  This is true for all recurrences: Different initial conditions lead to different solutions.
+\clearpage
 
-However, the initial deposit \(2500\) is special. It leads to no change from year to year.
+Recurrences are sensitive to their initial condition. Consider once again Example~\ref{ex:recurrsion-investment-model}. Recall our savings account pays \(2\%\) annual interest rate, and we withdrawal \(50\) dollars after each interest payment.  Initial deposits of \(1,000\) vs \(2,500\) should lead to different balances after \(10\) years.  This is true for all recurrences: Different initial conditions lead to different solutions.
+
+However, the initial deposit \(2,500\) is special as we saw in Exercise~\ref{ex:recurrence-equilibrium} because it leads to no change from year to year.
 
 \begin{definition}[equilibrium solution]
   An equilibrium solution of a recurrence equation (not the whole recurrence) is a constant function.  We denote equilibrium solutions by making the variable wear a hat and throwing away subscripts, e.g., \(\hat{u}\).
 \end{definition}
 
-\begin{example}
-  Verify that \(\hat{b} = 2500\) is an equilibrium solution of \(b_{t} = 1.02 b_{t-1} - 50\).  Moreover, explain in plain English why this makes sense in the context of Example~\ref{ex:recurrsion-investment-model}.
-  % results in no change in states
-
-  \blanklines{18}
-\end{example}
+\blanklines{10}
 
 \faStar{} Equilibrium solutions are very easy to find because they are constants. Simply replace all \(u_{t}\) by \(\hat{u}\) and solve for \(\hat{u}\) using basic algebra. It is possible to find more than one equilibrium solutions.
 
 \begin{example}
-  Find \emph{all} equilibrium solutions of the recurrence equation \(u_{t} = \sqrt{3 u_{t-1} - 2}\).
+  Find the equilibrium solution for the recurrence equation \(v_{t} = 1.5 v_{t-1} + 35\).
 
-  \blanklines{15}
+  \blanklines{25}
 \end{example}
 \clearpage
 
-\begin{example}
-  Find equilibrium solution(s) of the recurrence equation \(p_{t} = \frac{1}{2} p_{t-1} - \frac{1}{2}\).
+\begin{exercise}[concept check]
+  Find \emph{all} equilibria of the recurrence equation \[u_{t} = \sqrt{3 u_{t-1} - 2}.\]
 
   \blanklines{20}
-\end{example}
+\end{exercise}
 
-Our last learning goal is to solve recurrence.
+\begin{exercise}[concept check]
+  Find equilibria (one or many?) of the recurrence equation \[p_{t} = \frac{1}{2} p_{t-1} - \frac{1}{2}.\]
 
-\begin{thm} \label{thm:recurrence-exp}
-  Let \(a,\lambda\) be constants and \(\lambda > 0\). The solution to the recurrence
-  \[ 
-    u_{t} = \lambda u_{t-1}, \text{ for integers } t \ge 1 
-  \]
-  is 
-  \[
-    u_{t} = u_{0} \lambda^{t}.
-  \]
-
-  In this statement, \(u_{0}\) can be any constant.
-\end{thm}
-
-\blanklines{15}
-
+  \blanklines{20}
+\end{exercise}
 \clearpage
 
-Change-of-variable is the general technique we use in this course.
+Now we advance to slightly more complicated recurrence. 
 
 \begin{method} \label{method:recurrence-sub}
-  Given a recurrence of the form \(v_{t} = A v_{t-1} + B\), we wish to make a change of variable \(u_{t} = v_{t} + c\) so that \(u_{t}\) is the recurrence in Theorem~\ref{thm:recurrence-exp}. Solve the new recurrence and recover the original solution.
+  Consider a recurrence of the form \(v_{t} = A v_{t-1} + B\) whose equilibrium is always \(\hat{v} = \frac{B}{1 - A}\). Introduce a new recurrence \(u_{t}\) and perform the change of variable \(v_{t} = u_{t} + \hat{v}\). Solve the new recurrence \(u_{t}\) and recover the original solution.
 \end{method}
 
 \begin{example}
   Solve the recurrence \(b_{t} = 1.02 b_{t-1} - 50\) with initial condition \(b_{0} = 1000\).
 
   \begin{enumerate}[wide, label={Step~(\arabic*).}]
-    \item Perform the change of variable. The two methods below lead to the same solution.
-      \begin{enumerate}[label={(\alph*)}]
-        \item Calculate the equilibrium solution \(\hat{u}\), and the change of variable is \(b_{t} = u_{t} + \hat{u}\).
-        \item Blindly perform the change of variable \(b_{t} = u_{t} - c\), then set \(c\) to be the number so that the constant term is \(0\).  
-      \end{enumerate}
+    \item Perform the change of variable.
 
-      \blanklines{20}
+      \blanklines{25}
 
     \item Calculate \(u_{0}\) and solve for the new recurrence in \(u_{t}\). 
 
       \blanklines{10}
 
-    \item Recover the solution of the original recurrence. Verify that we didn't make a mistake.
+    \item Recover the solution of the original recurrence.
 
       \blanklines{5}
   \end{enumerate}
 \end{example}
 \clearpage
 
-\begin{example}
-  Solve the recurrence \(p_{0} = 1\) and \(p_{t} = \frac{1}{2} p_{t-1} - \frac{1}{2}\) for integers \(t \ge 1\).
+The substitution process in Method~\ref{method:recurrence-sub} can be packaged into a formula.
+\begin{method}
+  The solution to the recursion \(v_{t} = A v_{t-1} + B\) with initial condition \(v_{0}\) is
+  \[
+    v_{t} = (v_{0} - \hat{v}) A^{t} + \hat{v}, \text{ where } \hat{v} = \frac{B}{1 - A}.
+  \]
+\end{method}
 
-  \blanklines{50}
+\begin{exercise}[concept check]
+  Solve the recurrence \(p_{0} = 1\) and \(p_{t} = \frac{1}{2} p_{t-1} - \frac{1}{2}\) for integers \(t \ge 1\) using the formula and the substitution method. Make sure you understand both.
 
-  {\footnotesize The solution is \(p_{t} = 2 \left( \frac{1}{2} \right)^{t} - 1\) for all integers \(t \ge 0\).}
-\end{example}
+  \blanklines{40}
+\end{exercise}
 
 \clearpage
 
-Solutions of recurrence allows us to answer interesting questions. 
+Solutions of recurrence allow us to answer interesting questions.  This is the last learning objective of this week.
 \begin{example}
   Consider the recurrence in Example~\ref{ex:recurrsion-investment-model} 
   \[
@@ -158,17 +172,33 @@ Solutions of recurrence allows us to answer interesting questions.
   \] 
   Does the balance ever reach \(0\)? If so, roughly how many years since the initial investment should we expect the balance to be \(0\)? 
   
-  Don't simply list all \(b_{t}\). Use the solution of the recurrence and basic algebra to solve this problem.
+  Don't simply list all \(b_{t}\). Use the solution of the recurrence and calculus to solve this problem.
+
+  \blanklines{45}
 \end{example}
 \clearpage
 
-\begin{example}[retirement savings]
-  How much savings does one need at the time of retirement (say, January 1, 2060) if the savings generate \(5\%\) return on investment annually, and they withdraw \(\$150,000\) at the beginning of each year.
+\begin{exercise}
+  Let's modify Example~\ref{ex:recurrsion-investment-model} a bit further and assume the initial investment is an unknown.  Everything else remains unchanged.  
 
-  \blanklines{40}
-\end{example}
+  What is the initial investment if the money were to be depleted after \(10\) years?
 
+  \blanklines{45}
+\end{exercise}
 \clearpage
 
+Here is a brain teaser.
 
+\begin{exercise}[challenge of the week]
+  A house has a cat and some mouse. The cat chases away a fixed portion of the mouse everyday during the night.  Voluntary move-ins/outs happen before midnight. A census of the mouse population is taken at midnight.
+
+  An intern proposes the following model for the number of mouse \(m_{t}\) at night \(t\). 
+  \[
+    m_{0} \text{ is unknown} \quad\text{and}\quad m_{t} = 0.2 m_{t-1} + 5, \text{ for \(t \ge 1\)}.
+  \]
+
+  According to the model, what \emph{percentage} of the mouse population is chased away by the cat everyday?
+
+  {\footnotesize Hint: Exercise~\ref{ex:emc2}. The challenge is to figure out what we learned over the past two weeks is useful.}
+\end{exercise}
 \end{document}

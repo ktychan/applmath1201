@@ -16,11 +16,6 @@
 
 \input{./typography.tex.preamble}
 \input{./tikz.tex.preamble}
-\setbeamertemplate{background}{
-  \begin{tikzpicture}[overlay, remember picture]
-    \node[teal!10, anchor=south] at (current page.south) {\resizebox{\textwidth}{!}{iClicker}};
-  \end{tikzpicture}    
-}
 
 \newcommand{\yesno}{
  \begin{enumerate}
@@ -34,6 +29,19 @@
 
 \usepackage{enumitem}
 \setlist[enumerate]{label={\color{supp}(\alph*)}, itemsep={2ex}, topsep={1ex}}
+
+\newenvironment{poll}{
+  \begingroup
+  \setbeamertemplate{background}{
+    \begin{tikzpicture}[overlay, remember picture]
+      \node[teal!10, anchor=south] at (current page.south) {\resizebox{\textwidth}{!}{iClicker}};
+    \end{tikzpicture}    
+  }
+  \begin{frame}
+}{
+  \end{frame}
+  \endgroup
+}
 
 \begin{document} 
 
@@ -91,7 +99,55 @@
   \end{enumerate} 
 \end{frame}
 
+\section{Toucan}
 
+\begin{poll}
+  Do you side with intern A or B?
+
+  \begin{minipage}{3in}
+    \begin{enumerate}
+      \item Intern A.
+      \item Intern B.
+      \item 
+      \item 
+      \item I am not sure.
+    \end{enumerate}
+  \end{minipage}
+\begin{minipage}{2in}
+    \centering
+    \qrcode[height=1in]{https://join.iclicker.com/OFXO}
+    \bigskip
+
+    \footnotesize\url{join.iclicker.com/OFXO} 
+
+    \bigskip
+    Section 001
+  \end{minipage}
+\end{poll}
+
+\begin{poll}
+  Do you side with intern A or B?
+
+  \begin{minipage}{3in}
+    \begin{enumerate}
+      \item Intern A.
+      \item Intern B.
+      \item 
+      \item 
+      \item I am not sure.
+    \end{enumerate}
+  \end{minipage}
+\begin{minipage}{2in}
+    \centering
+    \qrcode[height=1in]{https://join.iclicker.com/SLPE}
+    \bigskip
+
+    \footnotesize\url{join.iclicker.com/SLPE} 
+
+    \bigskip
+    Section 002
+  \end{minipage}
+\end{poll}
 \section{Recurrence}
 
 \begin{frame}
