@@ -9,68 +9,84 @@
 We introduce these two ideas together through Example~\ref{ex:diff-eq-intro}.
 
 \begin{example} \label{ex:diff-eq-intro}
-  Let \(N\) measure the size of a population (e.g., cells, animals, any \emph{group} of organisms that live through some kind of life-cycles). Assume time \(t\) is measured in \emph{days}. At any given time \(t\), the \emph{per capita} birth and death rates are constants \(B\) and \(D\).  
+  Let \(N\) measure the size of a population (e.g., cells, animals, any \emph{group} of organisms that live through some kind of life cycles). Assume time \(t\) \emph{flows continuously} and is measured in \emph{years}. Unlike discrete-time models, it makes sense to say, for example, \(0.23\) years.
 
-  \emph{Per capita} means per unit of population, e.g., per person, per cell, per unicorn, etc.
+  Assume that at all times, the rate of change at time \(t\) is proportional to the size of the population at time \(t\).  
+  Express the rate of change of the population \hlmain{at time \(t\)} as an equation if the per capital birth and death rate are \hlsupp{\(B = 10\%\) per year} and \hlsupp{\(D = 1\%\) per year}.
+  Use dimensional homogeneity to stay on track.
 
-  \blanklines{15}
-  % explain beta as 1 |-> self + 0.5 self.
+  \emph{Per capita} means per unit of population, e.g., per cell, per \(10\) people, per unicorn {\emojifont{🦄}}, etc.  
 
-  Express the rate of change of the population \hlmain{at time \(t\)} as an equation.  
-
-  This is an example of a differential equation.
-
-  \blanklines{10}
-
-  What do we \emph{gain} by studying differential equations?
-
-  \blanklines{5}
+  \blanklines{35}
 \end{example}
-
 \clearpage
-Let's sharpen the concept of differential equations by writing down a precise definition.
-\begin{definition}[differential equation]
-  Let \(u\) be a differentiable function of \(t\). A \hlmain{differential equation} is an equation that relates \(u\) to one or more derivatives. 
 
-  In other words, a differential equation is an equation relating an independent variable, a dependent variable and derivatives of \underline{\hspace{2.5in}}.
+Let's sharpen the concept of differential equations by writing down a precise definition.
+\begin{definition}
+  Let \(u\) be a \emph{differentiable} function of \(t\) whose values are real numbers. A \hlmain{differential equation} (DE) is an equation that relates the function \(u\) to one or more of its derivatives.  The \hlsupp{unknown} in a differential equation is the function \(u\).
+
+  An \hlmain{initial-value problem} (IVP) has two parts:
+  \begin{enumerate}
+    \item An \hlmain{initial condition} (or \hlmain{initial value}) is some known value \(u(\text{constant})\).
+    \item A differential equation.
+  \end{enumerate}
 
   \faExclamationTriangle{} Differential equations are used to describe continuous-time models.
 \end{definition}
 
-\faStar{} Differential equations are continuous-time analog of recurrence equations (not the whole recursion).  
-
 \begin{example}
-  Here are some examples of differential equations.  
+  Here are two differential equations.  
 
   \begin{enumerate}[wide]
-    \item A differential equation can be written using function notations. Identify the dependent and independent variables in the equation.
-      \begin{equation}
-        N'(t) = r N(t) \left(1-\frac{N(t)}{K}\right)
-      \end{equation}
+    \item A differential equation can be written with or without function notations.
+      \[
+        {\overbrace{N'(t) = r N(t) \left(1-\frac{N(t)}{K}\right)}^{\text{independent variable is shown}}} 
+        \qquad\text{or}\qquad 
+        {\overbrace{N' = rN\left(1-\frac{N}{K}\right)}^{\text{independent variable is hidden}}}.
+      \]
 
-      \blanklines{3}
+      \blanklines{10}
 
-    \item A differential equation can be written without function notations.
-      \begin{equation}
-        u' = u (1-u/K)
-      \end{equation}
+    \item An initial value problem is a differential equation with an initial condition.
+      \[
+        \overbrace{N(0) = 350}^{\text{initial condition}} \quad\text{and}\quad N'(t) = r N(t) \left(1-\frac{N(t)}{K}\right).
+      \]
+      \bigskip
 
-      \blanklines{5}
 
-    \item A differential equation can involve any algebraic operations.
-      \begin{equation}
-        \frac{dy}{dx} + xy = 0
-      \end{equation}
+    \item The initial condition can be measured at any time, often at time \(0\) but not always. The following is a valid IVP.
+      \[
+        \overbrace{N(-3.236492) = 473829}^{\text{a valid initial condition}} \quad\text{and}\quad N'(t) = r N(t) \left(1-\frac{N(t)}{K}\right).
+      \]
+      \bigskip
 
-      \blanklines{3}
+    \item A differential equation can involve any algebraic operations and have higher-order derivatives.
 
-    \item A differential equation can be organized in anyway and have high-order derivatives.
-      \begin{equation}
-        v(t) = v'(t) + \frac{v''(t)}{t} + \sqrt{t-1}
-      \end{equation}
+      Recall that \(v''\) and \(v^{(2)}\) are the notations for the second derivative of \(v\).
+      \[
+        v(t) = v'(t) + \frac{v''(t)}{t} + \frac{v^{(3)}(t)}{t^{2}} - \sqrt{t-1}
+        \qquad\text{or}\qquad
+        v = v' + \frac{v''}{t} + \frac{v^{(3)}}{t^{2}} + \sqrt{t-1}
+      \]
 
-      \blanklines{3}
   \end{enumerate}
 \end{example}
+\clearpage
+
+A comparison of terminologies between discrete-time models and continuous-time models:
+
+A recurrence has two parts:
+\begin{enumerate}
+  \item An initial condition, e.g., \(b_{0} = 1000\).
+  \item A recurrence equation, e.g., \(b_{t} = 1.02 b_{t-1} - 50\).
+\end{enumerate}
+
+An initial-value problem also has two parts:
+\begin{itemize}
+  \item An initial condition, e.g., \(N(0) = 350\).
+  \item A differential equation, e.g., \(N' = rN(1 - N/K)\). 
+\end{itemize}
+
+Please note that initial value problems are the continuous-time counterpart of recurrences for discrete-time models.
 \end{document}
 

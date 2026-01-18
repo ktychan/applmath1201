@@ -2,78 +2,87 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Solutions (plural!) of differential equations and initial-value problems}
 
-In a differential equation, the \hlmain{dependent} variable, say \(u\), is the \hlmain{unknown}. \emph{One} way to make sense of a differential equation is to try to \emph{solve it} --- express the unknown as down to earth functions (plural!) of the independent variable.
+In a differential equation, the \hlmain{dependent} variable, say \(u(t)\), is the \hlmain{unknown}. \emph{One} way to make sense of a differential equation is to try to \emph{solve it} --- express the unknown as down-to-earth functions (plural!) of the independent variable \(t\). 
 
-\begin{definition}[solutions of differential equations]
-  Suppose we have a differential equation whose dependent variable is \(u\) and independent variable \(t\). 
+\begin{definition}[solutions (plural!) of differential equations]
+  Suppose we have a differential equation whose unknown is \(u(t)\).
 
-  A function \(f(t)\) is \hlmain{a solution of the differential equation} if we can produce an equality \emph{after} replacing \(u(t)\) in the differential equation by \(f(t)\).
+  A function \(f(t)\) is \hlmain{a solution of the differential equation} if we can \hlsupp{produce an equality} \emph{after} replacing \(u(t)\) in the DE with \(f(t)\).  
 \end{definition}
 
-To verify a proposed solution for a differential equation, we focus on the dependent variable. 
+\faStar{} To verify a \emph{proposed} solution for a differential equation, we focus on the unknown function.
 
-\begin{method}
-  Suppose \(u = f(t)\) is a proposed solution for a differential equation in which \(u\) is the dependent variable and \(t\) is the independent variable. 
-
-  \textbf{Prepare}.
-  \begin{enumerate}[itemsep={0ex}]
-    \item Reorganize the differential equation to the form \hlmain{\((\cdots \text{stuff} \cdots) = 0\)}.
-    \item Discard the ``\hlmain{\(=0\)}'' on the right-hand side. 
-  \end{enumerate}
-
-  \textbf{Calculate}.
-  \begin{enumerate}[itemsep={0ex}]
-    \item Substitute every \(u(t)\) with \(f(t)\) in \hlmain{\((\cdots \text{stuff} \cdots)\)}. 
-    \item Perform all necessary differentiation. 
-    \item Simplify.
-  \end{enumerate} 
-
-  \textbf{Decide}. If the resulting expression simplifies to \(0\), then \(u = f(t)\) is a solution of the differential equation; otherwise, \(u = f(t)\) is not a solution.
-\end{method}
-
-\begin{example}
+\begin{example} \label{eg:de-solution-intro}
   Which of the following functions are solutions to the \(u'(t) = t u(t)\)?
   \[
     f_{1}(t) = e^{t^{2}}, \qquad f_{2}(t) = 2e^{t^{2}/2}, \qquad f_{3}(t) = 3e^{t^{2}/2}.
   \]
 
-  \blanklines{15}
+  \blanklines{35}
 \end{example}
 \clearpage
 
-In general, differential equations (without an initial condition, see below) have infinitely many solutions. For example, we can verify that \(f(t) = c e^{t^{2}/2}\) is a solution for \(u'(t) = t u(t)\) regardless of the value of the \emph{constant} \(c\). In fact, \(c\) can even be \(0\).  However, we can pin down exactly one solution by adding an extra requirement, called the initial condition.
+Here is a suggestion to manage a long computation especially if you tend to make little calculation mistakes.
+\begin{method}
+  Suppose we want to check if a proposed function \(f(t)\) is a solution to a given differential equation whose unknown is \(u(t)\).
 
-\begin{definition}[initial-value problem]
-  Suppose we have a differential equation whose dependent variable is \(u\) and independent variable \(t\). 
+  \textbf{Prepare}.
+  \begin{enumerate}[itemsep={0ex}]
+    \item Reorganize the DE to the form \hlmain{\((\cdots \text{stuff} \cdots) = 0\)}.
+    \item Rewrite \(u'(t)\) as \(\frac{d}{dt} \bigg( u(t) \bigg)\) so that you know what to differentiate later.
+    \item Discard the ``\hlmain{\(=0\)}'' on the right-hand side. 
+  \end{enumerate}
 
-  The number \(u(0)\) is called an \hlmain{initial condition}.  The problem of finding a function that is a solution to the differential equation and satisfies some \emph{given} initial condition is called an \hlmain{initial-value problem}. Every initial-value problem has \hlattn{exactly} one solution. 
+  \textbf{Calculate}.
+  \begin{enumerate}[itemsep={0ex}]
+    \item Replace every \(u(t)\) with \(f(t)\) in \hlmain{\((\cdots \text{stuff} \cdots)\)}. 
+    \item Perform all differentiation and simplify.
+  \end{enumerate} 
+
+  \textbf{Decide}. Assuming no mistake was made, if you get \(0\) at the end, then \(f(t)\) is a solution; otherwise, \(f(t)\) is not a solution.
+\end{method}
+
+\begin{exercise}[concept check]
+  Which of the following is a solution to \(\frac{dy}{dt} - 2y = 2t - 1\)?
+  \[
+    f_{1}(t) = 3e^{2t} - 1, \qquad f_{2}(t) = 3e^{2t} - 2.
+  \]
+
+  \blanklines{30}
+\end{exercise}
+\clearpage
+
+
+\begin{definition}[Solutions to IVP]
+  Suppose we have an initial-value problem whose initial condition is \(u(0)\).  
+
+  A function \(f(t)\) is \emph{the} (one and only) solution to the IVP if 
+  \begin{itemize}
+    \item \(f(0) = u(0)\), and 
+    \item \(f(t)\) is a solution to the differential equation.
+  \end{itemize}
 \end{definition}
 
-\blanklines{5}
-
-\faPencil*{} In scientific applications of differential equations, the initial condition often corresponds to a known measurement. There is flexibility in \emph{when} a known measurement is taken. For example, an initial condition could be \(u(-2566)\) representing the quantity \(u\) at time \(t = -2566\) (in whatever unit that makes sense).  We tend to think of \(t = 0\) as the (relatively) beginning of time and \emph{choose}, purely by convention and for convenience, to call the measurement at \(t = 0\) the initial condition.
-
-\bigskip
-Verifying a proposed solution to an initial-value problem is typically the last step in solving differential equations. It could also be the first step if we can somehow make an educated guess.
-\begin{example}[routine checks]
-  Which of the following functions solves the initial-value problem \(u'(t) = t u(t)\) with initial condition \(u(0) = 2\).
+Exercise~\ref{eg:de-solution-intro-ivp} is a sequel of Example~\ref{eg:de-solution-intro}.  The presence of an initial condition tells you this is an IVP.
+\begin{exercise} \label{eg:de-solution-intro-ivp}
+  Which of the following solves \(u'(t) = t u(t)\) with the initial condition \(u(0) = 2\)?
   \[
     f_{1}(t) = e^{t^{2}}, \qquad f_{2}(t) = 2e^{t^{2}/2}, \qquad f_{3}(t) = 3e^{t^{2}/2}.
   \]
 
   \blanklines{15}
-\end{example}
-\clearpage
+\end{exercise}
 
-We don't always have to name functions when proposing solutions.
-\begin{example}
-  Which of the following functions is the solution to the initial-value problem \(y(x)y'(x) = x\) with initial condition \(y(0) = -1\).
+Pro-tip: Always check the initial condition first.
+\begin{exercise}
+  Which of the following is the solution to \(y(x)y'(x) = x\) with initial condition \(y(0) = -1\).
   \[
-    e^{-x}, \quad -x, \quad x, \quad -x^{2}.
+    \qquad \sqrt{2x} - 1, \qquad \sqrt{2x - 1}, \qquad -\sqrt{2x + 1}.
   \]
 
-  \blanklines{10}
-\end{example}
+  \blanklines{15}
+\end{exercise}
+\clearpage
 
 Initial-value problems are not brand new ideas. We ran into some versions of them in Calculus~1000.
 \begin{example} \label{ex:diff-eq-IVP-calc-1000}
@@ -108,30 +117,30 @@ Notations for equilibrium solutions of differential equations vary. A common not
 \end{example}
 \clearpage
 
-The ability to verify a proposed solution allows us to solve differential equations by simply guess and check. The exercise below gives us a little bit of intuition on how our prior knowledge (differentiation and integration) leads to solutions to simple differential equations.
-\begin{example}
-  Assume \(y\) is a function of \(x\). Solve \(xy' + y = x\) by using the following observation.
+% The ability to verify a proposed solution allows us to solve differential equations by simply guess and check. The exercise below gives us a little bit of intuition on how our prior knowledge (differentiation and integration) leads to solutions to simple differential equations.
+% \begin{example}
+%   Assume \(y\) is a function of \(x\). Solve \(xy' + y = x\) by using the following observation.
+%
+%   The left-hand side is the derivative of \(xy\) using implicit differentiation with respect to \(x\). Therefore, the differential equation can be rewritten as \(\frac{d}{dx} \left( xy \right) = x\). What happens if we integrate both sides with respect to \(x\)?  Leave the integration constant as-is (don't try to find ``\(C\)'').
+%
+%   Follow the above idea to propose a solution, then verify that your solution is correct. 
+%
+%   \blanklines{40}
+% \end{example}
+% \clearpage
 
-  The left-hand side is the derivative of \(xy\) using implicit differentiation with respect to \(x\). Therefore, the differential equation can be rewritten as \(\frac{d}{dx} \left( xy \right) = x\). What happens if we integrate both sides with respect to \(x\)?  Leave the integration constant as-is (don't try to find ``\(C\)'').
+% Here is a rather abstract exercise on verifying solutions of differential equations.
 
-  Follow the above idea to propose a solution, then verify that your solution is correct. 
-
-  \blanklines{40}
-\end{example}
-\clearpage
-
-Here is a rather abstract exercise on verifying solutions of differential equations.
-
-\begin{example}
-  Consider the differential equation \(y'(x) + g(x) y(x) = x\) where \(g(x)\) is some unknown (in the sense of \emph{don't care}) continuous function. Define \(u(x) = \int g(x) \;dx\). 
-
-  Is \(y = g(x)u(x)\) a solution to the differential equation? 
-
-  Hint: Use the Fundamental Theorem of Calculus to find \(u'(x)\).
-
-  \blanklines{40}
-\end{example}
-\clearpage
+% \begin{example}
+%   Consider the differential equation \(y'(x) + g(x) y(x) = x\) where \(g(x)\) is some unknown (in the sense of \emph{don't care}) continuous function. Define \(u(x) = \int g(x) \;dx\). 
+%
+%   Is \(y = g(x)u(x)\) a solution to the differential equation? 
+%
+%   Hint: Use the Fundamental Theorem of Calculus to find \(u'(x)\).
+%
+%   \blanklines{40}
+% \end{example}
+% \clearpage
 
 % \begin{example}
 %   Consider the differential equation \( u'(t) + p(t) u(t) = 0\) where \(p(t)\) is a continuous function. Define

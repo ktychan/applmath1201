@@ -2,38 +2,31 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Long-term behaviour of solutions of autonomous equations}
 
-Recall (from the very first lecture of the semester) that models are \emph{imperfect} representations of natural phenomena. Exact solutions to differential equations may or may not be what we \emph{need}. Sometimes, it is good enough to understand the long-term behaviour of solutions.
+Recall (from the very first lecture of the semester) that models are \emph{imperfect} representations of natural phenomena. Exact solutions to differential equations may or may not be what we \emph{need}. Sometimes, it is good enough to understand the long-term behaviour of solutions. Typically, that means evaluating \(\lim_{t \to \infty} u(t)\).  
 
-We introduce the main idea of this section (see \faStar{}) by studying how logistic equations' equilibria interact with their solutions (plural!). Observe how we build a new idea from existing knowledge. Example~\ref{ex:diff-eq-logistic-fact-check} extends the qualitative analysis of differential equations on pages~\pageref{method:diff-eq-model}~and~\pageref{ex:diff-eq-logistic-fact-check}.
+When the independent variable \(t\) does not appear in differential equations (other than being function arguments), there is a very fast way to figure out the long-term behaviour of a solution without calculating limits at all. Such differential equations are called \hlmain{autonomous equations}. Example~\ref{eq:diff-eq-logistic-equation-equilibria} extends the qualitative analysis of differential equations on page~\pageref{method:diff-eq-model}.
 
-\begin{example}[equilibria of logistic equations] \label{eq:diff-eq-logistic-equation-equilibria}
-  Consider \(N'(t) = rN(t) \left( 1 - \frac{N(t)}{K} \right)\).
-
-  Notice \hlsupp{\(t\) does not appear in the right-hand side} of the logistic equation at all. By the terminology introduced at the bottom of page~\pageref{def:autonomous}, we see that the logistic equations are examples of autonomous equations. We can create a graph by using \(N\) as an input to produce a value for \(N'\).
+\begin{example} \label{eq:diff-eq-logistic-equation-equilibria}
+  Consider \(N'(t) = rN(t) \left( 1 - \frac{N(t)}{K} \right)\). 
 
   \begin{figure}[H] % [h] for here, [ht] for here top, [hb] for here bottom
-    \centering
-    \includegraphics{../standalones/plot-logistic-solutions-phase-lines}
-    \caption{The phase-line plot of \(N' = rN \left( 1 - \frac{N}{K} \right)\).}
+    \centerline{
+      \includegraphics{../standalones/plot-logistic-solutions}
+      \includegraphics{../standalones/plot-logistic-solutions-phase-lines}
+    }
+    \caption{Two plots for \(N' = rN \left( 1 - \frac{N}{K} \right)\).}
     \label{fig:logistic-solutions-phase-lines}
   \end{figure}
 
-  \faStar{} The useful but not obvious observation is that we can say more than just increasing/no change/decreasing for solutions. Figure~\ref{fig:logistic-solutions-phase-lines} \hlmain{predicts} that if \underline{\hspace{2in}}
+  \faStar{} The useful but not obvious observation is that we can say more than just increasing/no change/decreasing for solutions. Figure~\ref{fig:logistic-solutions-phase-lines} \hlmain{predicts} that if \underline{\hspace{2in}} such that 
   \begin{itemize}
     \item \underline{\hspace{2in}}, then the solution \underline{\hspace{3in}}.
     \item \underline{\hspace{2in}}, then the solution \underline{\hspace{3in}}.
   \end{itemize}
-
-  Does the above prediction match reality? Here are several solutions for the logistic equation.
-  \begin{figure}[H] % [h] for here, [ht] for here top, [hb] for here bottom
-    \centering
-    \includegraphics{../standalones/plot-logistic-solutions}
-    \label{fig:logistic-solutions}
-  \end{figure}
-
 \end{example}
+\clearpage
 
-The punchline of Example~\ref{eq:diff-eq-logistic-equation-equilibria} is that predictions similar to that of \faStar{} can be made reliably \hlmain{for all autonomous equations}.  Plots like Figure~\ref{fig:logistic-solutions-phase-lines} are called phase-line plots. 
+The punchline of Example~\ref{eq:diff-eq-logistic-equation-equilibria} is that predictions similar to \faStar{} can be made reliably \hlmain{for all autonomous equations} --- DEs in which the independent variable does not appear (other than being function arguments).  Plots like the right side of Figure~\ref{fig:logistic-solutions-phase-lines} are called phase-line plots. 
 
 \begin{definition}[phase-line plot]
   Suppose we have an \emph{autonomous} differential equation
@@ -47,10 +40,10 @@ The punchline of Example~\ref{eq:diff-eq-logistic-equation-equilibria} is that p
 
 \faExclamationTriangle{} Phase-line plots are ONLY defined for autonomous equations.
 
-We learn to identify equilibria of autonomous differential equations from a phase-line plot. Review page~\ref{def:diff-eq-equilibrium} for the technique to find equilibria algebraically.
+We learn to identify equilibria of autonomous differential equations from a phase-line plot. Review page~\pageref{def:diff-eq-equilibrium} for the technique to find equilibria algebraically.
 
 \begin{example}
-  Find equilibria of \(u'(t) = u(t)(u(t)-1)(2 - u(t))^{2}(1 - u(t)/3)\) algebraically and graphically.
+  The phase-line plot of an autonomous differential equation is provided below. Find its equilibra.
   
   \includegraphics{../standalones/plot-phase-lines-example1}
 \end{example}
@@ -58,12 +51,12 @@ We learn to identify equilibria of autonomous differential equations from a phas
 \begin{example}
   Find equilibria of \(y'(x) = (y(x) + 3)^{200} (3y(x) - 2) (1/3 - 5y(x))\) algebraically. Use a graphing software to find them graphically. Make sure both methods lead to the same equilibria.
 
-  \blanklines{10}
+  \blanklines{15}
 \end{example}
 
-\faPencil*{} What is the takeaway of equilibria of autonomous differential equations?
+% \faPencil*{} What is the takeaway of equilibria of autonomous differential equations?
 
-\blanklines{5}
+% \blanklines{5}
 
 \clearpage
 
@@ -140,12 +133,13 @@ We can perform phase-line analysis algebraically. \faPencil*{} Remember, \(u(t)\
 %
 %   We \hlsupp{do not need to solve} the differential equation at all.
 % \end{definition}
+\end{document}
 
 \clearpage
 
 
 \begin{example}
-  Find the long-term behaviour of the initial-value problem 
+  Determine the long-term behaviour of the initial-value problem 
   \[
     u'(t) = (u(t) - 3) (2u(t) - 1) (u(t) - 5) \quad\text{and}\quad u(1) = 4.
   \]
@@ -196,9 +190,9 @@ We can perform phase-line analysis algebraically. \faPencil*{} Remember, \(u(t)\
 \end{example}
 
 \bigskip
-The next exercise asks you to combine stability analysis and your knowledge from Calculus 1000 to deduce phase-line plots of near an equilibrium that is neither stable nor unstable. For hints, see page 67 of the textbook.
+The next exercise asks you to combine stability analysis and your knowledge from Calculus 1000 to deduce phase-line plots of near an equilibrium that is neither stable nor unstable. 
 
-\begin{example}
+\begin{exercise}
   In the plots below, sketch the phase-line plots of four differential equations such that \(g'(\bar{u}) = 0\), but two are stable, and two are neither stable nor unstable.
 
   \begin{center}
@@ -210,6 +204,6 @@ The next exercise asks you to combine stability analysis and your knowledge from
     \quad
     \includegraphics{../standalones/plot-phase-lines-stability}
   \end{center}
-\end{example}
+\end{exercise}
 
 \end{document}

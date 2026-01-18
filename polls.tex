@@ -148,43 +148,48 @@
     Section 002
   \end{minipage}
 \end{poll}
+
 \section{Recurrence}
 
-\begin{frame}
-  Formulate the question in the \faComment{} part of the Example~2.6.
-\end{frame}
+\begin{poll}
+  What recurrence equation do you propose for Example~2.5?
 
-\begin{frame}
-  What is a solution for the recurrence \(u_{t} = \frac{3}{2} u_{t}\)?
   \begin{enumerate}
-    \item \(u_{t} = \left( \tfrac{3}{2} \right)^{t} u_{0}\).
-    \item \(u_{t} = \left( \tfrac{3}{2} \right)t u_{0}\).
-    \item \(u_{t} = \left( \tfrac{3}{2} \right)u_{0} + t\).
-    \item \(u_{t} = \left( \tfrac{3}{2} \right) + t u_{0}\).
+    \item \(b_{t} = 0.02 b_{t-1}\)
+    \item \(b_{t} = 0.02 b_{t-1} - 50\)
+    \item \(b_{t} = 1.02 b_{t-1}\)
+    \item \(b_{t} = 1.02 b_{t-1} - 50\)
+    \item I a not sure.
+  \end{enumerate}
+\end{poll}
+
+\begin{poll}
+  What model makes sense for Exercise 2.6?  Let's say \(u_{0}\) represents the initial mass of carbon-13.
+
+  \begin{enumerate}
+    \item \(u_{0}\) is unknown. \(u_{n} = \frac{1}{2} u_{n-1}\) for all \(n \ge 1\).
+    \item \(u_{0}\) is unknown. \(u_{t} = \frac{1}{2} u_{t-1}\) for all \(t \ge 1\).
+    \item \(u_{0}\) is unknown. \(u_{t} = \frac{1}{2} u_{t-5730}\) for all \(t \ge 5730\).
+    \item Something is fishy.
     \item I am not sure.
   \end{enumerate}
-\end{frame}
+\end{poll}
 
-\begin{frame}
-  Which of the following are (seemingly) suitable models for Example~2.6.
+\begin{poll}
+  Example~2.13. If \(0 < r < 1\), then the model predicts that the population will \underline{\hspace{1cm}} in the long run.
 
   \begin{enumerate}
-    \item \(u_{t} = \frac{1}{2} u_{t-1}\) for integer \(t \ge 1\) where the unit of \(t\) is years.
-    \item \(u_{t} = \frac{1}{2} u_{t - 5730}\) for integer \(t \ge 1\) where the unit of \(t\) is years.
-    \item \(u_{n} = \frac{1}{2} u_{n}\) for integer \(n \ge 1\) where the unit of \(n\) is multiples of \(5730\) years.
+    \item grow unbounded
+    \item go extinct
+    \item not change
     \item 
-    \item I am not sure. 
+    \item I am not sure
   \end{enumerate}
-\end{frame}
+\end{poll}
 
 
 \begin{frame}
-  Why does \(\hat{b} = 2500\) make sense in the context of Example~2.5?
-\end{frame}
-
-
-\begin{frame}
-  What is a suitable substitution for the recurrence \(p_{0} = 1\) and \(p_{t} = \tfrac{1}{2} p_{t-1} - \tfrac{1}{2}\) for integers \(t \ge 1\).
+  What is a suitable substitution for the recurrence \(p_{0} = 1\) and \(p_{t} = \tfrac{1}{2} p_{t-1} - \tfrac{1}{2}\) for integers \(t \ge 1\)?
 
   \begin{enumerate} 
     \item \(p_{t} = u_{t} - 1\) and \(u_{0} = 2\).

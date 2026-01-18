@@ -8,6 +8,7 @@
 \tikzset{
   declare function={
     normalpdf(\x,\m,\s) = 1/sqrt(2 * pi * \s^2) * exp( - (\x - \m)^2 / (2 * \s * \s) );
+    logistic(\x,\K,\r,\Pinit) = \K/(1 + ((\K - \Pinit)/\Pinit)*exp(-\r*\x));
   }
 }
 
