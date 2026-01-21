@@ -10,15 +10,14 @@
 
 \begin{document}
 
-\chapter{Continuous-time models and Differential Equations}
+\chapter*{Week 3 practice problems}
 
-
-
+\setcounter{chapter}{2}
 \begin{exercise}
-  Match initial-value problems to their solutions.
+  Match initial-value problems to their solutions.  Some solutions may or may not be in the list. Some functions may or may not be relevant. The previous two exercises may or may not be true.
 
   \begin{minipage}{0.45\textwidth}
-    \begin{enumerate}
+    \begin{enumerate}[itemsep=2ex, label=(\Alph*)]
       \item \(\frac{dy}{dt} = y\) with \(y(0) = 1\)
       \item \(u' = u^2\) with \(u(0) = 1\)
       \item \(\frac{dx}{dt} = 2t\) with \(x(0) = 1\)
@@ -29,67 +28,133 @@
     \end{enumerate}
   \end{minipage}
   \begin{minipage}{0.45\textwidth}
-    \begin{enumerate}
-      \item \(e^{t}\)
+    \begin{enumerate}[itemsep=2ex, label=(\alph*)]
       \item \(\frac{1}{1 - t}\)
-      \item \(t^2 + 1\)
+      \item \(1/(\tfrac{3}{2} - t)\)
+      \item \(\frac{e^t + e^{-t}}{2}\)
+      \item \(e^{t}\)
       \item \(2e^{3(t-1)}\)
       \item \(\sin t + 2 - \sin 1\)
-      \item \(\frac{1}{\tfrac{3}{2} - t}\)
-      \item \(\frac{e^t + e^{-t}}{2}\)
+      \item \(t^2 + 1\)
     \end{enumerate}   
   \end{minipage}
-
-  % \begin{solution}
-  %   \begin{minipage}{0.45\textwidth}
-  %     \begin{enumerate}
-  %     \item \(\frac{dy}{dt} = y\) with \(y(0) = 1\)
-  %     \item \(u' = u^2\) with \(u(0) = 1\)
-  %     \item \(\frac{dx}{dt} = 2t\) with \(x(0) = 1\)
-  %     \item \(w' = 3w\) with \(w(1) = 2\)
-  %     \item \(\frac{dy}{dt} = \cos t\) with \(y(1) = 2\)
-  %     \item \(\frac{du}{dt} = u^2\) with \(u(1) = 2\)
-  %     \item \(\frac{d^2y}{dt^2} = y\) with \(y(0) = 1\)
-  %   \end{enumerate}
-  %   \end{minipage}
-  %   \begin{minipage}{0.45\textwidth}
-  %     \begin{enumerate}
-  %       \item \(e^{t}\)
-  %       \item \(\frac{1}{1 - t}\)
-  %       \item \(t^2 + 1\)
-  %       \item \(2e^{3(t-1)}\)
-  %       \item \(\sin t + 2 - \sin 1\)
-  %       \item \(\frac{1}{\tfrac{3}{2} - t}\)
-  %       \item \(\frac{e^t + e^{-t}}{2}\)
-  %     \end{enumerate}   
-  %   \end{minipage}
-  % \end{solution}
 \end{exercise}
 
 \begin{exercise}
-  A population exhibits exponential growth.  At time \(t = 0\), the population is \(100\) and grows to \(400\) after \(20\) time units.  
+  Review your lecture notes. What exactly is the definition (word for word as stated in the lecture) of an equilibrium solution? Which of the following implies that \(u(t)\) is definitely an equilibrium solution?
+
   \begin{enumerate}
-    \item At what time \(t\) is the population \(10\)?
-    \item At what time \(t\) is the population \(50\)?
-    \item At what time \(t\) is the population \(50,000\)?
+    \item \(u'(t) = 0\)
+    \item \(u'(t)\) is a constant.
+    \item \(\int u(t) \;dt\) is a constant.
   \end{enumerate}
 \end{exercise}
 
 \begin{exercise}
-  A population \(P\) is modelled by the differential equation \(P'(t) = 0.95 P(t)\). 
+  Find equilibria for the differential equations below.
+
   \begin{enumerate}
-    \item Is the population growing or shrinking when the population reaches \(100\)?
-    \item Does the population ever decrease?
+    \item \(y' = y(3-y)\)
+    \item \(y'(t) - (y(t))^{2} + 4 = 0\)
+    \item \(yy' - \sin(y) = 0\)
+    \item \(\frac{du}{dt} = (u(t)+1)(u(t)-4)((u(t))^{2}+2)\)
   \end{enumerate}
 \end{exercise}
 
 \begin{exercise}
-  Consider the differential equation \(y' = (x-y) e^{x+y}\).
+  Consider the differential equation \(u'''(t) + 5u'(t) + u = u^{2} - 3\). Let \(\bar{u}\) be an equilibrium solution. 
 
   \begin{enumerate}
-    \item Is \(y\) increasing or decreasing at \(x = 0\) and \(y = 3\)?
-    \item Is \(y\) increasing or decreasing at \(x = 3\) and \(y = 0\)?
+    \item What is the third derivative of the equilibrium solution?
+
+    \item What is the first derivative of the equilibrium solution?
+
+    \item Plug the equilibrium solution into the DE. Which symbol(s) are replaced by \(\bar{u}\)?
+
+    \item Is \(\bar{u} + 5 \bar{u} + \bar{u} = \bar{u}^{2} - 3\) the correct starting step to solve for \(\bar{u}\)?
+
+    \item Find \(\bar{u}\).
   \end{enumerate}
 \end{exercise}
 
+\begin{exercise}
+  Find all equilibria for the differential equation \(e^{\frac{dP}{dt}} - \cos\left( \frac{dP}{dt} \right) = (P(t))^{2} - 2P(t)\).
+\end{exercise}
+
+\begin{exercise}
+  Develop continuous-time models.
+  \begin{enumerate}
+    \item The rate of change of the radius of a tree trunk is inversely proportional to the radius. Develop a model to describe the radius of the tree trunk.
+    \item A city experiences an outbreak of an infected disease. The rate of change of the number of infected individuals is proportional to the number of the infected individual with an proportionality constant \(2\%\).  At any given time \(t\), \(5\%\) of the infected leave the city to seek better health care.   Develop a model to describe the behaviour of the number of infected at time \(t\).
+  \end{enumerate}
+\end{exercise}
+
+
+\begin{exercise}
+  Find equilibria of the following differential equations and classify their stability as either stable, unstable or neither (or semi-stable).
+
+  \begin{enumerate}
+    \item \(y' = y\)
+    \item \(N' = (N-1)(N-2)\)
+    \item \(dy/dt = (y-1)(y-2)^{2}\)
+    \item \(u' = (u-1)(u-2)^{3}\)
+    \item \(w' = \sin(w)\)
+    \item \(P'(t) = \left(P(t)\right)^{2} + 5P(t) + 6\).
+    \item \(X'(t) = \left( X(t) \right)^{3} - 7\left( X(t) \right)^{2} + 10X(t)\).
+  \end{enumerate}
+\end{exercise}
+
+
+\begin{exercise}
+  Consider the differential equations \(u'(t) = \sin(t) u(t)\).
+
+  \begin{enumerate}
+    \item How does solution \(u(t)\) behave if \(u(-\pi/2) = 3\)?
+    \item If a solution \(u(t)\) satisfies \(u(\pi/4) = \pi/6\) and \(u(\pi/6) = -\pi/4\), does the solution increase or decrease at time \(t = 3\)?
+    \item If a solution \(u(t)\) is increasing at \(t = -\pi/6\), what are the possible values for \(u(-\pi/6)\)?
+  \end{enumerate}
+\end{exercise}
+
+
+\begin{exercise}
+  Consider the differential equations \(u'(t) = t^{2} e^{u(t) + 3}\).    
+
+  \begin{enumerate}
+    \item Does the solution ever decrease? If so, when? If not, why?
+    \item At what time \(t\) does a solution not change? 
+  \end{enumerate}
+\end{exercise}
+
+
+\begin{exercise}
+  The phase-line plot of a differential equation whose unknown function is \(N(t)\) is given below.  
+
+  \begin{tikzpicture}
+    \begin{axis}[basic curve, xlabel={\(N\)}, ylabel={\(N'\)}, enlargelimits, height=5in]
+      \addplot[ultra thick, domain={0:3}] {cos(pi*(x-1)/2)};
+      \addplot[ultra thick, domain={3:5}] {cos(pi*x)/2-1/2};
+      \addplot[ultra thick, domain={5:6}] {cos(pi*x)};
+      \addplot[ultra thick, domain={6:7}] {cos(pi*x)/2+1/2};
+      \addplot[ultra thick, domain={7:8.2}] {(x-7)^2};
+    \end{axis}
+  \end{tikzpicture}
+  \begin{enumerate}
+    \item Identify all of its equilibria and their stability.
+    \item Find the long-term behaviour for a solution \(N(t)\) with the initial condition \(u(-1) = 1\). 
+    \item A solution \(N(t)\) satisfy \(N(1) = 0\). Find \(\lim_{t \to \infty} u(t)\).
+    \item If \(u(t)\) is a solution and \(u(7) = 5\), what do you expect \(u(t)\) to approach after a long time?
+    \item If \(u(t)\) is a solution and \(\lim_{t \to \infty} u(t) = 4\), what are the possible values for \(u(0)\)?
+    \item If \(u(t)\) is a solution and \(\lim_{t \to \infty} u(t) = 1\), what are the possible values for \(u(100)\)?
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Sketch the phase-line plot (including axes labels) of an autonomous differential equation with the following properties. Assume the unknown function is called \(w(t)\).
+  \begin{enumerate}
+    \item Its equilibria are \(-1, 1, 5\).
+    \item The equilibrium \(\bar{w} = -1\) is stable.
+    \item The equilibrium \(\bar{w} = 1\) is neither stable nor unstable.
+    \item The equilibrium \(\bar{w} = 5\) is unstable.
+  \end{enumerate}
+\end{exercise}
 \end{document}
