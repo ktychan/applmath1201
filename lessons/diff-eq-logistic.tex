@@ -29,11 +29,12 @@ In Example~\ref{ex:diff-eq-intro}, we discussed the population model \(N'(t) = (
   The carrying capacity \(K\) is a constant representing the size of a population that the modelled environment can sustain over time.
 \end{definition}
 
-We advertised that the logistic model accounts for the crowding effect. Is it really true?
-We analyze the logistic model \emph{without solving the differential equation}. 
+Visualization. \faExternalLink*{} \url{https://colab.research.google.com/drive/193VoMFnAjlcJ7laTlG4G2ioIw-nCkZ6j}
+
+We advertised that the logistic model accounts for the crowding effect. Is it really true? We analyze the logistic model \emph{without solving the differential equation}. 
 
 \begin{example} \label{ex:diff-eq-logistic-fact-check}
-  The qualitative analysis we learned last week helps us can pick out see crowding effect \emph{from} the logistic model.
+  The qualitative analysis we learned last week can pick out the crowding effect in the logistic model.
 
   \begin{enumerate}[wide]
     \item Suppose \(N(\text{some time})\) is below and far away from \(K\). How does the population change \emph{according} to the model?
@@ -50,4 +51,22 @@ We analyze the logistic model \emph{without solving the differential equation}.
   \end{enumerate}
 \end{example}
 \clearpage
+
+The logistic model is relatively simple and can be easily modified to account for additional factors.
+
+How would you modify the logistic equation to account for
+\begin{enumerate}[wide]
+  \item variable growth rate and variable carrying capacity, potentially due to environmental changes?
+    
+    \blanklines{5}
+
+  \item immigration/emigration at a constant per-capita rate?
+
+    \blanklines{5}
+
+  \item negative per-capita growth rate when the population is small, potentially due to difficulty to find partners?  Let's say that if the population falls below a constant \(A\), then the population should shrink. We don't care about how it shrinks as long as the model account for the shrinkage. Moreover, if the population is exactly \(A\), then it should stay constant.
+
+    \blanklines{15}
+\end{enumerate}
+
 \end{document}
