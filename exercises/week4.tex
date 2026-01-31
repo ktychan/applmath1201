@@ -1,0 +1,108 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+
+\newenvironment{solution}{
+  \begin{proof}[Sample solution]
+    \color{main}
+  }{
+  \end{proof}
+}
+
+\begin{document}
+
+\chapter*{Week 4 practice problems}
+
+\setcounter{chapter}{2}
+
+\begin{exercise}
+  Everyday scientific language does not always use the phrase \emph{the rate of change of \ldots{} is proportional to \ldots{} with a proportionality constant \ldots{}}. While this phrase is precise and directly translates to a mathematical relation, it is quite a mouthful. Sometimes, people prefer to use words that are natural to their discipline such as increase, decrease, accelerate, decelerate, produce, consume, metabolize, reduce etc.
+
+  \begin{enumerate}
+    \item Suppose the volume of a balloon \emph{decreases} at a rate \(10\) millilitre per second. If \(V(t)\) represents volume, should the model be \(V'(t) = 10\) or \(V'(t) = -10\)?
+    \item Suppose an object \emph{decelerates} at a rate proportional to its velocity with a proportionality constant \(10\) per second. Suppose \(v(t)\) represents the velocity of the object. Should the model be \(v'(t) = 10 v(t)\) or \(v'(t) = -10 v(t)\)?
+    \item Suppose a drug in the bloodstream is \emph{metabolized} at a rate proportional to its amount in the bloodstream with a proportionality constant \(k\) per second. Suppose \(m(t)\) is the mass of the drug in the bloodstream.  Develop a model for \(m(t)\).
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  A tank initially contains \(200\) liters of a solution with a salt concentration of \(300\) grams per litre.  A mixture containing \(500\) grams per litre of salt flows into the tank at a rate of \(2\) litres per minute. The tank is being emptied at a rate of \(2\) litres per minute. Assume the tank is well-mixed at all times. 
+
+  Suppose \(u(t)\) is the amount of salt (in grams) in the tank at time \(t\). 
+
+  \begin{enumerate}
+    \item Develop an initial-value problem to which \(u(t)\) is the solution.
+    \item What if the outflow rate is \(3\) litres per minute? Develop an initial-value problem for this modification.
+    \item What if the concentration of the mixture entering the tank is described by a function \(C(t)\) grams per litre? Develop an initial-value problem for this modification.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  A container has 2 small holes at the bottom. At time \(t = 0\), the container has \(250\) millilitres of blue liquid. The solution drips at a rate of \(1\) mL per minute per hole. Blue liquid with a concentration of \(2\) micrograms per millilitre enters the container at a rate of \(2\) millilitre per minute.
+
+  Let \(u(t)\) be the mass (in micrograms) of the blue particles in the container at time \(t\).
+  \begin{enumerate}
+    \item Develop a continuous-time model for \(u(t)\).
+    \item Now further assume that one of the drainage hole is blocked. Develop a continuous-time model for \(u(t)\).
+  \end{enumerate}
+\end{exercise}
+
+
+
+\begin{exercise}
+  A population of micro-organism lives in a tank with \(5\) litres of nutrient solution. The micro-organism \emph{consumes} nutrients which is measured in micrograms.  The rate of change of the amount of nutrient in the tank is proportional to the amount of nutrient in the tank with a proportionality constant \(2\) per second.  The nutrient solution drains out of the tank at a rate of \(100\) millilitres per second, and is replenished at a rate of \(100\) millilitres per second at a concentration of \(10\) micrograms per millilitre.
+
+  \begin{enumerate}
+    \item Develop a continuous-time model for the amount of nutrient in the tank.
+    \item Update your model for the scenario that the drainage rate is \(90\) millilitres per second.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Consider the differential equation \(y'(t) = -5 y(t)\).
+
+  \begin{enumerate}
+    \item Find the general solution to the differential equation.
+    \item If a particular solution satisfies \(y(0) = 10\), determine \(y(100)\).
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Consider the differential equation \(x'(t) = k x(t)\) where \(k\) is an unknown constant. Note that parts 2 and 3 are independent of each other.
+  \begin{enumerate}
+    \item Find the general solution to the differential equation.
+    \item Solve for \(k\) if \(x(0) = \frac{x(1)}{2}\). 
+    \item Suppose a particular solution satisfies \(x(0) = 3\) and \(x(20) = 7\).  Solve for \(t\) such that \(x(t) = 100\).
+  \end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}
+  For each differential equation below, determine its order and decide if it is linear or non-linear.
+
+  \begin{enumerate}
+    \item \(u'(t)u(t) + t^{3} + t^{2}u(t) = 0\).
+    \item \(u''(t) + e^{t}u'(t) = (u(t))^{2}\).
+    \item \(u'(t) + e^{t} - u'(t) = (u''(t))^{2}\).
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Which of the following differential equations are autonomous equations?
+
+  \begin{enumerate}
+    \item \(N(t) = (N(t))^{2} - N'(t)\).
+    \item \(N(t) = (N(t))^{2} + tN'(t)\).
+    \item \(\sin(t) \frac{d^{2}}{dt^{2}}N(t) = N(t) - N'(t)\).
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Write the following linear, first-order differential equations in their standard form \(u'(t) + p(t) u(t) = q(t)\).
+
+  \begin{enumerate}
+    \item \(3u'(t) + u(t) = t\).
+    \item \(u'(t) + e^{t} - u(t) = 0\).
+    \item \(\sin(t) u(t) - t^{2} u(t) = u'(t)\).
+  \end{enumerate}
+\end{exercise}
+\end{document}

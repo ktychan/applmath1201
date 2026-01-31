@@ -1,0 +1,42 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+
+\newenvironment{solution}{
+  \begin{proof}[Sample solution]
+    \color{main}
+  }{
+  \end{proof}
+}
+
+\begin{document}
+
+\chapter*{Week 5 practice problems}
+
+\setcounter{chapter}{2}
+
+\begin{exercise}
+  Find the general solution for \(\frac{du}{dt} + u(t) = t^{2}e^{-t}\).
+\end{exercise}
+
+\begin{exercise}
+  Solve the initial-value problem \(u'(t) + tu(t) = 3t\) with \(u(0) = 1\).  
+\end{exercise}
+
+
+\begin{exercise}
+  Find the general solution for \(y'(x) + \frac{y(x)}{x^{2} + 1} = 0\).
+\end{exercise}
+
+\begin{exercise}
+  Solve the initial-value problem \(y'(t) + y(t) = y(t)^{3}\) given \(y(0) = 2\).
+
+  % Whenever the substitution is \(u = y^{1-\text{(odd number)}}\), we need to remember to recover two distinct solutions at the very last step because \(u = y^{\text{(even)}}\) has two solutions for \(y\), one positive and one negative.
+\end{exercise}
+
+\begin{exercise}
+  Find \(\lim_{x \to \infty} y(x)\) given that \(y(x)\) satisfies
+  \[
+    \frac{dy}{dx} + y = e^{x} \text{ and \(y(0) = \frac{3}{2}\)}.
+  \]
+\end{exercise}
+\end{document}
