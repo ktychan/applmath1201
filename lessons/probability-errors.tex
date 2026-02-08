@@ -2,91 +2,172 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Errors and probability}
 
-Everyday science uses tests to infer truth. However, tests can be wrong. Naturally, we want to know \emph{how likely is a test wrong and in what way}? We introduce types I and II errors.
+Everyday science uses tests to make predictions. However, tests can be wrong. It is sensible to calculate and communicate how likely is a test wrong and in what way?
 
 \begin{definition}\label{def:errors}
-  Suppose a test returns \emph{either} positive \emph{or} negative on a certain medical or biological condition. 
+  Suppose a test returns \emph{either} positive \emph{or} negative for a condition. There are four possibilities, each with an associated probability, depending on whether the test result matches the reality.  
 
-  Each test has four possible results.
+  If the test returns
   \begin{itemize}
-    \item If a test returns negative \faThumbsDown[regular]{} \emph{given} that the condition is not present \faTimes{}, then the test result is called a \hlmain{true negative}.
-
-    \item If a test returns positive \faThumbsUp[regular]{} \emph{given} that the condition is not present \faTimes{}, then the test result is called a \hlmain{false positive}, and the test admits a \hlmain{type-I error}.
-
-    \item If a test returns positive \faThumbsUp[regular]{} \emph{given} that the condition is present \faCheck{}, then the test result is called a \hlmain{true positive}.
-
-    \item If a test returns negative \faThumbsDown[regular]{} \emph{given} that the condition is present \faCheck{}, then the test result is called a \hlmain{false negative}, and the test admits a \hlmain{type-II error}.
+    \item \textbf{negative} given the condition is \textbf{not present}, then the result is a \hlmain{true negative}.
+      \[
+      \text{specificity} = \mathbb{P}(\text{true negatives}) = 
+      \mathbb{P}(\text{negative} \mid \text{not present})
+      \]
+    \item \textbf{positive} given the condition is \textbf{not present}, then the result is a \hlmain{false positive}, and the test admits a \hlmain{type-I error}.
+      \[
+      \mathbb{P}(\text{type-I errors}) = \mathbb{P}(\text{false positives}) = 
+      \mathbb{P}(\text{positive} \mid \text{not present})
+      \]
+    \item \textbf{positive} given the condition is \textbf{present}, then the result is a \hlmain{true positive}.
+      \[
+      \text{sensitivity} = \mathbb{P}(\text{true positives}) = 
+      \mathbb{P}(\text{positive} \mid \text{present})
+      \]
+    \item \textbf{negative} given the condition is \textbf{present}, then the result is a \hlmain{false negative}, and the test admits a \hlmain{type-II error}.
+      \[
+      \mathbb{P}(\text{type-II errors}) = \mathbb{P}(\text{false negatives}) = 
+      \mathbb{P}(\text{negative} \mid \text{present})
+      \]
   \end{itemize}
 
-  Four associated probabilities are defined.% on the sample space of tested individuals.
-  \begin{displaymath}
-    \begin{array}{ccccc}
-      \text{specificity} &=& \mathbb{P}(\text{true negatives}) &=& \underline{\hspace{2.5in}} \\[3ex]
-      \mathbb{P}(\text{type-I errors}) &=& \mathbb{P}(\text{false positives}) &=& \underline{\hspace{2.5in}} \\[3ex]
-      \text{sensitivity} &=& \mathbb{P}(\text{true positives}) &=& \underline{\hspace{2.5in}} \\[3ex]
-      \mathbb{P}(\text{type-II errors}) &=& \mathbb{P}(\text{false negatives}) &=& \underline{\hspace{2.5in}} \\[3ex]
-    \end{array}
-  \end{displaymath}
+  \faStar{} True/false indicates whether the test result matches the reality.
 \end{definition}
+% this treatment has a very specific requirement and will reject participants not meeting its standards.
 
-Let's try to get a feel for the above definition.
-\begin{example}
-  If we were to choose a test to screen for migraine, do we want its specificity to be high or low? How about sensitivity?
-
-  \blanklines{15}
-\end{example}
+\blanklines{20}
 \clearpage
 
 \begin{example}
-  In a town of \(2,000\) people, a clinic tested \(10\) people for pregnancy, and \(7\) were actually pregnant (confirmed two months later by ultrasounds).  Out of the \(3\) people who were not pregnant, \(2\) tested negative, and \(1\) received a positive test result.  The total number of people who tested positive was \(6\). Calculate all four probabilities above.
-
-  \blanklines{15}
-\end{example}
-
-\faStar{} The four probabilities in Definition~\ref{def:errors} come in pairs.  Study their definitions and deduce how they should be paired up. Which of the following equations are true?
-
-\begin{itemize}[wide]
-  \item \(\mathbb{P}(\text{true positives}) + \mathbb{P}(\text{true negatives}) = 1\)
-  \item \(\mathbb{P}(\text{true positives}) + \mathbb{P}(\text{false negatives}) = 1\)
-  \item \(\mathbb{P}(\text{false positives}) + \mathbb{P}(\text{true negatives}) = 1\)
-  \item \(\mathbb{P}(\text{false positives}) + \mathbb{P}(\text{false negatives}) = 1\)
-\end{itemize}
-
-\blanklines{25}
-\clearpage
-
-Let's practise using the above relations to calculate probabilities.
-\begin{example}
-  Suppose a cutting-edge test can predict whether one is a morning person. The test has sensitivity of \(80\%\) and specificity of \(90\%\). 
-
-  Apply the tests to a class of \(240\) students in which the prevalence of being a morning person is \(40\%\).  How many true negatives are expected? False positives? True positives? False negatives?
-
-  \blanklines{40}
-\end{example}
-\clearpage
-
-
-How can we figure out the sensitivity and specificity of a test? We appeal to the \emph{weak law of large numbers} which says that, under suitable\footnote{We are not required to know what assumptions count as suitable.} assumptions, we can estimate the probability of an event using repeated trials as follows
-\[
-  \mathbb{P}(E) \approx \frac{\text{number of times \(E\) occurs}}{\text{number of repetitions}}.
-\]
-Note that the event \(E\) on the right-hand side should be interpreted as an \emph{instance} of that event. 
-
-\begin{example}
-  Estimate the probability of drawing a heart from a deck of \(52\) playing cards.
-
-  \blanklines{5}
-\end{example}
-
-\begin{example}
-  Dr. Wurst developed a test for the age-old debate: \emph{Is a hotdog a sandwich?}
-
-  The intense research effort went something like this on a slightly snowy Tuesday lunch time. Sandwich and chips usual go together. If one ever eats a hot dog and chips on the same day, then one probably believes a hot dog is a sandwich. 
-
-  The test returns positive if you ever had a hot dot and chips on the same day. 
-
-  Using the class' data, calculate the sensitivity and specificity of the test.
+  In a town of \(2,000\) people, a clinic tested \(10\) people for pregnancy, and \(7\) were actually pregnant (confirmed a few months later by ultrasounds).  Out of the \(3\) people who were not pregnant, \(2\) tested negative, and \(1\) received a positive test result.  The total number of people who tested positive was \(6\). Calculate all four probabilities above.
 
   \blanklines{25}
 \end{example}
+
+\begin{example}
+  Suppose a cutting-edge test can predict whether one is a morning person. The test has true positive rate of \(80\%\) and true negative rate of \(90\%\).
+  Apply the tests to a class of \(240\) students in which the prevalence of being a morning person is \(40\%\).  How many people tested true negatives? False positives? True positives? False negatives?
+
+  \blanklines{20}
+\end{example}
+
+\clearpage
+Let's summarize. The four probabilities in Definition~\ref{def:errors} come in pairs. Which of the following are true?
+
+\bigskip
+\begin{minipage}{3.5in}
+  \begin{align*}
+    \mathbb{P}(\text{true positives}) + \mathbb{P}(\text{true negatives}) &= 1 \\[3ex]
+    \mathbb{P}(\text{true positives}) + \mathbb{P}(\text{false negatives}) &= 1 \\[3ex]
+    \mathbb{P}(\text{false positives}) + \mathbb{P}(\text{true negatives}) &= 1 \\[3ex]
+    \mathbb{P}(\text{false positives}) + \mathbb{P}(\text{false negatives}) &= 1
+  \end{align*}
+\end{minipage}
+\begin{minipage}{3.5in}
+  \begin{center}
+    \begin{tabular}{c||c|c}
+      & \parbox{1.25in}{\centering condition\\present} & \parbox{1.25in}{\centering condition\\not present} \\\midrule\midrule
+      \(+\) &                                             & \\[3ex]\midrule
+      \(-\) &                                             & \\[3ex]
+    \end{tabular}
+  \end{center}
+\end{minipage}
+\blanklines{10}
+
+\begin{exercise}[Midterm, Winter 2022]
+  \(1000\) people are tested for an illness. Of the \(180\) people who tested positive, \(50\) did not have the illness. Overall, \(800\) of those tested did not have the illness.
+
+  \begin{enumerate}
+    \item What is the sensitivity (true positive) of this test?
+    \item What is the specificity (true negative) of this test?
+    \item What is the false positive rate?
+    \item What is the false negative rate?
+  \end{enumerate}
+
+  \blanklines{20}
+\end{exercise}
+\clearpage
+
+% \begin{example}
+%   If we were to choose a test to screen for migraine, do we want the specificity of the test to be high or low? How about sensitivity?
+%
+%   \blanklines{15}
+% \end{example}
+%
+% \begin{example}
+%   For each scenario, discuss the consequence of trusting a test with a high false negative rate.
+%
+%   \begin{enumerate}[label=(\alph*)]
+%     \item A test for a highly contagious but treatable (non-hospitalization) disease.
+%     \item A test for a rare but deadly disease if untreated.
+%     \item A test for lactose intolerant.
+%     \item A test for severe nut allergy.
+%   \end{enumerate}
+%
+%   \blanklines{10}
+% \end{example}
+%
+% \begin{example}
+%   What are some potential consequences for trusting a wrong result?
+%
+%   A \underline{\hspace{1in}} test result for arthritis likely leads to \underline{\hspace{1in}}.
+%
+%   \medskip
+%   \begin{minipage}{3in}
+%     \begin{itemize}[itemsep={1em}]
+%       \item false positive
+%       \item false negative
+%     \end{itemize}
+%   \end{minipage}
+%   \begin{minipage}{3in}
+%     \begin{itemize}[itemsep={1em}]
+%       \item unnecessary or incorrect treatments
+%       \item delayed diagnosis
+%       \item misuse of healthcare resources
+%     \end{itemize}
+%   \end{minipage}
+%
+%   \blanklines{5}
+% \end{example}
+% \clearpage
+%
+%
+\clearpage
+
+\begin{exercise}[Midterm, Winter 2024]
+  A rare disease has prevalence (the probability that an individual has the disease) of \(0.002\). A test for the disease has specificity \(0.99\) and sensitivity \(1\). Consider a population of size \(2000\).  For each part, explain your reasoning and show your work in the spaces below.
+
+  \begin{enumerate}
+    \item What is the expected number of people who have the disease in this population? How many true positives are expected?
+      
+    \item In the same population, how may false positives are expected?
+
+    \item An individual in this population is tested for this disease and the test comes back positive. Explain in words whether it is more likely that the individual has the disease or that the test is wrong?
+  \end{enumerate}
+
+  \blanklines{40}
+\end{exercise}
+% How can we figure out the sensitivity and specificity of a test? We appeal to the \emph{weak law of large numbers} which says that, under suitable\footnote{We are not required to know what assumptions count as suitable.} assumptions, we can estimate the probability of an event using repeated trials as follows
+% \[
+%   \mathbb{P}(E) \approx \frac{\text{number of times \(E\) occurs}}{\text{number of repetitions}}.
+% \]
+% Note that the event \(E\) on the right-hand side should be interpreted as an \emph{instance} of that event. 
+%
+% \begin{example}
+%   Estimate the probability of drawing a heart from a deck of \(52\) playing cards.
+%
+%   \blanklines{5}
+% \end{example}
+%
+% \begin{example}
+%   Dr. Wurst developed a test for the age-old debate: \emph{Is a hotdog a sandwich?}
+%
+%   The intense research effort went something like this on a slightly snowy Tuesday lunch time. Sandwich and chips usual go together. If one ever eats a hot dog and chips on the same day, then one probably believes a hot dog is a sandwich. 
+%
+%   The test returns positive if you ever had a hot dot and chips on the same day. 
+%
+%   Using the class' data, calculate the sensitivity and specificity of the test.
+%
+%   \blanklines{25}
+% \end{example}
 \end{document}

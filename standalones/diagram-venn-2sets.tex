@@ -1,18 +1,71 @@
-\documentclass{standalone}
+\documentclass[tikz]{standalone}
 
 \input{../typography.tex.preamble}
 \input{../tikz.tex.preamble}
 
-\begin{document}
-\begin{tikzpicture}
-  % Draw the two circles
-  \draw[very thick, main] (0,0) circle (1.5);
-  \draw[very thick, supp] (1,0) circle (1.5);
-  \draw (-2,-2) rectangle (3,2);
+\usetikzlibrary{calc}
+\tikzset{emoji/.style={font=\emojifont, inner sep=0pt}}
+\newcommand{\outcomes}{
+  % All safely inside: distance to (-0.75,0) < rin (=1.15).
+  \node[emoji] at (-1.72, -0.35) {🦊};
+  \node[emoji] at (-1.28, -0.96) {🐶};
+  \node[emoji] at (-0.38,  0.22) {🐱};
+  \node[emoji] at (-0.86,  1.03) {🐰};
+  \node[emoji] at (-1.06, -0.18) {🐭};
+  \node[emoji] at (-0.32, -0.62) {🐹};
 
+  % RIGHT circle (4 emojis) — irregular placement, safely inside.
+  % All safely inside: distance to (0.75,0) < rin.
+  \node[emoji] at ( 1.34,  0.55) {🐻};
+  \node[emoji] at ( 0.22, -0.54) {🐼};
+  \node[emoji] at ( 1.06, -1.00) {🐨};
+  \node[emoji] at ( 0.98,  0.10) {🐯};
+
+  % OUTSIDE both circles (2 emojis) — far enough to avoid touching.
+  % Must be at distance > rout (=1.85) from BOTH centers.
+  \node[emoji] at (-2.62,  0.48) {🦁};
+  \node[emoji] at ( 2.70, -1.60) {🐸};
+}
+
+\begin{document}
+
+% outcomes only
+\begin{tikzpicture}
   % Add labels
-  \node[below right] at (-2,2) {\(\Omega\)};
-  \node[main] at (-0.8, 1) {\(E\)};
-  \node[supp] at ( 1.8, 1) {\(F\)};
+  \draw (-3,-2) rectangle (3,2);
+  \node[below right] at (-3,2) {\footnotesize sample space};
+
+  \outcomes{}
+
+\end{tikzpicture}
+
+% outcomes with two circles
+\begin{tikzpicture}
+  % Add labels
+  \draw (-3,-2) rectangle (3,2);
+  \node[below right] at (-3,2) {\footnotesize sample space};
+
+  \outcomes{}
+
+  % Draw the two circles
+  \draw[main, very thick] (-0.75, 0) circle (1.5);
+  \node[main] at (-1.6,1) {\(E\)};
+  \draw[supp, very thick] ( 0.75, 0) circle (1.5);
+  \node[supp] at ( 1.6,1) {\(F\)};
+\end{tikzpicture}
+
+% outcomes with just one circle
+\begin{tikzpicture}
+  % Add labels
+  \draw (-3,-2) rectangle (3,2);
+  \node[below right] at (-3,2) {\footnotesize sample space};
+
+  \outcomes{}
+
+  % Draw just one circle
+  \draw[main, very thick] (-0.75, 0) circle (1.5);
+  \node[main] at (-1.6,1) {\(E\)};
+  % \draw[supp, very thick] ( 0.75, 0) circle (1.5);
+  % \node[supp] at ( 1.6,1) {\(F\)};
 \end{tikzpicture}
 \end{document}

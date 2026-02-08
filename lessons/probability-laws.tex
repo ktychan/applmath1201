@@ -2,44 +2,60 @@
 
 \begin{document} \section{Probability Laws}
 
-Equation~\eqref{eq:probability} tells us that calculating a probability from the first principle is essentially a counting problem. The language of sets comes in handy. % Less obvious is that counting can get rather challenging. In \thecoursesubject~\thecoursenumb, we will try to avoid the first principle approach to probability whenever possible and use relations among events to calculate probabilities of events by relating them to probabilities of known events.
-Given two events \(E,F\) in a sample space \(\Omega\), define
+Equation~\eqref{eq:probability} tells us that calculating a probability from the first principle is essentially a counting problem. However, enumerating outcomes in a sample space may or may not be desirable. Probability laws give us algebraic relations among events related by set relations. 
+
+\bigskip
+The \hlmain{complement} of an event \(E\) in a sample space \(\Omega\) is an event defined by 
 \[
-  E \cap F = \{\text{ outcomes in \(E\) and in \(F\) } \} \quad\text{and}\quad
-  E \cup F = \{\text{ outcomes in \(E\) or in \(F\) } \}.
+  E^{c} = \{ \text{ outcomes in \(\Omega\) but \uline{not} in \(E\) } \}.
+\]
+
+\begin{minipage}{2.2in}
+  \includegraphics[page=3]{../standalones/diagram-venn-2sets}
+\end{minipage}
+\begin{minipage}{4.5in}
+  \begin{equation} \label{eq:probability-comp}
+    \mathbb{P}( E^{c} ) = \hspace{3in}
+  \end{equation}
+
+  \vspace{2cm}
+\end{minipage}
+
+\bigskip
+
+Given two events \(E,F\) in a common sample space, define
+\[
+  E \cap F = \{\text{ outcomes in \(E\) \uline{and} in \(F\) } \} 
+  \quad\text{and}\quad
+  E \cup F = \{\text{ outcomes in \(E\) \uline{or} in \(F\) } \}.
 \]
 \begin{center}
-  \includegraphics{../standalones/diagram-venn-2sets}
+  \includegraphics[page=2]{../standalones/diagram-venn-2sets}
   \hspace{3em}
-  \includegraphics{../standalones/diagram-venn-2sets}
+  \includegraphics[page=2]{../standalones/diagram-venn-2sets}
 \end{center}
-{\footnotesize A little memory trick: The \(\cap\) symbol looks sort of like the \(A\) in AND.}
+{\footnotesize A little memory trick: The \(\cap\) symbol looks like the \(A\) in AND.}
 
-We have a relation, called the \emph{inclusion-exclusion principle}, 
-\begin{align} \label{eq:probability-cup-cap}
-  \mathbb{P}( E \cup F ) = \hspace{4in}
-\end{align}
+\bigskip
+We have a relation, called the \emph{principle of inclusion-exclusion}, 
 
-Once we define an event called \(E\), then we can talk about outcomes \emph{not} in \(E\).  
-\begin{center}
-  \includegraphics{../standalones/diagram-venn-complement}
-\end{center}
+\begin{minipage}{2.2in}
+  \includegraphics[page=2]{../standalones/diagram-venn-2sets}
+\end{minipage}
+\begin{minipage}{4.5in}
+  \begin{equation} \label{eq:probability-cup-cap}
+    \mathbb{P}( E \cup F ) = \hspace{2.8in}
+  \end{equation}
 
-Denote \(E^{c} = \{ \text{ outcomes in \(\Omega\) but not in \(E\) } \}\).  We have an associated formula
-\begin{align} \label{eq:probability-comp}
-  \mathbb{P}( E^{c} ) = \hspace{4in}
-\end{align}
+  \vspace{2cm}
+\end{minipage}
 
-\faStar{} It is important to \emph{remember} and know how to \emph{use} Equations~\ref{eq:probability-cup-cap}~and~\ref{eq:probability-comp}.
-
-Venn diagrams are very useful for seeing relations among sets and calculating probabilities. 
-\begin{example}
-  Suppose \(A = \{1\}, B = \{1,2,4\}, C = \{1,3,5\}\) are events in a sample space \(\Omega = \{1,2,3,4,5\}\). Use a Venn diagram to find the elements of \( (A \cup B)^{c} \cap C^{c}\) and calculate \(\mathbb{P}( (A \cup B)^{c} \cap C^{c} )\).
-
-  \blanklines{10}
-\end{example}
-
+\faExclamationTriangle{} In general, sample spaces can have infinitely many outcomes, and Venn diagrams can represent events with infinitely many outcomes.
 \clearpage
+
+% Venn diagrams are very useful for seeing relations among sets and calculating probabilities. 
+
+Here are two typical calculations using probability laws, one using a Venn diagram and the other using algebraic relations.
 
 \begin{example}
   Suppose the sample space is \(\Omega = \{1,2,\ldots,8\}\). Let \(A = \{1,2,8\}\), \(B = \{2,5,8\}\) and \(C = \{3,4,5,6\}\).  Find the probability \(\mathbb{P}( C^{c} \cup (A \cap B) )\).
@@ -48,79 +64,32 @@ Venn diagrams are very useful for seeing relations among sets and calculating pr
 \end{example}
 
 \begin{example}
-  Suppose the sample space is \(\Omega = \{1,2,\ldots,10\}\).  Let \(E = \{1,3,5\}\) and \(F = \{2,7,3,4\}\). Find the probability \(\mathbb{P}( (E \cap F) \cup (E \cap F^{c})) \).
+  Suppose \(\mathbb{P}(E) = 0.6\), \(\mathbb{P}(F) = 0.45\) and \(\mathbb{P}(E \cap F) = 0.4\). Calculate \(\mathbb{P}( (E \cup F)^{c})\).
 
   \blanklines{15}
 \end{example}
 
-\begin{example}
-  Suppose the sample space is \(\Omega = \{1,2,3,4,5\}\).  Let \(E = \{2,5\}\), \(F = \{1,2,3\}\) and \(G = \{2,4\}\). Find the probability \(\mathbb{P}( (E \cap G^{c}) \cap ( F^{c} \cup E^{c} )) \).
+\begin{exercise}
+  Given \(\mathbb{P}(E) = 0.5\), \(\mathbb{P}(F) = 0.2\) and \(\mathbb{P}(E \cap F) = 0.05\). Find \(\mathbb{P}(E \cup F^{c})\).
 
-  \blanklines{13}
-\end{example}
+  \blanklines{15}
+\end{exercise}
 \clearpage
 
-\begin{example}
-  Suppose \(\mathbb{P}(E) = 0.6\), \(\mathbb{P}(F) = 0.45\) and \(\mathbb{P}(E \cap F) = 0.4\). Calculate \(\mathbb{P}( (E \cup F)^{c})\).
-
-  \blanklines{10}
-\end{example}
-
-\begin{example}
-  Consider events \(E\) and \(F\) inside some sample space. Given \(\mathbb{P}(E) = 0.5\), \(\mathbb{P}(F^{c}) = 0.8\), \(\mathbb{P}(E \cap F) = 0.05\). Find the probability of \(\mathbb{P}(E \cup F^{c})\).
-
-  \blanklines{10}
-\end{example}
-
-\begin{example}
-  Toss a coin and roll a four-sided die labelled \(1,2,3,4\).  Find the probability of getting a tail and an even number.
-
-  \blanklines{10}
-\end{example}
-
-\begin{example}
-  You randomly draw two balls from \(\{1,2,3,4,5\}\).  Repeats are not allowed, e.g., you cannot draw \(3\) twice.  What is the probability that the sum is at least \(3\)?
-
-  \blanklines{13}
-\end{example}
-
-
-\clearpage
-
-% We can calculate probability of a sequence of outcomes using a tree (branching) diagram.  It is easier to describe this though an example. 
+% \begin{exercise}
+%   Suppose \(A = \{1\}, B = \{1,2,4\}, C = \{1,3,5\}\) are events in a sample space \(\Omega = \{1,2,3,4,5\}\). Calculate \(\mathbb{P}( (A \cup B)^{c} \cap C^{c} )\).
 %
-% \begin{example}
-%   Let's roll a four-sided die and then toss a coin.  Find the probability of getting a \(3\) and a tail.
+%   \blanklines{20}
+% \end{exercise}
 %
-%   \blanklines{10}
-% \end{example}
+% \begin{exercise}
+%   Suppose the sample space is \(\Omega = \{1,2,\ldots,10\}\).  Let \(E = \{1,3,5\}\) and \(F = \{2,7,3,4\}\). Find the probability \(\mathbb{P}( (E \cap F) \cup (E \cap F^{c})) \).
 %
-% \begin{example}
-%   Toss a coin three times in a row.  Find the probability of getting two heads and one tail in any order. 
-%
-%   \blanklines{10}
-% \end{example}
-%
-% \begin{example}
-%   Toss a coin, roll a four-sided die, then toss a coin again. What is the probability of getting \(2\) tails and a \(1\) in any order?
-%
-%   \blanklines{10}
-% \end{example}
-% \clearpage
-%
-% Tree (branching) diagrams nicely capture of the probabilities of gene mutations. 
-% \begin{example}
-%   The sex of a bee is determined by the number of chromosomes an individual possesses. Diploids are cells that carry two sets of genes, one from each parent. In contrast, haploids only carry one set of chromosome from their mother.
-%
-%   Female bees are diploids.   Male bees are haploids.
-%
-%   What is the probability that an allele currently carried by a male bee descended from a male exactly \(2\) generations ago?
-%
-%   \blanklines{40}
-% \end{example}
+%   \blanklines{20}
+% \end{exercise}
 % \clearpage
 
-It is often natural to assign every outcome in a sample space to exactly one event. The probability lingo is \hlmain{mutually exclusive} and \hlmain{exhaustive}. In real-life applications, \emph{mutually exclusive and exhaustive} events capture groupings by non-overlapping characteristics within the sample space, e.g., grouping of patients by age group.
+It is often natural to group outcomes by non-overlapping characteristic, e.g., grouping of patients by age group. The probability term is \hlmain{mutually exclusive} and \hlmain{exhaustive} events.
 
 \begin{definition}[mutually exclusive and exhaustive]
   Two events \(E, F\) in a sample space \(\Omega\) are \hlmain{mutually exclusive} if \(E \cap F\) is empty. 
@@ -146,26 +115,21 @@ It is often natural to assign every outcome in a sample space to exactly one eve
 % \end{example}
 
 \begin{example}
-  Let \(\Omega = \{1,2,3,4,5,6\}\) be the sample space. Which of the following events are mutually exclusive?
+  Let \(\Omega = \{1,2,3,4,5,6\}\) be the sample space. Which events are mutually exclusive?
 
-  \begin{multicols}{2}
-    \begin{enumerate}[label=(\alph*)]
-      \item \(E_{1} = \{2,5\}\)
-      \item \(E_{2} = \{3,2\}\)
-      \item \(E_{3} = \{6,3\}\)
-      \item \(E_{4} = \{2,3,5,6\}\)
-      \item \(E_{5} = \{1\}\)
-    \end{enumerate}
-  \end{multicols}
-
-  \blanklines{2}
+  \begin{enumerate}[label=(\alph*)]
+    \item \(E_{1} = \{2,5\}\)
+    \item \(E_{2} = \{3,2\}\)
+    \item \(E_{3} = \{6,3\}\)
+    \item \(E_{4} = \{2,3,5,6\}\)
+    \item \(E_{5} = \{1\}\)
+  \end{enumerate}
 \end{example}
+\vfill{}
 
-
-\begin{example}
+\begin{exercise}[concept check]
   Let \(\Omega = \{1,2,,\ldots,10\}\) be the sample space. Which events together are mutually exclusive and exhaustive?
 
-  \begin{multicols}{2}
     \begin{enumerate}[label=(\alph*)]
       \item \(E_{1} = \{1,3,5\}\)
       \item \(E_{2} = \{8,9\}\)
@@ -173,45 +137,27 @@ It is often natural to assign every outcome in a sample space to exactly one eve
       \item \(E_{4} = \{4,10\}\)
       \item \(E_{5} = \{2,6,7\}\)
     \end{enumerate}
-  \end{multicols}
-
-  \blanklines{2}
-\end{example}
+\end{exercise}
+\vfill{}
 \clearpage
 
+We can recognize mutually exclusive and exhaustive events from relations of their probabilities.
 \begin{example}
   Assume \(E_{1}, E_{2}\) are events in a sample space \(\Omega\).  Which of the followings \emph{together} imply that \(E_{1}, E_{2}\) are mutually exclusive and exhaustive. 
-  \begin{multicols}{2}
-    \begin{enumerate}[label=(\alph*)]
-      \item \(\mathbb{P}(E_{1} \cap E_{2}) = 0\).
-      \item \(\mathbb{P}(E_{1} \cap E_{2}) = \mathbb{P}(E_{1}) + \mathbb{P}(E_{2})\).
-      \item \(\mathbb{P}(E_{1} \cup E_{2}) = \mathbb{P}(E_{1}) + \mathbb{P}(E_{2})\).
-      \item \(\mathbb{P}(E_{1} \cup E_{2}) = 0\).
-      \item \(\mathbb{P}(E_{1} \cup E_{2}) = 1\).
-    \end{enumerate}
-  \end{multicols}
-
-  \blanklines{10}
+  \begin{enumerate}[label=(\alph*)]
+    \item \(\mathbb{P}(E_{1} \cap E_{2}) = 0\).
+    \item \(\mathbb{P}(E_{1} \cap E_{2}) = \mathbb{P}(E_{1}) + \mathbb{P}(E_{2})\).
+    \item \(\mathbb{P}(E_{1} \cup E_{2}) = \mathbb{P}(E_{1}) + \mathbb{P}(E_{2})\).
+    \item \(\mathbb{P}(E_{1} \cup E_{2}) = 0\).
+    \item \(\mathbb{P}(E_{1} \cup E_{2}) = 1\).
+  \end{enumerate}
 \end{example}
+\bigskip
 
+\begin{example} \label{ex:mutually-exclusive-three-or-more}
+  Let \(\Omega = \{1,\ldots,10\}\) be a sample space.  An intern observes that events \(E_{1}, E_{2}, E_{2}\) have no outcomes in common, and every outcome in the sample space is in at least one of the events. Can we conclude that \(E_{1}, E_{2}, E_{3}\) are mutually exclusive and exhaustive?
 
-\begin{example}[a common mistake] \label{ex:mutually-exclusive-three-or-more}
-  Let \(\Omega = \{1,\ldots,10\}\) be a sample space.  An intern observes the following. Events \(E_{1}, E_{2}, E_{2}\) have no outcomes in common and every outcome in the sample space is in at least one of the events. Express the intern's observation using set operations.
-
-  \blanklines{5}
-
-  Describe three sets \(E_{1}, E_{2}, E_{3}\) in the given sample space matching the intern's observation but are not mutually exclusive and exhaustive.  In other words, prove the intern wrong.
-
-  \blanklines{5}
-
-  \faExclamationTriangle{} Example~\ref{ex:mutually-exclusive-three-or-more} serves as a warning. When there are \hlwarn{three or more} events, being able to confirm
-  \[
-    \mathbb{P}(E_{1} \cup \cdots \cup E_{n}) = 1 \quad\text{and}\quad \mathbb{P}(E_{1} \cap \cdots \cap E_{n}) = 0
-  \]
-  is \hlwarn{not enough} to guarantee \(E_{1}, \ldots, E_{n}\) are mutually exclusive and exhaustive. To guarantee that three or more events are mutually exclusive, we must be able to confirm the following conditions
-  \[
-    \mathbb{P}(E_{1} \cup \cdots \cup E_{n}) = 1 \quad\text{and}\quad \mathbb{P}(E_{i} \cap E_{j}) = 0 \text{ for all } i \ne j.
-  \]
+  \blanklines{40}
 \end{example}
 
 \end{document}

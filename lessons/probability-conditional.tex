@@ -5,69 +5,45 @@
 We now consider probability of an event \hlmain{given} that another event has already happened.   We consider a concrete example from the first principle to motivate the formula associated to conditional probability.
 
 \begin{example} \label{ex:probability-conditional-motivation}
-  Let \(\Omega = \{1,2,3,4,5,6\}\) be the sample space of six people.  It is known that 
+  Let \(\Omega = \{1,2,3,4,5,6\}\) be the sample space of six people.  Suppose a magical new test can detect whether a person is a morning person.
   \begin{itemize}
-    \item \(1,2,3,4\) like ketchup flavoured chips,
-    \item \(5,6\) like barbecue flavoured chips,
-    \item \(1,3,5\) like coffee, and
-    \item \(2,4,6\) like tea.
+    \item \(1,2,3,4\) are morning people,
+    \item \(5,6\) are not morning people,
+    \item \(1,3,5\) tested positive,
+    \item \(2,4,6\) tested negative.
   \end{itemize}
 
-  What is the probability of \emph{randomly} selecting someone who like coffee \emph{given} that we know they like ketchup chips?
+  What is the probability that the test returns positive for someone who is not a morning person?
 
-  \blanklines{15}
+  \blanklines{20}
 \end{example}
 
 \begin{definition}[conditional probability]
   Suppose \(E,F\) are events inside a common sample space \(\Omega\).  The probability of \hlmain{\(E\) given \(F\)} is the probability of \(E \cap F\) inside the smaller sample space \(F\) and
-  \[
+  \begin{equation} \label{eq:conditional}
     \mathbb{P}( E \mid F ) = \frac{\mathbb{P}(E \cap F)}{\mathbb{P}(F)}.
-  \]
+  \end{equation}
 
   The probability \(\mathbb{P}( E \mid F )\) is called a \hlmain{conditional probability} because it represents the probability of the event \(E\) under the condition that \(F\) has already happened.
 \end{definition}
-
-\begin{example}
-  Express the probability in Example~\ref{ex:probability-conditional-motivation} in symbols.
-
-  \blanklines{5}
-\end{example}
+\faExclamationTriangle{} Distinguish between \(\mathbb{P}(A \text{ and } B)\) and \(\mathbb{P}(A \text{ given } B)\) when describing your observations and when interpreting a question.
 \clearpage
 
-
 \begin{example}
-  Suppose the probability of having green eyes is \(10\%\), the probability of having brown hair is \(75\%\), and the probability of having both green eyes and brown hair is \(9\%\), what is the probability of having brown hair given that you have green eyes?
-  
-  {\footnotesize Reference. Exercise P3.2 of \emph{A Biologist's Guide to Mathematical Modeling in Ecology and Evolution} by Otto and Day.}
-
-  \blanklines{5}
-\end{example}
-
-It takes a little bit of practice to detect conditional probability from natural language.
-\begin{example}
-  A ball pit contains balls labelled \(1\) and \(2\), some are black and some are white.  \(13\%\) of the balls are black and labelled \(1\), \(25\%\) black and labelled \(2\), \(10\%\) white and labelled \(1\), and the rest are white and labelled \(2\).
-
-  What is the probability of randomly picking a white one from the balls labelled \(2\)?
-
-  \blanklines{5}
-\end{example}
-
-\begin{example}
-  A clothing store is stocked with \(95\) T-shirts, \(25\) jackets, \(15\) dress pants, \(40\) sweat pants and \(100\) socks. What is the probability that a randomly selected pair of pants is a pair of sweat pants?
+  Suppose, within a population, that the probability of having green eyes is \(10\%\), the probability of having brown hair is \(75\%\), and the probability of having both green eyes and brown hair is \(9\%\). What is the probability of having brown hair given that a person has green eyes?
 
   \blanklines{10}
 \end{example}
 
 \begin{example}
-  Suppose \(\mathbb{P}(E) = 0.2\), \(\mathbb{P}(F) = 0.5\) and \(\mathbb{P}(E \mid F) = 0.25\). Calculate \(\mathbb{P}(E \cap F)\).
+  A test for an infectious disease was conducted on patients whose infection status is known.  \(60\%\) of the patients are infected. \(30\%\) of the patients tested negative. \(90\%\) of the infected patients also tested positive.  What is the probability that that the test returns negative for patients without an infection?
 
-  \blanklines{5}
+  \blanklines{20}
 \end{example}
 
-\begin{example}
+\begin{exercise}
   Suppose \(\mathbb{P}(E \cup F) = 0.9\), \(\mathbb{P}(E) = 0.7\), \(\mathbb{P}(E \cap F) = 0.5\). Calculate \(\mathbb{P}(E \mid F)\).
 
-  \blanklines{5}
-\end{example}
-
+  \blanklines{15}
+\end{exercise}
 \end{document}
