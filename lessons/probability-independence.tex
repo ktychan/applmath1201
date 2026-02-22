@@ -2,76 +2,90 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{The law of total probability and independence}
 
-The law of total probability mathematically takes advantages of mutually exclusive and exhaustive events to compute probabilities.
+The law of total probability mathematically takes advantages of mutually exclusive and exhaustive events to \hlmain{relate} probabilities.
 
 First, let's express \(\mathbb{P}(E \cap F)\) in terms of \(\mathbb{P}(E \mid F)\).
 
-\blanklines{5}
+\blanklines{10}
 
 If we divide the sample space into mutually exclusive and exhaustive events \(F_{1}\) and \(F_{2}\) and try to compute \(\mathbb{P}(E)\), then we should get ...
 
+\blanklines{20}
+
+In the abstract, we have ...
+
 \blanklines{10}
 
+\clearpage
 
 If we divide the sample space into mutually exclusive and exhaustive events \(F_{1}, F_{2}, F_{3}\) and try to compute \(\mathbb{P}(E)\), then we should get ...
 
 \blanklines{10}
 
-\faStar{} The law of total probability is the above pattern in full generality. Suppose \(B_{1}, \ldots, B_{n}\) are mutually exclusive and exhaustive events in a sample space \(\Omega\). The \hlmain{law of total probability} is a way to express \(\mathbb{P}(E)\) as ...
+\faStar{} The law of total probability is the above pattern in full generality. Suppose \(F_{1}, \ldots, F_{n}\) are mutually exclusive and exhaustive events in a sample space \(\Omega\). The \hlmain{law of total probability} is a way to express \(\mathbb{P}(E)\) as ...
 
 \blanklines{10}
+
+\begin{example}
+  Suppose we have a bag of red, green and blue cubes and spheres with the following probability data.  
+  \[
+    \mathbb{P}(\text{red}) = 30\%, \quad
+    \mathbb{P}(\text{green}) = 60\%, \quad
+    \mathbb{P}(\text{blue}) = 10\%,\quad
+    \mathbb{P}(\text{red cubes}) = 5\%,\quad
+    \mathbb{P}(\text{cube} \mid \text{blue}) = 8\%.
+  \]
+  What is the probability that a randomly chosen object is a green cube?
+
+  \blanklines{20}
+\end{example}
 \clearpage
 
-Intuitively, two events are independent if the occurrence of one does not affect the other.
+Now we turn to independence. Intuitively, two events are independent if the occurrence of one \hlmain{does not affect} the other.  
+
+\blanklines{15}
 
 \begin{definition}[independent events]
   Two events \(E,F\) in a common sample space are said to be \hlmain{independent} if 
   \begin{equation} \label{eq:probability-independence}
-    \mathbb{P}(E \cap F) = \mathbb{P}(E) \mathbb{P}(F). 
+    \mathbb{P}(E \mid F) = \mathbb{P}(E)
+    \quad\text{or, equivalently,}\quad
+    \mathbb{P}(E \cap F) = \mathbb{P}(E) \mathbb{P}(F).
   \end{equation}
 \end{definition}
 
-\faStar{} Events \(E,F\) are independent events if and only if
-\begin{equation} \label{eq:probability-conditional-of-independent}
-  \mathbb{P}(E \mid F) = \hspace{1.5in}
-  \quad\text{ and }\quad
-  \mathbb{P}(F \mid E) = \hspace{1.5in}
-\end{equation}
+To help you understand these equivalent definitions, we deduce them from each other.
 
-\blanklines{5}
-
-The above offers several ways to identify independent events.
-
-\blanklines{10}
+\blanklines{15}
 
 \begin{example}
   Let \(E, F\) be events in a common sample space. Let \(\mathbb{P}(E) = 0.3\), \(\mathbb{P}(B) = 0.2\) and \(\mathbb{P}(A \cap B) = 0.06\). Determine if \(E,F\) are independent.
-
-  \blanklines{5}
-\end{example}
-
-\begin{example}
-  Let \(E = \{1,3\}, F = \{2,4\}\) be events in a common sample space \(\Omega = \{1,2,3,4,5,6\}\).  Are \(E,F\) mutually exclusive? Are \(E,F\) independent?
 
   \blanklines{10}
 \end{example}
 \clearpage
 
 \begin{example}
-  Let \(E = \{1,3,5\}\), \(F\) be events in a common sample space \(\Omega = \{1,2,3,\ldots,100\}\).  If \(E \cap F = \emptyset\), are \(E,F\) independent?
+  Let \(E = \{1,3\}, F = \{2,4\}\) be events in a common sample space \(\Omega = \{1,2,3,4,5,6\}\).  Are \(E,F\) mutually exclusive? Are \(E,F\) independent?
 
-  \blanklines{5}
+  \blanklines{10}
 \end{example}
 
-\begin{example} 
+\begin{exercise}
+  If the event \(E \cap F\) is empty, are the events \(E,F\) independent?
+
+  \blanklines{10}
+\end{exercise}
+
+\begin{exercise} 
   Let \(E,F\) be two events in a sample space \(\Omega\). If \(E,F\) are independent events and \(\mathbb{P}(E) > 0\), does that imply \(E\) and \(F\) are mutually exclusive?
 
   \blanklines{10} 
-\end{example}
+\end{exercise}
 
-\begin{example}
+\begin{exercise}
   If \(E\) and \(F\) are independent events, does that mean \(E^{c}\) and \(F\) are also independent events?
 
-  \blanklines{5}
-\end{example}
+  \blanklines{10}
+\end{exercise}
 \end{document}

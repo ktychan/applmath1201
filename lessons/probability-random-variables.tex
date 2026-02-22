@@ -9,7 +9,7 @@ We build some intuition through an example before thinking about formalities.
 \begin{example}[height distribution is a random variable] \label{ex:random-variable-intro}
   Consider the following questions related to the height data of some mythical figures.
 
-  Pay attention to how we use the data to \hlattn{formulate} each question in the language of probability, i.e., sample space and events.
+  Pay attention to how we use the data to formulate each question in the language of probability, i.e., sample space and events.
 
   {\color{main}
     What is the probability of randomly selecting someone whose height is 
@@ -45,7 +45,7 @@ We need to correctly interpret various notations associated to random variables.
 \begin{definition} \label{def:random-variables}
   A random variable \(X\) on \(\Omega\) associates outcomes to values.
 
-  \begin{itemize}[itemsep={2ex}]
+  \begin{itemize}[itemsep={2ex}, wide]
     \item The notation 
       \[
         X(\text{the name of an outcome})
@@ -58,27 +58,26 @@ We need to correctly interpret various notations associated to random variables.
       \[
         X = (\text{some value})
       \] 
-      represents \underline{\hspace{2in}} containing outcomes whose \underline{\hspace{2cm}} is equal to the \emph{given} value on the right-hand side. 
+      represents \hlmain{the event} containing outcomes whose \hlmain{value} is equal to the \emph{given} value on the right-hand side. 
       Consequently, 
       \[
         \mathbb{P}(X = (\text{some value}))
       \]
-      is \underline{\hspace{5in}} % probability of the event X = (some value).
+      is \hlmain{the probability of the event \(X = (\text{some value})\)}.
 
     \item The notation (and its variants involving different inequalities)
       \[
         a \le X \le b
       \]
-      represents \underline{\hspace{2in}} containing outcomes whose \underline{\hspace{2cm}} satisfies \underline{\hspace{4in}}.
-      Consequently,
+      represents \hlmain{the event} containing outcomes whose \hlmain{event} satisfies \hlmain{the inequality \(a \le \text{value} \le b\)}. Consequently,
       \[
         \mathbb{P}(a \le X \le b)
       \]
-      is \underline{\hspace{5in}} % probability of the event a ≤ X ≤ b.
+      is \hlmain{the probability of the event \(a \le X \le b\)}.
   \end{itemize}
 \end{definition}
 
-\begin{example}
+\begin{exercise}
   Let \(X\) be a random variable representing heights of the class.  Match notations to their descriptions. 
 
   \begin{multicols}{2}
@@ -102,5 +101,7 @@ We need to correctly interpret various notations associated to random variables.
       \item \( X < \infty\)
     \end{itemize}
   \end{multicols}
-\end{example}
+\end{exercise}
+
+\clearpage
 \end{document}
