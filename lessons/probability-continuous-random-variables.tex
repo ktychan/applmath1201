@@ -2,24 +2,73 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Continuous random variables}
 
-A random variable is a continuous random variable if it takes values on an interval.  Continuous random variables are described by their PDF or CDF which we introduce below. 
+A random variable is a continuous random variable if it takes values on an interval. The random variable associating time (outcome) to temperature at YYZ (value) is a continuous random variable. Continuous random variables are described by their PDF or CDF.
 
-\begin{definition}[probability density function (PDF)]
-  The \hlmain{probability density function} for a \emph{continuous} random variable \(X\) is a non-negative continuous function \(f(x)\) that satisfies
+\begin{definition}[PDF and CDF]
+  Let \(X\) be a continuous random variable.
+
+  The \hlmain{probability density function} for \(X\) is a nonnegative continuous function \(f(x)\) so that
   \[
-    \mathbb{P}(a \le X \le b) \phantom{ = \int_{a}^{b} f(x) \;dx.} \hspace{1in}
+    \mathbb{P}(a \le X \le b)
+    \quad\text{is}\quad
+    \int_{a}^{b} f(x) \;dx.
   \]
+
+  The \hlmain{cumulative distribution function} for \(X\) is a nondecreasing and nonnegative function so that
+  \[
+    \mathbb{P}(X \le x)
+    \quad\text{is}\quad
+    F(x).
+  \]
+
 \end{definition}
 
-\blanklines{10}
+\faStar{} Area under the PMF curve over \([a,b]\) is the probability \(\mathbb{P}(a \le X \le b)\).
 
-\faStar{} If \(X\) is a continuous random variable, then \(\mathbb{P}(X = c) = \underline{\hspace{1cm}}\) for any constant \(c\).
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[title={\footnotesize PDF}, smooth, samples=100, width=3.5in, height=1.8in, axis lines=middle, enlargelimits, ymin=0, ymax=0.4, ytick={0.5, 1}, yticklabels={,1}, xtick={-2,-1,0,1,2}]
+      % \addplot[domain=-2:-0.3, name path=f] {e^(-x^2)/sqrt(2*pi)};
+      % \addplot[domain=-2:-0.3, name path=g] {0};
+      % \addplot[fill=main!50] fill between [of=f and g];
+      \addplot[very thick, domain=-2:2] {e^(-x^2)/sqrt(2*pi)};
+    \end{axis}
+  \end{tikzpicture}
+  \quad
+  \begin{tikzpicture}
+    \begin{axis}[title={\footnotesize PDF}, smooth, samples=100, width=3.5in, height=1.8in, axis lines=middle, enlargelimits, ymin=0, ymax=0.4, ytick={0.5, 1}, yticklabels={,1}, xtick={-2,-1,0,1,2}]
+      % \addplot[domain=-2:-0.3, name path=f] {e^(-x^2)/sqrt(2*pi)};
+      % \addplot[domain=-2:-0.3, name path=g] {0};
+      % \addplot[fill=main!50] fill between [of=f and g];
+      \addplot[very thick, domain=-2:2] {e^(-x^2)/sqrt(2*pi)};
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+\faExclamationTriangle{} If \(X\) is a continuous random variable, then \(\mathbb{P}(X = c) = 0\) for any constant \(c\).
 
-\blanklines{5}
+\faStar{} Area under the PMF curve over \((-\infty, x]\) is the value of \(F(x)\). Notice that a valid CDF must satisfy \(\lim_{x \to -\infty} F(x) = 0\) and
+\(\lim_{x \to \infty} F(x) = 1\).
 
-\faStar{} A valid PDF \(f_{X}\) must satisfy \(\int_{-\infty}^{\infty} f(x) \;dx = \underline{\hspace{1cm}}\). 
+\begin{tikzpicture}
+  \begin{axis}[title={\footnotesize PDF}, smooth, samples=100, width=5in, height=2in, axis lines=middle, enlargelimits, ymin=0, ymax=1, ytick={0.5, 1}, yticklabels={,1}, xtick={-2,-1,-0.3,0,1,2}, xticklabels={-2,-1,{\color{main} \(x\)}, 0, 1, 2}]
+    \addplot[domain=-2:-0.3, name path=f] {e^(-x^2)/sqrt(2*pi)};
+    \addplot[domain=-2:-0.3, name path=g] {0};
+    \addplot[fill=main!50] fill between [of=f and g];
+    \addplot[very thick, domain=-2:2] {e^(-x^2)/sqrt(2*pi)};
 
-\blanklines{5}
+  \end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}
+  \begin{axis}[title={\footnotesize CDF}, smooth, samples=100, width=5in, height=2in, axis lines=middle, enlargelimits, xmin=-2, xmax=2, ymin=0, ymax=1, ytick={0.5, 1}, yticklabels={,1}, xtick={-2,-1,-0.3,0,1,2}, xticklabels={-2,-1,{\color{main} \(x\)}, 0, 1, 2}]
+    \addplot[very thick, domain=-2:2] {1/(1 + exp(-0.07056*x^3 - 1.5976*x))};
+    \addplot[dashed] coordinates {(-3,1) (3,1)};
+    \addplot+[main, mark=*, mark options={fill=main}] coordinates {(-0.3, 0.381972)};
+  \end{axis}
+\end{tikzpicture}
+\clearpage
+
+\faStar{} A valid PDF \(f_{X}\) must satisfy \(\int_{-\infty}^{\infty} f(x) \;dx = \underline{\hspace{3in}}\). 
 
 \begin{example}
   Which of the followings are valid PDFs?
@@ -53,86 +102,8 @@ A random variable is a continuous random variable if it takes values on an inter
     \end{axis}
   \end{tikzpicture}
 \end{example}
-\clearpage
 
-Let's pick up some confidence for calculations.  Many PDFs are described as piecewise functions.
-\begin{example}
-  Suppose \(a\) is a positive constant. Calculate \(\mathbb{P}( 0 \le X \le a/3 )\) given that a continuous random variable \(X\) is described by the PDF
-  \[
-    f(x) = 
-    \begin{cases}
-      \frac{1}{2a} & \text{if } -a \le x \le a \\
-      0 & \text{otherwise}
-    \end{cases}.
-  \]
-
-  % Calculate the expectation and variance of \(X\).
-  \blanklines{5}
-\end{example}
-
-\begin{example}
-  Calculate \(\mathbb{P}(-1 < X < 3)\) given that a continuous random variable \(X\) is described by the PDF
-  \[
-    f(x) = 
-    \begin{cases}
-      \frac{x^{2}}{3}, & \text{if } 1 \le x \le 2 \\
-      1/9, & \text{if } -5 \le x \le -3 \\
-      0, &\text{otherwise}
-    \end{cases}.
-  \]
-
-  \blanklines{10}
-\end{example}
-
-We often (in reality and in this course) need to find a suitable PDF for a continuous random variable that suit our needs.  The idea is to set up an equation involving the unknown parameter using the given information and solve for the unknown. Also see Example~\ref{ex:uniform-distribution-from-mean-and-stddev} for a preview.
-\begin{example} \label{ex:distribution-with-unknown-bounds}
-  The PDF for a continuous random variable is given by \(f(x) = a x^{2}\) if \(|x| < a\) and \(f(x) = 0\) everywhere else.  Find the unknown parameter \(a\).
-
-  \blanklines{15}
-\end{example}
-\clearpage
-
-Like discrete random variables, a continuous random variable can be described by a CDF, and we can convert between PDF and CDF. 
-
-\begin{definition}[cumulative distribution function (CDF)]
-  A function \(F(x)\) is a \hlmain{cumulative distribution function} for a continuous random variable \(X\) if
-  \[
-    \mathbb{P}(X \le x) \hspace{2in}
-  \]
-\end{definition}
-
-\faStar{} A valid CDF must be non-decreasing and satisfy \(\lim_{x \to -\infty} F(x) = 0\) and \(\lim_{x \to \infty} F(x) = 1\).
-
-\begin{center}
-  \begin{tikzpicture}
-    \begin{axis}[title={CDF}, smooth, samples=100, width=5in, height=2in, axis lines=middle, enlargelimits, xmin=-2, xmax=2, ymin=0, ymax=1, ytick={0.5, 1}, yticklabels={,1}, xtick={-2,-1,0,1,2}]
-      \addplot[very thick, domain=-2:2] {1/(1 + exp(-0.07056*x^3 - 1.5976*x))};
-      \addplot[dashed] coordinates {(-3,1) (3,1)};
-      \addplot+[main, mark=*, mark options={fill=main}] coordinates {(-0.3, 0.381972)};
-    \end{axis}
-  \end{tikzpicture}
-
-  \begin{tikzpicture}
-    \begin{axis}[title={PDF}, smooth, samples=100, width=5in, height=2in, axis lines=middle, enlargelimits, ymin=0, ymax=1, ytick={0.5, 1}, yticklabels={,1}, xtick={-2,-1,0,1,2}]
-      \addplot[domain=-2:-0.3, name path=f] {e^(-x^2)/sqrt(2*pi)};
-      \addplot[domain=-2:-0.3, name path=g] {0};
-      \addplot[fill=main!50] fill between [of=f and g];
-      \addplot[very thick, domain=-2:2] {e^(-x^2)/sqrt(2*pi)};
-      
-    \end{axis}
-  \end{tikzpicture}
-\end{center}
-
-\faStar{} If the PDF for a random variable \(X\) is known, then it is very easy to find its CDF. 
-
-\blanklines{5}
-
-\faStar{} Conversely, if the CDF for a continuous random variable \(X\) is known, then it is only one differentiation away from getting the PDF of \(X\).
-
-\blanklines{5}
-
-\clearpage
-
+Let's pick up some confidence for calculations.  Calculating probability from CDF is very simple.
 \begin{example}
   Calculate \(\mathbb{P}(-0.5 \le X \le 0.3)\) given that the CDF for a continuous random variable \(X\) is 
   \[
@@ -148,9 +119,200 @@ Like discrete random variables, a continuous random variable can be described by
   \blanklines{10}
 \end{example}
 
-\begin{example}[a normal distribution]
-  The PDF for a continuous random variable \(X\) is \[f(x) = \frac{1}{\sqrt{2 \pi}} e^{-x^{2}}.\] Express its CDF as an integral. 
+Calculating probabilities from PDF requires integration.
+\begin{example}
+  Suppose \(a\) is a positive constant. Calculate \(\mathbb{P}( 0 \le X \le a/3 )\) given that a continuous random variable \(X\) is described by the PDF
+  \[
+    f(x) = 
+    \begin{cases}
+      \frac{1}{2a} & \text{if } -a \le x \le a \\
+      0 & \text{otherwise}
+    \end{cases}.
+  \]
 
-  \blanklines{5}
+  \blanklines{10}
+\end{example}
+
+
+\clearpage
+We often (in reality and in this course) need to find a suitable PDF for a continuous random variable that suit our needs.  The idea is to set up an equation involving the unknown parameter using the given information and solve for the unknown. 
+\begin{example} \label{ex:distribution-with-unknown-bounds}
+  The PDF for a continuous random variable is given by \(f(x) = a x^{2}\) if \(|x| < a\) and \(f(x) = 0\) everywhere else.  Find the unknown parameter \(a\).
+
+  \blanklines{15}
+\end{example}
+
+% \begin{example}[a normal distribution]
+%   The PDF for a continuous random variable \(X\) is \[f(x) = \frac{1}{\sqrt{2 \pi}} e^{-x^{2}}.\] Express its CDF as an integral.
+%
+%   \blanklines{5}
+% \end{example}
+
+\begin{exercise}[concept check]
+  Calculate \(\mathbb{P}(-1 < X < 3)\) given that a continuous random variable \(X\) is described by the PDF
+  \[
+    f(x) = 
+    \begin{cases}
+      \frac{x^{2}}{3}, & \text{if } 1 \le x \le 2 \\
+      1/9, & \text{if } -5 \le x \le -3 \\
+      0, &\text{otherwise}
+    \end{cases}.
+  \]
+
+  \blanklines{20}
+\end{exercise}
+
+\clearpage
+
+Like discrete random variables, continuous random variables have expectation, variance and standard deviation.
+
+\begin{definition}
+  Suppose \(X\) is a continuous random variable with PMF \(f(x)\).
+  \begin{enumerate}[itemsep={1ex}]
+    \item Its expectation is \(\mu = E(X) = \int_{-\infty}^{\infty} x f(x)\).
+    \item Its variance is \(V(X) = E\left( (X - \mu)^{2} \right) = \int_{-\infty}^{\infty} (x - \mu)^{2} f(x)\).
+    \item Its standard deviation is \(\sigma = \sqrt{V(x)}\).
+  \end{enumerate}
+
+  Variance is often denoted as \(\sigma^{2}\).
+\end{definition}
+
+Expectation measures the \hlmain{centre} of data. Variance and standard deviation measure how far the data spread from its expectation.
+\begin{example} \label{ex:crv-shapes}
+  Here are some examples of PDF with various expectations and standard deviations.
+
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[width=6in, height=2in, smooth, xmin=-5, xmax=5, ymin=0, ymax=1, no markers, smooth, samples=100, axis lines=middle, ytick={0,1}, xtick={-4,-2,0,2,4}, minor tick num=1]
+        \addplot[very thick, main] {normalpdf(x, 0, 2/2)};
+        \addplot[very thick, supp] {normalpdf(x, 0, 1/2)};
+      \end{axis}
+    \end{tikzpicture}
+
+    \begin{tikzpicture}
+      \begin{axis}[width=6in, height=2in, smooth, xmin=-5, xmax=5, ymin=0, ymax=1, no markers, smooth, samples=100, axis lines=middle, ytick={0,1}, xtick={-4,-2,0,2,4}, minor tick num=1]
+        \addplot[very thick, main] {normalpdf(x,    1, 1/2)};
+        \addplot[very thick, supp] {normalpdf(x, -1.5, 1/2)};
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+\end{example}
+\clearpage
+
+\begin{example}
+  Let \(X\) be a continuous random variable with PDF \(f(x) = 1/5\) on \([-1, 1]\), \(f(x) = 1/10\) on \([2,8]\) and \(0\) everywhere else.  Calculate its expectation, variance and standard deviation.
+
+  \blanklines{30}
+\end{example}
+
+\begin{exercise}[concept check]
+  Calculate the variance of a continuous random variable with PDF \(f(x) = \begin{cases} \frac{1}{2a} &\text{ |x| < a } \\0,&\text{otherwise} \end{cases}\).
+
+  \blanklines{15}
+\end{exercise}
+\clearpage
+
+We are moving closer to simulation. Sometimes (in reality and in this course), we want to randomly generate data that replicate experiments with certain sample mean and sample variance.
+
+\begin{definition}[uniform distribution]
+  The uniform distribution \(U(a,b)\) is defined by its probability density function
+  \[
+    f(x) = 
+    \begin{cases}
+      \frac{1}{b-a}, &\text{ if } a \le x \le b \\[2ex]
+      0,            &\text{ otherwise }.
+    \end{cases}
+  \]
+
+  Its expectation is \(\mu = \frac{1}{2}(b - a)\) and variance is \(\frac{1}{12}(b - a)^{2}\).
+\end{definition}
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+      basic curve, grid=none,
+      width=5in, enlargelimits, 
+      xtick={-4,4}, 
+      xticklabels={\(a\), \(b\)}, 
+      ytick={\empty}, 
+      yticklabel={\empty}, 
+      xlabel={\empty}, 
+      ylabel={\empty},
+      title={PDF of \(U(a,b)\)},
+      hide y axis,
+      ]
+      \addplot[ultra thick, domain=-4:4] {4};
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+
+\blanklines{15}
+
+\begin{listing}[h!]
+  \begin{pythoncode}
+import numpy as np
+import matplotlib.pyplot as plt
+
+# create a random number generator
+rng = np.random.default_rng()
+
+# randomly draw 1000 numbers following the distribution $U(5,10)$.
+X = rng.uniform(5, 10, 1000)
+
+# visualize the drawn samples using a histogram
+# density=True means display probabilities on the $y$-axis.
+plt.hist(X, 10, density=True)
+  \end{pythoncode}
+
+  \caption{Python code for random number generation following \(U(a,b)\)}
+  \label{lst:pseudorandom-number-generator}
+\end{listing}
+
+% The uniform distribution sits at the heart of basic statistically simulation using the \emph{inverse transform sampling}.  If \(F(x)\) is the \hlmain{cumulative distribution function} (CDF) of a continuous random variable \(X\) and \(y_{1}, \ldots, y_{n}\) are sampled from \(U(0,1)\), then \(F^{-1}(y_{1}), \ldots, F^{-1}(y_{n})\) follow the distribution \(X\).
+%
+% \begin{center}
+%   \begin{tikzpicture}
+%     \begin{axis}[xmin=0, xmax=1, ymin=0, ymax=1, ylabel={\(U(0,1)\)}, xlabel={}, grid=major]
+%       \addplot[very thick, black, no marks] coordinates {(0,0) (0.4,0.6) (1,1)};
+%     \end{axis}
+%   \end{tikzpicture}
+% \end{center}
+
+\clearpage
+
+Depending on the capabilities of your software and the requirements of your simulation/experiment, you may need to do a little conversion between specifying a uniform distribution by an interval \(U(a,b)\) or by its expectation and standard deviation.
+
+\begin{method}
+  The uniform distribution \(U(-c,c)\) has expectation and standard deviation
+  \[
+    \mu = 0
+    \quad\text{and}\quad
+    \sigma = \frac{c}{\sqrt{3}}.
+  \]
+
+  Conversely, if you need a uniform distribution with expectation \(\mu = 0\) and standard deviation \(\sigma\), then 
+  \[
+    c = \sigma \sqrt{3}
+    \quad\text{with PDF}\quad
+    f(x) = 
+    \begin{cases}
+      \frac{1}{2\sigma \sqrt{3}} &\text{if } -c \le x \le c, \\[2ex]
+      0 &\text{otherwise}.
+    \end{cases}
+  \]
+\end{method}
+
+\blanklines{10}
+
+\begin{example} \label{ex:uniform-distribution-from-mean-and-stddev}
+  Determine the \(c\) for a uniform distribution whose \(U(-c,c)\) if \(\sigma^{2} = \frac{11.25}{11}\).
+
+  \blanklines{10}
+\end{example}
+
+\begin{example}
+  Find the uniform distribution with \(\mu = 5\) and \(\sigma^{2} = \frac{11.25}{11}\).
+
+  \blanklines{10}
 \end{example}
 \end{document}

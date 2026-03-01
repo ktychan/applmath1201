@@ -169,16 +169,16 @@
 
     We solve this linear, first-order DE using the integrating factor \(v(t) = e^{\int -2t \;dt} = e^{-t^{2}}\).  Then we have
     \[
-      u(t) = e^{t^{2}} \int -2t e^{-t^{2}} \;dt = e^{t^{2}}\left( -e^{-t^{2}} + C \right) = 1 + C e^{-t^{2}}
+      u(t) = e^{t^{2}} \int -2t e^{-t^{2}} \;dt = e^{t^{2}}\left( e^{-t^{2}} + C \right) = 1 + C e^{t^{2}}
     \]
     The integration requires a substitution \(w = -t^{2}\).  The initial condition \(u(0) = \left( y(0) \right)^{-2} = 1/4\) implies \(C = -3/4\).  The intermediate solution is 
     \[
-      u(t) = 1 - \frac{3}{4}e^{-t^{2}}.
+      u(t) = 1 - \frac{3}{4}e^{t^{2}}.
     \]
 
-    Lastly, we recover the original solution using \(y^{-2} = 1 - \frac{3}{4}e^{-t^{2}}\). There are two possible solutions \(y(t) = \pm \left( 1 - \frac{3}{4}e^{-t^{2}} \right)^{-1/2}\). We can discard the negative root since \(y(0)\) is positive. Finally, the solution is 
+    Lastly, we recover the original solution using \(y^{-2} = 1 - \frac{3}{4}e^{t^{2}}\). There are two possible solutions \(y(t) = \pm \left( 1 - \frac{3}{4}e^{t^{2}} \right)^{-1/2}\). We can discard the negative root since \(y(0)\) is positive. Finally, the solution is 
     \[
-      y(t) = \left( 1 - \frac{3}{4}e^{-t^{2}} \right)^{-1/2} 
+      y(t) = \left( 1 - \frac{3}{4}e^{t^{2}} \right)^{-1/2}.
     \]
   \end{solution}
 \end{exercise}
@@ -216,24 +216,24 @@
   \begin{solution}
     Rewrite the Bernoulli DE in the standard form
     \[
-      y'(t) + \frac{2}{t} y(t) = t^{2} \left( t(t) \right)^{2}.
+      y'(t) + \frac{2}{t} y(t) = t^{2} \sin(t) \left( y(t) \right)^{2}.
     \]
 
     Substitute \(u = y^{1-2}\) to get
     \[
-      u'(t) - \frac{2}{t} u(t) = -t^{2}.
+      u'(t) - \frac{2}{t} u(t) = -t^{2}\sin(t).
     \]
 
-    The integrating factor is \(v(t) = e^{\int -\frac{2}{t} \;dt} = t^{-2}\). We solve it to get
+    The integrating factor is \(v(t) = e^{\int -\frac{2}{t} \;dt} = t^{-2}\). We solve the linear, first-order DE to get
     \[
-      u(t) = t^{2} \int -1 \;dt = t^{2}(-t + C) = -t^{3} + Ct^{2}.
+      u(t) = t^{2} \int -\sin(t) \;dt = t^{2}(\cos(t) + C).
     \]
 
-    Using the initial condition \(u(\pi) = 1\) to get \(C = \frac{\pi + 1}{\pi^{2}}\) and \(u(t) = -t^{3} + \frac{\pi + 1}{\pi^{2}}t^{2}\).
+    Using the initial condition \(u(\pi) = 1\) to get \(C = 1 + \frac{1}{\pi^{2}}\) and \(u(t) = t^{2}\left( \cos(t) + 1 + \frac{1}{\pi^{2}} \right)\).
 
     Recover the original solution to get
     \[
-      y(t) = \left( -t^{3} + \frac{\pi + 1}{\pi^{2}}t^{2} \right)^{-1}.
+      y(t) = \left( t^{2}\left( \cos(t) + 1 + \frac{1}{\pi^{2}} \right) \right)^{-1}.
     \]
   \end{solution}
 \end{exercise}

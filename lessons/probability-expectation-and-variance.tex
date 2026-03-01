@@ -2,7 +2,7 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Expectation and variance}
 
-Probability gives a big picture view of data. Pictorially, probability mass/density functions let us visualize the data. Other common ways of thinking about data involves computing their \hlmain{expectation} and \hlmain{variance}. 
+Probability describes a big picture view of data. Pictorially, probability mass/density functions help us visualize data. Other common ways of thinking about data involves computing their \hlmain{expectation} and \hlmain{variance}. 
 
 \begin{definition}[expectation]
   The \hlmain{expectation} of a discrete random variable \(X\) with PMF \(f_{X}(x)\) and values \(x_{1}, \ldots, x_{n}\) is
@@ -17,11 +17,11 @@ Probability gives a big picture view of data. Pictorially, probability mass/dens
 \end{definition}
 
 \begin{example} \label{ex:variance-discrete-betting}
-  We play a betting game of predicting the outcome of rolling a fair six-sided die.  Each bet costs \(1\) chore token. If we win, we collect \(3\) chore tokens.
+  We play a betting game of predicting the outcome of rolling a fair six-sided die.  Each bet costs \(1\) cookie. If we win, we collect \(3\) cookies.
 
   This game is modelled by the random variable \(X\) where \(X = -1\) is the event in which we lose and \(X = 3\) is the event in which we win. We work out that \(\mathbb{P}(X = -1) = \underline{\hspace{1cm}}\) and \(\mathbb{P}(X = 3) = \underline{\hspace{1cm}}\).  What is the expected return if we play the game \(10\) times?
 
-  \blanklines{10}
+  \blanklines{9}
 \end{example}
 
 \begin{example} \label{ex:variance-continuous-uniform}
@@ -45,7 +45,7 @@ Variance is defined as \(Var(X) = E( (X - E(x))^{2} )\) regardless of whether a 
     Var(X) = \int_{-\infty}^{\infty} (x - \mu)^{2} f(x) \;dx.
   \end{equation}
 
-  The \hlmain{standard deviation} (for both types) is \(Stddev(X) = \sqrt{Var(X)}\).
+  The \hlmain{standard deviation} (for both types) is \(\sigma(X) = \sqrt{Var(X)}\).
 
   It is quite common to denote standard deviation by \(\sigma\) or \(s\) and variance by \(\sigma^{2}\) or \(s^{2}\).
 \end{definition}
@@ -121,47 +121,104 @@ Variance is defined as \(Var(X) = E( (X - E(x))^{2} )\) regardless of whether a 
   \end{tikzpicture}
 \end{example}
 
-\begin{example} \label{ex:crv-shapes}
-  Consider the following PDFs.
 
-  \begin{center}
-    \begin{tikzpicture}
-      \begin{axis}[width=6in, height=2in, smooth, xmin=-5, xmax=5, ymin=0, ymax=1, no markers, smooth, samples=100, axis lines=middle, ytick={0,1}, xtick={-4,-2,0,2,4}, minor tick num=1]
-        \addplot[very thick, main] {normalpdf(x, 0, 2/2)};
-        \addplot[very thick, supp] {normalpdf(x, 0, 1/2)};
-      \end{axis}
-    \end{tikzpicture}
-
-    \begin{tikzpicture}
-      \begin{axis}[width=6in, height=2in, smooth, xmin=-5, xmax=5, ymin=0, ymax=1, no markers, smooth, samples=100, axis lines=middle, ytick={0,1}, xtick={-4,-2,0,2,4}, minor tick num=1]
-        \addplot[very thick, main] {normalpdf(x,    1, 1/2)};
-        \addplot[very thick, supp] {normalpdf(x, -1.5, 1/2)};
-      \end{axis}
-    \end{tikzpicture}
-  \end{center}
-\end{example}
 \clearpage
 
-Examples~\ref{ex:drv-shapes}~and~\ref{ex:crv-shapes} demonstrate the general observation that \hlmain{expectation \(\mu\), variance \(\sigma^{2}\) and standard deviation \(\sigma\)} together roughly describe the \hlmain{shape of a random variable}.  Sometimes (in reality and in this course), we want to randomly generate data that replicate experiments with certain sample mean and sample variance.  Look ahead to Example~\ref{ex:simulation} on page~\pageref{ex:simulation} for a preview.
+Examples~\ref{ex:drv-shapes}~and~\ref{ex:crv-shapes} demonstrate the general observation that \hlmain{expectation \(\mu\), variance \(\sigma^{2}\) and standard deviation \(\sigma\)} together roughly describe the \hlmain{shape of a random variable}.  
 
-In mathematical terms, we want to find a suitable PDF given its expectation \(\mu\) and variance \(\sigma^{2}\) (or standard deviation \(\sigma\)). The idea (not the computational steps) we used in Example~\ref{ex:distribution-with-unknown-bounds} is helpful.
+Sometimes (in reality and in this course), we want to randomly generate data that replicate experiments with certain sample mean and sample variance.
 
-\begin{example} \label{ex:uniform-distribution-from-mean-and-stddev}
-  We want a continuous random variable \(X\) with 
+\begin{definition}[uniform distribution]
+  The uniform distribution \(U(a,b)\) is defined by its probability density function
   \[
-    \text{PDF }
     f(x) = 
     \begin{cases}
-      \frac{1}{2a} & \text{if } |x| < a \\
-      0 & \text{otherwise}
-    \end{cases},
-    \quad
-    \mu = 0 \quad\text{and}\quad \sigma^{2} = \frac{17.25}{11}.
+      \frac{1}{b-a}, &\text{ if } a \le x \le b \\[2ex]
+      0,            &\text{ otherwise }.
+    \end{cases}
   \]
-  Find the unknown parameter \(a\). Approximate to four decimal places if necessary.
 
-  \blanklines{35}
-\end{example}
+  Its expectation is \(\mu = \frac{1}{2}(b - a)\) and variance is \(\frac{1}{12}(b - a)^{2}\).
+\end{definition}
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+      basic curve, grid=none,
+      width=5in, enlargelimits, 
+      xtick={-4,4}, 
+      xticklabels={\(a\), \(b\)}, 
+      ytick={\empty}, 
+      yticklabel={\empty}, 
+      xlabel={\empty}, 
+      ylabel={\empty},
+      title={PDF of \(U(a,b)\)},
+      hide y axis,
+      ]
+      \addplot[ultra thick, domain=-4:4] {4};
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+
+\blanklines{10}
+
+\begin{listing}[h!]
+  \begin{pythoncode}
+import numpy as np
+import matplotlib.pyplot as plt
+
+# create a random number generator
+rng = np.random.default_rng()
+
+# randomly draw 1000 numbers following the distribution $U(5,10)$.
+X = rng.uniform(5, 10, 1000)
+
+# visualize the drawn samples using a histogram
+# density=True means display probabilities on the $y$-axis.
+plt.hist(X, 10, density=True)
+  \end{pythoncode}
+
+  \caption{Python code for random number generation following \(U(a,b)\)}
+  \label{lst:pseudorandom-number-generator}
+\end{listing}
+
+% The uniform distribution sits at the heart of basic statistically simulation using the \emph{inverse transform sampling}.  If \(F(x)\) is the \hlmain{cumulative distribution function} (CDF) of a continuous random variable \(X\) and \(y_{1}, \ldots, y_{n}\) are sampled from \(U(0,1)\), then \(F^{-1}(y_{1}), \ldots, F^{-1}(y_{n})\) follow the distribution \(X\).
+%
+% \begin{center}
+%   \begin{tikzpicture}
+%     \begin{axis}[xmin=0, xmax=1, ymin=0, ymax=1, ylabel={\(U(0,1)\)}, xlabel={}, grid=major]
+%       \addplot[very thick, black, no marks] coordinates {(0,0) (0.4,0.6) (1,1)};
+%     \end{axis}
+%   \end{tikzpicture}
+% \end{center}
+
 \clearpage
 
+Depending on the capabilities of your software and the requirements of your simulation/experiment, you may need to do a little conversion between specifying a uniform distribution by an interval \(U(a,b)\) or by its expectation and standard deviation.
+
+\begin{method}
+  The uniform distribution \(U(-c,c)\) has expectation and standard deviation
+  \[
+    \mu = 0
+    \quad\text{and}\quad
+    \sigma = \frac{c}{\sqrt{3}}.
+  \]
+
+  Conversely, if you need a uniform distribution with expectation \(\mu = 0\) and standard deviation \(\sigma\), then 
+  \[
+    c = \sigma \sqrt{3}
+    \quad\text{with PDF}\quad
+    f(x) = 
+    \begin{cases}
+      \frac{1}{2\sigma \sqrt{3}} &\text{if } -c \le x \le c, \\[2ex]
+      0 &\text{otherwise}.
+    \end{cases}
+  \]
+\end{method}
+
+\begin{example} \label{ex:uniform-distribution-from-mean-and-stddev}
+  Determine the \(a\) for a uniform distribution whose \(U(-a,a)\) if \(\sigma^{2} = \frac{11.25}{11}\).
+
+  \blanklines{30}
+\end{example}
 \end{document}

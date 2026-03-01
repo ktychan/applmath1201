@@ -2,63 +2,88 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Discrete random variable}
 
-A random variable is discrete if all possible values of \(X(\text{outcome})\) form a discrete set. Discrete random variable are described by their PMF or CDF which we introduce below. 
+A random variable is discrete if all possible values of \(X(\text{outcome})\) form a discrete set. Discrete random variable are described by their PMF or CDF which are two different but commonly used ways to represent the same underlying information in a discrete random variable.
 
-\begin{definition}[probability mass function (PMF)]
-  The \hlmain{probability mass function} for a discrete random variable \(X\) is a nonnegative function \(f_{X}(x)\) that satisfies
+\begin{definition}[PMF and CDF]
+  Let \(X\) be a discrete random variable.
+
+  The \hlmain{probability mass function} (PMF) for \(X\) is a nonnegative function \(f_{X}(x)\) so that
   \[
-    \mathbb{P}(X = x) \hspace{4in}
+    \mathbb{P}({\color{main} X = x})
+    \quad\text{is}\quad
+    f_{X}(x).
+  \]
+
+  The \hlmain{cumulative distribution function} (CDF) for \(X\) is a nonnegative and non-decreasing function \(F_{X}(x)\) so that
+  \[
+    \mathbb{P}({\color{main} X \le x})
+    \quad\text{is}\quad
+    F_{X}(x).
   \]
 \end{definition}
 
-\blanklines{5}
-
-\faStar{} A valid PMF \(f_{X}\) must satisfy \(\sum_{i=1}^{n} f_{X}(x_{i}) = \underline{\hspace{1cm}}\) where \(x_{1},\ldots,x_{n}\) are all possible values of \(X\).
-
-\blanklines{5}
-
 \begin{example}
-  Describe the PMF \(f_{X}\) for the discrete random variable \(X\) in Example~\ref{ex:random-variable-intro}.
+  Describe its PMF and CDF algebraically and pictorially of the discrete random variable \(X\) in Example~\ref{ex:random-variable-intro}. 
+
+  \begin{tabular}{l|l}
+    Person & Height \\\midrule
+    Zeus & \(165\) \\
+    Hera & \(155\) \\
+    Perseus & \(180\) \\
+    Theseus & \(160\) \\
+    Athena & \(170\) \\
+    Poseidon  & \(170\) \\
+    Hades & \(160\) \\
+    Helios & \(170\) \\
+    Selene & \(180\) \\
+    Achilles & \(180\)
+  \end{tabular}
 
   \begin{center}
-    \begin{minipage}{0.25\textwidth}
-      \begin{tabular}{l|l}
-        Person & Height \\\midrule
-        Zeus & \(165\) \\
-        Hera & \(155\) \\
-        Perseus & \(180\) \\
-        Theseus & \(160\) \\
-        Athena & \(170\) \\
-        Poseidon  & \(170\) \\
-        Hades & \(160\) \\
-        Helios & \(170\) \\
-        Selene & \(180\) \\
-        Achilles & \(180\)
-      \end{tabular}
-    \end{minipage}
-    \begin{minipage}{0.7\textwidth}
-      \begin{tikzpicture}[scale=1]
-        \begin{axis}[
-          axis lines = middle, % boxed, middle
-          height = {2.5in},
-          width = {5in},
-          label style={at={(ticklabel* cs:1)}},
-          ymin={0}, ymax={1},
-          xmin={0}, xmax={8},
-          xtick={0,...,8}, xticklabels={\empty},
-          ytick={0,0.2,0.4,0.6,0.8,1}, yticklabels={\empty},
-          ]
-        \end{axis}
-      \end{tikzpicture}
-    \end{minipage}
+    \begin{tikzpicture}
+      \begin{axis}[
+        axis lines = middle, % boxed, middle
+        height = {2.5in},
+        width = {3.5in},
+        label style={at={(ticklabel* cs:1)}},
+        ymin={0}, ymax={1},
+        xmin={150}, xmax={185},
+        xtick={155, 160, 165, 170, 175, 180}, 
+        ytick={0,0.2,0.4,0.6,0.8,1}, 
+        title={probability mass function (PMF)},
+        grid=major,
+        ]
+      \end{axis}
+    \end{tikzpicture}
+    \quad
+    \begin{tikzpicture}
+      \begin{axis}[
+        axis lines = middle, % boxed, middle
+        height = {2.5in},
+        width = {3.5in},
+        label style={at={(ticklabel* cs:1)}},
+        ymin={0}, ymax={1},
+        xmin={150}, xmax={185},
+        xtick={155, 160, 165, 170, 175, 180}, 
+        ytick={0,0.2,0.4,0.6,0.8,1}, 
+        title={cumulative density function (CDF)},
+        grid=major, grid style={gray!20},
+        ]
+      \end{axis}
+    \end{tikzpicture}
   \end{center}
-
-  \blanklines{10}
 \end{example}
+
+Lastly, calculate \(\mathbb{P}(160 \le X \le 170)\) using its PMF and CDF.
+
+\blanklines{3}
+
+\faStar{} If \(x_{1} < \cdots < x_{n}\) are all possible values of a discrete \(X\), then \(\sum_{i=1}^{n} f_{X}(x_{i}) = 1\) and \(F_{X}(x_{n}) = 1\).
+
 \clearpage
 
 \begin{example}
-  Suppose we have an fair coin. The PMF for a discrete random variable \(X\) associating sequences of coin tosses to the number \(k\) of tosses required until a tail appears is
+  Suppose we have a fair coin. The PMF for a discrete random variable \(X\) associating sequences of coin tosses to the number \(k\) of tosses required until a tail appears is
   \[
     f_{X}(k) = (1/2)^{k} \text{ for integers } k \ge 1.
   \]
@@ -71,148 +96,188 @@ A random variable is discrete if all possible values of \(X(\text{outcome})\) fo
 
     \item What is the probability that at most \(3\) tosses are required before a tail appears?
 
-      \blanklines{10}
+      \blanklines{15}
   \end{enumerate}
 \end{example}
 
-\begin{example}
-  Suppose a discrete random variable \(X\) takes values \(0,1,2\). Which of the following is a valid PMF for \(X\)?
+\begin{exercise}
+  Suppose the CDF of a discrete random variable \(X\) is given by
+  \[
+    F_{X}(-1) = 1/3, \quad F_{X}(5) = 5/6, \quad F_{X}(7) = 1.
+  \]
+  Describe its PMF.
 
-  \begin{enumerate}[label=(\alph*)]
-    \item \(f_{X}(0) = 1, f_{X}(1) = 2, f_{X}(2) = 3\).
-    \item \(f_{X}(0) = 1/2, f_{X}(1) = 1/4, f_{X}(2) = 1/4\).
-    \item \(f_{X}(0) = -1/2, f_{X}(1) = 1/2, f_{X}(2) = 1\).
-    \item None of the above.
-  \end{enumerate}
-
-  \blanklines{5}
-\end{example}
-
-\begin{example}
-  Suppose a PMF \(f_{X}(x)\) is given by \(f_{X}(3) = 1/7\), \(f_{X}(5)\) is unknown, and \(f_{X}(10) = 2/5\).  Find the unknown probability.
-
-  \blanklines{5}
-\end{example}
-
+  \blanklines{20}
+\end{exercise}
 \clearpage
 
-Sometimes, it's convenient to describe a discrete random variable by asking for the probability of the event \(X \le (\text{some value})\). 
+% \begin{exercise}[concept check]
+%   Suppose a discrete random variable \(X\) takes values \(0,1,2\). Which of the following is a valid PMF for \(X\)?
+%
+%   \begin{enumerate}[label=(\alph*)]
+%     \item \(f_{X}(0) = 1, f_{X}(1) = 2, f_{X}(2) = 3\).
+%     \item \(f_{X}(0) = 1/2, f_{X}(1) = 1/4, f_{X}(2) = 1/4\).
+%     \item \(f_{X}(0) = -1/2, f_{X}(1) = 1/2, f_{X}(2) = 1\).
+%     \item None of the above.
+%   \end{enumerate}
+%
+%   \blanklines{5}
+% \end{exercise}
 
-\begin{definition}[cumulative distribution function (CDF)] \label{def:discrete-cdf}
-  A function \(F_{X}(x)\) is a \hlmain{cumulative distribution function} for a discrete random variable if 
-  \[
-    \mathbb{P}(X \le x) \hspace{4in} % \mathbb{P}(X \le x).
-  \]
-\end{definition}
+\begin{exercise}[concept check]
+  Suppose a discrete random variable \(X\) takes value \(3, 5, 10\). If its PMF is given by \(f_{X}(x)\) is given by \(f_{X}(3) = 1/7\), \(f_{X}(5)\) is unknown, and \(f_{X}(10) = 2/5\).  Find the unknown probability.
 
-\blanklines{3}
+  \blanklines{10}
+\end{exercise}
 
-\faStar{} A valid CDF must be non-decreasing and satisfy \(\lim_{x \to -\infty} F(x) = 0\) and \(\lim_{x \to \infty} F(x) = 1\).
-
-% Example~\ref{ex:discrete-random-varialbe-cdf-to-pmf} demonstrates that CDF and PMF contain the same information but merely present them differently.
-
-\begin{example} \label{ex:discrete-random-varialbe-cdf-to-pmf}
-  The CDF \(F_{X}\) of a random variable \(X\) is given below.
+\begin{exercise}[concept check]
+  The CDF \(F_{X}\) of a discrete random variable \(X\) is given below.  Fill in the blanks below.
 
   \begin{minipage}{0.4\textwidth}
     \begin{tikzpicture}
       \begin{axis}[grid=major, xmin=-0.5, xmax=5.5, title={CDF}]
-        % \addplot[thick, black, mark=*] coordinates { (0,0) (0,0)};
-        % \addplot[thick, black, mark=*] coordinates { (1,0) (1,1/2) };
-        % \addplot[thick, black, mark=*] coordinates { (2,0) (2,3/4) };
-        % \addplot[thick, black, mark=*] coordinates { (3,0) (3,7/8) };
-        % \addplot[thick, black, mark=*] coordinates { (4,0) (4,1) };
-        % \addplot[thick, black, mark=*] coordinates { (5,0) (5,1) };
-        \addplot[thick, black] coordinates { (-1, 0)   (0.94, 0)  };
-        \addplot[thick, black] coordinates { (1, 1/3)  (1.94, 1/3) };
-        \addplot[thick, black] coordinates { (2, 5/7)  (2.94, 5/7) };
-        \addplot[thick, black] coordinates { (3, 4/5)  (3.94, 4/5) };
-        \addplot[thick, black] coordinates { (4, 1)    (5.94, 1)  };
-        \node at (axis cs:1,0) {\(\circ\)};
-        \node at (axis cs:2,1/3) {\(\circ\)};
-        \node at (axis cs:3,5/7) {\(\circ\)};
-        \node at (axis cs:4,4/5) {\(\circ\)};
-        \node at (axis cs:1,1/3) {\(\bullet\)};
-        \node at (axis cs:2,5/7) {\(\bullet\)};
-        \node at (axis cs:3,4/5) {\(\bullet\)};
-        \node at (axis cs:4,1) {\(\bullet\)};
+        \addplot[very thick, black] coordinates { (-1, 0)   (0.94, 0)  };
+        \addplot[very thick, black] coordinates { (1, 1/3)  (1.94, 1/3) };
+        \addplot[very thick, black] coordinates { (2, 5/7)  (2.94, 5/7) };
+        \addplot[very thick, black] coordinates { (3, 4/5)  (3.94, 4/5) };
+        \addplot[very thick, black] coordinates { (4, 1)    (5.94, 1)  };
+        \addplot[very thick, only marks, mark=o] coordinates {
+            (1,  0)
+            (2,1/3)
+            (3,5/7)
+            (4,4/5)
+          };
+        \addplot[very thick, only marks, mark=*] coordinates {
+            (1,1/3)
+            (2,5/7)
+            (3,4/5)
+            (4,  1)
+          };
       \end{axis}
     \end{tikzpicture}
   \end{minipage}
   \begin{minipage}{0.55\textwidth}
     \centering
     \begin{tikzpicture}
+      % \begin{axis}[
       \begin{axis}[
-        axis lines = middle, % boxed, middle
-        height = {2.5in},
-        width = {3in},
-        label style={at={(ticklabel* cs:1)}},
-        ymin={0}, ymax={1},
-        xmin={-0.5}, xmax={5.5},
-        xtick={0,...,6}, xticklabels={0,1,2,3,4},
-        ytick={0,0.2,0.4,0.6,0.8,1}, yticklabels={\empty},
-        title={PMF}
+        grid=major, 
+        xmin=-0.5, xmax=5.5, xtick={0,1,2,3,4,5},
+        title={PMF},
         ]
+        grid=major, grid style={gray!20},
       \end{axis}
     \end{tikzpicture}
   \end{minipage}
   \[
-    F_{X}(0) = 0, \quad F_{X}(1) = 1/3,  \quad F_{X}(2) = 5/7,  \quad F_{X}(3) = 4/5,  \quad F_{X}(4) = 1.
+    F_{X}(0) = \underline{\hspace{1cm}}, \quad F_{X}(1) = \underline{\hspace{1cm}},  \quad F_{X}(2) = \underline{\hspace{1cm}},  \quad F_{X}(3) = \underline{\hspace{1cm}},  \quad F_{X}(4) = \underline{\hspace{1cm}}.
+  \]
+  \[
+    f_{X}(0) = \underline{\hspace{1cm}}, \quad f_{X}(1) = \underline{\hspace{1cm}},  \quad f_{X}(2) = \underline{\hspace{1cm}},  \quad f_{X}(3) = \underline{\hspace{1cm}},  \quad f_{X}(4) = \underline{\hspace{1cm}}.
   \]
   
-
   Find \(\mathbb{P}(X = 2)\) and \(\mathbb{P}(2 \le X \le 3)\).
 
   \blanklines{8}
 
-  Describe the PMF for \(X\). Can you \emph{see} the PMF on the plot of CDF?
-
-  \blanklines{8}
-\end{example}
+\end{exercise}
 \clearpage
 
-In general, we can easily convert between PMF and CDF for a discrete random variable \(X\). Suppose \(X\) takes values \(x_{1} < x_{2} < \cdots < x_{n}\).
+We can think of random variables as aggregates forms of data.  Outcomes in the sample space are grouped by common associated data (e.g., height).  \hlmain{Expectation}, \hlmain{variance} and \hlmain{standard deviations} are common ways to describe the shapes of data.
 
-\faStar{} If the PMF \(f_{X}\) is known, then its CDF \(F_{X}\) is
+\begin{definition}
+  Suppose \(X\) is a discrete random variable with values \(x_{1}, \ldots, x_{n}\) and a PMF \(f_{X}(x)\).
+  \begin{enumerate}[itemsep={1ex}]
+    \item Its expectation is \(\mu = E(X) = \sum_{i=1}^{n} x_{i} f_{X}(x_{i})\).
+    \item Its variance is \(V(X) = E\left( (X - \mu)^{2} \right) = \sum_{i=1}^{n} (x_{i} - \mu)^{2} f_{X}(x_{i})\).
+    \item Its standard deviation is \(\sigma = \sqrt{V(x)}\).
+  \end{enumerate}
 
-\blanklines{10}
+  Variance is often denoted as \(\sigma^{2}\).
+\end{definition}
 
-\faStar{} If the CDF \(F_{X}\) is known, then its PMF \(f_{X}\) is
+Later this week or next week, we will use Python to do some statistical simulation to see the meaning of expectation and variance. For now, we cozy up to some basic calculations.
 
-\blanklines{10}
+\begin{example}
+  We play a betting game of predicting the outcome of rolling a fair six-sided die. We must guess a single number in \(\{1, \ldots, 6\}\). Each bet costs \(1\) cookie. If we win, we collect \(3\) cookies.
 
-We converted a CDF to a PMF in Example~\ref{ex:discrete-random-varialbe-cdf-to-pmf}. In the next example, we revert the process to convert from a PMF to a CDF.
-\begin{example} \label{ex:discrete-random-varialbe-pmf-to-cdf}
-  The PMF \(f_{X}\) of a random variable \(X\) is given below.
-  \[
-    f_{X}(1) = 1/3, \quad f_{X}(5) = 1/2, \quad f_{X}(7) = 1/6.
-  \]
+  The game is modelled by a discrete random variable \(X\).  Describe its values, PMF and calculate its expectation and standard deviation.
 
-  Describe the CDF for \(X\) and sketch its PMF and CDF. Label the axes.
-
-  \begin{minipage}{0.4\textwidth}
-    \begin{tikzpicture}
-      \begin{axis}[grid=major, xmin=-0.5, xmax=5.5, xticklabels={\empty}, yticklabels={\empty}, title={CDF}]
-      \end{axis}
-    \end{tikzpicture}
-  \end{minipage}
-  \begin{minipage}{0.55\textwidth}
-    \centering
-    \begin{tikzpicture}
-      \begin{axis}[
-        axis lines = middle, % boxed, middle
-        height = {2.5in},
-        width = {3in},
-        label style={at={(ticklabel* cs:1)}},
-        ymin={0}, ymax={1},
-        xmin={-0.5}, xmax={5.5},
-        xtick={0,...,6}, xticklabels={\empty},
-        ytick={0,0.2,0.4,0.6,0.8,1}, yticklabels={\empty},
-        title={PMF}
-        ]
-      \end{axis}
-    \end{tikzpicture}
-  \end{minipage}
+  \blanklines{30}
 \end{example}
 
+\clearpage
+Expectation measures the centre of data. Variance and standard deviation measure how far the data spread from its expectation.
+
+\begin{example} \label{ex:drv-shapes}
+  Consider the following PMFs.
+
+  \begin{tikzpicture}
+    \begin{axis}[width=3in, height=2in, xmin=0, xmax=9, ymin=0, ymax=1, axis y line=none, axis lines=middle, no markers, minor tick num=1, title={\(\mu = 3.75, \sigma \approx 2.7581\)}]
+      \addplot[main] coordinates { (1,0) (1,4/16) } node[above] {\footnotesize \color{black} \(4/16\)}; \node at (axis cs:1,4/16) {\(\bullet\)};
+      \addplot[main] coordinates { (2,0) (2,4/16) }; \node at (axis cs:2,4/16) {\(\bullet\)};
+      \addplot[main] coordinates { (4,0) (4,4/16) }; \node at (axis cs:4,4/16) {\(\bullet\)};
+      \addplot[main] coordinates { (8,0) (8,4/16) }; \node at (axis cs:8,4/16) {\(\bullet\)};
+    \end{axis}
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \begin{axis}[width=3in, height=2in, xmin=0, xmax=9, ymin=0, ymax=1, axis y line=none, axis lines=middle, no markers, minor tick num=1, title={\(\mu \approx 2.68, \sigma \approx 2.7593\)}]
+      \addplot[main] coordinates { (1,0) (1,5/16) } node[above] {\footnotesize \color{black} \(5/16\)}; \node at (axis cs:1,5/16) {\(\bullet\)};
+      \addplot[main] coordinates { (2,0) (2,5/16) }; \node at (axis cs:2,5/16) {\(\bullet\)};
+      \addplot[main] coordinates { (4,0) (4,5/16) }; \node at (axis cs:4,5/16) {\(\bullet\)};
+      \addplot[main] coordinates { (8,0) (8,1/16) } node[above] {\footnotesize \color{black} \(1/16\)}; \node at (axis cs:8,1/16) {\(\bullet\)};
+    \end{axis}
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \begin{axis}[width=3in, height=2in, xmin=0, xmax=9, ymin=0, ymax=1, axis y line=none, axis lines=middle, no markers, minor tick num=1, title={\(\mu \approx 3.88, \sigma \approx 2.7629\)}]
+      \addplot[main] coordinates { (1,0) (1, 2/16) } node[above] {\footnotesize \color{black} \(2/16\)}; \node at (axis cs:1, 2/16) {\(\bullet\)};
+      \addplot[main] coordinates { (2,0) (2, 2/16) }; \node at (axis cs:2, 2/16) {\(\bullet\)};
+      \addplot[main] coordinates { (4,0) (4,10/16) } node[above] {\footnotesize \color{black} \(10/16\)}; \node at (axis cs:4,10/16) {\(\bullet\)};
+      \addplot[main] coordinates { (8,0) (8, 2/16) }; \node at (axis cs:8, 2/16) {\(\bullet\)};
+    \end{axis}
+  \end{tikzpicture}
+
+  \blanklines{2}
+
+  \begin{tikzpicture}
+    \begin{axis}[width=3in, height=2in, xmin=0, xmax=9, ymin=0, ymax=1, axis y line=none, axis lines=middle, no markers, minor tick num=1, title={\(\mu = 3.00, \sigma \approx 1.8945\)}]
+      \addplot[main] coordinates { (1,0) (1,4/16) } node[above] {\footnotesize \color{black} \(4/16\)}; \node at (axis cs:1,4/16) {\(\bullet\)};
+      \addplot[main] coordinates { (2,0) (2,4/16) }; \node at (axis cs:2,4/16) {\(\bullet\)};
+      \addplot[main] coordinates { (4,0) (4,4/16) }; \node at (axis cs:4,4/16) {\(\bullet\)};
+      \addplot[main] coordinates { (5,0) (5,4/16) }; \node at (axis cs:5,4/16) {\(\bullet\)};
+    \end{axis}
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \begin{axis}[width=3in, height=2in, xmin=0, xmax=9, ymin=0, ymax=1, axis y line=none, axis lines=middle, no markers, minor tick num=1, title={\(\mu = 2.50, \sigma \approx 1.8963\)}]
+      \addplot[main] coordinates { (1,0) (1,5/16) } node[above] {\footnotesize \color{black} \(5/16\)}; \node at (axis cs:1,5/16) {\(\bullet\)};
+      \addplot[main] coordinates { (2,0) (2,5/16) }; \node at (axis cs:2,5/16) {\(\bullet\)};
+      \addplot[main] coordinates { (4,0) (4,5/16) }; \node at (axis cs:4,5/16) {\(\bullet\)};
+      \addplot[main] coordinates { (5,0) (5,1/16) } node[above] {\footnotesize \(1/16\)}; \node at (axis cs:5,1/16) {\(\bullet\)};
+    \end{axis}
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \begin{axis}[width=3in, height=2in, xmin=0, xmax=9, ymin=0, ymax=1, axis y line=none, axis lines=middle, no markers, minor tick num=1, title={\(\mu = 3.50, \sigma \approx 1.9016\)}]
+      \addplot[main] coordinates { (1,0) (1, 2/16) } node[above] {\footnotesize \color{black} \(2/16\)}; \node at (axis cs:1, 2/16) {\(\bullet\)};
+      \addplot[main] coordinates { (2,0) (2, 2/16) }; \node at (axis cs:2, 2/16) {\(\bullet\)};
+      \addplot[main] coordinates { (4,0) (4,10/16) } node[above] {\footnotesize \color{black} \(10/16\)}; \node at (axis cs:4,10/16) {\(\bullet\)};
+      \addplot[main] coordinates { (5,0) (5, 2/16) }; \node at (axis cs:5, 2/16) {\(\bullet\)};
+    \end{axis}
+  \end{tikzpicture}
+\end{example}
+
+\bigskip
+
+\textbf{Summary} of discrete random variable \(X\) whose values are sorted as \(x_{1} < \cdots < x_{n}\).
+\begin{itemize}
+  \item PMF \(f_{X}(x)\) is \(\mathbb{P}(X = x)\).
+  \item CDF \(F_{X}(x)\) is \(\mathbb{P}(X \le x)\).
+  \item Relations between PMF and CDF.
+    \begin{itemize}
+      \item \(F_{X}(x_{i}) = \underbrace{f_{X}(x_{1}) + \cdots + f_{X}(x_{i-1})}_{F_{X}(x_{i-1})} + f_{X}(x_{i}) = F_{X}(x_{i-1}) + f_{X}(x_{i})\).
+      \item \(f_{X}(x_{i}) = F_{X}(x_{i}) - F_{X}(x_{i-1})\).
+    \end{itemize}
+  \item Expectation \(\mu = E(X) = \sum_{i=1}^{n} x_{i} f_{X}(x_{i})\).
+  \item Variance \(V(X) = E\left( (X - \mu)^{2} \right) = \sum_{i=1}^{n} (x_{i} - \mu)^{2} f_{X}(x_{i})\). Variance is often denoted as \(\sigma^{2}\).
+  \item Standard deviation \(\sigma = \sqrt{V(X)}\).
+\end{itemize}
 \end{document}
