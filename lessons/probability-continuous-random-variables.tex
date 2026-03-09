@@ -2,7 +2,7 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Continuous random variables}
 
-A random variable is a continuous random variable if it takes values on an interval. The random variable associating time (outcome) to temperature at YYZ (value) is a continuous random variable. Continuous random variables are described by their PDF or CDF.
+A random variable is a continuous random variable if it takes values on an interval. The random variable associating time (outcomes) to temperature at YYZ (values) is a continuous random variable. Continuous random variables are described by their PDF or CDF.
 
 \begin{definition}[PDF and CDF]
   Let \(X\) be a continuous random variable.
@@ -135,19 +135,6 @@ Calculating probabilities from PDF requires integration.
 
 
 \clearpage
-We often (in reality and in this course) need to find a suitable PDF for a continuous random variable that suit our needs.  The idea is to set up an equation involving the unknown parameter using the given information and solve for the unknown. 
-\begin{example} \label{ex:distribution-with-unknown-bounds}
-  The PDF for a continuous random variable is given by \(f(x) = a x^{2}\) if \(|x| < a\) and \(f(x) = 0\) everywhere else.  Find the unknown parameter \(a\).
-
-  \blanklines{15}
-\end{example}
-
-% \begin{example}[a normal distribution]
-%   The PDF for a continuous random variable \(X\) is \[f(x) = \frac{1}{\sqrt{2 \pi}} e^{-x^{2}}.\] Express its CDF as an integral.
-%
-%   \blanklines{5}
-% \end{example}
-
 \begin{exercise}[concept check]
   Calculate \(\mathbb{P}(-1 < X < 3)\) given that a continuous random variable \(X\) is described by the PDF
   \[
@@ -159,9 +146,22 @@ We often (in reality and in this course) need to find a suitable PDF for a conti
     \end{cases}.
   \]
 
-  \blanklines{20}
+  \blanklines{15}
 \end{exercise}
 
+\begin{exercise}[concept check]
+  Find the PDF of a continuous random variable whose CDF is \(F(x) = 1 - e^{-x}\).
+
+  \blanklines{5}
+\end{exercise}
+
+We often (in reality and in this course) need to find a PDF for a continuous random variable that suits our needs.  The idea is to set up an equation involving the unknown parameter using the given information and solve for the unknown.
+
+\begin{example} \label{ex:distribution-with-unknown-bounds}
+  The PDF for a continuous random variable is given by \(f(x) = a x^{2}\) if \(|x| < a\) and \(f(x) = 0\) everywhere else.  Find the unknown parameter \(a\).
+
+  \blanklines{15}
+\end{example}
 \clearpage
 
 Like discrete random variables, continuous random variables have expectation, variance and standard deviation.
@@ -206,7 +206,7 @@ Expectation measures the \hlmain{centre} of data. Variance and standard deviatio
 \end{example}
 
 \begin{exercise}[concept check]
-  Calculate the variance of a continuous random variable with PDF \(f(x) = \begin{cases} \frac{1}{2a} &\text{ |x| < a } \\0,&\text{otherwise} \end{cases}\).
+Calculate the variance of a continuous random variable with PDF \(f(x) = \begin{cases} \frac{1}{2a} &\text{ if } |x| < a \\0,&\text{otherwise} \end{cases}\).
 
   \blanklines{15}
 \end{exercise}

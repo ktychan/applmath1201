@@ -1,6 +1,8 @@
 %! vim: ft=tex
 \usepackage{tikz, pgfplots}
 \usepgfplotslibrary{fillbetween}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{positioning}
 
 %
 % functions
@@ -11,6 +13,16 @@
     logistic(\x,\K,\r,\Pinit) = \K/(1 + ((\K - \Pinit)/\Pinit)*exp(-\r*\x));
   }
 }
+
+\tikzset{
+  transition diagram/.style={
+    >=Stealth,
+    class/.style={circle,draw,minimum size=2cm,align=center},
+    thick,
+    scale=3,
+  }
+}
+
 
 % 
 % general options
@@ -56,3 +68,5 @@
     samples=200,
   }
 }
+
+

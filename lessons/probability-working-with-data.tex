@@ -35,104 +35,100 @@ The \(z\)-scores allow us to compare apples to oranges in a meaningful way.
 \clearpage
 We focus on using these statistics to make sense of experimental data and to draw reasonable scientific conclusion. Unlike Example~\ref{ex:toucan}, the following example \hlmain{has a correct answer}.
 
-\begin{example}[Example~5 on page 121 of the textbook] \label{ex:simulation}
-  We walk through a typical scientific reasoning process: Hypothesize using summary statistics and validate the hypothesis using simulation. 
+\begin{example} \label{ex:simulation}
+  We walk through a typical scientific reasoning process: Hypothesize using summary statistics and perform hypothesis testing using simulation.
 
   \begin{itemize}[wide]
-    \item \textbf{Scenario}. An experimental drug ABC is tested for side effects on \cancel{weights} mass (in grams).
-
-    \item \textbf{Experiment}. ABC is administered to \(n = 12\) rats. Their \cancel{weight} mass changes are measured.
+    \item \textbf{Scenario}. An experimental drug ABC is administered to \(n = 12\) rats to test for side effects on \cancel{weights} mass (in grams).
 
       \begin{pythoncode}
 # weight change data (in grams) from the original experiment
-x = [1.7, 0.7, -0.4, -1.8, 0.2, 0.9, -1.2, -0.9, -1.8, -1.4, -1.8, -2.0]
+observed_data   = [
+  1.7, 0.7, -0.4, -1.8, 0.2, 0.9, -1.2, -0.9, -1.8, -1.4, -1.8, -2.0
+]
+observed_mean   = np.mean(observed_data)
+observed_stddev = np.std(observed_data, ddof=1)
+observed_zscore = observed_mean / observed_stddev
       \end{pythoncode}
 
-    \item \textbf{Calculation}. Calculate summary statistics and study them. The original data is plotted below.
-
-      \begin{tabular}{l|p{1in}}
-        \toprule
-        sample mean & \\[2ex]\midrule
-        sample variance & \\[2ex]\midrule
-        sample standard deviation & \\[2ex]
-        \bottomrule
-      \end{tabular}
-
-      \blanklines{2}
+      \bigskip
       \begin{center}
-        \begin{tikzpicture}[scale=1]
-          \begin{axis}[
-            axis lines = middle, % boxed, middle
-            axis y line=none,
-            enlargelimits=true,
-            width = {6in},
-            % xlabel={\empty}, xlabel style={anchor=west},
-            label style={at={(ticklabel* cs:1)}},
-            xtick={-2,-1,...,2}, % xticklabels={},
-            ]
-            \addplot[ only marks, mark=*, mark options={scale=1} ]
-              coordinates
-              {(1.7,0) (0.7,0) (-0.4,0) (-1.8,0) (0.2,0) (0.9,0) (-1.2,0) (-0.9,0) (-1.8,0) (-1.4,0) (-1.8,0) (-2.0, 0)};
-          \end{axis}
-        \end{tikzpicture}
+        \includestandalone[page=1]{../standalones/simulation}
       \end{center}
-
-      \blanklines{2}
-
-    \item \textbf{Hypothesis}. ABC causes \underline{\hspace{2in}}.  Some people question our claim and rightly so.
-
-      \begin{quote}
-        \faQuestion{} What is the likelihood that \underline{\hspace{3in}}?
-        % we are wrong
-      \end{quote}
-
-    \item \textbf{Simulation}.  We generate data to replicate the original experiment assuming that ...
-
-      \blanklines{2}
-
-      Therefore, generated data (as a random variable) should 
-      \begin{enumerate}
-        \item simulate \underline{\hspace{2in}} and, consequently, have an expectation of \underline{\hspace{1cm}}, and
-        \item replicate the original experiment and, consequently, have a variance of \underline{\hspace{1cm}}.  
-      \end{enumerate}
 
       \blanklines{3}
 
-      % having mean = 0 means the data comes from the assumption that our hypothesis is false.
-      % having the variance matching the original variance is a requirement for replicating the experiment.
+    \item \textbf{Question}. What is the probability that weight change is a side effect of ABC?
 
-    \item \textbf{Conclusion}. We generated \underline{\hspace{1.5cm}} samples and found \underline{\hspace{2cm}} \underline{\hspace{2in}}. Therefore, the probability of committing \underline{\hspace{2in}} is \underline{\hspace{1cm}} which is \underline{\hspace{1in}} the acceptable range of \(5\%\). Therefore, we conclude that our hypothesis should be \underline{\hspace{1in}}.
+    \item \textbf{Two hypothetical experiments}. We replicate the experiment \hlmain{but with placebos} to get data for comparison against the original experiment. There are two possibilities.
+
+      \begin{center}
+        \includestandalone[page=2]{../standalones/simulation}
+
+        \includestandalone[page=3]{../standalones/simulation}
+      \end{center}
+
+      We \emph{assume} ABC causes weight change by \emph{declaring} that the z-score \(-0.52\) is the threshold for weight change.  \hlmain{If a new experiment has a z-score more extreme than \(-0.52\), then it is declared a positive.} We get a useful setup for simulation.
+
+      \bigskip
+
+      \begin{minipage}{3in}
+        \setlength{\baselineskip}{20pt}
+        \faStar{} If a placebo experiment has a z-score more extreme  (\underline{\hspace{1in}}) than the original z-score, then we declare the placebo experiment a \underline{\hspace{2in}}.
+      \end{minipage}
+      \begin{minipage}{4in}
+        \centering
+        \begin{tabular}{c||c|c}
+      & \parbox{1.25in}{\centering \phantom{condition}\\present} & \parbox{1.25in}{\centering \phantom{condition}\\not present} \\\midrule\midrule
+          \(+\) &                                             & \\[3ex]\midrule
+          \(-\) &                                             & \\[3ex]
+        \end{tabular}
+      \end{minipage}
+
+
+      \clearpage
+    \item \textbf{Simulation setup}. Placebo experiments can be simulated with parameters matching the original experiment.
+
+      \begin{enumerate}
+        \item Assume natural weight fluctuations are \emph{uniformly} random.
+
+          \blanklines{4}
+
+        \item We want each simulated experiment (replica) to have \hlmain{as much randomness} as the original.
+
+          \blanklines{10}
+
+        \item Each simulated experiment draws \underline{\hspace{2cm}} samples from \underline{\hspace{1in}} and is labelled \underline{\hspace{2in}} if \underline{\hspace{2in}}.
+
+          \blanklines{5}
+
+        \item Repeat simulated experiments a large number of times. Calculate 
+          \[
+            \mathbb{P}(\text{false positives}) = \frac{\text{number of \phantom{false positives}}}{\text{total number of simulated experiments}}.
+          \]
+      \end{enumerate}
+
+    \item \textbf{Code}. \url{https://colab.research.google.com/drive/1zeLmvkFXOcv0PVuuae_4oi6YyrxBEcx9}
+
+      \begin{pythoncode}
+rng = np.random.default_rng()
+replicas = [
+    rng.uniform(a, b, num_samples)
+    for i in range(num_replicas)
+]
+
+simulated_zscores = [
+    np.mean(replica) / np.std(replica, ddof=1)
+    for replica in replicas
+]
+
+num_false = sum(
+    1
+    for z in simulated_zscores
+    if np.abs(z) > np.abs(observed_zscore) # compare z-scores
+)
+prob = num_false / num_replicas
+      \end{pythoncode}
   \end{itemize}
-  \clearpage
-  
-  How do we actually generate data? How do we calculate \(\mathbb{P}(\text{false positives})\)?
-
-  We assume\footnote{We will not get into why this assumption is valid. It comes from more general statistics theory.}  that the original experiment follows a continuous random variable with PDF \(f(x) = \frac{1}{2a}\) on domain \underline{\hspace{1in}} for some positive constant \(a\).  This PDF determines where the generated data come from.
-
-  \blanklines{5}
-
-  \sout{Let's figure out this constant \(a\).} We already figured out this constant \(a\) in Example~\ref{ex:uniform-distribution-from-mean-and-stddev}.
-
-  \blanklines{5}
-
-  We need to decide what generated replica should be a false positive (because we decided that we want to count false positives in the simulation step).
-
-  \blanklines{10}
-
-  Finally, we can compute \(\mathbb{P}(\text{false positives})\) by repeating the following simulated experiment a large number of times, say \underline{\hspace{2cm}}, and keep track of the total number of false positives we generated.
-
-  Each simulated experiment has two steps.
-  \begin{enumerate}
-    \item Use pseudorandom variable to generate \(n = 12\) samples following \(U(-a,a)\).
-    \item For each replica, decide if we have a false positive.  Keep a count.
-  \end{enumerate}
-
-  \blanklines{5}
-
-  We conclude that 
-  \[
-    \mathbb{P}(\text{false positives}) = \frac{\text{total number of false positives}}{\text{total number of generated replicas}} = 
-  \]
 \end{example}
-
 \end{document}

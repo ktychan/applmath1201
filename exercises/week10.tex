@@ -1,0 +1,106 @@
+
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+
+\usetikzlibrary{intersections,calc}
+
+\newenvironment{solution}{
+  \begin{proof}[Sample solution]
+    \color{main}
+  }{
+  \end{proof}
+}
+
+\begin{document}
+
+\chapter*{Week 10 practice problems}
+
+\setcounter{chapter}{10}
+
+\begin{exercise}
+  The mean and standard deviation of last year's final exam were \(70\) and \(12\), respectively.  This year, the mean and standard deviation for the final exam is \(72\) and \(14\). 
+
+  \begin{enumerate}
+    \item Which year's students performed better on the final exam.
+    \item If A scored \(65\) on this year's final exam, what would be a comparable grade from last year's final exam?
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Let \(\vec{x}(t)\) be the numbers of juveniles and adults, respectively, in a population at time \(t\) in years. Every adult in the population produces, on average, \(2\) juveniles in the population next year. Every adult in the population survives to the next year with probability \(1/3\). Every juvenile survives to be an adult next year with probability \(1/2\).
+
+  Develop a discrete-time model for the population.
+\end{exercise}
+
+\begin{exercise}
+  Perform the following matrix-vector multiplication.
+
+  \begin{enumerate}
+    \item \(\begin{bmatrix} 1 & -3 \\ -2 & -1 \end{bmatrix} \begin{bmatrix} x_{1} \\ x_{2}\end{bmatrix}\)
+    \item \(\begin{bmatrix} a & 1/2 \\ 1/2 & 1 \end{bmatrix} \begin{bmatrix} 3 \\ 5 \end{bmatrix}\)
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Express the following transition diagram as a (vector) recurrence.
+
+  \begin{tikzpicture}[transition diagram]
+    \node[class] (A) at (   0:1) {A};
+    \node[class] (B) at ( 120:1) {B};
+    \node[class] (C) at ( 240:1) {C};
+    
+    \path[->] (A) edge [bend  left] node[below] {AC} (C);
+    \path[->] (C) edge [bend  left] node[below] {CA} (A);
+    \path[->] (A) edge [bend  left] node[above] {AB} (B);
+    \path[->] (B) edge [bend  left] node[above] {BA} (A);
+    \path[->] (B) edge [bend  left] node[ left] {BC} (C);
+    \path[->] (C) edge [bend  left] node[ left] {CB} (B);
+
+    \path[->] (A) edge [loop right] node[right] {A} (A);  
+    \path[->] (B) edge [loop  left] node[right] {BB} (B);  
+    \path[->] (C) edge [loop  left] node[right] {CC} (C);  
+  \end{tikzpicture}
+\end{exercise}
+
+\begin{exercise}
+  Draw the transition diagram for the following vector recurrence.
+\end{exercise}
+
+\begin{exercise}
+  Find a pattern to calculate the following matrix operations.
+\end{exercise}
+
+\begin{exercise}
+\end{exercise}
+
+\begin{exercise}
+\end{exercise}
+
+\begin{exercise}
+\end{exercise}
+
+\begin{exercise}
+\end{exercise}
+
+\begin{exercise}
+\end{exercise}
+
+\end{document}
+
+% transition diagram template
+\begin{tikzpicture}[transition diagram]
+    \node[class] (A) at (   0:1) {A};
+    \node[class] (B) at ( 120:1) {B};
+    \node[class] (C) at ( 240:1) {C};
+    
+    \path[->] (A) edge [bend  left] node[below] {AC} (C);
+    \path[->] (C) edge [bend  left] node[below] {CA} (A);
+    \path[->] (A) edge [bend  left] node[above] {AB} (B);
+    \path[->] (B) edge [bend  left] node[above] {BA} (A);
+    \path[->] (B) edge [bend  left] node[ left] {BC} (C);
+    \path[->] (C) edge [bend  left] node[ left] {CB} (B);
+
+    \path[->] (A) edge [loop right] node[right] {A} (A);  
+    \path[->] (B) edge [loop  left] node[right] {BB} (B);  
+    \path[->] (C) edge [loop  left] node[right] {CC} (C);  
+  \end{tikzpicture}
