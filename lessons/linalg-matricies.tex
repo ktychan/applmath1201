@@ -1,0 +1,203 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+\begin{document} \section{A bit more matrix theory}
+
+% At the end of Example~\ref{eg:age-structure-model}, we concluded that the model \(\vec{x}(t+1) = A\vec{x}(t)\) amounts to
+% \[
+%   \vec{x}(t) = A^{t} \vec{x}(0).
+% \]
+% We introduce a tool to drastically simplify this process and to pick up intuition about the model. We will be able to completely avoid matrix exponentiation.
+%
+% \begin{example}
+%   Suppose \(A = \begin{bmatrix} 0 & 3 \\ 0.5 & 0.5 \end{bmatrix}\) models some population dynamics with \(\vec{x}(0) = \begin{bmatrix} 50 \\ 50 \end{bmatrix}\). 
+%
+%   This matrix \(A\) has two eigenvectors \(\vec{u} = \begin{bmatrix} 2 \\ 1 \end{bmatrix}\) and \(\vec{u} = \begin{bmatrix} -3 \\ 1 \end{bmatrix}\). We will learn how to find them later. Take for granted that
+%   \[
+%     A \vec{u} = \frac{3}{2} \vec{u}
+%     \quad\text{and}\quad
+%     A \vec{v} = - \vec{v}.
+%   \]
+%
+%   Therefore, \(A^{t} \vec{u} = \underline{\hspace{1in}}\) and \(A^{t} \vec{v} = \underline{\hspace{1in}}\).
+%
+%   \blanklines{10}
+%
+%   % a = 40 and b = 10
+%   We can express \(\vec{x}(0) = \underline{\hspace{1cm}} \begin{bmatrix} 2 \\1 \end{bmatrix} + \underline{\hspace{1cm}} \begin{bmatrix} -3 \\ 1\end{bmatrix}\) using Method~\ref{method:linear-combination} on page~\pageref{method:linear-combination}.
+%
+%   \blanklines{10}
+%
+%   This is enough theory to easily calculate \(\vec{x}(t)\) for any \(t \ge 0\).
+%
+%   \blanklines{10}
+% \end{example}
+%
+% \faStar{} This week's goal is to get to finding eigenvectors and eigenvalues as quickly as we can.
+% \clearpage
+
+We need a little bit of theory to find special vectors so that the effect of \(A\vec{v}\) is a sufficiently simple.
+
+\begin{itemize}
+  \item Add and subtract matrices by adding and subtracting entries in the same coordinates.
+
+    For \(2\)-by-\(2\) matrices, 
+    \[
+      \begin{bmatrix}
+        a & b \\ 
+        c & d
+      \end{bmatrix}
+      +
+      \begin{bmatrix}
+        e & f \\ 
+        g & h
+      \end{bmatrix}
+      =
+      \begin{bmatrix}
+        a + e & b + f \\ 
+        c + g & d + h
+      \end{bmatrix}.
+    \]
+
+    For \(3\)-by-\(3\) matrices,
+    \[
+      \begin{bmatrix}
+        a_{1} & b_{1} & c_{1} \\
+        d_{1} & e_{1} & f_{1} \\
+        g_{1} & h_{1} & i_{1}
+      \end{bmatrix}
+      +
+      \begin{bmatrix}
+        a_{2} & b_{2} & c_{2} \\
+        d_{2} & e_{2} & f_{2} \\
+        g_{2} & h_{2} & i_{2}
+      \end{bmatrix}
+      +
+      \begin{bmatrix}
+        a_{1} + a_{2} & b_{1} + b_{2} & c_{1} + c_{2} \\
+        d_{1} + d_{2} & e_{1} + e_{2} & f_{1} + f_{2} \\
+        g_{1} + g_{2} & h_{1} + h_{2} & i_{1} + i_{2}
+      \end{bmatrix}.
+    \]
+
+    In general, the \(i\)-th row and \(j\)-th column of \(A + B\) is \(A_{ij} + B_{ij}\).
+
+  \item We can multiply a matrix by a constant (scalar in matrix/linear algebra lingo) by multiplying each entry in the matrix by the constant.
+
+    \[
+      \lambda 
+      \begin{bmatrix}
+        a & b \\ 
+        c & d
+      \end{bmatrix}
+      = 
+      \begin{bmatrix}
+        \lambda a & \lambda b \\ 
+        \lambda c & \lambda d
+      \end{bmatrix}
+      \qquad\text{and}\qquad
+      \lambda 
+      \begin{bmatrix}
+        a & b & c \\
+        d & e & f \\
+        g & h & i
+      \end{bmatrix}
+      = 
+      \begin{bmatrix}
+        \lambda a & \lambda b & \lambda c \\
+        \lambda d & \lambda e & \lambda f \\
+        \lambda g & \lambda h & \lambda i
+      \end{bmatrix}
+    \]
+
+  \item The determinant of a matrix \(A\) is a number, denoted as \(\det(A)\).
+
+    For \(2\)-by-\(2\) matrices,
+    \[
+      \det 
+      \begin{bmatrix}
+        a & b \\
+        c & d
+      \end{bmatrix} 
+      =
+      ad - bc.
+    \]
+
+    For \(3\)-by-\(3\) matrices,
+    \[
+      \det 
+      \begin{bmatrix}
+        a & b & c \\
+        e & f & g \\
+        h & i & j
+      \end{bmatrix} 
+      =
+      a \cdot \det 
+      \begin{bmatrix}
+        f & g \\
+        i & j
+      \end{bmatrix} 
+      -
+      b \cdot \det 
+      \begin{bmatrix}
+        e & g \\
+        h & j
+      \end{bmatrix} 
+      +
+      c \cdot \det 
+      \begin{bmatrix}
+        e & f \\
+        h & i
+      \end{bmatrix} 
+    \]
+    Notice the signs alternate.
+
+  \item We talked about matrix multiplication.
+    \[
+      \begin{bmatrix}
+        a_{11} & a_{12} \\
+        a_{21} & a_{22}
+      \end{bmatrix}
+      \begin{bmatrix}
+        b_{11} & b_{12} \\
+        b_{21} & v_{22}
+      \end{bmatrix}
+      =
+      \begin{bmatrix}
+        a_{11}b_{11} + a_{12}b_{21} &  a_{11}b_{21} + a_{12}b_{22} \\
+        a_{21}b_{11} + a_{22}b_{21} &  a_{21}b_{21} + a_{22}b_{22}
+      \end{bmatrix}
+    \]
+    In general, the \(i\)-th row and \(i\)-th column in \(AB\) is \(A_{i1}B_{1j} + A_{i2}B_{2j} + \cdots + A_{in}B_{nj}\).
+
+  \item Lastly, we talked about linearly
+    \[
+      A (\lambda \vec{u} + \mu \vec{v}) = \lambda A\vec{u} + \mu A \vec{v},
+    \]
+    where \(A\) is a matrix and \(\vec{u}, \vec{v}\) are vectors, and \(\lambda, \mu\) are constants.
+\end{itemize}
+\vfill{}
+
+{\footnotesize \faExclamationTriangle{} Be aware that the overwhelming majority of matrix-related resource on the internet is dedicated to linear algebra as a general topic. Top-ranked search results are probably far more complicated than what we need in this course. No clue whether AI gives you sufficiently simple information.}
+\clearpage
+
+Finding roots of the characteristic polynomial of a matrix is the first step in a chain of calculations to find eigenvectors.
+
+\begin{definition}
+  The characteristic polynomial for an \(n\)-by-\(n\) matrix \(A\) is \(\det(A - xI_{n})\) where \(I_{n}\) is the identity matrix.
+\end{definition}
+
+\faStar{} The quadratic formula is useful. The roots of \(ax^{2} + bx + c\) are \(\frac{-b \pm \sqrt{b^{2} - 4ac}}{2a}\).
+
+\begin{example}
+  Write down the characteristic polynomial of \(\begin{bmatrix} 2 & 0 \\ -2 & -1 \end{bmatrix}\) and find its roots.
+
+  \blanklines{15}
+\end{example}
+
+\begin{example}
+  Write down the characteristic polynomial of \(\begin{bmatrix} 1 & 0 & 2\\ 0 & 2 & 1 \\ 0 & 0 & 3 \end{bmatrix}\) and find its roots.
+
+  \blanklines{25}
+\end{example}
+\clearpage
+\end{document}

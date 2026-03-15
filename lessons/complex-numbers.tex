@@ -13,46 +13,10 @@ Complex numbers come from the theoretical need to solve equations such as \(x^{2
     i^{2} = \underline{\hspace{1cm}}.
   \]
 
-  \hlmain{Complex numbers} are \hlsupp{polynomials in \(i\)}, but powers of \(i\) \hlwarn{must be simplified}.
-  % polynomials in i
-
-  A complex number can always be simplified to \underline{\hspace{2cm}} where \underline{\hspace{1.5in}}. In this simplified form, its \hlmain{real part} is \underline{\hspace{1cm}}, and \hlmain{imaginary part} is \underline{\hspace{1cm}}.
+  \hlmain{Complex numbers} are \(a + bi\) where \(a,b\) are real numbers. In this form, \(a\) is called its real part, and \(b\) its imaginary part.
 \end{definition}
-\faStar{} Think about \(i\) as a symbolic shorthand for \(\sqrt{-1}\) and use your high school algebra intuition.
 
-
-\begin{example}
-  Identify the real and imaginary parts of each complex number below. 
-
-  \begin{itemize}[wide]
-    \item \(-\pi + 3i - 5i + \sqrt{-2}\)
-
-      \blanklines{12}
-
-    \item \(-5 + i^{30} \)
-
-      \blanklines{12}
-      \clearpage
-
-    \item \((3 + 5i) (4 - 6i^{3})\)
-
-      \blanklines{12}
-
-    \item \(\frac{1 + 2i}{1 + 2i + \sqrt{-4}}\)
-
-      \blanklines{12}
-  \end{itemize}
-\end{example}
-
-For any complex number \emph{simplified} to the form \(z = a + bi\) where \(a,b\) are \underline{\hspace{3cm}}, define its \hlmain{complex conjugate} to be \(\bar{z} = \underline{\hspace{1in}}\) and its \hlmain{length} to be \(|z| = \underline{\hspace{3cm}}\).  It follows that division has a shorter formula
-\[
-  \frac{1}{z} = \hspace{1in}
-\]
-
-\blanklines{5}
-\clearpage
-
-\faStar{} We use complex numbers and the quadratic formula to solve equations appearing later this week.
+\faStar{} We use complex numbers and the quadratic formula to find roots of characteristic polynomials of matrices.
 \begin{example}
   Let \(\lambda\) be an unknown. Solve \((\lambda - 5) (\lambda^{2} + 5) = 0\).
 
@@ -60,28 +24,49 @@ For any complex number \emph{simplified} to the form \(z = a + bi\) where \(a,b\
 \end{example}
 
 \begin{example}
-  Let \(\lambda\) be an unknown. Solve \(\lambda^{2} + 3\lambda + 1 = 0\).
+  Let \(\lambda\) be an unknown. Solve \(\lambda^{2} + \lambda + 3 = 0\).
 
-  \blanklines{15}
-\end{example}
-
-\begin{example}
-  Let \(\lambda\) be an unknown. Solve \((\lambda - 10) (\lambda^{2} + 5\lambda + 7) = 0\).
-
-  \blanklines{15}
+  \blanklines{20}
 \end{example}
 \clearpage
 
-We can visualize algebraic operations for complex numbers because they can always be simplified to the form \(a + bi\) where \(a,b\) are real numbers.
+We will need to do a little of arithmetic with complex numbers down the road.
+
+\begin{definition}
+  Arithmetic rules of complex numbers.
+  \begin{align*}
+    i^{2} &= -1 \\
+    (a + bi) + (c + di) &= (a + c) + (b + d)i \\
+    (a + bi) - (c + di) &= (a - c) + (b - d)i \\
+    (a + bi)(c + di) &= (ac - bd) + (ad + bc)i.
+  \end{align*}
+\end{definition}
+
+To simplify a complex number is to write it in the form of \(a + bi\).
 
 \begin{example}
-  Visualize \((2 + 3i) + (-1 + i)\) and \(i (4 + i)\).
+  Perform the following operations and simplify.
 
-  \begin{center}
-  \includegraphics{../standalones/plot-complex-plane}
-  \quad
-  \includegraphics{../standalones/plot-complex-plane}
-  \end{center}
+  \begin{itemize}[wide]
+    \item \(\left(\frac{1}{3} + i\right)\left(1 - \frac{i}{2}\right) = \)
+
+      \blanklines{10}
+      
+    \item \((3 + 4i)(3 - 4i) = \)
+
+      \blanklines{10}
+
+  \end{itemize}
+\end{example}
+
+\begin{definition}
+  Complex division \(\frac{a + bi}{c + di} = \frac{(a + bi)(c-di)}{c^{2} + d^{2}}\).
+\end{definition}
+
+\begin{example}
+  Simplify \(\frac{1 - 2i}{3 + 4i}\).
+
+  \blanklines{5}
 \end{example}
 
 \end{document}

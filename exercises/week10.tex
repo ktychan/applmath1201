@@ -18,7 +18,7 @@
 \setcounter{chapter}{10}
 
 \begin{exercise}
-  The mean and standard deviation of last year's final exam were \(70\) and \(12\), respectively.  This year, the mean and standard deviation for the final exam is \(72\) and \(14\). 
+  The sample mean and sample standard deviation of last year's final exam were \(70\) and \(12\), respectively.  This year, the mean and standard deviation for the final exam is \(72\) and \(14\). 
 
   \begin{enumerate}
     \item Which year's students performed better on the final exam.
@@ -27,80 +27,177 @@
 \end{exercise}
 
 \begin{exercise}
-  Let \(\vec{x}(t)\) be the numbers of juveniles and adults, respectively, in a population at time \(t\) in years. Every adult in the population produces, on average, \(2\) juveniles in the population next year. Every adult in the population survives to the next year with probability \(1/3\). Every juvenile survives to be an adult next year with probability \(1/2\).
-
-  Develop a discrete-time model for the population.
+  Suppose we have a set of sample data with standard deviation \(1.37\). If the \(z\)-score of a measurement (value - sample mean) is \(-2.5\).  What is the actual value of the measurement if the sample mean is \(3\)?
 \end{exercise}
 
 \begin{exercise}
-  Perform the following matrix-vector multiplication.
+  Let \(\vec{x}(t)\) be the number of juveniles and adults, respectively, in a population at time \(t\) in years. Every adult in the population produces, on average, \(2\) juveniles in the population next year. Every adult in the population survives to the next year with probability \(1/3\). Every juvenile survives to be an adult next year with probability \(1/2\).
+
+  Develop a discrete-time model for the population.  Find \(\vec{x}(3)\).
+\end{exercise}
+
+\begin{exercise}
+  Perform the following vector operations pictorially.  Verify that your sketch is correct by performing the operations algebraically.
+
+  \begin{itemize}
+    \item \(-3 \begin{bmatrix} 3 \\ 1 \end{bmatrix}\).
+    \item \(-2 \begin{bmatrix} 2 \\ -3 \end{bmatrix}\).
+    \item \(\begin{bmatrix} -3/2 \\ -4 \end{bmatrix} + \begin{bmatrix} 3 \\ -1/2 \end{bmatrix}\).
+    \item \(\begin{bmatrix} 1 \\ -2 \end{bmatrix} - \begin{bmatrix} 2 \\ 3 \end{bmatrix}\).
+  \end{itemize}
+\end{exercise}
+
+\begin{exercise}
+  Find \(a\) that satisfies the matrix-vector equations \(\begin{bmatrix} 1 & a \\ 0 & -1 \end{bmatrix} \begin{bmatrix} 3 \\ 7 \end{bmatrix} = \begin{bmatrix} 38 \\ -7 \end{bmatrix}\).
+
+  % \begin{solution}
+  %   Note that \(1 \times 3 + a \times 7 = 38\). Therefore, \(a = 5\).
+  % \end{solution}
+\end{exercise}
+
+\begin{exercise}
+  Consider the following transition diagram that models an age-structured population where \(x_{1}(t), x_{2}(t), x_{3}(t)\) count juveniles, adolescence and adults at time \(t\), respectively.
+
+  \begin{tikzpicture}[transition diagram]
+    \node[class] (A) at ( 120:1) {\(x_{1}\)};
+    \node[class] (B) at (   0:1) {\(x_{2}\)};
+    \node[class] (C) at ( 240:1) {\(x_{3}\)};
+
+    % forward loop
+    \path[->] (A) edge [bend  left] node[above] {\(70\%\)} (B);
+    \path[->] (B) edge [bend  left] node[below] {\(50\%\)} (C);
+    \path[->] (C) edge [bend  left] node[ left] {\(80\%\)} (A);
+
+    % backwards loop
+    % \path[->] (A) edge [bend  left] node[ left] {AC} (C);
+    % \path[->] (C) edge [bend  left] node[below] {CB} (B);
+    \path[->] (B) edge [bend  left] node[above] {\(p\)} (A);
+
+    \path[->] (A) edge [loop  left] node[left ] {\(10\%\)} (A);  
+    \path[->] (B) edge [loop right] node[right] {\(20\%\)} (B);  
+    % \path[->] (C) edge [loop  left] node[left ] {CC} (C);
+  \end{tikzpicture}
 
   \begin{enumerate}
-    \item \(\begin{bmatrix} 1 & -3 \\ -2 & -1 \end{bmatrix} \begin{bmatrix} x_{1} \\ x_{2}\end{bmatrix}\)
-    \item \(\begin{bmatrix} a & 1/2 \\ 1/2 & 1 \end{bmatrix} \begin{bmatrix} 3 \\ 5 \end{bmatrix}\)
+    \item Describe the transition from juveniles to adolescence in words. How many juveniles becomes adults in one time tick? How many juveniles do not survive in one time tick? How many juveniles stay as juveniles in one time tick?
+    \item What portion of the juveniles do not survive to become adolescence?
+    \item What does the arrow labelled \(p\) represent?
+    \item What are the birth and death rates in adults?
+    \item Translate the diagram into a (vector) recurrence.
+    \item Describe the transition \emph{between} any two subpopulation in words.
+    \item Assume \(p = 0\). Find \(x_{3}(2)\) if \(\vec{x}(0) = \begin{bmatrix} 0 \\ 100 \\ 200 \end{bmatrix}\).
   \end{enumerate}
 \end{exercise}
 
 \begin{exercise}
-  Express the following transition diagram as a (vector) recurrence.
+  Vector recurrence and transition diagrams can do more than modelling age-structure populations. The idea can be applied to model transitions among any states. 
 
-  \begin{tikzpicture}[transition diagram]
-    \node[class] (A) at (   0:1) {A};
-    \node[class] (B) at ( 120:1) {B};
-    \node[class] (C) at ( 240:1) {C};
-    
-    \path[->] (A) edge [bend  left] node[below] {AC} (C);
-    \path[->] (C) edge [bend  left] node[below] {CA} (A);
-    \path[->] (A) edge [bend  left] node[above] {AB} (B);
-    \path[->] (B) edge [bend  left] node[above] {BA} (A);
-    \path[->] (B) edge [bend  left] node[ left] {BC} (C);
-    \path[->] (C) edge [bend  left] node[ left] {CB} (B);
+  Let \(x_{1}(t), x_{2}(t), x_{3}(t)\) represent the probability of rain, snow and no precipitation at time \(t\) (measured in hours).  
+  \begin{itemize}
+    \item If it is raining at time \(t\), then the probability of rain, snow and no precipitation at time \(t+1\) is \(0.6, 0.1, 0.3\) respectively.
+    \item If it is snowing at time \(t\), then the probability of rain, snow and no precipitation at time \(t+1\) is \(0.2, 0.5, 0.3\) respectively.
+    \item If it is neither raining nor snowing at time \(t\), then the probability of rain, snow and no precipitation at time \(t+1\) is \(0.1, 0.1, 0.8\) respectively.
+  \end{itemize}
+  Assume further that these are the only three weather states possible.  
+  \begin{itemize}
+    \item Sketch the transition diagram for the three weather states.
+    \item Model the \(\vec{x}(t)\) as a vector recurrence.  
+    \item Find \(\vec{x}(2)\). What does its entries represent?
+  \end{itemize}
 
-    \path[->] (A) edge [loop right] node[right] {A} (A);  
-    \path[->] (B) edge [loop  left] node[right] {BB} (B);  
-    \path[->] (C) edge [loop  left] node[right] {CC} (C);  
-  \end{tikzpicture}
+  % The transition diagram below models weather changes where \(p_{1}(t), p_{2}(t), p_{3}(t)\) represent the probability of rain, snow and no precipitation at time \(t\).  The arrows on the outside point clockwise. The arrows on the inside point counterclockwise.
+  
+  % \begin{tikzpicture}[transition diagram]
+  %   \node[class] (A) at ( 120:1) {\(p_{2}\)};
+  %   \node[class] (B) at (   0:1) {\(p_{3}\)};
+  %   \node[class] (C) at ( 240:1) {\(p_{1}\)};
+  %
+  %   % forward loop
+  %   \path[->] (A) edge [bend  left] node[above] {\(10\%\)} (B);
+  %   \path[->] (B) edge [bend  left] node[below] {\(15\%\)} (C);
+  %   \path[->] (C) edge [bend  left] node[left]  {\(5\%\)} (A);
+  %
+  %   % forward loop
+  %   \path[->] (A) edge [bend  left] node[ left] {\(\%\)} (C);
+  %   \path[->] (C) edge [bend  left] node[below] {\(50\%\)} (B);
+  %   \path[->] (B) edge [bend  left] node[above] {\(50\%\)} (A);
+  %
+  %   \path[->] (A) edge [loop  left] node[left ] {\(\%\)} (A);  
+  %   \path[->] (B) edge [loop right] node[right] {\(\%\)} (B);  
+  %   \path[->] (C) edge [loop  left] node[left ] {\(\%\)} (C);  
+  % \end{tikzpicture}
+
+  % Assume these are the only weather states possible. 
+  % \begin{enumerate}
+  %   \item At any given node, which arrows should add up to \(1\)? The outgoing ones or the incoming ones?
+  %   \item Find the missing numbers.
+  %   \item Translate the diagram into a (vector) recurrence.
+  %   \item If \(\vec{p}(0) = \begin{bmatrix} 0.5\\0.5\\0\end{bmatrix}\), is it more likely to rain or snow at time \(t = 3\)?
+  % \end{enumerate}
 \end{exercise}
 
 \begin{exercise}
-  Draw the transition diagram for the following vector recurrence.
+  A company tracks its workforce in three career-stage categories.
+  Suppose \(x_{1}(t), x_{2}(t), x_{3}(t)\) represent the number of entry-level, mid-career and senior employees at year \(t\).  
+  \begin{itemize}
+    \item Senior employees generate \(1.2\) new entry-level hires per senior employee per year.
+    \item \(60\%\) of entry-level employees are promoted to mid-career roles each year. The rest leave the company.
+    \item \(70\%\) of mid-career employees are promoted to a senior positions each year. \(10\%\) leave the company. The rest stay without promotions.
+    \item \(90\%\) of senior employees stays with the business every year.
+  \end{itemize}
+  Initially, there are \(300\) entry-level, \(200\) mid-career and \(100\) senior employees.  Sketch the transition diagram and model the workforce as a vector recurrence.
 \end{exercise}
 
 \begin{exercise}
-  Find a pattern to calculate the following matrix operations.
+  A biologist is studying the population dynamics of a species of frogs with three subpopulations tadpoles \(x_{1}(t)\), juveniles \(x_{2}(t)\) and adults \(x_{3}(t)\). Suppose the population dynamics are modelled by the recurrence
+  \[
+    \vec{x}(t+1) =
+    \begin{bmatrix}
+      0 & 0 & 120 \\
+      0.25 & 0 & 0 \\
+      0 & 0.4 & 0.85
+    \end{bmatrix}
+    \vec{x}(t).
+  \]
+  Describe, in words, the transition among subpopulations from year \(t\) to year \(t + 1\).
 \end{exercise}
 
 \begin{exercise}
+  Consider a vector recurrence \(\vec{x}(t+1) = A \vec{x}\).  The arrows in its vector field are described by \(\vec{v} = \begin{bmatrix} 1 & 1 \\ -1 & 1 \end{bmatrix}\vec{x}\) where \(\vec{x}\) represents arbitrary points in the plane. In other words, \(\vec{v}\) is an arrow in the vector field drawn by placing its tail at the tip of \(\vec{x}\). Find \(A\).
 \end{exercise}
 
 \begin{exercise}
-\end{exercise}
+  Find the unknown constants \(a,b\) in the following equations.
 
-\begin{exercise}
+  \begin{itemize}
+    \item \(\begin{bmatrix} -13 \\ 18 \end{bmatrix} = a \begin{bmatrix} -2 \\ 5 \end{bmatrix} + b \begin{bmatrix} 3 \\ 7 \end{bmatrix}\).
+      % a = 5, b = -1
+    \item \(\begin{bmatrix} 1/2 \\ -7/3 \end{bmatrix} = a \begin{bmatrix} 2 \\ -1 \end{bmatrix} + b \begin{bmatrix} -3 \\ 4 \end{bmatrix}\).
+      % a = 1/2, b = 2
+    \item \(\begin{bmatrix} -5/6 \\ 7/15 \end{bmatrix} = a \begin{bmatrix} 1 \\ 1/5 \end{bmatrix} + b \begin{bmatrix} 1/2 \\ 2 \end{bmatrix}\).
+      % a = -1, b = 1/3
+    \item \(\begin{bmatrix} 4 \\ 9 \\ -7 \end{bmatrix} = a \begin{bmatrix} 1 \\ -3 \\ 2 \end{bmatrix} + b \begin{bmatrix} -2 \\ 5 \\ 1 \end{bmatrix} + c \begin{bmatrix} 0 \\ 4 \\ -3 \end{bmatrix}\).
+  \end{itemize}
 \end{exercise}
-
-\begin{exercise}
-\end{exercise}
-
-\begin{exercise}
-\end{exercise}
-
 \end{document}
 
 % transition diagram template
 \begin{tikzpicture}[transition diagram]
-    \node[class] (A) at (   0:1) {A};
-    \node[class] (B) at ( 120:1) {B};
-    \node[class] (C) at ( 240:1) {C};
-    
-    \path[->] (A) edge [bend  left] node[below] {AC} (C);
-    \path[->] (C) edge [bend  left] node[below] {CA} (A);
-    \path[->] (A) edge [bend  left] node[above] {AB} (B);
-    \path[->] (B) edge [bend  left] node[above] {BA} (A);
-    \path[->] (B) edge [bend  left] node[ left] {BC} (C);
-    \path[->] (C) edge [bend  left] node[ left] {CB} (B);
+  \node[class] (A) at ( 120:1) {A};
+  \node[class] (B) at (   0:1) {B};
+  \node[class] (C) at ( 240:1) {C};
 
-    \path[->] (A) edge [loop right] node[right] {A} (A);  
-    \path[->] (B) edge [loop  left] node[right] {BB} (B);  
-    \path[->] (C) edge [loop  left] node[right] {CC} (C);  
-  \end{tikzpicture}
+  % forward loop
+  \path[->] (A) edge [bend  left] node[above] {AB} (B);
+  \path[->] (B) edge [bend  left] node[below] {BC} (C);
+  \path[->] (C) edge [bend  left] node[left]  {CA} (A);
+
+  % forward loop
+  \path[->] (A) edge [bend  left] node[ left] {CA} (C);
+  \path[->] (C) edge [bend  left] node[below] {CB} (B);
+  \path[->] (B) edge [bend  left] node[above] {BA} (A);
+
+  \path[->] (A) edge [loop  left] node[left ] {AA} (A);  
+  \path[->] (B) edge [loop right] node[right] {BB} (B);  
+  \path[->] (C) edge [loop  left] node[left ] {CC} (C);  
+\end{tikzpicture}

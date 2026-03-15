@@ -50,6 +50,106 @@
     \end{enumerate}
   \end{multicols}
 
+  \begin{solution}
+    \begin{enumerate}
+      \item See below.
+
+        \begin{tikzpicture}
+          \begin{axis}[grid=major, xmin=-0.5, xmax=9.5, ymin=0, ymax=1, title={PMF}]
+            \addplot[very thick, black] coordinates { (1, 0)  (1, 0.05) };
+            \addplot[very thick, black] coordinates { (2, 0)  (2, 0.10) };
+            \addplot[very thick, black] coordinates { (3, 0)  (3, 0.15) };
+            \addplot[very thick, black] coordinates { (4, 0)  (4, 0.20) };
+            \addplot[very thick, black] coordinates { (5, 0)  (5, 0.10) };
+            \addplot[very thick, black] coordinates { (6, 0)  (6, 0.15) };
+            \addplot[very thick, black] coordinates { (7, 0)  (7, 0.05) };
+            \addplot[very thick, black] coordinates { (8, 0)  (8, 0.10) };
+            \addplot[very thick, black] coordinates { (9, 0)  (9, 0.10) };
+            \addplot[very thick, only marks, mark=*] coordinates {
+                (1, 0.05)
+                (2, 0.10)
+                (3, 0.15)
+                (4, 0.20)
+                (5, 0.10)
+                (6, 0.15)
+                (7, 0.05)
+                (8, 0.10)
+                (9, 0.10)
+              };
+          \end{axis}
+        \end{tikzpicture}
+
+      \item Note
+        \[
+          F(x) = 
+          \begin{cases}
+            0.05 & x = 1 \\
+            0.15 & x = 2 \\
+            0.30 & x = 3 \\
+            0.50 & x = 4 \\
+            0.60 & x = 5 \\
+            0.75 & x = 6 \\
+            0.80 & x = 7 \\
+            0.90 & x = 8 \\
+            1    & x = 9 \\
+          \end{cases}
+        \]
+        
+      \item See below.
+
+        \begin{tikzpicture}
+          \begin{axis}[grid=major, xmin=-0.5, xmax=9.5, ymin=0, ymax=1, title={CDF}]
+            \addplot[very thick, black] coordinates { (-1,    0)  ({ 1-0.07}, 0   ) };
+            \addplot[very thick, black] coordinates { ( 1, 0.05)  ({ 2-0.07}, 0.05) };
+            \addplot[very thick, black] coordinates { ( 2, 0.15)  ({ 3-0.07}, 0.15) };
+            \addplot[very thick, black] coordinates { ( 3, 0.30)  ({ 4-0.07}, 0.30) };
+            \addplot[very thick, black] coordinates { ( 4, 0.50)  ({ 5-0.07}, 0.50) };
+            \addplot[very thick, black] coordinates { ( 5, 0.60)  ({ 6-0.07}, 0.60) };
+            \addplot[very thick, black] coordinates { ( 6, 0.75)  ({ 7-0.07}, 0.75) };
+            \addplot[very thick, black] coordinates { ( 7, 0.80)  ({ 8-0.07}, 0.80) };
+            \addplot[very thick, black] coordinates { ( 8, 0.90)  ({ 9-0.07}, 0.90) };
+            \addplot[very thick, black] coordinates { ( 9, 1   )  ({10-0.07}, 1   ) };
+            \addplot[very thick, only marks, mark=o] coordinates {
+                (1, 0.00)
+                (2, 0.05)
+                (3, 0.15)
+                (4, 0.30)
+                (5, 0.50)
+                (6, 0.60)
+                (7, 0.75)
+                (8, 0.80)
+                (9, 0.90)
+              };
+            \addplot[very thick, only marks, mark=*] coordinates {
+                (1, 0.05)
+                (2, 0.15)
+                (3, 0.30)
+                (4, 0.50)
+                (5, 0.60)
+                (6, 0.75)
+                (7, 0.80)
+                (8, 0.90)
+                (9, 1.00)
+              };
+          \end{axis}
+        \end{tikzpicture}
+
+      \item \(\mathbb{P}(3   < X \le 5) = f(4) + f(5) = 0.3\)
+      \item \(\mathbb{P}(2 \le X \le 9) = f(2) + f(3) + \cdots + f(9) = 1 - f(1) = 0.95\).
+      \item \(\mathbb{P}(4 \le X \le 6) = f(4) + f(5) + f(6) = 0.45\).
+      \item \(\mathbb{P}(X \le 6) = F(6) = 0.75\).
+      \item \(\mathbb{P}(X < 6) = \mathbb{P}(X \le 5) = F(5) = 0.10\).
+      \item \(\mathbb{P}(X \ge 4) = 1 - \mathbb{P}(X \le 3) = 1 - F(3) = 0.7\).
+      \item \(\mathbb{P}(X \ge 4) = 1 - \mathbb{P}(X \le 3) = 1 - F(3) = 0.7\).
+      \item We can just apply the relevant formulas.
+        \[
+          \mu = E(X) = \sum_{x=1}^{9} x f(i) = 4.95, \qquad
+          V(X) = \sum_{x=1}^{9}(x - \mu)^{2}f(i) = 5.3475, \qquad
+          \sigma = \sqrt{5.3475}
+        \]
+    \end{enumerate}
+  \end{solution}
+
 \end{exercise}
 
 \begin{exercise}
@@ -85,6 +185,108 @@
       \item Calculate its expectation, variance and standard deviation.
     \end{enumerate}
   \end{multicols}
+
+  \begin{solution}
+    \begin{enumerate}
+      \item See below.
+
+        \begin{tikzpicture}
+          \begin{axis}[grid=major, xmin=-5.5, xmax=10.5, ymin=0, ymax=1, title={CDF}]
+            \addplot[very thick, black] coordinates { (-6,    0)  ({-5-0.10}, 0   ) };
+            \addplot[very thick, black] coordinates { (-5, 0.07)  ({-3-0.10}, 0.07) };
+            \addplot[very thick, black] coordinates { (-3, 0.18)  ({-2-0.10}, 0.18) };
+            \addplot[very thick, black] coordinates { (-2, 0.29)  ({ 0-0.10}, 0.29) };
+            \addplot[very thick, black] coordinates { ( 0, 0.43)  ({ 1-0.10}, 0.43) };
+            \addplot[very thick, black] coordinates { ( 1, 0.61)  ({ 2-0.10}, 0.61) };
+            \addplot[very thick, black] coordinates { ( 2, 0.72)  ({ 4-0.10}, 0.72) };
+            \addplot[very thick, black] coordinates { ( 4, 0.85)  ({ 7-0.10}, 0.85) };
+            \addplot[very thick, black] coordinates { ( 7, 0.93)  ({10-0.10}, 0.93) };
+            \addplot[very thick, black] coordinates { (10, 1   )  ({11     }, 1   ) };
+            \addplot[very thick, only marks, mark=o] coordinates {
+                (-5, 0.00)
+                (-3, 0.07)
+                (-2, 0.18)
+                ( 0, 0.29)
+                ( 1, 0.43)
+                ( 2, 0.61)
+                ( 4, 0.72)
+                ( 7, 0.85)
+                (10, 0.93)
+              };
+            \addplot[very thick, only marks, mark=*] coordinates {
+                (-5, 0.07)
+                (-3, 0.18)
+                (-2, 0.29)
+                ( 0, 0.43)
+                ( 1, 0.61)
+                ( 2, 0.72)
+                ( 4, 0.85)
+                ( 7, 0.93)
+                (10, 1)
+              };
+          \end{axis}
+        \end{tikzpicture}
+
+      \item Note
+        \[
+          f(x) = 
+          \begin{cases}
+            0.07 & x = -5 \\
+            0.11 & x = -3 \\
+            0.11 & x = -2 \\
+            0.14 & x =  0 \\
+            0.18 & x =  1 \\
+            0.11 & x =  2 \\
+            0.13 & x =  4 \\
+            0.08 & x =  7 \\
+            0.07 & x =  10 \\
+          \end{cases}
+        \]
+
+      \item See below.
+
+        \begin{tikzpicture}
+          \begin{axis}[grid=major, xmin=-6, xmax=10.5, ymin=0, ymax=0.25, title={PMF}]
+            \addplot[very thick, black] coordinates { (-5, 0)  (-5, 0.07) };
+            \addplot[very thick, black] coordinates { (-3, 0)  (-3, 0.11) };
+            \addplot[very thick, black] coordinates { (-2, 0)  (-2, 0.11) };
+            \addplot[very thick, black] coordinates { ( 0, 0)  ( 0, 0.14) };
+            \addplot[very thick, black] coordinates { ( 1, 0)  ( 1, 0.18) };
+            \addplot[very thick, black] coordinates { ( 2, 0)  ( 2, 0.11) };
+            \addplot[very thick, black] coordinates { ( 4, 0)  ( 4, 0.13) };
+            \addplot[very thick, black] coordinates { ( 7, 0)  ( 7, 0.08) };
+            \addplot[very thick, black] coordinates { (10, 0)  (10, 0.07) };
+            \addplot[very thick, only marks, mark=*] coordinates {
+                (-5, 0.07)
+                (-3, 0.11)
+                (-2, 0.11)
+                ( 0, 0.14)
+                ( 1, 0.18)
+                ( 2, 0.11)
+                ( 4, 0.13)
+                ( 7, 0.08)
+                (10, 0.07)
+              };
+          \end{axis}
+        \end{tikzpicture}
+
+      \item \(\mathbb{P}(3   < X \le 5) = F(4) - F(2) = 0.85 - 0.72 = 0.13\)
+      \item \(\mathbb{P}(2 \le X <   9) = F(7) - F(1) = 0.93 - 0.61 = 0.32\)
+      \item \(\mathbb{P}(4 \le X \le 6) = f(4) = 0.13\)
+      \item \(\mathbb{P}(X \le 6) = F(6) = 0.85\)
+      \item \(\mathbb{P}(X > 3) = 1 - F(2) = 0.39\)
+      \item \(\mathbb{P}(X > 5) = 1 - F(4) = 0.15\)
+      \item \(\mathbb{P}(X \ge -2) = 1 - F(-3) = 0.93\)
+      \item Apply the relevant formulas
+        \[
+          \mu = E(X) = 1.72, 
+          \qquad
+          \sigma^{2} = V(X) = 13.8416,
+          \qquad
+          \sigma = \sqrt{13.8416} \approx 3.72
+        \]
+    \end{enumerate}
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
@@ -142,6 +344,27 @@
       \end{axis}
     \end{tikzpicture}
   \end{center}
+
+  \begin{solution}
+    Note that \(\mathbb{P}(-3 < X \le 8) = \mathbb{P}(-1 \le X \le 5)\), which is roughly \(0.5\). From the PMF graph, we see that \(\mathbb{P}(X = -1)\) is roughly \(0.2\).
+
+    \begin{tikzpicture}
+      \begin{axis}[grid=major, xmin=-6, xmax=10.5, ymin=0, ymax=1, title={PMF}]
+        \addplot[very thick, black] coordinates { (-3, 0)  (-3, 0.12) };
+        \addplot[very thick, black] coordinates { (-1, 0)  (-1, 0.18) };
+        \addplot[very thick, black] coordinates { (-2, 0)  (-2, 0.27) };
+        \addplot[very thick, black] coordinates { ( 5, 0)  ( 5, 0.24) };
+        \addplot[very thick, black] coordinates { ( 9, 0)  ( 9, 0.19) };
+        \addplot[very thick, only marks, mark=*] coordinates {
+            (-3, 0.12)
+            (-1, 0.18)
+            (-2, 0.27)
+            ( 5, 0.24)
+            ( 9, 0.19)
+          };
+      \end{axis}
+    \end{tikzpicture}
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
@@ -177,6 +400,64 @@
     \item Calculate \(\mathbb{P}(1/2 \le X < 5.5)\).
     \item Calculate its expectation, variance and standard deviation.
   \end{enumerate}
+
+  \begin{solution}
+    This is all about the definitions of PDF and CDF.
+
+    \begin{itemize}
+      \item By definition \(F(x) = \mathbb{P}(X \le x) = \int_{-\infty}^{x} f(x) \;dx\).  
+        \begin{itemize}
+          \item If \(0 \le x \le 1\), then we have
+            \[
+              F(x) = \int_{0}^{x} \frac{1}{2}t \;dt = \frac{x^{2}}{4}.
+            \]
+
+          \item If \(2 \le x \le 3\), then we have
+            \[
+              F(x) = F(1) + \int_{2}^{x} \frac{1}{2}(2t - 4) \;dt = \frac{1}{4} + \frac{1}{2}(x - 2)^{2}.
+            \]
+
+          \item If \(5 \le x \le 6\), then we have
+            \[
+              F(x) = F(1) + F(3) + \int_{5}^{x} \frac{1}{2}(6 - t)\;dt = \frac{1}{4} + \frac{1}{2} - \frac{x^{2}}{4} + 3x - 35/4.
+            \]
+        \end{itemize}
+
+        Therefore, we have
+        \[
+          F(x) = 
+          \begin{cases}
+            0 & \text{if } x < 0 \\[1ex]
+            \frac{x^{2}}{4} & \text{if } 0 \le x \le 1, \\[1ex]
+            \frac{1}{4} & \text{if } 1 < x \le 2, \\[1ex]
+            \frac{1}{4} + \frac{1}{2}(x - 2)^{2} & \text{if } 2 \le x \le 3, \\[1ex]
+            \frac{1}{4} + \frac{1}{2} & \text{if } \text{if } 3 < x \le 5, \\[1ex]
+            \frac{1}{4} + \frac{1}{2} - \frac{x^{2}}{4} + 3x - 35/4 & \text{if } 5 \le x \le 6 \\[1ex]
+            1 &\text{ if } x > 6
+          \end{cases}
+        \]
+
+
+        \begin{tikzpicture}
+          \begin{axis}[grid=both, xmin=-1, xmax=6.5, ymin=-0.1, ymax=1.1, title={PDF}, minor tick num=1]
+            \addplot[main, very thick, domain=0:1] {1/2*x};
+            \addplot[supp, very thick, domain=2:3] {1/2*(2*x - 4)};
+            \addplot[warn, very thick, domain=5:6] {1/2*(6 - x)};
+          \end{axis}
+        \end{tikzpicture}
+        \begin{tikzpicture}
+          \begin{axis}[grid=both, xmin=-1, xmax=6.5, ymin=-0.1, ymax=1.1, title={CDF}, minor tick num=1]
+            \addplot[very thick, black, domain=-1:0] {0};
+            \addplot[main, very thick, domain=0:1] {x^2/4};
+            \addplot[very thick, black, domain=1:2] {1/4};
+            \addplot[supp, very thick, domain=2:3] {1/4 + 1/2*(x-2)^2};
+            \addplot[very thick, black, domain=3:5] {1/4 + 1/2};
+            \addplot[warn, very thick, domain=5:6] {1/4 + 1/2 - x^2/4 + 3*x - 35/4};
+            \addplot[very thick, black, domain=6:7] {1};
+          \end{axis}
+        \end{tikzpicture}
+    \end{itemize}
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
@@ -211,6 +492,10 @@
 
     \end{axis}
   \end{tikzpicture}
+
+  \begin{solution}
+    The PDF for Y is more spread out and hence has a higher variance and standard deviation.  Its expectation is also higher because its expectation appears roughly near the centre of its bump.
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
@@ -224,6 +509,14 @@
       0, & \text{otherwise}.
     \end{cases}
   \]
+
+  \begin{solution}
+    A valid PDF must satisfy \(\int_{-\infty}^{\infty} f(x) \;dx = 1\). Therefore,  we solve for \(a\) in the equation
+    \[
+      \int_{0}^{2} ax \;dx + \int_{4}^{6} 0.35 (6 - x) \;dx = 1.
+    \]
+    Complete the integration to get \(2a + 0.7 = 1\). Therefore, \(a = 0.15\).
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
@@ -254,8 +547,11 @@
 
     \end{axis}
   \end{tikzpicture}
+
+  \begin{solution}
+    Note that the value of CDF \(F(x)\) is the area under the curve over \((-\infty, x]\).  Since the PDF is a linear function, the CDF must be a quadratic polynomial. When \(x\) is near \(0\), a small increase in \(x\) results in a relatively big increase in the area under the curve. When \(x\) is near \(4\), a small increase in \(x\) results in a relatively small increase in the area under the curve. Therefore, the shape of CDF must resemble \(-x^{2}\) near \(0\) but on the negative side.
+  \end{solution}
 \end{exercise}
-\clearpage
 
 \begin{exercise}
   Tommy's sells mystery donut boxes. Each box is supposed to weigh the same but may contain a different number of donuts.  Over the course of a semester, someone weighed every single donut they bought and recorded the following data.  If the next 10 donuts they buy all weigh around \(15\) to \(20\) grams, how do you expect the expectation to change?
@@ -293,6 +589,10 @@
 
     \end{axis}
     \end{tikzpicture}
+
+    \begin{solution}
+      The expectation would shift slightly to the left since the new data adds more ``weight'' to the left side of the histogram.
+    \end{solution}
 \end{exercise}
 
 \begin{exercise}
@@ -300,13 +600,27 @@
 
   \begin{enumerate}
     \item \(f(x)\) is never decreasing.
-    \item \(f(x)\) is allays increasing.
+    \item \(f(x)\) is always increasing.
     \item \(E(X)\) is always positive.
     \item Variance is the square root of standard deviation.
     \item Standard deviation can be negative.
     \item \(\lim_{x \to \infty} f(x) = 1\).
     \item If \(f(x)\) is positive over \([3, 10]\), then \(f(x) \le 1/7\) over \([3,10]\).
   \end{enumerate}
+
+  \begin{solution}
+    All of the statements are common misconceptions. None of them is true.
+
+    \begin{enumerate}
+      \item False. See Exercise 9.5.
+      \item False. See Exercise 9.5.
+      \item False. See Exercise 9.6.
+      \item False. Standard deviation is the square root of variance by definition.
+      \item False. Standard deviation is a square root which cannot be negative.
+      \item False. Note \(\lim_{x \to \infty} f(x) = 0\). 
+      \item False. This is only true if \(f(x)\) is the PDF of a uniform distribution. 
+    \end{enumerate}
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
@@ -319,5 +633,40 @@
     \item Describe the probability mass function for \(X\).
     \item Find \(E(X)\).
   \end{enumerate}
+
+  \begin{solution}
+    Let \(X\) be the random variable.
+
+    \begin{enumerate}
+      \item The sample space is \(\{HHH, HHT, HTH, HTT, THH, THT, TTH, TTT\}\). These are all possible outcomes of flipping a coin three times.
+      \item Enumerating all outcomes tells us the payouts.
+
+        \begin{tabular}{c|l}
+          outcome & payout \\\midrule
+          HHH & \(3\) \\\midrule
+          HHT & \(7\) \\\midrule
+          HTH & \(7\) \\\midrule
+          HTT & \(11\) \\\midrule
+          THH & \(7\)  \\\midrule
+          THT & \(11\) \\\midrule
+          TTH & \(11\) \\\midrule
+          TTT & \(15\) 
+        \end{tabular}
+
+        Therefore, the PMF is
+        \[
+          f(x) = 
+          \begin{cases}
+            1/8 & \text{if } x = 3 \\
+            3/8 & \text{if } x = 7 \\
+            3/8 & \text{if } x = 11 \\
+            1/8 & \text{if } x = 15
+          \end{cases}
+        \]
+
+      \item The expectation is \(E(X) = 3 \cdot \frac{1}{8} + 7 \cdot \frac{3}{8} + 11 \cdot \frac{3}{8} + 15 \cdot \frac{1}{8} = \frac{72}{8} = 9\).
+    \end{enumerate}
+
+  \end{solution}
 \end{exercise}
 \end{document}
