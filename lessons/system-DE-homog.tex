@@ -54,63 +54,65 @@ You are \emph{strongly encouraged} to compare and contrast Method~\ref{method:re
 \clearpage
 
 
-\begin{example}
+\begin{exercise}
   Find the general solution for \( \frac{d\vec{x}}{dt} = \begin{bmatrix} 1 & 2  \\ 1 & 0 \end{bmatrix} \vec{x}(t) \).
 
-  \blanklines{20}
-\end{example}
+  \blanklines{50}
+\end{exercise}
+\clearpage
 
-\begin{example}
+\begin{exercise}
   Find the general solution for \( \frac{d\vec{x}}{dt} = \begin{bmatrix} 0 & -1  \\ 2 & 3 \end{bmatrix} \vec{x}(t) \).
 
-  \blanklines{30}
-\end{example}
+  \blanklines{50}
+\end{exercise}
+\clearpage
 
 % Why does Method~\ref{method:DE-homogeneous-linear-distinct-eigenvalues} work?
 % \blanklines{30}
 
 \clearpage
-More exercises.
+% More exercises.
 
-\begin{example}
-  Solve the initial-value problem \( \frac{d\vec{x}}{dt} = \begin{bmatrix} 3 & 0  \\ 0 & -2 \end{bmatrix} \vec{x}(t) \) with \(\vec{x}(0) = \begin{bmatrix} 1/2 \\ 1/3 \end{bmatrix}\).
+% \begin{example}
+%   Solve the initial-value problem \( \frac{d\vec{x}}{dt} = \begin{bmatrix} 3 & 0  \\ 0 & -2 \end{bmatrix} \vec{x}(t) \) with \(\vec{x}(0) = \begin{bmatrix} 1/2 \\ 1/3 \end{bmatrix}\).
+%
+%   \blanklines{50}
+% \end{example}
+% \clearpage
+%
+% \begin{example}
+%   Find the general and the specific solutions for
+%   \(
+%   \begin{array}{rcrcr}
+%     x'_{1}(t) &=& -2 x_{1}(t) &+&  x_{2}(t) \\
+%     x'_{2}(t) &=&    x_{1}(t) &+& 2x_{2}(t)
+%   \end{array}
+%   \) with \(
+%   \begin{array}{rcr}
+%     x_{1}(0) &=&  2 \sqrt{5} \\
+%     x_{2}(0) &=& -2 \sqrt{5} \\
+%   \end{array}
+%   \).
+%
+%   \blanklines{50}
+% \end{example}
+% \clearpage
 
-  \blanklines{50}
-\end{example}
-\clearpage
-
-\begin{example}
-  Find the general and the specific solutions for
-  \(
-  \begin{array}{rcrcr}
-    x'_{1}(t) &=& -2 x_{1}(t) &+&  x_{2}(t) \\
-    x'_{2}(t) &=&    x_{1}(t) &+& 2x_{2}(t)
-  \end{array}
-  \) with \(
-  \begin{array}{rcr}
-    x_{1}(0) &=&  2 \sqrt{5} \\
-    x_{2}(0) &=& -2 \sqrt{5} \\
-  \end{array}
-  \).
-
-  \blanklines{50}
-\end{example}
-\clearpage
-
-If the matrix \(A\) in \(\frac{d\vec{x}}{dt} = A \vec{x}(t)\) has complex eigenvalues, then the fundamental solutions have explicit expression. 
-
-\begin{definition}[fundamental solution for an eigenvector with \emph{complex} eigenvalues]
-  Euler's identity \(e^{i \theta} = \cos(\theta) + i \sin(\theta)\) gives us more explicit (but longer) expressions for fundamental solutions. 
-
-  Suppose the matrix \(A\) in \(\frac{d\vec{x}}{dt} = A \vec{x}(t)\) has complex eigenvalue \(\lambda = a + bi\) with an eigenvector \(\vec{v} = \vec{p} + \vec{q}i\) where \(a,b,\vec{p},\vec{q}\) are all real. The \hlmain{fundamental solution for \(\vec{v}\)} is
-  \[
-    e^{\lambda t} \vec{v} = \underbrace{e^{at} \bigg( \cos(bt) \vec{p} - \sin(bt) \vec{q} \bigg)}_{\text{real part}} +  \underbrace{e^{at} \bigg( \sin(bt) \vec{q} + \cos(bt) \vec{q}\bigg)}_{\text{imaginary part}} i.
-  \]
-
-  Remember the \(i\) at the end.
-\end{definition}
-
-\begin{example}
-  Find the general and specific solutions for \(\frac{d\vec{x}}{dt} = \begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix}\vec{x}(t)\) with initial condition \(\vec{x}(0) = \begin{bmatrix} 1 \\ 1 \end{bmatrix}\).
-\end{example}
+% If the matrix \(A\) in \(\frac{d\vec{x}}{dt} = A \vec{x}(t)\) has complex eigenvalues, then the fundamental solutions have explicit expression. 
+%
+% \begin{definition}[fundamental solution for an eigenvector with \emph{complex} eigenvalues]
+%   Euler's identity \(e^{i \theta} = \cos(\theta) + i \sin(\theta)\) gives us more explicit (but longer) expressions for fundamental solutions. 
+%
+%   Suppose the matrix \(A\) in \(\frac{d\vec{x}}{dt} = A \vec{x}(t)\) has complex eigenvalue \(\lambda = a + bi\) with an eigenvector \(\vec{v} = \vec{p} + \vec{q}i\) where \(a,b,\vec{p},\vec{q}\) are all real. The \hlmain{fundamental solution for \(\vec{v}\)} is
+%   \[
+%     e^{\lambda t} \vec{v} = \underbrace{e^{at} \bigg( \cos(bt) \vec{p} - \sin(bt) \vec{q} \bigg)}_{\text{real part}} +  \underbrace{e^{at} \bigg( \sin(bt) \vec{q} + \cos(bt) \vec{q}\bigg)}_{\text{imaginary part}} i.
+%   \]
+%
+%   Remember the \(i\) at the end.
+% \end{definition}
+%
+% \begin{example}
+%   Find the general and specific solutions for \(\frac{d\vec{x}}{dt} = \begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix}\vec{x}(t)\) with initial condition \(\vec{x}(0) = \begin{bmatrix} 1 \\ 1 \end{bmatrix}\).
+% \end{example}
 \end{document}

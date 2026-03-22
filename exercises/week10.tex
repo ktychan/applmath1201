@@ -21,19 +21,45 @@
   The sample mean and sample standard deviation of last year's final exam were \(70\) and \(12\), respectively.  This year, the mean and standard deviation for the final exam is \(72\) and \(14\). 
 
   \begin{enumerate}
-    \item Which year's students performed better on the final exam.
+    \item Which year's students performed better on the final exam?
     \item If A scored \(65\) on this year's final exam, what would be a comparable grade from last year's final exam?
   \end{enumerate}
+
+  \begin{solution}
+    This question is about the \(z\)-score of sample data.
+
+    \begin{enumerate}
+      \item They are very close. There is no definitive evidence that one performance is better than the other. Most of the test scores are near \(70\) to \(72\). This year's scores are slightly closer to \(70\), but last year's scores are slightly further away from \(72\). 
+
+      \item A score of \(65\) this year has a \(z\)-score of \((65 - 72)/14 = -7/14 = -1/2\).  Therefore, the question asks ``what midterm score from last year has a \(z\)-score of \(-1/2\)?'' That is to solve for \(x\) in \((x - 70)/12 = -1/2\), which is \(x = 64\).
+    \end{enumerate}
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
   Suppose we have a set of sample data with standard deviation \(1.37\). If the \(z\)-score of a measurement (value - sample mean) is \(-2.5\).  What is the actual value of the measurement if the sample mean is \(3\)?
+
+  \begin{solution}
+    The value, say \(x\), must satisfy \((x - 3) / 1.37 = -2.5\). Therefore, \(x = -0.425\).
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
   Let \(\vec{x}(t)\) be the number of juveniles and adults, respectively, in a population at time \(t\) in years. Every adult in the population produces, on average, \(2\) juveniles in the population next year. Every adult in the population survives to the next year with probability \(1/3\). Every juvenile survives to be an adult next year with probability \(1/2\).
 
   Develop a discrete-time model for the population.  Find \(\vec{x}(3)\).
+
+  \begin{solution}
+    Let \(x_{1}(t)\) represents the number of juveniles at time \(t\), and \(x_{2}(t)\) the number of adults at time \(t\).  Time is measured is years.  We have
+    \[
+      \begin{array}{rcrcrcr}
+        x_{1}(t+1) &=&  & & 2 x_{2}(t) \\[2ex]
+        x_{2}(t+1) &=& \frac{1}{2}x_{1}(t) &+& \frac{1}{3} x_{2}(t)
+      \end{array}
+    \]
+
+    We can also express this as \(\vec{x}(t+1) = A \vec{x}(t)\) where \(A = \begin{bmatrix} 0 & 2 \\ 1/2 & 1/3 \end{bmatrix}\).  The initial condition is not given. Therefore, we can express \(\vec{x}(3)\) abstractly as \(\vec{x}(3) = A^{3} \vec{x}(0)\).
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
@@ -45,14 +71,65 @@
     \item \(\begin{bmatrix} -3/2 \\ -4 \end{bmatrix} + \begin{bmatrix} 3 \\ -1/2 \end{bmatrix}\).
     \item \(\begin{bmatrix} 1 \\ -2 \end{bmatrix} - \begin{bmatrix} 2 \\ 3 \end{bmatrix}\).
   \end{itemize}
+
+  \begin{solution} 
+    \phantom{top}
+
+    \begin{tikzpicture}
+      \begin{axis}[basic curve, black, xmin=-12, xmax=5, ymin=-5, ymax=3, xtick distance={2}, ytick distance={2}]
+        \addplot coordinates {(0,0)};
+        \coordinate (O) at (axis cs:0,0);
+        \draw[-Latex, very thick] (O)--(axis cs:3,1) node[right] {\footnotesize \(\begin{bmatrix}3 \\ 1\end{bmatrix}\)};
+        \draw[-Latex, very thick] (O)--(axis cs:-9,-3) node[left] {\footnotesize \(-3\begin{bmatrix}3 \\ 1\end{bmatrix}\)};
+      \end{axis}
+    \end{tikzpicture}
+    \begin{tikzpicture}
+      \begin{axis}[basic curve, black, xmin=-8, xmax=5, ymin=-5, ymax=7, xtick distance={2}, ytick distance={2}]
+        \addplot coordinates {(0,0)};
+        \coordinate (O) at (axis cs:0,0);
+        \draw[-Latex, very thick] (O)--(axis cs:2,-3) node[right] {\footnotesize \(\begin{bmatrix}2 \\ -3\end{bmatrix}\)};
+        \draw[-Latex, very thick] (O)--(axis cs:-4,6) node[left] {\footnotesize \(-2\begin{bmatrix}2 \\ -3\end{bmatrix}\)};
+      \end{axis}
+    \end{tikzpicture}
+
+    \begin{tikzpicture}
+      \begin{axis}[basic curve, black, xmin=-6, xmax=5, ymin=-8, ymax=0, xtick distance={2}, ytick distance={2}]
+        \addplot coordinates {(0,0)};
+        \coordinate (O) at (axis cs:0,0);
+        \draw[-Latex, very thick] (O)--(axis cs:-3/2,-4) node[left] {\footnotesize \(\begin{bmatrix}-3/2 \\ -4\end{bmatrix}\)};
+        \draw[-Latex, very thick] (O)--(axis cs:3,-1/2) node[below] {\footnotesize \(\begin{bmatrix}3 \\ -1/2\end{bmatrix}\)};
+        \draw[-Latex, very thick, dashed] (axis cs:-3/2,-4) -- (axis cs:{-3/2+3},{-4-1/2});
+        \draw[-Latex, very thick] (O)--(axis cs:{-3/2+3},{-4-1/2}) node[below] {\footnotesize the sum};
+      \end{axis}
+    \end{tikzpicture}
+    \begin{tikzpicture}
+      \begin{axis}[basic curve, black, xmin=-5, xmax=5, ymin=-8, ymax=8, xtick distance={3}, ytick distance={3}]
+        \addplot coordinates {(0,0)};
+        \coordinate (O) at (axis cs:0,0);
+        \draw[-Latex, very thick] (O)--(axis cs:1,-2) node[below right] {\footnotesize \(\begin{bmatrix}1 \\-2\end{bmatrix}\)};
+        \draw[-Latex, very thick] (O)--(axis cs:2,3) node[above] {\footnotesize \(\begin{bmatrix}2 \\3\end{bmatrix}\)};
+        \draw[-Latex, very thick, dotted] (O)--(axis cs:-2,-3) node[below left] {\footnotesize \(\begin{bmatrix}-2 \\-3\end{bmatrix}\)};
+        \draw[-Latex, very thick, dashed] (axis cs:1,-2) -- (axis cs:{1-2},{-2-3});
+        \draw[-Latex, very thick] (O)--(axis cs:{1-2},{-2-3}) node[below] {\footnotesize the difference};
+      \end{axis}
+    \end{tikzpicture}
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
-  Find \(a\) that satisfies the matrix-vector equations \(\begin{bmatrix} 1 & a \\ 0 & -1 \end{bmatrix} \begin{bmatrix} 3 \\ 7 \end{bmatrix} = \begin{bmatrix} 38 \\ -7 \end{bmatrix}\).
+  Find \(a\) that satisfies the matrix-vector equation \(\begin{bmatrix} 1 & a \\ 0 & -1 \end{bmatrix} \begin{bmatrix} 3 \\ 7 \end{bmatrix} = \begin{bmatrix} 38 \\ -7 \end{bmatrix}\).
 
-  % \begin{solution}
-  %   Note that \(1 \times 3 + a \times 7 = 38\). Therefore, \(a = 5\).
-  % \end{solution}
+  \begin{solution}
+    We perform the matrix multiplication to get a relation on \(a\). Note that
+    \[
+      \begin{bmatrix} 1 & a \\ 0 & -1 \end{bmatrix} \begin{bmatrix} 3 \\ 7 \end{bmatrix} = 
+      \begin{bmatrix}
+        3 + 7a \\
+        0 - 7
+      \end{bmatrix}.
+    \]
+    For this vector to be equal to \(\begin{bmatrix} 38 \\ -7\end{bmatrix}\), we must have \(3 + a \times 7 = 38\). Therefore, \(a = 5\).
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}

@@ -1,6 +1,6 @@
 %! TeX program = lualatex
 \documentclass[../main.tex]{subfiles}
-\begin{document} \section{Long-term behaviour of recurrence equations (with primitive matricies)}
+\begin{document} \section{Long-term behaviour of recurrence equations (with primitive matrices)}
 
 \begin{wrapfigure}[9]{r}{2in}
   \includegraphics{../standalones/plot-vector-field-dominant-weather-forecast}
@@ -36,9 +36,8 @@ A hidden pattern for the long-term behaviour emerges when we \emph{arbitrarily} 
   \end{array}
 \]
 
-The pattern: The ratios \(0.615 / 0.385\), \(0.123 / 0.077\), \(0.175 / 1.115\) are all roughly \(1.6\).
-
-Can we see this pattern from the solution? Recall that \(A\) has eigenvectors 
+The pattern: The ratios \(0.385/0.615\), \(0.077 / 0.123\), \(1.115 / 0.175\) are all roughly \(0.625\).
+Recall that \(A\) has eigenvectors 
 \[
   \vec{u} = \begin{bmatrix} {\color{main} 1} \\ {\color{main} 0.625} \end{bmatrix} \text{ with eigenvalue } {\color{main} \mu = 1}
   \quad\text{and}\quad
@@ -54,38 +53,87 @@ Can we see this pattern from the solution? Recall that \(A\) has eigenvectors
 %   \vec{p}(0) = a \vec{u} + b \vec{v}.
 % \]
 
-The magic: The largest eigenvalue is \underline{\hspace{1cm}} with a corresponding eigenvector \underline{\hspace{1cm}}. Moreover, \(u_{1} / u_{2} = \underline{\hspace{2in}}\).
+The above pattern is not a coincidence and help us \emph{quickly} determine long-term behaviour for (vector) recurrence.
 
-\bigskip
-
-The above magic is not a coincidence and allows us to \emph{quickly} determine long-term behaviour for recurrence equations.
-
-\begin{method}[long-term behaviour for recurrence equations (with primitive matricies)]
-  For ``nice enough'' matricies \(A\), the following is true:
-  \[
-    \lim_{t \to \infty} A^{t} \vec{x} = (\text{some constant}) \; (\text{a dominant eigenvector}).
-  \]
-
+\begin{method}[long-term behaviour for recurrence equations]
   The \hlmain{dominant eigenvalue} \(\mu\) is the largest eigenvalue, and a \hlmain{dominant eigenvector} is an eigenvector whose associated eigenvalue is \(\mu\).
+
+  For models \(\vec{x}(t+1) = A \vec{x}(t)\) with a ``nice enough'' matrix\footnote{We are not required to know what ``nice enough'' means. Intuitively, it means the subpopulations don't have isolated subgroups.} \(A\), the long-term behaviour \(\lim_{t \to \infty} \vec{x}(t)\) \hlmain{lies in the direction of the dominant eigenvector}. When \(A\) models populations, then its dominant eigenvalue \(\mu\) is always positive, and 
+  \begin{itemize}
+    \item if \(\mu > 1\), all subpopulations grow unbounded with fixed ratio.
+    \item if \(\mu = 1\), all subpopulations stabilize.
+    \item if \(\mu < 1\), all subpopulations go extinct.
+  \end{itemize}
 \end{method}
 
-{\footnotesize We are not required to know what ``nice enough'' means. The technical term is primitive matricies.}
-
-% {\footnotesize For those who are interested, the technical term for ``nice enough'' is primitive meaning a matrix \(A\) has only non-negative entries and \(A^{(\text{some power})}\) only contains positive entries (no zeros are allowed).  For example \(A = \begin{bmatrix} 1 & 1 \\ 0 & 1\end{bmatrix}\) is not primitive because no power of \(A\) has only positive entries. However, \(B = \begin{bmatrix} 0 & 1 \\ 1 & 1\end{bmatrix}\) is a primitive matrix because \(B^{2}\) only contains positive entries.}
-
+\blanklines{10}
 \clearpage
 
 \begin{example}
-  Let \(A = \begin{bmatrix} 0 & 1 \\ 1 & 1/2 \end{bmatrix}\) and \(\vec{u}(0) = \begin{bmatrix} 43278 \\ - 743892\end{bmatrix}\).  Describe the long-term behaviour for \(\vec{u}(t + 1) = A \vec{u}(t)\), i.e., describe \(\lim_{t \to \infty} A^{t} \vec{u}(0)\) as a ratio.
+  Let \(A = \begin{bmatrix} 0 & 1 \\ 1 & 1/2 \end{bmatrix}\) and \(\vec{x}(0) = \begin{bmatrix} 300 \\ 1000\end{bmatrix}\).  Describe the long-term behaviour for \(\vec{x}(t + 1) = A \vec{x}(t)\), i.e., describe the long-term behaviour \(\lim_{t \to \infty} \vec{u}(t)\).
 
   \blanklines{50}
 \end{example}
 \clearpage
 
 \begin{exercise}
-  The matrix \(A = \begin{bmatrix} 1/3 & 1/2 \\ 1 & 0 \end{bmatrix}\) describes a population dynamics model \(\vec{x}(t+1) = A \vec{x}(t)\) with \(x_{1}(t)\) being adults and \(x_{2}(t)\) being juveniles.  Describe the long-term behaviour for the population as a ratio between adults and juveniles.
+  Let \(x_{1}(t)\) represents the number of adults and \(x_{2}(t)\) the number of juveniles in a population at time \(t\). Suppose the matrix \(A = \begin{bmatrix} 0.5 & 0.3 \\ 0.2 & 0.88 \end{bmatrix}\) describes the model \(\vec{x}(t+1) = A \vec{x}(t)\) with \(x_{1}(0) = 100\) and \(x_{2}(0) = 200\). Describe the long-term behaviour for the population as a ratio between adults and juveniles. Does the population grow unbounded, stabilize or go extinct?  
   
   \blanklines{50}
 \end{exercise}
+\clearpage
 
+What happens if model something other than (absolute) populations such as particle movement?  We have similar similar conclusions when eigenvalues are complex.
+
+\faStar{} Suppose we have a vector recursion \(\vec{x}(t+1) = A\vec{x}\) where the \(2 \times 2\) matrix \(A\) has complex eigenvalues \(a \pm bi\).  Then the matrix \(A\) is always
+\( A = \begin{bmatrix} a & -b\\ b & a \end{bmatrix} \).
+In this case, the vector field for the (vector) recurrence is always a spiral pattern.
+\begin{multicols}{2}
+  \begin{itemize}
+    \item If \(a > 1\), the arrows spiral outward. 
+    \item If \(a = 1\), the arrows trace perfect concentric circles.
+    \item If \(a < 1\), the arrows spiral inward.
+      \columnbreak
+    \item If \(b > 0\), the arrows spiral counterclockwise.
+    \item If \(b < 0\), the arrows spiral clockwise.
+  \end{itemize}
+\end{multicols}
+
+Visualization (\url{https://colab.research.google.com/drive/1Xqp8iOQDxTS6Nocq3c3qWEWlpjT_JNT2}).
+
+\begin{example}
+  Match the vector field to the recurrence below. 
+  \[
+    \vec{x}(t+1)
+    \begin{bmatrix}
+      0.5 & -1 \\
+      1 & 0.5
+    \end{bmatrix}
+    \vec{x}(t),
+    \quad
+    \vec{x}(t+1)
+    \begin{bmatrix}
+      1 & 1 \\
+      -1 & 1
+    \end{bmatrix}
+    \vec{x}(t),
+    \quad
+    \vec{x}(t+1)
+    \begin{bmatrix}
+      2 & -1 \\
+      1 & 2
+    \end{bmatrix}
+    \vec{x}(t).
+  \]
+
+  \begin{center}
+    \includegraphics[width=3in]{../standalones/plot-vector-field-complex-circles.png}
+    \quad
+    \includegraphics[width=3in]{../standalones/plot-vector-field-complex-inward-ccw.png}
+
+    \includegraphics[width=3in]{../standalones/plot-vector-field-complex-outward.png}
+    \quad
+    \includegraphics[width=3in]{../standalones/plot-vector-field-complex-inward-cw.png}
+  \end{center}
+\end{example}
 \end{document}

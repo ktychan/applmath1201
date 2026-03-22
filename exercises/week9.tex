@@ -229,7 +229,7 @@
 
       \item Note
         \[
-          f(x) = 
+          F(x) = 
           \begin{cases}
             0.07 & x = -5 \\
             0.11 & x = -3 \\
@@ -349,16 +349,16 @@
     Note that \(\mathbb{P}(-3 < X \le 8) = \mathbb{P}(-1 \le X \le 5)\), which is roughly \(0.5\). From the PMF graph, we see that \(\mathbb{P}(X = -1)\) is roughly \(0.2\).
 
     \begin{tikzpicture}
-      \begin{axis}[grid=major, xmin=-6, xmax=10.5, ymin=0, ymax=1, title={PMF}]
+      \begin{axis}[grid=major, xmin=-5, xmax=12, ymin=0, ymax=1, title={PMF}]
         \addplot[very thick, black] coordinates { (-3, 0)  (-3, 0.12) };
         \addplot[very thick, black] coordinates { (-1, 0)  (-1, 0.18) };
-        \addplot[very thick, black] coordinates { (-2, 0)  (-2, 0.27) };
+        \addplot[very thick, black] coordinates { ( 2, 0)  ( 2, 0.27) };
         \addplot[very thick, black] coordinates { ( 5, 0)  ( 5, 0.24) };
         \addplot[very thick, black] coordinates { ( 9, 0)  ( 9, 0.19) };
         \addplot[very thick, only marks, mark=*] coordinates {
             (-3, 0.12)
             (-1, 0.18)
-            (-2, 0.27)
+            ( 2, 0.27)
             ( 5, 0.24)
             ( 9, 0.19)
           };
@@ -381,6 +381,35 @@
     \item Find its cumulative distribution function.
     \item Calculate its expectation, variance and standard deviation.
   \end{enumerate}
+
+  \begin{solution}
+    Recall that the CDF is defined by \(F(x) = \mathbb{P}(X \le x)\).
+
+    \begin{enumerate}
+      \item Note that by definition \(\mathbb{P}(X \le x) = \int_{-\infty}^{x} f(x) \;dx\). Therefore, we calculate
+        \[
+          F(x) = \int_{2}^{x} \frac{2}{9}(t - 2) \;dt = \left[ \frac{2}{9}\left( \frac{x^{2}}{2} - 2x \right) \right]_{2}^{x} = \frac{1}{9}(x - 2)^{2}.
+        \]
+
+      \item Recall the formulas, and that we only have to integrate over wherever the function is not zero.
+
+        For the expectation, we have
+        \[
+          \mu = E(X) = \int_{-\infty}^{\infty} xf(x) \;dx = \int_{2}^{5} \frac{2}{9}(x - 2)x \;dx = 4.
+        \]
+
+        For the variance, we have
+        \[
+          V(x) = \int_{-\infty}^{\infty} (x - \mu)^{2} f(x) \;dx = \int_{2}^{5} (x - 3)^{2} \frac{2}{9}(x - 2) \;dx = \frac{9}{2}.
+        \]
+        
+        Lastly, for the standard deviation, we have
+        \[
+          \sigma = \sqrt{V(X)} = \sqrt{\frac{9}{2}}.
+        \]
+
+    \end{enumerate}
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
@@ -456,6 +485,31 @@
             \addplot[very thick, black, domain=6:7] {1};
           \end{axis}
         \end{tikzpicture}
+
+      \item This calculation is a bit tedious. since we have to split the integrals over three separate intervals. 
+
+        For the expectation, we have
+        \begin{align*}
+          & \mu = E(X) \\
+          =& \int_{-\infty}^{\infty} xf(x) \;dx &\text{(the definition)}\\
+          =& \int_{0}^{1} x \frac{1}{2}x \;dx + \int_{2}^{3} x\frac{1}{2}(2x - 4) \;dx + \int_{5}^{6} x \frac{1}{2}(6 - x) &\text{(split)}\\
+          =& \frac{1}{6} + \frac{4}{3} + \frac{4}{3} &\text{(integrate)} \\
+          =& \frac{17}{6}.
+        \end{align*}
+
+        For the variance, we have
+        \begin{align*}
+          & V(X)  \\
+          = & \int_{-\infty}^{\infty} (x - \mu)^{2}f(x) \;dx &\text{(the definition)}\\
+          = & \int_{0}^{1} \left(x - \frac{17}{6}\right)^{2} \frac{1}{2}x \;dx + \int_{2}^{3} \left(x - \frac{17}{6}\right)^{2} \frac{1}{2}(2x - 4) \;dx + \int_{5}^{6} \left(x - \frac{17}{6}\right)^{2} \frac{1}{2}(6 - x) \;dx &\text{(split)}\\
+          = & \frac{19}{16} + \frac{1}{24} + \frac{227}{144} &\text{(integrate)} \\
+          = & \frac{101}{36}.
+        \end{align*}
+
+        For the standard deviation, we have
+        \begin{align*}
+          \sigma = \sqrt{\frac{101}{36}}.
+        \end{align*}
     \end{itemize}
   \end{solution}
 \end{exercise}

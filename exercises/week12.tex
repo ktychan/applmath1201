@@ -1,0 +1,60 @@
+%! TeX program = lualatex
+\documentclass[../main.tex]{subfiles}
+
+\usetikzlibrary{intersections,calc}
+
+\newenvironment{solution}{
+  \begin{proof}[Sample solution]
+    \color{main}
+  }{
+  \end{proof}
+}
+
+\begin{document}
+
+\chapter*{Week 12 practice problems}
+
+\setcounter{chapter}{12}
+
+\begin{exercise}
+  Use eigenvalues to predict long-term growth. \(\lambda > 1\), \(\lambda = 1\) and \(\lambda < 1\).
+\end{exercise}
+
+\begin{exercise}
+  Given a vector field, predict the dominant eigenvalues.
+\end{exercise}
+
+\begin{exercise}
+  Solve population models.
+\end{exercise}
+
+\begin{exercise}
+  Solve differential equations.
+\end{exercise}
+
+
+
+\begin{exercisse}
+  Solve the initial-value problem \( \frac{d\vec{x}}{dt} = \begin{bmatrix} 3 & 0  \\ 0 & -2 \end{bmatrix} \vec{x}(t) \) with \(\vec{x}(0) = \begin{bmatrix} 1/2 \\ 1/3 \end{bmatrix}\).
+
+  \blanklines{50}
+\end{exercisse}
+\clearpage
+
+\begin{exercisse}
+  Find the general and the specific solutions for
+  \(
+  \begin{array}{rcrcr}
+    x'_{1}(t) &=& -2 x_{1}(t) &+&  x_{2}(t) \\
+    x'_{2}(t) &=&    x_{1}(t) &+& 2x_{2}(t)
+  \end{array}
+  \) with \(
+  \begin{array}{rcr}
+    x_{1}(0) &=&  2 \sqrt{5} \\
+    x_{2}(0) &=& -2 \sqrt{5} \\
+  \end{array}
+  \).
+
+  \blanklines{50}
+\end{exercisse}
+\end{document}
