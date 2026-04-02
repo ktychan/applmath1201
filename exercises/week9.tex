@@ -274,16 +274,16 @@
       \item \(\mathbb{P}(2 \le X <   9) = F(7) - F(1) = 0.93 - 0.61 = 0.32\)
       \item \(\mathbb{P}(4 \le X \le 6) = f(4) = 0.13\)
       \item \(\mathbb{P}(X \le 6) = F(6) = 0.85\)
-      \item \(\mathbb{P}(X > 3) = 1 - F(2) = 0.39\)
+      \item \(\mathbb{P}(X < 3) = F(3) = 0.72\)
       \item \(\mathbb{P}(X > 5) = 1 - F(4) = 0.15\)
       \item \(\mathbb{P}(X \ge -2) = 1 - F(-3) = 0.82\)
       \item Apply the relevant formulas
         \[
           \mu = E(X) = 1.28, 
           \qquad
-          \sigma^{2} = V(X) = 13.8416,
+          \sigma^{2} = V(X) = 15.1616,
           \qquad
-          \sigma = \sqrt{13.8416} \approx 3.72
+          \sigma = \sqrt{15.1616} \approx 3.89
         \]
     \end{enumerate}
   \end{solution}
@@ -346,7 +346,7 @@
   \end{center}
 
   \begin{solution}
-    Note that \(\mathbb{P}(-3 < X \le 8) = \mathbb{P}(-1 \le X \le 5)\), which is roughly \(0.8\). From the PMF graph, we see that \(\mathbb{P}(X = -1)\) is roughly \(0.2\).
+    Note that \(\mathbb{P}(-3 < X \le 8) = \mathbb{P}(-1 \le X \le 5)\), which is roughly \(0.7\). From the PMF graph, we see that \(\mathbb{P}(X = -1)\) is roughly \(0.2\).
 
     \begin{tikzpicture}
       \begin{axis}[grid=major, xmin=-5, xmax=12, ymin=0, ymax=1, title={PMF}]
@@ -400,14 +400,13 @@
 
         For the variance, we have
         \[
-          V(x) = \int_{-\infty}^{\infty} (x - \mu)^{2} f(x) \;dx = \int_{2}^{5} (x - 3)^{2} \frac{2}{9}(x - 2) \;dx = \frac{9}{2}.
+          V(x) = \int_{-\infty}^{\infty} (x - \mu)^{2} f(x) \;dx = \int_{2}^{5} (x - 4)^{2} \frac{2}{9}(x - 2) \;dx = \frac{1}{2}.
         \]
         
         Lastly, for the standard deviation, we have
         \[
-          \sigma = \sqrt{V(X)} = \sqrt{\frac{9}{2}}.
+          \sigma = \sqrt{V(X)} = \frac{1}{\sqrt{2}}.
         \]
-
     \end{enumerate}
   \end{solution}
 \end{exercise}

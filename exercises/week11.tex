@@ -18,10 +18,58 @@
 
 \begin{exercise}
   Suppose \(A = \begin{bmatrix} 0 & 1 \\ 1 & 0\end{bmatrix}\). Calculate \(A^{2}, A^{3}, A^{4}\). Find a pattern to calculate \(A^{53}\).
+
+  \begin{solution}
+    Note
+    \[
+      A^{2} = 
+      \begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+      \end{bmatrix} = I_{2},
+      \quad
+      A^{3} = 
+      \begin{bmatrix}
+        0 & 1 \\
+        1 & 0
+      \end{bmatrix} = A,
+      \quad
+      A^{4} = 
+      \begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+      \end{bmatrix}.
+    \]
+    The pattern is \(A^{\text{even}} = I_{2}\) and \(A^{\text{odd}} = A\). Therefore, \(A^{53} = I_{2}\).
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
   Suppose \(A = \begin{bmatrix} 1 & 1 \\ 0 & 1\end{bmatrix}\). Calculate \(A^{2}, A^{3}, A^{4}\). Find a pattern to calculate \(A^{2026}\).
+
+  \begin{solution}
+    Note
+    \[
+      A^{2} = 
+      \begin{bmatrix}
+        1 & 2 \\
+        0 & 1
+      \end{bmatrix},
+      \quad
+      A^{3} = 
+      \begin{bmatrix}
+        1 & 3 \\
+        0 & 1
+      \end{bmatrix},
+      \quad
+      A^{4} = 
+      \begin{bmatrix}
+        1 & 4 \\
+        0 & 1
+      \end{bmatrix}.
+    \]
+    The pattern is \(A^{n} = \begin{bmatrix} 1 & n \\ 0 & 1 \end{bmatrix}\). Therefore, \(A^{2026} = \begin{bmatrix} 1 & 2026 \\ 0 & 1 \end{bmatrix}\).
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
@@ -32,22 +80,106 @@
     \item Find the eigenvalue for \(\vec{v}\).
     \item Suppose \(\vec{x}(0) = \begin{bmatrix} 2 \\ 3 \end{bmatrix}\) and \(\vec{x}(t+1) = A \vec{x}(t)\) for all \(t \ge 1\). Find \(\vec{x}(1000)\).
   \end{enumerate}
+
+  \begin{solution} \phantom{top}
+    \begin{enumerate}
+      \item Since \(\vec{u}\) is an eigenvector, it must have an eigenvalue \(\mu\) and, by definition, \[A^{3} \vec{u} = \begin{bmatrix} 216 \\ 432\end{bmatrix} = \mu^{3} \begin{bmatrix} 1 \\ 2 \end{bmatrix}.\] The last equality gives us \(\mu = \sqrt[3]{216} = 6\).
+        
+      \item Suppose \(\lambda\) is the eigenvalue for \(\vec{v}\). By definition, we must have \(A \vec{v} = \lambda \vec{v}\). Therefore, 
+        \[
+          A \vec{v} = \begin{bmatrix} 24 \\ 32 \end{bmatrix} = \lambda \begin{bmatrix} 3 \\ 4 \end{bmatrix}
+        \]
+        implies \(24 = \lambda 3\). Therefore, \(\lambda = 8\).
+
+      \item We can write \(\vec{x}(0)\) in terms of \(\vec{u}\) and \(\vec{v}\). We solve for \(a,b\) in \(\vec{x}(0) = a \vec{u} + b\vec{v}\) to get \(\vec{x}(0) = \frac{13}{48} \vec{u} + \frac{5}{12} \vec{v}\). Using linearity of matrix-vector multiplication we get
+        \begin{align*}
+          \vec{x}(1000) 
+          &= A^{1000} \vec{x}(0) \\
+          &= A^{1000} \left( \frac{13}{48} \vec{u} + \frac{5}{12} \vec{v}\right) \\
+          &= \frac{13}{48} A^{1000} \vec{u} + \frac{5}{12} A^{1000} \vec{v} \\
+          &= \frac{13}{48} \left( 6 \right)^{1000} \begin{bmatrix} 1 \\ 2 \end{bmatrix} + \frac{5}{12} \left( 8 \right)^{1000} \begin{bmatrix} 3 \\ 4 \end{bmatrix}.
+        \end{align*}
+        The last line is the simplest form of \(\vec{x}(1000)\).
+    \end{enumerate}
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
   A matrix \(A\) has an eigenvector \(\vec{v} = \begin{bmatrix}1 \\ 3 \\ -7\end{bmatrix}\). We know that \(A^{2} \vec{v} = \begin{bmatrix} 25 \\ 75 \\ -175\end{bmatrix}\). What is the eigenvalue for \(\vec{v}\)?
+
+  \begin{solution}
+    Let \(\lambda\) be the eigenvalue for \(\vec{v}\). Then we must have
+    \[
+      A^{2} \vec{v} = \lambda^{2} \vec{v}. 
+    \]
+    Therefore, \(25 = \lambda^{2} 1\). We see that \(\lambda = 5\).
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
   Find all eigenvectors and their associated eigenvalues for \(A = \begin{bmatrix} \sqrt{3} & -1 \\ 1 & \sqrt{3} \end{bmatrix}\).
+
+  \begin{solution}
+    The eigenvalues are the roots of the characteristic polynomial \[\det(A - \lambda I_{2}) = \det \begin{bmatrix} \sqrt{3} - \lambda & -1 \\ 1 & \sqrt{3} - \lambda \end{bmatrix} = \lambda^{2} - 2 \sqrt{3} \lambda + 4.\]
+    There are two eigenvalues \(\mu = \sqrt{3} + i\) and \(\lambda = \sqrt{3} - i\).
+
+    \begin{itemize}
+      \item For \(\mu = \sqrt{3} + i\), we solve for \(\vec{u}\) in \(A \vec{u} = \mu \vec{u}\) to get
+        \[
+          \vec{u} = a \begin{bmatrix} 1 \\ -i \end{bmatrix}
+          \quad\text{for any non-zero constant } a.
+        \]
+      \item For \(\lambda = \sqrt{3} - i\), we solve for \(\vec{v}\) in \(A \vec{v} = \lambda \vec{v}\) to get
+        \[
+          \vec{v} = a \begin{bmatrix} 1 \\ i \end{bmatrix}
+          \quad\text{for any non-zero constant } a.
+        \]
+    \end{itemize}
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
   Find all eigenvectors and their associated eigenvalues for \(A = \begin{bmatrix} 3 & 0 \\ 0 & -2 \end{bmatrix}\).
+
+  \begin{solution}
+    The eigenvalues are the roots of the characteristic polynomial \[\det(A - \lambda I_{2}) = \det \begin{bmatrix} 3 - \lambda & 0 \\ 0 & -2 - \lambda \end{bmatrix} = \lambda^{2} - \lambda - 6.\]
+    There are two eigenvalues \(\mu = -2\) and \(\lambda = 3\).
+
+    \begin{itemize}
+      \item For \(\mu = 3\), we solve for \(\vec{u}\) in \(A \vec{u} = \mu \vec{u}\) to get
+        \[
+          \vec{u} = a \begin{bmatrix} 1 \\ 0 \end{bmatrix}
+          \quad\text{for any non-zero constant } a.
+        \]
+      \item For \(\lambda = -2\), we solve for \(\vec{v}\) in \(A \vec{v} = \lambda \vec{v}\) to get
+        \[
+          \vec{v} = a \begin{bmatrix} 0 \\ 1 \end{bmatrix}
+          \quad\text{for any non-zero constant } a.
+        \]
+    \end{itemize}
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
   Find all eigenvectors and their associated eigenvalues for \(A = \begin{bmatrix} 0 & -1 \\ 2 & 1 \end{bmatrix}\).
+
+  \begin{solution}
+    The eigenvalues are the roots of the characteristic polynomial \[\det(A - \lambda I_{2}) = \det \begin{bmatrix} 0 - \lambda & -1 \\ 2 & 1 - \lambda \end{bmatrix} = \lambda^{2} - \lambda + 2.\]
+    There are two eigenvalues \(\mu = \frac{1}{2}(1 + i\sqrt{7})\) and \(\lambda = \frac{1}{2}(1 - i\sqrt{7})\).
+
+    \begin{itemize}
+      \item For \(\mu = \frac{1}{2}(1 + i\sqrt{7})\), we solve for \(\vec{u}\) in \(A \vec{u} = \mu \vec{u}\) to get
+        \[
+          \vec{u} = a \begin{bmatrix} \frac{1}{4}(-1 + i\sqrt{7}) \\ 1 \end{bmatrix}
+          \quad\text{for any non-zero constant } a.
+        \]
+      \item For \(\lambda = \frac{1}{2}(1 - i\sqrt{7})\), we solve for \(\vec{v}\) in \(A \vec{v} = \lambda \vec{v}\) to get
+        \[
+          \vec{v} = a \begin{bmatrix} \frac{1}{4}( 1 + i\sqrt{7}) \\ 1 \end{bmatrix}
+          \quad\text{for any non-zero constant } a.
+        \]
+    \end{itemize}
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}

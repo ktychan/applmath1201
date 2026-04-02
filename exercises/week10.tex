@@ -80,7 +80,7 @@
         \addplot coordinates {(0,0)};
         \coordinate (O) at (axis cs:0,0);
         \draw[-Latex, very thick] (O)--(axis cs:3,1) node[right] {\footnotesize \(\begin{bmatrix}3 \\ 1\end{bmatrix}\)};
-        \draw[-Latex, very thick] (O)--(axis cs:-9,-3) node[left] {\footnotesize \(-3\begin{bmatrix}3 \\ 1\end{bmatrix}\)};
+        \draw[red, -Latex, very thick] (O)--(axis cs:-9,-3) node[left] {\footnotesize \(-3\begin{bmatrix}3 \\ 1\end{bmatrix}\)};
       \end{axis}
     \end{tikzpicture}
     \begin{tikzpicture}
@@ -88,7 +88,7 @@
         \addplot coordinates {(0,0)};
         \coordinate (O) at (axis cs:0,0);
         \draw[-Latex, very thick] (O)--(axis cs:2,-3) node[right] {\footnotesize \(\begin{bmatrix}2 \\ -3\end{bmatrix}\)};
-        \draw[-Latex, very thick] (O)--(axis cs:-4,6) node[left] {\footnotesize \(-2\begin{bmatrix}2 \\ -3\end{bmatrix}\)};
+        \draw[red, -Latex, very thick] (O)--(axis cs:-4,6) node[left] {\footnotesize \(-2\begin{bmatrix}2 \\ -3\end{bmatrix}\)};
       \end{axis}
     \end{tikzpicture}
 
@@ -99,22 +99,23 @@
         \draw[-Latex, very thick] (O)--(axis cs:-3/2,-4) node[left] {\footnotesize \(\begin{bmatrix}-3/2 \\ -4\end{bmatrix}\)};
         \draw[-Latex, very thick] (O)--(axis cs:3,-1/2) node[below] {\footnotesize \(\begin{bmatrix}3 \\ -1/2\end{bmatrix}\)};
         \draw[-Latex, very thick, dashed] (axis cs:-3/2,-4) -- (axis cs:{-3/2+3},{-4-1/2});
-        \draw[-Latex, very thick] (O)--(axis cs:{-3/2+3},{-4-1/2}) node[below] {\footnotesize the sum};
+        \draw[red, -Latex, very thick] (O)--(axis cs:{-3/2+3},{-4-1/2}) node[below] {\footnotesize the sum};
       \end{axis}
     \end{tikzpicture}
     \begin{tikzpicture}
-      \begin{axis}[basic curve, black, xmin=-5, xmax=5, ymin=-8, ymax=8, xtick distance={3}, ytick distance={3}]
+      \begin{axis}[width=5in, basic curve, black, xmin=-5, xmax=5, ymin=-8, ymax=8, xtick distance={3}, ytick distance={3}]
         \addplot coordinates {(0,0)};
         \coordinate (O) at (axis cs:0,0);
         \draw[-Latex, very thick] (O)--(axis cs:1,-2) node[below right] {\footnotesize \(\begin{bmatrix}1 \\-2\end{bmatrix}\)};
         \draw[-Latex, very thick] (O)--(axis cs:2,3) node[above] {\footnotesize \(\begin{bmatrix}2 \\3\end{bmatrix}\)};
         \draw[-Latex, very thick, dotted] (O)--(axis cs:-2,-3) node[below left] {\footnotesize \(\begin{bmatrix}-2 \\-3\end{bmatrix}\)};
         \draw[-Latex, very thick, dashed] (axis cs:1,-2) -- (axis cs:{1-2},{-2-3});
-        \draw[-Latex, very thick] (O)--(axis cs:{1-2},{-2-3}) node[below] {\footnotesize the difference};
+        \draw[red, -Latex, very thick] (O)--(axis cs:{1-2},{-2-3}) node[below] {\footnotesize the difference};
       \end{axis}
     \end{tikzpicture}
   \end{solution}
 \end{exercise}
+\clearpage
 
 \begin{exercise}
   Find \(a\) that satisfies the matrix-vector equation \(\begin{bmatrix} 1 & a \\ 0 & -1 \end{bmatrix} \begin{bmatrix} 3 \\ 7 \end{bmatrix} = \begin{bmatrix} 38 \\ -7 \end{bmatrix}\).
@@ -164,6 +165,42 @@
     \item Describe the transition \emph{between} any two subpopulation in words.
     \item Assume \(p = 0\). Find \(x_{3}(2)\) if \(\vec{x}(0) = \begin{bmatrix} 0 \\ 100 \\ 200 \end{bmatrix}\).
   \end{enumerate}
+
+  \begin{solution} \phantom{top}
+
+    \begin{enumerate}
+      \item \(70\%\) of the juveniles grow into adolescence. No juveniles grow into adults in one time increment. \(10\%\) of the juveniles stay as juveniles in one time increment.
+      \item \(70\% + 10\%\) of the juveniles survive. Therefore, \(10\%\) of the juveniles do not survive.
+      \item The arrow labelled \(p\) means the birth rate among adolescence.
+      \item The birth rate among adults is \(80\%\). The death rate is unknown.
+      \item The birth rate among adults is \(80\%\). The death rate is \(100\%\).
+      \item In addition to the above, \(20\%\) of the adolescence remain as adolescence, and \(50\%\) grow into adults.
+      \item The model \(\vec{x}(t+1) = A\vec{x}\) has matrix 
+        \[
+          A = 
+          \begin{bmatrix}
+            0.1 &   p & 0.8 \\
+            0.7 & 0.2 & 0   \\
+            0   & 0.5 & 1   \\
+          \end{bmatrix}
+          =
+          \begin{bmatrix}
+            0.1 & 0   & 0.8 \\
+            0.7 & 0.2 & 0   \\
+            0   & 0.5 & 0   \\
+          \end{bmatrix}.
+        \]
+        Note 
+        \(
+          \vec{x}(2) = 
+          \begin{bmatrix}
+            50 \\
+            116 \\
+            10
+          \end{bmatrix}
+        \). Therefore, \(x_{3}(2) = 10\).
+    \end{enumerate}
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
@@ -179,38 +216,62 @@
   \begin{itemize}
     \item Sketch the transition diagram for the three weather states.
     \item Model the \(\vec{x}(t)\) as a vector recurrence.  
-    \item Find \(\vec{x}(2)\). What does its entries represent?
+    \item Find \(\vec{x}(2)\). What do its entries represent?
   \end{itemize}
 
-  % The transition diagram below models weather changes where \(p_{1}(t), p_{2}(t), p_{3}(t)\) represent the probability of rain, snow and no precipitation at time \(t\).  The arrows on the outside point clockwise. The arrows on the inside point counterclockwise.
-  
-  % \begin{tikzpicture}[transition diagram]
-  %   \node[class] (A) at ( 120:1) {\(p_{2}\)};
-  %   \node[class] (B) at (   0:1) {\(p_{3}\)};
-  %   \node[class] (C) at ( 240:1) {\(p_{1}\)};
-  %
-  %   % forward loop
-  %   \path[->] (A) edge [bend  left] node[above] {\(10\%\)} (B);
-  %   \path[->] (B) edge [bend  left] node[below] {\(15\%\)} (C);
-  %   \path[->] (C) edge [bend  left] node[left]  {\(5\%\)} (A);
-  %
-  %   % forward loop
-  %   \path[->] (A) edge [bend  left] node[ left] {\(\%\)} (C);
-  %   \path[->] (C) edge [bend  left] node[below] {\(50\%\)} (B);
-  %   \path[->] (B) edge [bend  left] node[above] {\(50\%\)} (A);
-  %
-  %   \path[->] (A) edge [loop  left] node[left ] {\(\%\)} (A);  
-  %   \path[->] (B) edge [loop right] node[right] {\(\%\)} (B);  
-  %   \path[->] (C) edge [loop  left] node[left ] {\(\%\)} (C);  
-  % \end{tikzpicture}
+  \begin{solution}
+    The arrows in the middle point counterclockwise.
 
-  % Assume these are the only weather states possible. 
-  % \begin{enumerate}
-  %   \item At any given node, which arrows should add up to \(1\)? The outgoing ones or the incoming ones?
-  %   \item Find the missing numbers.
-  %   \item Translate the diagram into a (vector) recurrence.
-  %   \item If \(\vec{p}(0) = \begin{bmatrix} 0.5\\0.5\\0\end{bmatrix}\), is it more likely to rain or snow at time \(t = 3\)?
-  % \end{enumerate}
+    \begin{tikzpicture}[transition diagram]
+      \node[class] (A) at ( 120:1) {rain\\\(x_{1}\)};
+      \node[class] (B) at (   0:1) {snow\\\(x_{2}\)};
+      \node[class] (C) at ( 240:1) {no precip.\\\(x_{3}\)};
+
+      \path[->] (A) edge [loop  left] node[left ] {\(60\%\)} (A);  
+      \path[->] (A) edge [bend  left] node[above] {\(10\%\)} (B);
+      \path[->, red] (A) edge [bend  left] node[ left] {\(30\%\)} (C);
+
+      \path[->, blue] (B) edge [bend  left] node[above] {\(20\%\)} (A);
+      \path[->] (B) edge [loop right] node[right] {\(50\%\)} (B);  
+      \path[->] (B) edge [bend  left] node[below] {\(30\%\)} (C);
+
+      \path[->] (C) edge [bend  left] node[left]  {\(10\%\)} (A);
+      \path[->] (C) edge [bend  left] node[below] {\(10\%\)} (B);
+      \path[->] (C) edge [loop  left] node[left ] {\(80\%\)} (C);  
+    \end{tikzpicture}
+
+    The recurrence is 
+    \[
+      \vec{x}(t+1) = 
+      \begin{bmatrix}
+        0.6 & 0.2 & 0.1 \\
+        0.1 & 0.5 & 0.1 \\
+        0.3 & 0.5 & 0.1 \\
+      \end{bmatrix}
+      \vec{x}(t).
+    \]
+  \end{solution}
+
+  We are not given numbers for \(\vec{x}(0)\), so let \(\vec{x}(0) = \begin{bmatrix} a \\ b \\ c \end{bmatrix}\) where \(a,b,c\) are constants (i.e., placeholders). Then
+  \[
+    \vec{x}(2) = A^{2} \vec{x}(0) = 
+    \begin{bmatrix}
+      0.41 & 0.27 & 0.09 \\
+      0.14 & 0.32 & 0.07 \\
+      0.26 & 0.36 & 0.09
+    \end{bmatrix}
+    \begin{bmatrix}
+      a \\
+      b \\
+      c 
+    \end{bmatrix} =
+    \begin{bmatrix}
+      0.41 a + 0.27 b + 0.09 c \\
+      0.14 a + 0.32 b + 0.07 c \\
+      0.26 a + 0.36 b + 0.09 c
+    \end{bmatrix}.
+  \]
+  The entries of \(\vec{x}(2)\) represent the probabilities of rain, snow and no precipitation at time \(t = 2\). 
 \end{exercise}
 
 \begin{exercise}
@@ -223,6 +284,45 @@
     \item \(90\%\) of senior employees stays with the business every year.
   \end{itemize}
   Initially, there are \(300\) entry-level, \(200\) mid-career and \(100\) senior employees.  Sketch the transition diagram and model the workforce as a vector recurrence.
+
+  \begin{solution}
+    The arrows in the middle point counterclockwise.
+
+    \begin{tikzpicture}[transition diagram]
+      \node[class] (A) at ( 120:1) {entry-level\\\(x_{1}\)};
+      \node[class] (B) at (   0:1) {mid-career\\\(x_{2}\)};
+      \node[class] (C) at ( 240:1) {senior\\\(x_{3}\)};
+
+      % \path[->] (A) edge [loop  left] node[left ] {\(40\%\)} (A);  
+      \path[->] (A) edge [bend  left] node[above] {\(60\%\)} (B);
+      % \path[->, red] (A) edge [bend  left] node[ left] {\(30\%\)} (C);
+
+      % \path[->, blue] (B) edge [bend  left] node[above] {\(20\%\)} (A);
+      \path[->] (B) edge [loop right] node[right] {\(20\%\)} (B);  
+      \path[->] (B) edge [bend  left] node[below] {\(70\%\)} (C);
+
+      \path[->] (C) edge [bend  left] node[left]  {\(1.2\)} (A);
+      % \path[->] (C) edge [bend  left] node[below] {\(10\%\)} (B);
+      \path[->] (C) edge [loop  left] node[left ] {\(90\%\)} (C);  
+    \end{tikzpicture}
+
+    The model is 
+    \[
+      \vec{x}(t+1) = 
+      \begin{bmatrix}
+        0   & 0   & 1.2 \\
+        0.6 & 0.2 & 0   \\
+        0   & 0.7 & 1.2
+      \end{bmatrix}
+      \vec{x}(t),
+      \quad\text{with}\quad
+      \begin{bmatrix}
+        300 \\
+        200 \\
+        100   
+      \end{bmatrix}.
+    \]
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
@@ -237,10 +337,29 @@
     \vec{x}(t).
   \]
   Describe, in words, the transition among subpopulations from year \(t\) to year \(t + 1\).
+
+  \begin{solution}
+    At the transition from year \(t\) to \(t+1\),
+    \begin{itemize}
+      \item each adult gives birth to \(120\) tadpoles, i.e., the birth rate among adult frogs is \(12000\%\),
+      \item \(25\%\) of tadpoles grows into juveniles, 
+      \item \(40\%\) of the juveniles grows into adults, and
+      \item \(85\%\) of the adults remain as adults.
+    \end{itemize}
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
   Consider a vector recurrence \(\vec{x}(t+1) = A \vec{x}\).  The arrows in its vector field are described by \(\vec{v} = \begin{bmatrix} 1 & 1 \\ -1 & 1 \end{bmatrix}\vec{x}\) where \(\vec{x}\) represents arbitrary points in the plane. In other words, \(\vec{v}\) is an arrow in the vector field drawn by placing its tail at the tip of \(\vec{x}\). Find \(A\).
+
+  \begin{solution}
+    The arrows \(\vec{v}\) in the vector field represent changes from \(\vec{x}(t)\) to \(\vec{x}(t+1)\). An arbitrary state \(\vec{x}(t)\) is just any vector, denoted as \(\vec{x}\) Therefore, they are
+    \[
+      \vec{v} = \vec{x}(t+1) - \vec{x}(t) = A \vec{x}(t) - I \vec{x}(t) = (A - I) \vec{x}.
+    \]
+    Using the given relation between \(\vec{v}\) and \(\vec{x}\), we get relation
+    \( A - I = \begin{bmatrix} 1 & 1 \\ -1 & 1 \end{bmatrix} \). Therefore, \(A = \begin{bmatrix} 2 & 1 \\ -1 & 2 \end{bmatrix}\).
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
@@ -255,6 +374,32 @@
       % a = -1, b = 1/3
     \item \(\begin{bmatrix} 4 \\ 9 \\ -7 \end{bmatrix} = a \begin{bmatrix} 1 \\ -3 \\ 2 \end{bmatrix} + b \begin{bmatrix} -2 \\ 5 \\ 1 \end{bmatrix} + c \begin{bmatrix} 0 \\ 4 \\ -3 \end{bmatrix}\).
   \end{itemize}
+
+  \begin{solution}
+    Solving the unknown constants amounts to solving a system of linear equations.
+
+    \begin{itemize}
+      \item \(a = 5, b = 1\).
+        % sage: A = matrix([[-2,3],[5,7]])
+        % sage: v = vector([-13,18])
+        % sage: A.inverse()*v
+
+      \item \(a = -1, b = -5/6\).
+        % sage: A = matrix([[2,-3],[-1,4]])
+        % sage: v = vector([1/2,-7/3])
+        % sage: A.inverse()*v
+
+      \item \(a = -1, b = 1/3\).
+        % sage: A = matrix([[1,1/2],[1/5,2]])
+        % sage: v = vector([-5/6,7/15])
+        % sage: A*v
+
+      \item \(a = 74/17, b = 3/17, c = 90/17\).
+        % sage: A = matrix([[1,-2, 0],[-3,5,4], [2,1,-3]])
+        % sage: v = vector([4,9,-7])
+        % sage: A.inverse()*v
+    \end{itemize}
+  \end{solution}
 \end{exercise}
 \end{document}
 
