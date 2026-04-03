@@ -175,7 +175,7 @@
         \]
       \item For \(\lambda = \frac{1}{2}(1 - i\sqrt{7})\), we solve for \(\vec{v}\) in \(A \vec{v} = \lambda \vec{v}\) to get
         \[
-          \vec{v} = a \begin{bmatrix} \frac{1}{4}( 1 + i\sqrt{7}) \\ 1 \end{bmatrix}
+          \vec{v} = a \begin{bmatrix} \frac{1}{4}(-1 - i\sqrt{7}) \\ 1 \end{bmatrix}
           \quad\text{for any non-zero constant } a.
         \]
     \end{itemize}
@@ -184,33 +184,148 @@
 
 \begin{exercise}
   Find all eigenvectors and their associated eigenvalues for \(A = \begin{bmatrix} 2 & -2 \\ 1 & -3 \end{bmatrix}\).
+
+  \begin{solution}
+    The eigenvalues are the roots of the characteristic polynomial \[\det(A - \lambda I_{2}) = \det \begin{bmatrix} 2 - \lambda & -2 \\ 1 & -3 - \lambda \end{bmatrix} = \lambda^{2} + \lambda - 4.\]
+    There are two eigenvalues \(\mu = \frac{1}{2}(-1 - \sqrt{17})\) and \(\mu = \frac{1}{2}(-1 + \sqrt{17})\).
+
+    \begin{itemize}
+      \item For \(\mu = \frac{1}{2}(-1 - \sqrt{17})\), we solve for \(\vec{u}\) in \(A \vec{u} = \mu \vec{u}\) to get
+        \[
+          \vec{u} = a \begin{bmatrix} \frac{1}{2}(5 - \sqrt{17}) \\ 1 \end{bmatrix}
+          \quad\text{for any non-zero constant } a.
+        \]
+      \item For \(\lambda = \frac{1}{2}(-1 + \sqrt{17})\), we solve for \(\vec{v}\) in \(A \vec{v} = \lambda \vec{v}\) to get
+        \[
+          \vec{v} = a \begin{bmatrix} \frac{1}{2}(5 + \sqrt{17}) \\ 1 \end{bmatrix}
+          \quad\text{for any non-zero constant } a.
+        \]
+    \end{itemize}
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
   Find all eigenvectors and their associated eigenvalues for \(A = \begin{bmatrix} 2 & 1 \\ 2 & 3 \end{bmatrix}\).
+
+  \begin{solution}
+    The characteristic polynomial is \((\lambda-4)(\lambda-1)\).  
+
+    \begin{enumerate}
+      \item The eigenvectors with eigenvalue \(4\) are \(a\begin{bmatrix} 1 \\ 2\end{bmatrix}\) for any non-zero constant \(a\).
+      \item The eigenvectors with eigenvalue \(1\) are \(a\begin{bmatrix} 1 \\ -1\end{bmatrix}\) for any non-zero constant \(a\).
+    \end{enumerate}
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
   Find all eigenvectors and their associated eigenvalues for \(A = \begin{bmatrix} 2 & 2 \\ 0 & 3 \end{bmatrix}\).
+
+\begin{solution}
+    The characteristic polynomial is \((\lambda-3)(\lambda-2)\).  
+    \begin{enumerate}
+      \item The eigenvectors with eigenvalue \(3\) are \(a\begin{bmatrix} 2 \\ 1\end{bmatrix}\) for any non-zero constant \(a\).
+      \item The eigenvectors with eigenvalue \(2\) are \(a\begin{bmatrix} 1 \\ 0\end{bmatrix}\) for any non-zero constant \(a\).
+    \end{enumerate}
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
   Find all eigenvectors and their associated eigenvalues for \(A = \begin{bmatrix} 0 & -1 \\ 1 & 2 \end{bmatrix}\).
-  
-  % \begin{solution}
-  %   There is exactly one eigenvalue \(\lambda = 1\) with eigenvectors \(\begin{bmatrix} -1 \\ 1 \end{bmatrix}\).
-  % \end{solution}
+
+  \begin{solution}
+    The characteristic polynomial is \(\det \begin{bmatrix} -\lambda & -1 \\ 1 & 2 - \lambda \end{bmatrix} = (\lambda-1)^{2}\). There is only one eigenvalue \(\lambda = 1\). We solve for \(\vec{v}\) in \(A\vec{v} = \vec{v}\) which translates to the system of linear equation
+    \begin{align*}
+      -v_{2} &= v_{1} \\
+      v_{1}+2v_{2} &= v_{2}. \\
+    \end{align*}
+    We try setting \(v_{1} = 1\) to get \(v_{2} = -1\). We have to make sure the second equation is actually satisfied. Luckily, it does. So the eigenvectors are
+    \(
+      a
+      \begin{bmatrix}
+        1 \\ -1
+      \end{bmatrix}
+    \) for any constant \(a\).
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
   Find all eigenvectors and their associated eigenvalues for \(A = \begin{bmatrix} 1/2 & 1 \\ -1 & 1/3 \end{bmatrix}\).
+
+  \begin{solution}
+    The characteristic polynomial is \(\lambda^{2} - \frac{5}{6} \lambda + \frac{7}{6} \lambda\).  
+    \begin{enumerate}
+      \item The eigenvectors with eigenvalue \(\frac{1}{12}\left( 5 + i \sqrt{143} \right)\) are \(a\begin{bmatrix} \frac{1}{12}\left( -1 - i \sqrt{143} \right) \\ 1 \end{bmatrix}\) for any non-zero constant \(a\).
+      \item The eigenvectors with eigenvalue \(\frac{1}{12}\left( 5 - i \sqrt{143} \right)\) are \(a\begin{bmatrix} \frac{1}{12}\left( -1 + i \sqrt{143} \right) \\ 1 \end{bmatrix}\) for any non-zero constant \(a\).
+    \end{enumerate}
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
   Find all eigenvectors and their associated eigenvalues for \(A = \begin{bmatrix} 3 & 0 & 0 \\ 1 & 2 & 0 \\ 0 & 1 & 1 \end{bmatrix}\).
+
+  \begin{solution}
+    The characteristic polynomial is \((3 - \lambda)(2 - \lambda)(1 - \lambda)\). 
+    \begin{enumerate}
+      \item For the eigenvalue \(\lambda = 3\), we solve for \(A \vec{v} = 3 \vec{v}\) which means we solve the system of linear equations
+        \[
+          \begin{array}{rcrcrcr}
+            3 v_{1} & &         & &       &=& 3 v_{1} \\
+              v_{1} &+& 2 v_{2} & &       &=& 3 v_{2} \\
+                    & &   v_{2} &+& v_{3} &=& 3 v_{3} \\
+          \end{array}.
+        \]
+         
+        The shortcut of setting \(v_{1} = 1\) will only simplify the system to
+        \[
+          \begin{array}{rcrcrcr}
+                  1 &+& 2 v_{2} & &       &=& 3 v_{2} \\
+                    & &   v_{2} &+& v_{3} &=& 3 v_{3} \\
+          \end{array}.
+        \]
+        There is no more shortcut (unless you know linear algebra). We have to solve it by back substitution. The first equation give us \(v_{2} = 1\) right away. Then the last equation gives us \(v_{3} = 1/2\). The eigenvectors with eigenvalue \(3\) are \(a \begin{bmatrix} 1 \\ 1 \\ 1/2 \end{bmatrix}\) for any non-zero constant \(a\).
+
+      \item The eigenvectors with eigenvalue \(2\) are \(a \begin{bmatrix} 0 \\ 1 \\ 1 \end{bmatrix}\) for any non-zero constant \(a\).
+
+      \item The eigenvectors with eigenvalue \(1\) are \(a \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}\) for any non-zero constant \(a\).
+    \end{enumerate}
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}
   Find all eigenvectors and their associated eigenvalues for \(A = \begin{bmatrix} 1 & 2 & 0 \\ 3 & 4 & 0 \\ 5 & 6 & 7 \end{bmatrix}\).
+
+  \begin{solution}
+    The characteristic polynomial is
+    \begin{align*}
+      \det 
+      \begin{bmatrix}
+        1 - \lambda & 2 & 0 \\
+        3 & 4 - \lambda & 0 \\
+        5 & 6 & 7 - \lambda
+      \end{bmatrix} 
+      &= (1 - \lambda) 
+      \det
+      \begin{bmatrix}
+        4 - \lambda & 0 
+        6 & 7 - \lambda
+      \end{bmatrix}
+      - 
+      2 \det
+      \begin{bmatrix}
+        3 & 0 \\
+        5 & 7 - \lambda
+      \end{bmatrix}
+      \\
+      &= (1 - \lambda) (4 - \lambda) (7 - \lambda) - 2 \cdot 3 (7 - \lambda) \\
+      &= (7 - \lambda)\big((1 - \lambda) (1 - \lambda) - 6\big).
+    \end{align*}
+    Note \(7\) is a root. The other two roots can be found using the quadratic formula. Find the eigenvectors is a whole lot of high school algebra.
+
+    \begin{enumerate}
+      \item The eigenvectors with eigenvalue \(7\) are \(a \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}\) for any non-zero constant \(a\).
+      \item The eigenvectors with eigenvalue \(\frac{5 + \sqrt{33}}{2}\) are \(a \begin{bmatrix} 1 \\ \frac{3 + \sqrt{33}}{4} \\ 0 \end{bmatrix}\) for any non-zero constant \(a\).
+      \item The eigenvectors with eigenvalue \(\frac{5 - \sqrt{33}}{2}\) are \(a \begin{bmatrix} 1 \\ \frac{3 - \sqrt{33}}{4} \\ 0 \end{bmatrix}\) for any non-zero constant \(a\).
+    \end{enumerate}
+  \end{solution}
 \end{exercise}
 \end{document}
