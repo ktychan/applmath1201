@@ -1,8 +1,11 @@
-\documentclass{./guidednotes/guidednotes}
+%! TeX program = lualatex
+\documentclass{guidednotes}
 
-\setauthor{Kelvin Chan}{University of Western Ontario}
-\setcourse{Applied Math}{AM}{1201B}{Calculus \& Probability with Biological Applications}
-\setterm{K. Chan, Winter}{2026}{2026-02-16}
+\setcourse{Applied Math}{AM}{1201B}{Calculus \& Probability with Biological Applications}{}
+\setterm{Winter}{2026}
+\setauthor{Kelvin Chan}{K. Chan}
+\setinstitute{University of Western Ontario}
+\setlogo{./standalones/WesternU_Horizontal_Full_CMYK}
 
 % embedded markups
 \usepackage{minted}
@@ -112,23 +115,35 @@
 % 
 % --------------------
 \backmatter{}
-\begin{luacode}
-  local offset = titlepage + frontmatter
-  local prev = offset + 1
-  for i, pagenum in pairs(weeks) do
-  local f = io.open(string.format("./publish/week%d.tex", i), "w")
+
+%--------------------
+% 
+% generate weekly files
+% 
+% --------------------
+\begin{luacode*}
+local function get_aux_dir()
+  for _, v in ipairs(arg or {}) do
+    local d = v:match("%-%-?output%-directory=(.+)")
+               or v:match("%-%-?aux%-directory=(.+)")
+    if d then return d end
+  end
+  return "."
+end
+
+local auxdir = get_aux_dir()
+local offset = titlepage + frontmatter
+local prev   = offset + 1
+
+local csv = io.open(auxdir .. "/weeks.csv", "w")
+csv:write("i,a,b\n")
+for i, pagenum in ipairs(weeks) do
   local a = prev
   local b = pagenum + offset - 1
-  local s = string.format("\\includepdf[pages=%d-%d]{../main.pdf}", a, b)
-
-  f:write("\\documentclass{article}")
-  f:write("\\usepackage{pdfpages}")
-  f:write("\\begin{document}")
-  f:write(s)
-  f:write("\\end{document}")
-  f:close()
-
+  csv:write(string.format("%d,%d,%d\n", i, a, b))
   prev = b + 1
-  end
-\end{luacode}
+end
+csv:close()
+\end{luacode*}
 \end{document}
+

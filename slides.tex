@@ -1,52 +1,8 @@
 %! Tex Program = lualatex
 \documentclass[aspectratio=169, 14pt]{beamer}  
 
-% \documentclass[aspectratio=169, 14pt, handout]{beamer}  % 12, 14, 17, 20
-% \usepackage{handoutWithNotes}
-% \pgfpagesuselayout{3 on 1 with notes}[letterpaper, border shrink=5mm]
 
-\usetheme{metropolis} 
-\everymath{\displaystyle} 
-\setbeamersize{text margin left=.5cm} 
-\setbeamersize{text margin right=.5cm} 
-\beamertemplatenavigationsymbolsempty{}
-
-\renewcommand{\arcsin}{\sin^{-1}}
-\renewcommand{\arccos}{\cos^{-1}}
-\renewcommand{\arctan}{\tan^{-1}}
-
-\usepackage[normalem]{ulem}
-\usepackage{qrcode}
-\usepackage{fontawesome5}
-\usepackage{standalone}
-\usepackage{multicol}
-
-\usepackage{enumitem}
-\setlist{resume}
-\setlist[enumerate]{label={\arabic*.}, itemsep={1ex}}
-
-\input{./tikz.tex.preamble}
-\input{./typography.tex.preamble}
-
-%
-% uncomment the whole \setbeamertemplate command to add an iClicker watermark.
-%
-\usepackage{tikz, graphicx}
-
-
-\newenvironment{poll}{
-  \begingroup
-  \setbeamertemplate{background}{
-    \begin{tikzpicture}[overlay, remember picture]
-      \node[teal!10, anchor=south] at (current page.south) {\resizebox{\textwidth}{!}{iClicker}};
-    \end{tikzpicture}    
-  }
-  \begin{frame}
-}{
-  \end{frame}
-  \endgroup
-}
-
+\input{./beamer.tex.preamble}
 
 \title{Applied Math 1201B}
 \date{Winter 2025}
@@ -58,6 +14,7 @@
 \begin{frame}
   \maketitle{}
 \end{frame}
+
 \section{Course Introduction}
 
 \begin{frame}
