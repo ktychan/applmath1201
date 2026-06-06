@@ -1,0 +1,45 @@
+# Course configuration — shared by LaTeX, web, and other tools.
+
+author: Kelvin Chan
+author-short: K. Chan
+institute: University of Western Ontario
+logo: ./standalones/WesternU_Horizontal_Full_CMYK
+
+subject: Applied Math
+subj: ApplMath
+number: 1201B
+title: Calculus and Probability with Biological Applications
+
+term:
+  name: Winter 2026
+  start: 2026-01-05
+  end: 2026-04-10
+  readingweek: 2026-02-16
+  noclass:
+    - 2026-02-26
+    - 2026-02-27
+    - 2026-03-27
+  assessment:
+    - 2026-02-26: Midterm
+
+sections:
+  "001":
+    calendar: 
+      show: true
+      colour: false
+    days:
+      - Mon
+      - Wed
+      - Thu
+      - Fri
+    time: 8:30 am to 9:20 am
+  "002":
+    calendar: 
+      show: true
+      colour: false
+    days:
+      - Mon
+      - Wed
+      - Thu
+      - Fri
+    time: 9:30 am to 10:20 am
