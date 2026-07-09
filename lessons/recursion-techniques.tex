@@ -12,17 +12,17 @@ At the end of this section, we will be able to do the following.
   \item Use calculus to solve problems involving discrete-time models.
 \end{enumerate}
 
-\faLightbulb{} Although Example 2.5 is not a biological model, it is intuitive and sophisticated enough to demonstrate all of this section's learning goals.
+\faLightbulb{} Although Example~\ref{ex:recursion-investment-model} \hlwarn{Edited: hardcoded ``Example 2.5'' replaced with a \(\backslash\)ref cross-reference} is not a biological model, it is intuitive and sophisticated enough to demonstrate all of this section's learning goals.
 
 To calculate a few terms of a given recurrence, we simply start with time \(t=1\) and calculate \(u_{1}\) using the recurrence equation. Once \(u_{1}\) is calculated, we apply \(t = 2\) to the recurrence equation to calculate \(u_{2}\) and so on.
 \begin{example} \label{ex:recurrence-bruteforce}
-  Calculate the balance at the end of years 1, 2, and 3 using the model in Example~\ref{ex:recurrsion-investment-model}.
+  Calculate the balance at the end of years 1, 2, and 3 using the model in Example~\ref{ex:recursion-investment-model}.
 
   \blanklines{20}
 \end{example}
 
 \begin{exercise} \label{ex:recurrence-equilibrium}
-  Calculate the balance at the end of years \(3\) using the model in Example~\ref{ex:recurrsion-investment-model} but change the initial deposit to \(\$ 2,500\).
+  Calculate the balance at the end of years \(3\) using the model in Example~\ref{ex:recursion-investment-model} but change the initial deposit to \(\$ 2,500\).
 
   \blanklines{10}
 \end{exercise}
@@ -31,7 +31,7 @@ To calculate a few terms of a given recurrence, we simply start with time \(t=1\
 
 Theoretically, we can always use the recursion equation to calculate \(u_{t}\) for any arbitrary \(t\), say \(t = 10^{30}\), of a recursion. However, this approach is time consuming (even for a computer if a recursion is sufficiently complicated). Moreover, this approach does not give us any insight into the behaviour of the model. We can't really tell if a model follows a power rule, is exponential or something else completely. 
 
-In some cases, we can use mathematical techniques to ``get rid'' of the recursion equation and directly expression \(u\) as a function of \(t\). This is called \hlmain{solving a recursion}.
+In some cases, we can use mathematical techniques to ``get rid'' of the recursion equation and directly express \hlwarn{Edited: ``expression'' \(\to\) ``express''} \(u\) as a function of \(t\). This is called \hlmain{solving a recursion}.
 
 First, let's understand what it means for a function to be a solution of a recursion. 
 
@@ -53,7 +53,7 @@ First, let's understand what it means for a function to be a solution of a recur
 \clearpage
 
 \begin{exercise}[concept check and algebra skill practice]
-  Is \(b_{t} = -1500 (1.02)^{t} + 2500\) is a solution of the recurrence in Example~\ref{ex:recurrsion-investment-model}?
+  Is \(b_{t} = -1500 (1.02)^{t} + 2500\) a solution \hlwarn{Edited: removed duplicate ``is''} of the recurrence in Example~\ref{ex:recursion-investment-model}?
 
   \blanklines{50}
 \end{exercise}
@@ -74,10 +74,10 @@ Why does this work?
 
 \blanklines{5}
 
-\faStar{} Recurrence offers a convenient language to develop discrete-time models. However, none of the calculus tools apply \emph{directly} to recurrence. \hlmain{Solving a recurrence converts a unfamiliar problem to a familiar problem.}
+\faStar{} Recurrence offers a convenient language to develop discrete-time models. However, none of the calculus tools apply \emph{directly} to recurrence. \hlmain{Solving a recurrence converts an unfamiliar problem to a familiar problem.}\hlwarn{Edited: ``a unfamiliar'' \(\to\) ``an unfamiliar''}
 
 \begin{example}
-  Suppose a population grows at rate \(r\) (annually) with an initial population \(P_{0} = 1,000\).   What is the long-term behaviour of the population , i.e., \(\lim_{t \to \infty} P_{t}\), when
+  Suppose a population grows at rate \(r\) (annually) with an initial population \(P_{0} = 1,000\).   What is the long-term behaviour of the population, \hlwarn{Edited: removed stray space before the comma} i.e., \(\lim_{t \to \infty} P_{t}\), when
   \begin{enumerate}
     \item \(r = 1\)?
     \item \(r > 1\)?
@@ -91,7 +91,7 @@ Why does this work?
 
 \clearpage
 
-Recurrences are sensitive to their initial condition. Consider once again Example~\ref{ex:recurrsion-investment-model}. Recall our savings account pays \(2\%\) annual interest rate, and we withdrawal \(50\) dollars after each interest payment.  Initial deposits of \(1,000\) vs \(2,500\) should lead to different balances after \(10\) years.  This is true for all recurrences: Different initial conditions lead to different solutions.
+Recurrences are sensitive to their initial condition. Consider once again Example~\ref{ex:recursion-investment-model}. Recall our savings account pays \(2\%\) annual interest rate, and we withdraw \hlwarn{Edited: ``withdrawal'' \(\to\) ``withdraw''} \(50\) dollars after each interest payment.  Initial deposits of \(1,000\) vs \(2,500\) should lead to different balances after \(10\) years.  This is true for all recurrences: Different initial conditions lead to different solutions.
 
 However, the initial deposit \(2,500\) is special as we saw in Exercise~\ref{ex:recurrence-equilibrium} because it leads to no change from year to year.
 
@@ -101,7 +101,7 @@ However, the initial deposit \(2,500\) is special as we saw in Exercise~\ref{ex:
 
 \blanklines{10}
 
-\faStar{} Equilibrium solutions are very easy to find because they are constants. Simply replace all \(u_{t}\) by \(\hat{u}\) and solve for \(\hat{u}\) using basic algebra. It is possible to find more than one equilibrium solutions.
+\faStar{} Equilibrium solutions are very easy to find because they are constants. Simply replace all \(u_{t}\) by \(\hat{u}\) and solve for \(\hat{u}\) using basic algebra. It is possible to find more than one equilibrium solution \hlwarn{Edited: ``solutions'' \(\to\) ``solution''}.
 
 \begin{example}
   Find the equilibrium solution for the recurrence equation \(v_{t} = 1.5 v_{t-1} + 35\).
@@ -123,7 +123,7 @@ However, the initial deposit \(2,500\) is special as we saw in Exercise~\ref{ex:
 \end{exercise}
 \clearpage
 
-Now we advance to slightly more complicated recurrence. 
+Now we advance to slightly more complicated recurrences \hlwarn{Edited: ``recurrence'' \(\to\) ``recurrences''}.
 
 \begin{method} \label{method:recurrence-sub}
   Consider a recurrence of the form \(v_{t} = A v_{t-1} + B\) whose equilibrium is always \(\hat{v} = \frac{B}{1 - A}\). Introduce a new recurrence \(u_{t}\) and perform the change of variable \(v_{t} = u_{t} + \hat{v}\). Solve the new recurrence \(u_{t}\) and recover the original solution.
@@ -166,7 +166,7 @@ The substitution process in Method~\ref{method:recurrence-sub} can be packaged i
 
 Solutions of recurrence allow us to answer interesting questions.  This is the last learning objective of this week.
 \begin{example}
-  Consider the recurrence in Example~\ref{ex:recurrsion-investment-model} 
+  Consider the recurrence in Example~\ref{ex:recursion-investment-model} 
   \[
     b_{0} = 1000 \quad\text{and}\quad b_{t} = 1.02 b_{t-1} - 50, \text{ for integers } t \ge 1. 
   \] 
@@ -179,7 +179,7 @@ Solutions of recurrence allow us to answer interesting questions.  This is the l
 \clearpage
 
 \begin{exercise}
-  Let's modify Example~\ref{ex:recurrsion-investment-model} a bit further and assume the initial investment is an unknown.  Everything else remains unchanged.  
+  Let's modify Example~\ref{ex:recursion-investment-model} a bit further and assume the initial investment is an unknown.  Everything else remains unchanged.  
 
   What is the initial investment if the money were to be depleted after \(10\) years?
 
@@ -190,14 +190,14 @@ Solutions of recurrence allow us to answer interesting questions.  This is the l
 Here is a brain teaser.
 
 \begin{exercise}[challenge of the week]
-  A house has a cat and some mouse. The cat chases away a fixed portion of the mouse everyday during the night.  Voluntary move-ins/outs happen before midnight. A census of the mouse population is taken at midnight.
+  A house has a cat and some mice \hlwarn{Edited: ``mouse'' \(\to\) ``mice'' and ``everyday'' \(\to\) ``every day'' (throughout this exercise)}. The cat chases away a fixed portion of the mice every day during the night.  Voluntary move-ins/outs happen before midnight. A census of the mouse population is taken at midnight.
 
-  An intern proposes the following model for the number of mouse \(m_{t}\) at night \(t\). 
+  An intern proposes the following model for the number of mice \(m_{t}\) at night \(t\).
   \[
     m_{0} \text{ is unknown} \quad\text{and}\quad m_{t} = 0.2 m_{t-1} + 5, \text{ for \(t \ge 1\)}.
   \]
 
-  According to the model, what \emph{percentage} of the mouse population is chased away by the cat everyday?
+  According to the model, what \emph{percentage} of the mouse population is chased away by the cat every day?
 
   {\footnotesize Hint: Exercise~\ref{ex:emc2}. The challenge is to figure out what we learned over the past two weeks is useful.}
 \end{exercise}

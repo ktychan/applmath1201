@@ -1,26 +1,9 @@
 %! TeX program = lualatex
 \documentclass[../main.tex]{subfiles}
 
-\newenvironment{solution}{
-  \begin{proof}[Sample solution]
-    \color{main}
-  }{
-  \end{proof}
-}
-
-\pgfplotsset{
-  loglog line/.style={
-    loglog,
-    ymin=-2, ymax=2,
-    xmin=-2, xmax=2,
-    xlabel style = {anchor=south, font={\tiny}},
-    ylabel style = {anchor=west, font={\tiny}},
-  }
-}
-
 \begin{document}
 
-\chapter*{Week 1 practice problems}
+\section{Week 1 practice problems}
 
 \begin{exercise}
   For each log-log plot below, determine its power rule model in \(y = c x^{\alpha}\) and in \(y \propto x^{\alpha}\) forms.
@@ -194,18 +177,24 @@
     \item If body mass increases by \(10\%\), how does heart rate change in terms of scaling and percentage?
       \begin{solution}
         The model is \(R \propto m^{-1/4}\). A \(10\%\) increase means we scale mass by \(1.1\). In terms of scaling, heart rate scales \emph{by a factor} of \(1.1^{-1/4} \approx 0.976\) which is an decrease. In terms of percentage, heart rate decreases by roughly \(1 - 0.976 = (2.4\%)\).
+
+        \hlwarn{Correction: the model should read \(H \propto m^{-1/4}\) (heart rate, not \(R\)).}
       \end{solution}
 
     \item If body mass decreases by \(5\%\), how does heart rate change in terms of scaling and percentage?
       \begin{solution}
         The model is \(R \propto m^{-1/4}\). A \(5\%\) decrease means we scale mass by \(0.95\). In terms of scaling, heart rate scales \emph{by a factor} of \(0.95^{-1/4} \approx 1.0129\) which is an increase. In terms of percentage, heart rate increases by roughly \(1.29\%\).
+
+        \hlwarn{Correction: the model should read \(H \propto m^{-1/4}\) (heart rate, not \(R\)).}
       \end{solution}
 
     \item If a patient's heart rate increases, do the models predict their metabolic rate to increase or decrease?
       \begin{solution}
         We want heart rate to be the independent variable, so we isolate for \(H\) in terms of \(m\) to get \(m \propto R^{-1/4}\). Plug \(m\) into the metabolic rate vs body mass model to get \(R \propto (H^{-4})^{3/4}\). Simplify the exponents to get \(R \propto H^{-3}\).
 
-        The exponent on heart rate is negative. Therefore, the model predicts that an increase in heart rate results in a decrease in metabolic rate. 
+        The exponent on heart rate is negative. Therefore, the model predicts that an increase in heart rate results in a decrease in metabolic rate.
+
+        \hlwarn{Correction: we isolate for \(m\) in terms of \(H\) to get \(m \propto H^{-4}\) (not \(m \propto R^{-1/4}\)); the substitution then correctly gives \(R \propto (H^{-4})^{3/4} = H^{-3}\).}
 
       \end{solution}
 
@@ -215,6 +204,8 @@
         We want metabolic rate to be the independent variable, so we isolate for \(R\) in terms of \(m\) to get \(m \propto R^{4/3}\). Plug \(m\) into the heart rate vs body mass model to get \(H \propto (R^{4/3})^{-1/4}\). Simplify the exponents to get \(H \propto R^{-1/3}\).
 
         The exponent on metabolic rate is negative. Therefore, the model predicts that an decrease in metabolic rate results in an increase in heart rate.
+
+        \hlwarn{Correction: the phrasing should be ``isolate for \(m\) in terms of \(R\)''; the resulting equation \(m \propto R^{4/3}\) is correct.}
       \end{solution}
   \end{enumerate}
 \end{exercise}
@@ -246,6 +237,8 @@
         Convert the log-log transformation back into \(P = \frac{V^{2}}{R}\).
 
       If \(V\) remains constant, then \(P \propto R^{-1}\). An \(100\%\) increase in \(V\) means \(V\) scales by \(2\). Therefore \(P\) scales by a factor of \(2^{-1} = 1/2\) which is a decrease.  In terms of percentage, \(P\) decreases by \(50\%\).
+
+      \hlwarn{Correction: the \(100\%\) increase is in \(R\), so \(R\) scales by \(2\); with \(P \propto R^{-1}\), \(P\) then scales by \(2^{-1}=1/2\).}
       \end{solution}
 
     \item If \(R\) remains constant and \(V\) doubles, how does \(P\) change?
@@ -262,6 +255,8 @@
         Convert the log-log transformation back into \(P = \frac{V^{2}}{R}\).
 
         The question wants information on \(R\), so we want \(R\) to be the dependent variable.  The equation rewrites as \(R = \frac{V^{2}}{P}\). Since \(V\) remains constant in this scenario, then \(R \propto P^{-1}\). Having \(P\) means \(P\) scales by \(0.5\). Therefore, \(R\) scales by \(0.5^{-1} = 2\) which is an increase.  In terms of percentage, \(R\) increases by \(100\%\).
+
+        \hlwarn{Correction: ``Having \(P\)'' should read ``Halving \(P\)'' --- \(P\) scales by \(0.5\).}
       \end{solution}
   \end{enumerate}
 \end{exercise}

@@ -2,7 +2,7 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Linearity}
 
-We learn a bit more theory of vectors and matricies to prepare for solving systems of recurrence equations and systems of differential equations.
+We learn a bit more theory of vectors and matrices \hlwarn{Edited: ``matricies'' \(\to\) ``matrices'' (all occurrences in this section)} to prepare for solving systems of recurrence equations and systems of differential equations.
 
 An equation of the form \(A \vec{x} = \vec{b}\) takes vectors as inputs (left-hand side) and spits out vectors (right-hand side). This interpretation says matrix-vector multiplication is a function \(F(\vec{x}) = A \vec{x}\). Such functions are called vector-valued functions because their outputs are vectors.
 
@@ -11,7 +11,7 @@ An equation of the form \(A \vec{x} = \vec{b}\) takes vectors as inputs (left-ha
 We learn to work with a particularly simple class of vector-valued functions called linear functions.
 
 \begin{definition}[linearity] \label{def:linearity}
-  A function \(f(\vec{x})\) is called \hlmain{linear} if \(F(\vec{x}) = A\vec{x}\) for some matrix \(A\). If a function is not a matrix-vector multiplication, then it is not linear. All linear functions satisfy the property
+  A function \(F(\vec{x})\) \hlwarn{Edited: ``\(f(\vec{x})\)'' \(\to\) ``\(F(\vec{x})\)'' to match \(F(\vec{x}) = A\vec{x}\)} is called \hlmain{linear} if \(F(\vec{x}) = A\vec{x}\) for some matrix \(A\). If a function is not a matrix-vector multiplication, then it is not linear. All linear functions satisfy the property
   \begin{equation} \label{eq:linearity}
     A(a \vec{u} + b \vec{v}) = a A\vec{u} + b A\vec{v} \quad\text{where \(a,b\) can be any constants.}
   \end{equation}
@@ -19,7 +19,7 @@ We learn to work with a particularly simple class of vector-valued functions cal
 
 \blanklines{5}
 
-Equation~\eqref{eq:linearity} seems counter-intuitive because why perform two matrix-vector multiplications (right-hand side) when you can just do it once (left-hand side).  Matricies have special vectors, called \emph{eigenvectors}, for which matrix-vector multiplications are \emph{extremely} simple.  In \thiscourse{}, we want to rewrite a vector in terms of eigenvectors and apply Equation~\ref{eq:linearity} to simplify our computation for \(A^{n} \vec{x}\). We will learn eigenvectors next week. For now, we learn to rewrite vectors in terms of eigenvectors of matricies.
+Equation~\eqref{eq:linearity} seems counter-intuitive because why perform two matrix-vector multiplications (right-hand side) when you can just do it once (left-hand side).  Matricies have special vectors, called \emph{eigenvectors}, for which matrix-vector multiplications are \emph{extremely} simple.  In \thiscourse{}, we want to rewrite a vector in terms of eigenvectors and apply Equation~\ref{eq:linearity} to simplify our computation for \(A^{n} \vec{x}\). We will learn eigenvectors next week. For now, we learn to rewrite vectors in terms of eigenvectors of matrices.
 
 \begin{method}[express a vector in terms of other vectors] \label{method:linear-combination}
   To find unknown constants \(a,b\) so that \(\vec{x} = a \vec{u} + b \vec{v}\) where \(\vec{x}, \vec{u}, \vec{v}\) are given, rewrite the equality as (usual) linear equations involving unknown \(a,b\), then use back substitution.

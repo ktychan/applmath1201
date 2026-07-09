@@ -1,20 +1,9 @@
 %! TeX program = lualatex
 \documentclass[../main.tex]{subfiles}
 
-\usetikzlibrary{intersections,calc}
-
-\newenvironment{solution}{
-  \begin{proof}[Sample solution]
-    \color{main}
-  }{
-  \end{proof}
-}
-
 \begin{document}
 
-\chapter*{Week 9 practice problems}
-
-\setcounter{chapter}{9}
+\section{Week 9 practice problems}
 
 \begin{exercise}
   Suppose \(E\) and \(F\) are events in a sample space and \(\mathbb{P}(E) = 0.4\) and \(\mathbb{F} = 0.6\). Which statements are true?
@@ -153,9 +142,11 @@
 
       \item \(\mathbb{P}(3   < X \le 5) = f(4) + f(5) = 0.3\)
       \item \(\mathbb{P}(2 \le X \le 9) = f(2) + f(3) + \cdots + f(9) = 1 - f(1) = 0.95\).
+        \hlwarn{Correction: the question asks for \(\mathbb{P}(2 \le X < 9)\), which excludes \(X=9\). The answer is \(1 - f(1) - f(9) = 0.85\).}
       \item \(\mathbb{P}(4 \le X \le 6) = f(4) + f(5) + f(6) = 0.45\).
       \item \(\mathbb{P}(X \le 6) = F(6) = 0.75\).
       \item \(\mathbb{P}(X < 6) = \mathbb{P}(X \le 5) = F(5) = 0.10\).
+        \hlwarn{Correction: the question asks for \(\mathbb{P}(X < 3) = \mathbb{P}(X \le 2) = F(2) = 0.15\). (As written, note also \(F(5) = 0.60\), not \(0.10\).)}
       \item \(\mathbb{P}(X \ge 4) = 1 - \mathbb{P}(X \le 3) = 1 - F(3) = 0.7\).
       \item \(\mathbb{P}(X \ge 4) = 1 - \mathbb{P}(X \le 3) = 1 - F(3) = 0.7\).
       \item We can just apply the relevant formulas.

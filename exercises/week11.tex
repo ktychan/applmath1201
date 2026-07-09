@@ -1,20 +1,9 @@
 %! TeX program = lualatex
 \documentclass[../main.tex]{subfiles}
 
-\usetikzlibrary{intersections,calc}
-
-\newenvironment{solution}{
-  \begin{proof}[Sample solution]
-    \color{main}
-  }{
-  \end{proof}
-}
-
 \begin{document}
 
-\chapter*{Week 11 practice problems}
-
-\setcounter{chapter}{11}
+\section{Week 11 practice problems}
 
 \begin{exercise}
   Suppose \(A = \begin{bmatrix} 0 & 1 \\ 1 & 0\end{bmatrix}\). Calculate \(A^{2}, A^{3}, A^{4}\). Find a pattern to calculate \(A^{53}\).
@@ -100,6 +89,8 @@
           &= \frac{13}{48} \left( 6 \right)^{1000} \begin{bmatrix} 1 \\ 2 \end{bmatrix} + \frac{5}{12} \left( 8 \right)^{1000} \begin{bmatrix} 3 \\ 4 \end{bmatrix}.
         \end{align*}
         The last line is the simplest form of \(\vec{x}(1000)\).
+
+        \hlwarn{Correction: the decomposition is \(\vec{x}(0) = \frac{1}{2}\vec{u} + \frac{1}{2}\vec{v}\) (the stated \(\frac{13}{48}, \frac{5}{12}\) do not satisfy \(\vec{x}(0) = [2,3]^{\top}\)). Hence \(\vec{x}(1000) = \frac{1}{2}(6)^{1000}\begin{bmatrix} 1 \\ 2 \end{bmatrix} + \frac{1}{2}(8)^{1000}\begin{bmatrix} 3 \\ 4 \end{bmatrix}\).}
     \end{enumerate}
   \end{solution}
 \end{exercise}
@@ -144,6 +135,8 @@
   \begin{solution}
     The eigenvalues are the roots of the characteristic polynomial \[\det(A - \lambda I_{2}) = \det \begin{bmatrix} 3 - \lambda & 0 \\ 0 & -2 - \lambda \end{bmatrix} = \lambda^{2} - \lambda - 6.\]
     There are two eigenvalues \(\mu = -2\) and \(\lambda = 3\).
+
+    \hlwarn{Correction: the labels are used inconsistently below (\(\mu\) is called \(-2\) here but \(3\) in the first bullet). The eigenvalue--eigenvector pairs are correct: \(3 \leftrightarrow [1,0]^{\top}\) and \(-2 \leftrightarrow [0,1]^{\top}\).}
 
     \begin{itemize}
       \item For \(\mu = 3\), we solve for \(\vec{u}\) in \(A \vec{u} = \mu \vec{u}\) to get
@@ -252,7 +245,10 @@
   Find all eigenvectors and their associated eigenvalues for \(A = \begin{bmatrix} 1/2 & 1 \\ -1 & 1/3 \end{bmatrix}\).
 
   \begin{solution}
-    The characteristic polynomial is \(\lambda^{2} - \frac{5}{6} \lambda + \frac{7}{6} \lambda\).  
+    The characteristic polynomial is \(\lambda^{2} - \frac{5}{6} \lambda + \frac{7}{6} \lambda\).
+
+    \hlwarn{Correction: the last term is the constant \(+\frac{7}{6}\), not \(+\frac{7}{6}\lambda\); the polynomial is \(\lambda^{2} - \frac{5}{6}\lambda + \frac{7}{6}\). The eigenvalues and eigenvectors are correct.}
+
     \begin{enumerate}
       \item The eigenvectors with eigenvalue \(\frac{1}{12}\left( 5 + i \sqrt{143} \right)\) are \(a\begin{bmatrix} \frac{1}{12}\left( -1 - i \sqrt{143} \right) \\ 1 \end{bmatrix}\) for any non-zero constant \(a\).
       \item The eigenvectors with eigenvalue \(\frac{1}{12}\left( 5 - i \sqrt{143} \right)\) are \(a\begin{bmatrix} \frac{1}{12}\left( -1 + i \sqrt{143} \right) \\ 1 \end{bmatrix}\) for any non-zero constant \(a\).
@@ -326,6 +322,8 @@
       \item The eigenvectors with eigenvalue \(\frac{5 + \sqrt{33}}{2}\) are \(a \begin{bmatrix} 1 \\ \frac{3 + \sqrt{33}}{4} \\ 0 \end{bmatrix}\) for any non-zero constant \(a\).
       \item The eigenvectors with eigenvalue \(\frac{5 - \sqrt{33}}{2}\) are \(a \begin{bmatrix} 1 \\ \frac{3 - \sqrt{33}}{4} \\ 0 \end{bmatrix}\) for any non-zero constant \(a\).
     \end{enumerate}
+
+    \hlwarn{Correction: two issues. (1) The factored polynomial should read \((7-\lambda)\big((1-\lambda)(4-\lambda) - 6\big)\), not \((1-\lambda)(1-\lambda)\). (2) For the eigenvalues \(\lambda = \frac{5 \pm \sqrt{33}}{2}\) the third component is \emph{not} \(0\): row 3 forces \(v_{3} = -\frac{5 v_{1} + 6 v_{2}}{7 - \lambda} \ne 0\). The first two components (\(v_{1}=1\), \(v_{2}=\frac{3 \pm \sqrt{33}}{4}\)) are correct.}
   \end{solution}
 \end{exercise}
 \end{document}

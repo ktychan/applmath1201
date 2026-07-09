@@ -15,7 +15,7 @@ From above, we distill an abstract property \hlmain{\((\text{operation}) \; (\te
   \end{equation}
   are called \hlmain{an eigenvector \(\vec{v}\) with corresponding eigenvalue \(\lambda\)}.
 
-  Note that vector is non-zero if \emph{at least} one of its components is not zero.
+  Note that a vector is non-zero if \emph{at least} one of its components is not zero. \hlwarn{Edited: ``that vector is'' \(\to\) ``that a vector is'' (both occurrences in this section)}
 \end{definition}
 
 \begin{example}[how to test for eigenvectors]
@@ -46,7 +46,7 @@ From above, we distill an abstract property \hlmain{\((\text{operation}) \; (\te
   \blanklines{20}
 \end{example}
 
-{\footnotesize \faExclamationTriangle{} A useful quick sanity check. The quadratic formula has a \(\pm\) in front of the square root. Therefore, if \(\alpha + \beta i\) is an eigenvalue for a matrix \(A\), then the other eigenvalue must be \(\alpha - \beta i\) assuming \(\alpha,\beta\) are real numbers.  In other words, complex eigenvalues always \hlmain{come in pairs} \(\alpha \pm \beta i\) for \(2 \times 2\) matricies.}
+{\footnotesize \faExclamationTriangle{} A useful quick sanity check. The quadratic formula has a \(\pm\) in front of the square root. Therefore, if \(\alpha + \beta i\) is an eigenvalue for a matrix \(A\), then the other eigenvalue must be \(\alpha - \beta i\) assuming \(\alpha,\beta\) are real numbers.  In other words, complex eigenvalues always \hlmain{come in pairs} \(\alpha \pm \beta i\) for \(2 \times 2\) matrices.} \hlwarn{Edited: ``matricies'' \(\to\) ``matrices'' (both occurrences in this section)}
 \clearpage
 
 \begin{method}[finding eigenvectors] \label{method:eigenvectors}
@@ -56,7 +56,7 @@ From above, we distill an abstract property \hlmain{\((\text{operation}) \; (\te
     \item For each \(\lambda\), use back-substitution to find \hlwarn{non-zero} vectors \(\vec{v}\) satisfying \(A \vec{v} = \lambda \vec{v}\). 
   \end{enumerate}
 
-  Recall that vector is non-zero if \emph{at least} one of its components is not zero.
+  Recall that a vector is non-zero if \emph{at least} one of its components is not zero.
 \end{method}
 
 \begin{example}
@@ -81,7 +81,7 @@ The result of Example~\ref{eq:age-structured-eigenvectors} will be used in Examp
 \end{exercise}
 \clearpage
 
-\faStar{} Matrices can have exactly one eigenvalue. In such a case, Method~\ref{method:eigenvectors} still applies. Work through Exercises~\ref{ex:eigenvalues-unique-full-rank}~and~\ref{ex:eigenvalues-unique-dim1} to find eigenvectors for matricies with only one eigenvalue.
+\faStar{} Matrices can have exactly one eigenvalue. In such a case, Method~\ref{method:eigenvectors} still applies. Work through Exercises~\ref{ex:eigenvalues-unique-full-rank}~and~\ref{ex:eigenvalues-unique-dim1} to find eigenvectors for matrices with only one eigenvalue.
 \begin{exercise} \label{ex:eigenvalues-unique-full-rank}
   Find all eigenvectors for the matrix \(A = \begin{bmatrix} 3 & 0 \\ 0.1 & 3 \end{bmatrix}\).
 

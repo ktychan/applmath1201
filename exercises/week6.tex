@@ -1,20 +1,9 @@
 %! TeX program = lualatex
 \documentclass[../main.tex]{subfiles}
 
-\usetikzlibrary{intersections,calc}
-
-\newenvironment{solution}{
-  \begin{proof}[Sample solution]
-    \color{main}
-  }{
-  \end{proof}
-}
-
 \begin{document}
 
-\chapter*{Week 6 practice problems}
-
-\setcounter{chapter}{6}
+\section{Week 6 practice problems}
 
 \begin{example}
   Toss a coin and roll a four-sided die labelled \(1,2,3,4\).  Find the probability of getting a tail and an even number.
@@ -245,6 +234,8 @@
       \mathbb{P}(\text{false positive}) &= 450/9000, \\
       \mathbb{P}(\text{true negative}) &=  8550/900.
     \end{align*}
+
+    \hlwarn{Correction: two denominators are missing a zero. The true-positive rate is \(920/1000\) (out of the \(1000\) sick), and the true-negative rate is \(8550/9000\) (out of the \(9000\) not sick).}
   \end{solution}
 \end{exercise}
 

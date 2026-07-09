@@ -2,7 +2,7 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Discrete random variable}
 
-A random variable is discrete if all possible values of \(X(\text{outcome})\) form a discrete set. Discrete random variable are described by their PMF or CDF which are two different but commonly used ways to represent the same underlying information in a discrete random variable.
+A random variable is discrete if all possible values of \(X(\text{outcome})\) form a discrete set. Discrete random variables \hlwarn{Edited: ``Discrete random variable are'' \(\to\) ``Discrete random variables are''} are described by their PMF or CDF which are two different but commonly used ways to represent the same underlying information in a discrete random variable.
 
 \begin{definition}[PMF and CDF]
   Let \(X\) be a discrete random variable.
@@ -66,7 +66,7 @@ A random variable is discrete if all possible values of \(X(\text{outcome})\) fo
         xmin={150}, xmax={185},
         xtick={155, 160, 165, 170, 175, 180}, 
         ytick={0,0.2,0.4,0.6,0.8,1}, 
-        title={cumulative density function (CDF)},
+        title={cumulative distribution function (CDF)}, % hlwarn Edited: ``density'' -> ``distribution''  FIXME: verify this math/content correction (note is a comment because it sits in a TikZ title)
         grid=major, grid style={gray!20},
         ]
       \end{axis}
@@ -126,7 +126,7 @@ Lastly, calculate \(\mathbb{P}(160 \le X \le 170)\) using its PMF and CDF.
 
 
 \begin{exercise}[concept check]
-  Suppose a discrete random variable \(X\) takes value \(3, 5, 10\). If its PMF \(f_{X}(x)\) is given by \(f_{X}(3) = 1/7\), \(f_{X}(5)\) is unknown, and \(f_{X}(10) = 2/5\).  Find the unknown probability.
+  Suppose a discrete random variable \(X\) takes values \hlwarn{Edited: ``takes value'' \(\to\) ``takes values''} \(3, 5, 10\). If its PMF \(f_{X}(x)\) is given by \(f_{X}(3) = 1/7\), \(f_{X}(5)\) is unknown, and \(f_{X}(10) = 2/5\).  Find the unknown probability.
 
   \blanklines{10}
 \end{exercise}
@@ -184,14 +184,14 @@ Lastly, calculate \(\mathbb{P}(160 \le X \le 170)\) using its PMF and CDF.
 \end{exercise}
 \clearpage
 
-We can think of random variables as aggregates forms of data.  Outcomes in the sample space are grouped by common associated data (e.g., height).  \hlmain{Expectation}, \hlmain{variance} and \hlmain{standard deviations} are common ways to describe the shape of data.
+We can think of random variables as aggregate \hlwarn{Edited: ``aggregates forms'' \(\to\) ``aggregate forms''} forms of data.  Outcomes in the sample space are grouped by common associated data (e.g., height).  \hlmain{Expectation}, \hlmain{variance} and \hlmain{standard deviation} \hlwarn{Edited: ``standard deviations'' \(\to\) ``standard deviation''} are common ways to describe the shape of data.
 
 \begin{definition}
   Suppose \(X\) is a discrete random variable with values \(x_{1}, \ldots, x_{n}\) and a PMF \(f_{X}(x)\).
   \begin{enumerate}[itemsep={1ex}]
     \item Its expectation is \(\mu = E(X) = \sum_{i=1}^{n} x_{i} f_{X}(x_{i})\).
     \item Its variance is \(V(X) = E\left( (X - \mu)^{2} \right) = \sum_{i=1}^{n} (x_{i} - \mu)^{2} f_{X}(x_{i})\).
-    \item Its standard deviation is \(\sigma = \sqrt{V(x)}\).
+    \item Its standard deviation is \(\sigma = \sqrt{V(X)}\). \hlwarn{Edited: ``\(V(x)\)'' \(\to\) ``\(V(X)\)''}
   \end{enumerate}
 
   Variance is often denoted as \(\sigma^{2}\).

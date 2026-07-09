@@ -2,20 +2,9 @@
 %! TeX program = lualatex
 \documentclass[../main.tex]{subfiles}
 
-\usetikzlibrary{intersections,calc}
-
-\newenvironment{solution}{
-  \begin{proof}[Sample solution]
-    \color{main}
-  }{
-  \end{proof}
-}
-
 \begin{document}
 
-\chapter*{Week 10 practice problems}
-
-\setcounter{chapter}{10}
+\section{Week 10 practice problems}
 
 \begin{exercise}
   The sample mean and sample standard deviation of last year's final exam were \(70\) and \(12\), respectively.  This year, the mean and standard deviation for the final exam is \(72\) and \(14\). 
@@ -173,6 +162,7 @@
       \item \(70\% + 10\%\) of the juveniles survive. Therefore, \(20\%\) of the juveniles do not survive.
       \item The arrow labelled \(p\) means the birth rate among adolescence.
       \item The birth rate among adults is \(80\%\). The death rate is unknown.
+        \hlwarn{Correction: the death rate is determinable. Since adults have no self-loop (the \((3,3)\) entry of \(A\) is \(0\)), no adults survive, so the death rate is \(100\%\) --- as the next item states.}
       \item The birth rate among adults is \(80\%\). The death rate is \(100\%\).
       \item In addition to the above, \(20\%\) of the adolescence remain as adolescence, and \(50\%\) grow into adults.
       \item The model \(\vec{x}(t+1) = A\vec{x}\) has matrix 
@@ -199,6 +189,8 @@
             10
           \end{bmatrix}
         \). Therefore, \(x_{3}(2) = 10\).
+
+        \hlwarn{Correction: the first entry of \(\vec{x}(2)\) should be \(56\), not \(50\) (since \(0.1 \cdot 160 + 0.8 \cdot 50 = 56\)). So \(\vec{x}(2) = [56, 116, 10]^{\top}\). The answer \(x_{3}(2) = 10\) is unaffected.}
     \end{enumerate}
   \end{solution}
 \end{exercise}
@@ -250,6 +242,8 @@
       \end{bmatrix}
       \vec{x}(t).
     \]
+
+    \hlwarn{Correction: the \((3,2)\) entry should be \(0.3\), not \(0.5\) (from snow, no-precipitation has probability \(0.3\); each column must sum to \(1\)).}
   \end{solution}
 
   We are not given numbers for \(\vec{x}(0)\), so let \(\vec{x}(0) = \begin{bmatrix} a \\ b \\ c \end{bmatrix}\) where \(a,b,c\) are constants (i.e., placeholders). Then
@@ -271,7 +265,9 @@
       0.26 a + 0.36 b + 0.09 c
     \end{bmatrix}.
   \]
-  The entries of \(\vec{x}(2)\) represent the probabilities of rain, snow and no precipitation at time \(t = 2\). 
+  The entries of \(\vec{x}(2)\) represent the probabilities of rain, snow and no precipitation at time \(t = 2\).
+
+  \hlwarn{Correction: using the corrected matrix, \(A^{2} = \begin{bmatrix} 0.41 & 0.25 & 0.16 \\ 0.14 & 0.30 & 0.14 \\ 0.45 & 0.45 & 0.70 \end{bmatrix}\) (each column sums to \(1\)); the displayed \(A^{2}\) is incorrect. Update \(\vec{x}(2) = A^{2}\vec{x}(0)\) accordingly.}
 \end{exercise}
 
 \begin{exercise}
@@ -380,6 +376,7 @@
 
     \begin{itemize}
       \item \(a = 5, b = 1\).
+        \hlwarn{Correction: \(b = -1\), not \(1\) (check: \(-2 \cdot 5 + 3 \cdot (-1) = -13\) and \(5 \cdot 5 + 7 \cdot (-1) = 18\)).}
         % sage: A = matrix([[-2,3],[5,7]])
         % sage: v = vector([-13,18])
         % sage: A.inverse()*v

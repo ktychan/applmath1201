@@ -2,7 +2,7 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Summary of the fundamentals of probability}
 
-Calculating probability from the \hlmain{first principle} is a counting problem. Determine the number of outcomes in an event \(E\) and the total number of outcomes in the sample space and use the definition
+Calculating probability from \hlmain{first principles} \hlwarn{Edited: ``first principle'' \(\to\) ``first principles''} is a counting problem. Determine the number of outcomes in an event \(E\) and the total number of outcomes in the sample space and use the definition
 \begin{equation}
   \mathbb{P}(E) = \frac{\text{number of outcomes in \(E\)}}{\text{total number of outcomes in \(\Omega\)}}. \tag{\ref{eq:probability}}
 \end{equation}
@@ -24,7 +24,7 @@ Two events \(E,F\) are called mutually exclusive if \(E \cap F = \emptyset\). In
 \mathbb{P}(E \cup F) = \mathbb{P}(E) + \mathbb{P}(F) \quad\text{ if and only if}\quad \text{\(E\) and \(F\) are mutually exclusive}.
 \]
 
-Events \(E_{1}, E_{2}, \ldots, E_{n}\) are \hlmain{mutually exclusive and exhaustive} if \(E_{i} \cap E_{j} = \emptyset\) for all \(i \ne j\), and are \hlmain{exhaustive} if \(E_{1} \cup \cdots \cup E_{n} = \Omega\).  In term of probability, events \(E_{1}, \ldots, E_{n}\) are \hlmain{mutually exclusive and exhaustive} if \(\mathbb{P}(E_{i} \cap E_{j} = 0\) for all \(i \ne j\) and \(\mathbb{P}(E_{1} \cup \cdots E_{n}) = 1\).
+Events \(E_{1}, E_{2}, \ldots, E_{n}\) are \hlmain{mutually exclusive} \hlwarn{Edited: was ``mutually exclusive and exhaustive'' --- the disjoint condition alone defines mutually exclusive} \hlwarn{FIXME: verify this math/content correction} if \(E_{i} \cap E_{j} = \emptyset\) for all \(i \ne j\), and are \hlmain{exhaustive} if \(E_{1} \cup \cdots \cup E_{n} = \Omega\).  In terms of \hlwarn{Edited: ``In term of'' \(\to\) ``In terms of''} probability, events \(E_{1}, \ldots, E_{n}\) are \hlmain{mutually exclusive and exhaustive} if \(\mathbb{P}(E_{i} \cap E_{j}) = 0\) for all \(i \ne j\) and \(\mathbb{P}(E_{1} \cup \cdots \cup E_{n}) = 1\). \hlwarn{Edited: added missing ``)'' in \(\mathbb{P}(E_{i} \cap E_{j})\), and inserted the missing \(\cup\) in \(E_{1} \cup \cdots \cup E_{n}\)} \hlwarn{FIXME: verify this math/content correction}
 
 A \hlmain{conditional probability} is the probability of an event \(E\) \hlmain{given} that an event \(F\) has already happened 
 \begin{equation}
@@ -44,10 +44,11 @@ An application of conditional probability is errors in medical testing. We have 
   &=& \mathbb{P}(\text{true positives}) 
   &=& \mathbb{P}( \text{positives} \mid \text{present} ) \\
   \mathbb{P}(\text{type-II errors})
-  &=& \mathbb{P}(\text{false negative}) 
+  &=& \mathbb{P}(\text{false negatives})
   &=& \mathbb{P}( \text{negatives} \mid \text{present} ) \\
   \end{array}
 \]
+\hlwarn{Edited: in the array above, ``\(\mathbb{P}(\text{false negative})\)'' \(\to\) ``\(\mathbb{P}(\text{false negatives})\)''}
 
 \begin{center}
   \begin{tabular}{c||c|c}
@@ -60,7 +61,7 @@ An application of conditional probability is errors in medical testing. We have 
 \medskip
 \hrule
 
-The next two are part of the fundamentals of probability theory but is not on the midterm test.
+The next two are part of the fundamentals of probability theory but are not \hlwarn{Edited: ``is not'' \(\to\) ``are not''} on the midterm test.
 
 The \hlmain{law of total probability} states that if \(F_{1}, \ldots, F_{n}\) are mutually exclusive and exhaustive events of a sample space \(\Omega\), then 
 \begin{equation}

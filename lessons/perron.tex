@@ -36,7 +36,7 @@ A hidden pattern for the long-term behaviour emerges when we \emph{arbitrarily} 
   \end{array}
 \]
 
-The pattern: The ratios \(0.385/0.615\), \(0.077 / 0.123\), \(1.115 / 0.175\) are all roughly \(0.625\).
+The pattern: The ratios \(0.385/0.615\), \(0.077 / 0.123\), \(1.115 / 1.785\) \hlwarn{Edited: ``\(1.115 / 0.175\)'' \(\to\) ``\(1.115 / 1.785\)'' (the vector was \([1.785, 1.115]\))} \hlwarn{FIXME: verify this math/content correction} are all roughly \(0.625\).
 Recall that \(A\) has eigenvectors 
 \[
   \vec{u} = \begin{bmatrix} {\color{main} 1} \\ {\color{main} 0.625} \end{bmatrix} \text{ with eigenvalue } {\color{main} \mu = 1}
@@ -53,7 +53,7 @@ Recall that \(A\) has eigenvectors
 %   \vec{p}(0) = a \vec{u} + b \vec{v}.
 % \]
 
-The above pattern is not a coincidence and help us \emph{quickly} determine long-term behaviour for (vector) recurrence.
+The above pattern is not a coincidence and helps us \hlwarn{Edited: ``help us'' \(\to\) ``helps us''} \emph{quickly} determine long-term behaviour for (vector) recurrence.
 
 \begin{method}[long-term behaviour for recurrence equations]
   The \hlmain{dominant eigenvalue} \(\mu\) is the largest eigenvalue, and a \hlmain{dominant eigenvector} is an eigenvector whose associated eigenvalue is \(\mu\).
@@ -70,7 +70,7 @@ The above pattern is not a coincidence and help us \emph{quickly} determine long
 \clearpage
 
 \begin{example}
-  Let \(A = \begin{bmatrix} 0 & 1 \\ 1 & 1/2 \end{bmatrix}\) and \(\vec{x}(0) = \begin{bmatrix} 300 \\ 1000\end{bmatrix}\).  Describe the long-term behaviour for \(\vec{x}(t + 1) = A \vec{x}(t)\), i.e., describe the long-term behaviour \(\lim_{t \to \infty} \vec{u}(t)\).
+  Let \(A = \begin{bmatrix} 0 & 1 \\ 1 & 1/2 \end{bmatrix}\) and \(\vec{x}(0) = \begin{bmatrix} 300 \\ 1000\end{bmatrix}\).  Describe the long-term behaviour for \(\vec{x}(t + 1) = A \vec{x}(t)\), i.e., describe the long-term behaviour \(\lim_{t \to \infty} \vec{x}(t)\). \hlwarn{Edited: ``\(\vec{u}(t)\)'' \(\to\) ``\(\vec{x}(t)\)''}
 
   \blanklines{50}
 \end{example}
@@ -83,9 +83,9 @@ The above pattern is not a coincidence and help us \emph{quickly} determine long
 \end{exercise}
 \clearpage
 
-What happens if model something other than (absolute) populations such as particle movement?  We have similar similar conclusions when eigenvalues are complex.
+What happens if we model \hlwarn{Edited: ``if model'' \(\to\) ``if we model''} something other than (absolute) populations such as particle movement?  We have similar \hlwarn{Edited: removed duplicated ``similar''} conclusions when eigenvalues are complex.
 
-\faStar{} Suppose we have a vector recursion \(\vec{x}(t+1) = A\vec{x}\) where the \(2 \times 2\) matrix \(A\) has complex eigenvalues \(a \pm bi\).  Then the matrix \(A\) is ``essentially'' 
+\faStar{} Suppose we have a vector recursion \(\vec{x}(t+1) = A\vec{x}(t)\) \hlwarn{Edited: ``\(A\vec{x}\)'' \(\to\) ``\(A\vec{x}(t)\)''} where the \(2 \times 2\) matrix \(A\) has complex eigenvalues \(a \pm bi\).  Then the matrix \(A\) is ``essentially'' 
 \(A = \begin{bmatrix} a & -b\\ b & a \end{bmatrix} \).
 In this case, the vector field for the (vector) recurrence is always a spiral pattern.
 \begin{multicols}{2}
@@ -104,27 +104,28 @@ Visualization (\url{https://colab.research.google.com/drive/1Xqp8iOQDxTS6Nocq3c3
 \begin{example}
   Match the vector field to the recurrence below. 
   \[
-    \vec{x}(t+1)
+    \vec{x}(t+1) =
     \begin{bmatrix}
       0.5 & -1 \\
       1 & 0.5
     \end{bmatrix}
     \vec{x}(t),
     \quad
-    \vec{x}(t+1)
+    \vec{x}(t+1) =
     \begin{bmatrix}
       1 & 1 \\
       -1 & 1
     \end{bmatrix}
     \vec{x}(t),
     \quad
-    \vec{x}(t+1)
+    \vec{x}(t+1) =
     \begin{bmatrix}
       2 & -1 \\
       1 & 2
     \end{bmatrix}
     \vec{x}(t).
   \]
+  \hlwarn{Edited: added the missing ``\(=\)'' in all three recurrences \(\vec{x}(t+1) = A\vec{x}(t)\)} \hlwarn{FIXME: verify this math/content correction}
 
   \begin{center}
     \includegraphics[width=3in]{../standalones/plot-vector-field-complex-circles.png}

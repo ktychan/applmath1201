@@ -2,17 +2,17 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Introduction to continuous-time models and differential equations}
 
-\hlmain{Continuous-time models} are models in which time flows continuously as experienced by human. In mathematical terms, the time variable \(t\) takes values over an interval. 
+\hlmain{Continuous-time models} are models in which time flows continuously as experienced by humans \hlwarn{Edited: ``human'' \(\to\) ``humans''}. In mathematical terms, the time variable \(t\) takes values over an interval. 
 
 \hlmain{Differential equations} are equations for describing changes over time and are often used to describe continuous-time models.
 
 We introduce these two ideas together through Example~\ref{ex:diff-eq-intro}.
 
 \begin{example} \label{ex:diff-eq-intro}
-  Let \(N\) measure the size of a population (e.g., cells, animals, any \emph{group} of organisms that live through some kind of life cycles). Assume time \(t\) \emph{flows continuously} and is measured in \emph{years}. Unlike discrete-time models, it makes sense to say, for example, \(0.23\) years.
+  Let \(N\) measure the size of a population (e.g., cells, animals, any \emph{group} of organisms that live through some kind of life cycle). Assume time \(t\) \emph{flows continuously} and is measured in \emph{years}. Unlike discrete-time models, it makes sense to say, for example, \(0.23\) years.
 
   Assume that at all times, the rate of change at time \(t\) is proportional to the size of the population at time \(t\).  
-  Express the rate of change of the population \hlmain{at time \(t\)} as an equation if the per capital birth and death rate are \hlsupp{\(B = 10\%\) per year} and \hlsupp{\(D = 1\%\) per year}.
+  Express the rate of change of the population \hlmain{at time \(t\)} as an equation if the per capita birth and death rates \hlwarn{Edited: ``per capital'' \(\to\) ``per capita''; ``rate are'' \(\to\) ``rates are''} are \hlsupp{\(B = 10\%\) per year} and \hlsupp{\(D = 1\%\) per year}.
   Use dimensional homogeneity to stay on track.
 
   \emph{Per capita} means per unit of population, e.g., per cell, per \(10\) people, per unicorn {\emojifont{🦄}}, etc.  
@@ -38,7 +38,7 @@ Let's sharpen the concept of differential equations by writing down a precise de
   Here are two differential equations.  
 
   \begin{enumerate}[wide]
-    \item A differential equation can be written with or without function notations.
+    \item A differential equation can be written with or without function notation.
       \[
         {\overbrace{N'(t) = r N(t) \left(1-\frac{N(t)}{K}\right)}^{\text{independent variable is shown}}} 
         \qquad\text{or}\qquad 
@@ -64,11 +64,10 @@ Let's sharpen the concept of differential equations by writing down a precise de
 
       Recall that \(v''\) and \(v^{(2)}\) are the notations for the second derivative of \(v\).
       \[
-        v(t) = v'(t) + \frac{v''(t)}{t} + \frac{v^{(3)}(t)}{t^{2}} - \sqrt{t-1}
+        v(t) = v'(t) + \frac{v''(t)}{t} + \frac{v^{(3)}(t)}{t^{2}} + \sqrt{t-1}
         \qquad\text{or}\qquad
         v = v' + \frac{v''}{t} + \frac{v^{(3)}}{t^{2}} + \sqrt{t-1}
       \]
-
   \end{enumerate}
 \end{example}
 \clearpage

@@ -57,7 +57,7 @@
   \begingroup
   \setbeamertemplate{background canvas}{
     \begin{tikzpicture}[overlay, remember picture]
-      \node[WesternOrchid!10, anchor=south] at (current page.south) {\resizebox{\textwidth}{!}{iClicker}};
+      \node[main!10, anchor=south] at (current page.south) {\resizebox{\textwidth}{!}{iClicker}};
     \end{tikzpicture}    
   }
   \begin{frame}
@@ -71,7 +71,7 @@
   \begingroup
   \setbeamertemplate{background canvas}{
     \begin{tikzpicture}[overlay, remember picture]
-      \node[WesternOrchid!10, anchor=south] at (current page.south) {\resizebox{\textwidth}{!}{iClicker}};
+      \node[main!10, anchor=south] at (current page.south) {\resizebox{\textwidth}{!}{iClicker}};
     \end{tikzpicture}    
   }
   \begin{frame}

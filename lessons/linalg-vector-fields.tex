@@ -2,7 +2,7 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document} \section{Linear vector fields}\label{sec:linalg-vector-fields}
 
-A vector field is a way to visualize \hlattn{changes} in a system. Let's see the idea through examples. A \hlmain{linear vector field} is a vector field to describe \hlattn{change} encoded by the recurrence equation \(\vec{x}(t+1) = A \vec{x}(t)\).  We will see non-linear vector fields for the famous Lokta-Volterra equations in about two to three weeks.
+A vector field is a way to visualize \hlattn{changes} in a system. Let's see the idea through examples. A \hlmain{linear vector field} is a vector field to describe \hlattn{change} encoded by the recurrence equation \(\vec{x}(t+1) = A \vec{x}(t)\).  We will see non-linear vector fields for the famous Lotka-Volterra \hlwarn{Edited: ``Lokta-Volterra'' \(\to\) ``Lotka-Volterra''} equations in about two to three weeks.
 
 \begin{example} \label{ex:linear-vector-field-intro}
   Let \(A = \begin{bmatrix} 0 & 0.1 \\ 0.2 & 0.8 \end{bmatrix}\) and \(\vec{x}(0) = \begin{bmatrix} 30 \\ 20 \end{bmatrix}\).
@@ -16,12 +16,12 @@ A vector field is a way to visualize \hlattn{changes} in a system. Let's see the
 
 To create the vector field for recurrence equations \(\vec{x}(t+1) = A \vec{x}(t)\), we plot arrows starting at \(\vec{v}\) ending at \(A \vec{v}\) for enough \(\vec{v}\). Clearly, plotting linear vector fields is a job for the computer. 
 
-However, we should understand that \emph{linear vector fields} are really just a fancy term for ``\emph{\hlattn{change} matricies}'' which will come up again when we discuss systems of differential equations.
+However, we should understand that \emph{linear vector fields} are really just a fancy term for ``\emph{\hlattn{change} matrices}'' \hlwarn{Edited: ``matricies'' \(\to\) ``matrices''} which will come up again when we discuss systems of differential equations.
 
 \blanklines{20}
 
 \clearpage
-Vectors fields visualize motion encoded by recurrence equations \(\vec{x}(t+1) = A \vec{x}(t)\).  If we were to visually solve such a recurrence, we simply follow the arrows starting at some initial condition \(\vec{x}(0)\).
+Vector fields \hlwarn{Edited: ``Vectors fields'' \(\to\) ``Vector fields''} visualize motion encoded by recurrence equations \(\vec{x}(t+1) = A \vec{x}(t)\).  If we were to visually solve such a recurrence, we simply follow the arrows starting at some initial condition \(\vec{x}(0)\).
 
 \begin{exercise}
   The following are vector fields for two systems of recurrence equations.  Use the vector field to find the long-term behaviour for a recurrence with initial condition \(\vec{x}(0) = \begin{bmatrix} -50 \\ -50 \end{bmatrix}\).
@@ -53,7 +53,7 @@ Sometimes, we scale the arrows in a vector field so that the plot is more readab
 \begin{exercise}
   The two vector field plots below come from the same recurrence equations. The one on the left is not scaled. The one on the right is scaled. 
 
-  Use both vector field below to sketch the long-term behaviour for a recurrence with initial condition \(\vec{x}(0) = \begin{bmatrix} 80 \\ 0 \end{bmatrix}\). Are the results really different?
+  Use both vector fields \hlwarn{Edited: ``both vector field'' \(\to\) ``both vector fields''} below to sketch the long-term behaviour for a recurrence with initial condition \(\vec{x}(0) = \begin{bmatrix} 80 \\ 0 \end{bmatrix}\). Are the results really different?
 
   \begin{center}
     \includegraphics{../standalones/plot_vector_field_rotation}

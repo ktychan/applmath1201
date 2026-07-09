@@ -35,7 +35,7 @@
 % \faStar{} This week's goal is to get to finding eigenvectors and eigenvalues as quickly as we can.
 % \clearpage
 
-We need a little bit of theory to find special vectors so that the effect of \(A\vec{v}\) is a sufficiently simple.
+We need a little bit of theory to find special vectors so that the effect of \(A\vec{v}\) is sufficiently simple. \hlwarn{Edited: ``is a sufficiently simple'' \(\to\) ``is sufficiently simple''}
 
 \begin{itemize}
   \item Add and subtract matrices by adding and subtracting entries in the same coordinates.
@@ -71,13 +71,14 @@ We need a little bit of theory to find special vectors so that the effect of \(A
         d_{2} & e_{2} & f_{2} \\
         g_{2} & h_{2} & i_{2}
       \end{bmatrix}
-      +
+      =
       \begin{bmatrix}
         a_{1} + a_{2} & b_{1} + b_{2} & c_{1} + c_{2} \\
         d_{1} + d_{2} & e_{1} + e_{2} & f_{1} + f_{2} \\
         g_{1} + g_{2} & h_{1} + h_{2} & i_{1} + i_{2}
       \end{bmatrix}.
     \]
+    \hlwarn{Edited: the second ``\(+\)'' before the result matrix \(\to\) ``\(=\)''} \hlwarn{FIXME: verify this math/content correction}
 
     In general, the \(i\)-th row and \(j\)-th column of \(A + B\) is \(A_{ij} + B_{ij}\).
 
@@ -159,17 +160,18 @@ We need a little bit of theory to find special vectors so that the effect of \(A
       \end{bmatrix}
       \begin{bmatrix}
         b_{11} & b_{12} \\
-        b_{21} & v_{22}
+        b_{21} & b_{22}
       \end{bmatrix}
       =
       \begin{bmatrix}
-        a_{11}b_{11} + a_{12}b_{21} &  a_{11}b_{21} + a_{12}b_{22} \\
-        a_{21}b_{11} + a_{22}b_{21} &  a_{21}b_{21} + a_{22}b_{22}
+        a_{11}b_{11} + a_{12}b_{21} &  a_{11}b_{12} + a_{12}b_{22} \\
+        a_{21}b_{11} + a_{22}b_{21} &  a_{21}b_{12} + a_{22}b_{22}
       \end{bmatrix}
     \]
-    In general, the \(i\)-th row and \(i\)-th column in \(AB\) is \(A_{i1}B_{1j} + A_{i2}B_{2j} + \cdots + A_{in}B_{nj}\).
+    \hlwarn{Edited: fixed the product --- lower-right of the second factor ``\(v_{22}\)'' \(\to\) ``\(b_{22}\)''; and the right column of the result ``\(a_{11}b_{21}\)'' \(\to\) ``\(a_{11}b_{12}\)'', ``\(a_{21}b_{21}\)'' \(\to\) ``\(a_{21}b_{12}\)''} \hlwarn{FIXME: verify this math/content correction}
+    In general, the \(i\)-th row and \(j\)-th column \hlwarn{Edited: ``\(i\)-th column'' \(\to\) ``\(j\)-th column''} \hlwarn{FIXME: verify this math/content correction} in \(AB\) is \(A_{i1}B_{1j} + A_{i2}B_{2j} + \cdots + A_{in}B_{nj}\).
 
-  \item Lastly, we talked about linearly
+  \item Lastly, we talked about linearity \hlwarn{Edited: ``linearly'' \(\to\) ``linearity''}
     \[
       A (\lambda \vec{u} + \mu \vec{v}) = \lambda A\vec{u} + \mu A \vec{v},
     \]
@@ -177,7 +179,7 @@ We need a little bit of theory to find special vectors so that the effect of \(A
 \end{itemize}
 \vfill{}
 
-{\footnotesize \faExclamationTriangle{} Be aware that the overwhelming majority of matrix-related resource on the internet is dedicated to linear algebra as a general topic. Top-ranked search results are probably far more complicated than what we need in this course. No clue whether AI gives you sufficiently simple information.}
+{\footnotesize \faExclamationTriangle{} Be aware that the overwhelming majority of matrix-related resources \hlwarn{Edited: ``resource'' \(\to\) ``resources''} on the internet is dedicated to linear algebra as a general topic. Top-ranked search results are probably far more complicated than what we need in this course. No clue whether AI gives you sufficiently simple information.}
 \clearpage
 
 Finding roots of the characteristic polynomial of a matrix is the first step in a chain of calculations to find eigenvectors.

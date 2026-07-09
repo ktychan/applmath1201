@@ -1,18 +1,9 @@
 %! TeX program = lualatex
 \documentclass[../main.tex]{subfiles}
 
-\newenvironment{solution}{
-  \begin{proof}[Sample solution]
-    \color{main}
-  }{
-  \end{proof}
-}
-
 \begin{document}
 
-\chapter*{Week 5 practice problems}
-
-\setcounter{chapter}{5}
+\section{Week 5 practice problems}
 
 \begin{exercise}
   Find the general solution for \(\frac{du}{dt} + u(t) = t^{2}e^{-t}\).
@@ -31,6 +22,8 @@
     \[
       u(t) = e^{-t} \int t^{2} \;dt = e^{-t}\left( \frac{t^{3}}{3} + C \right).
     \]
+
+    \hlwarn{Correction: the integrating factor integral is with respect to \(t\), i.e.\ \(v(t) = e^{\int 1\,dt} = e^{t}\).}
   \end{solution}
 \end{exercise}
 
@@ -55,6 +48,8 @@
 
 
     Using \(u(0) = 1\) we get \(C = -2\). The solution is \(3 - 2 e^{-t^{2}/2}\).
+
+    \hlwarn{Correction: the middle term \(3t^{t^{2}/2}\) is a typo for \(3e^{t^{2}/2}\); also the integrating-factor integral is with respect to \(t\) (\(e^{\int t\,dt}\)). The final answer is unaffected.}
   \end{solution}
 \end{exercise}
 
@@ -151,6 +146,8 @@
     \[
       u(t) = \frac{\left( \ln|t| \right)^{2}}{2|t|}, \text{ for } t \ne 0.
     \]
+
+    \hlwarn{Correction: because \(\ln(t)\) appears in the equation, the domain is really \(t > 0\), so the \(t<0\) branch does not apply here. (In that branch, the middle factor \(\frac{1}{t}\) should read \(\frac{1}{-t}\).) For \(t>0\) the boxed answer \(u(t) = \frac{(\ln t)^{2}}{2t}\) is correct.}
   \end{solution}
 \end{exercise}
 

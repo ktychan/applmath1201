@@ -1,8 +1,9 @@
-%! vim: ft=tex
+%! vim:ft=tex
 \usepackage{tikz, pgfplots}
 \usepgfplotslibrary{fillbetween}
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{positioning}
+\usetikzlibrary{intersections,calc}
 
 %
 % functions
@@ -69,4 +70,12 @@
   }
 }
 
-
+\pgfplotsset{
+  loglog line/.style={
+    loglog,
+    ymin=-2, ymax=2,
+    xmin=-2, xmax=2,
+    xlabel style = {anchor=south, font={\tiny}},
+    ylabel style = {anchor=west, font={\tiny}},
+  }
+}

@@ -14,6 +14,13 @@
 \input{./typography.tex.preamble}
 \input{./tikz.tex.preamble}
 
+\newenvironment{solution}{
+  \begin{proof}[Sample solution]
+    \color{main}
+  }{
+  \end{proof}
+}
+
 \newenvironment{objective}{
   \faStar{} \textbf{Learning objectives}.
 }{
@@ -105,6 +112,19 @@
   \subfile{./lessons/system-DE-predator-prey.tex} \clearpage
 \end{week}
 
+\appendix
+\chapter{Exercises}
+\subfile{./exercises/week1.tex} \clearpage
+\subfile{./exercises/week2.tex} \clearpage
+\subfile{./exercises/week3.tex} \clearpage
+\subfile{./exercises/week4.tex} \clearpage
+\subfile{./exercises/week5.tex} \clearpage
+\subfile{./exercises/week6.tex} \clearpage
+\subfile{./exercises/week9.tex} \clearpage
+\subfile{./exercises/week10.tex} \clearpage
+\subfile{./exercises/week11.tex} \clearpage
+\subfile{./exercises/week12.tex} \clearpage
+
 %--------------------
 % 
 % BACK MATTER
@@ -112,11 +132,11 @@
 % --------------------
 \backmatter{}
 
-%--------------------
+%----------------------
 % 
 % generate weekly files
 % 
-% --------------------
+%----------------------
 \begin{luacode*}
 local function get_aux_dir()
   for _, v in ipairs(arg or {}) do
@@ -142,4 +162,3 @@ end
 csv:close()
 \end{luacode*}
 \end{document}
-

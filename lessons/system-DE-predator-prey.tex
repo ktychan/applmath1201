@@ -1,13 +1,13 @@
 %! TeX program = lualatex
 \documentclass[../main.tex]{subfiles}
-\begin{document} \section{The Lokta-Volterra equations}
+\begin{document} \section{The Lotka-Volterra equations}
 
-System of differential equations are not always linear and first-order. The example below showcases a non-linear, first-order system --- the Lokta-Volterra equations.
+Systems of differential equations \hlwarn{Edited: ``System of differential equations are'' \(\to\) ``Systems …''} are not always linear and first-order. The example below showcases a non-linear, first-order system --- the Lotka-Volterra \hlwarn{Edited: ``Lokta-Volterra'' \(\to\) ``Lotka-Volterra'' (all occurrences, incl. the section title)} equations.
 
 This following example is adapted from the book \emph{Modelling Life} by Garfinkel, Shevtsov and Guo.
 
 \begin{example} 
-  Let's play the role of Fisheries and Oceans Canada (\href{https://www.dfo-mpo.gc.ca}{\ttfamily dfo-mpo.gc.ca}) concerning an ecosystem of sharks (predators) and tuna (preys) in the Atlantic provinces.  Fisheries report an increase in shark sightings.  As a result, concerns for a diminishing tuna population and fishing boats safety are mounting.  Calls for relocation of a portion of sharks are picking up momentum. 
+  Let's play the role of Fisheries and Oceans Canada (\href{https://www.dfo-mpo.gc.ca}{\ttfamily dfo-mpo.gc.ca}) concerning an ecosystem of sharks (predators) and tuna (prey) \hlwarn{Edited: ``preys'' \(\to\) ``prey''} in the Atlantic provinces.  Fisheries report an increase in shark sightings.  As a result, concerns for a diminishing tuna population and fishing boats safety are mounting.  Calls for relocation of a portion of sharks are picking up momentum. 
 
   As policy makers, we ask ourselves: \hlmain{Is relocating sharks a good idea?} % Can you see an optimal solution on the vector field?
 
@@ -17,7 +17,7 @@ This following example is adapted from the book \emph{Modelling Life} by Garfink
   \begin{itemize}
     \item The ecosystem is \emph{closed} to migrations.
     \item The per-capita birth rate of tuna is a constant, say \(50\%\).
-    \item The per-capita death rate of tuna is a function of the population of sharks, say \(1\%\) of the sharks population.
+    \item The per-capita death rate of tuna is a function of the population of sharks, say \(1\%\) of the shark population. \hlwarn{Edited: ``sharks population'' \(\to\) ``shark population'' (both occurrences)}
     \item The per-capita birth rate of sharks is a function of the population of tuna, say \(0.5\%\) of the tuna population.
     \item The per-capita death rate of sharks is a constant, say \(20\%\).
   \end{itemize}
@@ -29,7 +29,7 @@ This following example is adapted from the book \emph{Modelling Life} by Garfink
   Lastly, fishing policies should take sustainability and worker safety into account.
   \begin{enumerate}
     \item We cannot fish if the tuna population drops below 20 (thousands).
-    \item We cannot fish if the sharks population is above 70 (thousands).
+    \item We cannot fish if the shark population is above 70 (thousands).
   \end{enumerate}
 
   We can explore the question: \hlmain{Is relocating sharks a good idea?}

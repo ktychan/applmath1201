@@ -1,20 +1,9 @@
 %! TeX program = lualatex
 \documentclass[../main.tex]{subfiles}
 
-\usetikzlibrary{intersections,calc}
-
-\newenvironment{solution}{
-  \begin{proof}[Sample solution]
-    \color{main}
-  }{
-  \end{proof}
-}
-
 \begin{document}
 
-\chapter*{Week 12 practice problems}
-
-\setcounter{chapter}{12}
+\section{Week 12 practice problems}
 
 \begin{exercise}
   Suppose \(A\) is a \(2\)-by-\(2\) matrix and \(\vec{v} = \begin{bmatrix} 2 \\ 1 \end{bmatrix}\) is an eigenvector for \(A\).  Sketch \(\vec{v}\) and \(A\vec{v}\) for each of the scenarios below.
@@ -41,6 +30,7 @@
 
 
       \item The eigenvalue for \(\vec{v}\) is larger than \(1\). Then \(A \vec{v}\) and \(\vec{v}\) overlap.
+        \hlwarn{Correction: this case is eigenvalue \emph{exactly} \(1\) (not larger than \(1\)); the sketch \(A\vec{v} = \vec{v}\) is correct.}
 
         \begin{tikzpicture}
           \begin{axis}[basic curve, black, xmin=-2, xmax=6, ymin=-2, ymax=4, xtick distance={2}, ytick distance={2}]
@@ -89,6 +79,7 @@
 
     \begin{enumerate}
       \item Let \(\mu\) be the eigenvalue for \(\vec{u}\) and \(\lambda\) the eigenvalue for \(\vec{v}\).  Then \(\mu > 1\) and \(\mu\) is between \(0\) and \(1\), strict.  Therefore, the dominant eigenvalue is \(\mu\) and is greater than \(1\). The population grows unbounded in the long run.
+        \hlwarn{Correction: the second clause should read ``\(\lambda\) is between \(0\) and \(1\)'' (it is \(\lambda\), the eigenvalue of \(\vec{v}\), that is small). The conclusion is unaffected.}
       \item Let \(\mu\) be the eigenvalue for \(\vec{u}\) and \(\lambda\) the eigenvalue for \(\vec{v}\).  Then both \(\mu\)  and \(\lambda\) is between \(0\) and \(1\), strict.  However, \(\mu > \lambda\), and \(\mu\) is the dominant eigenvalue. Therefore, the population goes extinct in the long run.
     \end{enumerate}
   \end{solution}
@@ -180,6 +171,8 @@
 
   \begin{solution}
     The eigenvalues of the matrix are \(\mu = 5\) and \(\lambda = -4\). Therefore, \(\mu\) is the dominant eigenvalue, and both components of \(\vec{x}(t)\) approaches infinity as \(t\) approaches infinity.
+
+    \hlwarn{Correction: the dominant eigenvector is \([1, -2]^{\top}\), so its components have opposite signs: \(x_{1}(t) \to +\infty\) while \(x_{2}(t) \to -\infty\). (Both grow without bound in magnitude.)}
   \end{solution}
 \end{exercise}
 
@@ -188,6 +181,8 @@
 
   \begin{solution}
     The dominant eigenvalue \(\mu = 6\) has an eigenvector \(\begin{bmatrix} 1 \\ 1/4 \end{bmatrix}\). Therefore, both components of \(\vec{x}(t)\) approach infinity, and \(x_{2}(t)/x_{1}(t)\) approaches \(1/4\) as \(t\) tends to infinity.
+
+    \hlwarn{Correction: the dominant eigenvalue is \(\lambda = 6\) (the problem labels it \(\lambda\), not \(\mu\)); the eigenvector and the ratio \(1/4\) are correct.}
   \end{solution}
 \end{exercise}
 
@@ -203,6 +198,8 @@
     \[
       \vec{x}(t) = \frac{1}{2} \cdot e^{3t} \begin{bmatrix} 1 \\ 0 \end{bmatrix} + \frac{1}{3} \cdot e^{2t} \begin{bmatrix} 0 \\ 1 \end{bmatrix}.
     \]
+
+    \hlwarn{Correction: the second eigenvalue is \(-2\), not \(2\), so the second term should be \(\frac{1}{3} e^{-2t} \begin{bmatrix} 0 \\ 1 \end{bmatrix}\).}
   \end{solution}
 \end{exercise}
 
@@ -246,6 +243,8 @@
       \end{bmatrix},
     \]
     where \(\alpha,\beta\) are constants.
+
+    \hlwarn{Correction: the coefficient on the second term should be \(\beta\), not \(\beta\alpha\).}
   \end{solution}
 \end{exercise}
 
@@ -280,6 +279,7 @@
     \]
 
     Solve for \(\alpha,\beta\) in \(\vec{u}(0) = \begin{bmatrix} 1 \\ 1 \end{bmatrix} + \beta \begin{bmatrix} -2 \\ 1 \end{bmatrix}\) to get \(\alpha = 7/3\) and \(\beta = 2/3\).  Therefore, the solution is
+    \hlwarn{Correction: the equation should read \(\vec{u}(0) = \begin{bmatrix} 1 \\ 3 \end{bmatrix} = \alpha\begin{bmatrix} 1 \\ 1 \end{bmatrix} + \beta\begin{bmatrix} -2 \\ 1 \end{bmatrix}\) (the left side is \([1,3]^{\top}\) and the first vector needs the coefficient \(\alpha\)); the values \(\alpha=7/3, \beta=2/3\) are correct.}
     \[
       \vec{u}(t) = 
       \frac{7}{3} \cdot e^{4t} 

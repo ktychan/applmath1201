@@ -13,7 +13,7 @@ In a differential equation, the \hlmain{dependent} variable, say \(u(t)\), is th
 \faStar{} To verify a \emph{proposed} solution for a differential equation, we focus on the unknown function.
 
 \begin{example} \label{eg:de-solution-intro}
-  Which of the following functions are solutions to the \(u'(t) = t u(t)\)?
+  Which of the following functions are solutions to \hlwarn{Edited: removed dangling ``the''} \(u'(t) = t u(t)\)?
   \[
     f_{1}(t) = e^{t^{2}}, \qquad f_{2}(t) = 2e^{t^{2}/2}, \qquad f_{3}(t) = 3e^{t^{2}/2}.
   \]
@@ -75,7 +75,7 @@ Exercise~\ref{eg:de-solution-intro-ivp} is a sequel of Example~\ref{eg:de-soluti
 
 Pro-tip: Always check the initial condition first.
 \begin{exercise}
-  Which of the following is the solution to \(y(x)y'(x) = x\) with initial condition \(y(0) = -1\).
+  Which of the following is the solution to \(y(x)y'(x) = x\) with initial condition \(y(0) = -1\)? \hlwarn{Edited: added missing ``?''}
   \[
     \qquad \sqrt{2x} - 1, \qquad \sqrt{2x - 1}, \qquad -\sqrt{2x + 1}.
   \]
@@ -106,9 +106,9 @@ Like recurrences, certain initial conditions of differential equations lead to p
   An \hlmain{equilibrium solution} (or equilibrium) of a differential equation is a constant function.  
 \end{definition}
 
-Notations for equilibrium solutions of differential equations vary. A common notation is to add an bar to the notation of the dependent variable. For example, if \(u\) is the dependent variable of a differential equation, then it is quite common to write \(\bar{u}\) to denote an equilibrium. 
+Notations for equilibrium solutions of differential equations vary. A common notation is to add a bar \hlwarn{Edited: ``an bar'' \(\to\) ``a bar''} to the notation of the dependent variable. For example, if \(u\) is the dependent variable of a differential equation, then it is quite common to write \(\bar{u}\) to denote an equilibrium. 
 
-\faStar{} Equilibrium solutions are very easy to find because they are constants. Simply replace all \emph{dependent} variables (together with its argument) by \(\bar{u}\) and solve for \(\bar{u}\) using basic algebra. It is possible to find none, exactly one or more than one equilibrium solutions.
+\faStar{} Equilibrium solutions are very easy to find because they are constants. Simply replace all occurrences of the \emph{dependent} variables \(u\) (or \(u(t)\)) by \(\bar{u}\) and solve for \(\bar{u}\) using basic algebra. It is possible to find none, exactly one or more than one equilibrium solution.
 
 \begin{example} \label{eg:equilibria-logistic}
   Find all equilibria of \(N'(t) = r N(t) \left(1 - \frac{N(t)}{K}\right)\) where \(r,K\) are constants.

@@ -3,11 +3,11 @@
 \begin{document} 
 \section{Vectors}
 
-We have been looking at models involving one quantity, e.g., the population of a group of unicorns.  We now develop mathematical tools (vectors and matricies) to model systems involving two or more quantities, e.g., an ecosystem involving predators and preys.
+We have been looking at models involving one quantity, e.g., the population of a group of unicorns.  We now develop mathematical tools (vectors and matrices) \hlwarn{Edited: ``matricies'' \(\to\) ``matrices''} to model systems involving two or more quantities, e.g., an ecosystem involving predators and prey. \hlwarn{Edited: ``preys'' \(\to\) ``prey''}
 
 We use an introductory example to demonstrate why vectors are useful in science.
 \begin{example}
-  Consider an ecosystem involving orcas (predators) and seals (preys). Their population over time (in years) is presented as a table. 
+  Consider an ecosystem involving orcas (predators) and seals (prey). \hlwarn{Edited: ``preys'' \(\to\) ``prey''} Their population over time (in years) is presented as a table. 
 
   \begin{table}[H]
     \centering
@@ -46,7 +46,7 @@ We use an introductory example to demonstrate why vectors are useful in science.
     \end{bmatrix}^{T}.
   \]
 
-  The number of rows in \(\vec{x}\) (zeros included) is called the \hlmain{dimension} (or the \hlmain{length}) of \(\vec{x}\).  Two vectors \(\vec{u}, \vec{v}\) are \hlmain{equal} if they have the same dimension and \(u_{1} = v_{1}, \ldots., u_{n} = v_{n}\).
+  The number of rows in \(\vec{x}\) (zeros included) is called the \hlmain{dimension} (or the \hlmain{length}) of \(\vec{x}\).  Two vectors \(\vec{u}, \vec{v}\) are \hlmain{equal} if they have the same dimension and \(u_{1} = v_{1}, \ldots, u_{n} = v_{n}\). \hlwarn{Edited: ``\ldots.'' \(\to\) ``\ldots'' (stray period)}
 \end{definition}
 Depending on the application, a vector can be visualized as a point or as an arrow as shown above.
 
@@ -89,9 +89,10 @@ We now study vectors abstractly and quickly introduce all fundamental operations
       \end{bmatrix}
       =
       \begin{bmatrix}
-        u_{1} + v_{1} \\ v_{2} + v_{2} \\ \vdots \\ u_{n} + v_{n}
+        u_{1} + v_{1} \\ u_{2} + v_{2} \\ \vdots \\ u_{n} + v_{n}
       \end{bmatrix}.
     \end{equation}
+    \hlwarn{Edited: in the sum above, the second entry ``\(v_{2} + v_{2}\)'' \(\to\) ``\(u_{2} + v_{2}\)''} \hlwarn{FIXME: verify this math/content correction}
 
     \blanklines{5}
 
@@ -116,16 +117,17 @@ A \hlmain{matrix} is an \(m\)-by-\(n\) array of numbers where \(m\) is the numbe
 
 \blanklines{5}
 
-In general, we can multiply an \(m\)-by-\(n\) matrix \(A\) by a \(n\)-dimensional vector \(\vec{v}\) to produce an \(n\)-dimensional vector \(\vec{u} = A\vec{v}\) whose entries are defined by
+In general, we can multiply an \(m\)-by-\(n\) matrix \(A\) by an \(n\)-dimensional vector \(\vec{v}\) to produce an \(m\)-dimensional vector \(\vec{u} = A\vec{v}\) whose entries are defined by
 \[
-  u_{i} = A_{i1} v_{1} + \cdots + A_{in} v_{n} 
-  \quad\text{for each row index \(i = 1, \ldots, n\)}.
+  u_{i} = A_{i1} v_{1} + \cdots + A_{in} v_{n}
+  \quad\text{for each row index \(i = 1, \ldots, m\)}.
 \]
+\hlwarn{Edited: an \(m\)-by-\(n\) matrix times an \(n\)-vector yields an \(m\)-vector, so ``\(n\)-dimensional vector \(\vec{u}\)'' \(\to\) ``\(m\)-dimensional'' and the row index ``\(i=1,\ldots,n\)'' \(\to\) ``\(i=1,\ldots,m\)''; also ``a \(n\)-dimensional'' \(\to\) ``an \(n\)-dimensional''} \hlwarn{FIXME: verify this math/content correction}
 
 \blanklines{5}
 
 % The number of columns in \(A\) \hlwarn{must match} the number of rows in \(\vec{v}\).  Matrix-vector multiplication is defined by 
-A main reason we study matricies is that matrix-vector multiplication can be used to encode linear equations in variable \(x_{1}, \ldots, x_{n}\) in the form \(A \vec{x} = \vec{b}\). 
+A main reason we study matrices \hlwarn{Edited: ``matricies'' \(\to\) ``matrices''} is that matrix-vector multiplication can be used to encode linear equations in variables \hlwarn{Edited: ``variable'' \(\to\) ``variables''} \(x_{1}, \ldots, x_{n}\) in the form \(A \vec{x} = \vec{b}\).
 
 \begin{example}
   Write the following equations in the form \(A \vec{x} = \vec{b}\).
@@ -203,7 +205,7 @@ An \hlmain{identity matrix} is a square matrix with \(1\)'s down the diagonal an
   \end{bmatrix}.
 \]
 
-Identity matricies are special because \hlmain{\(I_{n} A = A\) and \(I_{n} A = A\)} as long as \(A\) is an \(n \times n\) matrix. Moreover, \(I_{n} \vec{v} = \vec{v}\) as long as \(\vec{v}\) has \(n\) rows. In other words, \hlsupp{multiplication} by an identity matrix does nothing.
+Identity matrices \hlwarn{Edited: ``matricies'' \(\to\) ``matrices''} are special because \hlmain{\(I_{n} A = A\) and \(A I_{n} = A\)} \hlwarn{Edited: second ``\(I_{n} A = A\)'' \(\to\) ``\(A I_{n} = A\)''} \hlwarn{FIXME: verify this math/content correction} as long as \(A\) is an \(n \times n\) matrix. Moreover, \(I_{n} \vec{v} = \vec{v}\) as long as \(\vec{v}\) has \(n\) rows. In other words, \hlsupp{multiplication} by an identity matrix does nothing.
 
 \blanklines{5}
 \end{document}

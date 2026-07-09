@@ -1,18 +1,10 @@
 %! TeX program = lualatex
 \documentclass[../main.tex]{subfiles}
 
-\newenvironment{solution}{
-  \begin{proof}[Sample solution]
-    \color{main}
-  }{
-  \end{proof}
-}
-
 \begin{document}
 
-\chapter*{Week 2 practice problems}
+\section{Week 2 practice problems}
 
-\setcounter{chapter}{2}
 \begin{exercise}
   For each recurrence below, calculate \(u_{1}, u_{2}, u_{3}\).
   \begin{enumerate}
@@ -213,6 +205,8 @@
             \]
             Solve this recurrence to get \(u_{t} =\left(1 - \frac{3}{8}\right) \left(\frac{1}{3}\right)^{t}\). Put back \(v_{t}\) to get \(v_{t} = \left(1 - \frac{3}{8}\right) \left( \frac{1}{3} \right)^{t} + \frac{3}{8}\). It's the same solution as above. Once again, it is prudent to check that \(v_{t}\) is indeed a solution.  The quick sanity check is to verify the value of \(v_{0}\) against the given.
         \end{itemize}
+
+        \hlwarn{Correction: the substitution should use the equilibrium \(\hat{v}\), not \(\hat{p}\); i.e.\ \(v_{t} = u_{t} + \hat{v}\), so \(u_{0} = v_{0} - \hat{v} = 1 - \frac{3}{8}\).}
       \end{solution}
 
     \item \(u_{0} = 8\) and \(u_{t} = \frac{1}{2} u_{t-1}\).
@@ -362,6 +356,8 @@
     \]
 
     This is roughly \(0.4854\) half-life or, equivalently, \(2,781.5\) years.
+
+    \hlwarn{Correction: the recurrence should read \(C_{n} = \frac{1}{2} C_{n-1}\) (subscript \(n\), not \(t\)).}
   \end{solution}
 \end{exercise}
 
@@ -400,6 +396,8 @@
     \end{itemize}
 
     Don't be fooled that the shorter approach is always better. Let's say we change the withdrawal amount to be \(49,000\) per year. Then you can verify that the initial investment is NOT the equilibrium solution. In such a case, we probably suspect that the balance grows unbounded and need to show by a precise calculation that \(\lim_{t \to \infty} b_{t} = \infty\). We would need to solve the recursion and do a little calculus, which is (slightly) faster had one simply started with the first approach.
+
+    \hlwarn{Correction: the general solution should read \(b_{t} = (b_{0} - \hat{b})\,1.05^{t} + \hat{b}\) (with \(+\hat{b}\)). It happens not to affect the conclusion here because \(b_{0} = \hat{b} = 10^{6}\).}
   \end{solution}
 \end{exercise}
 
@@ -430,6 +428,8 @@
     \]
 
     In conclusion, one needs \emph{at least} \(\$ 932,230\) to have enough money for retirement in this scenario.
+
+    \hlwarn{Correction: the general solution line should read \(b_{t} = (b_{0} - \hat{b})\,1.07^{t} + \hat{b}\) (with \(+\hat{b}\), as already used in the next line). Also, the numerical value is \(b_{0} \approx 932{,}286\), not \(932{,}230\).}
   \end{solution}
 \end{exercise}
 \end{document}

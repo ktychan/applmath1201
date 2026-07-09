@@ -23,7 +23,7 @@ A random variable is a continuous random variable if it takes values on an inter
 
 \end{definition}
 
-\faStar{} Area under the PMF curve over \([a,b]\) is the probability \(\mathbb{P}(a \le X \le b)\).
+\faStar{} Area under the PDF \hlwarn{Edited: ``PMF'' \(\to\) ``PDF'' (continuous r.v.)} \hlwarn{FIXME: verify this math/content correction} curve over \([a,b]\) is the probability \(\mathbb{P}(a \le X \le b)\).
 
 \begin{center}
   \begin{tikzpicture}
@@ -46,7 +46,7 @@ A random variable is a continuous random variable if it takes values on an inter
 \end{center}
 \faExclamationTriangle{} If \(X\) is a continuous random variable, then \(\mathbb{P}(X = c) = 0\) for any constant \(c\).
 
-\faStar{} Area under the PMF curve over \((-\infty, x]\) is the value of \(F(x)\). Notice that a valid CDF must satisfy \(\lim_{x \to -\infty} F(x) = 0\) and
+\faStar{} Area under the PDF \hlwarn{Edited: ``PMF'' \(\to\) ``PDF'' (continuous r.v.)} \hlwarn{FIXME: verify this math/content correction} curve over \((-\infty, x]\) is the value of \(F(x)\). Notice that a valid CDF must satisfy \(\lim_{x \to -\infty} F(x) = 0\) and
 \(\lim_{x \to \infty} F(x) = 1\).
 
 \begin{tikzpicture}
@@ -71,7 +71,7 @@ A random variable is a continuous random variable if it takes values on an inter
 \faStar{} A valid PDF \(f_{X}\) must satisfy \(\int_{-\infty}^{\infty} f(x) \;dx = \underline{\hspace{3in}}\). 
 
 \begin{example}
-  Which of the followings are valid PDFs?
+  Which of the following \hlwarn{Edited: ``followings'' \(\to\) ``following''} are valid PDFs?
 
   \begin{tikzpicture}
     \begin{axis}[xmin={-2}, xmax={1}, ymin={-0.5}, ymax={2}, title={(a)}, height={2in}, no markers, grid=major, axis lines=middle, enlargelimits, axis equal image, ytick={0,1,2}]
@@ -167,11 +167,11 @@ We often (in reality and in this course) need to find a PDF for a continuous ran
 Like discrete random variables, continuous random variables have expectation, variance and standard deviation.
 
 \begin{definition}
-  Suppose \(X\) is a continuous random variable with PMF \(f(x)\).
+  Suppose \(X\) is a continuous random variable with PDF \(f(x)\). \hlwarn{Edited: ``PMF'' \(\to\) ``PDF''; added the missing ``\(\;dx\)'' to both integrals; ``\(V(x)\)'' \(\to\) ``\(V(X)\)''} \hlwarn{FIXME: verify this math/content correction}
   \begin{enumerate}[itemsep={1ex}]
-    \item Its expectation is \(\mu = E(X) = \int_{-\infty}^{\infty} x f(x)\).
-    \item Its variance is \(V(X) = E\left( (X - \mu)^{2} \right) = \int_{-\infty}^{\infty} (x - \mu)^{2} f(x)\).
-    \item Its standard deviation is \(\sigma = \sqrt{V(x)}\).
+    \item Its expectation is \(\mu = E(X) = \int_{-\infty}^{\infty} x f(x) \;dx\).
+    \item Its variance is \(V(X) = E\left( (X - \mu)^{2} \right) = \int_{-\infty}^{\infty} (x - \mu)^{2} f(x) \;dx\).
+    \item Its standard deviation is \(\sigma = \sqrt{V(X)}\).
   \end{enumerate}
 
   Variance is often denoted as \(\sigma^{2}\).
@@ -224,7 +224,7 @@ We are moving closer to simulation. Sometimes (in reality and in this course), w
     \end{cases}
   \]
 
-  Its expectation is \(\mu = \frac{1}{2}(b - a)\) and variance is \(\frac{1}{12}(b - a)^{2}\).
+  Its expectation is \(\mu = \frac{1}{2}(a + b)\) \hlwarn{Edited: ``\(\frac{1}{2}(b - a)\)'' \(\to\) ``\(\frac{1}{2}(a + b)\)'' --- the mean of \(U(a,b)\) is \((a+b)/2\)} \hlwarn{FIXME: verify this math/content correction} and variance is \(\frac{1}{12}(b - a)^{2}\).
 \end{definition}
 
 \begin{center}

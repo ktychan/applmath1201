@@ -19,7 +19,9 @@
 \usepackage{unicode-math}
 
 \setmainfont{TeX Gyre Pagella}
-\setmathfont{STIX Two Math} %  TeX Gyre Termes Math, Asana Math,  Latin Modern Math
+\setmonofont{Iosevka Term}
+\setmathfont{STIX Two Math} 
+\setmathfont[range="20D0-"20FF]{TeX Gyre Pagella Math}
 \setmathfont[range=bb]{TeX Gyre Termes Math}
 \setmathfont[range=\int]{Latin Modern Math}
 
@@ -38,6 +40,11 @@
 % ------------------------------------------------------------
 \usepackage[dvipsnames]{xcolor}
 
+% ============================================================
+%  Western University brand colours
+%  Source: https://brand.westernu.ca/visual-identity/colours.html
+% ============================================================
+
 % Primary colours
 \definecolor{WesternPurple}{HTML}{4F2683}   % PMS 268 C | CMYK 82/100/0/12 | RGB 79/38/131
 \definecolor{WesternWhite}{HTML}{FFFFFF}    % RGB 255/255/255
@@ -54,96 +61,31 @@
 \definecolor{WesternVivid}{HTML}{FCF05E}    % CMYK 5/0/75/0   | RGB 252/240/94
 \definecolor{WesternTiger}{HTML}{F0A757}    % CMYK 0/20/80/0  | RGB 240/167/87
 
-\definecolor{main}{HTML}{B8860B}   % dark gold
-\definecolor{supp}{HTML}{6B3FA0}   % purple
-\definecolor{attn}{HTML}{C45C00}   % burnt orange
-\definecolor{warn}{HTML}{CC2200}   % red
-\definecolor{info}{HTML}{1A5C9A}   % blue
-
-% light mode accent colours (readable on light background)
-\definecolor{light@bg}  {HTML}{FFFFFF}
-\definecolor{light@fg}  {HTML}{1A1A2E}
-\definecolor{light@main}{HTML}{B8860B}   % dark gold
-\definecolor{light@supp}{HTML}{6B3FA0}   % purple
-\definecolor{light@attn}{HTML}{C45C00}   % burnt orange
-\definecolor{light@warn}{HTML}{CC2200}   % red
-\definecolor{light@info}{HTML}{1A5C9A}   % blue
-\definecolor{light@url} {HTML}{2E7FA5}   % muted steel blue
-
-% dark mode accent colours (readable on dark background)
-\definecolor{dark@bg}  {HTML}{1E1E1E}
-\definecolor{dark@fg}  {HTML}{E0E0E0}
-\definecolor{dark@main}{HTML}{FFD700}   % bright gold
-\definecolor{dark@supp}{HTML}{C89FE8}   % light purple
-\definecolor{dark@attn}{HTML}{FFB060}   % light orange
-\definecolor{dark@warn}{HTML}{FF8080}   % light red
-\definecolor{dark@info}{HTML}{80C0F0}   % light blue
-\definecolor{dark@url} {HTML}{7EC4D8}   % lighter for dark background
-
-% semantic accent colours (initialised to light mode)
-\colorlet{accent@main}{light@main}
-\colorlet{accent@supp}{light@supp}
-\colorlet{accent@attn}{light@attn}
-\colorlet{accent@warn}{light@warn}
-\colorlet{accent@info}{light@info}
-
-% customization commands
-\newcommand{\setbackground}[1]{\pagecolor{#1}}
-\newcommand{\setforeground}[1]{\renewcommand{\normalcolor}{\color{#1}}}
-\newcommand{\setaccentcolor}[2]{\colorlet{accent@#1}{#2}}
+\definecolor{main}{HTML}{007355}  % teal
+\definecolor{supp}{HTML}{82218B}  % purple
+\definecolor{attn}{HTML}{B8860B}  % dark gold
+\definecolor{warn}{HTML}{D20000}  % red
+\definecolor{link}{HTML}{1A5C9A}  % blue
 
 % highlight commands
-\newcommand{\hlmain}[1]{\textcolor{accent@main}{#1}}
-\newcommand{\hlsupp}[1]{\textcolor{accent@supp}{#1}}
-\newcommand{\hlattn}[1]{\textcolor{accent@attn}{#1}}
-\newcommand{\hlwarn}[1]{\textcolor{accent@warn}{#1}}
-\newcommand{\hlinfo}[1]{\textcolor{accent@info}{#1}}
+\newcommand{\hlmain}[1]{{\color{main}#1}}
+\newcommand{\hlsupp}[1]{{\color{supp}#1}}
+\newcommand{\hlattn}[1]{{\color{attn}#1}}
+\newcommand{\hlwarn}[1]{{\color{warn}#1}}
+
+\newcommand{\emmain}[1]{{\color{main}\emph{#1}}}
+\newcommand{\emsupp}[1]{{\color{supp}\emph{#1}}}
+\newcommand{\emattn}[1]{{\color{attn}\emph{#1}}}
+\newcommand{\emwarn}[1]{{\color{warn}\emph{#1}}}
+
+\newcommand{\ulmain}[1]{{\color{main}\underline{#1}}}
+\newcommand{\ulsupp}[1]{{\color{supp}\underline{#1}}}
+\newcommand{\ulattn}[1]{{\color{attn}\underline{#1}}}
+\newcommand{\ulwarn}[1]{{\color{warn}\underline{#1}}}
 
 % URL
 \NewDocumentCommand{\link}{O{}m}{%
   \IfBlankTF{#1}%
-    {\href{#2}{{\small\ttfamily\color{light@url}{#2}\;\faExternalLink*}}}%
-    {\href{#2}{{\small\ttfamily\color{light@url}{#1}\;\faExternalLink*}}}%
-}
-
-\newcommand{\darkmodeapply}{%
-  \ifdarkmode
-    \setbackground{dark@bg}%
-    \setforeground{dark@fg}%
-    \normalcolor
-  \fi
-}
-
-% dark mode toggle
-\newif\ifdarkmode
-\darkmodefalse
-
-\newcommand{\darkmode}{%
-  \ifdarkmode
-    \darkmodefalse
-    \setbackground{light@bg}%
-    \setforeground{light@fg}%
-    \setaccentcolor{main}{light@main}%
-    \setaccentcolor{supp}{light@supp}%
-    \setaccentcolor{attn}{light@attn}%
-    \setaccentcolor{warn}{light@warn}%
-    \setaccentcolor{info}{light@info}%
-  \else
-    \darkmodetrue
-    \setbackground{dark@bg}%
-    \setforeground{dark@fg}%
-    \setaccentcolor{main}{dark@main}%
-    \setaccentcolor{supp}{dark@supp}%
-    \setaccentcolor{attn}{dark@attn}%
-    \setaccentcolor{warn}{dark@warn}%
-    \setaccentcolor{info}{dark@info}%
-  \fi
-  \normalcolor
-}
-
-% apply light mode defaults at start of document
-\AtBeginDocument{
-  \setbackground{light@bg}
-  \setforeground{light@fg}
-  \normalcolor
+    {\href{#2}{{\small\ttfamily\color{link}{#2}\;\faExternalLink*}}}%
+    {\href{#2}{{\small\ttfamily\color{link}{#1}\;\faExternalLink*}}}%
 }
