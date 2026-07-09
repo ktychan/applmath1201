@@ -18,13 +18,13 @@ To calculate a few terms of a given recurrence, we simply start with time \(t=1\
 \begin{example} \label{ex:recurrence-bruteforce}
   Calculate the balance at the end of years 1, 2, and 3 using the model in Example~\ref{ex:recursion-investment-model}.
 
-  \blanklines{20}
+  \blanks{20}
 \end{example}
 
 \begin{exercise} \label{ex:recurrence-equilibrium}
   Calculate the balance at the end of years \(3\) using the model in Example~\ref{ex:recursion-investment-model} but change the initial deposit to \(\$ 2,500\).
 
-  \blanklines{10}
+  \blanks{10}
 \end{exercise}
 
 \clearpage
@@ -48,14 +48,14 @@ First, let's understand what it means for a function to be a solution of a recur
 \begin{example}
   Is \(a_{t} = 2^{2^{t-1}}\) the solution for \(a_{1} = 2\) and \(a_{t} = a_{t-1}^{2}\) for \(t \ge 2\)?
 
-  \blanklines{30}
+  \blanks{30}
 \end{example}
 \clearpage
 
 \begin{exercise}[concept check and algebra skill practice]
   Is \(b_{t} = -1500 (1.02)^{t} + 2500\) a solution \hlwarn{Edited: removed duplicate ``is''} of the recurrence in Example~\ref{ex:recursion-investment-model}?
 
-  \blanklines{50}
+  \blanks{50}
 \end{exercise}
 \clearpage
 
@@ -72,7 +72,7 @@ Guess-and-check is an inefficient method of looking for solutions of recursions.
 
 Why does this work?
 
-\blanklines{5}
+\blanks{5}
 
 \faStar{} Recurrence offers a convenient language to develop discrete-time models. However, none of the calculus tools apply \emph{directly} to recurrence. \hlmain{Solving a recurrence converts an unfamiliar problem to a familiar problem.}\hlwarn{Edited: ``a unfamiliar'' \(\to\) ``an unfamiliar''}
 
@@ -84,7 +84,7 @@ Why does this work?
     \item \(0 < r < 1\)?
   \end{enumerate}
 
-  \blanklines{25}
+  \blanks{25}
 \end{example}
 \clearpage
 
@@ -99,27 +99,27 @@ However, the initial deposit \(2,500\) is special as we saw in Exercise~\ref{ex:
   An equilibrium solution of a recurrence equation (not the whole recurrence) is a constant function.  We denote equilibrium solutions by making the variable wear a hat and throwing away subscripts, e.g., \(\hat{u}\).
 \end{definition}
 
-\blanklines{10}
+\blanks{10}
 
 \faStar{} Equilibrium solutions are very easy to find because they are constants. Simply replace all \(u_{t}\) by \(\hat{u}\) and solve for \(\hat{u}\) using basic algebra. It is possible to find more than one equilibrium solution \hlwarn{Edited: ``solutions'' \(\to\) ``solution''}.
 
 \begin{example}
   Find the equilibrium solution for the recurrence equation \(v_{t} = 1.5 v_{t-1} + 35\).
 
-  \blanklines{25}
+  \blanks{25}
 \end{example}
 \clearpage
 
 \begin{exercise}[concept check]
   Find \emph{all} equilibria of the recurrence equation \[u_{t} = \sqrt{3 u_{t-1} - 2}.\]
 
-  \blanklines{20}
+  \blanks{20}
 \end{exercise}
 
 \begin{exercise}[concept check]
   Find equilibria (one or many?) of the recurrence equation \[p_{t} = \frac{1}{2} p_{t-1} - \frac{1}{2}.\]
 
-  \blanklines{20}
+  \blanks{20}
 \end{exercise}
 \clearpage
 
@@ -135,15 +135,15 @@ Now we advance to slightly more complicated recurrences \hlwarn{Edited: ``recurr
   \begin{enumerate}[wide, label={Step~(\arabic*).}]
     \item Perform the change of variable.
 
-      \blanklines{25}
+      \blanks{25}
 
     \item Calculate \(u_{0}\) and solve for the new recurrence in \(u_{t}\). 
 
-      \blanklines{10}
+      \blanks{10}
 
     \item Recover the solution of the original recurrence.
 
-      \blanklines{5}
+      \blanks{5}
   \end{enumerate}
 \end{example}
 \clearpage
@@ -159,7 +159,7 @@ The substitution process in Method~\ref{method:recurrence-sub} can be packaged i
 \begin{exercise}[concept check]
   Solve the recurrence \(p_{0} = 1\) and \(p_{t} = \frac{1}{2} p_{t-1} - \frac{1}{2}\) for integers \(t \ge 1\) using the formula and the substitution method. Make sure you understand both.
 
-  \blanklines{40}
+  \blanks{40}
 \end{exercise}
 
 \clearpage
@@ -174,7 +174,7 @@ Solutions of recurrence allow us to answer interesting questions.  This is the l
   
   Don't simply list all \(b_{t}\). Use the solution of the recurrence and calculus to solve this problem.
 
-  \blanklines{45}
+  \blanks{45}
 \end{example}
 \clearpage
 
@@ -183,7 +183,7 @@ Solutions of recurrence allow us to answer interesting questions.  This is the l
 
   What is the initial investment if the money were to be depleted after \(10\) years?
 
-  \blanklines{45}
+  \blanks{45}
 \end{exercise}
 \clearpage
 
