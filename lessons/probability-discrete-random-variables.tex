@@ -4,7 +4,8 @@
 
 A random variable is discrete if all possible values of \(X(\text{outcome})\) form a discrete set. Discrete random variables \hlwarn{Edited: ``Discrete random variable are'' \(\to\) ``Discrete random variables are''} are described by their PMF or CDF which are two different but commonly used ways to represent the same underlying information in a discrete random variable.
 
-\begin{definition}[PMF and CDF]
+\begin{definition}[PMF and CDF] \label{def:pmf-cdf}
+  % slides: "PMF and CDF"
   Let \(X\) be a discrete random variable.
 
   The \hlmain{probability mass function} (PMF) for \(X\) is a nonnegative function \(f_{X}(x)\) so that
@@ -22,7 +23,8 @@ A random variable is discrete if all possible values of \(X(\text{outcome})\) fo
   \]
 \end{definition}
 
-\begin{example}
+\begin{example} \label{ex:drv-heights-pmf-cdf}
+  % slides: "PMF and CDF of the heights"
   Describe its PMF and CDF algebraically and pictorially of the discrete random variable \(X\) in Example~\ref{ex:random-variable-intro}. 
 
   \begin{tabular}{l|l}
@@ -80,7 +82,8 @@ Lastly, calculate \(\mathbb{P}(160 \le X \le 170)\) using its PMF and CDF.
 
 \clearpage
 
-\begin{example}
+\begin{example} \label{ex:drv-coin-tosses}
+  % slides: "Tosses until a tail"
   Suppose we have a fair coin. The PMF for a discrete random variable \(X\) associating sequences of coin tosses to the number \(k\) of tosses required until a tail appears is
   \[
     f_{X}(k) = (1/2)^{k} \text{ for integers } k \ge 1.
@@ -98,7 +101,8 @@ Lastly, calculate \(\mathbb{P}(160 \le X \le 170)\) using its PMF and CDF.
   \end{enumerate}
 \end{example}
 
-\begin{exercise}
+\begin{exercise} \label{ex:drv-cdf-to-pmf}
+  % slides: "From CDF to PMF"
   Suppose the CDF of a discrete random variable \(X\) is given by
   \[
     F_{X}(-1) = 1/3, \quad F_{X}(5) = 5/6, \quad F_{X}(7) = 1.
@@ -125,13 +129,15 @@ Lastly, calculate \(\mathbb{P}(160 \le X \le 170)\) using its PMF and CDF.
 \faStar{} Quick reminder. If \(x_{1} < \cdots < x_{n}\) are all possible values of a discrete \(X\), then \(\sum_{i=1}^{n} f_{X}(x_{i}) = 1\) and \(F_{X}(x_{n}) = 1\).
 
 
-\begin{exercise}[concept check]
+\begin{exercise}[concept check] \label{ex:drv-unknown-probability}
+  % slides: "Find the unknown probability"
   Suppose a discrete random variable \(X\) takes values \hlwarn{Edited: ``takes value'' \(\to\) ``takes values''} \(3, 5, 10\). If its PMF \(f_{X}(x)\) is given by \(f_{X}(3) = 1/7\), \(f_{X}(5)\) is unknown, and \(f_{X}(10) = 2/5\).  Find the unknown probability.
 
   \blanks{10}
 \end{exercise}
 
-\begin{exercise}[concept check]
+\begin{exercise}[concept check] \label{ex:drv-read-cdf}
+  % slides: "Reading a CDF"
   The CDF \(F_{X}\) of a discrete random variable \(X\) is given below.  Fill in the blanks below.
 
   \begin{minipage}{0.4\textwidth}
@@ -186,7 +192,8 @@ Lastly, calculate \(\mathbb{P}(160 \le X \le 170)\) using its PMF and CDF.
 
 We can think of random variables as aggregate \hlwarn{Edited: ``aggregates forms'' \(\to\) ``aggregate forms''} forms of data.  Outcomes in the sample space are grouped by common associated data (e.g., height).  \hlmain{Expectation}, \hlmain{variance} and \hlmain{standard deviation} \hlwarn{Edited: ``standard deviations'' \(\to\) ``standard deviation''} are common ways to describe the shape of data.
 
-\begin{definition}
+\begin{definition} \label{def:drv-expectation-variance}
+  % slides: "Expectation and variance"
   Suppose \(X\) is a discrete random variable with values \(x_{1}, \ldots, x_{n}\) and a PMF \(f_{X}(x)\).
   \begin{enumerate}[itemsep={1ex}]
     \item Its expectation is \(\mu = E(X) = \sum_{i=1}^{n} x_{i} f_{X}(x_{i})\).
@@ -199,7 +206,8 @@ We can think of random variables as aggregate \hlwarn{Edited: ``aggregates forms
 
 Later this week or next week, we will use Python to do some statistical simulation to see the meaning of expectation and variance. For now, we cozy up to some basic calculations.
 
-\begin{example}
+\begin{example} \label{ex:drv-betting-game}
+  % slides: "A betting game"
   We play a betting game of predicting the outcome of rolling a fair six-sided die. We must guess a single number in \(\{1, \ldots, 6\}\). Each bet costs \(1\) cookie. If we win, we collect \(3\) cookies.
 
   The game is modelled by a discrete random variable \(X\).  Describe its values, PMF and calculate its expectation and standard deviation.
@@ -211,6 +219,7 @@ Later this week or next week, we will use Python to do some statistical simulati
 Expectation measures the centre of data. Variance and standard deviation measure how far the data spread from its expectation.
 
 \begin{example} \label{ex:drv-shapes}
+  % slides: "Shapes of PMFs"
   Consider the following PMFs.
 
   \begin{tikzpicture}

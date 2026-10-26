@@ -4,7 +4,8 @@
 
 One of the simplest differential equations \hlwarn{Edited: ``equation'' \(\to\) ``equations''} is \(u'(t) = ku(t)\) where \(k\) is a constant.
 
-\begin{method}
+\begin{method} \label{method:de-exponential}
+  % slides: "Solving \(u' = ku\)"
   The general solution to the differential equation (without an initial condition) \(u'(t) = k u(t)\) \hlwarn{Edited: \(k u\) \(\to\) \(k u(t)\)} where \(k\) is the proportionality constant is \(u(t) = C e^{kt}\) where \(C\) is some constant.
 
   If an initial condition \(u(0)\) is given, then the specific solution to the initial-value problem is \(u(t) = u(0) e^{kt}\).
@@ -18,6 +19,7 @@ A little bit of integration can solve the differential equation \(u'(t) = ku(t)\
 The humble exponential function can be used to model some useful scenarios. However, be careful when identifying the proportionality constant \(k\). Unless a problem directly tells you something is the proportionality constant, don't assume the constant in the question is for the proportionality.
 
 \begin{example} \label{eg:exponential-metabolism}
+  % slides: "Drug metabolism"
   Suppose that \(100\) micrograms of a drug is administered into the bloodstream at \(t = 0\) hour.  Assume the rate of change of the amount of the drug in the bloodstream is proportional to the amount of the drug in the bloodstream.  If \(15\%\) of the drug is metabolised away after an hour, how much drug remains in the bloodstream \hlwarn{Edited: ``blood stream'' \(\to\) ``bloodstream'' (all occurrences in this section)} after \(3\) hours?
 
   \blanks*
@@ -25,7 +27,8 @@ The humble exponential function can be used to model some useful scenarios. Howe
 \clearpage
 
 Here is a minor variation of the previous problem.
-\begin{exercise}
+\begin{exercise} \label{ex:exponential-metabolism-v2}
+  % slides: "Drug metabolism, variation"
   Suppose that \(100\) micrograms of a drug is administered into the bloodstream at \(t = 0\) hour.  Assume the rate of change of the amount of the drug in the bloodstream is proportional to the amount of the drug in the bloodstream.  An hour later, \(90\) micrograms of the drug is detected in the bloodstream. How much drug is in the bloodstream after \(45\) minutes? After \(3\) hours?
 
   \blanks*
@@ -33,14 +36,16 @@ Here is a minor variation of the previous problem.
 \clearpage
 
 Here is another minor variation.
-\begin{exercise}
+\begin{exercise} \label{ex:exponential-metabolism-v3}
+  % slides: "Another variation"
   Suppose that \(100\) micrograms of a drug is administered into the bloodstream at \(t = 0\) hour.  Assume the rate of change of the amount of the drug in the bloodstream is proportional to the amount of the drug in the bloodstream.  Suppose \(90\) minutes later, \(75\) micrograms of the drug is detected in the bloodstream. How much drug is in the bloodstream after \(45\) minutes?
 
   \blanks*
 \end{exercise}
 \clearpage
 
-\begin{exercise}[challenge of the week]
+\begin{exercise}[challenge of the week] \label{ex:exponential-discrete-vs-continuous}
+  % slides: "Discrete vs continuous"
   Compare the discrete-time model \(u_{t} = a u_{t-1}\) and the continuous-time model \(y' = ky\). Both of their solutions are exponential functions \(u_{t} = u_{0} a^{t}\) and \(y(t) = y(0) e^{kt}\).
 
   Are the two models interchangeable?  What happens if you try to develop a discrete-time model for Example~\ref{eg:exponential-metabolism}?  Should the two models match?

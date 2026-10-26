@@ -7,6 +7,7 @@ Recall (from the very first lecture of the semester) that models are \emph{imper
 When the independent variable \(t\) does not appear in differential equations (other than being function arguments), there is a very fast way to figure out the long-term behaviour of a solution without calculating limits at all. Such differential equations are called \hlmain{autonomous equations}. Example~\ref{eq:diff-eq-logistic-equation-equilibria} extends the qualitative analysis of differential equations on page~\pageref{method:diff-eq-model}.
 
 \begin{example} \label{eq:diff-eq-logistic-equation-equilibria}
+  % slides: "Two plots for the logistic equation"
   Consider \(N'(t) = rN(t) \left( 1 - \frac{N(t)}{K} \right)\). 
 
   \begin{figure}[H] % [h] for here, [ht] for here top, [hb] for here bottom
@@ -28,7 +29,8 @@ When the independent variable \(t\) does not appear in differential equations (o
 
 The punchline of Example~\ref{eq:diff-eq-logistic-equation-equilibria} is that predictions similar to \faStar{} can be made reliably \hlmain{for all autonomous equations} --- DEs in which the independent variable does not appear (other than being function arguments).  Plots like the right side of Figure~\ref{fig:logistic-solutions-phase-lines} are called phase-line plots. 
 
-\begin{definition}[phase-line plot]
+\begin{definition}[phase-line plot] \label{def:phase-line-plot}
+  % slides: "Phase-line plots"
   Suppose we have an \emph{autonomous} differential equation
   \[
     u' = g(u),
@@ -42,13 +44,15 @@ The punchline of Example~\ref{eq:diff-eq-logistic-equation-equilibria} is that p
 
 We learn to identify equilibria of autonomous differential equations from a phase-line plot. Review page~\pageref{def:diff-eq-equilibrium} for the technique to find equilibria algebraically.
 
-\begin{example}
+\begin{example} \label{ex:phase-line-read-equilibria}
+  % slides: "Equilibria from a plot"
   The phase-line plot of an autonomous differential equation is provided below. Find its equilibria \hlwarn{Edited: ``equilibra'' \(\to\) ``equilibria''}.
   
   \includegraphics{../standalones/plot-phase-lines-example1}
 \end{example}
 
-\begin{example}
+\begin{example} \label{ex:phase-line-equilibria-algebraic}
+  % slides: "Equilibria, algebraically"
   Find equilibria of \(y'(x) = (y(x) + 3)^{200} (3y(x) - 2) (1/3 - 5y(x))\) algebraically. Use a graphing software to find them graphically. Make sure both methods lead to the same equilibria.
 
   \blanks*
@@ -62,7 +66,8 @@ We learn to identify equilibria of autonomous differential equations from a phas
 
 We can now describe the idea in \faStar{} in full generality.
 
-\begin{method}[stability analysis of equilibria of autonomous differential equations] 
+\begin{method}[stability analysis of equilibria of autonomous differential equations] \label{method:stability-analysis}
+  % slides: "Stability analysis"
   Suppose \(\bar{u}\) is an equilibrium of an autonomous differential equation \(u' = g(u)\). 
 
   \begin{itemize}
@@ -101,7 +106,8 @@ The stability of an equilibrium \(\bar{u}\) of an autonomous differential equati
 \clearpage
 We can perform phase-line analysis algebraically. \faPencil*{} Remember, \(u(t)\) always moves towards a stable equilibrium and away from an unstable equilibrium as \(t \to \infty\).
 
-\begin{example}
+\begin{example} \label{ex:phase-line-long-term}
+  % slides: "Long-term behaviour"
   Consider the differential equation \(u'(t) = u(t)  (3 - u(t)/2) ( 2 - u(t) )(u(t) -5)\). 
 
   \blanks{10}

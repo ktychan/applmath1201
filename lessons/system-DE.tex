@@ -4,7 +4,8 @@
 
 A system of differential equations consists of multiple equations of differentiable functions and their derivatives.  Unknown functions can depend on each other and their derivatives to express relations among quantities.
 
-\begin{example}[Lotka-Volterra model]
+\begin{example}[Lotka-Volterra model] \label{ex:lotka-volterra-intro}
+  % slides: "The Lotka-Volterra model"
   \begin{align*}
     x_{1}'(t) &= \alpha x_{1}(t) - \beta x_{1}(t) x_{2}(t) \\
     x_{2}'(t) &= \gamma x_{1}(t) x_{2}(t) - \delta x_{2}(t).
@@ -19,7 +20,8 @@ We use compact notations \(\frac{d \vec{x}}{dt}\) or \(\vec{x}'(t)\) to express 
 \]
 
 
-\begin{example}
+\begin{example} \label{ex:system-de-derivative}
+  % slides: "Differentiating a vector"
   Suppose \(x_{1}(t) = 3 e^{5t} -2 e^{t/2}\) and \(x_{2}(t) = 2 e^{5t} + \frac{1}{2}e^{t/2}\). Find \(\frac{d \vec{x}}{dt}\) and express the result as a linear combination of vectors.
 
   \blanks{18}
@@ -38,7 +40,8 @@ For example, the Lotka-Volterra \hlwarn{Edited: ``Lokta-Volterra'' \(\to\) ``Lot
 
 Linear, first-order systems of DEs can be expressed as a matrix equation \(\frac{d \vec{x}}{dt} = A \vec{x}(t) + \vec{b}\) where \(\vec{b}\) only has constants.
 
-\begin{example}
+\begin{example} \label{ex:system-de-to-matrix}
+  % slides: "A system as a matrix equation"
   Express the following linear, first-order system of DEs as a matrix equation.
   \[
      \begin{array}{rcrcrcrcr}
@@ -58,7 +61,8 @@ Linear, first-order systems of DEs can be expressed as a matrix equation \(\frac
 \end{example}
 
 To verify solutions of a system of differential equations, we simply plug them in and check if the left-hand side equals the right-hand side.
-\begin{example}
+\begin{example} \label{ex:system-de-verify-solution}
+  % slides: "Verifying a solution"
   Verify that \(\vec{x}(t) = \begin{bmatrix} 2 e^{2t} - e^{-t} \\ e^{2t} + e^{-t} \end{bmatrix}\) is a solution for \(\frac{d\vec{x}}{dt} = \begin{bmatrix} 1 & 2 \\ 1 & 0 \end{bmatrix} \vec{x}(t)\).
 
   \blanks{30}

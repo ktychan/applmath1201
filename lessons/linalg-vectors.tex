@@ -6,7 +6,8 @@
 We have been looking at models involving one quantity, e.g., the population of a group of unicorns.  We now develop mathematical tools (vectors and matrices) \hlwarn{Edited: ``matricies'' \(\to\) ``matrices''} to model systems involving two or more quantities, e.g., an ecosystem involving predators and prey. \hlwarn{Edited: ``preys'' \(\to\) ``prey''}
 
 We use an introductory example to demonstrate why vectors are useful in science.
-\begin{example}
+\begin{example} \label{ex:vectors-orcas-seals}
+  % slides: "Orcas and seals"
   Consider an ecosystem involving orcas (predators) and seals (prey). \hlwarn{Edited: ``preys'' \(\to\) ``prey''} Their population over time (in years) is presented as a table. 
 
   \begin{table}[H]
@@ -33,7 +34,8 @@ We use an introductory example to demonstrate why vectors are useful in science.
 
 \blanks{8}
 
-\begin{definition}[vectors]
+\begin{definition}[vectors] \label{def:vectors}
+  % slides: "Vectors"
   A (state) \hlmain{vector} \(\vec{x}\) is an ordered list of numbers
   \[
     \vec{x} = 
@@ -129,7 +131,8 @@ In general, we can multiply an \(m\)-by-\(n\) matrix \(A\) by an \(n\)-dimension
 % The number of columns in \(A\) \hlwarn{must match} the number of rows in \(\vec{v}\).  Matrix-vector multiplication is defined by 
 A main reason we study matrices \hlwarn{Edited: ``matricies'' \(\to\) ``matrices''} is that matrix-vector multiplication can be used to encode linear equations in variables \hlwarn{Edited: ``variable'' \(\to\) ``variables''} \(x_{1}, \ldots, x_{n}\) in the form \(A \vec{x} = \vec{b}\).
 
-\begin{example}
+\begin{example} \label{ex:vectors-system-to-matrix}
+  % slides: "System to matrix equation"
   Write the following equations in the form \(A \vec{x} = \vec{b}\).
   \[
     \begin{array}{rcrcr}
@@ -141,7 +144,8 @@ A main reason we study matrices \hlwarn{Edited: ``matricies'' \(\to\) ``matrices
   \blanks{8}
 \end{example}
 
-\begin{example}
+\begin{example} \label{ex:vectors-matrix-to-system}
+  % slides: "Matrix equation to system"
   Write the following matrix-vector equation as a system of linear equations.
 
   \[
@@ -165,7 +169,8 @@ A main reason we study matrices \hlwarn{Edited: ``matricies'' \(\to\) ``matrices
 \clearpage
 
 \faStar{} We can now upgrade recurrence to include multiple quantities. 
-\begin{example}
+\begin{example} \label{ex:vectors-recurrence-to-matrix}
+  % slides: "Recurrences to matrix form"
   Write the following recurrence equations in the form \(\vec{x}(t+1) = A \vec{x}(t)\).
   \[
     \begin{array}{rcrcr}
@@ -177,7 +182,8 @@ A main reason we study matrices \hlwarn{Edited: ``matricies'' \(\to\) ``matrices
   \blanks{10}
 \end{example}
 
-\begin{example}
+\begin{example} \label{ex:vectors-matrix-to-recurrence}
+  % slides: "Matrix form to recurrences"
   Write \(\vec{x}(t+1) = A \vec{x}(t)\) as recurrence equations where \(A = \begin{bmatrix} 0.2 & 0.8 \\ 0 & -0.7 \end{bmatrix}\).
 
   \blanks{8}

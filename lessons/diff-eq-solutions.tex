@@ -4,7 +4,8 @@
 
 In a differential equation, the \hlmain{dependent} variable, say \(u(t)\), is the \hlmain{unknown}. \emph{One} way to make sense of a differential equation is to try to \emph{solve it} --- express the unknown as down-to-earth functions (plural!) of the independent variable \(t\). 
 
-\begin{definition}[solutions (plural!) of differential equations]
+\begin{definition}[solutions (plural!) of differential equations] \label{def:de-solution}
+  % slides: "Solutions of a DE"
   Suppose we have a differential equation whose unknown is \(u(t)\).
 
   A function \(f(t)\) is \hlmain{a solution of the differential equation} if we can \hlsupp{produce an equality} \emph{after} replacing \(u(t)\) in the DE with \(f(t)\).  
@@ -13,6 +14,7 @@ In a differential equation, the \hlmain{dependent} variable, say \(u(t)\), is th
 \faStar{} To verify a \emph{proposed} solution for a differential equation, we focus on the unknown function.
 
 \begin{example} \label{eg:de-solution-intro}
+  % slides: "Which functions solve \(u' = tu\)?"
   Which of the following functions are solutions to \hlwarn{Edited: removed dangling ``the''} \(u'(t) = t u(t)\)?
   \[
     f_{1}(t) = e^{t^{2}}, \qquad f_{2}(t) = 2e^{t^{2}/2}, \qquad f_{3}(t) = 3e^{t^{2}/2}.
@@ -23,7 +25,8 @@ In a differential equation, the \hlmain{dependent} variable, say \(u(t)\), is th
 \clearpage
 
 Here is a suggestion to manage a long computation especially if you tend to make little calculation mistakes.
-\begin{method}
+\begin{method} \label{method:verify-de-solution}
+  % slides: "Prepare, calculate, decide"
   Suppose we want to check if a proposed function \(f(t)\) is a solution to a given differential equation whose unknown is \(u(t)\).
 
   \textbf{Prepare}.
@@ -42,7 +45,8 @@ Here is a suggestion to manage a long computation especially if you tend to make
   \textbf{Decide}. Assuming no mistake was made, if you get \(0\) at the end, then \(f(t)\) is a solution; otherwise, \(f(t)\) is not a solution.
 \end{method}
 
-\begin{exercise}[concept check]
+\begin{exercise}[concept check] \label{ex:de-verify-linear}
+  % slides: "Which solves \(y' - 2y = 2t - 1\)?"
   Which of the following is a solution to \(\frac{dy}{dt} - 2y = 2t - 1\)?
   \[
     f_{1}(t) = 3e^{2t} - 1, \qquad f_{2}(t) = 3e^{2t} - 2.
@@ -53,7 +57,8 @@ Here is a suggestion to manage a long computation especially if you tend to make
 \clearpage
 
 
-\begin{definition}[Solutions to IVP]
+\begin{definition}[Solutions to IVP] \label{def:ivp-solution}
+  % slides: "Solutions of an IVP"
   Suppose we have an initial-value problem whose initial condition is \(u(0)\).  
 
   A function \(f(t)\) is \emph{the} (one and only) solution to the IVP if 
@@ -65,6 +70,7 @@ Here is a suggestion to manage a long computation especially if you tend to make
 
 Exercise~\ref{eg:de-solution-intro-ivp} is a sequel of Example~\ref{eg:de-solution-intro}.  The presence of an initial condition tells you this is an IVP.
 \begin{exercise} \label{eg:de-solution-intro-ivp}
+  % slides: "The IVP sequel"
   Which of the following solves \(u'(t) = t u(t)\) with the initial condition \(u(0) = 2\)?
   \[
     f_{1}(t) = e^{t^{2}}, \qquad f_{2}(t) = 2e^{t^{2}/2}, \qquad f_{3}(t) = 3e^{t^{2}/2}.
@@ -74,7 +80,8 @@ Exercise~\ref{eg:de-solution-intro-ivp} is a sequel of Example~\ref{eg:de-soluti
 \end{exercise}
 
 Pro-tip: Always check the initial condition first.
-\begin{exercise}
+\begin{exercise} \label{ex:de-ivp-check-first}
+  % slides: "Check the initial condition first"
   Which of the following is the solution to \(y(x)y'(x) = x\) with initial condition \(y(0) = -1\)? \hlwarn{Edited: added missing ``?''}
   \[
     \qquad \sqrt{2x} - 1, \qquad \sqrt{2x - 1}, \qquad -\sqrt{2x + 1}.
@@ -86,6 +93,7 @@ Pro-tip: Always check the initial condition first.
 
 Initial-value problems are not brand new ideas. We ran into some versions of them in Calculus~1000.
 \begin{example} \label{ex:diff-eq-IVP-calc-1000}
+  % slides: "An IVP in disguise"
   Consider the initial-value problem \(y' = x^{2}\) with \(y(0) = 4\).  Which \emph{one} of the following problems from Calculus~1000 asks us to solve the initial-value problem?
 
   \begin{enumerate}[label=(\alph*)]
@@ -103,6 +111,7 @@ Initial-value problems are not brand new ideas. We ran into some versions of the
 Like recurrences, certain initial conditions of differential equations lead to particularly simple solutions. 
 
 \begin{definition}[equilibrium solution] \label{def:diff-eq-equilibrium}
+  % slides: "Equilibrium solutions"
   An \hlmain{equilibrium solution} (or equilibrium) of a differential equation is a constant function.  
 \end{definition}
 
@@ -111,6 +120,7 @@ Notations for equilibrium solutions of differential equations vary. A common not
 \faStar{} Equilibrium solutions are very easy to find because they are constants. Simply replace all occurrences of the \emph{dependent} variables \(u\) (or \(u(t)\)) by \(\bar{u}\) and solve for \(\bar{u}\) using basic algebra. It is possible to find none, exactly one or more than one equilibrium solution.
 
 \begin{example} \label{eg:equilibria-logistic}
+  % slides: "Equilibria of the logistic equation"
   Find all equilibria of \(N'(t) = r N(t) \left(1 - \frac{N(t)}{K}\right)\) where \(r,K\) are constants.
 
   \blanks*

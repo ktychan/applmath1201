@@ -5,6 +5,7 @@
 A vector field is a way to visualize \hlattn{changes} in a system. Let's see the idea through examples. A \hlmain{linear vector field} is a vector field to describe \hlattn{change} encoded by the recurrence equation \(\vec{x}(t+1) = A \vec{x}(t)\).  We will see non-linear vector fields for the famous Lotka-Volterra \hlwarn{Edited: ``Lokta-Volterra'' \(\to\) ``Lotka-Volterra''} equations in about two to three weeks.
 
 \begin{example} \label{ex:linear-vector-field-intro}
+  % slides: "Plotting \(\vec{x}(0)\) to \(\vec{x}(3)\)"
   Let \(A = \begin{bmatrix} 0 & 0.1 \\ 0.2 & 0.8 \end{bmatrix}\) and \(\vec{x}(0) = \begin{bmatrix} 30 \\ 20 \end{bmatrix}\).
   Calculate and plot \(\vec{x}(0), \vec{x}(1), \vec{x}(2), \vec{x}(3)\).
 
@@ -23,7 +24,8 @@ However, we should understand that \emph{linear vector fields} are really just a
 \clearpage
 Vector fields \hlwarn{Edited: ``Vectors fields'' \(\to\) ``Vector fields''} visualize motion encoded by recurrence equations \(\vec{x}(t+1) = A \vec{x}(t)\).  If we were to visually solve such a recurrence, we simply follow the arrows starting at some initial condition \(\vec{x}(0)\).
 
-\begin{exercise}
+\begin{exercise} \label{ex:vector-field-long-term}
+  % slides: "Long-term behaviour"
   The following are vector fields for two systems of recurrence equations.  Use the vector field to find the long-term behaviour for a recurrence with initial condition \(\vec{x}(0) = \begin{bmatrix} -50 \\ -50 \end{bmatrix}\).
 
   \begin{center}
@@ -35,7 +37,8 @@ Vector fields \hlwarn{Edited: ``Vectors fields'' \(\to\) ``Vector fields''} visu
 \vfill{}
 
 Sometimes, we scale the arrows in a vector field so that the plot is more readable. 
-\begin{example}
+\begin{example} \label{ex:vector-field-scaled}
+  % slides: "Scaled and unscaled fields"
   Here are the vector fields for the system of recurrence equations in Example~\ref{ex:linear-vector-field-intro}. The one on the left is not scaled. The one on the right is scaled.
 
   Sketch the long-term behaviour for a recurrence with initial condition \(\vec{x}(0) = \begin{bmatrix} 30 \\ 20 \end{bmatrix}\).  Does the sketch match the calculations in Example~\ref{ex:linear-vector-field-intro}?
@@ -50,7 +53,8 @@ Sometimes, we scale the arrows in a vector field so that the plot is more readab
 \vfill{}
 \clearpage
 
-\begin{exercise}
+\begin{exercise} \label{ex:vector-field-rotation}
+  % slides: "A rotating vector field"
   The two vector field plots below come from the same recurrence equations. The one on the left is not scaled. The one on the right is scaled. 
 
   Use both vector fields \hlwarn{Edited: ``both vector field'' \(\to\) ``both vector fields''} below to sketch the long-term behaviour for a recurrence with initial condition \(\vec{x}(0) = \begin{bmatrix} 80 \\ 0 \end{bmatrix}\). Are the results really different?

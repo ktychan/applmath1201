@@ -65,7 +65,7 @@ Variance is defined as \(Var(X) = E( (X - E(x))^{2} )\) regardless of whether a 
 
 \faStar{} Expectation measures the \hlmain{centre} of data. Variance and standard deviation measure how far the data spread from its expectation.
 
-\begin{example} \label{ex:drv-shapes}
+\begin{example} \label{ex:drv-shapes-expectation}
   Consider the following PMFs.
 
   \begin{tikzpicture}
@@ -124,7 +124,7 @@ Variance is defined as \(Var(X) = E( (X - E(x))^{2} )\) regardless of whether a 
 
 \clearpage
 
-Examples~\ref{ex:drv-shapes}~and~\ref{ex:crv-shapes} demonstrate the general observation that \hlmain{expectation \(\mu\), variance \(\sigma^{2}\) and standard deviation \(\sigma\)} together roughly describe the \hlmain{shape of a random variable}.  
+Examples~\ref{ex:drv-shapes-expectation}~and~\ref{ex:crv-shapes} demonstrate the general observation that \hlmain{expectation \(\mu\), variance \(\sigma^{2}\) and standard deviation \(\sigma\)} together roughly describe the \hlmain{shape of a random variable}.  
 
 Sometimes (in reality and in this course), we want to randomly generate data that replicate experiments with certain sample mean and sample variance.
 
@@ -179,7 +179,7 @@ plt.hist(X, 10, density=True)
   \end{pythoncode}
 
   \caption{Python code for random number generation following \(U(a,b)\)}
-  \label{lst:pseudorandom-number-generator}
+  \label{lst:pseudorandom-number-generator-expectation}
 \end{listing}
 
 % The uniform distribution sits at the heart of basic statistically simulation using the \emph{inverse transform sampling}.  If \(F(x)\) is the \hlmain{cumulative distribution function} (CDF) of a continuous random variable \(X\) and \(y_{1}, \ldots, y_{n}\) are sampled from \(U(0,1)\), then \(F^{-1}(y_{1}), \ldots, F^{-1}(y_{n})\) follow the distribution \(X\).
@@ -216,7 +216,7 @@ Depending on the capabilities of your software and the requirements of your simu
   \]
 \end{method}
 
-\begin{example} \label{ex:uniform-distribution-from-mean-and-stddev}
+\begin{example} \label{ex:uniform-distribution-from-mean-and-stddev-expectation}
   Determine the \(a\) for a uniform distribution whose \(U(-a,a)\) if \(\sigma^{2} = \frac{11.25}{11}\).
 
   \blanks{30}

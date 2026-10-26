@@ -1,11 +1,22 @@
 %! Tex Program = lualatex
 \documentclass[aspectratio=169, 14pt]{beamer}  
 
-
 \input{./beamer.tex.preamble}
 
+\usepackage{booktabs}   % \midrule in tables copied from the notes
+
+\usepackage{xr}
+\externaldocument[main-]{.aux/main}
+
+% Points a frame at the notes: first argument is the statement kind
+% ("Definition", "Method", "Example"), second is its label in main.tex.
+% xr imports the number but not the kind, so the kind is passed explicitly.
+\newcommand{\notesref}[2]{%
+  \hfill \parbox{1.25in}{\small #1~\ref{main-#2}\\on page~\pageref{main-#2}}%
+}
+
 \title{Applied Math 1201B}
-\date{Winter 2025}
+\date{Winter 2026}
 \author{Kelvin Chan}
 \institute{Department of Mathematics\\University of Western Ontario}
 
@@ -18,7 +29,7 @@
 \section{Course Introduction}
 
 \begin{frame}
-  \frametitle{Welcome to ApplMath~1201B! \hfill \parbox{1.25in}{\small Section 001\\MWThF at 8:30}}
+  \frametitle{Welcome to ApplMath~1201B! \hfill \parbox{1.25in}{\small Section 001\\MWThF @ 8:30}}
 
   Check the course website (\href{https://owl.uwo.ca}{\texttt{owl.uwo.ca}}) at least once a week.
 
@@ -99,9 +110,108 @@
 \end{frame}
 
 
-\section{Scaling Models}
+\section{Week 1 --- Scaling Models}
+
+% ---- lessons/introduction.tex
 \begin{frame}
-  \frametitle{Power rule models and log-log transformations}
+  \frametitle{Mathematical models \notesref{Definition}{def:models}}
+
+  A \hlmain{mathematical model} is one equation or a system of equations, typically with more than one variable, that describes the world around us.
+
+  \bigskip
+  \begin{itemize}
+    \item<2-> Newton's second law \(F = ma\)
+    \item<3-> The ideal gas law \(PV = nRT\)
+    \item<4-> Exponential population growth \(P = P_{0} e^{rt}\)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Discuss two models \notesref{Exercise}{ex:models-discussion}}
+
+  Pick two or more models from the list and discuss with your study partner.
+
+  \begin{enumerate}
+    \item Do they match our everyday experience? Do they make sense?
+    \item Are they accurate in every possible way? Do they have caveats and limitations?
+    \item Are they built on certain assumptions? What happens when these assumptions break?
+    \item Are they relatively easy to work with?
+  \end{enumerate}
+\end{frame}
+
+% ---- lessons/intro-dimensional-homogeneity.tex
+\begin{frame}
+  \frametitle{Dimensional homogeneity \notesref{Definition}{def:dimensional-homogeneity}}
+
+  A model is \hlmain{dimensionally homogeneous} if the units associated with each of its (additive) \emph{terms} match.
+
+  A \emph{term} is a summand in the equation.
+
+  \bigskip
+  \onslide<2->{Also known as ``dimensionally consistent'' (often in physics).}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Time is money? \notesref{Example}{ex:time-is-money}}
+
+  Benjamin Franklin has been credited with first proposing the model,
+  \begin{center}
+    \hlmain{``time is money.''}
+  \end{center}
+
+  Is Franklin's model dimensionally homogeneous?
+\end{frame}
+
+\begin{frame}
+  \frametitle{The unit of \(c\) \notesref{Exercise}{ex:emc2}}
+
+  Einstein's model \(E = mc^{2}\) is dimensionally homogeneous.
+
+  \begin{itemize}
+    \item \(E\) represents energy, with unit \(\text{kg} \cdot \text{m}^{2} \cdot \text{s}^{-2}\).
+    \item \(m\) represents mass, with unit kg.
+  \end{itemize}
+
+  \bigskip
+  What is the unit of \(c\)?
+\end{frame}
+
+% ---- lessons/intro-log-log-transformation.tex
+\begin{frame}
+  \frametitle{Log-log space \notesref{Definition}{def:log-log-space}}
+
+  \centering
+  \((x, y)\) in Euclidean space \(\longleftrightarrow\) \(\hlmain{(\ln(x), \ln(y))}\) in log-log space.
+
+  \medskip
+  \includegraphics[page=2, height=1.55in]{./standalones/plot-blank-5x5}
+  \qquad
+  \includegraphics[page=3, height=1.55in]{./standalones/plot-blank-5x5}
+
+  \medskip
+  Axis labels tell us which space a plot is drawn in.
+\end{frame}
+
+\begin{frame}
+  \frametitle{From Euclidean to log-log \notesref{Exercise}{ex:log-log-euclidean-to-loglog}}
+
+  Consider the point \((20, 50)\) in the Euclidean space.
+
+  \bigskip
+  Sketch its corresponding point in the log-log space. Use a calculator to approximate \(\ln(\cdots)\) values.
+\end{frame}
+
+\begin{frame}
+  \frametitle{From log-log to Euclidean \notesref{Exercise}{ex:log-log-loglog-to-euclidean}}
+
+  Consider the point \((4, 3)\) in the log-log space.
+
+  \bigskip
+  Sketch its corresponding point in the Euclidean space. Use a calculator to approximate \(e^{(\cdots)}\) values.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Log-log transformation \notesref{Definition}{def:log-log-transformation}}
 
   The \hlmain{log-log transformation} of a power rule model \(y = c x^{\alpha}\) is
   \[
@@ -109,25 +219,2589 @@
   \]
 
   Log-log transformations are ``undoable'' by raising both sides to base \(e\).
-
-  \textbf{A Speedy Notation}. \(y = c x^{\alpha} \longleftrightarrow y \propto x^{\alpha}\). Useful when the constant \(c\) is not important.
 \end{frame}
 
 \begin{frame}
-  \frametitle{A toucan of truth?}
+  \frametitle{Sketching a power rule model \notesref{Example}{ex:log-log-sketch-power-rule}}
+
+  Sketch the model \(y = 0.135 (\sqrt{x})^{3}\) in the log-log space.
+
+  \bigskip
+  Takeaway: a power rule model \(y = c x^{\alpha}\) appears as a \underline{\hspace{1.5in}} in log-log space.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Undoing a log-log transformation \notesref{Example}{ex:log-log-undo-transformation}}
+
+  Sketch the model \(\ln(y) = 2 - 0.5 \ln(x)\) in the log-log space and rewrite it in the form \(y = c x^{\alpha}\).
+
+  \begin{center}
+    \includegraphics[height=1.65in]{./standalones/plot-log-log-5x5-plain}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Reading a model off a plot \notesref{Exercise}{ex:log-log-identify-model}}
+
+  Identify \(c\) and \(\alpha\) from the plot, and write down the model \(y = c x^{\alpha}\). Approximate to three decimal places.
+
+  \begin{center}
+    \includegraphics[height=1.6in]{./standalones/plot-log-log-example}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The \(\propto\) notation \notesref{Definition}{def:propto}}
+
+  If \(y = (\text{non-zero constant}) x^{\alpha}\), then we write \(y \propto x^{\alpha}\).
+
+  Conversely, if we write \(y \propto x^{\alpha}\), then \(y = (\text{non-zero constant}) x^{\alpha}\).
+
+  \bigskip
+  \onslide<2->{The \(\propto\) notation dramatically simplifies calculations \hlmain{when we only care about proportions}.}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Doubling the radius \notesref{Example}{ex:propto-sphere-volume}}
+
+  If the radius of a sphere doubles, how does its volume change?
+
+  \bigskip
+  Note \(V = \frac{4}{3} \pi r^{3}\).
+\end{frame}
+
+\begin{frame}
+  \frametitle{Halving \(x\) \notesref{Example}{ex:propto-halved}}
+
+  Suppose \(y \propto x^{-1/2}\).
+
+  \bigskip
+  If \(x\) is halved, how does \(y\) change?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Scaling \(x\) by \(1.1\) \notesref{Exercise}{ex:propto-scale-cube-root}}
+
+  Suppose \(y \propto x^{1/3}\).
+
+  \bigskip
+  If \(x\) is scaled by \(1.1\), how does \(y\) change?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Scaling \(x\) by \(0.65\) \notesref{Exercise}{ex:propto-scale-down}}
+
+  Suppose \(y \propto x^{-1/4}\).
+
+  \bigskip
+  If \(x\) is scaled by \(0.65\), how does \(y\) change?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Scaling \(x\) by \(1.15\) \notesref{Exercise}{ex:propto-scale-up}}
+
+  Suppose \(y \propto x^{-1/4}\).
+
+  \bigskip
+  If \(x\) is scaled by \(1.15\), how does \(y\) change?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Doubling the radius again \notesref{Exercise}{ex:propto-sphere-area}}
+
+  If the radius of a sphere doubles, how does its surface area change?
+
+  \bigskip
+  Note \(S = 4 \pi r^{2}\).
+\end{frame}
+
+% ---- lessons/intro-toucan.tex
+\begin{frame}
+  \frametitle{A toucan of truth? \notesref{Example}{ex:toucan}}
 
   \centering
 
-  \includegraphics[page=4, width={2.5in}]{./standalones/plot-birds-of-costa-rica}
+  \includegraphics[page=4, width={2.3in}]{./standalones/plot-birds-of-costa-rica}
   \qquad
-  \includegraphics[page=5, width={2.5in}]{./standalones/plot-birds-of-costa-rica}
+  \includegraphics[page=5, width={2.3in}]{./standalones/plot-birds-of-costa-rica}
 
-  How do you evaluate your intern's arguments? 
+  How do you evaluate your intern's arguments?
 \end{frame}
 
-\section{Recurrence}
-\section{Differential Equations}
-\section{Probability}
-\section{Random Variables}
+% ---- lessons/intro-allometry.tex
+\begin{frame}
+  \frametitle{Isometry and allometry \notesref{Definition}{def:isometry-allometry}}
+
+  Suppose \(x\) and \(y\) are related by a power rule \(y = c x^{\alpha}\) with \(c > 0\).
+
+  \bigskip
+  \begin{itemize}
+    \item<2-> If \(\alpha = 1\), then \(x\) and \(y\) exhibit \hlmain{isometry} (proportional change).
+    \item<3-> If \(\alpha \ne 1\), then \(x\) and \(y\) exhibit \hlmain{allometry} (not proportional change).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Isometry or allometry? \notesref{Example}{ex:allometry-birds}}
+
+  Consider lengths, volumes and mass of birds as discussed in the toucan example.
+
+  \begin{enumerate}
+    \item Do length and mass exhibit isometry or allometry? Explain your reasoning.
+    \item Do volume and mass exhibit isometry or allometry? Explain your reasoning.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The allometry of brain size \notesref{Example}{ex:allometry-brain-body}}
+
+  From \emph{The allometry of brain size in mammals}, Burger, George, Leadbetter and Shaikh, \emph{Journal of Mammalogy}:
+  \begin{quote}
+    The brain--body size allometry across all mammals is \(\text{(Brain)} = -1.26\, \text{(Body)}^{0.75}\).
+  \end{quote}
+
+  If body size increases by \(10\%\), how does brain size change? Ignore units for the moment.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Two \emph{T. rex} footprints \notesref{Example}{ex:allometry-trex}}
+
+  Two \emph{T. rex} footprints measure \(85\) cm and \(70\) cm. Assume T. rex have similar body shapes.
+
+  \begin{enumerate}
+    \item Predict how much heavier the first dinosaur was.
+    \item What assumptions did you make? What caveats apply?
+    \item Would you compare a T. rex and a Diplodocus this way?
+  \end{enumerate}
+
+  \begin{center}
+    \includegraphics[height=0.6in]{./standalones/image-trex}
+    \quad
+    \includegraphics[height=0.6in]{./standalones/image-diplodocus}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Inverting \(y \propto x^{3}\) \notesref{Exercise}{ex:propto-invert-cube}}
+
+  If \(y \propto x^{3}\), then what is the \(\beta\) in \(x \propto y^{\beta}\)?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Relating \(y\) and \(z\) \notesref{Exercise}{ex:propto-relate}}
+
+  If \(y \propto x^{3}\) and \(z \propto x^{2}\), then how do \(y\) and \(z\) relate?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Inverting \(y \propto x^{-2/3}\) \notesref{Exercise}{ex:propto-invert-negative}}
+
+  If \(y \propto x^{-2/3}\), then what is the \(\beta\) in \(x \propto y^{\beta}\)?
+\end{frame}
+
+\begin{frame}
+  \frametitle{A \(10\%\) larger radius \notesref{Exercise}{ex:percent-sphere-increase}}
+
+  If the radius of a sphere increases by \(10\%\), then how does its volume change?
+
+  \bigskip
+  Note \(V = \frac{4}{3} \pi r^{3}\).
+\end{frame}
+
+\begin{frame}
+  \frametitle{A \(10\%\) smaller radius \notesref{Exercise}{ex:percent-sphere-decrease}}
+
+  If the radius of a sphere decreases by \(10\%\), then how does its volume change?
+
+  \bigskip
+  Note \(V = \frac{4}{3} \pi r^{3}\).
+\end{frame}
+
+\begin{frame}
+  \frametitle{Percentages under isometry \notesref{Exercise}{ex:percent-isometry}}
+
+  If \(x\) and \(y\) exhibit isometry, then
+
+  \begin{itemize}
+    \item a \(57\%\) increase in \(x\) results in \(\underline{\hspace{0.6cm}}\%\) \underline{\hspace{1in}} (increase or decrease?) in \(y\).
+    \item a \(23\%\) decrease in \(x\) results in \(\underline{\hspace{0.6cm}}\%\) \underline{\hspace{1in}} (increase or decrease?) in \(y\).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Weekly challenge \notesref{Exercise}{ex:allometry-weekly-challenge}}
+
+  Suppose \(y \propto x^{-1/3}\) and \(z \propto x^{2}\).
+
+  \bigskip
+  If \(y\) increases by \(5\%\), how does \(z\) change?
+\end{frame}
+
+
+\section{Week 2 --- Discrete-time Models}
+
+% ---- lessons/recursion-intro.tex
+\begin{frame}
+  \frametitle{Folding a triangle \notesref{Example}{ex:origami}}
+
+  Fold a triangular paper by identifying the two corners on the long edge. Count the triangles on the unfolded paper after \(t\) folds.
+
+  \begin{center}
+    \includegraphics[height=0.72in]{./standalones/demo-origami}
+  \end{center}
+
+  \begin{enumerate}
+    \item \hlsupp{Set up notations} using a complete sentence.
+    \item \hlsupp{Describe the initial condition.}
+    \item \hlsupp{Describe change} using an equation.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Recurrence \notesref{Definition}{def:recurrence}}
+
+  In a \hlmain{discrete-time model} \(u_{t}\), time takes integer values. We call \(u_{t}\) the \hlmain{state at time \(t\)}.
+
+  \medskip
+  The model is described by a \hlmain{recurrence} when two things are specified.
+  \begin{enumerate}
+    \item<2-> An \hlmain{initial condition} \(u_{0}\).
+    \item<3-> A \hlmain{recurrence equation} relating \(u_{t}\) to one or more \emph{previous} states.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Reading recurrences \notesref{Exercise}{ex:recurrence-identify}}
+
+  For each recurrence below, identify its initial condition and its recurrence equation.
+
+  \begin{align*}
+    &p_{0} = 1 \quad\text{and}\quad p_{t} = \tfrac{1}{2} p_{t-1} - \tfrac{1}{2}
+    &&a_{0} = 3 \quad\text{and}\quad a_{t} = a_{t-1} + 2 \\[1ex]
+    &b_{0} = 4 \quad\text{and}\quad b_{t} = t \sqrt{b_{t-1}}
+    &&f_{t} = \frac{1}{f_{t-1}} + 1 \\[1ex]
+    &F_{t} = F_{t-1} + F_{t-2}
+  \end{align*}
+\end{frame}
+
+% ---- lessons/recursion-models.tex
+\begin{frame}
+  \frametitle{Modelling with recurrences \notesref{Method}{method:recurrence-modelling}}
+
+  Use recurrence equations to describe how a physical system changes from one state to the next.
+
+  \bigskip
+  Be sure to specify its \hlmain{initial state}.
+\end{frame}
+
+\begin{frame}
+  \frametitle{A savings account \notesref{Example}{ex:recursion-investment-model}}
+
+  We deposit \(\$ 1{,}000\) into a savings account on January 1. At the end of every year, an interest of \(2\%\) of the current balance is paid. We would like to withdraw \(\$ 50\) \emph{after} each interest payment.
+
+  \bigskip
+  Develop a discrete-time model (a recurrence) for the relation between the balance of the savings and time.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Carbon-14 dating \notesref{Exercise}{ex:recursion-half-life}}
+
+  Carbon-14 is a radioactive element used to date archaeological artifacts of biological origin. The amount of carbon-14 in a sample decreases by \(50\%\) after roughly \(5{,}730\) years.
+
+  \bigskip
+  Develop a discrete-time model (a recurrence) for the relation between the amount of carbon-14 in a sample and time. Be careful with how you measure time.
+\end{frame}
+
+% ---- lessons/recursion-techniques.tex
+\begin{frame}
+  \frametitle{Calculating a few terms \notesref{Example}{ex:recurrence-bruteforce}}
+
+  Calculate the balance at the end of years 1, 2, and 3 using the savings account model.
+\end{frame}
+
+\begin{frame}
+  \frametitle{A different initial deposit \notesref{Exercise}{ex:recurrence-equilibrium}}
+
+  Calculate the balance at the end of year \(3\) using the savings account model, but change the initial deposit to \(\$ 2{,}500\).
+\end{frame}
+
+\begin{frame}
+  \frametitle{Solutions of a recurrence \notesref{Definition}{def:recurrence-solution}}
+
+  A function \(f(t)\) is a \hlmain{solution} of a recurrence \(u_{t}\) with initial condition \(u_{0}\) if
+  \begin{enumerate}
+    \item<2-> \(f(t)\) satisfies the defining recurrence equation for \(u_{t}\), \emph{and}
+    \item<3-> \(u_{0} = f(0)\).
+  \end{enumerate}
+
+  \bigskip
+  \onslide<4->{\(f(t)\) cannot refer to any \(u_{t}\) and must be a well-defined function of \(t\).}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Verifying a proposed solution \notesref{Example}{ex:recurrence-verify-solution}}
+
+  Is \(a_{t} = 2^{2^{t-1}}\) the solution for
+  \[
+    a_{1} = 2 \quad\text{and}\quad a_{t} = a_{t-1}^{2} \text{ for } t \ge 2?
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Verifying a solution \notesref{Exercise}{ex:recurrence-verify-investment}}
+
+  Is
+  \[
+    b_{t} = -1500 (1.02)^{t} + 2500
+  \]
+  a solution of the recurrence in the savings account model?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Solving \(u_{t} = a u_{t-1}\) \notesref{Method}{method:recurrence-exp}}
+
+  Let \(a > 0\) be a constant. The solution to the recurrence \(u_{t} = a u_{t-1}\) is
+  \[
+    u_{t} = u_{0} a^{t},
+  \]
+  where \(u_{0}\) can be any constant.
+
+  \bigskip
+  \onslide<2->{None of the calculus tools apply \emph{directly} to a recurrence. \hlmain{Solving a recurrence converts an unfamiliar problem to a familiar problem.}}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Long-term behaviour \notesref{Example}{ex:recurrence-longterm-growth}}
+
+  Suppose a population grows at rate \(r\) (annually) with an initial population \(P_{0} = 1{,}000\). What is \(\lim_{t \to \infty} P_{t}\) when
+
+  \begin{enumerate}
+    \item \(r = 1\)?
+    \item \(r > 1\)?
+    \item \(0 < r < 1\)?
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Equilibrium solutions \notesref{Definition}{def:recurrence-equilibrium}}
+
+  An \hlmain{equilibrium solution} of a recurrence equation (not the whole recurrence) is a constant function. We drop the subscript and wear a hat: \(\hat{u}\).
+
+  \bigskip
+  \onslide<2->{Equilibria are easy to find. Replace every \(u_{t}\) by \(\hat{u}\) and solve for \(\hat{u}\) with basic algebra.}
+
+  \medskip
+  \onslide<3->{There can be more than one.}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Finding an equilibrium \notesref{Example}{ex:recurrence-equilibrium-find}}
+
+  Find the equilibrium solution for the recurrence equation
+  \[
+    v_{t} = 1.5 v_{t-1} + 35.
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{All equilibria \notesref{Exercise}{ex:recurrence-equilibria-sqrt}}
+
+  Find \emph{all} equilibria of the recurrence equation
+  \[
+    u_{t} = \sqrt{3 u_{t-1} - 2}.
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{One equilibrium or many? \notesref{Exercise}{ex:recurrence-equilibria-half}}
+
+  Find equilibria (one or many?) of the recurrence equation
+  \[
+    p_{t} = \frac{1}{2} p_{t-1} - \frac{1}{2}.
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{The substitution method \notesref{Method}{method:recurrence-sub}}
+
+  Consider \(v_{t} = A v_{t-1} + B\), whose equilibrium is always \(\hat{v} = \frac{B}{1 - A}\).
+
+  \bigskip
+  \begin{enumerate}
+    \item<2-> Change variables: \(v_{t} = u_{t} + \hat{v}\).
+    \item<3-> Solve the new recurrence \(u_{t}\).
+    \item<4-> Recover the original solution.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Substitution, step by step \notesref{Example}{ex:recurrence-sub-worked}}
+
+  Solve the recurrence \(b_{t} = 1.02 b_{t-1} - 50\) with initial condition \(b_{0} = 1000\).
+
+  \begin{enumerate}[label={Step~(\arabic*).}]
+    \item Perform the change of variable.
+    \item Calculate \(u_{0}\) and solve for the new recurrence in \(u_{t}\).
+    \item Recover the solution of the original recurrence.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Solution formula \notesref{Method}{method:recurrence-affine-formula}}
+
+  The solution to the recursion \(v_{t} = A v_{t-1} + B\) with initial condition \(v_{0}\) is
+  \[
+    v_{t} = (v_{0} - \hat{v}) A^{t} + \hat{v}, \text{ where } \hat{v} = \frac{B}{1 - A}.
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Formula and substitution \notesref{Exercise}{ex:recurrence-formula-vs-sub}}
+
+  Solve the recurrence
+  \[
+    p_{0} = 1 \quad\text{and}\quad p_{t} = \frac{1}{2} p_{t-1} - \frac{1}{2}, \text{ for integers } t \ge 1
+  \]
+  using the formula \emph{and} the substitution method. Make sure you understand both.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Does the balance reach zero? \notesref{Example}{ex:recurrence-balance-zero}}
+
+  Consider the savings account model
+  \[
+    b_{0} = 1000 \quad\text{and}\quad b_{t} = 1.02 b_{t-1} - 50, \text{ for integers } t \ge 1.
+  \]
+
+  Does the balance ever reach \(0\)? If so, roughly how many years since the initial investment?
+
+  \medskip
+  Don't simply list all \(b_{t}\) --- use the solution and calculus.
+\end{frame}
+
+\begin{frame}
+  \frametitle{An unknown initial investment \notesref{Exercise}{ex:recurrence-unknown-initial}}
+
+  Modify the savings account model so that the initial investment is an unknown. Everything else remains unchanged.
+
+  \bigskip
+  What is the initial investment if the money were to be depleted after \(10\) years?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Challenge: the cat and the mice \notesref{Exercise}{ex:recurrence-cat-and-mice}}
+
+  A cat chases away a fixed portion of the mice every night. Move-ins/outs happen before midnight; a census is taken at midnight. An intern proposes
+  \[
+    m_{0} \text{ is unknown} \quad\text{and}\quad m_{t} = 0.2 m_{t-1} + 5, \text{ for } t \ge 1.
+  \]
+
+  What \emph{percentage} of the mouse population is chased away every day?
+\end{frame}
+
+\section{Week 3 --- Differential Equations}
+
+% ---- lessons/diff-eq-intro.tex
+\begin{frame}
+  \frametitle{Birth and death rates \notesref{Example}{ex:diff-eq-intro}}
+
+  Let \(N\) measure the size of a population, with time \(t\) flowing continuously and measured in years.
+
+  \bigskip
+  Assume the rate of change at time \(t\) is proportional to the size of the population at time \(t\). Express that rate as an equation if the per capita birth and death rates are \hlsupp{\(B = 10\%\)} and \hlsupp{\(D = 1\%\)} per year.
+
+  \medskip
+  Use dimensional homogeneity to stay on track.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Differential equations and IVPs \notesref{Definition}{def:differential-equation}}
+
+  Let \(u\) be a \emph{differentiable} function of \(t\). A \hlmain{differential equation} (DE) relates \(u\) to one or more of its derivatives. The \hlsupp{unknown} is the function \(u\).
+
+  \bigskip
+  An \hlmain{initial-value problem} (IVP) has two parts:
+  \begin{enumerate}
+    \item<2-> An \hlmain{initial condition} --- some known value \(u(\text{constant})\).
+    \item<3-> A differential equation.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Reading differential equations \notesref{Example}{ex:de-notation-examples}}
+
+  \begin{itemize}
+    \item With or without function notation:
+      \(N'(t) = r N(t)\left(1 - \tfrac{N(t)}{K}\right)\) \; or \; \(N' = rN\left(1 - \tfrac{N}{K}\right)\).
+    \item An IVP adds an initial condition: \(N(0) = 350\).
+    \item The initial condition can be measured at any time: \(N(-3.236492) = 473829\).
+    \item DEs can have higher-order derivatives:
+      \(v = v' + \frac{v''}{t} + \frac{v^{(3)}}{t^{2}} + \sqrt{t-1}\).
+  \end{itemize}
+\end{frame}
+
+% ---- lessons/diff-eq-solutions.tex
+\begin{frame}
+  \frametitle{Solutions of a DE \notesref{Definition}{def:de-solution}}
+
+  Suppose we have a differential equation whose unknown is \(u(t)\).
+
+  \bigskip
+  A function \(f(t)\) is \hlmain{a solution of the differential equation} if we can \hlsupp{produce an equality} \emph{after} replacing \(u(t)\) in the DE with \(f(t)\).
+
+  \bigskip
+  \onslide<2->{Note the plural --- a DE generally has many solutions.}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Which functions solve \(u' = tu\)? \notesref{Example}{eg:de-solution-intro}}
+
+  Which of the following are solutions to \(u'(t) = t u(t)\)?
+  \[
+    f_{1}(t) = e^{t^{2}}, \qquad f_{2}(t) = 2e^{t^{2}/2}, \qquad f_{3}(t) = 3e^{t^{2}/2}.
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Prepare, calculate, decide \notesref{Method}{method:verify-de-solution}}
+
+  \textbf{Prepare.}
+  \begin{enumerate}
+    \item Reorganize the DE to the form \hlmain{\((\cdots) = 0\)}.
+    \item Rewrite \(u'(t)\) as \(\frac{d}{dt}\big( u(t) \big)\).
+    \item Discard the ``\hlmain{\(= 0\)}'' on the right-hand side.
+  \end{enumerate}
+
+  \onslide<2->{\textbf{Calculate.} Replace every \(u(t)\) with \(f(t)\), then differentiate and simplify.}
+
+  \medskip
+  \onslide<3->{\textbf{Decide.} If you get \(0\), then \(f(t)\) is a solution; otherwise it is not.}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Which solves \(y' - 2y = 2t - 1\)? \notesref{Exercise}{ex:de-verify-linear}}
+
+  Which of the following is a solution to \(\frac{dy}{dt} - 2y = 2t - 1\)?
+  \[
+    f_{1}(t) = 3e^{2t} - 1, \qquad f_{2}(t) = 3e^{2t} - 2.
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Solutions of an IVP \notesref{Definition}{def:ivp-solution}}
+
+  Suppose we have an initial-value problem whose initial condition is \(u(0)\).
+
+  \bigskip
+  A function \(f(t)\) is \emph{the} (one and only) solution to the IVP if
+  \begin{itemize}
+    \item<2-> \(f(0) = u(0)\), and
+    \item<3-> \(f(t)\) is a solution to the differential equation.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The IVP sequel \notesref{Exercise}{eg:de-solution-intro-ivp}}
+
+  Which of the following solves \(u'(t) = t u(t)\) with the initial condition \(u(0) = 2\)?
+  \[
+    f_{1}(t) = e^{t^{2}}, \qquad f_{2}(t) = 2e^{t^{2}/2}, \qquad f_{3}(t) = 3e^{t^{2}/2}.
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Check the initial condition first \notesref{Exercise}{ex:de-ivp-check-first}}
+
+  Which of the following is the solution to \(y(x)y'(x) = x\) with initial condition \(y(0) = -1\)?
+  \[
+    \sqrt{2x} - 1, \qquad \sqrt{2x - 1}, \qquad -\sqrt{2x + 1}.
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{An IVP in disguise \notesref{Example}{ex:diff-eq-IVP-calc-1000}}
+
+  Consider the IVP \(y' = x^{2}\) with \(y(0) = 4\). Which \emph{one} of these Calculus~1000 problems asks us to solve it?
+
+  \begin{enumerate}[label=(\alph*)]
+    \item Find antiderivatives of \(x^{2}\).
+    \item Integrate \(x^{2}\).
+    \item Find the antiderivative \(F\) of \(f(x) = x^{2}\) satisfying \(F(0) = 4\).
+    \item Find the tangent line of \(y = x^{2}\) through \((0,4)\).
+    \item None of the above.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Equilibrium solutions \notesref{Definition}{def:diff-eq-equilibrium}}
+
+  An \hlmain{equilibrium solution} (or equilibrium) of a differential equation is a constant function.
+
+  \bigskip
+  \onslide<2->{A common notation adds a bar to the dependent variable: \(\bar{u}\).}
+
+  \medskip
+  \onslide<3->{To find them, replace every \(u\) (or \(u(t)\)) by \(\bar{u}\) and solve. There may be none, one, or many.}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Equilibria of the logistic equation \notesref{Example}{eg:equilibria-logistic}}
+
+  Find all equilibria of
+  \[
+    N'(t) = r N(t) \left( 1 - \frac{N(t)}{K} \right),
+  \]
+  where \(r, K\) are constants.
+\end{frame}
+
+% ---- lessons/diff-eq-models.tex
+\begin{frame}
+  \frametitle{Modelling with DEs \notesref{Method}{method:diff-eq-model}}
+
+  Use differential equations to describe the rates of change of physical \hlmain{systems}. The simplest idea is
+  \begin{center}
+    (rate of change) = (rate of internal change) + (rate of external change).
+  \end{center}
+
+  \bigskip
+  \onslide<2->{``The rate of change of \(P\) is \hlattn{proportional} to \(P\)'' translates to
+  \({\color{main}P'(t)} = {\color{attn}k}\, {\color{supp}P(t)}\).}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Drug ABC: internal change \notesref{Example}{ex:diff-eq-ABCv1}}
+
+  A sedation drug ABC interacts with the bloodstream. The body does not produce ABC naturally. Amounts are in mg, time in minutes.
+
+  \bigskip
+  Experimental data suggests the \hlmain{rate of change of ABC} is \hlattn{proportional} to \hlmain{the amount of ABC present}, with proportionality constant \(-1\%\) per minute.
+
+  \medskip
+  Write down a \emph{continuous-time model} of ABC in the bloodstream.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Drug ABC: adding an infusion \notesref{Example}{ex:diff-eq-ABCv2}}
+
+  Continue from the previous example. Suppose further that ABC is \emph{continuously} administered at a rate of \(r\) mg per minute.
+
+  \bigskip
+  Write down a \emph{continuous-time model} of ABC in the bloodstream.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Drug ABC: with blood loss \notesref{Exercise}{ex:diff-eq-ABCv3}}
+
+  Continue again. Suppose further that ABC exits the bloodstream through blood loss at a rate of \(s\) mg of ABC per minute.
+
+  \bigskip
+  Write down a \emph{continuous-time model} of ABC in the bloodstream.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Qualitative information \notesref{Example}{eg:DE-qualitative}}
+
+  Suppose a population model is \(\frac{dy}{dt} = ky\) for some unknown constant \(k\). Describe how the population changes
+
+  \begin{enumerate}
+    \item if \(k > 0\).
+    \item if \(k = 0\).
+    \item if \(k < 0\).
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Increasing or decreasing? \notesref{Exercise}{ex:de-qualitative-implicit}}
+
+  Suppose a differential equation is \(u'(t) u(t) = t u(t) - 1\). Describe whether its solution is increasing or decreasing at the specified time.
+
+  \begin{enumerate}
+    \item \(u(5) = 7\).
+    \item \(u(-2) = 32\).
+    \item \(u(17) = -1.47\).
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Possible values of \(N(0)\) \notesref{Example}{ex:de-possible-initial-values}}
+
+  Suppose a population is modelled by
+  \[
+    \frac{dN}{dt} = 1.13\, N \left( 1 - \frac{N}{5} \right).
+  \]
+
+  If the population is increasing at \(t = 0\), what are the possible values for \(N(0)\)?
+\end{frame}
+
+\begin{frame}
+  \frametitle{A cooling object \notesref{Exercise}{ex:de-temperature-decreasing}}
+
+  The temperature \(T(t)\) in Celsius of an object is modelled by
+  \[
+    \frac{dT}{dt} = \frac{12}{T(t) - 20} + 5 \frac{\sin(\pi t)}{t}.
+  \]
+
+  If the temperature is decreasing at time \(t = 1\), what are the possible values of \(T(1)\)?
+\end{frame}
+
+% ---- lessons/diff-eq-phase-line-plots.tex
+\begin{frame}
+  \frametitle{Two plots for the logistic equation \notesref{Example}{eq:diff-eq-logistic-equation-equilibria}}
+
+  Consider \(N'(t) = rN(t)\left(1 - \frac{N(t)}{K}\right)\).
+
+  \begin{center}
+    \includegraphics[height=1.25in]{./standalones/plot-logistic-solutions}
+    \quad
+    \includegraphics[height=1.25in]{./standalones/plot-logistic-solutions-phase-lines}
+  \end{center}
+
+  We can say more than just increasing / no change / decreasing.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Phase-line plots \notesref{Definition}{def:phase-line-plot}}
+
+  Suppose we have an \emph{autonomous} differential equation
+  \[
+    u' = g(u),
+  \]
+  where the independent variable does not appear in \(g\) at all.
+
+  \bigskip
+  The \hlmain{phase-line plot} is the graph of \(g\).
+
+  \medskip
+  \onslide<2->{Phase-line plots are ONLY defined for autonomous equations.}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Equilibria from a plot \notesref{Example}{ex:phase-line-read-equilibria}}
+
+  The phase-line plot of an autonomous differential equation is provided below. Find its equilibria.
+
+  \begin{center}
+    \includegraphics[height=1.7in]{./standalones/plot-phase-lines-example1}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Equilibria, algebraically \notesref{Example}{ex:phase-line-equilibria-algebraic}}
+
+  Find equilibria of
+  \[
+    y'(x) = \big(y(x) + 3\big)^{200} \big(3y(x) - 2\big) \big(1/3 - 5y(x)\big)
+  \]
+  algebraically. Then use graphing software to find them graphically, and check that both methods agree.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Stability analysis \notesref{Method}{method:stability-analysis}}
+
+  Suppose \(\bar{u}\) is an equilibrium of an autonomous DE \(u' = g(u)\).
+
+  \begin{itemize}
+    \item<2-> \hlmain{Above} the axis to the left of \(\bar{u}\) and \hlsupp{below} to the right \(\Rightarrow\) \hlmain{locally asymptotically stable}, and \(\lim_{t \to \infty} u(t) = \bar{u}\).
+    \item<3-> \hlsupp{Below} to the left and \hlmain{above} to the right \(\Rightarrow\) \hlmain{unstable}, and \(\lim_{t \to \infty} u(t) \ne \bar{u}\).
+    \item<4-> An equilibrium can be neither.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Long-term behaviour \notesref{Example}{ex:phase-line-long-term}}
+
+  Consider \(u'(t) = u(t) \left(3 - \frac{u(t)}{2}\right)\big(2 - u(t)\big)\big(u(t) - 5\big)\).
+
+  \begin{enumerate}
+    \item Evaluate \(\lim_{t \to \infty} u(t)\) given \(u(0) = 1\).
+    \item Determine the long-term behaviour given \(u(43738921740321678914) = 1\).
+    \item Evaluate \(\lim_{t \to \infty} u(t)\) given \(u(-4326) = -0.723\).
+    \item Determine the long-term behaviour given \(u(-1) = 6\).
+    \item Suppose \(u(\pi) = 5.0001\). What do we expect \(u(t)\) to approach?
+  \end{enumerate}
+\end{frame}
+
+
+\section{Week 4 --- The Logistic Model and Applications}
+
+% ---- lessons/diff-eq-logistic.tex
+\begin{frame}
+  \frametitle{The logistic model \notesref{Definition}{def:logistic-model}}
+
+  The population model \(N(t)\) with growth factor \(r > 0\) and carrying capacity \(K\) satisfies
+  \[
+    N'(t) = r N(t) \left( 1 - \frac{N(t)}{K} \right).
+  \]
+
+  \bigskip
+  \onslide<2->{The carrying capacity \(K\) is the population size the modelled environment can sustain over time.}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Does it capture crowding? \notesref{Example}{ex:diff-eq-logistic-fact-check}}
+
+  Qualitative analysis can pick out the crowding effect without solving the DE.
+
+  \begin{enumerate}
+    \item Suppose \(N(\text{some time})\) is below and far from \(K\). How does the population change?
+    \item Suppose \(N(\text{some time})\) is below but close to \(K\). How does it change?
+    \item Suppose \(N(\text{some time})\) is larger than \(K\). How does it change?
+  \end{enumerate}
+\end{frame}
+
+% ---- lessons/diff-eq-modelling.tex
+\begin{frame}
+  \frametitle{Green liquid in a tube \notesref{Example}{eg:diff-eq-model-intro}}
+
+  A tube contains \(1\) litre of clear liquid. From \(t = 0\), a green liquid at \(10\) grams per litre flows in at \(0.1\) litres per minute, and the mixture exits the other end at \(0.1\) litres per minute.
+
+  \bigskip
+  Assume the tube is \emph{well-mixed} at all times.
+
+  \medskip
+  Let \(G(t)\) be the mass of green particles in the tube. Develop an IVP to which \(G(t)\) is the solution.
+\end{frame}
+
+\begin{frame}
+  \frametitle{A leaking saline tank \notesref{Exercise}{ex:diff-eq-model-mixing-1}}
+
+  A tank contains \(10\) L of water with no sodium chloride. At \(t = 0\), saline at \(\tfrac{1}{4}\) mg per mL flows in at \(10\) mL per second, and the tank leaks at \(10\) mL per second. No evaporation.
+
+  \bigskip
+  Assume the tank is \emph{well-mixed}. Let \(u(t)\) be the mass of sodium chloride. Develop an IVP to which \(u(t)\) is the solution.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Modelling with loss \notesref{Exercise}{ex:diff-eq-model-mixing-2}}
+
+  Continue from the saline tank. Now assume the solution is hot and \emph{pure} water evaporates at \(0.01\) mL per second. Everything else stays the same.
+
+  \bigskip
+  Evaporation means \emph{pure} water leaves; the mass of sodium chloride \emph{does not} change.
+
+  \medskip
+  Propose a continuous-time model for the mass of sodium chloride.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Modelling with feedback \notesref{Exercise}{ex:diff-eq-model-mixing-3}}
+
+  Continue from the saline tank. Assume further that \(1/3\) of the solution exiting the tank is fed back into the tank. Assume no evaporation.
+
+  \bigskip
+  Propose a continuous-time model for the amount of sodium chloride in the tank.
+\end{frame}
+
+\begin{frame}
+  \frametitle{A different initial concentration \notesref{Exercise}{ex:diff-eq-model-mixing-4}}
+
+  Continue from the saline tank. Assume instead that the tank initially contains \(10\) litres of saline solution at \(0.1\%\) concentration.
+
+  \bigskip
+  Propose a continuous-time model for the amount of sodium chloride in the tank.
+\end{frame}
+
+% ---- lessons/diff-eq-classification.tex
+\begin{frame}
+  \frametitle{Order of a DE \notesref{Definition}{def:de-order}}
+
+  The \hlmain{order} of a differential equation is the order of the highest derivative of the dependent variable in the equation.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Identify the order \notesref{Example}{ex:de-identify-order}}
+
+  Identify the order of the following differential equations.
+  \[
+    \frac{du}{dt} + u^{2} = t^{3},
+    \qquad
+    \left(u''(t)\right)^{3} + \sin(t) = 0.
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Linear vs non-linear \notesref{Definition}{def:de-linear}}
+
+  If a differential equation has no product of the dependent variable with itself or any of its derivatives, then it is called \hlmain{linear}; otherwise it is called \hlmain{non-linear}.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Find the linear DE \notesref{Example}{ex:de-identify-linear}}
+
+  Find the linear differential equation from the list below.
+  \[
+    u(t) + t^{2} u'(t) = 0,
+    \qquad
+    u'(t) + u'(t) u(t) = 0,
+  \]
+  \[
+    \big(u(t)\big)^{2} + u'(t) u^{(5)}(t) = t u(t).
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Linear, first-order DEs \notesref{Definition}{def:de-linear-first-order}}
+
+  Assume \(u\) is a function of \(t\). A \hlmain{linear, first-order} differential equation has the form
+  \[
+    u'(t) + p(t) u(t) = q(t),
+  \]
+  where \(p(t)\) and \(q(t)\) can be any functions of \(t\).
+
+  \bigskip
+  \onslide<2->{The dependent variable \(u\) does not appear in \(p(t)\) or \(q(t)\).}
+\end{frame}
+
+% ---- lessons/diff-eq-exponential.tex
+\begin{frame}
+  \frametitle{Solving \(u' = ku\) \notesref{Method}{method:de-exponential}}
+
+  The general solution to \(u'(t) = k u(t)\), where \(k\) is the proportionality constant, is
+  \[
+    u(t) = C e^{kt},
+  \]
+  where \(C\) is some constant.
+
+  \bigskip
+  \onslide<2->{If an initial condition \(u(0)\) is given, the specific solution is \(u(t) = u(0) e^{kt}\).}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Drug metabolism \notesref{Example}{eg:exponential-metabolism}}
+
+  \(100\) micrograms of a drug is administered into the bloodstream at \(t = 0\). Assume the rate of change of the drug is proportional to the amount present.
+
+  \bigskip
+  If \(15\%\) of the drug is metabolised away after an hour, how much remains after \(3\) hours?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Drug metabolism, variation \notesref{Exercise}{ex:exponential-metabolism-v2}}
+
+  \(100\) micrograms of a drug is administered at \(t = 0\), with rate of change proportional to the amount present.
+
+  \bigskip
+  An hour later, \(90\) micrograms is detected. How much is in the bloodstream after \(45\) minutes? After \(3\) hours?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Another variation \notesref{Exercise}{ex:exponential-metabolism-v3}}
+
+  \(100\) micrograms of a drug is administered at \(t = 0\), with rate of change proportional to the amount present.
+
+  \bigskip
+  Suppose \(90\) minutes later, \(75\) micrograms is detected. How much is in the bloodstream after \(45\) minutes?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Discrete vs continuous \notesref{Exercise}{ex:exponential-discrete-vs-continuous}}
+
+  Compare the discrete-time model \(u_{t} = a u_{t-1}\) and the continuous-time model \(y' = ky\). Both solutions are exponential: \(u_{t} = u_{0} a^{t}\) and \(y(t) = y(0) e^{kt}\).
+
+  \bigskip
+  Are the two models interchangeable? What happens if you develop a discrete-time model for the drug metabolism example? Should they match?
+\end{frame}
+
+
+\section{Week 5 --- Solving DEs, and Probability}
+
+% ---- lessons/diff-eq-linear-first-order.tex
+\begin{frame}
+  \frametitle{The integrating factor formula \notesref{Theorem}{thm:diff-eq-linear-first-order}}
+
+  To solve for \(u(t)\) in \(u'(t) + p(t) u(t) = q(t)\), an \hlmain{integrating factor} is
+  \[
+    v(t) = e^{\int p(t) \;dt} \quad (\text{choose } C = 0).
+  \]
+
+  \onslide<2->{The general solution is
+  \[
+    u(t) = \frac{1}{v(t)} \left( \int v(t) q(t) \;dt + C \right).
+  \]}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Solving the green-tube IVP \notesref{Example}{ex:linear-first-order-green-tube}}
+
+  Solve the initial-value problem
+  \[
+    G'(t) = 1 - 0.1\, G(t) \quad\text{and}\quad G(0) = 0
+  \]
+  from the green-liquid tube example.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Using an integrating factor \notesref{Method}{method:integrating-factor}}
+
+  For \(u'(t) + p(t) u(t) = q(t)\), the integrating factor is \(v(t) = e^{\int p(t)\,dt}\).
+
+  \begin{enumerate}
+    \item<2-> Multiply the DE through by \(v(t)\).
+    \item<3-> Reorganize the left-hand side as the result of the product rule.
+    \item<4-> Integrate both sides, then isolate \(u(t)\).
+  \end{enumerate}
+
+  \bigskip
+  \onslide<5->{This only applies to linear, first-order DEs.}
+\end{frame}
+
+\begin{frame}
+  \frametitle{A general solution \notesref{Example}{ex:diff-eq-linear-first-order-1}}
+
+  Find the general solution for
+  \[
+    u'(t) + \frac{2}{t} u(t) = t^{2}.
+  \]
+
+  \begin{enumerate}[label=(Step~\arabic*)]
+    \item Identify an integrating factor \(v(t)\).
+    \item Apply the method or the solution formula.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The same DE as an IVP \notesref{Example}{ex:diff-eq-linear-first-first-order-1-ivp}}
+
+  Continue from the previous example. Solve the initial-value problem
+  \[
+    u'(t) + \frac{2}{t} u(t) = t^{2} \quad\text{and}\quad u(1) = 2.
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{A different initial condition \notesref{Exercise}{ex:linear-first-order-ivp-check}}
+
+  Continue again. Solve the initial-value problem
+  \[
+    u'(t) + \frac{2}{t} u(t) = t^{2} \quad\text{and}\quad u(10) = \sqrt{2}.
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Radioactive fairy dust \notesref{Exercise}{ex:linear-first-order-fairy-dust}}
+
+  The mass of radioactive fairy dust \(u(t)\) satisfies
+  \[
+    e^{t}u'(t) - u(t) - 1 = 0, \text{ with an unknown mass at } t = 0.
+  \]
+
+  Predict the mass as \(t \to \infty\). Assume mass is in grams.
+
+  \medskip
+  \hlwarn{Careful:} this DE is not autonomous, so phase-line analysis does not apply.
+\end{frame}
+
+\begin{frame}
+  \frametitle{An IVP with \(u(0) = \pi\) \notesref{Exercise}{ex:linear-first-order-ivp-pi}}
+
+  Solve the initial-value problem
+  \[
+    u'(t) - \frac{2}{t+1} u(t) = t \quad\text{and}\quad u(0) = \pi.
+  \]
+\end{frame}
+
+% ---- lessons/diff-eq-technique-change-of-variables.tex
+\begin{frame}
+  \frametitle{The Bernoulli substitution \notesref{Method}{method:bernoulli-sub}}
+
+  The \hlmain{Bernoulli substitution} \(u = y^{1-n}\) applies to \hlsupp{non-linear}, first-order differential equations of the form
+  \[
+    y'(t) + P(t) y(t) = Q(t) {\color{warn} \big(y(t)\big)^{n}}.
+  \]
+
+  \bigskip
+  \onslide<2->{Use \emph{implicit differentiation} to substitute \(y'(t)\) in terms of \(u'(t)\).}
+\end{frame}
+
+\begin{frame}
+  \frametitle{When does Bernoulli apply? \notesref{Example}{ex:bernoulli-when-to-use}}
+
+  Study the \emph{forms} below and determine whether the Bernoulli substitution applies.
+
+  \begin{enumerate}[label=(\alph*)]
+    \item \(v'(t) + (3tv(t))^{2} = 1\).
+    \item \(v'(t) + \frac{1}{v(t)} + t v(t) = 0\).
+    \item \(\cos(t) v'(t) + \sqrt{3t v(t)} = \sin(t)(v(t))^{3}\).
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Bernoulli, step by step \notesref{Example}{ex:bernoulli-worked}}
+
+  Solve the IVP \(y'(t) - \frac{2 y(t)}{t} = -\big( ty(t) \big)^{2}\) with \(y(1) = 1/2\).
+
+  \begin{enumerate}[label=Step~(\arabic*).]
+    \item Identify the substitution \(u\) and calculate \(u'\).
+    \item Multiply through and substitute to get a new DE.
+    \item Find the new initial condition.
+    \item Solve the new initial-value problem.
+    \item Turn \(u(t)\) back into \(y(t)\).
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{A fifth-root Bernoulli DE \notesref{Example}{ex:bernoulli-fifth-root}}
+
+  Solve the initial-value problem
+  \[
+    y'(t) + \frac{1}{1 - t} y(t) = \sqrt[5]{y(t)} \quad\text{with}\quad y(2) = 0.
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Solving the logistic equation \notesref{Exercise}{ex:bernoulli-logistic}}
+
+  Find the general solution to the logistic equation
+  \[
+    N'(t) = rN(t) \left( 1 - \frac{N(t)}{K} \right),
+  \]
+  where \(r, K\) are positive constants.
+
+  \medskip
+  {\footnotesize Hint: start by reorganizing into the Bernoulli form.}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Midterm, Winter 2025 \notesref{Exercise}{ex:bernoulli-midterm-2025}}
+
+  Consider the differential equation \(\frac{dy}{dt} + \frac{6y}{t} = y^{2}\).
+
+  \begin{enumerate}
+    \item Perform a suitable substitution to reduce this to a linear DE.
+    \item Solve the linear differential equation from part (a).
+    \item Find the general solution to the original differential equation.
+  \end{enumerate}
+\end{frame}
+
+% ---- lessons/probability-intro.tex
+\begin{frame}
+  \frametitle{Sample spaces and events \notesref{Definition}{def:probability}}
+
+  A \hlmain{sample space} is a set, typically denoted \(\Omega\). An element of \(\Omega\) is called an \hlmain{outcome}.
+
+  \bigskip
+  \onslide<2->{An \hlmain{event} in \(\Omega\) is a subset of \(\Omega\) --- a collection of outcomes.}
+
+  \medskip
+  \onslide<3->{Read ``event'' as ``\emph{in the event of\ldots}'' --- it has not necessarily happened.}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Rolling a six-sided die \notesref{Example}{ex:probability-die-1}}
+
+  Suppose we perform an experiment by rolling a six-sided die \emph{once}.
+
+  \bigskip
+  Describe the outcomes, the sample space, and the event of rolling an even number.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Probability \notesref{Definition}{def:probability-formula}}
+
+  The \hlmain{probability of an event} \(E\) in a sample space \(\Omega\) is
+  \[
+    \mathbb{P}(E) = \frac{\text{number of outcomes in } E}{\text{total number of outcomes in } \Omega}.
+  \]
+
+  \bigskip
+  \onslide<2->{To calculate from first principles: identify the sample space, identify the event, \emph{then} apply the formula.}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Probability of an even roll \notesref{Example}{ex:probability-even-die}}
+
+  Find the probability of getting an even number after rolling a six-sided die \emph{once}.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Flipping a coin twice \notesref{Example}{ex:probability-two-coins}}
+
+  We flip a coin twice.
+
+  \bigskip
+  What is the probability that we get at least one tail?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Human genetics \notesref{Example}{ex:probability-genetics}}
+
+  A trait is controlled by a single gene \(A\), either dominant (\(A+\)) or recessive (\(A-\)). Humans carry two copies, one from each biological parent.
+
+  \bigskip
+  A child inherits from parents who each carry one dominant and one recessive gene. What is the probability that the child carries
+  \begin{enumerate}
+    \item one dominant and one recessive gene?
+    \item at least one recessive gene?
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Two four-sided dice \notesref{Exercise}{ex:probability-two-dice-sum}}
+
+  We roll two four-sided dice, one blue and one red. The faces are labelled \(1,2,3,4\).
+
+  \bigskip
+  What is the probability that the sum is \(6\)?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Two bags of marbles \notesref{Exercise}{ex:probability-two-bags}}
+
+  The first bag has a white and a black marble. The second bag has a red, a blue and a green marble.
+
+  \bigskip
+  We draw one marble from each bag. Determine the sample space and find the probability of drawing a white and a green marble.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Inheriting alleles \notesref{Exercise}{ex:probability-alleles}}
+
+  Alleles are variants of genes that determine traits.
+
+  \bigskip
+  Suppose for a particular trait, an organism inherits \(0, 1, 2\) alleles from its mother and \(0\) or \(1\) alleles from its father. What is the probability that the organism inherits \(2\) alleles?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Challenge: three houses \notesref{Exercise}{ex:probability-three-houses}}
+
+  A street has three houses, each painted either black or white. It is known that one of them is painted black.
+
+  \bigskip
+  What is the probability that the street has at least one white house?
+
+  \medskip
+  {\footnotesize Equivalently: a family has three children; given that one is a boy, what is the probability of at least one girl?}
+\end{frame}
+
+
+\section{Week 6 --- Probability Laws}
+
+% ---- lessons/probability-laws.tex
+\begin{frame}
+  \frametitle{A calculation with a Venn diagram \notesref{Example}{ex:probability-laws-venn}}
+
+  Suppose the sample space is \(\Omega = \{1,2,\ldots,8\}\). Let \(A = \{1,2,8\}\), \(B = \{2,5,8\}\) and \(C = \{3,4,5,6\}\).
+
+  \bigskip
+  Find the probability \(\mathbb{P}\big( C^{c} \cup (A \cap B) \big)\).
+\end{frame}
+
+\begin{frame}
+  \frametitle{A calculation with algebra \notesref{Example}{ex:probability-laws-algebraic}}
+
+  Suppose \(\mathbb{P}(E) = 0.6\), \(\mathbb{P}(F) = 0.45\) and \(\mathbb{P}(E \cap F) = 0.4\).
+
+  \bigskip
+  Calculate \(\mathbb{P}\big( (E \cup F)^{c} \big)\).
+\end{frame}
+
+\begin{frame}
+  \frametitle{Find \(\mathbb{P}(E \cup F^{c})\) \notesref{Exercise}{ex:probability-laws-practice}}
+
+  Given \(\mathbb{P}(E) = 0.5\), \(\mathbb{P}(F) = 0.2\) and \(\mathbb{P}(E \cap F) = 0.05\).
+
+  \bigskip
+  Find \(\mathbb{P}(E \cup F^{c})\).
+\end{frame}
+
+\begin{frame}
+  \frametitle{Mutually exclusive and exhaustive \notesref{Definition}{def:mutually-exclusive}}
+
+  Two events \(E, F\) in \(\Omega\) are \hlmain{mutually exclusive} if \(E \cap F\) is empty.
+
+  \bigskip
+  \onslide<2->{Events \(E_{1}, \ldots, E_{n}\) are \hlmain{mutually exclusive and exhaustive} if \hlattn{every} outcome in \(\Omega\) belongs to \hlattn{exactly one} of them:
+  \[
+    \Omega = E_{1} \cup \cdots \cup E_{n}
+    \quad\text{and}\quad
+    E_{i} \cap E_{j} = \emptyset \text{ for } i \ne j.
+  \]}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Which are mutually exclusive? \notesref{Example}{ex:mutually-exclusive-identify}}
+
+  Let \(\Omega = \{1,2,3,4,5,6\}\) be the sample space. Which events are mutually exclusive?
+
+  \begin{enumerate}[label=(\alph*)]
+    \item \(E_{1} = \{2,5\}\)
+    \item \(E_{2} = \{3,2\}\)
+    \item \(E_{3} = \{6,3\}\)
+    \item \(E_{4} = \{2,3,5,6\}\)
+    \item \(E_{5} = \{1\}\)
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Exclusive and exhaustive? \notesref{Exercise}{ex:mutually-exclusive-exhaustive-identify}}
+
+  Let \(\Omega = \{1,2,\ldots,10\}\) be the sample space. Which events \emph{together} are mutually exclusive and exhaustive?
+
+  \begin{enumerate}[label=(\alph*)]
+    \item \(E_{1} = \{1,3,5\}\)
+    \item \(E_{2} = \{8,9\}\)
+    \item \(E_{3} = \{3,7\}\)
+    \item \(E_{4} = \{4,10\}\)
+    \item \(E_{5} = \{2,6,7\}\)
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Recognizing them from probabilities \notesref{Example}{ex:mutually-exclusive-from-probabilities}}
+
+  Assume \(E_{1}, E_{2}\) are events in \(\Omega\). Which of the following \emph{together} imply that they are mutually exclusive and exhaustive?
+
+  \begin{enumerate}[label=(\alph*)]
+    \item \(\mathbb{P}(E_{1} \cap E_{2}) = 0\).
+    \item \(\mathbb{P}(E_{1} \cap E_{2}) = \mathbb{P}(E_{1}) + \mathbb{P}(E_{2})\).
+    \item \(\mathbb{P}(E_{1} \cup E_{2}) = \mathbb{P}(E_{1}) + \mathbb{P}(E_{2})\).
+    \item \(\mathbb{P}(E_{1} \cup E_{2}) = 0\).
+    \item \(\mathbb{P}(E_{1} \cup E_{2}) = 1\).
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Three or more events \notesref{Example}{ex:mutually-exclusive-three-or-more}}
+
+  Let \(\Omega = \{1,\ldots,10\}\). An intern observes that \(E_{1}, E_{2}, E_{3}\) have no outcomes in common, and every outcome in \(\Omega\) is in at least one of them.
+
+  \bigskip
+  Can we conclude that \(E_{1}, E_{2}, E_{3}\) are mutually exclusive and exhaustive?
+\end{frame}
+
+% ---- lessons/probability-conditional.tex
+\begin{frame}
+  \frametitle{A morning-person test \notesref{Example}{ex:probability-conditional-motivation}}
+
+  Let \(\Omega = \{1,2,3,4,5,6\}\) be six people. A magical test detects whether a person is a morning person.
+
+  \begin{itemize}
+    \item \(1,2,3,4\) are morning people; \(5,6\) are not.
+    \item \(1,3,5\) tested positive; \(2,4,6\) tested negative.
+  \end{itemize}
+
+  \bigskip
+  What is the probability that the test returns positive for someone who is \emph{not} a morning person?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Conditional probability \notesref{Definition}{def:conditional-probability}}
+
+  For events \(E, F\) in a common sample space, the probability of \hlmain{\(E\) given \(F\)} is the probability of \(E \cap F\) inside the smaller sample space \(F\):
+  \[
+    \mathbb{P}( E \mid F ) = \frac{\mathbb{P}(E \cap F)}{\mathbb{P}(F)}.
+  \]
+
+  \bigskip
+  \onslide<2->{Distinguish \(\mathbb{P}(A \text{ and } B)\) from \(\mathbb{P}(A \text{ given } B)\).}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Green eyes and brown hair \notesref{Example}{ex:conditional-eyes-hair}}
+
+  Within a population, the probability of green eyes is \(10\%\), of brown hair is \(75\%\), and of both is \(9\%\).
+
+  \bigskip
+  What is the probability of having brown hair given that a person has green eyes?
+\end{frame}
+
+\begin{frame}
+  \frametitle{An infectious disease test \notesref{Example}{ex:conditional-infection-test}}
+
+  A test was conducted on patients whose infection status is known. \(60\%\) of patients are infected, \(30\%\) tested negative, and \(90\%\) of the infected also tested positive.
+
+  \bigskip
+  What is the probability that the test returns negative for patients without an infection?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Calculate \(\mathbb{P}(E \mid F)\) \notesref{Exercise}{ex:conditional-practice}}
+
+  Suppose \(\mathbb{P}(E \cup F) = 0.9\), \(\mathbb{P}(E) = 0.7\) and \(\mathbb{P}(E \cap F) = 0.5\).
+
+  \bigskip
+  Calculate \(\mathbb{P}(E \mid F)\).
+\end{frame}
+
+% ---- lessons/probability-errors.tex
+\begin{frame}
+  \frametitle{Sensitivity, specificity and errors \notesref{Definition}{def:errors}}
+
+  A test returns positive or negative for a condition. Four possibilities:
+
+  \begin{itemize}
+    \item<2-> \(\text{specificity} = \mathbb{P}(\text{negative} \mid \text{not present})\) --- \hlmain{true negative}.
+    \item<3-> \(\mathbb{P}(\text{type-I}) = \mathbb{P}(\text{positive} \mid \text{not present})\) --- \hlmain{false positive}.
+    \item<4-> \(\text{sensitivity} = \mathbb{P}(\text{positive} \mid \text{present})\) --- \hlmain{true positive}.
+    \item<5-> \(\mathbb{P}(\text{type-II}) = \mathbb{P}(\text{negative} \mid \text{present})\) --- \hlmain{false negative}.
+  \end{itemize}
+
+  \medskip
+  \onslide<6->{True/false indicates whether the result matches reality.}
+\end{frame}
+
+\begin{frame}
+  \frametitle{A pregnancy test \notesref{Example}{ex:errors-pregnancy-test}}
+
+  In a town of \(2{,}000\) people, a clinic tested \(10\) people for pregnancy, and \(7\) were actually pregnant. Of the \(3\) who were not, \(2\) tested negative and \(1\) tested positive. The total number who tested positive was \(6\).
+
+  \bigskip
+  Calculate all four probabilities.
+\end{frame}
+
+\begin{frame}
+  \frametitle{A morning-person test \notesref{Example}{ex:errors-morning-person}}
+
+  A test predicts whether one is a morning person, with true positive rate \(80\%\) and true negative rate \(90\%\).
+
+  \bigskip
+  Apply it to a class of \(240\) students in which the prevalence of being a morning person is \(40\%\). How many are true negatives? False positives? True positives? False negatives?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Midterm, Winter 2022 \notesref{Exercise}{ex:errors-midterm-2022}}
+
+  \(1000\) people are tested for an illness. Of the \(180\) who tested positive, \(50\) did not have the illness. Overall, \(800\) of those tested did not have the illness.
+
+  \begin{enumerate}
+    \item What is the sensitivity of this test?
+    \item What is the specificity of this test?
+    \item What is the false positive rate?
+    \item What is the false negative rate?
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Midterm, Winter 2024 \notesref{Exercise}{ex:errors-midterm-2024}}
+
+  A rare disease has prevalence \(0.002\). A test has specificity \(0.99\) and sensitivity \(1\). Consider a population of size \(2000\).
+
+  \begin{enumerate}
+    \item How many people have the disease? How many true positives are expected?
+    \item How many false positives are expected?
+    \item An individual tests positive. Is it more likely that they have the disease, or that the test is wrong?
+  \end{enumerate}
+\end{frame}
+
+\section{Week 8 --- Independence and Random Variables}
+
+% ---- lessons/probability-independence.tex
+\begin{frame}
+  \frametitle{A bag of cubes and spheres \notesref{Example}{ex:total-probability-cubes}}
+
+  A bag holds red, green and blue cubes and spheres, with
+  \[
+    \mathbb{P}(\text{red}) = 30\%, \quad
+    \mathbb{P}(\text{green}) = 60\%, \quad
+    \mathbb{P}(\text{blue}) = 10\%,
+  \]
+  \[
+    \mathbb{P}(\text{red cubes}) = 5\%, \quad
+    \mathbb{P}(\text{cube} \mid \text{blue}) = 8\%.
+  \]
+
+  What is the probability that a randomly chosen object is a green cube?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Independent events \notesref{Definition}{def:independence}}
+
+  Two events \(E, F\) in a common sample space are \hlmain{independent} if
+  \[
+    \mathbb{P}(E \mid F) = \mathbb{P}(E)
+    \quad\text{or, equivalently,}\quad
+    \mathbb{P}(E \cap F) = \mathbb{P}(E) \mathbb{P}(F).
+  \]
+
+  \bigskip
+  \onslide<2->{Intuitively: the occurrence of one \hlmain{does not affect} the other.}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Are \(E\) and \(F\) independent? \notesref{Example}{ex:independence-check}}
+
+  Let \(E, F\) be events in a common sample space with
+  \[
+    \mathbb{P}(E) = 0.3, \quad \mathbb{P}(F) = 0.2, \quad \mathbb{P}(E \cap F) = 0.06.
+  \]
+
+  Determine whether \(E\) and \(F\) are independent.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Exclusive or independent? \notesref{Example}{ex:independence-vs-exclusive}}
+
+  Let \(E = \{1,3\}\) and \(F = \{2,4\}\) be events in \(\Omega = \{1,2,3,4,5,6\}\).
+
+  \bigskip
+  Are \(E, F\) mutually exclusive? Are \(E, F\) independent?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Empty intersection? \notesref{Exercise}{ex:independence-empty-intersection}}
+
+  If the event \(E \cap F\) is empty, are the events \(E, F\) independent?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Independence and exclusivity \notesref{Exercise}{ex:independence-implies-exclusive}}
+
+  Let \(E, F\) be two events in a sample space \(\Omega\).
+
+  \bigskip
+  If \(E, F\) are independent and \(\mathbb{P}(E) > 0\), does that imply \(E\) and \(F\) are mutually exclusive?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Independence and complements \notesref{Exercise}{ex:independence-complement}}
+
+  If \(E\) and \(F\) are independent events, does that mean \(E^{c}\) and \(F\) are also independent?
+\end{frame}
+
+% ---- lessons/probability-random-variables.tex
+\begin{frame}
+  \frametitle{Heights of mythical figures \notesref{Example}{ex:random-variable-intro}}
+
+  \begin{minipage}{3.6in}
+    What is the probability of randomly selecting someone whose height is
+    \begin{enumerate}
+      \item exactly \(170\) cm?
+      \item between \(160\) and \(180\) cm (inclusive)?
+      \item at least \(175\) cm?
+    \end{enumerate}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{1.9in}
+    {\footnotesize
+    \begin{tabular}{l|l}
+      Person & Height \\\midrule
+      Zeus & \(165\) \\ Hera & \(155\) \\ Perseus & \(180\) \\
+      Theseus & \(160\) \\ Athena & \(170\) \\ Poseidon & \(170\) \\
+      Hades & \(160\) \\ Helios & \(170\) \\ Selene & \(180\) \\
+      Achilles & \(180\)
+    \end{tabular}}
+  \end{minipage}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Random variable notation \notesref{Definition}{def:random-variables}}
+
+  A random variable \(X\) on \(\Omega\) associates outcomes to values.
+
+  \begin{itemize}
+    \item<2-> \(X(\text{name of an outcome})\) is the \hlmain{value} associated to that outcome.
+    \item<3-> \(X = (\text{some value})\) is \hlmain{the event} of outcomes with that value.
+    \item<4-> \(a \le X \le b\) is \hlmain{the event} of outcomes whose value satisfies the inequality.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Match the notation \notesref{Exercise}{ex:random-variable-notation-match}}
+
+  Let \(X\) represent heights of the class. Match notations to descriptions.
+
+  \footnotesize
+  \begin{minipage}[t]{3.6in}
+    \begin{itemize}
+      \item Everyone whose height is in \((160, 180]\).
+      \item Everyone at most \(180\) cm tall.
+      \item Someone exactly \(180\) cm tall.
+      \item Everyone exactly \(180\) cm tall.
+      \item The height of Alex.
+      \item The entire sample space.
+    \end{itemize}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{1.9in}
+    \begin{itemize}
+      \item \(X \le 180\)
+      \item \(160 < X \le 180\)
+      \item \(X = 180\)
+      \item \(X(\text{Alex})\)
+      \item \(X(180)\)
+      \item \(X < \infty\)
+    \end{itemize}
+  \end{minipage}
+\end{frame}
+
+
+\section{Week 9 --- Discrete and Continuous Random Variables}
+
+% ---- lessons/probability-discrete-random-variables.tex
+\begin{frame}
+  \frametitle{PMF and CDF \notesref{Definition}{def:pmf-cdf}}
+
+  Let \(X\) be a discrete random variable.
+
+  \bigskip
+  \onslide<2->{The \hlmain{probability mass function} is a nonnegative \(f_{X}(x)\) with
+  \(\mathbb{P}(X = x) = f_{X}(x)\).}
+
+  \bigskip
+  \onslide<3->{The \hlmain{cumulative distribution function} is a nonnegative, non-decreasing \(F_{X}(x)\) with
+  \(\mathbb{P}(X \le x) = F_{X}(x)\).}
+\end{frame}
+
+\begin{frame}
+  \frametitle{PMF and CDF of the heights \notesref{Example}{ex:drv-heights-pmf-cdf}}
+
+  Describe the PMF and CDF of the height random variable \(X\), algebraically and pictorially.
+
+  \bigskip
+  Then calculate \(\mathbb{P}(160 \le X \le 170)\) using its PMF and using its CDF.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Tosses until a tail \notesref{Example}{ex:drv-coin-tosses}}
+
+  For a fair coin, let \(X\) count the number \(k\) of tosses required until a tail appears, with PMF
+  \[
+    f_{X}(k) = (1/2)^{k} \text{ for integers } k \ge 1.
+  \]
+
+  \begin{enumerate}
+    \item What is the meaning of \(f_{X}(2)\) here?
+    \item What is the probability that at most \(3\) tosses are required?
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{From CDF to PMF \notesref{Exercise}{ex:drv-cdf-to-pmf}}
+
+  Suppose the CDF of a discrete random variable \(X\) is given by
+  \[
+    F_{X}(-1) = 1/3, \quad F_{X}(5) = 5/6, \quad F_{X}(7) = 1.
+  \]
+
+  Describe its PMF.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Find the unknown probability \notesref{Exercise}{ex:drv-unknown-probability}}
+
+  A discrete random variable \(X\) takes values \(3, 5, 10\), with
+  \[
+    f_{X}(3) = 1/7, \qquad f_{X}(5) = \text{unknown}, \qquad f_{X}(10) = 2/5.
+  \]
+
+  Find the unknown probability.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Reading a CDF \notesref{Exercise}{ex:drv-read-cdf}}
+
+  The CDF \(F_{X}\) of a discrete random variable \(X\) is plotted in the notes.
+
+  \bigskip
+  Fill in the blanks from the plot.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Expectation and variance \notesref{Definition}{def:drv-expectation-variance}}
+
+  Suppose \(X\) is discrete with values \(x_{1}, \ldots, x_{n}\) and PMF \(f_{X}\).
+
+  \begin{enumerate}
+    \item<2-> Expectation \(\mu = E(X) = \sum_{i=1}^{n} x_{i} f_{X}(x_{i})\).
+    \item<3-> Variance \(V(X) = \sum_{i=1}^{n} (x_{i} - \mu)^{2} f_{X}(x_{i})\).
+    \item<4-> Standard deviation \(\sigma = \sqrt{V(X)}\).
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{A betting game \notesref{Example}{ex:drv-betting-game}}
+
+  We bet on the outcome of rolling a fair six-sided die, guessing a single number in \(\{1, \ldots, 6\}\). Each bet costs \(1\) cookie; a win collects \(3\) cookies.
+
+  \bigskip
+  The game is modelled by a discrete random variable \(X\). Describe its values and PMF, and calculate its expectation and standard deviation.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Shapes of PMFs \notesref{Example}{ex:drv-shapes}}
+
+  Compare the three PMFs in the notes.
+
+  \bigskip
+  Expectation measures the centre of the data. Variance and standard deviation measure how far the data spread from the expectation.
+\end{frame}
+
+% ---- lessons/probability-continuous-random-variables.tex
+\begin{frame}
+  \frametitle{PDF and CDF \notesref{Definition}{def:pdf-cdf}}
+
+  Let \(X\) be a continuous random variable.
+
+  \bigskip
+  \onslide<2->{The \hlmain{probability density function} is a nonnegative continuous \(f(x)\) with
+  \(\mathbb{P}(a \le X \le b) = \int_{a}^{b} f(x)\,dx\).}
+
+  \bigskip
+  \onslide<3->{The \hlmain{cumulative distribution function} satisfies \(F(x) = \mathbb{P}(X \le x)\).}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Which are valid PDFs? \notesref{Example}{ex:crv-valid-pdfs}}
+
+  Study the four candidate density plots in the notes.
+
+  \bigskip
+  Which of them are valid probability density functions?
+\end{frame}
+
+\begin{frame}
+  \frametitle{A probability from a CDF \notesref{Example}{ex:crv-from-cdf}}
+
+  Calculate \(\mathbb{P}(-0.5 \le X \le 0.3)\) given that the CDF for a continuous random variable \(X\) is
+  \[
+    F(x) =
+    \begin{cases}
+      0 & \text{if } x < -1 \\
+      \frac{x + 1}{2} & \text{if } -1 \le x \le 1 \\
+      1 & \text{if } x > 1.
+    \end{cases}
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{A probability from a PDF \notesref{Example}{ex:crv-from-pdf}}
+
+  Suppose \(a\) is a positive constant. Calculate \(\mathbb{P}(0 \le X \le a/3)\) given the PDF
+  \[
+    f(x) =
+    \begin{cases}
+      \frac{1}{2a} & \text{if } -a \le x \le a \\
+      0 & \text{otherwise}.
+    \end{cases}
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{A piecewise PDF \notesref{Exercise}{ex:crv-piecewise-pdf}}
+
+  Calculate \(\mathbb{P}(-1 < X < 3)\) given the PDF
+  \[
+    f(x) =
+    \begin{cases}
+      \frac{x^{2}}{3} & \text{if } 1 \le x \le 2 \\
+      1/9 & \text{if } -5 \le x \le -3 \\
+      0 & \text{otherwise}.
+    \end{cases}
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Find the PDF from a CDF \notesref{Exercise}{ex:crv-pdf-from-cdf}}
+
+  Find the PDF of a continuous random variable whose CDF is
+  \[
+    F(x) = 1 - e^{-x}.
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{An unknown parameter \notesref{Example}{ex:distribution-with-unknown-bounds}}
+
+  The PDF for a continuous random variable is
+  \[
+    f(x) = a x^{2} \text{ if } |x| < a, \qquad f(x) = 0 \text{ everywhere else}.
+  \]
+
+  Find the unknown parameter \(a\).
+\end{frame}
+
+\begin{frame}
+  \frametitle{Expectation and variance \notesref{Definition}{def:crv-expectation-variance}}
+
+  Suppose \(X\) is continuous with PDF \(f(x)\).
+
+  \begin{enumerate}
+    \item<2-> Expectation \(\mu = E(X) = \int_{-\infty}^{\infty} x f(x)\,dx\).
+    \item<3-> Variance \(V(X) = \int_{-\infty}^{\infty} (x - \mu)^{2} f(x)\,dx\).
+    \item<4-> Standard deviation \(\sigma = \sqrt{V(X)}\).
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Shapes of PDFs \notesref{Example}{ex:crv-shapes}}
+
+  Compare the normal densities in the notes with various expectations and standard deviations.
+
+  \bigskip
+  Together, \(\mu\) and \(\sigma\) roughly describe the \hlmain{shape} of a random variable.
+\end{frame}
+
+\begin{frame}
+  \frametitle{A two-piece PDF \notesref{Example}{ex:crv-two-piece-expectation}}
+
+  Let \(X\) be continuous with
+  \[
+    f(x) = 1/5 \text{ on } [-1,1], \qquad f(x) = 1/10 \text{ on } [2,8],
+  \]
+  and \(0\) everywhere else. Calculate its expectation.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Variance of a symmetric PDF \notesref{Exercise}{ex:crv-variance-uniform}}
+
+  Calculate the variance of a continuous random variable with
+  \[
+    f(x) =
+    \begin{cases}
+      \frac{1}{2a} & \text{if } |x| < a \\
+      0 & \text{otherwise}.
+    \end{cases}
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{The uniform distribution \notesref{Definition}{def:uniform-distribution}}
+
+  The uniform distribution \(U(a,b)\) has density
+  \[
+    f(x) =
+    \begin{cases}
+      \frac{1}{b-a} & \text{if } a \le x \le b \\
+      0 & \text{otherwise}.
+    \end{cases}
+  \]
+
+  \bigskip
+  \onslide<2->{Its expectation is \(\mu = \frac{a+b}{2}\) and its variance is \(\sigma^{2} = \frac{(b-a)^{2}}{12}\).}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Mean and deviation of \(U(-c,c)\) \notesref{Method}{method:uniform-mean-stddev}}
+
+  The uniform distribution \(U(-c,c)\) has
+  \[
+    \mu = 0
+    \quad\text{and}\quad
+    \sigma = \frac{c}{\sqrt{3}}.
+  \]
+
+  \bigskip
+  \onslide<2->{Equivalently, \(c = \sigma\sqrt{3}\) --- which lets us recover the distribution from its summary statistics.}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Find \(c\) from \(\sigma^{2}\) \notesref{Example}{ex:uniform-distribution-from-mean-and-stddev}}
+
+  Determine the \(c\) for a uniform distribution \(U(-c,c)\) if
+  \[
+    \sigma^{2} = \frac{11.25}{11}.
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Find \(U(a,b)\) from \(\mu, \sigma^{2}\) \notesref{Example}{ex:uniform-from-mean-and-variance}}
+
+  Find the uniform distribution with
+  \[
+    \mu = 5 \quad\text{and}\quad \sigma^{2} = \frac{11.25}{11}.
+  \]
+\end{frame}
+
+
+\section{Week 10 --- Data and Vectors}
+
+% ---- lessons/probability-working-with-data.tex
+\begin{frame}
+  \frametitle{Summary statistics \notesref{Definition}{def:sample-statistics}}
+
+  \hlmain{Sample data} is a list of numbers, typically measurements. Given \(x_{1}, \ldots, x_{n}\):
+
+  \begin{enumerate}
+    \item<2-> Sample mean \(\overline{X} = \frac{1}{n} \sum_{i=1}^{n} x_{i}\).
+    \item<3-> Sample variance \(s^{2} = \frac{1}{n-1} \sum_{i=1}^{n} \left( x_{i} - \overline{X} \right)^{2}\).
+    \item<4-> Sample standard deviation \(s = \sqrt{s^{2}}\).
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Apples vs oranges \notesref{Example}{ex:zscore-apples-oranges}}
+
+  Apples sold per day have mean \(\overline{A} = 500\) and standard deviation \(50\). Oranges have their own mean and deviation.
+
+  \bigskip
+  On a sale day the store sold \(600\) apples and \(400\) oranges.
+
+  \medskip
+  Which produce performed better that day?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Hypothesis testing by simulation \notesref{Example}{ex:simulation}}
+
+  An experimental drug ABC is given to \(n = 12\) rats to test for side effects on mass.
+
+  \bigskip
+  We walk through a typical scientific reasoning process: hypothesize using summary statistics, then perform hypothesis testing using simulation.
+
+  \medskip
+  \hlmain{If a new experiment has a z-score more extreme than \(-0.52\), then it is declared a positive.}
+\end{frame}
+
+% ---- lessons/linalg-vectors.tex
+\begin{frame}
+  \frametitle{Orcas and seals \notesref{Example}{ex:vectors-orcas-seals}}
+
+  An ecosystem of orcas (predators) and seals (prey). Their populations over time in years:
+
+  \begin{center}
+    \begin{tabular}{r|c|c|c|c}
+      time  & \(0\) & \(1\) & \(2\) & \(3\) \\\midrule
+      orcas & \(5\) & \(6\) & \(4\) & \(3\)
+    \end{tabular}
+  \end{center}
+
+  How should we record two populations at once --- as points, or as arrows?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Vectors \notesref{Definition}{def:vectors}}
+
+  A (state) \hlmain{vector} \(\vec{x}\) is an ordered list of numbers
+  \[
+    \vec{x} =
+    \begin{bmatrix} x_{1} \\ x_{2} \\ \vdots \\ x_{n} \end{bmatrix}.
+  \]
+
+  \bigskip
+  \onslide<2->{Its \hlmain{dimension} is the number of rows. Two vectors are equal when they agree componentwise.}
+\end{frame}
+
+\begin{frame}
+  \frametitle{System to matrix equation \notesref{Example}{ex:vectors-system-to-matrix}}
+
+  Write the following equations in the form \(A \vec{x} = \vec{b}\).
+  \[
+    \begin{array}{rcrcr}
+      x_{1} &+& 0.2 x_{2} &=& 0.3 \\
+      0.5 x_{1} &-& 0.3 x_{2} &=& 0.2
+    \end{array}
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Matrix equation to system \notesref{Example}{ex:vectors-matrix-to-system}}
+
+  Write the following matrix-vector equation as a system of linear equations.
+  \[
+    \begin{bmatrix} -1 & 3 \\ 2 & -1 \end{bmatrix} \vec{x} = \vec{b}.
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Recurrences to matrix form \notesref{Example}{ex:vectors-recurrence-to-matrix}}
+
+  Write the following recurrence equations in the form \(\vec{x}(t+1) = A \vec{x}(t)\).
+  \[
+    \begin{array}{rcrcr}
+      x_{1}(t+1) &=& & & 0.5 x_{2}(t) \\
+      x_{2}(t+1) &=& 0.2 x_{1}(t) &+& 0.3 x_{2}(t)
+    \end{array}
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Matrix form to recurrences \notesref{Example}{ex:vectors-matrix-to-recurrence}}
+
+  Write \(\vec{x}(t+1) = A \vec{x}(t)\) as recurrence equations, where
+  \[
+    A = \begin{bmatrix} 0.2 & 0.8 \\ 0 & -0.7 \end{bmatrix}.
+  \]
+\end{frame}
+
+% ---- lessons/linalg-age-structured-population.tex
+\begin{frame}
+  \frametitle{Juveniles and adults \notesref{Example}{eg:age-structure-model}}
+
+  Initially there are \(20\) juveniles and \(40\) adults. At the end of each year:
+
+  \begin{itemize}
+    \item \(20\%\) of juveniles become adults; the rest die.
+    \item \(90\%\) of adults survive; the rest die.
+    \item Only adults reproduce, at a per-capita birth rate of \(15\%\).
+  \end{itemize}
+
+  \medskip
+  Model the population as \(\vec{x}(t+1) = A\vec{x}(t)\).
+\end{frame}
+
+\begin{frame}
+  \frametitle{Network to matrix \notesref{Exercise}{ex:transition-network-to-matrix}}
+
+  Write down the matrix representing the network below, and describe the transition between juveniles and adults in words.
+
+  \begin{center}
+    \includegraphics[height=1.2in]{./standalones/diagram_transition}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Matrix to network \notesref{Exercise}{ex:transition-matrix-to-network}}
+
+  Express the recurrence \(\vec{x}(t+1) = A \vec{x}(t)\) as a network diagram, where
+  \[
+    A = \begin{bmatrix} 0.05 & 0.33 \\ 0.2 & 0.5 \end{bmatrix}.
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{A weather model \notesref{Exercise}{ex:weather-forecast-model}}
+
+  In summer, rain and no rain are the only possibilities. If it is currently raining, there is a \(75\%\) chance of rain in the next hour.
+
+  \bigskip
+  Sketch the transition diagram and model the system using a matrix equation.
+\end{frame}
+
+% ---- lessons/linalg-vector-fields.tex
+\begin{frame}
+  \frametitle{Plotting \(\vec{x}(0)\) to \(\vec{x}(3)\) \notesref{Example}{ex:linear-vector-field-intro}}
+
+  Let
+  \[
+    A = \begin{bmatrix} 0 & 0.1 \\ 0.2 & 0.8 \end{bmatrix}
+    \quad\text{and}\quad
+    \vec{x}(0) = \begin{bmatrix} 30 \\ 20 \end{bmatrix}.
+  \]
+
+  Calculate and plot \(\vec{x}(0), \vec{x}(1), \vec{x}(2), \vec{x}(3)\).
+\end{frame}
+
+\begin{frame}
+  \frametitle{Long-term behaviour \notesref{Exercise}{ex:vector-field-long-term}}
+
+  Below are vector fields for two systems of recurrence equations. Use them to find the long-term behaviour.
+
+  \begin{center}
+    \includegraphics[height=1.4in]{./standalones/plot_vector_field_rotation2}
+    \quad
+    \includegraphics[height=1.4in]{./standalones/plot_vector_field_rotation3}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Scaled and unscaled fields \notesref{Example}{ex:vector-field-scaled}}
+
+  Vector fields for the previous system --- unscaled on the left, scaled on the right.
+
+  \begin{center}
+    \includegraphics[height=1.3in]{./standalones/plot_vector_field_intro}
+    \quad
+    \includegraphics[height=1.3in]{./standalones/plot_vector_field_intro_scaled}
+  \end{center}
+
+  Sketch the long-term behaviour for \(\vec{x}(0) = (30, 20)\). Does it match?
+\end{frame}
+
+\begin{frame}
+  \frametitle{A rotating vector field \notesref{Exercise}{ex:vector-field-rotation}}
+
+  Both plots come from the same recurrence equations --- unscaled left, scaled right.
+
+  \begin{center}
+    \includegraphics[height=1.4in]{./standalones/plot_vector_field_rotation}
+    \quad
+    \includegraphics[height=1.4in]{./standalones/plot_vector_field_rotation_scaled}
+  \end{center}
+\end{frame}
+
+% ---- lessons/linalg-linearity.tex
+\begin{frame}
+  \frametitle{Linearity \notesref{Definition}{def:linearity}}
+
+  A function \(F(\vec{x})\) is called \hlmain{linear} if \(F(\vec{x}) = A\vec{x}\) for some matrix \(A\).
+
+  \bigskip
+  \onslide<2->{Equivalently,
+  \[
+    A(a \vec{u} + b \vec{v}) = a A\vec{u} + b A\vec{v}
+  \]
+  for any constants \(a, b\).}
+\end{frame}
+
+\begin{frame}
+  \frametitle{A vector as a combination \notesref{Method}{method:linear-combination}}
+
+  To find constants \(a, b\) with \(\vec{x} = a \vec{u} + b \vec{v}\), where \(\vec{x}, \vec{u}, \vec{v}\) are given:
+
+  \begin{enumerate}
+    \item<2-> Rewrite the equality as a system of linear equations.
+    \item<3-> Solve by back substitution.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Find \(a\) and \(b\) \notesref{Example}{ex:linear-combination}}
+
+  Find unknown constants \(a, b\) so that
+  \[
+    \vec{x} = a \vec{u} + b \vec{v}.
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Computing \(A^{n}\vec{u}\) \notesref{Example}{ex:linearity-powers-eigen}}
+
+  Calculate \(A^{n} \vec{u}\) and \(A^{n} \vec{v}\) for arbitrary positive integers \(n\).
+\end{frame}
+
+\begin{frame}
+  \frametitle{Computing \(A^{n}\vec{x}\) \notesref{Example}{ex:linearity-powers-combination}}
+
+  Calculate \(A^{n} \vec{x}\) for arbitrary positive integers \(n\).
+
+  \bigskip
+  Hint: use linearity together with the previous example.
+\end{frame}
+
+
+\section{Week 11 --- Eigen Theory}
+
+% ---- lessons/linalg-matricies.tex
+\begin{frame}
+  \frametitle{Characteristic polynomial \notesref{Definition}{def:characteristic-polynomial}}
+
+  The characteristic polynomial for an \(n\)-by-\(n\) matrix \(A\) is
+  \[
+    \det(A - x I_{n}),
+  \]
+  where \(I_{n}\) is the identity matrix.
+\end{frame}
+
+\begin{frame}
+  \frametitle{A \(2\)-by-\(2\) example \notesref{Example}{ex:char-poly-2x2}}
+
+  Write down the characteristic polynomial of
+  \[
+    \begin{bmatrix} 2 & 0 \\ -2 & -1 \end{bmatrix}
+  \]
+  and find its roots.
+\end{frame}
+
+\begin{frame}
+  \frametitle{A \(3\)-by-\(3\) example \notesref{Example}{ex:char-poly-3x3}}
+
+  Write down the characteristic polynomial of
+  \[
+    \begin{bmatrix} 1 & 0 & 2 \\ 0 & 2 & 1 \\ 0 & 0 & 3 \end{bmatrix}
+  \]
+  and find its roots.
+\end{frame}
+
+% ---- lessons/complex-numbers.tex
+\begin{frame}
+  \frametitle{Complex numbers \notesref{Definition}{def:complex-numbers}}
+
+  The symbol \(i\) is \hlmain{\emph{the} imaginary number}, with
+  \[
+    \sqrt{-1} = i \quad\text{and}\quad i^{2} = -1.
+  \]
+
+  \bigskip
+  \onslide<2->{\hlmain{Complex numbers} are \(a + bi\) with \(a, b\) real. Here \(a\) is the real part and \(b\) the imaginary part.}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Solve \((\lambda-5)(\lambda^{2}+5) = 0\) \notesref{Example}{ex:complex-solve-cubic}}
+
+  Let \(\lambda\) be an unknown. Solve
+  \[
+    (\lambda - 5)(\lambda^{2} + 5) = 0.
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Solve \(\lambda^{2}+\lambda+3 = 0\) \notesref{Example}{ex:complex-solve-quadratic}}
+
+  Let \(\lambda\) be an unknown. Solve
+  \[
+    \lambda^{2} + \lambda + 3 = 0.
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Complex arithmetic \notesref{Definition}{def:complex-arithmetic}}
+
+  \begin{align*}
+    i^{2} &= -1 \\
+    (a + bi) + (c + di) &= (a + c) + (b + d)i \\
+    (a + bi) - (c + di) &= (a - c) + (b - d)i \\
+    (a + bi)(c + di) &= (ac - bd) + (ad + bc)i
+  \end{align*}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Multiply and simplify \notesref{Example}{ex:complex-multiply}}
+
+  Perform the following operations and simplify.
+
+  \begin{itemize}
+    \item \(\left(\frac{1}{3} + i\right)\left(1 - \frac{i}{2}\right)\)
+    \item \((3 + 4i)(3 - 4i)\)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Complex division \notesref{Definition}{def:complex-division}}
+
+  \[
+    \frac{a + bi}{c + di} = \frac{(a + bi)(c - di)}{c^{2} + d^{2}}.
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Simplify a quotient \notesref{Example}{ex:complex-divide}}
+
+  Simplify
+  \[
+    \frac{1 - 2i}{3 + 4i}.
+  \]
+\end{frame}
+
+% ---- lessons/eigen-theory.tex
+\begin{frame}
+  \frametitle{Eigenvectors and eigenvalues \notesref{Definition}{def:eigenpair}}
+
+  Let \(A\) be a square matrix. A constant \(\lambda\) (possibly \(0\)) and a \hlsupp{non-zero} vector \(\vec{v}\) satisfying
+  \[
+    A \vec{v} = \lambda \vec{v}
+  \]
+  are called \hlmain{an eigenvector \(\vec{v}\) with corresponding eigenvalue \(\lambda\)}.
+
+  \bigskip
+  \onslide<2->{A vector is non-zero if \emph{at least} one component is not zero.}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Testing for an eigenvector \notesref{Example}{ex:eigen-test-vector}}
+
+  Which of
+  \[
+    \vec{u} = \begin{bmatrix} 1 \\ -1 \end{bmatrix},
+    \qquad
+    \vec{v} = \begin{bmatrix} 1 \\ -2 \end{bmatrix}
+  \]
+  is an eigenvector for \(A\)?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Finding eigenvalues \notesref{Method}{method:eigenvalues}}
+
+  The eigenvalues \(\lambda\) for a matrix \(A\) are the roots of its characteristic polynomial
+  \[
+    \det(A - \lambda I_{n}) = 0.
+  \]
+
+  \bigskip
+  \onslide<2->{Solve for \(\lambda\) using the quadratic formula. Note \(\lambda\) could be real or complex.}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Real eigenvalues \notesref{Example}{ex:eigenvalues-real}}
+
+  Find all eigenvalues for
+  \[
+    A = \begin{bmatrix} 2 & 0 \\ -6 & -1 \end{bmatrix}.
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Complex eigenvalues \notesref{Example}{ex:eigenvalues-complex}}
+
+  Find all eigenvalues for
+  \[
+    A = \begin{bmatrix} 1 & 1 \\ -1 & 0 \end{bmatrix}.
+  \]
+
+  \bigskip
+  Complex eigenvalues always come in conjugate pairs.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Finding eigenvectors \notesref{Method}{method:eigenvectors}}
+
+  Finding eigenvectors for a matrix \(A\) is a two-step process.
+
+  \begin{enumerate}
+    \item<2-> Find all its eigenvalues \(\lambda\).
+    \item<3-> For each \(\lambda\), use back-substitution to find \hlwarn{non-zero} vectors \(\vec{v}\) with \(A \vec{v} = \lambda \vec{v}\).
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Eigenvectors, real case \notesref{Example}{ex:eigenvectors-real}}
+
+  Find all eigenvectors for
+  \[
+    A = \begin{bmatrix} 2 & 0 \\ -6 & -1 \end{bmatrix}.
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Eigenvalues, complex case \notesref{Example}{ex:eigenvectors-complex}}
+
+  Find all eigenvalues for
+  \[
+    A = \begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix}.
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{The age-structured matrix \notesref{Exercise}{eq:age-structured-eigenvectors}}
+
+  Find all eigenvectors for
+  \[
+    A = \begin{bmatrix} 0 & 6 \\ 1/4 & 1/2 \end{bmatrix}.
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{A repeated eigenvalue \notesref{Exercise}{ex:eigenvalues-unique-full-rank}}
+
+  Find all eigenvectors for
+  \[
+    A = \begin{bmatrix} 3 & 0 \\ 0.1 & 3 \end{bmatrix}.
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{A scalar matrix \notesref{Exercise}{ex:eigenvalues-unique-dim1}}
+
+  Find all eigenvectors for
+  \[
+    A = \begin{bmatrix} -1 & 0 \\ 0 & -1 \end{bmatrix}.
+  \]
+\end{frame}
+
+% ---- lessons/age-structured-recurrence-solution.tex
+\begin{frame}
+  \frametitle{Solving \(\vec{x}(t+1) = A\vec{x}(t)\) \notesref{Method}{method:recurrences-system}}
+
+  The solution with initial condition \(\vec{x}(0)\) is
+  \[
+    \vec{x}(t) = \alpha \mu^{t} \vec{u} + \beta \lambda^{t} \vec{v},
+  \]
+  where \(\vec{x}(0) = \alpha \vec{u} + \beta \vec{v}\), and \(\mu, \lambda\) are the eigenvalues of \(\vec{u}, \vec{v}\).
+
+  \bigskip
+  \onslide<2->{This works because \(A^{t} \vec{v} = \lambda^{t} \vec{v}\).}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The three-step solve \notesref{Example}{eq:age-structured-recurrence-solution}}
+
+  Solve
+  \[
+    \vec{x}(t+1) = \begin{bmatrix} 0 & 6 \\ 1/4 & 1/2 \end{bmatrix} \vec{x}(t)
+    \quad\text{with}\quad
+    \vec{x}(0) = \begin{bmatrix} 4 \\ 2 \end{bmatrix}.
+  \]
+
+  \begin{enumerate}[label=(Step~\arabic*)]
+    \item Find eigenvectors \(\vec{u}, \vec{v}\) and their eigenvalues.
+    \item Express \(\vec{x}(0) = \alpha\vec{u} + \beta\vec{v}\).
+    \item Apply the solution formula.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{A 24-hour weather forecast \notesref{Example}{ex:weather-forecast}}
+
+  In summer, rain and no rain are the only possibilities. If it is currently raining, there is a \(75\%\) chance of rain in the next hour.
+
+  \bigskip
+  Sketch the transition diagram. Find the probabilities of rain and no rain \(24\) hours after the initial hour.
+\end{frame}
+
+
+\section{Week 12 --- Systems}
+
+% ---- lessons/perron.tex
+\begin{frame}
+  \frametitle{Dominant eigenvalue \notesref{Method}{method:dominant-eigenvalue}}
+
+  The \hlmain{dominant eigenvalue} \(\mu\) is the largest eigenvalue; a \hlmain{dominant eigenvector} is one associated to it.
+
+  \bigskip
+  For \(\vec{x}(t+1) = A \vec{x}(t)\) with a ``nice enough'' matrix:
+  \begin{itemize}
+    \item<2-> if \(\mu > 1\), all subpopulations grow unbounded with fixed ratio.
+    \item<3-> if \(\mu = 1\), all subpopulations stabilize.
+    \item<4-> if \(\mu < 1\), all subpopulations go extinct.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Long-term behaviour \notesref{Example}{ex:perron-long-term}}
+
+  Let
+  \[
+    A = \begin{bmatrix} 0 & 1 \\ 1 & 1/2 \end{bmatrix}
+    \quad\text{and}\quad
+    \vec{x}(0) = \begin{bmatrix} 300 \\ 1000 \end{bmatrix}.
+  \]
+
+  Describe the long-term behaviour of the system.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Adults and juveniles \notesref{Exercise}{ex:perron-adults-juveniles}}
+
+  Let \(x_{1}(t)\) be the number of adults and \(x_{2}(t)\) the number of juveniles at time \(t\), with a given transition matrix \(A\).
+
+  \bigskip
+  Find the long-term ratio of adults to juveniles, and decide whether the population grows, stabilizes or goes extinct.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Complex eigenvalues \notesref{Example}{ex:perron-complex-vector-fields}}
+
+  Match the vector field to the recurrence
+  \[
+    \vec{x}(t+1) = \begin{bmatrix} 0.5 & -1 \\ 1 & 0.5 \end{bmatrix} \vec{x}(t).
+  \]
+
+  \begin{center}
+    \includegraphics[height=1.1in]{./standalones/plot-vector-field-complex-circles.png}
+    \quad
+    \includegraphics[height=1.1in]{./standalones/plot-vector-field-complex-inward-ccw.png}
+    \quad
+    \includegraphics[height=1.1in]{./standalones/plot-vector-field-complex-outward.png}
+  \end{center}
+\end{frame}
+
+% ---- lessons/system-DE.tex
+\begin{frame}
+  \frametitle{The Lotka-Volterra model \notesref{Example}{ex:lotka-volterra-intro}}
+
+  \begin{align*}
+    x_{1}'(t) &= \alpha x_{1}(t) - \beta x_{1}(t) x_{2}(t) \\
+    x_{2}'(t) &= \gamma x_{1}(t) x_{2}(t) - \delta x_{2}(t)
+  \end{align*}
+
+  \bigskip
+  Which are the dependent variables, and which is the independent variable?
+
+  \medskip
+  Is this system first-order? Linear or non-linear?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Differentiating a vector \notesref{Example}{ex:system-de-derivative}}
+
+  Suppose
+  \[
+    x_{1}(t) = 3 e^{5t} - 2 e^{t/2}
+    \quad\text{and}\quad
+    x_{2}(t) = 2 e^{5t} + \tfrac{1}{2} e^{t/2}.
+  \]
+
+  Find \(\frac{d\vec{x}}{dt}\) and express the result as a matrix equation.
+\end{frame}
+
+\begin{frame}
+  \frametitle{A system as a matrix equation \notesref{Example}{ex:system-de-to-matrix}}
+
+  Express the following linear, first-order system as a matrix equation.
+  \[
+    \begin{array}{rcrcrcrcr}
+      x_{1}'(t) &=&            &-& 0.1 x_{2}(t) &+& 2 x_{3}(t) &+& 0.3 \\
+      x_{2}'(t) &=& 5 x_{1}(t) &+&     x_{2}(t) &+&   x_{3}(t) &+& 0.2 \\
+      x_{3}'(t) &=& -3 x_{1}(t)&-& 0.3 x_{2}(t) &+&   x_{3}(t) &&
+    \end{array}
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Verifying a solution \notesref{Example}{ex:system-de-verify-solution}}
+
+  Verify that
+  \[
+    \vec{x}(t) = \begin{bmatrix} 2 e^{2t} - e^{-t} \\ e^{2t} + e^{-t} \end{bmatrix}
+  \]
+  is a solution for the given system \(\frac{d\vec{x}}{dt} = A\vec{x}(t)\).
+\end{frame}
+
+% ---- lessons/system-DE-homog.tex
+\begin{frame}
+  \frametitle{Homogeneous systems \notesref{Method}{method:DE-homogeneous-linear-distinct-eigenvalues}}
+
+  Find eigenvectors \(\vec{u}\) with eigenvalue \(\mu\) and \(\vec{v}\) with eigenvalue \(\lambda\), distinct.
+
+  \bigskip
+  \onslide<2->{The \hlmain{fundamental solution} for eigenpair \((\theta, \vec{w})\) is \(e^{\theta t}\vec{w}\), so the general solution is
+  \[
+    \vec{x}(t) = \alpha e^{\mu t} \vec{u} + \beta e^{\lambda t} \vec{v}.
+  \]}
+
+  \onslide<3->{For a specific solution, solve for \(\alpha, \beta\) using \(\vec{x}(0)\).}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Solving a homogeneous system \notesref{Example}{ex:system-de-homog-ivp}}
+
+  Solve
+  \[
+    \frac{d\vec{x}}{dt} = \begin{bmatrix} 2 & 0 \\ -6 & -1 \end{bmatrix} \vec{x}(t)
+    \quad\text{with}\quad
+    \vec{x}(0) = \begin{bmatrix} 4 \\ 2 \end{bmatrix}.
+  \]
+
+  \bigskip
+  We know this matrix from the real-eigenvalue example.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Another homogeneous system \notesref{Example}{ex:system-de-homog-second}}
+
+  Solve
+  \[
+    \begin{array}{rcrcr}
+      x'_{1}(t) &=&    x_{1}(t) &-& 4x_{2}(t) \\
+      x'_{2}(t) &=& -8 x_{1}(t) &+& 5x_{2}(t)
+    \end{array}
+  \]
+  with the given initial condition.
+\end{frame}
+
+\begin{frame}
+  \frametitle{A general solution \notesref{Exercise}{ex:system-de-homog-general-1}}
+
+  Find the general solution for
+  \[
+    \frac{d\vec{x}}{dt} = \begin{bmatrix} 1 & 2 \\ 1 & 0 \end{bmatrix} \vec{x}(t).
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Another general solution \notesref{Exercise}{ex:system-de-homog-general-2}}
+
+  Find the general solution for
+  \[
+    \frac{d\vec{x}}{dt} = \begin{bmatrix} 0 & -1 \\ 2 & 3 \end{bmatrix} \vec{x}(t).
+  \]
+\end{frame}
+
+% ---- lessons/system-DE-predator-prey.tex
+\begin{frame}
+  \frametitle{Is relocating sharks a good idea? \notesref{Example}{ex:lotka-volterra-sharks}}
+
+  We play the role of Fisheries and Oceans Canada for an ecosystem of sharks (predators) and tuna (prey).
+
+  \begin{center}
+    \hlmain{Is relocating sharks a good idea?}
+  \end{center}
+
+  \begin{itemize}
+    \item The ecosystem is \emph{closed} to migrations.
+    \item The per-capita birth rate of tuna is constant, say \(50\%\).
+    \item Sharks depend on tuna; tuna are consumed by sharks.
+  \end{itemize}
+\end{frame}
 
 \end{document}

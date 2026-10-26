@@ -8,6 +8,7 @@ In this section, we solve linear, first-order systems of differential equations
 \end{equation}
 
 \begin{method}[solutions of homogeneous {\(2\)-by-\(2\)} systems of DEs with \hlattn{distinct} eigenvalues] \label{method:DE-homogeneous-linear-distinct-eigenvalues}
+  % slides: "Homogeneous systems"
   Find eigenvectors \(\vec{u}\) with eigenvalue \(\mu\) and \(\vec{v}\) with eigenvalue \(\lambda\).
 
   The \hlmain{general solution} to Equation~\eqref{eq:homogeneous-linear-DE} is
@@ -25,7 +26,8 @@ In this section, we solve linear, first-order systems of differential equations
 
 You are \emph{strongly encouraged} to compare and contrast Method~\ref{method:recurrences-system} (on page \pageref{eq:solutions-for-recurrence-systems}) with Method~\ref{method:DE-homogeneous-linear-distinct-eigenvalues} to \emph{reduce} the mental load of learning techniques in isolation. Notice and remember that the two methods come from the same \emph{idea}: \hlmain{Express the initial condition as a sum of eigenvectors, and then the solution (of the system of DEs) is the corresponding sum of \emph{fundamental solutions}.} 
 
-\begin{example}
+\begin{example} \label{ex:system-de-homog-ivp}
+  % slides: "Solving a homogeneous system"
   Solve \( \frac{d\vec{x}}{dt} = \begin{bmatrix} 2   & 0  \\ -6 & -1 \end{bmatrix} \vec{x}(t) \) with \(\vec{x}(0) = \begin{bmatrix} 4 \\ 2 \end{bmatrix}\).
   We know this matrix from Example~\ref{ex:eigenvalues-real}.
 
@@ -33,7 +35,8 @@ You are \emph{strongly encouraged} to compare and contrast Method~\ref{method:re
 \end{example}
 \clearpage
 
-\begin{example}
+\begin{example} \label{ex:system-de-homog-second}
+  % slides: "Another homogeneous system"
   Solve 
   \(
   \begin{array}{rcrcr}
@@ -54,14 +57,16 @@ You are \emph{strongly encouraged} to compare and contrast Method~\ref{method:re
 \clearpage
 
 
-\begin{exercise}
+\begin{exercise} \label{ex:system-de-homog-general-1}
+  % slides: "A general solution"
   Find the general solution for \( \frac{d\vec{x}}{dt} = \begin{bmatrix} 1 & 2  \\ 1 & 0 \end{bmatrix} \vec{x}(t) \).
 
   \blanks*
 \end{exercise}
 \clearpage
 
-\begin{exercise}
+\begin{exercise} \label{ex:system-de-homog-general-2}
+  % slides: "Another general solution"
   Find the general solution for \( \frac{d\vec{x}}{dt} = \begin{bmatrix} 0 & -1  \\ 2 & 3 \end{bmatrix} \vec{x}(t) \).
 
   \blanks*

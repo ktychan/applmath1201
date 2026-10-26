@@ -4,7 +4,8 @@
 
 Before we investigate mathematical properties of recurrence, let's see why we should care about their properties at all by doing some real-world modelling. 
 
-\begin{method}
+\begin{method} \label{method:recurrence-modelling}
+  % slides: "Modelling with recurrences"
   Use recurrence equations to describe how a physical system changes from one state to the next.  Be sure to specify its initial state.
 \end{method}
 
@@ -12,6 +13,7 @@ Before we investigate mathematical properties of recurrence, let's see why we sh
 % use the word balance instead of value of the investment
 Let's start with an everyday example of discrete-time models.
 \begin{example} \label{ex:recursion-investment-model}
+  % slides: "A savings account"
   We deposit \(\$ 1,000\) into a savings account on January 1. At the end of every year, an interest of \(2\%\) of the current balance is paid. We would like to withdraw \(\$ 50\) \emph{after} each interest payment.
 
   Develop a discrete-time model (a recurrence) for the relation between the balance of the savings \hlwarn{Edited: ``saving'' \(\to\) ``savings''} and time.
@@ -21,6 +23,7 @@ Let's start with an everyday example of discrete-time models.
 \clearpage
 
 \begin{exercise} \label{ex:recursion-half-life}
+  % slides: "Carbon-14 dating"
   Carbon-14 is a radioactive element that can be used to determine the age of archaeological artifacts of biological origin.  The amount of carbon-14 in a sample decreases by \(50\%\) after roughly \(5,730\) years. In other words, the half-life of carbon-14 is \(5,730\) years. 
 
   Develop a discrete-time model (a recurrence) for the relation between the amount of carbon-14 in a sample and time. 

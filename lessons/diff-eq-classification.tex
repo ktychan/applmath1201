@@ -4,10 +4,12 @@
 
 We group differential equations by certain characteristics of the unknown function.
 
-\begin{definition}[order]
+\begin{definition}[order] \label{def:de-order}
+  % slides: "Order of a DE"
 The \hlmain{order} of a differential equation is the order of the highest derivative of the dependent variable in the equation.
 \end{definition}
-\begin{example}
+\begin{example} \label{ex:de-identify-order}
+  % slides: "Identify the order"
   Identify the order of the following differential equations.
   \[
     \frac{du}{dt} + u^{2} = t^{3}, 
@@ -18,10 +20,12 @@ The \hlmain{order} of a differential equation is the order of the highest deriva
   \blanks{5}
 \end{example}
 
-\begin{definition}[linear vs non-linear]
+\begin{definition}[linear vs non-linear] \label{def:de-linear}
+  % slides: "Linear vs non-linear"
   If a differential equation has no product of the dependent variable with itself or any of its derivatives, then the equation is called \hlmain{linear}; otherwise, it is called \hlmain{non-linear}. 
 \end{definition}
-\begin{example}
+\begin{example} \label{ex:de-identify-linear}
+  % slides: "Find the linear DE"
   Find the linear differential equation from the list below.
   \[
     u(t) + t^{2} u'(t) = 0,
@@ -34,7 +38,8 @@ The \hlmain{order} of a differential equation is the order of the highest deriva
   \blanks{5}
 \end{example}
 
-\begin{definition}[linear, first-order]
+\begin{definition}[linear, first-order] \label{def:de-linear-first-order}
+  % slides: "Linear, first-order DEs"
   Assume \(u\) is a function of \(t\). A \hlmain{linear, first-order} differential equation \hlwarn{Edited: ``equations'' \(\to\) ``equation''} is a differential equation of the form
   \[
     u'(t) + p(t) u(t) = q(t), \quad\text{where \(p(t)\) and \(q(t)\) can be any functions of \(t\)}.

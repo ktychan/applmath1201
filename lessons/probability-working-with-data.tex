@@ -4,7 +4,8 @@
 
 In the preceding sections, we have been working with the assumption that random variables are \emph{given}.  However, scientific experiments produce sample data in the form of concrete numbers (\(1\) apple, \(2\) apples, etc.).  In this section, we discuss statistical techniques to deal with sample data.  Our goal is to make sense of sample expectations, variance and standard deviation in the absence of random variables. 
 
-\begin{definition}[sample data and their summary statistics]
+\begin{definition}[sample data and their summary statistics] \label{def:sample-statistics}
+  % slides: "Summary statistics"
   A set of \hlmain{sample data} is simply a list of numbers typically obtained as measurements.
 
   Given sample data \(x_{1}, x_{2}, \ldots, x_{n}\), define the following summary statistics.
@@ -23,7 +24,8 @@ In the preceding sections, we have been working with the assumption that random 
 We should certainly know these formulas.  However, in practice, calculating statistics for a large amount of sample data is a job for the computer.  We learn what they can do for us.  
 
 The \(z\)-scores allow us to compare apples to oranges in a meaningful way.
-\begin{example}[compare measurements across data sets]
+\begin{example}[compare measurements across data sets] \label{ex:zscore-apples-oranges}
+  % slides: "Apples vs oranges"
   Consider the apple vs orange sales in a grocery store. The sample mean for apples sold per day is \(\overline{A} = 500\) and standard deviation \(50\). The sample mean for oranges sold per day is \(\overline{O} = 300\) and standard deviation \(60\). 
 
   A grocery store puts apples and oranges up on sale and sold \(600\) apples and \(400\) oranges.  Which produce performed better on that day?
@@ -36,6 +38,7 @@ The \(z\)-scores allow us to compare apples to oranges in a meaningful way.
 We focus on using these statistics to make sense of experimental data and to draw reasonable scientific conclusions. \hlwarn{Edited: ``conclusion'' \(\to\) ``conclusions''} Unlike Example~\ref{ex:toucan}, the following example \hlmain{has a correct answer}.
 
 \begin{example} \label{ex:simulation}
+  % slides: "Hypothesis testing by simulation"
   We walk through a typical scientific reasoning process: Hypothesize using summary statistics and perform hypothesis testing using simulation.
 
   \begin{itemize}[wide]

@@ -20,7 +20,8 @@ In Example~\ref{ex:diff-eq-intro}, we discussed the population model \(N'(t) = (
 \blanks*
 \clearpage
 
-\begin{definition}[logistic model]
+\begin{definition}[logistic model] \label{def:logistic-model}
+  % slides: "The logistic model"
   The population model \(N(t)\) with a growth factor \(r > 0\) and a carrying capacity \(K\) satisfies the differential equation
   \begin{equation} \label{eq:diff-eq-logistic}
     N'(t) = r N(t) \left( 1 - \frac{N(t)}{K} \right).
@@ -34,6 +35,7 @@ Visualization. \faExternalLink*{} \url{https://colab.research.google.com/drive/1
 We advertised that the logistic model accounts for the crowding effect. Is it really true? We analyze the logistic model \emph{without solving the differential equation}. 
 
 \begin{example} \label{ex:diff-eq-logistic-fact-check}
+  % slides: "Does it capture crowding?"
   The qualitative analysis we learned last week can pick out the crowding effect in the logistic model.
 
   \begin{enumerate}[wide]

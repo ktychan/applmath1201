@@ -5,6 +5,7 @@
 A substitution, also known as a change of variable, can often \hlmain{transform} an unfamiliar problem into a familiar one to which existing tools apply. 
 
 \begin{method}[Bernoulli substitution] \label{method:bernoulli-sub}
+  % slides: "The Bernoulli substitution"
   The \hlmain{Bernoulli substitution} \(u = y^{1-n}\) applies to \hlsupp{non-linear}, first-order differential equations \hlwarn{Edited: ``equation'' \(\to\) ``equations''} in the form
   \begin{equation} \label{eq:bernoulli}
     y'(t) + P(t) y(t) = Q(t) {\color{warn} \big(y(t)\big)^{n}}.
@@ -16,7 +17,8 @@ A substitution, also known as a change of variable, can often \hlmain{transform}
 
 \blanks{10}
 
-\begin{example}
+\begin{example} \label{ex:bernoulli-when-to-use}
+  % slides: "When does Bernoulli apply?"
   When should we use the Bernoulli substitution?
 
   Study the \emph{forms} of the following differential equations and determine the applicability of the Bernoulli substitution in each case. 
@@ -37,7 +39,8 @@ A substitution, also known as a change of variable, can often \hlmain{transform}
 \clearpage
 
 Bernoulli substitution \emph{transforms} a non-linear, first-order differential equation to a linear one. It works, \emph{in spirit}, like Method~\ref{method:recurrence-sub} in the sense that we solve a simpler problem first and recover the solution later.
-\begin{example} 
+\begin{example} \label{ex:bernoulli-worked}
+  % slides: "Bernoulli, step by step"
   Solve the initial-value problem \(y'(t) - \frac{2 y(t)}{t}  = -\big( ty(t) \big)^{2}\) with \(y(1) = 1/2\).
 
   \blanks{3}
@@ -64,14 +67,16 @@ Bernoulli substitution \emph{transforms} a non-linear, first-order differential 
 \end{example}
 \clearpage
 
-\begin{example}
+\begin{example} \label{ex:bernoulli-fifth-root}
+  % slides: "A fifth-root Bernoulli DE"
   Solve the initial-value problem \(y'(t) + \frac{1}{1 - t} y(t)  = \sqrt[5]{y(t)}\) with \(y(2) = 0\).
 
   \blanks*
 \end{example}
 \clearpage
 
-\begin{exercise}[concept check]
+\begin{exercise}[concept check] \label{ex:bernoulli-logistic}
+  % slides: "Solving the logistic equation"
   Find the general solution to the logistic equation
   \[
     N'(t) = rN(t) \left( 1 - \frac{N(t)}{K} \right), \text{ where \(r,K\) are positive constants}.
@@ -83,7 +88,8 @@ Bernoulli substitution \emph{transforms} a non-linear, first-order differential 
 \end{exercise}
 \clearpage
 
-\begin{exercise}[Midterm, Winter 2025]
+\begin{exercise}[Midterm, Winter 2025] \label{ex:bernoulli-midterm-2025}
+  % slides: "Midterm, Winter 2025"
   Consider the differential equation \(\frac{dy}{dt} + \frac{6y}{t} = y^{2}\).
 
   \begin{enumerate}[wide]

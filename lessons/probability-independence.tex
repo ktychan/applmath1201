@@ -26,7 +26,8 @@ If we divide the sample space into mutually exclusive and exhaustive events \(F_
 
 \blanks{10}
 
-\begin{example}
+\begin{example} \label{ex:total-probability-cubes}
+  % slides: "A bag of cubes and spheres"
   Suppose we have a bag of red, green and blue cubes and spheres with the following probability data.  
   \[
     \mathbb{P}(\text{red}) = 30\%, \quad
@@ -45,7 +46,8 @@ Now we turn to independence. Intuitively, two events are independent if the occu
 
 \blanks{15}
 
-\begin{definition}[independent events]
+\begin{definition}[independent events] \label{def:independence}
+  % slides: "Independent events"
   Two events \(E,F\) in a common sample space are said to be \hlmain{independent} if 
   \begin{equation} \label{eq:probability-independence}
     \mathbb{P}(E \mid F) = \mathbb{P}(E)
@@ -58,32 +60,37 @@ To help you understand these equivalent definitions, we deduce them from each ot
 
 \blanks{15}
 
-\begin{example}
+\begin{example} \label{ex:independence-check}
+  % slides: "Are \(E\) and \(F\) independent?"
   Let \(E, F\) be events in a common sample space. Let \(\mathbb{P}(E) = 0.3\), \(\mathbb{P}(F) = 0.2\) and \(\mathbb{P}(E \cap F) = 0.06\). \hlwarn{Edited: ``\(\mathbb{P}(B)\)'' \(\to\) ``\(\mathbb{P}(F)\)'' and ``\(\mathbb{P}(A \cap B)\)'' \(\to\) ``\(\mathbb{P}(E \cap F)\)'' to match the events \(E,F\)} \hlwarn{FIXME: verify this math/content correction} Determine if \(E,F\) are independent.
 
   \blanks*
 \end{example}
 \clearpage
 
-\begin{example}
+\begin{example} \label{ex:independence-vs-exclusive}
+  % slides: "Exclusive or independent?"
   Let \(E = \{1,3\}, F = \{2,4\}\) be events in a common sample space \(\Omega = \{1,2,3,4,5,6\}\).  Are \(E,F\) mutually exclusive? Are \(E,F\) independent?
 
   \blanks{10}
 \end{example}
 
-\begin{exercise}
+\begin{exercise} \label{ex:independence-empty-intersection}
+  % slides: "Empty intersection?"
   If the event \(E \cap F\) is empty, are the events \(E,F\) independent?
 
   \blanks{10}
 \end{exercise}
 
-\begin{exercise} 
+\begin{exercise} \label{ex:independence-implies-exclusive}
+  % slides: "Independence and exclusivity"
   Let \(E,F\) be two events in a sample space \(\Omega\). If \(E,F\) are independent events and \(\mathbb{P}(E) > 0\), does that imply \(E\) and \(F\) are mutually exclusive?
 
   \blanks{10} 
 \end{exercise}
 
-\begin{exercise}
+\begin{exercise} \label{ex:independence-complement}
+  % slides: "Independence and complements"
   If \(E\) and \(F\) are independent events, does that mean \(E^{c}\) and \(F\) are also independent events?
 
   \blanks{10}

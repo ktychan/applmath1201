@@ -4,7 +4,8 @@
 
 A random variable is a continuous random variable if it takes values on an interval. The random variable associating time (outcomes) to temperature at YYZ (values) is a continuous random variable. Continuous random variables are described by their PDF or CDF.
 
-\begin{definition}[PDF and CDF]
+\begin{definition}[PDF and CDF] \label{def:pdf-cdf}
+  % slides: "PDF and CDF"
   Let \(X\) be a continuous random variable.
 
   The \hlmain{probability density function} for \(X\) is a nonnegative continuous function \(f(x)\) so that
@@ -70,7 +71,8 @@ A random variable is a continuous random variable if it takes values on an inter
 
 \faStar{} A valid PDF \(f_{X}\) must satisfy \(\int_{-\infty}^{\infty} f(x) \;dx = \underline{\hspace{3in}}\). 
 
-\begin{example}
+\begin{example} \label{ex:crv-valid-pdfs}
+  % slides: "Which are valid PDFs?"
   Which of the following \hlwarn{Edited: ``followings'' \(\to\) ``following''} are valid PDFs?
 
   \begin{tikzpicture}
@@ -104,7 +106,8 @@ A random variable is a continuous random variable if it takes values on an inter
 \end{example}
 
 Let's pick up some confidence for calculations.  Calculating probability from CDF is very simple.
-\begin{example}
+\begin{example} \label{ex:crv-from-cdf}
+  % slides: "A probability from a CDF"
   Calculate \(\mathbb{P}(-0.5 \le X \le 0.3)\) given that the CDF for a continuous random variable \(X\) is 
   \[
     F(x) = 
@@ -120,7 +123,8 @@ Let's pick up some confidence for calculations.  Calculating probability from CD
 \end{example}
 
 Calculating probabilities from PDF requires integration.
-\begin{example}
+\begin{example} \label{ex:crv-from-pdf}
+  % slides: "A probability from a PDF"
   Suppose \(a\) is a positive constant. Calculate \(\mathbb{P}( 0 \le X \le a/3 )\) given that a continuous random variable \(X\) is described by the PDF
   \[
     f(x) = 
@@ -135,7 +139,8 @@ Calculating probabilities from PDF requires integration.
 
 
 \clearpage
-\begin{exercise}[concept check]
+\begin{exercise}[concept check] \label{ex:crv-piecewise-pdf}
+  % slides: "A piecewise PDF"
   Calculate \(\mathbb{P}(-1 < X < 3)\) given that a continuous random variable \(X\) is described by the PDF
   \[
     f(x) = 
@@ -149,7 +154,8 @@ Calculating probabilities from PDF requires integration.
   \blanks{15}
 \end{exercise}
 
-\begin{exercise}[concept check]
+\begin{exercise}[concept check] \label{ex:crv-pdf-from-cdf}
+  % slides: "Find the PDF from a CDF"
   Find the PDF of a continuous random variable whose CDF is \(F(x) = 1 - e^{-x}\).
 
   \blanks{5}
@@ -158,6 +164,7 @@ Calculating probabilities from PDF requires integration.
 We often (in reality and in this course) need to find a PDF for a continuous random variable that suits our needs.  The idea is to set up an equation involving the unknown parameter using the given information and solve for the unknown.
 
 \begin{example} \label{ex:distribution-with-unknown-bounds}
+  % slides: "An unknown parameter"
   The PDF for a continuous random variable is given by \(f(x) = a x^{2}\) if \(|x| < a\) and \(f(x) = 0\) everywhere else.  Find the unknown parameter \(a\).
 
   \blanks*
@@ -166,7 +173,8 @@ We often (in reality and in this course) need to find a PDF for a continuous ran
 
 Like discrete random variables, continuous random variables have expectation, variance and standard deviation.
 
-\begin{definition}
+\begin{definition} \label{def:crv-expectation-variance}
+  % slides: "Expectation and variance"
   Suppose \(X\) is a continuous random variable with PDF \(f(x)\). \hlwarn{Edited: ``PMF'' \(\to\) ``PDF''; added the missing ``\(\;dx\)'' to both integrals; ``\(V(x)\)'' \(\to\) ``\(V(X)\)''} \hlwarn{FIXME: verify this math/content correction}
   \begin{enumerate}[itemsep={1ex}]
     \item Its expectation is \(\mu = E(X) = \int_{-\infty}^{\infty} x f(x) \;dx\).
@@ -179,6 +187,7 @@ Like discrete random variables, continuous random variables have expectation, va
 
 Expectation measures the \hlmain{centre} of data. Variance and standard deviation measure how far the data spread from its expectation.
 \begin{example} \label{ex:crv-shapes}
+  % slides: "Shapes of PDFs"
   Here are some examples of PDF with various expectations and standard deviations.
 
   \begin{center}
@@ -199,13 +208,15 @@ Expectation measures the \hlmain{centre} of data. Variance and standard deviatio
 \end{example}
 \clearpage
 
-\begin{example}
+\begin{example} \label{ex:crv-two-piece-expectation}
+  % slides: "A two-piece PDF"
   Let \(X\) be a continuous random variable with PDF \(f(x) = 1/5\) on \([-1, 1]\), \(f(x) = 1/10\) on \([2,8]\) and \(0\) everywhere else.  Calculate its expectation, variance and standard deviation.
 
   \blanks{30}
 \end{example}
 
-\begin{exercise}[concept check]
+\begin{exercise}[concept check] \label{ex:crv-variance-uniform}
+  % slides: "Variance of a symmetric PDF"
 Calculate the variance of a continuous random variable with PDF \(f(x) = \begin{cases} \frac{1}{2a} &\text{ if } |x| < a \\0,&\text{otherwise} \end{cases}\).
 
   \blanks*
@@ -214,7 +225,8 @@ Calculate the variance of a continuous random variable with PDF \(f(x) = \begin{
 
 We are moving closer to simulation. Sometimes (in reality and in this course), we want to randomly generate data that replicate experiments with certain sample mean and sample variance.
 
-\begin{definition}[uniform distribution]
+\begin{definition}[uniform distribution] \label{def:uniform-distribution}
+  % slides: "The uniform distribution"
   The uniform distribution \(U(a,b)\) is defined by its probability density function
   \[
     f(x) = 
@@ -282,7 +294,8 @@ plt.hist(X, 10, density=True)
 
 Depending on the capabilities of your software and the requirements of your simulation/experiment, you may need to do a little conversion between specifying a uniform distribution by an interval \(U(a,b)\) or by its expectation and standard deviation.
 
-\begin{method}
+\begin{method} \label{method:uniform-mean-stddev}
+  % slides: "Mean and deviation of \(U(-c,c)\)"
   The uniform distribution \(U(-c,c)\) has expectation and standard deviation
   \[
     \mu = 0
@@ -305,12 +318,14 @@ Depending on the capabilities of your software and the requirements of your simu
 \blanks{10}
 
 \begin{example} \label{ex:uniform-distribution-from-mean-and-stddev}
+  % slides: "Find \(c\) from \(\sigma^{2}\)"
   Determine the \(c\) for a uniform distribution whose \(U(-c,c)\) if \(\sigma^{2} = \frac{11.25}{11}\).
 
   \blanks{10}
 \end{example}
 
-\begin{example}
+\begin{example} \label{ex:uniform-from-mean-and-variance}
+  % slides: "Find \(U(a,b)\) from \(\mu, \sigma^{2}\)"
   Find the uniform distribution with \(\mu = 5\) and \(\sigma^{2} = \frac{11.25}{11}\).
 
   \blanks{10}

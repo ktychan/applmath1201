@@ -55,7 +55,8 @@ Recall that \(A\) has eigenvectors
 
 The above pattern is not a coincidence and helps us \hlwarn{Edited: ``help us'' \(\to\) ``helps us''} \emph{quickly} determine long-term behaviour for (vector) recurrence.
 
-\begin{method}[long-term behaviour for recurrence equations]
+\begin{method}[long-term behaviour for recurrence equations] \label{method:dominant-eigenvalue}
+  % slides: "Dominant eigenvalue"
   The \hlmain{dominant eigenvalue} \(\mu\) is the largest eigenvalue, and a \hlmain{dominant eigenvector} is an eigenvector whose associated eigenvalue is \(\mu\).
 
   For models \(\vec{x}(t+1) = A \vec{x}(t)\) with a ``nice enough'' matrix\footnote{We are not required to know what ``nice enough'' means. Intuitively, it means the subpopulations don't have isolated subgroups.} \(A\), the long-term behaviour \(\lim_{t \to \infty} \vec{x}(t)\) \hlmain{lies in the direction of the dominant eigenvector}. When \(A\) models populations, then its dominant eigenvalue \(\mu\) is always positive, and 
@@ -69,14 +70,16 @@ The above pattern is not a coincidence and helps us \hlwarn{Edited: ``help us'' 
 \blanks*
 \clearpage
 
-\begin{example}
+\begin{example} \label{ex:perron-long-term}
+  % slides: "Long-term behaviour"
   Let \(A = \begin{bmatrix} 0 & 1 \\ 1 & 1/2 \end{bmatrix}\) and \(\vec{x}(0) = \begin{bmatrix} 300 \\ 1000\end{bmatrix}\).  Describe the long-term behaviour for \(\vec{x}(t + 1) = A \vec{x}(t)\), i.e., describe the long-term behaviour \(\lim_{t \to \infty} \vec{x}(t)\). \hlwarn{Edited: ``\(\vec{u}(t)\)'' \(\to\) ``\(\vec{x}(t)\)''}
 
   \blanks*
 \end{example}
 \clearpage
 
-\begin{exercise}
+\begin{exercise} \label{ex:perron-adults-juveniles}
+  % slides: "Adults and juveniles"
   Let \(x_{1}(t)\) represents the number of adults and \(x_{2}(t)\) the number of juveniles in a population at time \(t\). Suppose the matrix \(A = \begin{bmatrix} 0.5 & 0.3 \\ 0.2 & 0.88 \end{bmatrix}\) describes the model \(\vec{x}(t+1) = A \vec{x}(t)\) with \(x_{1}(0) = 100\) and \(x_{2}(0) = 200\). Describe the long-term behaviour for the population as a ratio between adults and juveniles. Does the population grow unbounded, stabilize or go extinct?  
   
   \blanks*
@@ -101,7 +104,8 @@ In this case, the vector field for the (vector) recurrence is always a spiral pa
 
 Visualization (\url{https://colab.research.google.com/drive/1Xqp8iOQDxTS6Nocq3c3qWEWlpjT_JNT2}).
 
-\begin{example}
+\begin{example} \label{ex:perron-complex-vector-fields}
+  % slides: "Complex eigenvalues"
   Match the vector field to the recurrence below. 
   \[
     \vec{x}(t+1) =

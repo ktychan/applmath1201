@@ -5,6 +5,7 @@
 Before we investigate mathematical properties of differential equations, let's see why we should care about their properties at all by doing some real-world modelling. 
 
 \begin{method} \label{method:diff-eq-model}
+  % slides: "Modelling with DEs"
   Use differential equations to describe the rates of change of physical \hlmain{systems}.  The simplest idea is
   \begin{center}
     (rate of change) = (rate of internal change) + (rate of external change).
@@ -33,6 +34,7 @@ Assume that the human body does not naturally produce ABC, and ABC is not presen
 Assume the amount of ABC is measured in \emph{mg} and time in \emph{minutes}.
 
 \begin{example}[modelling with only rate of internal change] \label{ex:diff-eq-ABCv1}
+  % slides: "Drug ABC: internal change"
   Experimental data suggests that the \hlmain{rate of change of ABC} is \hlattn{proportional} to \hlmain{the amount of ABC present} with a proportionality constant of \(-1\%\) per minute.
 
   Write down a \emph{continuous-time model} of ABC present in the bloodstream.
@@ -42,6 +44,7 @@ Assume the amount of ABC is measured in \emph{mg} and time in \emph{minutes}.
 \clearpage
 
 \begin{example}[modelling with rates of internal and external change] \label{ex:diff-eq-ABCv2}
+  % slides: "Drug ABC: adding an infusion"
   Continue from Example~\ref{ex:diff-eq-ABCv1}.  Suppose further \(ABC\) is \emph{continuously} administered at a rate of \(r\) mg per minute. 
 
   Write down a \emph{continuous-time model} of ABC in the bloodstream.
@@ -50,6 +53,7 @@ Assume the amount of ABC is measured in \emph{mg} and time in \emph{minutes}.
 \end{example}
 
 \begin{exercise} \label{ex:diff-eq-ABCv3}
+  % slides: "Drug ABC: with blood loss"
   Continue from Example~\ref{ex:diff-eq-ABCv2}.  Suppose further that \(ABC\) exits the bloodstream through blood loss at a rate of \(s\) mg (of ABC) per minute \hlwarn{Edited: ``per minutes'' \(\to\) ``per minute''}.
 
   Write down a \emph{continuous-time model} of ABC in the bloodstream.
@@ -66,6 +70,7 @@ Given enough information, we can pick up \hlmain{qualitative information} from t
 \end{enumerate}
 
 \begin{example} \label{eg:DE-qualitative}
+  % slides: "Qualitative information"
   Suppose a population model is \(\frac{dy}{dt} = ky\) for some unknown constant \(k\).  Describe how the population changes 
   \begin{enumerate}
     \item if \(k > 0\).
@@ -76,7 +81,8 @@ Given enough information, we can pick up \hlmain{qualitative information} from t
   \blanks{10}
 \end{example}
 
-\begin{exercise}
+\begin{exercise} \label{ex:de-qualitative-implicit}
+  % slides: "Increasing or decreasing?"
   Suppose a differential equation is \(u'(t) u(t) = t u(t) - 1\). Describe whether its solution is increasing or decreasing at the specified time under the specified condition.
   \begin{enumerate}
     \item \(u(5) = 7\).
@@ -89,13 +95,15 @@ Given enough information, we can pick up \hlmain{qualitative information} from t
 \clearpage
 
 Ultimately, a differential equation is a mathematical relation among several quantities.  As soon as information is available for all but one of them, we can determine information for the remaining unknown quantity.
-\begin{example}
+\begin{example} \label{ex:de-possible-initial-values}
+  % slides: "Possible values of \(N(0)\)"
   Suppose a population is modelled by \(\frac{dN}{dt} = 1.13 N(1-N/5)\). If the population is increasing at \(t = 0\), what are the possible values for \(N(0)\)?
 
   \blanks{20}
 \end{example}
 
-\begin{exercise}
+\begin{exercise} \label{ex:de-temperature-decreasing}
+  % slides: "A cooling object"
   Suppose the temperature \(T(t)\) (measured in Celsius) of an object is modelled by
   \[
     \frac{dT}{dt} = \frac{12}{T(t) - 20} + 5 \frac{\sin(\pi t)}{t}.

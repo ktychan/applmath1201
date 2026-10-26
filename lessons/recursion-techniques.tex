@@ -16,12 +16,14 @@ At the end of this section, we will be able to do the following.
 
 To calculate a few terms of a given recurrence, we simply start with time \(t=1\) and calculate \(u_{1}\) using the recurrence equation. Once \(u_{1}\) is calculated, we apply \(t = 2\) to the recurrence equation to calculate \(u_{2}\) and so on.
 \begin{example} \label{ex:recurrence-bruteforce}
+  % slides: "Calculating a few terms"
   Calculate the balance at the end of years 1, 2, and 3 using the model in Example~\ref{ex:recursion-investment-model}.
 
   \blanks{20}
 \end{example}
 
 \begin{exercise} \label{ex:recurrence-equilibrium}
+  % slides: "A different initial deposit"
   Calculate the balance at the end of years \(3\) using the model in Example~\ref{ex:recursion-investment-model} but change the initial deposit to \(\$ 2,500\).
 
   \blanks*
@@ -35,7 +37,8 @@ In some cases, we can use mathematical techniques to ``get rid'' of the recursio
 
 First, let's understand what it means for a function to be a solution of a recursion. 
 
-\begin{definition}
+\begin{definition} \label{def:recurrence-solution}
+  % slides: "Solutions of a recurrence"
   Suppose we have a recurrence \(u_{t}\) with some initial condition \(u_{0}\). A function \(f(t)\) is a solution of the recursion if 
   \begin{enumerate}
     \item \(f(t)\) satisfies the defining recursion equation for \(u_{t}\), \emph{and}
@@ -45,14 +48,16 @@ First, let's understand what it means for a function to be a solution of a recur
   Note that \(f(t)\) cannot refer to any \(u_{t}\) and must be a well-defined function of \(t\).
 \end{definition}
 
-\begin{example}
+\begin{example} \label{ex:recurrence-verify-solution}
+  % slides: "Verifying a proposed solution"
   Is \(a_{t} = 2^{2^{t-1}}\) the solution for \(a_{1} = 2\) and \(a_{t} = a_{t-1}^{2}\) for \(t \ge 2\)?
 
   \blanks*
 \end{example}
 \clearpage
 
-\begin{exercise}[concept check and algebra skill practice]
+\begin{exercise}[concept check and algebra skill practice] \label{ex:recurrence-verify-investment}
+  % slides: "Verifying a solution"
   Is \(b_{t} = -1500 (1.02)^{t} + 2500\) a solution \hlwarn{Edited: removed duplicate ``is''} of the recurrence in Example~\ref{ex:recursion-investment-model}?
 
   \blanks*
@@ -62,6 +67,7 @@ First, let's understand what it means for a function to be a solution of a recur
 Guess-and-check is an inefficient method of looking for solutions of recursions. We are better off looking for systematic methods.
 
 \begin{method} \label{method:recurrence-exp}
+  % slides: "Solving \(u_{t} = a u_{t-1}\)"
   Let \(a > 0\) be a constant. The solution to the recurrence \(u_{t} = a u_{t-1}\) is 
   \[
     u_{t} = u_{0} a^{t}.
@@ -76,7 +82,8 @@ Why does this work?
 
 \faStar{} Recurrence offers a convenient language to develop discrete-time models. However, none of the calculus tools apply \emph{directly} to recurrence. \hlmain{Solving a recurrence converts an unfamiliar problem to a familiar problem.}\hlwarn{Edited: ``a unfamiliar'' \(\to\) ``an unfamiliar''}
 
-\begin{example}
+\begin{example} \label{ex:recurrence-longterm-growth}
+  % slides: "Long-term behaviour"
   Suppose a population grows at rate \(r\) (annually) with an initial population \(P_{0} = 1,000\).   What is the long-term behaviour of the population, \hlwarn{Edited: removed stray space before the comma} i.e., \(\lim_{t \to \infty} P_{t}\), when
   \begin{enumerate}
     \item \(r = 1\)?
@@ -95,7 +102,8 @@ Recurrences are sensitive to their initial condition. Consider once again Exampl
 
 However, the initial deposit \(2,500\) is special as we saw in Exercise~\ref{ex:recurrence-equilibrium} because it leads to no change from year to year.
 
-\begin{definition}[equilibrium solution]
+\begin{definition}[equilibrium solution] \label{def:recurrence-equilibrium}
+  % slides: "Equilibrium solutions"
   An equilibrium solution of a recurrence equation (not the whole recurrence) is a constant function.  We denote equilibrium solutions by making the variable wear a hat and throwing away subscripts, e.g., \(\hat{u}\).
 \end{definition}
 
@@ -103,20 +111,23 @@ However, the initial deposit \(2,500\) is special as we saw in Exercise~\ref{ex:
 
 \faStar{} Equilibrium solutions are very easy to find because they are constants. Simply replace all \(u_{t}\) by \(\hat{u}\) and solve for \(\hat{u}\) using basic algebra. It is possible to find more than one equilibrium solution \hlwarn{Edited: ``solutions'' \(\to\) ``solution''}.
 
-\begin{example}
+\begin{example} \label{ex:recurrence-equilibrium-find}
+  % slides: "Finding an equilibrium"
   Find the equilibrium solution for the recurrence equation \(v_{t} = 1.5 v_{t-1} + 35\).
 
   \blanks*
 \end{example}
 \clearpage
 
-\begin{exercise}[concept check]
+\begin{exercise}[concept check] \label{ex:recurrence-equilibria-sqrt}
+  % slides: "All equilibria"
   Find \emph{all} equilibria of the recurrence equation \[u_{t} = \sqrt{3 u_{t-1} - 2}.\]
 
   \blanks{20}
 \end{exercise}
 
-\begin{exercise}[concept check]
+\begin{exercise}[concept check] \label{ex:recurrence-equilibria-half}
+  % slides: "One equilibrium or many?"
   Find equilibria (one or many?) of the recurrence equation \[p_{t} = \frac{1}{2} p_{t-1} - \frac{1}{2}.\]
 
   \blanks*
@@ -126,10 +137,12 @@ However, the initial deposit \(2,500\) is special as we saw in Exercise~\ref{ex:
 Now we advance to slightly more complicated recurrences \hlwarn{Edited: ``recurrence'' \(\to\) ``recurrences''}.
 
 \begin{method} \label{method:recurrence-sub}
+  % slides: "The substitution method"
   Consider a recurrence of the form \(v_{t} = A v_{t-1} + B\) whose equilibrium is always \(\hat{v} = \frac{B}{1 - A}\). Introduce a new recurrence \(u_{t}\) and perform the change of variable \(v_{t} = u_{t} + \hat{v}\). Solve the new recurrence \(u_{t}\) and recover the original solution.
 \end{method}
 
-\begin{example}
+\begin{example} \label{ex:recurrence-sub-worked}
+  % slides: "Substitution, step by step"
   Solve the recurrence \(b_{t} = 1.02 b_{t-1} - 50\) with initial condition \(b_{0} = 1000\).
 
   \begin{enumerate}[wide, label={Step~(\arabic*).}]
@@ -149,14 +162,16 @@ Now we advance to slightly more complicated recurrences \hlwarn{Edited: ``recurr
 \clearpage
 
 The substitution process in Method~\ref{method:recurrence-sub} can be packaged into a formula.
-\begin{method}
+\begin{method} \label{method:recurrence-affine-formula}
+  % slides: "Solution formula"
   The solution to the recursion \(v_{t} = A v_{t-1} + B\) with initial condition \(v_{0}\) is
   \[
     v_{t} = (v_{0} - \hat{v}) A^{t} + \hat{v}, \text{ where } \hat{v} = \frac{B}{1 - A}.
   \]
 \end{method}
 
-\begin{exercise}[concept check]
+\begin{exercise}[concept check] \label{ex:recurrence-formula-vs-sub}
+  % slides: "Formula and substitution"
   Solve the recurrence \(p_{0} = 1\) and \(p_{t} = \frac{1}{2} p_{t-1} - \frac{1}{2}\) for integers \(t \ge 1\) using the formula and the substitution method. Make sure you understand both.
 
   \blanks*
@@ -165,7 +180,8 @@ The substitution process in Method~\ref{method:recurrence-sub} can be packaged i
 \clearpage
 
 Solutions of recurrence allow us to answer interesting questions.  This is the last learning objective of this week.
-\begin{example}
+\begin{example} \label{ex:recurrence-balance-zero}
+  % slides: "Does the balance reach zero?"
   Consider the recurrence in Example~\ref{ex:recursion-investment-model} 
   \[
     b_{0} = 1000 \quad\text{and}\quad b_{t} = 1.02 b_{t-1} - 50, \text{ for integers } t \ge 1. 
@@ -178,7 +194,8 @@ Solutions of recurrence allow us to answer interesting questions.  This is the l
 \end{example}
 \clearpage
 
-\begin{exercise}
+\begin{exercise} \label{ex:recurrence-unknown-initial}
+  % slides: "An unknown initial investment"
   Let's modify Example~\ref{ex:recursion-investment-model} a bit further and assume the initial investment is an unknown.  Everything else remains unchanged.  
 
   What is the initial investment if the money were to be depleted after \(10\) years?
@@ -189,7 +206,8 @@ Solutions of recurrence allow us to answer interesting questions.  This is the l
 
 Here is a brain teaser.
 
-\begin{exercise}[challenge of the week]
+\begin{exercise}[challenge of the week] \label{ex:recurrence-cat-and-mice}
+  % slides: "Challenge: the cat and the mice"
   A house has a cat and some mice \hlwarn{Edited: ``mouse'' \(\to\) ``mice'' and ``everyday'' \(\to\) ``every day'' (throughout this exercise)}. The cat chases away a fixed portion of the mice every day during the night.  Voluntary move-ins/outs happen before midnight. A census of the mouse population is taken at midnight.
 
   An intern proposes the following model for the number of mice \(m_{t}\) at night \(t\).

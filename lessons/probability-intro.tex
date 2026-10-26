@@ -5,6 +5,7 @@
 Probability gives us a computable language to describe anything with a natural uncertainty, such as the effectiveness of a treatment or gene mutation.
 
 \begin{definition}[sample spaces, outcomes and events] \label{def:probability}
+  % slides: "Sample spaces and events"
   A \hlmain{sample space} is a set, typically denoted as \(\Omega\).  An element of \(\Omega\) is called an \hlmain{outcome}.   In other words, the sample space consists of all possible outcomes (of an experiment).
 
   An \hlmain{event} in a sample space \(\Omega\) is a subset of \(\Omega\).  Intuitively, \hlwarn{Edited: ``Intuitive'' \(\to\) ``Intuitively''} an event is a bunch of outcomes, and an event contains outcomes. \hlwarn{FIXME: redundant --- ``an event is a bunch of outcomes'' and ``an event contains outcomes'' state the same idea; suggest e.g.\ ``Intuitively, an event is a collection of outcomes.''}
@@ -14,33 +15,38 @@ In probability, the word \emph{event} should be understood as ``\emph{in the eve
 \blanks{5}
 
 \begin{example} \label{ex:probability-die-1}
+  % slides: "Rolling a six-sided die"
   Suppose we perform an experiment by rolling a six-sided die \emph{once}.  Describe the outcomes, the sample space and the event of rolling an even number. 
 
   \blanks{10}
 \end{example}
 
 Events and their sample space \emph{together} give us the language of probability.
-\begin{definition}[probability]
+\begin{definition}[probability] \label{def:probability-formula}
+  % slides: "Probability"
   The \hlmain{probability of an event} \(E\) in a sample space \(\Omega\) is defined to be
   \begin{equation} \label{eq:probability}
     \mathbb{P}(E) = \frac{\text{number of outcomes in \(E\)}}{\text{total number of outcomes in \(\Omega\)}}.
   \end{equation}
 \end{definition}
 A probability is a number \underline{\hspace{3in}}. To calculate a probability from first principles \hlwarn{Edited: ``the first principle'' \(\to\) ``first principles''} is to identify the sample space, the event and \emph{then} use Equation~\eqref{eq:probability}.
-\begin{example}
+\begin{example} \label{ex:probability-even-die}
+  % slides: "Probability of an even roll"
   Find the probability of getting an even number after rolling a six-sided die \emph{once}.
 
   \blanks*
 \end{example}
 \clearpage
 
-\begin{example}
+\begin{example} \label{ex:probability-two-coins}
+  % slides: "Flipping a coin twice"
   We flip a coin twice.  What is the probability that we get at least one tail?
 
   \blanks{20}
 \end{example}
 
-\begin{example}[human genetics]
+\begin{example}[human genetics] \label{ex:probability-genetics}
+  % slides: "Human genetics"
   Consider a simple genetic trait controlled by a single gene \(A\) which can be either dominant (denoted by \(A+\)) or recessive (denoted by \(A-\)).
 
   Humans carry two copies of most genes, one from each biological parent. Suppose a child inherits a trait from their parents who each carry \hlwarn{Edited: ``each carries'' \(\to\) ``each carry''} one dominant and one recessive gene. What is the probability that the child carries
@@ -53,13 +59,15 @@ A probability is a number \underline{\hspace{3in}}. To calculate a probability f
 \end{example}
 \clearpage
 
-\begin{exercise}[concept check]
+\begin{exercise}[concept check] \label{ex:probability-two-dice-sum}
+  % slides: "Two four-sided dice"
   We roll two four-sided dice, one blue and one red.  Assuming the faces are labelled \(1,2,3,4\), what is the probability that the sum is \(6\)?
 
   \blanks{15}
 \end{exercise}
 
-\begin{exercise}[concept check]
+\begin{exercise}[concept check] \label{ex:probability-two-bags}
+  % slides: "Two bags of marbles"
   Suppose we have two bags of marbles.  The first bag has a white and a black marble.  The second bag has a red, a blue and a green marble.
 
   Consider an experiment where we draw one marble from each bag.  Determine the sample space and find the probability of drawing a white and a green marble. 
@@ -67,7 +75,8 @@ A probability is a number \underline{\hspace{3in}}. To calculate a probability f
   \blanks{15}
 \end{exercise}
 
-\begin{exercise}[concept check]
+\begin{exercise}[concept check] \label{ex:probability-alleles}
+  % slides: "Inheriting alleles"
   Alleles are variants of genes that determine traits.  A gene that determines \hlwarn{Edited: ``Allele are'' \(\to\) ``Alleles are''; ``determine'' \(\to\) ``determines''} eye colour might have an allele for brown eyes and an allele for blue eyes.
 
   Suppose for a particular trait, an organism inherits \(0,1,2\) alleles \hlwarn{Edited: ``allele'' \(\to\) ``alleles''} from its mother and \(0\) or \(1\) alleles from its father, what is the probability that the organism inherits \(2\) alleles?
@@ -78,7 +87,8 @@ A probability is a number \underline{\hspace{3in}}. To calculate a probability f
 
 The following is a variant of a classic probability puzzle. You only need Definition~\ref{def:probability} to solve it. You do not need\footnote{Conditional probability only helps write the solution succinctly.} the concept of conditional probability.
 
-\begin{exercise}[challenge of the week]
+\begin{exercise}[challenge of the week] \label{ex:probability-three-houses}
+  % slides: "Challenge: three houses"
   Suppose a street has three houses all painted either black or white. It is known that one of them is painted black. What is the probability that the street has at least one white house?
 
   {\footnotesize The usual way to pose this puzzle goes like this. A family has three children. If we know one of the kids is a boy, what is the probability that the family has at least one girl?}
