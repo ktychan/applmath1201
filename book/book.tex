@@ -1,0 +1,43 @@
+%! TeX program = lualatex
+%
+% Course textbook: Applied Mathematics 1201B, Calculus and Probability with
+% Biological Applications.  Instructor edition (solutions shown).
+%
+% Build:   cd book && latexmk book.tex          (needs --shell-escape for minted;
+%                                                 see ./.latexmkrc)
+% Student edition without solutions:  latexmk book-student.tex
+%
+% The chapter files in ./chapters are generated from the markdown sources
+% (../book/*.md) by ./tools/md2tex.py.
+%
+\documentclass[11pt, letterpaper, oneside, openany]{book}
+\input{preamble}
+
+\title{Applied Mathematics 1201B\\[0.5ex]\large Calculus and Probability with Biological Applications}
+\author{Kelvin Chan \and Geoff Wild\\[1ex]\normalsize Department of Mathematics, University of Western Ontario}
+\date{}
+
+\begin{document}
+
+\frontmatter
+\maketitle
+\tableofcontents
+\subfile{chapters/index}
+
+\mainmatter
+\subfile{chapters/ch1}
+\subfile{chapters/ch2}
+\subfile{chapters/ch3}
+\subfile{chapters/ch4}
+\subfile{chapters/ch5}
+\subfile{chapters/ch6}
+\subfile{chapters/ch7}
+\subfile{chapters/ch8}
+
+% book/biology.md is a six-line orphan file that is not part of the published
+% MyST table of contents (myst.yml) and has no chapter heading of its own.  It
+% was converted to chapters/biology.tex; include it here once it has a home.
+% \appendix
+% \subfile{chapters/biology}
+
+\end{document}

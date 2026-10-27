@@ -1,0 +1,685 @@
+%! TeX program = lualatex
+% Converted from book/ch7.md by book/tools/md2tex.py (initial conversion).
+% This .tex file is the maintained source from now on; the converter is kept for provenance only.
+\documentclass[../book.tex]{subfiles}
+\begin{document}
+
+\chapter{Eigenvalues and Eigenvectors}\label{ch:eig}
+
+In this chapter, we focus on the following question. Given a square matrix \(A\), can we find a number \(\lambda\) and a non-zero vector \(\vec{v}\) such that \(A\vec{v} = \lambda \vec{v}\)?
+In other words, can we find examples where matrix-vector multiplication can be replaced by multiplication by a constant? This is called \emph{an eigenvalue problem}.
+
+At first glance, it might seem that the eigenvalue problem is unlikely to be connected to biology. However, its solution is relevant to anyone looking to model the dynamics of biological systems. Its solution is is also relevant to many modern data-driven modelling techniques.
+
+In the sections that follow, we develop the solution to the eigenvalue problem, then demonstrate how it can be applied to analyse the dynamics of age-structured populations. In a later chapter, we will see how we can use the solution to the eigenvalue problem to study systems of coupled differential equations.
+
+\section{Solving the eigenvalue problem}
+
+Given a square matrix \(A\) can we find a number \(\lambda\) and a non-zero vector \(\vec{v}\) such that \(A \vec{v}= \lambda \vec{v}\)? The short answer is yes. In general, we can find several such number-vector pairs. The numbers \(\lambda\) are called \emph{eigenvalues} and the corresponding vectors \(\vec{v}\) are called \emph{eigenvectors}.
+
+To find an eigenvalue-eigenvector pair we start with the central equation:
+\begin{equation}\label{eq:eig-1}
+A \vec{v} = \lambda \vec{v}.
+\end{equation}
+Subtracting \(\lambda \vec{v}\) from both sides of the previous line gives us
+\begin{equation}\label{eq:eig-2}
+A \vec{v} - \lambda \vec{v} = \vec{0}
+\end{equation}
+where \(\vec{0}\) is an \(n\)-dimensional vector containing only zeros. Our next move involves factoring \(\vec{v}\) out of the left side of our equation, and we will do this in a couple of steps. First we recognize that \(\vec{v}\) can be expressed as the product of the matrix
+\begin{equation}\label{eq:eig-3}
+I =
+\begin{bmatrix}
+  1 & 0 & \cdots & & &0 \\
+  0 & 1 & \cdots & && 0 \\
+  \vdots & & \ddots & & & \vdots \\
+         & & & & &0 \\
+  0 & \cdots &  &0 && 1
+\end{bmatrix}
+\end{equation}
+and \(\vec{v}\) itself; that is, \(\vec{v} = I  \vec{v}\). Thus, our equation becomes
+\begin{equation}\label{eq:eig-4}
+A \vec{v} - \lambda I \vec{v} = 0.
+\end{equation}
+Next, we right-factor \(\vec{v}\) from the left-hand side of the equation to get,
+\begin{equation}\label{eq:eig-5}
+(A - \lambda I) \vec{v} = \vec{0}.
+\end{equation}
+To understand the what is happening in the previous line, we must first recognize that
+\begin{equation}\label{eq:eig-6}
+\lambda  I =
+\begin{bmatrix}
+  \lambda & 0 & \cdots & & &0 \\
+  0 & \lambda & \cdots & && 0 \\
+  \vdots & & \ddots & & & \vdots \\
+         & & & & &0 \\
+  0 & \cdots &  &0 && \lambda
+\end{bmatrix},
+\end{equation}
+because multiplication of a matrix by a constant is carried out by multiplying each number in the matrix by the constant in the regular way. Second, we must recognize that \(A - \lambda I\) can be understood as a single matrix: addition and subtraction is defined for matrices of identical dimensions, and is carried out by adding/subtracting corresponding elements in the usual way. Finally, we must recognize that we have factored \(\vec{v}\) to the right of the terms in brackets because \(\vec{v} ( A - \lambda I)\) does not mean anything to us.
+
+At this point we have \((A - \lambda I)  \vec{v} = \vec{0}\). This tells us that the matrix \((A - \lambda I)\) maps the non-zero vector \(\vec{v}\) to the origin in the range. Of course any matrix, including \((A - \lambda I)\), maps the origin in the domain to the origin in the range. It follows that \((A - \lambda I)\) is not invertible and so it must be true that
+\begin{equation}\label{eq:eig-7}
+\det (A - \lambda I) = 0.
+\end{equation}
+in keeping with the test we encountered in the previous chapter. As we will see in the next example, the test  gives us an equation that we can solve to find the eigenvalues \(\lambda\).
+
+\begin{example} \label{eg:eigen1}
+Find the eigenvalues of the matrix \(A = \begin{bmatrix} 2 & 1 \\ 1 & -1\end{bmatrix}\).
+\end{example}
+
+% solution to eg:eigen1
+\begin{solution}
+We start by constructing \(A - \lambda  I\), and we find that
+\begin{equation}\label{eq:eig-8}
+A - \lambda I
+=
+\begin{bmatrix}
+  2 & 1 \\
+  1 &-1
+\end{bmatrix}
+-
+\begin{bmatrix}
+  \lambda & 0 \\ 0 & \lambda
+\end{bmatrix}
+=
+\begin{bmatrix}
+  2 - \lambda & 1 - 0 \\
+  1 - 0 & -1 - \lambda
+\end{bmatrix}
+=
+\begin{bmatrix}
+  2 - \lambda & 1 \\
+  1 & -(1 + \lambda)
+\end{bmatrix}.
+\end{equation}
+
+% Some of the matrix arithmetic applied in the previous is likely new to you. Notice, however, that the manipulations we have performed mirror the ones we learned for vectors. That is to say, we can multiply a matrix by constant by multiplying said constant by each entry found in the matrix, and we add/subtract one matrix to/from another of the same size by adding/subtracting corresponding entries.
+
+% With those basics out of the way,
+
+We now look to solve \(\det (A-\lambda I) = 0\) for the unknown \(\lambda\). This is equivalent to solving
+\begin{equation}\label{eq:eig-9}
+-(2-\lambda)(1+\lambda) - 1 = 0
+\quad\leftrightarrow\quad
+\lambda^2 - \lambda - 3 = 0 .
+\end{equation}
+Applying the quadratic formula we find that
+\begin{equation}\label{eq:eig-10}
+\lambda_1
+=
+\frac{1 + \sqrt{13}}{2}
+\quad
+\text{and}
+\quad
+\lambda_2
+=
+\frac{1 - \sqrt{13}}{2}
+\end{equation}
+are the eigenvalues of \(A\).
+\end{solution}
+
+Once the eigenvalues have been identified, we find their corresponding eigenvectors by substituting a known value of \(\lambda\) into \((A - \lambda I) \vec{v} = \vec{0}\) and then solving the resulting system of equations for the elements of \(\vec{v}\). In general, the solution to the system of equations yields an infinite number of solutions. Thus, an eigenvalue is associated with a \emph{family} of eigenvectors whose members all point in the same direction.
+
+\begin{example} \label{eg:eigen2}
+Find the eigenvectors of the matrix \(A = \begin{bmatrix}2 & 1 \\ 1 & -1\end{bmatrix}\).
+\end{example}
+
+% solution to eg:eigen2
+\begin{solution}
+After substituting the known eigenvalue \(\lambda_1 = \frac{1+\sqrt{13}}{2}\) into the equation \((A- \lambda I) \vec{v} = \vec{0}\) we get
+\begin{equation}\label{eq:eig-11}
+\begin{bmatrix}
+  2 - \frac{1+\sqrt{13}}{2} & 1 \\
+  1 & -1 - \frac{1+\sqrt{13}}{2}
+\end{bmatrix}
+\begin{bmatrix}
+  v_1 \\ v_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+  0 \\ 0
+\end{bmatrix}
+\end{equation}
+or equivalently
+\begin{equation}\label{eq:eig-12}
+\begin{array}{lcl}
+  (2 - \frac{1+\sqrt{13}}{2})  v_1 + v_2 &=& 0\\
+  v_1 - (1+\frac{1+\sqrt{13}}{2}) v_2 &=& 0
+\end{array}
+\end{equation}
+From the first of these equations we can conclude that
+\begin{equation} \label{eq:key}
+  v_2 = - \left(2 - \frac{1+\sqrt{13}}{2}\right) v_1
+\end{equation}
+and putting this into the second of the equations gets us
+\begin{equation}\label{eq:eig-13}
+\begin{aligned}
+  v_1 + \left(1+\frac{1+\sqrt{13}}{2}\right)
+  \left(2 - \frac{1+\sqrt{13}}{2}\right) v_1 = 0
+  \\
+  \leftrightarrow
+  -v_1  \left(
+    \underbrace{
+      -\left(2 - \frac{1+\sqrt{13}}{2}\right)
+    \left(1+\frac{1+\sqrt{13}}{2}\right) - 1}_{=\det (A - \lambda_1  I)}
+  \right) = 0.
+\end{aligned}
+\end{equation}
+
+As we saw in the previous example \(\det(A-\lambda_1 I)=0\) and so the second of our pair of equations boils down to the trivial statement \(0=0\). Because \(0=0\) for any value \(v_1\), we are free to choose whatever value of \(v_1\) we find most convenient. Setting \(v_1 = s\) and using \eqref{eq:key}, we find
+\begin{equation}\label{eq:eig-14}
+\vec{v}
+=
+s 
+\begin{bmatrix}
+  1 \\
+  - ( 2 - \frac{1+ \sqrt{13}}{2} )
+\end{bmatrix}
+=
+s 
+\begin{bmatrix}
+  1 \\
+  -  \frac{3 - \sqrt{13}}{2}
+\end{bmatrix}
+\end{equation}
+describes a family of eigenvectors associated with the eigenvalue \(\lambda_1 = \frac{1+\sqrt{13}}{2}\).
+
+The same procedure can be applied to show that
+\begin{equation}\label{eq:eig-15}
+\vec{v}=
+c 
+\begin{bmatrix}
+  1
+  \\
+  -  \frac{3 + \sqrt{13}}{2}
+\end{bmatrix}
+\end{equation}
+for any constant \(c\), is the family of eigenvectors associated with \(\lambda_2 = \frac{1 - \sqrt{13}}{2}\).
+\end{solution}
+
+\section{Complex eigenvalues and eigenvectors}
+
+Eigenvalues and eigenvectors can take complex values. A complex number \(z\) is written as \(a + i b\), where \(a\) and \(b\) are real numbers, and \(i\) satisfies \(i^2 = -1\). We often call \(a\) the \emph{real part of} \(z\), and \(b\) the \emph{imaginary part of} \(z\). We also sometimes make reference to the \emph{conjugate of} \(z\). When \(z= a+i b\) its conjugate is \(\bar z = a - i b\). The absolute value of a complex number is \(|z| = \sqrt{a^2+b^2}\) and so \(|z| = |\bar z|\).
+
+We add and subtract two complex numbers by adding and subtracting their real and imaginary parts, respectively. So,
+\begin{equation}\label{eq:eig-16}
+\begin{array}{lcl}
+  ( a + i b) + ( c + i d) &=& (a+c) + i (b+d) \\
+  ( a + i b) - ( c + i d) &=& (a-c) + i (b-d)
+\end{array}
+\end{equation}
+We multiply two complex numbers by using familiar distributive properties:
+\begin{equation}\label{eq:eig-17}
+(a+i b)(c+i d) 
+= a c + i a d + i b c + i^2 b d 
+= (a c - b d) + i (a d + b c)
+\end{equation}
+where we have used \(i^2=-1\). We can also divide one complex number by another. To do this, we define
+\begin{equation}\label{eq:eig-18}
+z^{-1} = \frac{1}{z} = \frac{\bar z}{|z|^2},
+\end{equation}
+since \(z z^{-1} = 1\). With this in mind, \(w/z\) can be understood as \(w  z^{-1}\) and carried out using the rules of multiplication.
+
+Let's now turn our attention to an example involving a matrix whose eigenvalues and eigenvectors take complex values.
+
+\begin{example} \label{eg:complex}
+Find the eigenvalues and eigenvectors of \(A= \begin{bmatrix}1 & -1 \\ 2 & 3\end{bmatrix}\).
+\end{example}
+% solution to eg:complex
+\begin{solution}
+As always we start by solving \(\det (A - \lambda I)=0\) for \(\lambda\). This equation simplifies to
+\begin{equation}\label{eq:eig-19}
+\lambda^2 - 4  \lambda + 5 = 0.
+\end{equation}
+From the quadratic formula we then get
+\begin{equation}\label{eq:eig-20}
+\lambda = \frac{4 \pm \sqrt{-4}}{2} = 2 \pm i.
+\end{equation}
+So \(\lambda = 2 + i\) and \(\bar \lambda = 2 -i\) are the eigenvalues of \(A\).
+
+To find the eigenvector corresponding to \(\lambda = 2+i\) we solve
+\begin{equation}\label{eq:eig-21}
+\begin{array}{lcl}
+  ( 1-(2+i) )  v_1 - v_2  &=& 0 \\
+  2 v_1 + (3 - (2+i)) v_2 &=& 0
+\end{array}
+\end{equation}
+keeping in mind that \(v_1\) and \(v_2\) can also take complex values. From the first equation, we know that
+\begin{equation}\label{eq:eig-22}
+v_2 
+= (1-(2+i))  v_1 
+= ( (1+i 0) - (2 + i) ) v_1
+=(-1-i) v_1.
+\end{equation}
+Substituting this identity into the second of the pair of equations we get
+\begin{equation}\label{eq:eig-23}
+2 v_1 + (1-i)(-1-i)  v_1 = 0
+\end{equation}
+which simplifies to \(0=0\) as expected. It follows that eigenvectors associated with \(\lambda=2+i\) belong to the family
+\begin{equation}\label{eq:eig-24}
+s 
+\begin{bmatrix}
+  1 \\
+  -1-i
+\end{bmatrix}
+\end{equation}
+where \(s\) is a constant.
+
+The same procedure shows that \(\begin{bmatrix}1 \\ -1 + i\end{bmatrix}\) defines the family of eigenvectors associated with \(\bar \lambda = 2-i\).
+\end{solution}
+
+The previous example illustrates a helpful piece of trivia. When the entries of \(A\) are real, any complex eigenvalues occur as conjugate pairs, \(\lambda\) and \(\bar \lambda\). Furthermore, if \(\vec{x}+i \vec{y}\) is an eigenvector associated with the eigenvalue \(\lambda\), then \(\vec{x} - i \vec{y}\) is an eigenvector associated with the eigenvalue \(\bar\lambda\).  In this case, both \(\vec{x}\) and \(\vec{y}\) are vectors with real entries only.
+
+When the eigenvalues of \(A\) are complex, the motion suggested by the linear vector field is rotational in nature. When the real part of the conjugate pair of eigenvalues is positive, as it was in Example \ref{fig:vf_rot}, the vector field carries us away from the origin (Figure \ref{fig:vf_rot}). When the real part of the conjugate pair of eigenvalues is negative, movement is toward the origin.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\linewidth]{standalones/plot-rotationVF.pdf}
+  \caption{A depiction of the vector field \(\vec{F}(\vec{x}) = A \vec{x}\) where \(A\) is the matrix in Example \ref{eg:complex}. The vector field suggests an anticlockwise movement away from the origin. Arrows have been rescaled.}
+  \label{fig:vf_rot}
+\end{figure}
+
+We can illustrate the points above further by considering the \emph{antisymmetric matrix},
+\begin{equation}\label{eq:eig-25}
+\begin{bmatrix}
+  a & -b\\
+  b & a
+\end{bmatrix}.
+\end{equation}
+The eigenvalues of this matrix are \(\lambda = a\pm i b\). Assuming \(a\) and \(b\) are not both zero, we can re-write the matrix as
+\begin{equation}\label{eq:eig-26}
+|\lambda |
+\begin{bmatrix}
+  a/|\lambda| & -b/|\lambda|\\
+  b/|\lambda| & a/|\lambda|
+\end{bmatrix}
+=
+|\lambda |
+\begin{bmatrix}
+  a/\sqrt{a^2+b^2} & -b/\sqrt{a^2+b^2}\\
+  b/\sqrt{a^2+b^2} & a/\sqrt{a^2+b^2}
+\end{bmatrix}.
+\end{equation}
+If we now think of \(a\) as the base of a right triangle, and \(b\) as its height, then the matrix can be re-written yet again as
+\begin{equation}\label{eq:eig-27}
+\begin{bmatrix}
+  |\lambda | & 0 \\
+  0 & |\lambda|
+\end{bmatrix}
+\begin{bmatrix}
+  \cos \theta & -\sin \theta\\
+  \sin \theta & \cos \theta
+\end{bmatrix}.
+\end{equation}
+where \(\theta\) is the angle adjacent to the side of the triangle of length \(a\) and opposite to the side of length \(b\) (Figure \ref{fig:triangle}). When expressed in this new way, it becomes clear that the antisymmetric matrix is the composition of two transformations: first, rotation through \(\theta\) radians, and second, multiplicative scaling by \(|\lambda|\) (Figure \ref{fig:comp_two}).
+
+\begin{figure}[htbp]
+  \centering
+  \missingfigure{../standalones/build/plot-triangle.pdf}
+  \caption{We can identify the entries of an antisymmetric matrix with the sides of a right triangle.}
+  \label{fig:triangle}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \missingfigure{../standalones/build/plot-antisymmetric-matrix.pdf}
+  \caption{(a) An antisymmetric matrix \(A\) can be understood as a composition of two linear transformations: a rotation through \(\theta\) radians, then a scaling by some factor. (b) The same interpretation can be used when visualizing the effect of \(A\) by applying \(A \vec{x}\) to \(\vec{x}\) as was done in Figure \ref{fig:vf_rot}.}
+  \label{fig:comp_two}
+\end{figure}
+
+\section{Application to models of age-structured populations}
+
+Let's now return to the model for the growth of an age-structured population presented in the previous chapter. Recall that model tracked the number of juveniles \(x_1(t)\), and the number of adults \(x_2(t)\) over time, measured in years. Recall also that
+\begin{equation}\label{eq:eig-28}
+\begin{bmatrix}
+  x_1 (t+1) \\ x_2(t+1)
+\end{bmatrix}
+=
+\begin{bmatrix}
+  0 & b \\ s_1 & s_2
+\end{bmatrix}
+\begin{bmatrix}
+  x_1 (t) \\ x_2(t)
+\end{bmatrix}.
+\end{equation}
+To make our discussion more concrete, we will suppose that the annual birth rate is \(b=6\) offspring per adult, and that the survival rates of juveniles and adults are \(s_1=1/4\) and \(s_2=1/2\), respectively. We will also suppose that, at time \(t=0\), we have \(x_1(0) = 2\) juveniles and \(x_2(0) = 4\) adults. So our model becomes
+\begin{equation}\label{eq:eig-29}
+\begin{bmatrix}
+  x_1 (t+1) \\ x_2(t+1)
+\end{bmatrix}
+=
+\begin{bmatrix}
+  0 & 6 \\ \frac{1}{4} & \frac{1}{2}
+\end{bmatrix}
+\begin{bmatrix}
+  x_1 (t) \\ x_2(t)
+\end{bmatrix},
+\quad \text{with}\quad
+\begin{bmatrix}
+  x_1(0) \\ x_2(0)
+\end{bmatrix}
+=
+\begin{bmatrix}
+  2 \\ 4
+\end{bmatrix}
+\end{equation}
+and our goal, now, is to turn the recursive statement into one that expresses \(x_1(t)\) and \(x_2(t)\) explicitly in terms of \(t\). As you might guess, the explicit model will require us to find the eigenvalues and eigenvectors of the matrix above.
+
+We now know that the eigenvalues of the matrix in our recursive model are those values of \(\lambda\) that satisfy
+\begin{equation}\label{eq:eig-30}
+\det
+\begin{bmatrix}
+  -\lambda & 6 \\ \frac{1}{4} & \frac{1}{2} - \lambda
+\end{bmatrix}
+=0
+\end{equation}
+or equivalently
+\begin{equation}\label{eq:eig-31}
+-\lambda \left( \frac{1}{2} - \lambda \right) - \frac{6}{4} = 0.
+\end{equation}
+The left-hand side of the previous equation simplifies to
+\begin{equation}\label{eq:eig-32}
+\lambda^2 - \frac{1}{2} \lambda - \frac{3}{2} = 
+\left(\lambda - \frac{3}{2}\right)\bigg(\lambda + 1\bigg) 
+\end{equation}
+and so the eigenvalues of the matrix are \(\lambda_1 = \frac{3}{2}\) and \(\lambda_2 = -1\).
+
+We can use an abbreviated method for finding the eigenvectors corresponding to each eigenvalue. Dotting the eigenvector with the first row of the matrix gives us
+\begin{equation}\label{eq:eig-33}
+6 v_2 = \lambda_i  v_1.
+\end{equation}
+So, if we choose \(v_1 = 6\), then \(v_2\) must be equal to \(\lambda_i\). This tells us that \(\lambda_1 = 3/2\) and \(\lambda_2 = -1\) are associated with eigenvectors
+\begin{equation}\label{eq:eig-34}
+\vec{v}_1 = 
+\begin{bmatrix}
+  6 \\ \frac{3}{2}
+\end{bmatrix}
+\quad
+\text{and}
+\quad
+\vec{v}_2 =
+\begin{bmatrix}
+  6 \\ -1
+\end{bmatrix}
+\end{equation}
+respectively.
+
+As we saw in the last chapter, the solution we seek can be written as
+\begin{equation}\label{eq:eig-35}
+\begin{bmatrix}
+  x_1 (t) \\ x_2(t)
+\end{bmatrix}
+=
+\underbrace{
+  \begin{bmatrix}
+    0 & 6 \\ \frac{1}{4} & \frac{1}{2}
+  \end{bmatrix}
+  \cdots
+  \begin{bmatrix}
+    0 & 6 \\ \frac{1}{4} & \frac{1}{2}
+  \end{bmatrix}
+}_{t\ \text{times}}
+\begin{bmatrix}
+  2\\4
+\end{bmatrix}.
+\end{equation}
+Though this technically gives us an explicit model, it is of limited utility, since we would need to carry out a lot of computations to make predictions far into the future (imagine trying to figure out the age distribution after even just 10 years). What we can do to make the solution more practicable is leverage the fact that, for eigenvectors, the complications of matrix-vector multiplication boil down to multiplication by a constant.
+
+To pull this off, we need to figure out how to express the initial distribution \(\begin{bmatrix} 2 \\ 4\end{bmatrix}\) as a linear combination of the eigenvectors. So, our next move, then, is to solve
+\begin{equation}\label{eq:eig-36}
+c_1 
+\begin{bmatrix}
+  6 \\ \frac{3}{2}
+\end{bmatrix}
++
+c_2
+\begin{bmatrix}
+  6 \\ - 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+  2 \\ 4
+\end{bmatrix},
+\end{equation}
+or equivalently,
+\begin{equation}\label{eq:eig-37}
+\begin{array}{lcl}
+  6 c_1 + 6 c_2 &=& 2, \\
+  \frac{3}{2} c_1 -\  c_2 &=& 4.
+\end{array}
+\end{equation}
+The second of the preceding pair of equations gives us \(c_2 = \frac{3}{2} c_1 - 4\). Substituting this into the first of the pair of equations gives \(c_1 = \frac{26}{15}\),
+and so
+\begin{equation}\label{eq:eig-38}
+\frac{26}{15}  
+\begin{bmatrix}
+  6 \\ \frac{3}{2}
+\end{bmatrix}
+-
+\frac{7}{5} 
+\begin{bmatrix}
+  6 \\ - 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+  2 \\ 4
+\end{bmatrix}.
+\end{equation}
+Returning to the less-than-useful solution, we use our new way of writing the initial conditions to obtain
+\begin{equation}\label{eq:eig-39}
+\begin{bmatrix}
+  x_1 (t) \\ x_2(t)
+\end{bmatrix}
+=
+\underbrace{
+  \begin{bmatrix}
+    0 & 6 \\ \frac{1}{4} & \frac{1}{2}
+  \end{bmatrix}
+  \cdots
+  \begin{bmatrix}
+    0 & 6 \\ \frac{1}{4} & \frac{1}{2}
+  \end{bmatrix}
+}_{t\ \text{times}}
+\left(
+  \frac{26}{15}  
+  \begin{bmatrix}
+    6 \\ \frac{3}{2}
+  \end{bmatrix}
+  -
+  \frac{7}{5} 
+  \begin{bmatrix}
+    6 \\ - 1
+  \end{bmatrix}
+\right).
+\end{equation}
+Using the fact that matrix-vector multiplication preserves linear combinations, we get
+\begin{equation}\label{eq:eig-40}
+\begin{bmatrix}
+  x_1 (t) \\ x_2(t)
+\end{bmatrix}
+=
+\underbrace{
+  \begin{bmatrix}
+    0 & 6 \\ \frac{1}{4} & \frac{1}{2}
+  \end{bmatrix}
+  \cdots
+  \begin{bmatrix}
+    0 & 6 \\ \frac{1}{4} & \frac{1}{2}
+  \end{bmatrix}
+}_{t-1\ \text{times}}
+\left(
+  \frac{26}{15}  
+  \begin{bmatrix}
+    0 & 6 \\ \frac{1}{4} & \frac{1}{2}
+  \end{bmatrix}
+  \begin{bmatrix}
+    6 \\ \frac{3}{2}
+  \end{bmatrix}
+  -
+  \frac{7}{5} 
+  \begin{bmatrix}
+    0 & 6 \\ \frac{1}{4} & \frac{1}{2}
+  \end{bmatrix}
+  \begin{bmatrix}
+    6 \\ - 1
+  \end{bmatrix}
+\right)
+\end{equation}
+which becomes
+\begin{equation}\label{eq:eig-41}
+\begin{bmatrix}
+  x_1 (t) \\ x_2(t)
+\end{bmatrix}
+=
+\underbrace{
+  \begin{bmatrix}
+    0 & 6 \\ \frac{1}{4} & \frac{1}{2}
+  \end{bmatrix}
+  \cdots
+  \begin{bmatrix}
+    0 & 6 \\ \frac{1}{4} & \frac{1}{2}
+  \end{bmatrix}
+}_{t-1\ \text{times}}
+\left(
+  \frac{26}{15}  
+  \left(\frac{3}{2}\right)  
+  \begin{bmatrix}
+    6 \\ \frac{3}{2}
+  \end{bmatrix}
+  -
+  \frac{7}{5} 
+  (-1) 
+  \begin{bmatrix}
+    6 \\ - 1
+  \end{bmatrix}
+\right)
+\end{equation}
+because \(\begin{bmatrix} 6 \\ 3/2\end{bmatrix}\) and \(\begin{bmatrix} 6 \\ -1\end{bmatrix}\) are eigenvectors associated with eigenvalues \(3/2\) and \(-1\), respectively. Going through the same steps once again, we to obtain
+\begin{equation}\label{eq:eig-42}
+\begin{bmatrix}
+  x_1 (t) \\ x_2(t)
+\end{bmatrix}
+=
+\underbrace{
+  \begin{bmatrix}
+    0 & 6 \\ \frac{1}{4} & \frac{1}{2}
+  \end{bmatrix}
+  \cdots
+  \begin{bmatrix}
+    0 & 6 \\ \frac{1}{4} & \frac{1}{2}
+  \end{bmatrix}
+}_{t-2\ \text{times}}
+\left(
+  \frac{26}{15}  
+  \left(\frac{3}{2}\right)^2  
+  \begin{bmatrix}
+    6 \\ \frac{3}{2}
+  \end{bmatrix}
+  -
+  \frac{7}{5} 
+  (-1)^2 
+  \begin{bmatrix}
+    6 \\ - 1
+  \end{bmatrix}
+\right).
+\end{equation}
+Repeating \(t-2\) more times leads us to
+\begin{equation}\label{eq:eig-43}
+\begin{bmatrix}
+  x_1 (t) \\ x_2(t)
+\end{bmatrix}
+=
+\left(
+  \frac{26}{15}  
+  \left(\frac{3}{2}\right)^t  
+  \begin{bmatrix}
+    6 \\ \frac{3}{2}
+  \end{bmatrix}
+  -
+  \frac{7}{5} 
+  (-1)^t 
+  \begin{bmatrix}
+    6 \\ - 1
+  \end{bmatrix}
+\right)
+\end{equation}
+which is a more practicable version of the explicit age-structured model.
+
+\section{Perron's theorem}
+
+In the limit as \(t\) becomes large, the predictions of the age-structured model we produced in the previous section come to be dominated by the larger of the two eigenvalues and its corresponding eigenvector. In other words, the ratio of juveniles to adults in the population is approximately \(6:\frac{3}{2}\) (or \(4:1\)), and the number of individuals in both age classes increases by a factor of \(\lambda_1 = \frac{3}{2}\) every year (Table \ref{tab:PF}). These findings are not coincidental; rather, they are a consequence of a well-known, and quite useful, result known as the Perron's theorem.
+
+\begin{figure}[htbp]
+  \centering
+  \missingfigure{../standalones/build/plot-perron.pdf}
+  \caption{Predictions arising from the age-structured model presented in the previous section. Over time, the ratio of juveniles to adults in the population converges to 4:1, and over time the numbers in each age class increase by a factor of \(3/2 = 1.5\). Convergence to these values is a consequence of the Perron-Frobenius theorem.}
+  \label{fig:perron}
+\end{figure}
+
+Perron's theorem tells us about \emph{positive matrices}, i.e. matrices whose entries are all strictly greater than zero. Specifically, if a  \(A\) is positive, then we are guaranteed of the following:
+
+\begin{itemize}
+  \item \(A\) has one eigenvalue that is greater than all others in absolute value, and we call this the \emph{dominant eigenvalue}, \(\rho\);
+  \item \(\rho\) is real, positive, and is associated with one (and only one) family of eigenvectors, represented by the \emph{dominant eigenvector}, \(\vec{u}\).
+  \item we can choose \(\vec{u}\) so that each of its entries is positive.
+  \item \(\vec{u}\) and multiples thereof are the only eigenvectors of \(A\) with elements that are all non-negative;
+  \item as \(t\) becomes large \(\underbrace{A \cdots A}_{t\ \text{times}} \vec{x}\) tends to some multiple of \(\vec{u}\).
+\end{itemize}
+
+Perron's theorem can be extended to include certain kinds of non-negative matrices\footnote{The extension to non-negative matrices is known as the Perron-Frobenius theorem,  in recognition of the mathematician who worked on this very important generalization.}.  A matrix is \emph{non-negative} if each of its entries is greater than, or equal to zero. In order to apply Perron's theorem to a non-negative matrix, that matrix must also be a primitive matrix. Saying that a non-negative matrix \(A\) is \emph{primitive} is equivalent to saying that some composition of the form
+\begin{equation}\label{eq:eig-44}
+\underbrace{A\cdots A}_{k \ \text{times}}
+\end{equation}
+can, itself, be represented as a positive matrix. Thus, Perron's theorem applies also to non-negative matrices that are primitive.
+
+The matrix we studied in the previous section is an example of a primitive matrix since applying the matrix twice to any vector \(\vec{x}\), like this
+\begin{equation}\label{eq:eig-45}
+\begin{bmatrix}
+  x_1(t+2) \\ x_2(t+2)
+\end{bmatrix}
+=
+\begin{bmatrix}
+  0 & 6 \\
+  1/4 & 1/2
+\end{bmatrix}
+\begin{bmatrix}
+  0 & 6 \\
+  1/4 & 1/2
+\end{bmatrix}
+\begin{bmatrix}
+  x_1(t) \\ x_2(t)
+\end{bmatrix}.
+\end{equation}
+is equivalent to multiplying the vector by a positive matrix, as follows
+\begin{equation}\label{eq:eig-46}
+\begin{bmatrix}
+  x_1(t+2) \\ x_2(t+2)
+\end{bmatrix}
+=
+\begin{bmatrix}
+  3/2 & 3 \\
+  1/8 & 7/4
+\end{bmatrix}
+\begin{bmatrix}
+  x_1(t) \\ x_2(t)
+\end{bmatrix}
+\end{equation}
+An example of a non-negative matrix that is not primitive is \(A = \begin{bmatrix} 0 & 1 \\ 1 & 0\end{bmatrix}\). In this case, applying the matrix an even number of times is equivalent to multiplying by \(I\), and applying the matrix an odd number of times is equivalent to applying \(A\) once.
+
+We can rule out primitivity of a matrix in those cases where the problem it models is reducible. In practice, a reducible model tracks irrelevant information. A reducible age-structured model, for example, would be one that tracked the number of deceased individuals. From a modelling perspective, deceased individuals are irrelevant because they are a demographic dead end. When a matrix models a scenario that cannot be reduced, we say that matrix is \emph{irreducible}.
+More formally, we can say that a matrix is irreducible if the corresponding network diagram allows us to travel from any node to any other node\footnote{In discrete mathematics we would say the network is \emph{strongly connected}.}. What's more, if we can travel from a given node to any other node in the network, then we can be sure that the matrix partner of the network is irreducible.
+
+We should also note that while we it is true that all primitive matrices are irreducible, it is not true that all irreducible matrices are primitive. This means that irreducibility, alone, is not enough to allow us to conclude anything about the primitivity of a given non-negative matrix. From a practical perspective, then, those who are looking to apply Perron's theorem to non-negative matrix models are well advised to verify primitivity first.
+
+\begin{figure}[htbp]
+  \centering
+  \missingfigure{../standalones/plot-age-structure-primitive.pdf}
+  \caption{An example of an age-structured population whose dynamics are captured using a primitive matrix.}
+  \label{fig:net}
+\end{figure}
+
+From a biological perspective, a primitive matrix would describe the dynamics of an age-structured population in which every individual, at any given time, is expected to still be able to produce descendants who will, eventually, spread across all age categories. For primitivity an individual's history is irrelevant; we care only about their future. An example of a primitive scenario appears in Figure \ref{fig:net}. As you can see by following the arrows in that figure, it is likely that an adult this year will have both juvenile descendants (its own offspring) and adult descendants (itself) next year. And, while juveniles this year will not be able to produce juveniles next year, there is a chance that they will be adults next year, and eventually have the breadth of descendants we seek.
+
+Notice that if we took away the adult-adult loop in Figure \ref{fig:net}, then generations would no longer mix and we would not be able to achieve the kind of distribution of descendants we need for the primitivity of the matrix to hold. After thinking in this way, we might begin to suspect that there exists a connection between primitivity and the structure of networks like those shown in Figure \ref{fig:net}. It turns out that those suspicions are well founded. Suppose we are given a network arising from an irreducible model. Suppose further that for each node we (a) identify every path through this network that begins and ends on that node, without traversing the same set of arrows twice (b) list the number of arrows we traverse along each of the paths we identify, and (c) calculate greatest common divisor (gcd) of each number listed. If the gcd we identified is 1 for every node in the network, then the corresponding irreducible matrix is primitive. Furthermore, if an irreducible matrix is primitive, then the gcd is 1 for every node in the corresponding network. This result gives a useful tool for determining whether a matrix is primitive or not, and ultimately whether the conclusions of Perron's theorem can be applied.
+
+\end{document}

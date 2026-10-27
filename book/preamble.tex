@@ -1,0 +1,166 @@
+% vim: ft=tex
+% Preamble for the course textbook (lualatex).  Loaded by book.tex.
+
+% ------------------------------------------------------------
+%           LAYOUT
+% ------------------------------------------------------------
+\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage{parskip}
+\usepackage{microtype}
+\usepackage[inline]{enumitem}
+\setlist{itemsep=0.25em, topsep=0.5em}
+
+% ------------------------------------------------------------
+%           MATH
+% ------------------------------------------------------------
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{cancel}
+\numberwithin{equation}{chapter}
+
+% ------------------------------------------------------------
+%           FONTS
+% ------------------------------------------------------------
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
+\setmonofont{Iosevka Term}[Scale=MatchLowercase]
+\setmathfont{STIX Two Math}
+\setmathfont[range=\int]{Latin Modern Math}
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\emptyset}{\varnothing}
+
+% ------------------------------------------------------------
+%           COLOURS (course scheme, see ../typography.tex.preamble)
+% ------------------------------------------------------------
+\usepackage[dvipsnames]{xcolor}
+\definecolor{main}{HTML}{007355}  % teal
+\definecolor{supp}{HTML}{82218B}  % purple
+\definecolor{attn}{HTML}{B8860B}  % dark gold
+\definecolor{warn}{HTML}{D20000}  % red
+\definecolor{link}{HTML}{1A5C9A}  % blue
+\newcommand{\hlmain}[1]{{\color{main}#1}}
+\newcommand{\hlsupp}[1]{{\color{supp}#1}}
+\newcommand{\hlattn}[1]{{\color{attn}#1}}
+\newcommand{\hlwarn}[1]{{\color{warn}#1}}
+
+\newcommand{\updatenote}{2}{
+  \textcolor{warn}{{#1} \longrightarrow {#2}}
+}
+% ------------------------------------------------------------
+%           GRAPHICS, TABLES, CODE
+% ------------------------------------------------------------
+\usepackage{graphicx}
+\graphicspath{{./}{../}}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta, positioning, calc}
+\usepackage{float}
+\usepackage{capt-of}   % \captionof{figure}{...} for figures inside boxes
+\usepackage{etoolbox}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{fontawesome5}
+\usepackage{csquotes}
+
+\usepackage{minted}
+\setminted{fontsize=\small, bgcolor=gray!5, breaklines, autogobble}
+\setminted[python]{python3}
+\newcommand{\code}[1]{\texttt{#1}}
+
+% placeholder for figures whose source file is not (yet) available
+\newcommand{\missingfigure}[1]{%
+  \fbox{\parbox[c][1.25in][c]{0.8\linewidth}{\centering\color{warn}%
+    \faExclamationTriangle{}~Missing figure\\[0.5ex]{\footnotesize\texttt{\detokenize{#1}}}}}}
+
+% ------------------------------------------------------------
+%           BOXES: admonitions and solutions
+% (environment names end in `box` because e.g. \danger is already a text symbol)
+% ------------------------------------------------------------
+\usepackage[most]{tcolorbox}
+% tcolorbox resets \parskip inside boxes; restore the parskip-package spacing
+\tcbset{
+  keepparskip/.style={before upper pre={\setlength{\parskip}{0.5\baselineskip plus 2pt}}},
+  every box/.style={keepparskip},
+  admonition/.style={
+    enhanced, breakable,
+    boxrule=0.6pt, arc=2pt, left=6pt, right=6pt, top=4pt, bottom=4pt,
+    fonttitle=\bfseries,
+  },
+}
+\newtcolorbox{attentionbox}[1][]{admonition, colback=attn!5, colframe=attn,
+  title={\faExclamationCircle{}~Attention\ifstrempty{#1}{}{: #1}}}
+\newtcolorbox{dangerbox}[1][]{admonition, colback=warn!5, colframe=warn,
+  title={\faExclamationTriangle{}~Danger\ifstrempty{#1}{}{: #1}}}
+\newtcolorbox{warningbox}[1][]{admonition, colback=warn!5, colframe=warn,
+  title={\faExclamationTriangle{}~Warning\ifstrempty{#1}{}{: #1}}}
+\newtcolorbox{notebox}[1][]{admonition, colback=link!5, colframe=link,
+  title={\faInfoCircle{}~Note\ifstrempty{#1}{}{: #1}}}
+\newtcolorbox{tipbox}[1][]{admonition, colback=main!5, colframe=main,
+  title={\faLightbulb{}~Tip\ifstrempty{#1}{}{: #1}}}
+\newtcolorbox{importantbox}[1][]{admonition, colback=supp!5, colframe=supp,
+  title={\faExclamationCircle{}~Important\ifstrempty{#1}{}{: #1}}}
+\newtcolorbox{cautionbox}[1][]{admonition, colback=attn!5, colframe=attn,
+  title={\faExclamationTriangle{}~Caution\ifstrempty{#1}{}{: #1}}}
+\newtcolorbox{hintbox}[1][]{admonition, colback=main!5, colframe=main,
+  title={\faLightbulb{}~Hint\ifstrempty{#1}{}{: #1}}}
+\newtcolorbox{seealsobox}[1][]{admonition, colback=link!5, colframe=link,
+  title={\faBookOpen{}~See also\ifstrempty{#1}{}{: #1}}}
+
+\newtcolorbox{solutionbox}{
+  enhanced, breakable, blanker,
+  borderline west={2pt}{0pt}{main},
+  left=10pt, top=2pt, bottom=2pt,
+  before upper={\textbf{\color{main}Solution.}\enspace},
+}
+
+% The `solution` environment is handled by the comment package so that the
+% student edition can drop solutions entirely (see book-student.tex).
+\usepackage{comment}
+\ifdefined\hidesolutions
+  \excludecomment{solution}
+\else
+  \specialcomment{solution}{\begin{solutionbox}}{\end{solutionbox}}
+\fi
+
+% ------------------------------------------------------------
+%           LINKS AND CROSS REFERENCES (load last)
+% ------------------------------------------------------------
+\usepackage[hidelinks, pdfusetitle]{hyperref}
+\usepackage[capitalise, noabbrev, nameinlink]{cleveref}
+\crefname{box}{Box}{Boxes}
+
+% ------------------------------------------------------------
+%           THEOREM-LIKE ENVIRONMENTS
+% ------------------------------------------------------------
+% One shared counter per chapter, as in the guided notes.
+% Defined AFTER cleveref so that \cref says "Example", not "Statement".
+\theoremstyle{definition}
+\newtheorem{stmt}{Statement}[chapter]
+\newtheorem{thm}[stmt]{Theorem}
+\newtheorem{definition}[stmt]{Definition}
+\newtheorem{example}[stmt]{Example}
+\newtheorem{exercise}[stmt]{Exercise}
+\tcolorboxenvironment{definition}{enhanced, breakable, blanker,
+  borderline west={2pt}{0pt}{supp}, left=10pt, top=2pt, bottom=2pt}
+\tcolorboxenvironment{example}{enhanced, breakable, blanker,
+  borderline west={2pt}{0pt}{gray!60}, left=10pt, top=2pt, bottom=2pt}
+\tcolorboxenvironment{exercise}{enhanced, breakable, blanker,
+  borderline west={2pt}{0pt}{attn}, left=10pt, top=2pt, bottom=2pt}
+% cleveref records labels of the shared counter as type `stmt`; alias the
+% counter to the environment's own type while inside each environment.
+\AtBeginEnvironment{thm}{\crefalias{stmt}{thm}}
+\AtBeginEnvironment{definition}{\crefalias{stmt}{definition}}
+\AtBeginEnvironment{example}{\crefalias{stmt}{example}}
+\AtBeginEnvironment{exercise}{\crefalias{stmt}{exercise}}
+\crefname{thm}{Theorem}{Theorems}
+\crefname{definition}{Definition}{Definitions}
+\crefname{example}{Example}{Examples}
+\crefname{exercise}{Exercise}{Exercises}
+\crefname{stmt}{Statement}{Statements}
+
+\usepackage{subfiles}

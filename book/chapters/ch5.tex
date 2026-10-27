@@ -1,0 +1,414 @@
+%! TeX program = lualatex
+% Converted from book/ch5.md by book/tools/md2tex.py (initial conversion).
+% This .tex file is the maintained source from now on; the converter is kept for provenance only.
+\documentclass[../book.tex]{subfiles}
+\begin{document}
+
+\chapter{Random Variables and Their Applications}\label{ch:rv}
+
+Biologists typically work with numbers, not chance events. They have some idea about how a particular living system works in theory, and they gather quantitative data about that system in order to either support or refute the hypotheses they have established. While on duty, biologists rarely flip coins and roll dice.
+
+That said, the numbers that make up a biologist's data set can still be influenced by chance, and the story the numbers will ultimately tell is not at all certain. One cannot say, therefore, that the ideas from probability theory have no relevance to the biologist's day-to-day activities. In order to make probability theory relevant to lab- or field-based studies we need to establish a bridge from the world of ``outcomes'' and ``events'' to one in which numbers take centre stage. As we will see, random variables allow us to create this bridge.
+
+In this chapter we learn about what a random variable actually is, we find out how random variables can be modelled with a computer, and we find out how to use random variables to arrive at data-driven conclusions in the face of uncertainty.
+
+\section{What is a Random Variable?}
+
+In many cases we are not as interested in the outcomes of a particular experiment as we are in functions of those outcomes. A function \(X\) that maps the sample space \(\Omega\) to the real numbers is called \emph{a random variable}. For the experiment in which we flip a fair coin, we have \(\Omega = \{ \text{heads}, \text{tails}\}\) and we can define a random variable \(X\) on this set as follows:
+\begin{equation}\label{eq:rv-1}
+X(\omega)
+=
+\begin{cases}
+	0 & \text{if}\ \omega = \text{``heads,''}\\
+	1 & \text{if}\ \omega = \text{``tails.}
+\end{cases}
+\end{equation}
+
+In order for \(X\) to officially qualify as a random variable it must be true that, for any interval of the real line, the set of outcomes that end up in this interval after being run through \(X\) corresponds to an event. This point might seem unduly technical, but it allows us to apply ideas presented earlier in the chapter to our discussions about random variables going forward. Staying with the coin-flipping example, consider the set \(\{ \omega \in \Omega : X(\omega) \in (-\frac{1}{2}, \pi) \}\). In words, this is the set of outcomes in the sample space that end up somewhere in the open interval \((-\frac{1}{2}, \pi)\) after being run through the function \(X\). This set can also be understood as the event we have flipped either ``heads'' or ``tails.'' Consequently, we can assign a probability to the set in question, and in this case the result of doing so is
+\begin{equation}\label{eq:rv-2}
+\mathbb{P} \left( \{ \omega \in \Omega : X(\omega) \in (-\frac{1}{2}, \pi) \} \right) = 1.
+\end{equation}
+In practice, we will abbreviate the set \(\{ \omega \in \Omega : X(\omega) \in (a, b) \}\) as \(\{ X(\omega) \in (a, b) \}\) or sometimes even as \(a < X < b\).
+
+The fact that intervals of the real line can be translated into events puts us on solid ground when it comes to defining the \emph{cumulative distribution function} of a random variable. The cumulative distribution function of \(X\) is defined as
+\begin{equation}\label{eq:rv-3}
+F(x) = \mathbb{P} \{ -\infty < X \leq x \}.
+\end{equation}
+It can be shown that \(F\) is non-decreasing and right-continuous, with \(\displaystyle\lim_{x\to\infty} F(x) = 1\) and \(\displaystyle\lim_{x\to-\infty} F(x) = 0\).
+
+\begin{example} \label{eg:cdf1}
+Determine the cumulative distribution function of the random variable \(X\) we defined above and plot it.
+\end{example}
+
+% solution to eg:cdf1
+\begin{solution}
+For every value of \(x\) that is strictly less than \(0\), the event \(\{ X \in (-\infty, x]\}\) has probability zero: no outcome maps to the interval \((-\infty, x]\) so the event \(\{ X \in (-\infty, x]\}\) is the empty set. We conclude that \(F(x)  = 0\) for all values of \(x < 0\).
+
+One of the two equally-likely outcomes of the experiment maps to \((-\infty, x]\) under \(X\) when \(x\) is greater than or equal to \(0\) and strictly less than one.  We conclude that \(F(x) = \frac{1}{2}\) when \(0 \leq x < 1\).
+
+All outcomes map to \((-\infty, x]\) under \(X\) when \(x\) is greater than or equal to \(1\). Thus, \(F(x) = 1\) when \(x \geq 1\).
+
+Combining our observations gives us
+\begin{equation}\label{eq:rv-4}
+F(x) 
+= 
+\begin{cases}
+0 & x<0 \\
+\frac{1}{2} & 0 \leq x < 1 \\
+1 & x \geq 1
+\end{cases} 
+\end{equation}
+as the cumulative distribution function for the random variable \(X\). The plot of \(X\) below highlights the features of \(F\) we have already identified.
+
+\begin{center}\missingfigure{../standalones/build/plot-cdf.pdf}\end{center}
+\end{solution}
+
+\section{Discrete and Continuous Random Variables}
+
+A \emph{discrete random variable} is one whose the range consists only of a discrete set of numbers. The random variable \(X\) that we introduced for the coin-flipping experiment above is discrete because its range is the discrete set \(\{ 0, 1\}\).  In general, a discrete random variables may have a range that is infinite---perhaps something like, \(\{ 2, 4, 6, 8, \ldots \}\). In this course, though, we will (try our best to) restrict attention to those discrete random variables whose ranges are finite.
+
+For a discrete random variable \(X\) with range \(\{ x_1, x_2, x_3, \ldots \}\), we can define the event \(E_j\) as \(\{ \omega\in \Omega : X(\omega) = x_j\}\), or simply \(X=x_j\) for short. From here we can define the \emph{probability mass function} for \(X\) as
+\begin{equation}\label{eq:rv-5}
+p(x)
+=
+\begin{cases}
+  \mathbb{P}( X = x_j ) & \text{if}\ x = x_j \\
+  0 & \text{otherwise.}
+\end{cases}
+\end{equation}
+The graph of the probability mass function associated with the discrete \(X\) introduced in our coin toss example is presented in Figure \ref{fig:pmf}.
+Note that the cumulative distribution function for discrete random variable \(X\) can be expressed as \(F(x) = \displaystyle\sum_{j=1}^n p(x_j)\) when \(x_n \leq x < x_{n+1}\), where we have assumed that the elements of \(\{ x_1, x_2, x_3, \ldots\}\) have been arranged in increasing order.
+
+\begin{figure}[htbp]
+  \centering
+  \missingfigure{../standalones/build/plot-pmf.pdf}
+  \caption{The probability mass function associated with the discrete random variable \(X\) defined for the coin-tossing example presented earlier in the section.}
+  \label{fig:rv-1}
+\end{figure}
+
+A \emph{continuous random variable} is one for which there exists a non-negative function \(f(x)\), called the \emph{probability density function} of \(X\), such that
+\begin{equation}\label{eq:rv-6}
+\mathbb{P} (  X \in I ) = \int_I f(x) dx
+\end{equation}
+where \(I\) is any interval, and
+\begin{equation}\label{eq:rv-7}
+\int_{-\infty}^{\infty} f(x) dx = 1.
+\end{equation}
+
+The infinite limits of integration in the previous line are likely unfamiliar to you. If so, there is no need for worry. The key point is that the total area under the graph of \(f (x)\) is equal to \(1\). Perhaps surprisingly, that can happen even when the tails of the graph of a function extend to infinity, provided those tails tend to zero quickly enough. An example of a probability density function is presented in Figure \ref{fig:pdf}.
+
+\begin{figure}[htbp]
+  \centering
+  \missingfigure{../standalones/build/plot-pdf.pdf}
+  \label{fig:pdf}
+\end{figure}
+
+An example of a probability density function for a continuous random variable \(X\). The function is non-negative, and the area under the curve is exactly \(1\). Importantly the height of function does not give the probability that \(X=x\). This is particularly evident for \(x=0\) where the height of the graph is \(2\).
+
+Importantly, the probability that a continuous random variable \(X\) takes on a specific value, say \(X=a\), is itself zero. This follows from the fact that \(\mathbb{P}( X=a )=\int_a^a f(x) dx = 0\), and it underscores the point that we should not be tempted to interpret \(f(x)\) as the probability of the event, \(X=x\).
+
+We can also see that the cumulative distribution function for a continuous random variable can be expressed as \(F(a) = \int_{-\infty}^a f(x) dx\). Assuming that \(f(x)\) is continuous on \((-\infty, b]\), where \(b>a\), and applying the Fundamental Theorem of Calculus tells us that \(F'(a) = f(a)\). In other words, for a continuous random variable with continuous density function, said probability density function is the derivative of the cumulative distribution function. We can, therefore, interpret \(f(x)\) as the rate at which probability accumulates at \(x\).
+
+\section{Pseudorandom Variables and Simulation}
+
+We can generate a sequence of independent\footnote{A pair of random variables \(X\) and \(Y\) is independent if \(\mathbb{P} ( \{ X \leq x\} \cap\{  Y \leq y\} )\) is equal to \(\mathbb{P}(X \leq x) \mathbb{P}(Y\leq y)\) for all possible \(x\) and \(y\)} random variables using recursions similar to those encountered in Chapter 1. We start by selecting positive integer \(a\) and non-negative integers \(b\) and \(c\). We then use these numbers to construct the recursive model
+\begin{equation}\label{eq:rv-8}
+u_t = a u_{t-1} + b, \quad u_0 = c.
+\end{equation}
+Before we can start generating, though, we must ``wrap'' the sequence that results from iterating the recursion using modular arithmetic. In modular arithmetic we identify a particular integer \(m>1\) as the \emph{modulus} and we make equivalent any two positive integers whose remainders are the same when divided by \(m\). For example, we would say \(4\) and \(7\) are \emph{equivalent mod \(3\)}, because \(3\) goes into \(4\) once with remainder 1, and \(3\) goes into \(7\) twice also with remainder \(1\). To remind ourselves of the fact that modular arithmetic is at work we write
+\begin{equation}\label{eq:rv-9}
+u_t = ( a u_{t-1} + b) \mod m, \quad u_0 = c.
+\end{equation}
+We call expressions like those in the previous line \emph{random number generators} because they tend to scatter the various values of \(u_t\) over the interval \([0,m]\) in a seemingly random way. Since there is a deterministic rule that underlies what we are doing here, we cannot say that the output from the generator is truly random; consequently, we refer to the output as \emph{pseudorandom} instead.
+
+As a simple example of how this generator works, pick \(a=3\), \(b=1\), \(c=1\), and set the modulus \(m=8\). Using a spreadsheet, we see that the sequence of numbers generated by our choice is \(1, 4, 5, 0, 1, 4, 5, 0, \ldots\) (Figure \ref{fig:excel}). This fails to live up to hype I tried to create above, as the sequence is clearly patterned. The lesson, here, is that we can make poor choices for \(a, b, c\) and \(m\). Better choices include large values of \(m\) that are either powers of \(2\) or are prime numbers. If we re-run the generator using \(m=2^6 = 128\) rather than \(8\), for instance, we see why one might mistake the output as random. The famous\footnote{Only famous in certain circles.} \emph{Numerical Recipes} series of books recommends
+\begin{equation}\label{eq:rv-10}
+a = 1 664 525, \quad b = 1 013 904 223 \quad m = 2^{32}.
+\end{equation}
+Even though this choice is not perfect, for our purposes it will be sufficient.
+
+\begin{dangerbox}[TODO]
+Geoff had some excel spreadsheets here.
+\end{dangerbox}
+
+Once we have a way to generate a sequence of independent pseudorandom numbers, we can transform them into numbers on the unit interval by dividing by \(m\). We then have reasonable model of a sequence of independent observations from a continuous \emph{uniform distribution} on \((0,1)\) (Figure \ref{fig:histogram}). In other words, \(U_t = u_t/m\) behaves like a random variable with cumulative density function
+\begin{equation}\label{eq:rv-11}
+F(x) = 
+\begin{cases}
+0 & x< 0\\
+x & 0\leq x\leq 1\\
+1 & x > 1
+\end{cases}
+\end{equation}
+and probability density function
+\begin{equation}\label{eq:rv-12}
+f(x)
+= 
+\begin{cases}
+1 & 0 \leq x \leq 1\\
+0 &\text{otherwise.}
+\end{cases}
+\end{equation}
+From here we can do something really interesting from a calculus perspective, as the next example is meant to show.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\linewidth]{standalones/histogram_rng.pdf}
+  \caption{A histogram summary of \(10 000\) numbers output by the random number generator with \(a=1 664 525\), \(b=1 013 904 223\), \(m=2^{32}\) and \(c=0\). Random number were normalized by dividing by \(m\). Vertical axis shows normalized counts for each subinterval of \((0,1)\) considered (solid line), and so reflects the density of observations therein. For comparison, the probability density function of a uniform random variable on \((0,1)\) is superimposed on the histogram (dashed purple line). The pseudorandom numbers, divided by \(m\), fill the unit interval in the same way uniform random variables would.}
+  \label{fig:histogram}
+\end{figure}
+
+\begin{example} \label{eg:monte-carlo}
+Approximate \(\int_{-1}^{1} e^{-x^2} dx\).
+\end{example}
+
+% solution to eg:monte-carlo
+\begin{solution}
+The given integral does not have a formula in terms of elementary functions. However, we can use a probabilistic method to approximate the given definite integral.
+
+We generate pseudorandom to solve the problem. The basic strategy is best explained using the figure below:
+
+\begin{center}
+  \missingfigure{../standalones/build/plot-monte-carlo.pdf}
+  \label{fig:monte-carlo}
+\end{center}
+
+We generate a long sequence of random numbers, uniformly distributed on the unit interval as described above. We then pair successive numbers in the sequence, say \(U_t\) and \(U_{t+1}\) to create random coordinates \(X = 2U_t - 1\) and \(Y=U_{t+1}\). The pair \((X,Y)\) falls somewhere inside the dotted rectangle shown in the figure. We can mark the pair if it also falls below the graph of \(e^{-x^2}\). If we take the fraction of marked pairs and multiply it by the area of the rectangle we will get an estimate of the area under the curve, since pairs will be spread evenly over the rectangle itself.
+
+We can carry out our calculation using a spreadsheet.
+
+The additions to the spreadsheet below show that we next take every other \(U\) value and map it to \([-1,1]\) to create \(X\). The values of \(X\) alternate with values of \(Y\) that are simply set equal to their corresponding \(U\) value. We then pair up \(X\) and \(Y\) values as suggested by the shading.
+
+A given pair of \(X\) and \(Y\) values lies below the graph of \(e^{-x^2}\) if and only if \(e^{-X^2}>Y\). When \(e^{-X^2}>Y\) we record a success in a separate column as a \(1\); otherwise we record a value of \(0\).
+
+Summing the column containing only \(1\)s and \(0\)s tells us the total number of successes. By dividing the total number of success by the total number of pairs we determine the fraction of pairs that fell below the curve. Multiplying this fraction by the total area of the rectangle (which happens to be \(2\)) gives us an estimate of the definite integral.
+
+Careful copy-and-pasting allows us to generate 50 pairs by continuing the pattern to line 102 of the spreadsheet. Summing the final column and dividing by 50 gives \(0.7\) and so the estimate of the definite integral is \(1.4\) which is close to its true value of about \(1.493648266\). Increasing the number of random pairs generated results in an even better match.
+\end{solution}
+
+\section{Expectation and Variance}
+
+When faced with the uncertainty associated with a particular random variable, it is natural to try to anticipate what its value will be, say, on average. We can scratch that itch, mathematically, using the notion of expectation.
+
+For a discrete random variable, we define the \emph{expectation of \(X\)} as
+\begin{equation}\label{eq:rv-13}
+E(X) = \sum_j x_j  p(x_j) 
+\end{equation}
+provided the sum exists\footnote{If the range of \(X\) is infinite then the sum is a series which may diverge.}. You might recognize the expectation of \(X\) as a kind of weighted average; and if so, good eye! The expectation is indeed a weighted average, with the weights coming from the appropriate corresponding probability.
+
+For a continuous random variable, the expectation of \(X\) is defined as
+\begin{equation}\label{eq:rv-14}
+E(X) =
+\int\limits_{-\infty}^\infty x f(x) dx
+\end{equation}
+again provided the integral exists. In this course, you will only compute expectations using density functions defined over bounded regions of the real line, like the interval \([a,b]\). In those cases, \(E(X) = \int_a^b x f(x) dx\).
+
+We can also determine the expectation of any function \(g\) of a discrete or continuous the random variable. In the discrete case we have
+\begin{equation}\label{eq:rv-15}
+E(g(X)) = \sum_j g(x_j) p(x_j)
+\end{equation}
+provided the sum exists, whereas in the continuous case we have
+\begin{equation}\label{eq:rv-16}
+E(g(X)) = \int\limits_{-\infty}^\infty g(x) f(x) dx
+\end{equation}
+again, provided the integral exists.
+
+One function that receives a lot of attention in probability theory is \(g(X) = (X - E(X))^2\). The attention is not misplaced, because
+\begin{equation}\label{eq:rv-17}
+E(g(X)) = E( (X-E(X))^2  )
+\end{equation}
+tells us how variable \(X\) is, on average. In fact, we call \(E( (X-E(X))^2  )\) the \emph{variance of \(X\)}, and we write it as \(\text{Var}(X)\) for short.
+
+\begin{example} \label{eg:uniform}
+If \(X\) is a continuous random variable with a uniform distribution on the  interval \([0,1]\), find \(E(X)\) and \(\text{Var}(X)\).
+\end{example}
+
+% solution to eg:uniform
+\begin{solution}
+We have see that the probability density function for this kind of random variable is
+\begin{equation}\label{eq:rv-18}
+f(x)
+=
+\begin{cases}
+    1 &, \text{if } 0 \le  x \le 1\\
+    0 &, \text{otherwise}.
+\end{cases}
+\end{equation}
+Applying the definition of expectation we arrive at
+\begin{equation}\label{eq:rv-19}
+E(X) = \int_{-\infty}^\infty x f(x) dx = \int_0^1 x dx = \frac{1}{2}.
+\end{equation}
+
+It should be emphasized that, when the domain of \(f(x)\) is bounded, the expectation is not always found at its midpoint.
+
+Applying the definition of variance we get
+\begin{equation}\label{eq:rv-20}
+\begin{aligned}
+  \text{Var}(X)
+  &= E( (X-E(X))^2 ) \\
+  &= \int_{-\infty}^{\infty} \left( x - \frac{1}{2} \right)^2 f(x) dx \\
+  &= \int_{0}^{1} \left( x - \frac{1}{2} \right)^2 dx = \frac{1}{12}.
+\end{aligned}
+\end{equation}
+\end{solution}
+
+\section{Working with Data}
+
+Biologists collect data to cope with the uncertainty they have about the variable quantities they encounter in the field or in the laboratory. We could imagine, for instance, an ecologist or physiologist collecting data \(\mathcal{X}_1, \ldots, \mathcal{X}_n\) to gain some insights into a quantity that is, itself, modelled as a random variable, \(X\).
+
+Once collected, data can be summarized in a variety of ways. One common summary statistic is the \emph{sample mean}
+\begin{equation}\label{eq:rv-21}
+\bar{\mathcal{X}} = \frac{1}{n} \sum_{j=1}^{n} \mathcal{X}_{j}
+\end{equation}
+which is used as an estimate of the expectation of \(X\). Another, common summary statistic is the \emph{sample variance}
+\begin{equation}\label{eq:rv-22}
+s^2 = \frac{1}{n-1} \sum_{j=1}^n \left( \mathcal{X}_j - \bar{\mathcal{X}} \right)^2
+\end{equation}
+which estimates the variance of \(X\). The next example takes us through the calculation of the sample mean and sample variance.
+
+\begin{example} \label{eg:sample-stats}
+Concerns have been raised that an experimental drug will result in either weight loss or weight gain. To test the idea, the drug was administered to twelve rats. The weight gain experienced by each rat, \(\mathcal{X}_j\), was recorded in the table below.
+
+Use the data to calculate the sample mean and the sample variance (from \cite{zar}).
+
+\begin{center}
+  \begin{tabular}{cc}
+    \toprule
+    \(j\) & \(\mathcal{X}_{j}\) \\
+    \midrule
+    1 & \( 1.7\) \\
+    2 & \( 0.7\) \\
+    3 & \(-0.4\) \\
+    4 & \(-1.8\) \\
+    5 & \( 0.2\) \\
+    6 & \( 0.9\) \\
+    7 & \(-1.2\) \\
+    8 & \(-0.9\) \\
+    9 & \(-1.8\) \\
+    10 & \(-1.4\) \\
+    11 & \(-1.8\) \\
+    12 & \(-2.0\) \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+
+\textbf{No one} in 2025 handles data by a table. Data is typically store in a database and retrieved by code. The following python code store the above table of data in a variable called \code{x}.
+
+\begin{minted}{python}
+x = [ 1.7, 0.7, -0.4, -1.8, 0.2, 0.9, -1.2, -0.9, -1.8, -1.4, -1.8, -2.0 ]
+\end{minted}
+\end{example}
+
+% solution to eg:sample-stats
+\begin{solution}
+Summing the data gives us \(\displaystyle\sum_{j=1}^{12} \mathcal{X}_j = -7.8\). Dividing the sum by \(n=12\) gives us \(\bar{\mathcal{X}}=\dfrac{-0.78}{12} =-0.65\) grams.
+
+The sample statistics are calculated using their formulas.
+
+\begin{minted}{python}
+x_mean = sum(x) / len(x)
+x_variance = sum( (x_i - x_mean)**2 for x_i in x ) / (len(x) - 1)
+\end{minted}
+
+If we were to perform the calculations by hand, we would get
+\begin{equation}\label{eq:rv-23}
+\bar{X} = 17.25\text{ grams} \quad\text{and}\quad s^{2} = \frac{17.25}{11} \text{ grams}^{2}.
+\end{equation}
+Notice that the unit for variance has a square.
+\end{solution}
+
+It is difficult to justify conclusions about quantities like \(X\) based on summary statistics alone. We might, for instance, be tempted to conclude that the sample mean calculated in the previous example implies that concerns about the experimental drug are founded. Specifically, we might conclude that weight loss is a side effect of the drug since \(\bar{\mathcal{X}} =-0.65\) is negative. Such a conclusion, however, ignores the possibility that the sample mean of \(-0.65\) arose by chance and that the drug actually has no effect on weight. To put it another way, jumping to such a conclusion based on summary statistics alone disregards the possibility that we have made a type-I error. In the next example we use simulation to model the probability that, by concluding a drug-induced change in weight occurs, we would have committed a type-I error.
+
+\begin{example} \label{eg:ttest}
+If we use the data in the previous example to conclude that an experimental drug changes a rat's weight, then what is the probability that we have made a type-I error?
+\end{example}
+
+% solution to eg:ttest
+\begin{solution}
+We treat the data set resulting from the experiment as one element of an infinite sample space \(\Omega\). The other elements of \(\Omega\) represent the alternative data sets we might have observed had we repeated the experiment itself. Assuming that all data sets in \(\Omega\) are equally likely to have been observed, we can estimate the probability of a type-I error by simulating a large number of replicate experiments, then counting the number of false positives that occur. While the suggestion seems simple enough, some care is required when creating the simulation model.
+
+We will simulate one replicate of the experiment by generating \(n=12\) pseudorandom variables. In keeping with the idea that we are counting false positives, we must work under the assumption that the drug has no effect. This means that the pseudorandom variables we generate must model random ones that follow a distribution with expectation \(0\) (zero change in weight). We know how to generate uniformly-distributed variables on the unit interval. By doubling each these uniform variables, subtracting \(1\), then multiplying by \(a>0\) we end up spreading them evenly across the interval \([-a,a]\) and consequently we shift their expectation to \(0\).
+
+The next difficulty arises when it comes to choosing a value of \(a\) for the simulation. The choice of \(a\) will, of course, affect the variability that we observe in the simulated data sets. Therefore, \(a\) must be chosen in a way that ensures  variation in each of the simulated data sets mirrors that found in the data collected.
+
+To choose \(a\) correctly, we note that our pseudorandom numbers model random variables with probability density function
+\begin{equation}\label{eq:rv-24}
+f(x)
+=
+\begin{cases}
+    \dfrac{1}{2a} & -a \leq x \leq a \\[1ex]
+    0 & \text{otherwise.}
+\end{cases}
+\end{equation}
+so the variance that is relevant to our problem is calculated as
+\begin{equation}\label{eq:rv-25}
+\int\limits_{-a}^a ( x - 0 )^2  \frac{1}{2a}  dx
+=
+\frac{1}{a} \int\limits_0^a x^2 dx = \frac{a^2}{3}. 
+\end{equation}
+Since the sample standard deviation is meant to estimate the variance, we assert that
+\begin{equation}\label{eq:rv-26}
+s^2 = \frac{a^2}{3}
+\leftrightarrow
+\sqrt{3 s^2} = a.
+\end{equation}
+Using the results from the previous example we get \(a=2.169\). We can now create a replicate experiment by generating \(n=12\) pseudorandom variables uniformly distributed on the interval \([-2.169, 2.169]\).
+
+The final difficulty lies in deciding what constitutes a ``false positive'' in the simulation. We have decided that a sample mean of \(-0.65\) grams is sufficient to declare a weight change has occurred. However, this threshold was determined based on a data set with some degree of variability that will likely not be matched exactly in another replicate. To keep a level playing field, then, we standardize the mean weight change as
+\begin{equation}\label{eq:rv-27}
+\frac{\bar{\mathcal{X}}}{\sqrt{s^2}} = \frac{-0.65}{\sqrt{1.5682}} = -0.519.
+\end{equation}
+Importantly, the standardized measure, or \emph{test statistic}, we have introduced has no units. Equally important is the fact that the benchmark value of \(-0.519\) establishes the test we apply to each replicate when determining whether said replicate supports the conclusion that a weight change occurred. When the corresponding test statistic for a given replicate is calculated (by dividing the sample mean of a given replicate by the square root of its sample variance) and is determined to be further from zero than \(-0.519\), we declare a positive test result has occurred. Since this positive result is clearly false (the mean of the underlying distribution is, after all, zero) we include the replicate in our false-positive count. We eventually report the probability of having committed a type-I error as
+\begin{equation}\label{eq:rv-28}
+\frac{\text{number of false positives}}{\text{number of simulated replicates}}.
+\end{equation}
+
+While carrying out the simulation using a spreadsheet is not impossible, it is tedious. It is much easier to create the simulation using a standard computer programming language. For those inclined to create such a simulation, the steps involved are as follows:
+
+\begin{enumerate}
+  \item Generate \(n=12\) pseudorandom variables on the interval \((0,1)\); call them \(U_1, \dots, U_{12}\).
+  \item Create a new data set \(V_1, \ldots, V_{12}\), where \(V_j = (2 U_j - 1) (2.169)\).
+  \item Calculate the test statistic using the formula
+\end{enumerate}
+\begin{equation}\label{eq:rv-29}
+T = \frac{ \bar V } {\displaystyle \sqrt{ \sum_{j=1}^{12} \frac{(V_j - \bar V)^2}{12-1}}
+}
+\end{equation}
+where \(\bar V = \dfrac{1}{12}\displaystyle\sum_{j=1}^{12} V_j\).
+\begin{enumerate}
+  \item If \(|T| > |-0.519|\) then count the replicate as a false positive; otherwise do nothing.
+  \item Repeat steps 1 to 4 a large number of times. Report the probability of committing a type-I error as the number of false positives divided by the number of times the steps 1 to 4 were carried out.
+\end{enumerate}
+
+When I simulated \(100 000\) replicates on a computer, I found that the false positive rate, i.e. the probability of having committed a type-I error, was \(0.09977\) or about \(10\%\). In practice, this rate is considered to be too high to allow us to reasonably conclude that a mean of \(-0.65\) grams  represents anything other than a chance deviation from zero weight change, when viewed in the light of a sample variance of \(1.5682\) grams squared.
+\end{solution}
+
+In the preceding example I suggested simulating data sets by generating pseudorandom variables uniformly distributed on \([-a,a]\) but I provided no justification. Why not use some other distribution? Why not the one corresponding to the density function shown in Figure \ref{fig:pdf} for instance? The tl;dr answer is, it doesn't matter. It has long been known that the distribution of the test statistic we created does not depend on the underlying distribution of the data. This fact was discovered by an employee of the Guinness brewery, William Sealy Gosset. Guinness considered Gosset's work to be a trade secret, and so Gosset published his findings under the pseudonym, Student. In fact, the statistic we used in our example is similar to one known as \emph{Student's t statistic}
+\begin{equation}\label{eq:rv-30}
+t = \frac{\bar{\mathcal{X}} - E[X]}{\sqrt{s^2/n}}.
+\end{equation}
+Much is known about the distribution of the \(t\), including its cumulative distribution function. Using published tables we can determine that the probability of observing a \(T = t/\sqrt{12}\) statistic that is farther from \(0\) than \(-0.519\) is
+\begin{equation}\label{eq:rv-31}
+\begin{aligned}
+\mathbb{P} ( \{ -\infty < T \leq -0.519 \} \cup \{ 0.519 < T < \infty \} )
+\\
+=
+\mathbb{P} (  T \leq -0.519 )
++
+\bigg( 1 - \mathbb{P} (  T \leq 0.519  )\bigg)
+=
+0.09964.
+\end{aligned}
+\end{equation}
+See \cref{fig:two-tailed}. This agrees with the simulation results reported in Example \ref{eg:ttest}.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\linewidth]{standalones/plot-two-tailed.pdf}
+  \caption{The density of Student's \(t\) which can be related to the \(T\) value introduced in Example \ref{eg:ttest} by \(t = \sqrt{n} T\) where \(n=12\). The area shaded in purple  is approximately \(0.09964\) which gives the probability of committing a type-I error in Example \ref{eg:ttest}.}
+  \label{fig:two-tailed}
+\end{figure}
+
+Before closing, one final comment on dealing with data is needed. In Example \ref{eg:ttest} we were concerned with weight changes, but we did not have a prior belief that the changes would be positive. Had we been concerned with drug-induced weight loss only, for instance, then we would have only been concerned with values of \(T\) that were less that \(-0.519\). In terms of \cref{fig:two-tailed}, we would have been concerned only about the area of shaded tail on the left; we would not have cared about the right tail. Details like these, and more, will be emphasized more vigorously in your later courses in statistics.
+
+\end{document}
